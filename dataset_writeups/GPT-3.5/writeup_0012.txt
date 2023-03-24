@@ -1,0 +1,11 @@
+Title: Cross-Site Scripting (XSS) Attack via Form Input
+
+During a CTF competition, I encountered a web application that allowed users to submit information through a form input and display it on a public page. Given the potential security risks associated with form input, I suspected that the application might be vulnerable to Cross-Site Scripting (XSS), a type of vulnerability that allows attackers to inject and execute malicious scripts on the client-side.
+
+To test for XSS, I crafted a malicious input containing a script tag, such as <script>alert('XSS')</script>, and submitted it to the application's form input. If the application allowed the script to be injected and executed on the client-side, it would confirm the presence of an XSS vulnerability.
+
+Upon submitting the crafted input to the application, it indeed injected and executed the malicious script on the client-side, confirming the vulnerability. To obtain the flag for the Web Exploitation challenge, I needed to use the XSS vulnerability to execute a specific script on the client-side.
+
+After researching the application's structure and available resources, I crafted a suitable payload containing a script to extract the desired information and submitted it to the application's form input. The client successfully executed the script and displayed the flag for the Web Exploitation challenge.
+
+This CTF writeup highlights the importance of properly securing web applications against XSS vulnerabilities by validating and sanitizing user input, using input/output encoding, and implementing white-listing and blacklisting techniques. By exploiting the XSS vulnerability, I was able to inject and execute malicious scripts on the client-side, access sensitive information, and obtain the flag needed to complete the challenge.

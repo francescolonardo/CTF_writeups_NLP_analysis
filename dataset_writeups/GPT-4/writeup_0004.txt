@@ -1,0 +1,11 @@
+Title: Uncovering Hidden Directories with Directory Traversal
+
+During a CTF event, I encountered a web application that seemed to have very few visible features. However, I had a suspicion that there might be hidden directories or files within the application's structure that could lead me to the flag.
+
+To explore this possibility, I decided to use a directory traversal technique with a tool called DirBuster. DirBuster is a utility that can enumerate and discover hidden directories and files on web servers by performing brute force searches using a large dictionary of common directory and file names.
+
+I configured DirBuster to target the web application's root directory and began the enumeration process. After some time, DirBuster discovered a hidden directory named "secret_files" that was not accessible through the application's user interface.
+
+Upon navigating to the "secret_files" directory, I found a text file that contained the flag for the Web Exploitation challenge. The flag had been hidden within the application's file structure, requiring the use of directory traversal techniques to uncover it.
+
+This CTF writeup highlights the importance of securing and properly configuring web applications to prevent unauthorized access to sensitive information. By employing directory traversal techniques, I was able to find hidden directories and files that contained the flag needed to complete the challenge.

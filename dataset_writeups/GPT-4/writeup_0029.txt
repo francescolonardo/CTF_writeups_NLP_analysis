@@ -1,0 +1,11 @@
+Title: Uncovering Hidden Flags through JavaScript Deobfuscation
+
+During a CTF event, I discovered a web application that seemed to have no obvious vulnerabilities at first glance. However, I noticed that the application used a heavily obfuscated JavaScript file to perform various client-side operations. This piqued my interest, as the obfuscation might be hiding sensitive information, such as the flag for the Web Exploitation challenge.
+
+To analyze the obfuscated JavaScript code, I used various deobfuscation techniques and tools, such as JavaScript Beautifier, to make the code more readable and easier to understand. As I carefully examined the deobfuscated code, I identified several interesting functions and variables that seemed to be related to the flag.
+
+I discovered that the flag was split into multiple parts and scattered throughout the JavaScript code. Each part of the flag was encoded or obfuscated in a different way, such as being Base64 encoded or hidden within a complex function.
+
+To reconstruct the complete flag, I decoded and extracted each part of the flag from the JavaScript code. After combining all the parts, I obtained the full flag needed to complete the Web Exploitation challenge.
+
+This CTF writeup highlights the importance of thoroughly examining client-side code in web applications, as sensitive information may be hidden within obfuscated JavaScript files. By deobfuscating the JavaScript code and reconstructing the flag, I was able to obtain the flag needed to complete the challenge.
