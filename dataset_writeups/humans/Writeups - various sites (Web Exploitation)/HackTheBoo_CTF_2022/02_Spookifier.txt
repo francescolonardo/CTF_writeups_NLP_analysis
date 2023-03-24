@@ -1,0 +1,27 @@
+# Overview
+
+Navigating to website, we are presented with the following page.
+
+
+On giving an input, it is sent through get parameter and it reponds with same input with different font styles.
+
+
+# Analysis
+
+Looking into the source code reveals that it’s a flask app and using mako template engine for rendering. On line 11, the user input is passed into the spoofiky function and it’s output is passed into the template.
+
+
+Tracing the spookify function, it passes the text onto change_font function which just maps the text characters againts different font dictionaries.
+
+
+One font dictionary does not have any unique character for mapping.
+
+
+Since, the user input is directly passed into the template with any sanitization, this introduces the Server Side Template Injection (SSTI).
+
+We confirm it by using the following payload and it sucessfully evaluates it.
+
+
+# Attack Execution
+
+Then using the following payload, we can run commands on the system and read our flag.

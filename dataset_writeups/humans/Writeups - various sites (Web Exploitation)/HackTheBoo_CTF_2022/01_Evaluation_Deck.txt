@@ -1,0 +1,41 @@
+# Overview
+
+Navigating to the challenge website, it presents the following page which list cards.
+
+On selecting a card, the HP of ghost increases of decrease depending on the points and operator.
+
+
+However, nothing happens on the victory.
+
+# Analysis
+
+Intercepting the requests with burpsuite, when selecting a card, post request is sent to /api/get_health endpoint with three parameters as shown below.
+
+
+In response, remaining health is sent.
+
+
+Looking into the source code, the three POST parameters are directly passed into the compile function which creates code format for exec function. The exec function in python allows to execute arbitrary python code. So, the lack of input validation means we can inject arbitrary code in this function and execute it.
+
+# Attack Execution
+
+Since, current_health and attack_power are passed into int function, injecting code into them will cause issue. But, the operator parameter is directly passed as string so we can use it.
+
+
+We can confirm this by commenting the attack_power parameter. Basically the following payload will look like this:
+
+100 - 100# 34
+
+
+So, we can inject code before the comment.
+
+Start the ngrok proxy which forward requests to local port 8080.
+
+
+Start listening on port 8080 to receive connection.
+
+
+Injection the following payload gives a reverse shell on the challenge container.
+
+
+The flag is placed at the root.

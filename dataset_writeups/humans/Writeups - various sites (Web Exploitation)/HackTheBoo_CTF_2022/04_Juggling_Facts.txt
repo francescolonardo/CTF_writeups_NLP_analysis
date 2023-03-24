@@ -1,0 +1,34 @@
+# Overview
+
+Opening the challenge website, we get the following page. It present three buttons on the right to see other facts.
+
+
+Clicking on secret facts, it says, can only be accessed by admin.
+
+
+# Analysis
+
+Looking at the burpsuite proxy, under the hood it is sending post request to getfacts endpoint with the fact type parameter.
+
+
+Looking into the source code, the getfacts endpoint is controlled by getfacts function.
+
+
+The getfacts function basically have two main things. First there’s an if statement that checks if the request fact type is secret and the request is not coming from localhost then return the message that we saw earlier in the response. I tried to bypass this localhost condition by it didn’t work.
+
+Second there’s a switch statement which checks the type and returns the facts. Personally, i have not seen much switch statements so i had no idea but on some research i found that this was vulnerable because of type juggling.
+
+
+PHP has a feature called type juggling. This means that during the comparison of variables of different types, PHP will first convert them to a common, comparable type.
+
+Basically, the switch statements in php use loose comparision (==). Following image shows the structure of switch statements in php.
+
+
+Looking at strings loose comparisions, the condition can be true when providing the same strings or a true (boolean value).
+
+"secret"=="secret"  -> true
+"secret"==true      -> true
+
+# Attack Execution
+
+So, providing the true keyword in type parameter makes the first switch case true when presents the secrets and our flag.

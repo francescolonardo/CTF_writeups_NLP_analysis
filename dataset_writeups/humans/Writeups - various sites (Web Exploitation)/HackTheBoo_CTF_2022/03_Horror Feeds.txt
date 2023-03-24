@@ -1,0 +1,45 @@
+# Overview
+
+Starting the challenge container, we are presented with the following login page which also presents option to register.
+
+
+Registering the new user and logging in, on the home page it shows spooky CCTV footage as told in the challenge description. There’s nothing more.
+
+
+# Analysis
+
+Looking into the provided zip file, there’s the docker startup script which creates the users table and add the admin user entry. The password is hashed.
+
+
+Next, the flag is loaded in the flag attribute of config class.
+
+
+Then, this flag and authenticated username is passed into the dashboard template. But, we saw the dashboard after but there was no flag.
+
+
+The reason is that there’s a condition in the template that flag will ony be rendered when admin logs into the dashboard.
+
+This means that we need to be admin to get the flag.
+
+
+Looking in the register function, the username is directly passed to the SQL query without any sanitization. This introduces the SQL injection. First query on line 30 doesn’t concerns us because the passwords are hashed and we already have hash of admin password but it’s of no use. But the second query of line 36 is interesting.
+
+
+Since, this an insert query and there’s no input validation, we can use it to change the admin’s password hash to our own generated hash.
+
+This can be done by using the ON DUPLICATE KEY UPDATE which is an extension to insert statement that, if it finds a duplicate unique or primary key, it will instead perform an update.
+
+So, the logic is to try to add admin user which we know already exists in the table, so on duplicate key, we can change it’s hash. You can read more about it on the following page:
+
+
+The application uses bcrypt with 12 rounds to hash the password. So, first we generate a new hash of our own password.
+
+# Attack Execution
+
+Next, we just inject the following payload into the username parameter and it will change the admin password hash.
+
+
+After adding payload the query will look like this:
+
+
+Then, we just login into the dashboard using the password that we just set and get the flag.

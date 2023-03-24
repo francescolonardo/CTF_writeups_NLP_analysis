@@ -1,0 +1,73 @@
+# Overview
+
+The target of this challenge is reading the content of flag.txt file... but by someway to bypass the check includes('flag') of waf. All of the challenge code can be seen at main.js.
+
+# Analysis
+
+After reading the source code, there are 2 question come to my mind.
+
+How to bypass the includes condition? (absolutely... that what we are looking for), and
+What type of argument the readFileSync function can take to read a file?
+By going around on Google, I found a write up for NodeJS Bypass Filter CTF, which is similar to this challenge at some point:
+
+Both challenge doesn't validate the type of input, which means we can pass input as an array instead of a string, and
+Both challenge require to bypass the includes function to reach the flag!
+
+# Attack Execution
+
+Bravo! Think that I found the right spot, I try the payload file[]=x&file[]=flag.txt. Unlucky, it can't bypass waf of this challenge
+
+# Analysis
+
+Why can't it bypass the waf? Well, I figure out there is a critial different point between the challenge at this line of code
+(item) => item && JSON.stringify(item).includes("flag")
+
+The simplewaf doesn't take the raw input to perform input validation, but transform the raw input a JSON string beforehand. So, the includes function still can check whether the transformed string contains flag or not.
+
+At this point, I can't think of anyway to bypass the includes function... So, I move to the second question, and take a look at NodeJS document of that function.
+
+
+Oke, so the path parameter can be either a <string> | <Buffer> | <URL> | <integer>. However, the type of requests query value is always string. How could we pass in the readFileSync function a URL, or an integer, or anything else other than a string?
+
+# Attack Execution
+
+At the first thought, I try format the string as a URL: http://localhost:3456/wow.html. Unlucky, it doesn't works~
+
+
+# Analysis
+
+Stopping fruitless effort at guessing, I decided to take a closer look of the readFileSync function at NodeJS source code on github.
+
+The code snippet from line 469 and below perform read file process, which is nothing to dive in. The main point we need to dive in is the code at line 467. Follow the code by investigating the fs.openSync function.
+
+
+Continue following by investigating the getValidatedPath function.
+
+Hold down, some interesting things appear at here. So if the fileURLOrPath value is not null, and there are exists href and origin in it, it will call to fileURLToPath, which transform the fileURLOrPath value to a URL. That is the point! I can feel that I'm going on the right way!
+
+Gaining momemtum, I continue investigating the fileURLToPath function.
+
+One additional condition for the fileURLOrPath value is that its protocol must be file:.
+After all of the check is passed, it will call the corresponding function to get path from the URL. Since I'm debugging on Linux, so I continue investigating at the getPathFromURLPosix function.
+
+Once again, another check occurs at this code snippet: the hostname must be empty. But, one remarkable things to note down here, and it will helps us bypass the includes check of simplewaf is that it will perform URL decode on the pathname to get the URL. This means if we pass a double URL encoded pathname value from the web application, it will ends up the file path being plaintext. And guess what? Since the value pass the client to the includes check is just URL decoded once, we can easily bypass this check also.
+
+Okay, let's sum it up all the things we need to do to pass a valid argument file as a URL into the readFileSync function.
+
+file is not null
+file.origin exists
+file.href exists
+file.protocol = 'file:'
+file.hostname = ''
+And the final requirement to bypass the waf and get the flag is:
+file.pathname is double URL encoded
+
+# Attack Execution
+From the analysis above, I construct the following payload:
+
+file[origin]=x&file[href]=x&file[protocol]=file:&file[hostname]=&file[pathname]=fla%2567.txt
+
+I just double URL encode the g character to bypass the waf. Using the payload, we succesfully get the tesst flag.
+image.png
+
+Okay, let's get the real flag for now~

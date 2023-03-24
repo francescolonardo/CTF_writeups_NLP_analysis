@@ -1,0 +1,23 @@
+# Overview
+
+Upon visiting the website, it appears to just be a textbox with a form. 
+
+# Analysis
+
+After inspecting the website, you can see there's a G82XCw5CX3.js file. I visited mercury.picoctf.net:55336/JIFxzHyW8W which consisted of this.
+
+The first time I looked at it I gave up in 5 seconds. Anyways, in the const declaration one of the elements caught my attention. './JIFxzHyW8W' is a path.
+
+I visited mercury.picoctf.net:55336/JIFxzHyW8W and it gave a WebAssembly file.
+
+I translate the wasm file to wat and analyze the result.
+
+Now I translate to pseudo-code and analyze the result.
+
+We can see that check_flag stayed pretty much the same as last time, so we can assume that the magic happens in copy. If we diff it against the previous implementation (which simply stored the provided flag characters in memory without any extra manipulation) we can see that the new version includes some extra logic.
+
+What seems to be happening here is that characters from the flag are getting XORed with 8 before being saved at offset 1072+. We can also see that the string that check_flag uses to compare the user input to the expected flag (at offset 1024+) doesn't contain the flag in the clear anymore.
+
+# Attack Execution
+
+We'll take this string and XOR it with 8 to get the flag.

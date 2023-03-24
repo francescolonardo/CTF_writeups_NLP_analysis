@@ -1,0 +1,11 @@
+# Overview
+
+This website has a button you can press that will give you the flag. However, if you press it in your web browser, it will give you an error saying "You're not picobrowser!" and list some text after it that depends on your OS and browser (for me, it says Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0, but yours will likely be different).
+
+# Analysis
+
+That string of text is known as a User-Agent and it tells the server what browser you're using.
+
+# Attack Execution
+
+To convince them that you're running picobrowser, you can just change your user-agent string. To do this, I chose to use curl because it easily allows you to control the headers.

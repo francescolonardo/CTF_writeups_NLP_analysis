@@ -1,0 +1,11 @@
+# Analysis
+
+I searched up "MD5 collision" and eventually found this website. 
+
+It provided 2 executable files (hello and erase) which have the same MD5 hash. I downloaded those files and changed the extension to a .pdf file.
+
+# Attack Execution
+
+I uploaded those two files and the website redirected to the PHP:
+
+The flag can be found in a comment at the end of the PHP (before the HTML portion, line 37)
