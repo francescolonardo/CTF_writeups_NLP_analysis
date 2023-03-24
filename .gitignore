@@ -1,0 +1,8 @@
+api_keys.json
+venv/
+models/
+.vscode/
+.DS_Store
+.ipynb_checkpoints
+README.md
+README.docx
