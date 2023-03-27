@@ -1,0 +1,14 @@
+Title: Cross-Site Scripting (XSS) Attack on Contact Form
+Primary topic: Web Exploitation
+Secondary topic: Cross-Site Scripting (XSS)
+Tools used: None
+Keywords: session cookie, payload, input validation, output encoding, cookie handling
+
+#overview
+During a CTF competition, I tested a web application's contact form for Cross-Site Scripting (XSS) vulnerabilities. I crafted a malicious payload containing a JavaScript script and submitted it to the application's contact form to test for XSS vulnerabilities.
+
+#analysis
+Upon submitting the crafted payload to the application, it executed and displayed the JavaScript script to other users, confirming the presence of an XSS vulnerability. I then exploited the vulnerability to steal the session cookie of a logged-in user. I researched the application's session management and cookie handling to craft a suitable payload containing a JavaScript script that extracted the session cookie from a logged-in user.
+
+#attack_execution
+After submitting the crafted payload, the server successfully recognized it and

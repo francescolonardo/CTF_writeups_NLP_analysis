@@ -1,0 +1,23 @@
+Title: Leveraging Insecure Deserialization to Execute Arbitrary Code
+Primary topic: Web Exploitation
+Secondary topic: Insecure Deserialization
+Tools used: Python's pickle module
+Keywords: serialized data, cookies, arbitrary code execution, vulnerabilities, payload, base64-encoded
+
+#overview
+During a CTF event, the author discovered a web application that used serialized data in cookies to store user session information. The author recognized the potential for insecure deserialization of user-supplied data to cause serious vulnerabilities, including arbitrary code execution.
+
+#analysis
+The author examined the serialized data in the cookie and identified the serialization format being used as Python's pickle module. The author then crafted a malicious serialized object containing arbitrary code to be executed upon deserialization by the application. The author created a Python class with a __reduce__() method that would execute the desired code upon deserialization. The author then base64-encoded the malicious serialized object and replaced the original serialized data in the cookie with the payload. After refreshing the web page, the application deserialized the malicious payload, executing the code contained within the Exploit class. By exploiting the insecure deserialization vulnerability, the author was able to execute arbitrary code on the server, which revealed the flag for the Web Exploitation challenge.
+
+#attack_execution
+The author exploited the insecure deserialization vulnerability by crafting a malicious serialized object containing arbitrary code to be executed upon deserialization by the application. The author created a Python class with a __reduce__() method that would execute the desired code upon deserialization. The author then base64-encoded the malicious serialized object and replaced the original serialized data in the cookie with the payload. After refreshing the web page, the application deserialized the malicious payload, executing the code contained within the Exploit class. By exploiting the insecure deserialization vulnerability, the author was able to execute arbitrary code on the server, which revealed the flag for the Web Exploitation challenge.
+
+#tags
+#overview
+#analysis
+#attack_execution
+
+[CODE_REMOVED]
+
+This writeup demonstrates the importance of properly securing web applications against insecure deserialization vulnerabilities. By exploiting insecure deserialization, the author was able to execute arbitrary code on the server and obtain the flag needed to complete the challenge.

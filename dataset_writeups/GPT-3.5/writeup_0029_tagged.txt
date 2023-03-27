@@ -1,0 +1,41 @@
+Sure, here's the tagged text for the first writeup you provided:
+```
+Title: SQL Injection in User Login
+Primary topic: Web Exploitation
+Secondary topic: SQL Injection
+Tools used: None
+Keywords: SQL injection, authentication bypass, database schema, sensitive information, CTF writeup
+
+#overview
+During a CTF competition, I encountered a web application that included a user login feature allowing users to login using their credentials. Given the potential security risks associated with SQL injection vulnerabilities, I suspected that the application might be vulnerable to SQL injection attacks.
+
+#attack_execution
+To test for SQL injection, I entered a malicious payload containing a SQL injection attack into the login parameter, such as admin' --, which would cause the application to execute a valid SQL query and bypass the authentication mechanism.
+
+Upon submitting the payload, the application logged me in as an administrator, confirming the presence of an SQL injection vulnerability. To obtain the flag for the Web Exploitation challenge, I needed to use the SQL injection vulnerability to extract sensitive information from the database.
+
+After researching the application's database schema and structure, I crafted a suitable payload containing a script that would extract sensitive information from the database, such as admin' UNION SELECT 1,2,3,4,5,6,7 FROM sensitive_table WHERE '1'='1. This payload allowed me to extract sensitive information from the database, such as the flag for the Web Exploitation challenge.
+
+#analysis
+This CTF writeup highlights the importance of properly securing web applications against SQL injection vulnerabilities by implementing proper input validation and output encoding controls, using parameterized queries, and validating user input. By exploiting the vulnerability, I was able to extract sensitive information from the database, complete the Web Exploitation challenge, and demonstrate the potential risks associated with SQL injection.
+```
+And here's the tagged text for the second writeup you provided:
+```
+Title: Command Injection in File Upload
+Primary topic: Web Exploitation
+Secondary topic: Command Injection
+Tools used: None
+Keywords: command injection, sensitive information, CTF writeup
+
+#overview
+During a CTF competition, I encountered a web application that included a file upload feature allowing users to upload files to the server. Given the potential security risks associated with command injection vulnerabilities, I suspected that the application might be vulnerable to command injection attacks.
+
+#attack_execution
+To test for command injection, I uploaded a malicious file containing a command injection payload, such as <?php system($_GET['cmd']); ?>, which would allow me to execute arbitrary commands on the server.
+
+Upon uploading the file, the application accepted it and stored it on the server. To execute arbitrary commands, I entered a payload containing a command to be executed on the server, such as http://example.com/uploads/malicious.php?cmd=id, which would execute the 'id' command and display the output on the attacker-controlled server.
+
+This payload allowed me to execute arbitrary commands on the server and obtain sensitive information, such as system configuration files, database credentials, and other sensitive information.
+
+#analysis
+This CTF writeup highlights the importance of properly securing web applications against command injection vulnerabilities by implementing proper input validation and output encoding controls, using parameterized queries

@@ -1,0 +1,22 @@
+Title: Bypassing Client-Side Validation for Hidden Flag Retrieval
+Primary topic: Web Exploitation
+Secondary topic: Client-Side Validation
+Tools used: Browser's Developer Tools
+Keywords: Hidden Flag, Server-Side Validation, JavaScript Functions
+
+#overview
+In this CTF writeup, the author describes how they were able to uncover a hidden flag in a web application by bypassing the client-side validation.
+
+#analysis
+The author noticed that the web application had strict client-side validation in its registration form, with specific requirements for some fields. They hypothesized that bypassing the client-side validation could reveal a hidden flag.
+
+To test their hypothesis, the author inspected the source code of the web page and identified the JavaScript functions responsible for the client-side validation. They then used the browser's developer tools to disable these functions and submitted the registration form with non-compliant input values.
+
+Upon submitting the form with the client-side validation disabled, the application returned a response that included a hidden message with the flag for the Web Exploitation challenge. The flag was concealed within the server-side validation logic and was only revealed when the client-side validation was bypassed.
+
+#attack_execution
+This CTF writeup highlights the importance of implementing robust server-side validation and not solely relying on client-side validation for security. By bypassing the client-side validation, the author was able to uncover the hidden flag and complete the challenge.
+
+[CODE_REMOVED]
+
+Note: I have removed any code chunks found in the text, as per your requirements.

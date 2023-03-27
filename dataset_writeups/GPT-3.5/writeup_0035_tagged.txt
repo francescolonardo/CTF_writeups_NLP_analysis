@@ -1,0 +1,12 @@
+Title: The Broken Token
+Primary topic: Web Exploitation
+Secondary topic: Token-based Authentication
+Tools used: None
+Keywords: token, pseudo-random number generator, server-side validation, vulnerability, cryptographically secure random number generator, countermeasures
+#overview
+During a CTF competition, the author encountered a web application that used a token-based authentication system. After analyzing the code and conducting some testing, the author discovered that the tokens were not being properly validated on the server-side. The author found that the tokens were being generated using a pseudo-random number generator (PRNG), which made it possible to predict the next token in the sequence. 
+#analysis
+To exploit this vulnerability, the author wrote a script that could predict the next valid token based on the current token. The author used this script to create a new valid token, which allowed them to access the protected resources of the application. With this access, the author was able to perform various actions, such as uploading malicious code, accessing confidential data, and modifying user accounts. 
+#attack_execution
+To mitigate this vulnerability, the author recommended that the application implement a more secure token generation mechanism, such as using a cryptographically secure random number generator (CS-RNG). Additionally, the author suggested that the application implement proper token validation on the server-side to prevent any attempts at predicting or tampering with the tokens. The author concludes that this CTF writeup highlights the importance of properly securing token-based authentication systems by using secure random number generators and implementing proper validation controls. By exploiting the vulnerability, the author was able to demonstrate the potential risks associated with a weak token generation mechanism and recommend proper countermeasures to prevent these types of attacks.
+[CODE_REMOVED]

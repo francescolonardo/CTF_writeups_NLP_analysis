@@ -1,0 +1,20 @@
+Title: SQL Injection in Search Feature
+Primary topic: Web Exploitation
+Secondary topic: SQL Injection
+Tools used: None
+Keywords: user input, SQL code, database, payload, search feature, sensitive information
+
+#overview
+This CTF writeup describes how I exploited an SQL Injection vulnerability in a web application's search feature to extract sensitive information from the database.
+
+#analysis
+After suspecting that the application might be vulnerable to SQL Injection, I entered a malicious payload containing SQL code into the search box. The application returned all results, confirming the presence of an SQL Injection vulnerability.
+
+To obtain the flag for the Web Exploitation challenge, I crafted a suitable payload containing SQL code that would extract sensitive information from the database. I identified the names of columns in the 'users' table, such as 'username' and 'password', which contained the sensitive information.
+
+Using the obtained column names, I crafted a second payload containing SQL code that would extract the usernames and passwords of all users in the 'users' table. This payload allowed me to obtain the sensitive information required to complete the Web Exploitation challenge.
+
+#attack_execution
+To execute the attack, I entered a malicious payload containing SQL code into the search box. I then crafted a suitable payload containing SQL code that would extract sensitive information from the database. Using the obtained column names, I crafted a second payload containing SQL code that would extract the usernames and passwords of all users in the 'users' table. This payload allowed me to obtain the sensitive information required to complete the Web Exploitation challenge.
+
+This CTF writeup highlights the importance of properly securing web applications against SQL Injection vulnerabilities by implementing proper input validation and output encoding controls, using prepared statements and parameterized queries, and validating user input.

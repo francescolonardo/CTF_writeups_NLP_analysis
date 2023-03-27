@@ -1,0 +1,18 @@
+Title: Bypassing Web Application Firewall to Perform SQL Injection
+Primary topic: Web Exploitation
+Secondary topic: SQL Injection
+Tools used: None
+Keywords: Web Application Firewall, WAF-evasive SQL Injection, encoding, obfuscation, alternative syntax, database, flag, sensitive data
+
+#overview
+In this CTF writeup, I describe how I bypassed a Web Application Firewall (WAF) to perform SQL Injection on a web application's login form. I explain how I analyzed the WAF's behavior and crafted a WAF-evasive SQL Injection payload to evade detection and exploit the underlying SQL Injection vulnerability.
+
+#analysis
+To bypass the WAF, I analyzed its behavior and identified the specific patterns and keywords it was blocking. I then crafted an SQL Injection payload that would evade detection by using a combination of encoding, obfuscation, and alternative syntax. For example, I used "/!50000UNION/" instead of "UNION" to bypass the filter, and "1//AND//1=0" instead of "1 AND 1=0". After crafting my WAF-evasive SQL Injection payload, I submitted it through the login form, successfully bypassing the WAF and exploiting the underlying SQL Injection vulnerability. By further exploring the database, I was able to locate the flag required for the Web Exploitation challenge.
+
+#attack_execution
+This CTF writeup highlights the importance of not only relying on WAFs for web application security but also ensuring that the application code itself is secure. By bypassing the WAF and exploiting the SQL Injection vulnerability, I was able to access sensitive data and retrieve the flag needed to complete the challenge.
+
+[CODE_REMOVED]
+
+Note: I have removed any code chunks found in the writeup text.

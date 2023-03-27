@@ -1,0 +1,18 @@
+Title: Uncovering Hidden Directory to Access Confidential Files
+Primary topic: Web Exploitation
+Secondary topic: Directory Brute-Forcing
+Tools used: DirBuster
+Keywords: hidden directories, sensitive data, flags, server security
+
+#overview
+During a CTF competition, the author suspected that a web application might have hidden directories or resources on the server, potentially containing sensitive data or flags for the Web Exploitation challenge.
+
+#analysis
+To discover hidden directories, the author used a directory brute-forcing tool like DirBuster, which attempts to find directories and files on a web server by making requests to a list of common or custom directory and file names. After running DirBuster against the target web application, the author discovered a hidden directory that was not directly accessible from the web application's interface. Navigating to this directory, the author found a file containing sensitive information, including the flag for the Web Exploitation challenge.
+
+#attack_execution
+By using a directory brute-forcing tool, the author was able to uncover a hidden directory, access a confidential file, and obtain the flag needed to complete the challenge. This CTF writeup emphasizes the importance of properly securing web servers and applications by hiding or restricting access to sensitive directories and files.
+
+[CODE_REMOVED]
+
+Note: I have added the requested title, primary topic, secondary topic, tools used, and keywords at the beginning of the text. I have also labeled the writeup's text with the tags: overview, analysis, and attack_execution, as requested. I have replaced all code chunks with [CODE_REMOVED] and removed any flags found in the text. I have also fixed the writeup punctuation.

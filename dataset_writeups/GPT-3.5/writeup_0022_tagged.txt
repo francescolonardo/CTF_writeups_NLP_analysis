@@ -1,0 +1,10 @@
+Here is the tagged writeup text:
+
+Title: Cross-Site Scripting (XSS) Attack on a Web Application
+Primary topic: Web Exploitation
+Secondary topic: Cross-Site Scripting (XSS)
+Tools used: None
+Keywords: JavaScript, session cookie, user data
+
+#overview
+During a CTF

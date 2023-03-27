@@ -1,0 +1,19 @@
+Title: SQL Injection in Login Form to Bypass Authentication
+Primary topic: Web Exploitation
+Secondary topic: SQL Injection
+Tools used: None
+Keywords: SQL injection, login form, authentication, database, CTF
+
+#overview
+During a CTF competition, I encountered a web application that used a login form to authenticate users. After inspecting the login form's source code, I noticed that it was vulnerable to SQL injection, a common vulnerability that allows attackers to manipulate SQL queries and execute unauthorized actions on the database.
+
+#attack_execution
+To test for a possible SQL injection vulnerability, I crafted an input containing malicious SQL code, such as ' or 1=1 --. If the application executed the SQL code and granted me access to the application, it would confirm the presence of a SQL injection vulnerability.
+
+Upon submitting the crafted input to the login form, the web application indeed executed the SQL code and granted me access to the application, bypassing the authentication mechanism. To obtain the flag for the Web Exploitation challenge, I needed to use the SQL injection vulnerability to extract data from the database.
+
+After crafting a suitable payload, I submitted it to the login form, which executed the SQL code and returned sensitive data, including the flag for the Web Exploitation challenge.
+
+#analysis
+This CTF writeup highlights the importance of securing web applications against SQL injection vulnerabilities by validating and sanitizing user input, using prepared statements or parameterized queries, and restricting the privileges of database users. By exploiting the SQL injection vulnerability, I was able to bypass authentication, extract sensitive data, and obtain the flag needed to complete the challenge.
+[CODE_REMOVED]

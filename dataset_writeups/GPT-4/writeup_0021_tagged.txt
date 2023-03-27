@@ -1,0 +1,20 @@
+Title: Exploiting Template Injection to Execute Code Remotely
+Primary topic: Web Exploitation
+Secondary topic: Template Injection
+Tools used: None
+Keywords: server-side templating engine, arbitrary code execution, sensitive information, flag
+
+#overview
+During a CTF competition, I encountered a web application that allowed users to input custom messages, which would then be processed by a server-side templating engine and displayed on the page. This piqued my interest, as it might be vulnerable to a Template Injection attack, enabling an attacker to execute arbitrary code on the server.
+
+#analysis
+To test for Template Injection vulnerability, I submitted a crafted input containing a simple expression that would be evaluated by the templating engine if it were vulnerable. For example, I used the input {{ 7 * 7 }} and submitted it through the custom message form.
+
+Upon submitting the input, the web application displayed the result of the expression, "49", confirming the presence of a Template Injection vulnerability.
+
+To exploit the vulnerability, I crafted a more sophisticated payload that would execute code on the server and reveal sensitive information, such as the flag for the Web Exploitation challenge. For example, I used a payload like {{ config.__class__.__init__.__globals__['os'].popen('cat /flag.txt').read() }}.
+
+#attack_execution
+After submitting the payload, the web application displayed the content of the flag.txt file, allowing me to obtain the flag needed to complete the challenge.
+
+This CTF writeup emphasizes the importance of properly validating and sanitizing user input in web applications that utilize server-side templating engines to prevent Template Injection vulnerabilities. By exploiting the Template Injection vulnerability, I was able to execute arbitrary code on the server and retrieve the flag needed to complete the challenge.

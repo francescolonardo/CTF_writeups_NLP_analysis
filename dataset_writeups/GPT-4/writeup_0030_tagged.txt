@@ -1,0 +1,18 @@
+Title: Bypassing Client-Side Validation to Exploit Insecure Server-Side Logic
+Primary topic: Web Exploitation
+Secondary topic: Client-Side Validation
+Tools used: Burp Suite
+Keywords: browser developer tools, HTML, JavaScript, HTTP requests, payloads, server-side logic, validation, sanitization
+
+#overview
+During a CTF competition, I encountered a web application that implemented client-side validation to restrict user input. However, I suspected that the server-side logic might be insecure and decided to bypass the client-side validation to test the server's handling of unexpected input.
+
+#analysis
+To bypass the client-side validation, I used browser developer tools to modify the HTML and JavaScript code or intercept and modify HTTP requests using a tool like Burp Suite. For example, I removed JavaScript validation functions or altered HTML input attributes to allow for unrestricted input.
+
+With the client-side validation bypassed, I submitted unexpected input to the web application to test the server's handling of the data. As I experimented with various payloads, I discovered that the server-side logic was indeed insecure and failed to properly validate and sanitize user input.
+
+#attack_execution
+Exploiting the insecure server-side logic, I injected malicious payloads into the web application that allowed me to access sensitive information, such as the flag for the Web Exploitation challenge.
+
+This CTF writeup emphasizes the importance of implementing robust server-side validation and sanitization in web applications, even when client-side validation is present. By bypassing the client-side validation and exploiting the insecure server-side logic, I was able to obtain the flag needed to complete the challenge.

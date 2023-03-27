@@ -1,0 +1,18 @@
+Title: Bypassing Content Security Policy with DOM-based XSS
+Primary topic: Web Exploitation
+Secondary topic: Cross-Site Scripting (XSS)
+Tools used: None
+Keywords: Content Security Policy (CSP), DOM-based XSS, innerHTML, user input, JavaScript code, payload, sensitive data, flag
+
+#overview
+During a CTF competition, I encountered a web application that implemented a Content Security Policy (CSP) to prevent Cross-Site Scripting (XSS) attacks. However, upon closer inspection of the application's JavaScript code, I noticed that it used the innerHTML property to update the content of a DOM element based on user input. This presented a potential vulnerability to DOM-based XSS, which could bypass the CSP restrictions.
+
+#analysis
+To test for a DOM-based XSS vulnerability, I crafted an input containing malicious JavaScript code, such as `<img src=x onerror=alert(1)>`. If the application executed the JavaScript code without proper sanitization, it would confirm the presence of a DOM-based XSS vulnerability.
+
+Upon submitting the crafted input, the web application indeed executed the JavaScript code, displaying an alert box and confirming the vulnerability. To exploit the vulnerability and obtain the flag for the Web Exploitation challenge, I needed to craft a more complex payload that could exfiltrate sensitive data or execute other malicious actions.
+
+#attack_execution
+After creating a suitable payload, I submitted it to the web application, which executed the code and allowed me to access sensitive data, including the flag for the Web Exploitation challenge.
+
+This CTF writeup highlights the importance of securing web applications against DOM-based XSS vulnerabilities, even when implementing a CSP. By exploiting the DOM-based XSS vulnerability, I was able to bypass the CSP, execute malicious JavaScript code, and obtain the flag needed to complete the challenge.

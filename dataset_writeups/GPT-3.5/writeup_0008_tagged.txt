@@ -1,0 +1,18 @@
+Title: Cross-Site Scripting (XSS) Attack via Form Input
+Primary topic: Web Exploitation
+Secondary topic: Cross-Site Scripting
+Tools used: None
+Keywords: form input, script injection, alert message, session cookie, payload, flag
+
+#overview
+The author encountered a web application during a CTF competition that allowed users to submit feedback through a form. Suspecting the presence of an XSS vulnerability, the author crafted a malicious input containing a script and submitted it to the application's form. Upon executing the script and displaying the alert message, the author confirmed the vulnerability.
+
+#analysis
+The author crafted a payload containing a script to steal the user's session cookie and submitted it to the application's form. The script successfully executed and sent the user's session cookie to a remote server controlled by the author, allowing them to impersonate the user and obtain the flag for the Web Exploitation challenge.
+
+#attack_execution
+The author exploited the XSS vulnerability by injecting a malicious script into the form input, which allowed for the execution of the script and the stealing of the user's session cookie. The author then crafted a payload containing a script to steal the session cookie and submitted it to the application's form, allowing them to impersonate the user and obtain the flag.
+
+[CODE_REMOVED]
+
+This CTF writeup highlights the importance of properly securing web applications against XSS vulnerabilities by validating and sanitizing user input, using content security policies, and implementing input/output encoding.

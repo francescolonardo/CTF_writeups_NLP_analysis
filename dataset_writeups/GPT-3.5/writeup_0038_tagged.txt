@@ -1,0 +1,24 @@
+Sure, here's the tagged writeup:
+
+Title: XSS Attack on Contact Form
+Primary topic: Web Exploitation
+Secondary topic: Cross-Site Scripting
+Tools used: None
+Keywords: cookies, session, input validation, sanitization
+
+#overview
+During a CTF competition, I discovered a cross-site scripting (XSS) vulnerability in a contact form of a web application.
+
+#analysis
+The application allowed users to submit HTML code as part of the form, which was not properly sanitized, allowing me to inject malicious scripts.
+
+To exploit the vulnerability, I crafted a script that would steal the user's cookies and send them to an external server. I then injected the script into the contact form and submitted it.
+
+#attack_execution
+When the application displayed the message containing the malicious script, it executed it in the user's browser, allowing me to steal their cookies and access their session.
+
+With the user's session, I was able to perform various actions on their behalf, such as modifying their profile information, submitting orders, and accessing sensitive data.
+
+To mitigate this vulnerability, I recommended that the application implement proper input validation and sanitization techniques to prevent XSS attacks.
+
+This CTF writeup highlights the importance of properly securing user input in web applications by implementing input validation and sanitization techniques to prevent XSS attacks. By exploiting the vulnerability, I was able to demonstrate the potential risks associated with an XSS vulnerability in a contact form and recommend proper countermeasures to prevent these types of attacks.

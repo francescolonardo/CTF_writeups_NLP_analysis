@@ -1,0 +1,20 @@
+Title: SSRF Exploitation to Access Internal Services and Retrieve Sensitive Data
+Primary topic: Web Exploitation
+Secondary topic: Server-Side Request Forgery (SSRF)
+Tools used: None
+Keywords: SSRF vulnerability, internal services, sensitive data, flag, URL validation, URL sanitization
+
+#overview
+During a CTF competition, the author found a web application that allowed users to input URLs to fetch content from external websites. The author suspected that this functionality might be vulnerable to Server-Side Request Forgery (SSRF) attacks, which could potentially allow access to internal services and sensitive data.
+
+#analysis
+To test for SSRF vulnerability, the author crafted a URL that pointed to an internal IP address (e.g., http://127.0.0.1) to see if the application would fetch the content from that address. The application successfully fetched the content, confirming the presence of an SSRF vulnerability.
+
+To exploit the SSRF vulnerability, the author scanned for open ports and identified potentially sensitive services. The author discovered an internal service running on a non-standard port that seemed to store sensitive information, including the flag for the Web Exploitation challenge.
+
+#attack_execution
+By crafting a URL that pointed to the internal service, the author was able to fetch the sensitive information, including the flag, using the SSRF vulnerability.
+
+[CODE_REMOVED]
+
+This CTF writeup highlights the importance of properly validating and sanitizing user-supplied URLs in web applications to prevent SSRF vulnerabilities. By exploiting the SSRF vulnerability, the author was able to access internal services and retrieve sensitive data, including the flag needed to complete the challenge.

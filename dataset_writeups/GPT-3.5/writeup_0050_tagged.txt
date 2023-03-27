@@ -1,0 +1,18 @@
+Sure, I can tag this writeup for you. Here's the tagged version of the writeup you provided:
+
+Title: Unlocked Account
+Primary topic: Web Exploitation
+Secondary topic: SQL Injection
+Tools used: SQLMap
+Keywords: authentication, administrator account, SQL query, input fields, bypass
+
+#overview
+In this CTF challenge, the objective was to exploit a web application to gain access to an administrator account.
+
+#analysis
+The website had a login page that allowed users to enter a username and password. The source code for the login page revealed that the authentication was performed using a simple SQL query. By manipulating the input fields, it was possible to bypass the authentication and gain access to the administrator account. 
+
+#attack_execution
+The solution involved using SQL injection techniques to modify the SQL query in a way that allowed us to login as the administrator. The tool used for this challenge was SQLMap.
+
+[CODE_REMOVED]

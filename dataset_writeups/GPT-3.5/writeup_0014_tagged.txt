@@ -1,0 +1,20 @@
+Here's the tagged writeup based on your requirements:
+
+Title: Broken Authentication and Session Management via Cookie Manipulation
+Primary topic: Web Exploitation
+Secondary topic: Broken Authentication and Session Management
+Tools used: None
+Keywords: cookies, user authentication, session management
+
+#overview
+During a CTF competition, I encountered a web application that used cookies to manage user authentication and session management. I suspected that the application might be vulnerable to Broken Authentication and Session Management, a type of vulnerability that allows attackers to bypass authentication and hijack user sessions by manipulating cookies.
+
+#analysis
+To test for Broken Authentication and Session Management, I crafted a malicious request containing a manipulated cookie with an arbitrary user ID, such as Cookie: user_id=123, and submitted it to the application's login page. Upon submitting the crafted request to the application, it indeed bypassed authentication and logged in as the arbitrary user, confirming the vulnerability.
+
+#attack_execution
+After researching the application's structure and available resources, I crafted a suitable cookie with the session ID of the desired user and submitted it to the application. The server successfully recognized the hijacked session and responded with the flag for the Web Exploitation challenge.
+
+This CTF writeup highlights the importance of properly securing web applications against Broken Authentication and Session Management vulnerabilities by implementing proper session management controls, using secure cookies, and validating user input. By exploiting the vulnerability, I was able to bypass authentication, hijack user sessions, and complete the Web Exploitation challenge.
+
+[CODE_REMOVED]

@@ -1,0 +1,16 @@
+Title: SQL Injection in Login Functionality  
+Primary topic: Web Exploitation  
+Secondary topic: SQL Injection  
+Tools used: None  
+Keywords: SQL Injection, login, authentication, database, flag  
+
+#overview  
+The writeup describes a SQL Injection attack on a web application's login functionality during a CTF competition. The attacker suspected that the application might be vulnerable to SQL Injection, which allows attackers to manipulate SQL queries executed by the application. 
+
+#analysis  
+To test for SQL Injection, the attacker crafted a malicious payload containing a SQL Injection attack string and submitted it to the application's login form. The application allowed the payload to execute, confirming the presence of a SQL Injection vulnerability. 
+
+#attack_execution  
+To obtain the flag for the Web Exploitation challenge, the attacker used the SQL Injection vulnerability to extract sensitive information from the database. After researching the application's database structure and available resources, the attacker crafted a suitable payload containing a SQL Injection attack string that would extract the flag from the database. The server successfully recognized the payload and responded with the flag for the Web Exploitation challenge. 
+
+The writeup highlights the importance of properly securing web applications against SQL Injection vulnerabilities by implementing proper input validation and output encoding controls, using parameterized queries, and validating user input.

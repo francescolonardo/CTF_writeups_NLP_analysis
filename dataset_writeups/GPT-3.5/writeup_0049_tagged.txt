@@ -1,0 +1,18 @@
+Title: The Great Heist
+Primary topic: Web Exploitation
+Secondary topic: SQL Injection
+Tools used: Burp Suite, SQLMap
+Keywords: usernames, passwords, personal information, authentication mechanism
+
+#overview
+On a lazy Sunday afternoon, the author stumbled upon a website advertising a high-value item auction. The site had a search feature, and the author decided to test it for vulnerabilities.
+
+#analysis
+The author discovered that the site was vulnerable to SQL injection. Using Burp Suite, they intercepted the request sent by the search feature and crafted a payload using SQLMap. They were able to retrieve sensitive data like usernames, passwords, and other personal information of the site's users. They even managed to bypass the authentication mechanism and log in as an admin.
+
+#attack_execution
+The author used SQL injection to exploit the search feature on a high-value item auction website. They used Burp Suite to intercept the request and SQLMap to automate the process of exploiting the vulnerability. They were able to retrieve sensitive data and bypass the authentication mechanism.
+
+[CODE_REMOVED]
+
+Overall, the author learned that even seemingly harmless websites can be vulnerable to attacks, and it's important to be diligent in testing for vulnerabilities.

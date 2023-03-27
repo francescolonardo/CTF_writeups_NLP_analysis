@@ -1,0 +1,18 @@
+Title: Local File Inclusion Exploit to Access Sensitive Files
+Primary topic: Web Exploitation
+Secondary topic: Local File Inclusion
+Tools used: None
+Keywords: LFI, sensitive files, server, exploit, flag, validation, sanitization
+
+#overview
+During a CTF competition, I discovered a web application vulnerable to Local File Inclusion (LFI) due to a URL parameter structure that allowed users to view different pages. I exploited the vulnerability to access sensitive files on the server and obtain the flag needed to complete the Web Exploitation challenge.
+
+#analysis
+To test for the LFI vulnerability, I modified the file parameter in the URL and attempted to include a local file from the server. By submitting the modified URL, I was able to access the contents of the /etc/passwd file, confirming the presence of the LFI vulnerability. I then tried to access other sensitive files on the server, such as configuration files or log files that might contain valuable information.
+
+#attack_execution
+After exploring various files, I found a sensitive file that contained the flag for the Web Exploitation challenge. By exploiting the LFI vulnerability, I was able to access sensitive files on the server and obtain the flag needed to complete the challenge.
+
+[CODE_REMOVED]
+
+This CTF writeup highlights the importance of properly validating and sanitizing user input in web applications to prevent LFI vulnerabilities.

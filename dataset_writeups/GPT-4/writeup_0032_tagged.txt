@@ -1,0 +1,21 @@
+Title: File Inclusion Vulnerability: Accessing Sensitive Files through LFI
+Primary topic: Web Exploitation
+Secondary topic: Local File Inclusion (LFI)
+Tools used: None
+Keywords: CTF, parameter manipulation, system files, flag file
+
+#overview
+During a CTF competition, the writeup author encountered a web application that allowed users to load specific pages by passing a parameter through the URL. The author suspected that this functionality might be vulnerable to Local File Inclusion (LFI) attacks, which could potentially allow them to access sensitive files on the server.
+
+#analysis
+To test for an LFI vulnerability, the author manipulated the URL parameter to include system files, such as /etc/passwd. After submitting the crafted URL, the web application displayed the content of the /etc/passwd file, confirming the presence of an LFI vulnerability.
+
+#attack_execution
+To exploit the LFI vulnerability and retrieve the flag for the Web Exploitation challenge, the author crafted a URL that would include the flag file from the server's file system. After submitting the crafted URL, the web application included the content of the flag file, allowing the author to obtain the flag needed to complete the challenge.
+
+#overview
+This CTF writeup emphasizes the importance of properly validating and sanitizing user input in web applications to prevent file inclusion vulnerabilities. By exploiting the LFI vulnerability, the author was able to access sensitive files on the server and obtain the flag needed to complete the challenge.
+
+[CODE_REMOVED]
+
+Note: I have removed any code chunks found in the writeup, as per your request.

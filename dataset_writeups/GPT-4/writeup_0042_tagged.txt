@@ -1,0 +1,18 @@
+Sure, I can help you tag this writeup. Here is the tagged version of your writeup:
+
+Title: Uncovering Hidden Parameters to Reveal Admin Interface
+Primary topic: Web Exploitation
+Secondary topic: Hidden Parameters
+Tools used: Burp Suite
+Keywords: login request, isAdmin parameter, access control, unauthorized access, flag
+
+#overview
+During a CTF competition, the author discovered a web application that had a login form but no visible link to an admin interface. To gain access, they suspected there might be a hidden parameter that could grant access to the admin interface.
+
+#analysis
+The author used Burp Suite to intercept and analyze the login request. They discovered a hidden parameter named isAdmin with a value of false that controlled access to the admin interface. By modifying the value of this parameter to true and forwarding the request to the server, the author gained unauthorized access to the admin interface.
+
+#attack_execution
+Inside the admin interface, the author found a page that contained the flag for the Web Exploitation challenge. By exploiting the hidden parameter, they gained access to the admin interface and obtained the flag needed to complete the challenge.
+
+The writeup emphasizes the importance of securing hidden parameters and implementing proper access control mechanisms in web applications to prevent unauthorized access.

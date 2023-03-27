@@ -1,0 +1,20 @@
+Title: Directory Traversal Attack to Access Sensitive Files
+Primary topic: Web Exploitation
+Secondary topic: Directory Traversal
+Tools used: None
+Keywords: CTF, vulnerability, file path, sensitive files, validation, sanitization, flag, challenge
+
+#overview
+In this CTF writeup, the author describes how they exploited a Directory Traversal vulnerability in a web application to gain unauthorized access to sensitive files on the server. The writeup highlights the importance of properly validating and sanitizing user-supplied file paths in web applications to prevent such vulnerabilities.
+
+#analysis
+The author discovered that the web application allowed users to view files hosted on the server by providing a file path as part of the URL. Suspecting a Directory Traversal vulnerability, the author crafted a modified URL with a relative file path to a sensitive file on the server, such as /etc/passwd. Upon navigating to the modified URL, the application returned a web page that displayed the contents of the /etc/passwd file, confirming the presence of the vulnerability.
+
+The author further exploited the vulnerability to access other sensitive files on the server, eventually obtaining the flag required for the Web Exploitation challenge.
+
+#attack_execution
+To execute the attack, the author modified the URL by adding a relative file path to a sensitive file on the server, such as /etc/passwd. The modified URL was then used to access the file, which confirmed the presence of the Directory Traversal vulnerability. The author then further exploited the vulnerability to access other sensitive files on the server, eventually obtaining the flag.
+
+[CODE_REMOVED]
+
+The writeup emphasizes the importance of proper validation and sanitization of user-supplied file paths in web applications to prevent Directory Traversal vulnerabilities.

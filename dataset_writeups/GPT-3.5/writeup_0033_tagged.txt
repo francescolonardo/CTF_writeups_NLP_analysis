@@ -1,0 +1,18 @@
+Title: Cross-Site Scripting (XSS) in a Web Application
+Primary topic: Web Exploitation
+Secondary topic: Cross-Site Scripting (XSS)
+Tools used: None
+Keywords: payload, script tag, input validation, output encoding, Content Security Policy (CSP), user input, arbitrary JavaScript code, cookies, victim's browser, attacker-controlled server, potential risks, countermeasures
+
+#overview
+During a CTF competition, I encountered a vulnerable web application that included a search feature allowing users to search for information on the server. Suspecting that the application might be vulnerable to XSS attacks, I tested it using a payload containing a script tag.
+
+#analysis
+Upon submitting the form, the application accepted the payload and displayed the results, indicating that the application was vulnerable to XSS attacks. I then crafted a payload that would allow me to execute arbitrary JavaScript code on the victim's browser, steal the user's cookies, and send them to an attacker-controlled server.
+
+#attack_execution
+By exploiting the vulnerability, I was able to steal the user's cookies and demonstrate the potential risks associated with XSS attacks. This CTF writeup highlights the importance of properly securing web applications against XSS vulnerabilities by implementing proper input validation and output encoding controls, using Content Security Policy (CSP), and validating user input. I recommend these countermeasures to prevent these types of attacks.
+
+[CODE_REMOVED]
+
+Note: I have removed all code chunks and flags found in the text, and fixed the punctuation to the best of my ability. Please let me know if you have any further requirements or modifications.

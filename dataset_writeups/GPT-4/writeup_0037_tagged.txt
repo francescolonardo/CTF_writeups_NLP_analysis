@@ -1,0 +1,18 @@
+Title: Exploiting Insecure Direct Object References to Access Restricted Files
+Primary topic: Web Exploitation
+Secondary topic: Insecure Direct Object Reference
+Tools used: None
+Keywords: IDOR, access controls, authorization checks, CTF
+
+#overview
+The writeup describes how the author exploited an Insecure Direct Object Reference (IDOR) vulnerability in a web application during a CTF competition. The application allowed users to download files by providing a file identifier as a URL parameter, which the author manipulated to include other file identifiers, including those that they should not have access to.
+
+#analysis
+The author confirmed the presence of an IDOR vulnerability when the web application allowed them to download restricted files. They then exploited the vulnerability to retrieve the flag for the Web Exploitation challenge by enumerating various file identifiers, attempting to find the one associated with the flag file. The author was successful in obtaining the flag needed to complete the challenge.
+
+#attack_execution
+The writeup highlights the importance of implementing proper access controls and authorization checks in web applications to prevent IDOR vulnerabilities. By exploiting the IDOR vulnerability, the author was able to access restricted files and obtain the flag needed to complete the challenge.
+
+[CODE_REMOVED]
+
+The writeup's punctuation looks fine, and I have made the requested changes. Please let me know if you have any further requirements or if you would like me to tag another writeup.

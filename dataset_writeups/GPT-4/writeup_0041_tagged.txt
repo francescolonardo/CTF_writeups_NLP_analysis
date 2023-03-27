@@ -1,0 +1,18 @@
+Title: Exploiting a Cross-Site Scripting Vulnerability to Steal Session Cookies
+Primary topic: Web Exploitation
+Secondary topic: Cross-Site Scripting (XSS)
+Tools used: None
+Keywords: session cookie, information disclosure, unauthorized actions
+
+#overview
+During a CTF event, I suspected that a web application might be vulnerable to Cross-Site Scripting (XSS) attacks due to improper user input sanitization. To confirm the presence of an XSS vulnerability, I submitted a comment containing a simple JavaScript payload.
+
+#analysis
+The web application displayed the comment with the JavaScript payload and triggered an alert, confirming the presence of an XSS vulnerability. To exploit the vulnerability and obtain the flag, I crafted a comment containing JavaScript code that would send the user's session cookie to my own server.
+
+#attack_execution
+After submitting the crafted comment, I waited for a privileged user to view the comment. When the JavaScript payload executed in the context of the privileged user's browser, it sent their session cookie to my server. With the stolen session cookie, I was able to impersonate the privileged user and access the restricted area containing the flag. This CTF writeup highlights the importance of properly sanitizing and validating user input in web applications to prevent XSS vulnerabilities. 
+
+[CODE_REMOVED]
+
+This writeup was edited for punctuation and formatting purposes only.

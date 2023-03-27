@@ -1,0 +1,16 @@
+Title: Uncovering Hidden Flag in Image Metadata
+Primary topic: Web Exploitation
+Secondary topic: Image Metadata
+Tools used: ExifTool
+Keywords: flag, hidden, metadata, image
+
+#overview
+During a CTF competition, the writer encountered a web application that featured a gallery of images. The challenge description hinted that one of the images contained a hidden flag. The writer suspected that the flag might be concealed within the metadata of an image file.
+
+#analysis
+To investigate this possibility, the writer downloaded all the images from the gallery and examined their metadata using a tool called ExifTool. ExifTool is a command-line utility that enables users to read, write, and edit metadata information within various file formats, including images. The writer ran ExifTool on each downloaded image to inspect the metadata for any signs of a hidden flag.
+
+#attack_execution
+In one of the images, the writer discovered a suspicious-looking comment within the metadata. The comment contained a string of text formatted like a flag: flag{hidden_metadata_secrets}. This CTF writeup highlights the importance of examining not only the visible content of files but also the hidden metadata that may contain valuable information. By analyzing the metadata of the image files, the writer was able to uncover the hidden flag and complete the challenge.
+
+[CODE_REMOVED]

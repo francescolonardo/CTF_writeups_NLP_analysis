@@ -1,0 +1,22 @@
+Sure, here's the tagged writeup text:
+
+Title: Command Injection in File Upload
+Primary topic: Web Exploitation
+Secondary topic: Command Injection
+Tools used: None
+Keywords: file upload, payload, arbitrary commands, sensitive information
+
+#overview
+During a CTF competition, I encountered a web application that included a file upload feature allowing users to upload files to the server. Given the potential security risks associated with command injection vulnerabilities, I suspected that the application might be vulnerable to command injection attacks.
+
+#analysis
+To test for command injection, I uploaded a malicious file containing a command injection payload, such as <?php system($_GET['cmd']); ?>, which would allow me to execute arbitrary commands on the server.
+
+Upon uploading the file, the application accepted it and stored it on the server. To execute arbitrary commands, I entered a payload containing a command to be executed on the server, such as http://example.com/uploads/malicious.php?cmd=id, which would execute the 'id' command and display the output on the attacker-controlled server.
+
+#attack_execution
+This payload allowed me to execute arbitrary commands on the server and obtain sensitive information, such as system configuration files, database credentials, and other sensitive information.
+
+This CTF writeup highlights the importance of properly securing web applications against command injection vulnerabilities by implementing proper input validation and output encoding controls, using parameterized queries, and validating user input. By exploiting the vulnerability, I was able to execute arbitrary commands on the server, obtain sensitive information, and demonstrate the potential risks associated with command injection.
+
+[CODE_REMOVED]

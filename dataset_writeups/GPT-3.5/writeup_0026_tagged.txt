@@ -1,0 +1,18 @@
+Here's the tagged writeup text:
+
+Title: File Inclusion Vulnerability Exploitation
+Primary topic: Web Exploitation
+Secondary topic: File Inclusion
+Tools used: None
+Keywords: path traversal, arbitrary code execution, sensitive information
+
+#overview
+During a CTF competition, I encountered a web application that included a file inclusion feature allowing users to include files on the server. Given the potential security risks associated with file inclusion vulnerabilities, I suspected that the application might be vulnerable to file inclusion attacks.
+
+#analysis
+To test for file inclusion, I entered a malicious payload containing a path traversal attack into the file inclusion parameter, such as ../../../../../../etc/passwd, which would cause the application to include the '/etc/passwd' file on the server.
+
+Upon submitting the payload, the application included the '/etc/passwd' file, confirming the presence of a file inclusion vulnerability. 
+
+#attack_execution
+To obtain the

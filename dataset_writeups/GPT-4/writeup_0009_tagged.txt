@@ -1,0 +1,26 @@
+Sure, here's the tagged writeup text with the changes you requested:
+
+Title: Cookie Tampering to Gain Unauthorized Access
+Primary topic: Web Exploitation
+Secondary topic: Cookie Tampering
+Tools used: None
+Keywords: user authentication, user authorization, cookies, admin panel, flag
+
+#overview
+In this CTF writeup, the author investigates the possibility of cookie tampering attacks in a web application that utilizes cookies to store user authentication and authorization information.
+
+#analysis
+The author logs in to the application with a regular user account and inspects the cookies stored in their browser. They find a cookie named "user_role" with the value "user" and suspect that the application might be using this cookie to determine the user's access level.
+
+The author tests the vulnerability by editing the "user_role" cookie's value and changing it from "user" to "admin". After modifying the cookie, they refresh the web page to see if the application would grant them administrative privileges.
+
+To their surprise, the application recognizes them as an admin user and grants them access to the restricted admin panel. Inside the admin panel, they find the flag for the Web Exploitation challenge.
+
+#attack_execution
+The author demonstrates how cookie tampering can be used to gain unauthorized access to restricted areas of a web application. They highlight the importance of implementing proper security measures for handling user authentication and authorization, especially when using cookies.
+
+The author also emphasizes the importance of regularly testing and auditing web applications for security vulnerabilities, such as cookie tampering attacks.
+
+[CODE_REMOVED]
+
+This CTF writeup showcases the potential risks of cookie tampering attacks and the importance of implementing proper security measures to prevent them.

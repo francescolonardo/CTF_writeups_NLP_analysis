@@ -1,0 +1,18 @@
+Title: Exploiting Insecure Direct Object References to Access Unauthorized Files
+Primary topic: Web Exploitation
+Secondary topic: Insecure Direct Object References (IDOR)
+Tools used: None
+Keywords: IDOR, access controls, authorization, CTF, challenge, flag, web application
+
+#overview
+The author encountered a web application that utilized numeric IDs in the URL to reference specific files. Suspecting an Insecure Direct Object Reference (IDOR) vulnerability, the author tested the application by incrementing and decrementing the numeric ID in the URL to see if they could access files that were not intended for their user account.
+
+#analysis
+By exploiting the IDOR vulnerability, the author was able to gain unauthorized access to restricted files, including a file containing the flag for a Web Exploitation challenge during a CTF competition. This highlights the importance of implementing proper access controls and authorization mechanisms in web applications to prevent IDOR vulnerabilities.
+
+#attack_execution
+The author logged in to the application with a regular user account and navigated to a file accessible to that user. The URL looked like this: https://example.com/files/123. By modifying the numeric ID in the URL, the author was able to access files that belonged to other users, ultimately finding the flag needed to complete the challenge.
+
+[CODE_REMOVED]
+
+This CTF writeup serves as a reminder to web application developers to implement secure access controls and authorization mechanisms to prevent IDOR vulnerabilities that can lead to unauthorized access to restricted files.

