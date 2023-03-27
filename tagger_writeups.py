@@ -9,7 +9,8 @@ import openai
 MODEL_ID = "gpt-3.5-turbo"
 # more contextually relevant and less creative responses (from 0.0 to 2.0)
 RANDOMNESS_LEVEL = 0.5
-WRITEUPS_DIRNAME = "./dataset_writeups/"
+WRITEUPS_DIRPATH = "./dataset_writeups/"
+HUMANS_TAGGED_DIRNAME = "humans"
 TXT_SUFFIXES = ["_original.txt", "_cleaned.txt", "_tagged.txt"]
 LABELS_TO_REMOVE = ["# overview", "# analysis",
                     "# attack execution", "# attack_execution"]
@@ -38,9 +39,11 @@ def read_clean_file(in_filepath):
             pattern = re.compile(re.escape(string), re.IGNORECASE)
             file_content = pattern.sub("", file_content)
         # remove empty lines # TODO: maybe unneeded
+        '''
         file_content = "\n".join(
             [line for line in file_content.split("\n") if line.strip()]
         )
+        '''
         # replace newline characters with spaces
         # file_content = file_content.replace("\n", " ")  # TODO: maybe unneeded
         return file_content
@@ -60,6 +63,14 @@ def delete_file(filepath):
             print(f"Error deleting writeup file {filepath}: {e}")
 
 
+class NotCorrectlyTagged(Exception):
+    def __init__(self, message):
+        self.message = message
+
+    def __str__(self):
+        return self.message
+
+
 if __name__ == "__main__":
     with open("./api_keys.json") as f:
         api_key = json.load(f)["api_key"]
@@ -74,35 +85,42 @@ if __name__ == "__main__":
 
     print("Tagging new writeups...")
     # loop through all directories and subdirectories
-    for dirpath, dirnames, filenames in os.walk(WRITEUPS_DIRNAME):
+    for dirpath, dirnames, filenames in os.walk(WRITEUPS_DIRPATH):
         # loop through all files in the directory
+        # skip the human tagged writeups
+        if HUMANS_TAGGED_DIRNAME in dirnames:
+            dirnames.remove(HUMANS_TAGGED_DIRNAME)
         for filename in filenames:
             # check if the file is a text file
             if filename.endswith(".txt"):
                 if not filename.endswith(TXT_SUFFIXES[0]) and not filename.endswith(TXT_SUFFIXES[1]) and not filename.endswith(TXT_SUFFIXES[2]):
                     # original file
                     in_filepath = os.path.join(
-                        WRITEUPS_DIRNAME, filename)  # TODO: fix this
+                        dirpath, filename)  # TODO: fix this
                     print(f"Writeup file (original): {in_filepath}")
                     # cleaned file
                     file_content = read_clean_file(in_filepath)
+                    # TODO: remove this (?)
+                    '''
                     out_filepath = os.path.splitext(
                         in_filepath)[0] + TXT_SUFFIXES[1].split(".")[0] + os.path.splitext(in_filepath)[1]
                     write_file(out_filepath, file_content)
                     #print(f"Writeup file (cleaned): {out_filepath}")
+                    '''
                     guidelines.append(
-                        {"role": "user", "content": file_content})
-                    max_retries = 3
+                        {"role": "user", "content": file_content})  # add the writeup
+                    max_retries = 10
                     retry_count = 0
                     while retry_count < max_retries:
                         try:
                             # tagged file
                             assistant_output = get_response(
                                 messages=guidelines)
-                            # search if the response is correctly tagged
+                            # check if the response is correctly tagged
                             if not search_strings_in_text(assistant_output["content"], REQUESTED_LABELS):
-                                break
-                            guidelines.append(assistant_output)
+                                raise NotCorrectlyTagged(
+                                    "Writeup not correctly tagged. Retrying...")
+                            # guidelines.append(assistant_output)
                             out_filepath = os.path.splitext(
                                 in_filepath)[0] + TXT_SUFFIXES[2].split(".")[0] + os.path.splitext(in_filepath)[1]
                             write_file(
@@ -111,21 +129,32 @@ if __name__ == "__main__":
                             # rename original file
                             new_filename = filename.replace(
                                 ".txt", TXT_SUFFIXES[0])
-                            os.rename(os.path.join(WRITEUPS_DIRNAME, filename),
-                                      os.path.join(WRITEUPS_DIRNAME, new_filename))
+                            os.rename(os.path.join(dirpath, filename),
+                                      os.path.join(dirpath, new_filename))
+                            guidelines.pop()  # remove the writeup
                             break  # exit the loop if the function call succeeds
-                        except openai.error.InvalidRequestError as e:
-                            print(f"OpenAI API request is invalid: {e}")
+                        except NotCorrectlyTagged as e:
+                            print(e.message)
                             retry_count += 1
+                        except openai.error.InvalidRequestError as e:
+                            if str(e).startswith("This model's maximum context length"):
+                                print(
+                                    "OpenAI API request exceeds maximum context length. Retrying...")
+                            else:
+                                # TODO: remove this
+                                print(f"{e}\n FIX THIS ERROR!")
+                            retry_count += 1
+                        except openai.error.RateLimitError as e:
+                            print(
+                                "OpenAI API request exceeds rate limit. Slowing down...")
+                            time.sleep(60)  # sleep for 60 seconds
+                        finally:
                             if retry_count == max_retries:
                                 # delete files
                                 '''
                                 delete_file(filepath=out_filepath)
                                 delete_file(filepath=os.path.join(
-                                    WRITEUPS_DIRNAME, filename))
+                                    dirpath, filename))
                                 '''
                                 break
-                        except openai.error.RateLimitError as e:
-                            print(
-                                f"OpenAI API request exceeds rate limit: {e}")
-                            time.sleep(60)  # sleep for 60 seconds
+    print("Done.")
