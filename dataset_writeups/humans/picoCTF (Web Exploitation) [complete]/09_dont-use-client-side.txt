@@ -1,0 +1,13 @@
+# Overview
+
+Opening the website greets us with a 'login' page, requiring credentials. 
+
+# Analysis
+
+As referenced by the problem name, we assume that the check for the validity of the credentials is checked locally, and hence can be reversed to obtain the correct password. Checking the html source code gives us:
+
+The checkpass variable holds our input, and the each substring method in this case gets us split(set to 4) number of characters starting from the first argument to the method. 
+
+# Attack Execution
+
+We assemble the credentials, and hence the flag, accordingly:

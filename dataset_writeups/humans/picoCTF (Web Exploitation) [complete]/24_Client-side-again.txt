@@ -1,0 +1,19 @@
+# Overview
+
+We visit the website and inspect the source code, let's call a Javascript Beautifier in order to make the Javascript code a bit more readable.
+
+# Analysis
+
+We see that _0x4b5b is a function used to obfuscate different values. It is calculated in runtime. Luckily, we can use the browser's Javascript console ("Developer Tools") in order to evaluate _0x4b5b and read its values.
+
+Let's replace the function calls with hardcoded values to improve readability.
+
+So this is very similar to dont-use-client-side, using substring to authenticate the password.
+
+We have some substrings composing the flag.
+Notice that there are some overlaps.
+
+# Attack Execution
+
+An evil way to turn this into a flag would be by transforming the javascript substrings into Python array-assignment code and executing it.
+This gives us the flag at the price of allowing exec to slip into our code.

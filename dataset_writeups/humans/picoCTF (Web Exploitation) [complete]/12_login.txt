@@ -1,0 +1,13 @@
+# Overview
+
+On first inspection, when faced with a login screen, it seems like SQL injection, because isn’t that what always happens with logins in CTFs? 
+
+# Analysis
+
+However, it’s a lot simpler than that. After navigating to website source, we encounter index.js. Upon pretty-printing, it’s just vanilla JS.
+
+The important part of the code is in line 12, where it’s checking for a username and password that has been turned into Base64 from ASCII via the btoa() method, which is reversible with the atob() method. The password itself is the flag when decoded. Opening the console and undoing the encoding, shown below, results in the flag.
+
+# Attack Execution
+
+If you’re not convinced it’s the real flag, you can decode the username (admin) and input both into the login form, which results in an alert announcing the flag.
