@@ -2,13 +2,19 @@ Title: File Inclusion Vulnerability Exploitation
 Primary topic: Web Exploitation
 Secondary topic: File Inclusion
 Tools used: None
-Keywords: path traversal, payload, PHP code, arbitrary code, input validation, output encoding, whitelisting, sensitive information, CTF writeup
+Keywords: path traversal, payload, PHP code, input validation, output encoding, whitelisting, user input
 
-#overview
-The writeup describes how the author discovered and exploited a File Inclusion vulnerability in a web application during a CTF competition. The author suspected the vulnerability due to the potential security risks associated with including user-provided files. To confirm the vulnerability, the author entered a malicious payload containing a path traversal sequence into the file inclusion parameter, which caused the application to include the '/etc/passwd' file on the server. By exploiting the vulnerability, the author was able to execute arbitrary code on the server and obtain sensitive information.
+#context
+During a CTF competition, I encountered a web application that included a file inclusion feature allowing users to include external files into the application. Given the potential security risks associated with including user-provided files, I suspected that the application might be vulnerable to File Inclusion vulnerability, a type of vulnerability that allows attackers to include malicious files and execute arbitrary code.
 
-#analysis
-The writeup highlights the importance of properly securing web applications against File Inclusion vulnerabilities by implementing proper input validation and output encoding controls, using whitelisting techniques, and validating user input. The author also demonstrates the potential risks associated with File Inclusion and how easy it can be to exploit such vulnerabilities.
+#discovery
+To test for File Inclusion, I entered a malicious payload containing a path traversal sequence into the file inclusion parameter, such as ../../../../etc/passwd, which would cause the application to include the '/etc/passwd' file on the server.
 
-#attack_execution
-To exploit the vulnerability, the author crafted a suitable payload containing PHP code that would execute arbitrary code on the server and send the output to an attacker-controlled server. The payload allowed the author to execute arbitrary code on the server and obtain sensitive information, such as the contents of system files or database credentials.
+#exploitation
+Upon submitting the payload, the application included the '/etc/passwd' file, confirming the presence of a File Inclusion vulnerability. To obtain the flag for the Web Exploitation challenge, I needed to use the File Inclusion vulnerability to execute arbitrary code on the server. After researching the application's system and network configuration, I crafted a suitable payload containing PHP code that would execute arbitrary code on the server and send the output to an attacker-controlled server, such as <?php system($_GET['cmd']); ?>. This payload allowed me to execute arbitrary code on the server and obtain sensitive information, such as the contents of system files or database credentials.
+
+#code
+<?php system($_GET['cmd']); ?>
+
+#countermeasures
+This CTF writeup highlights the importance of properly securing web applications against File Inclusion vulnerabilities by implementing proper input validation and output encoding controls, using whitelisting techniques, and validating user input. By exploiting the vulnerability, I was able to execute arbitrary code on the server, obtain sensitive information, complete the Web Exploitation challenge, and demonstrate the potential risks associated with File Inclusion.

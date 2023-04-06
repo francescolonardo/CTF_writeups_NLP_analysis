@@ -1,18 +1,20 @@
-Here's the tagged writeup text:
-
 Title: File Inclusion Vulnerability Exploitation
 Primary topic: Web Exploitation
 Secondary topic: File Inclusion
 Tools used: None
-Keywords: path traversal, arbitrary code execution, sensitive information
+Keywords: path traversal, arbitrary code execution, input validation, output encoding, whitelisting
 
-#overview
+#context
 During a CTF competition, I encountered a web application that included a file inclusion feature allowing users to include files on the server. Given the potential security risks associated with file inclusion vulnerabilities, I suspected that the application might be vulnerable to file inclusion attacks.
 
-#analysis
+#discovery
 To test for file inclusion, I entered a malicious payload containing a path traversal attack into the file inclusion parameter, such as ../../../../../../etc/passwd, which would cause the application to include the '/etc/passwd' file on the server.
 
-Upon submitting the payload, the application included the '/etc/passwd' file, confirming the presence of a file inclusion vulnerability. 
+#exploitation
+Upon submitting the payload, the application included the '/etc/passwd' file, confirming the presence of a file inclusion vulnerability. After researching the application's system and network configuration, I crafted a suitable payload containing a script that would execute arbitrary code on the server and send the output to an attacker-controlled server, such as php://filter/convert.base64-encode/resource=index.php. This payload allowed me to execute arbitrary code on the server, obtain sensitive information, and establish a persistent backdoor to the server.
 
-#attack_execution
-To obtain the
+#code
+None
+
+#countermeasures
+This CTF writeup highlights the importance of properly securing web applications against file inclusion vulnerabilities by implementing proper input validation and output encoding controls, using whitelisting techniques, and validating user input. By exploiting the vulnerability, I was able to execute arbitrary code on the server, obtain sensitive information, complete the Web Exploitation challenge, and demonstrate the potential risks associated with file inclusion.

@@ -1,24 +1,23 @@
-Here's the tagged writeup text you requested:
-
 Title: Directory Traversal Attack on File Upload Functionality
 Primary topic: Web Exploitation
 Secondary topic: Directory Traversal
 Tools used: None
-Keywords: file upload, payload, path traversal, file structure, flag
+Keywords: file upload, payload, path traversal
 
-#overview
+#context
 During a CTF competition, I encountered a web application that allowed users to upload files to the server. Given the potential security risks associated with file uploads, I suspected that the application might be vulnerable to Directory Traversal, a type of vulnerability that allows attackers to access files outside of the intended upload directory.
 
-#analysis
-To test for Directory Traversal, I crafted a malicious payload containing a path traversal sequence, such as ../, and appended it to the filename of a file that I wanted to upload, such as ../../../etc/passwd. If the application allowed the payload to execute and upload the file to the server outside of the intended upload directory, it would confirm the presence of a Directory Traversal vulnerability.
+#discovery
+To test for Directory Traversal, I crafted a malicious payload containing a path traversal sequence, such as ../, and appended it to the filename of a file that I wanted to upload, such as ../../../etc/passwd.
 
-Upon submitting the crafted payload to the application, it indeed executed and uploaded the file to the server outside of the intended upload directory, confirming the vulnerability.
+#exploitation
+If the application allowed the payload to execute and upload the file to the server outside of the intended upload directory, it would confirm the presence of a Directory Traversal vulnerability. Upon submitting the crafted payload to the application, it indeed executed and uploaded the file to the server outside of the intended upload directory, confirming the vulnerability.
 
-#attack_execution
-To obtain the flag for the Web Exploitation challenge, I needed to use the Directory Traversal vulnerability to access a specific file on the server.
+#discovery
+To obtain the flag for the Web Exploitation challenge, I needed to use the Directory Traversal vulnerability to access a specific file on the server. After researching the server's file structure, I crafted a suitable payload containing the path to the desired file, such as ../../../flag.txt, and submitted it to the application's file upload functionality.
 
-After researching the server's file structure, I crafted a suitable payload containing the path to the desired file, such as ../../../flag.txt, and submitted it to the application's file upload functionality. The server successfully recognized the payload and responded with the flag for the Web Exploitation challenge.
+#exploitation
+The server successfully recognized the payload and responded with the flag for the Web Exploitation challenge.
 
+#countermeasures
 This CTF writeup highlights the importance of properly securing web applications against Directory Traversal vulnerabilities by implementing proper file upload controls, using secure file paths, and validating user input. By exploiting the vulnerability, I was able to access sensitive files, execute malicious code, and complete the Web Exploitation challenge.
-
-[CODE_REMOVED]

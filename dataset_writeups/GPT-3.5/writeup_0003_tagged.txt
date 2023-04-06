@@ -2,17 +2,16 @@ Title: Remote Code Execution via File Upload
 Primary topic: Web Exploitation
 Secondary topic: Remote Code Execution
 Tools used: None
-Keywords: file upload, vulnerability, PHP web shell, flag, payload, sensitive data, file validation, file permissions, file system access
+Keywords: file upload, PHP web shell
 
-#overview
+#context
 During a CTF competition, I encountered a web application that allowed users to upload files, such as images or documents, to the server. Given the potential security risks associated with file uploads, I suspected that the application might be vulnerable to Remote Code Execution (RCE), a type of vulnerability that allows attackers to execute arbitrary code on the server.
 
-#analysis
+#discovery
 To test for RCE, I crafted a malicious file containing executable code, such as a PHP web shell, and uploaded it to the server. If the application executed the code and granted me remote access to the server, it would confirm the presence of an RCE vulnerability.
 
-Upon submitting the malicious file to the application, it indeed executed the code and granted me remote access to the server, confirming the vulnerability. To obtain the flag for the Web Exploitation challenge, I needed to use the RCE vulnerability to execute arbitrary commands on the server.
+#exploitation
+Upon submitting the malicious file to the application, it indeed executed the code and granted me remote access to the server, confirming the vulnerability. To obtain the flag for the Web Exploitation challenge, I needed to use the RCE vulnerability to execute arbitrary commands on the server. After uploading a suitable payload, I executed the commands and obtained sensitive data, including the flag for the Web Exploitation challenge.
 
-#attack_execution
-After uploading a suitable payload, I executed the commands and obtained sensitive data, including the flag for the Web Exploitation challenge.
-
+#countermeasures
 This CTF writeup highlights the importance of securing web applications against file upload vulnerabilities by validating and sanitizing file types and content, setting proper file permissions, and restricting file system access. By exploiting the RCE vulnerability, I was able to execute arbitrary commands on the server, access sensitive data, and obtain the flag needed to complete the challenge.

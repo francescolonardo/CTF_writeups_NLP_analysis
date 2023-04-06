@@ -2,19 +2,16 @@ Title: Insecure Direct Object Reference (IDOR) Attack via User Profile
 Primary topic: Web Exploitation
 Secondary topic: Insecure Direct Object Reference (IDOR)
 Tools used: None
-Keywords: IDOR, direct object reference, web application, user profile, vulnerability, sensitive data, malicious request, access controls, authorization, authentication
+Keywords: user data, direct object reference
 
-#overview
-During a CTF competition, the author encountered a web application that allowed users to view and edit their profile information through a dedicated page. Suspecting that the application might be vulnerable to IDOR, the author crafted a malicious request containing a direct object reference to another user's profile to test for the vulnerability.
+#context
+During a CTF competition, I encountered a web application that allowed users to view and edit their profile information through a dedicated page. Given the potential security risks associated with user data, I suspected that the application might be vulnerable to Insecure Direct Object Reference (IDOR), a type of vulnerability that allows attackers to access and modify sensitive data by manipulating direct object references.
 
-#analysis
-Upon submitting the crafted request to the application, it accessed and displayed the other user's sensitive information, confirming the presence of an IDOR vulnerability. To obtain the flag for the Web Exploitation challenge, the author needed to use the IDOR vulnerability to access and display a specific user's private data.
+#discovery
+To test for IDOR, I crafted a malicious request containing a direct object reference to another user's profile, such as http://website.com/profile?id=2, and submitted it to the application's user profile page. If the application allowed the request to access and modify the other user's sensitive information, it would confirm the presence of an IDOR vulnerability.
 
-#attack_execution
-After researching the application's structure and available resources, the author crafted a suitable request containing a direct object reference to the desired user's profile and submitted it to the application's user profile page. The server successfully responded with the desired user's sensitive information, displaying the flag for the Web Exploitation challenge.
+#exploitation
+Upon submitting the crafted request to the application, it indeed accessed and displayed the other user's sensitive information, confirming the vulnerability. To obtain the flag for the Web Exploitation challenge, I needed to use the IDOR vulnerability to access and display a specific user's private data. After researching the application's structure and available resources, I crafted a suitable request containing a direct object reference to the desired user's profile and submitted it to the application's user profile page. The server successfully responded with the desired user's sensitive information, displaying the flag for the Web Exploitation challenge.
 
-To properly secure web applications against IDOR vulnerabilities, it's important to implement proper authorization and authentication controls, use indirect object references, and perform access controls on sensitive data. By exploiting the IDOR vulnerability, the author was able to access and modify sensitive data, obtain confidential information, and complete the Web Exploitation challenge.
-
-[CODE_REMOVED]
-
-Note: I have removed any code chunks found in the writeup text as per your request.
+#countermeasures
+This CTF writeup highlights the importance of properly securing web applications against IDOR vulnerabilities by implementing proper authorization and authentication controls, using indirect object references, and performing access controls on sensitive data. By exploiting the IDOR vulnerability, I was able to access and modify sensitive data, obtain confidential information, and complete the Web Exploitation challenge.

@@ -1,16 +1,20 @@
 Title: Bypassing Client-Side Validation via JavaScript Console
-Primary topic: Web Exploitation
-Secondary topic: Client-Side Validation
-Tools used: Browser's JavaScript Console
-Keywords: CTF, form validation, security vulnerabilities, server-side validation, restricted area, flag, invite code, manipulation
+Topics: Web Exploitation
+Vulnerabilities: None
+Tools used: None
+Keywords: JavaScript Console, client-side validation, server-side validation
 
-#overview
-In this CTF writeup, the author describes how they bypassed client-side validation on a web application form that required an invite code for access to a restricted area of the website. The author discovered that the form validation was being performed only on the client-side using JavaScript, which can be easily manipulated.
+#context
+In a recent CTF challenge, I stumbled upon a web application with a form that required user input. The form asked for an invite code, and it seemed that only users with a valid invite code could access the restricted area of the website.
 
-#analysis
-The author used the browser's JavaScript console to manipulate the validation function directly, bypassing the client-side validation and submitting the form without a valid invite code. They were surprised to find that they were granted access to the restricted area of the website, where they found the flag for the Web Exploitation challenge.
+#discovery
+Upon inspecting the source code, I discovered that the form validation was being performed only on the client-side using JavaScript. This immediately caught my attention, as client-side validation can be easily bypassed.
 
-#attack_execution
-To bypass the client-side validation, the author accessed the browser's JavaScript console and manipulated the validation function directly. They were able to submit the form without a valid invite code and gain access to the restricted area of the website.
+#exploitation
+I decided to use the browser's JavaScript console to manipulate the validation function directly. By doing so, I was able to bypass the client-side validation and submit the form without needing a valid invite code.
 
-Note: I have removed all code chunks and fixed the punctuation to make it more orderly.
+#context
+To my surprise, after bypassing the validation, I was granted access to the restricted area of the website. Inside, I found the flag for the Web Exploitation challenge.
+
+#countermeasures
+This CTF writeup highlights the importance of implementing proper server-side validation alongside client-side validation. Relying solely on client-side validation can lead to security vulnerabilities, as attackers can easily manipulate and bypass the validation checks.

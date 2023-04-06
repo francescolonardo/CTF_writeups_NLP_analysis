@@ -1,14 +1,17 @@
 Title: Cookie Manipulation for Privilege Escalation
-Primary topic: Web Exploitation
-Secondary topic: Server-side validation, User Input
+Topics: Web Exploitation
+Vulnerabilities: Cookie Manipulation, Privilege Escalation
 Tools used: Browser Developer Tools
-Keywords: Cookie, Privilege Escalation, User Role
+Keywords: user_role, admin access, sensitive information
 
-#analysis
-The writeup describes a CTF challenge that involved a web application allowing users to log in and view their account information. The author noticed a cookie named user_role with a value of user, which they suspected might be related to user privileges. They manipulated the cookie value to admin and were granted admin access, allowing them to view sensitive information that was restricted to regular users. This demonstrates the importance of server-side validation for cookies and user input.
+#context
+During a recent CTF competition, I encountered a web application that allowed users to log in and view their account information. 
 
-#attack_execution
-The author used browser developer tools to modify the user_role cookie value to admin, which granted them admin access to the web application. By exploiting the lack of server-side validation, they were able to escalate their privileges and gain unauthorized access to sensitive information.
+#discovery
+After registering a regular user account, I started to analyze the cookies being set by the application. Upon logging in, I noticed a cookie named user_role with a value of user. This immediately caught my attention, as the cookie's name suggested that it might be related to user privileges.
 
-#overview
-The writeup discusses the importance of server-side validation for cookies and user input in web applications. It highlights how a simple cookie manipulation technique can lead to privilege escalation and unauthorized access to sensitive information. The use of browser developer tools to modify the cookie value is a common attack vector in web exploitation.
+#exploitation
+I decided to manipulate the cookie value to see if I could escalate my privileges within the application. Using browser developer tools, I modified the user_role cookie value to admin and refreshed the page. Surprisingly, the application didn't seem to have any server-side validation of the cookie value, and I was granted admin access. With admin access, I was able to view sensitive information that was restricted to regular users. This allowed me to complete the Web Exploitation challenge by finding the flag hidden in the restricted admin area.
+
+#countermeasures
+In conclusion, this CTF writeup demonstrates the importance of server-side validation for cookies and user input. By simply manipulating a cookie value, I was able to escalate my privileges and gain unauthorized access to sensitive information. To prevent this type of attack, web developers should implement server-side validation of cookies and user input to ensure that only authorized users can access sensitive information.
