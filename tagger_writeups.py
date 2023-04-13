@@ -4,9 +4,9 @@ import re
 import time
 import argparse
 import unicodedata
+import chardet
 
 import openai
-import chardet
 
 from settings import OLD_LABELS, NEW_LABELS
 from settings import MODEL_ID, MODEL_RANDOMNESS_TAGGER
@@ -22,10 +22,8 @@ def get_response(messages: list):
     )
     return response.choices[0].message
 
-
 def search_strings_in_text(text, strings_list):
     return any(s in text for s in strings_list)
-
 
 def normalize_file(in_filepath):
     # open the file in binary mode and read its content
@@ -60,11 +58,9 @@ def read_clean_file(in_filepath):
         # file_content = file_content.replace("\n", " ")  # TODO: maybe unneeded
         return file_content
 
-
 def write_file(out_filepath, file_content):
-    with open(out_filepath, "w") as output_file:
+    with open(out_filepath, "w", encoding="utf-8") as output_file:
         output_file.write(file_content)
-
 
 def delete_file(filepath):
     if os.path.isfile(filepath):
@@ -106,7 +102,6 @@ if __name__ == "__main__":
         tagger_requirements = requirements["tagger_requirements"]
     guidelines = basic_requirements + tagger_requirements
     print("Sending the context...")
-    get_response(messages=guidelines)
 
     try:
         print("Tagging new writeups...")
@@ -129,7 +124,7 @@ if __name__ == "__main__":
                                 dirpath, filename)
                             print(f"Writeup file (original): {in_filepath}")
                             # normalized file
-                            file_content = normalize_file(in_filepath)
+                            normalize_file(in_filepath)
                             # cleaned file
                             file_content = read_clean_file(in_filepath)
                             # TODO: remove this (?)

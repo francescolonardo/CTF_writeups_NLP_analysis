@@ -64,8 +64,8 @@ if __name__ == "__main__":
         gatherer_requirements = requirements["gatherer_requirements"]
     guidelines = basic_requirements + gatherer_requirements
     print("Sending the context...")
-    get_response(messages=guidelines)
-
+	#get_response(messages=guidelines) # TODO: remove this (?)
+    
     try:
         print("Sending the writeups history...")
         # loop through all directories and subdirectories

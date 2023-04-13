@@ -17,5 +17,6 @@ NEW_WRITEUP_CMD = "CMD: new_writeup"
 NONCE_LENGTH = 21
 
 CSV_FILENAME = "dataset_writeups.csv"
-CSV_HEADER = ["filename", "category", "topic", "text"]
-DATASET_CATEGORY = "web_exploitation"  # TODO: change this
+CSV_HEADER_OBSOLETE = ["filename", "category", "topic", "text"]
+CSV_HEADER = ["filename", "category", "text"]
+DATASET_CATEGORY = "Web Exploitation"  # TODO: change this
