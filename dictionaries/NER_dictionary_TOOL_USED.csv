@@ -32,7 +32,9 @@ WebScarab,TOOL_USED
 Paros Proxy,TOOL_USED
 Lighthouse,TOOL_USED
 Jupyter Notebook,TOOL_USED
+Developer Tools,TOOL_USED
 Browser Developer Tools,TOOL_USED
+Browser's Developer Tools,TOOL_USED
 Chrome DevTools,TOOL_USED
 Firefox Developer Tools,TOOL_USED
 Browser extensions,TOOL_USED
@@ -54,6 +56,7 @@ jadx,TOOL_USED
 jadx-gui,TOOL_USED
 apktool,TOOL_USED
 script,TOOL_USED
+Python,TOOL_USED
 Python script,TOOL_USED
 Javascript script,TOOL_USED
 Bash script,TOOL_USED
@@ -73,3 +76,6 @@ httplib2,TOOL_USED
 mechanize,TOOL_USED
 scrapy,TOOL_USED
 payload,TOOL_USED
+grep,TOOL_USED
+Subprocess.Popen,TOOL_USED
+Shell,TOOL_USED
