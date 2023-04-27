@@ -18,7 +18,9 @@ for category in unique_categories:
     # Set the output file name
     output_file = f"NER_dictionary_{category}.csv"
     
-    # Save the DataFrame as a .csv file without header and with utf-8 encoding
-    category_df.to_csv(output_file, index=False, header=False, encoding="utf-8")
+    # Check if the DataFrame is not empty before saving to a .csv file
+    if not category_df.empty:
+        # Save the DataFrame as a .csv file without header and with utf-8 encoding
+        category_df.to_csv(output_file, index=False, header=False, encoding="utf-8")
 
 print("CSV files created successfully.")
