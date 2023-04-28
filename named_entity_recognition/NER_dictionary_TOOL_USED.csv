@@ -23,6 +23,7 @@ John the Ripper,TOOL_USED
 Hydra,TOOL_USED
 Hashcat,TOOL_USED
 Dirbuster,TOOL_USED
+DIRB,TOOL_USED
 Gobuster,TOOL_USED
 Skipfish,TOOL_USED
 Nessus,TOOL_USED
@@ -66,16 +67,21 @@ Web vulnerability scanner,TOOL_USED
 Brute force tool,TOOL_USED
 Fuzzer,TOOL_USED
 Exploit framework,TOOL_USED
-requests,TOOL_USED
-beautifulsoup,TOOL_USED
-beautifulsoup4,TOOL_USED
 lxml,TOOL_USED
-selenium,TOOL_USED
 urllib3,TOOL_USED
-httplib2,TOOL_USED
 mechanize,TOOL_USED
-scrapy,TOOL_USED
 payload,TOOL_USED
 grep,TOOL_USED
 Subprocess.Popen,TOOL_USED
 Shell,TOOL_USED
+Jinja,TOOL_USED
+Jinja2,TOOL_USED
+OpenSSL,TOOL_USED
+Graphql-voyager,TOOL_USED
+Git-dumper,TOOL_USED
+SQLite,TOOL_USED
+PCAP,TOOL_USED
+JWT.io,TOOL_USED
+S3Scanner,TOOL_USED
+Ajp Shooter,TOOL_USED
+Ping,TOOL_USED
