@@ -3,9 +3,11 @@ __pycache__/
 *.py[cod]
 
 api_keys.json
+secrets.py
 
 venv/
 models/
+**/code_dataset/
 .vscode/
 .DS_Store
 .ipynb_checkpoints
