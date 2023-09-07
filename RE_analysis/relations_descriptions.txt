@@ -1,0 +1,35 @@
+VULNERABILITY-affects-TARGET_COMPONENT, TOOL_USED-exploits-VULNERABILITY, TOOL_USED-detects-VULNERABILITY, TOOL_USED-targets-TARGET_COMPONENT, LEARNING_RESOURCE-discusses-VULNERABILITY, LEARNING_RESOURCE-covers-TOOL_USED, LEARNING_RESOURCE-discusses-TARGET_COMPONENT, LEARNING_RESOURCE-explains-MITIGATION_STRATEGY, MITIGATION_STRATEGY-prevents-VULNERABILITY, MITIGATION_STRATEGY-applied-to-TARGET_COMPONENT
+
+---
+
+VULNERABILITY-affects-TARGET_COMPONENT:
+This relationship indicates that a specific vulnerability has the potential to impact or compromise a target component or system.
+
+TOOL_USED-exploits-VULNERABILITY:
+This relationship suggests that a particular tool or software is used to exploit a specific vulnerability.
+
+TOOL_USED-detects-VULNERABILITY:
+This relationship signifies that a tool or software is used to detect or identify a vulnerability in a system or component.
+
+TOOL_USED-targets-TARGET_COMPONENT:
+This relationship indicates that a specific tool or technique is used to target or exploit a particular component or system.
+
+LEARNING_RESOURCE-discusses-VULNERABILITY:
+This relationship indicates that a learning resource (such as a tutorial, blog post, or course) discusses a specific vulnerability.
+
+LEARNING_RESOURCE-covers-TOOL_USED:
+This relationship suggests that a learning resource provides information about a particular tool or software.
+
+LEARNING_RESOURCE-discusses-TARGET_COMPONENT:
+This relationship indicates that a learning resource (such as a tutorial, blog post, or course) discusses a specific target component or system.
+
+LEARNING_RESOURCE-explains-MITIGATION_STRATEGY:
+This relationship signifies that a learning resource explains or describes a mitigation strategy for dealing with a vulnerability or threat.
+
+MITIGATION_STRATEGY-prevents-VULNERABILITY:
+This relationship indicates that a specific mitigation strategy or security measure can help prevent or protect against a vulnerability.
+
+MITIGATION_STRATEGY-applied-to-TARGET_COMPONENT:
+This relationship suggests that a mitigation strategy is applied to a specific target component or system to enhance its security.
+
+---
