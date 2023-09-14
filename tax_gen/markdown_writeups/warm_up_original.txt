@@ -1,0 +1,73 @@
+<h1>Warm Up</h1>
+
+<p>Author: <a href="https://github.com/roerohan">roerohan</a></p>
+
+<h2>Description</h2>
+
+<p>This is a PHP Type Juggling Vulnerability.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>Docker: <a href="./Dockerfile">Dockerfile</a></li>
+<li>Php</li>
+</ul>
+
+<h2>Sources</h2>
+
+<p><code>
+If you know, you know; otherwise you might waste a lot of time.
+</code></p>
+
+<h2>Exploit</h2>
+
+<p>In this challenge, you can see the <code>index.php</code> code by default.</p>
+
+<p>```php
+<?php</p>
+
+<p>if (isset($<em>GET['hash'])) {
+    if ($</em>GET['hash'] === "10932435112") {
+        die('Not so easy mate.');
+    }</p>
+
+<pre><code>$hash = sha1($_GET['hash']);
+$target = sha1(10932435112);
+if($hash == $target) {
+    include('flag.php');
+    print $flag;
+} else {
+    print "csictf{loser}";
+}
+</code></pre>
+
+<p>} else {
+    show_source(<strong>FILE</strong>);
+}
+?>
+```
+<br /></p>
+
+<p>So, you see that we have to match the value of <code>hash</code> and <code>target</code>. It is checked that the <code>hash</code> param does not equal <code>10932435112</code>, but again it checks that the sha1 hash of <code>hash</code> is equal to that of <code>10932435112</code>. We know that the sha1 hashes will not match ever, so it's not a bruteforce challenge. Later, you notice that the <code>$hash</code> and the <code>$target</code> and matched using <code>==</code> and not <code>====</code>. <code>==</code> is vulnerable to type juggling!
+<br /></p>
+
+<p>If you see the hash of <code>10932435112</code>, it starts with <code>0e...</code>. So any other hash which starts with <code>0e</code> will match this with <code>==</code>, since <code>==</code> does not check types, so these will be treated as numbers. So, you have to bruteforce considerably lesser amount of values. You would find a lot of matches:</p>
+
+<p><code>
+aaroZmOk
+aaK1STfY
+aaO8zKZF
+...
+</code></p>
+
+<p>Pass any of these with the GET param <code>hash</code>, and you get the flag.</p>
+
+<p><code>
+/?hash=aaroZmOk
+</code></p>
+
+<p>The flag is:</p>
+
+<p><code>
+csictf{typ3_juggl1ng_1n_php}
+</code></p>

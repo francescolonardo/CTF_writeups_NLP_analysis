@@ -1,0 +1,26 @@
+<h1>Easy Pisy</h1>
+
+<h2>crypto/web</h2>
+
+<p>This time, we are given a website that accepts PDF files, parses them, and signs them. However, it will only sign them if the text inside starts with <code>ECHO</code>.</p>
+
+<p>Here is a screenshot of some of the source that I took while solving the problem:</p>
+
+<p><img src="https://i.imgur.com/E5Ijunt.png" alt="stuff" /></p>
+
+<p>Ignore the circled stuff, that was me trying to find a vuln. Then, I looked up <a href="http://php.net/manual/en/function.openssl-verify.php">openssl_verify</a>:</p>
+
+<p><code>
+int openssl_verify ( string $data , string $signature , mixed $pub_key_id [, mixed $signature_alg = OPENSSL_ALGO_SHA1 ] )
+</code></p>
+
+<p>It seems that the default signature algorithm for this is SHA1! But SHA1 has been broken for PDFs with <a href="http://shattered.io/">SHATTERED</a></p>
+
+<p>From here, it is simply a task of generating 2 pdf files with the same SHA1 hash. I used <a href="http://alf.nu/SHA1">this site</a> to generate the pdfs.</p>
+
+<p><a href="./a.pdf">pdf1</a>
+<a href="./b.pdf">pdf2</a></p>
+
+<p>I uploaded pdf1 (a.pdf) and got it signed, and then used the signature on pdf2 (b.pdf). The server recognizes this and gives the flag.</p>
+
+<p>Flag: <code>OOO{phP_4lw4y5_d3l1v3r5_3h7_b35T_fl4g5}</code></p>

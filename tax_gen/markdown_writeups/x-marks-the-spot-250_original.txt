@@ -1,0 +1,24 @@
+<hr />
+
+<h2>description: Blind XPath injection</h2>
+
+<h1>X marks the spot (250)</h1>
+
+<h2>Problem</h2>
+
+<p>Another login you have to bypass. Maybe you can find an injection that works?</p>
+
+<p>{% embed url="http://mercury.picoctf.net:16521/" %}</p>
+
+<h2>Solution</h2>
+
+<p>I've turned this into a Medium article! Read the solution here:</p>
+
+<p><a href="https://zhangzeyu2001.medium.com/blind-xpath-injections-the-path-less-travelled-6f03ce5ec8f6">Blind XPath Injections: The Path Less Travelled</a></p>
+
+<h2>References</h2>
+
+<ol>
+<li><a href="https://owasp.org/www-community/attacks/XPATH_Injection">https://owasp.org/www-community/attacks/XPATH_Injection</a></li>
+<li><a href="https://book.hacktricks.xyz/pentesting-web/xpath-injection">https://book.hacktricks.xyz/pentesting-web/xpath-injection</a></li>
+</ol>

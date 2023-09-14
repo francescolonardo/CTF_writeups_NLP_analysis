@@ -1,0 +1,12 @@
+{
+    "Flag Retrieval": {
+        "Description": "The final step of obtaining and presenting the flag as the solution.",
+        "Actions": [
+            "RETRIEVE THE FLAG",
+            "FINALIZE WRITE-UP",
+            "VERIFY FLAG VALIDITY",
+            "WRITE CHALLENGE EXPLOITATION NOTES",
+            "POST-CHALLENGE CLEANUP"
+        ]
+    }
+}

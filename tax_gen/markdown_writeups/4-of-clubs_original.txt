@@ -1,0 +1,19 @@
+<h3>Port 15010  [Web]</h3>
+
+<p>After registration, we get redirected to <code>/users/&lt;username&gt;/files</code>, where we can upload files.</p>
+
+<p>By testing with two accounts, we will also find that username enumeration is possible at <code>/users/&lt;username&gt;</code>, since a valid username results in a 403 redirect to our own account, while an invalid username results in a 404 Not Found error.</p>
+
+<p>Performing a username enumeration (using the <code>dirb</code> wordlist) yielded the following valid usernames:</p>
+
+<ul>
+<li><code>admin</code></li>
+<li><code>root</code></li>
+<li><code>builder</code></li>
+<li><code>employee</code></li>
+<li><code>staff</code></li>
+</ul>
+
+<p>We will also find that while validation is performed on the <code>/users/&lt;username&gt;</code> page, the application does not check whether we are the owner of the file when we request a file at <code>/users/&lt;username&gt;/files/&lt;filename&gt;</code>. This constitutes an IDOR vulnerability.</p>
+
+<p>I then scanned each username for potential files, and eventually found <code>/users/employee/files/fileadmin</code>, which was the flag.</p>

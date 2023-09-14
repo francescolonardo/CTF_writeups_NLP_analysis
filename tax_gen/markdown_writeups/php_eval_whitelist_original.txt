@@ -1,0 +1,9 @@
+<h1>PHP Eval White-List</h1>
+
+<h2>re/web</h2>
+
+<p>This time, we have a website that evals our stuff. At first I was pretty sad because the program blocked me from going up directories and stuff due to the basedir. After working on other problems for a bit, I came back to this one with a fresh start. Opening the source and looking at strings, I found that <code>shell_exec</code> was mentioned. I took a blind guess that this meant <code>shell_exec</code> was allowed (it probably didn't). Thus I ran <code>echo shell_exec("../flag");</code>. Somehow, it worked.</p>
+
+<p>I am pretty sure this problem was misconfigured.</p>
+
+<p>Flag: <code>OOO{Fortunately_php_has_some_rock_solid_defense_in_depth_mecanisms,_so-everything_is_fine.}</code></p>

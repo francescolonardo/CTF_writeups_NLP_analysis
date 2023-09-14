@@ -1,0 +1,13 @@
+{
+    "Automated Workflow": {
+        "Description": "Executing automated processes to interact with the challenge or target.",
+        "Actions": [
+            "AUTOMATE HTTP REQUESTS",
+            "DATA EXTRACTION",
+            "AUTOMATED EXPLOITATION",
+            "NETWORK SCANNING",
+            "PAYLOAD DELIVERY",
+            "UTILIZE EXISTING TOOLS"
+        ]
+    }
+}

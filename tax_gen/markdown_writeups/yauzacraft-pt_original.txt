@@ -1,0 +1,41 @@
+<hr />
+
+<h2>description: Unrestricted file upload leads to PHP webshell</h2>
+
+<h1>Yauzacraft Pt. 2</h1>
+
+<h2>Description</h2>
+
+<p>Welcome to the YauzaCraft server! What are you waiting for? Visit our website http://www.minecraft.tasks.yauzactf.com/, register, download the launcher and conquer new heights! Flag path: /flag.txt</p>
+
+<p>P.S. session.minecraft.tasks.yauzactf.com is out of scope!</p>
+
+<h2>Solution</h2>
+
+<p>On our user profile, we can find a list of books that we have created on the Minecraft server.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-30 at 11.51.03 AM.png" alt="" /></p>
+
+<p>Each book is hosted as a file on <code>files.minecraft.tasks.yauzactf.com</code>. For instance, my books were at <code>/books/VARAVUG66ZZWXG2IFAJ0/FILENAME</code>, where <code>FILENAME</code> is the name of the book in Minecraft.</p>
+
+<p>Going to <code>/books/VARAVUG66ZZWXG2IFAJ0/</code> gave the header <code>X-Powered-By: PHP/7.3.28</code>, revealing that this was a PHP server.</p>
+
+<p><img src="../../.gitbook/assets/image (65).png" alt="" /></p>
+
+<p>Files with "regular" extensions are served as <code>Content-Type: application/octet-stream</code> and downloaded. However, using an extension like <code>.html</code> will cause the page to be rendered inline.</p>
+
+<p>Knowing that a PHP server is used, we could perhaps upload a <code>.php</code> file to run arbitrary PHP code. With a payload like the following, we could obtain a webshell.</p>
+
+<p><img src="../../.gitbook/assets/image (66).png" alt="" /></p>
+
+<p>The <code>.php</code> extension, however, was filtered recursively. I started testing other similar file extensions and eventually found that the <code>.phtml</code> extension (which also allows execution of PHP code) was not filtered and behaved as expected.</p>
+
+<p><img src="../../.gitbook/assets/image (67).png" alt="" /></p>
+
+<p>Subsequently, navigating to our uploaded webshell and specifying the <code>cat /flag.txt</code> command:</p>
+
+<p><code>/books/VARAVUG66ZZWXG2IFAJ0/payload.phtml?cmd=cat%20/flag.txt</code></p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-30 at 12.01.47 PM.png" alt="" /></p>
+
+<p>The flag is <code>YauzaCTF{PHP_minecraft_h4ck3r}</code>.</p>

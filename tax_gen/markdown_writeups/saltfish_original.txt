@@ -1,0 +1,49 @@
+<h1>35C3 Junior CTF – saltfish</h1>
+
+<ul>
+<li><strong>Category:</strong> Web</li>
+<li><strong>Points:</strong> 62 (variable)</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>"I have been told that the best crackers in the world can do this under 60 minutes but unfortunately I need someone who can do this under 60 seconds." - Gabriel</p>
+  
+  <p>http://35.207.89.211</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>The page shows the PHP snippet of which is composed (I added the comments with numbers on interesting lines of code).</p>
+
+<p><code>PHP
+&lt;?php
+  require_once('flag.php');
+  if ($_ = @$_GET['pass']) {                    /* #1 */
+    $ua = $_SERVER['HTTP_USER_AGENT'];
+    if (md5($_) + $_[0] == md5($ua)) {          /* #2 */
+      if ($_[0] == md5($_[0] . $flag)[0]) {     /* #3 */
+        echo $flag;
+      }
+    }
+  } else {
+    highlight_file(__FILE__);
+  }
+</code></p>
+
+<p>The <code>if</code> statement <em>#1</em> is useless for the analysis. <code>$_</code> is a normal variable populated with <code>pass</code> URL parameter content and the <code>@</code> clause does not affect anything in our scenario.</p>
+
+<p>The <code>if</code> statement <em>#2</em> can be bypassed using the same value for <code>pass</code> URL parameter and for the User-Agent, because PHP's <code>==</code> gets confused with type conversions, lol.</p>
+
+<p>The <code>if</code> statement <em>#3</em> contains the secret flag into a MD5 calculation, so it could seem hard to bypass, but:
+* the MD5 hash can only have hex values from <code>0</code> to <code>f</code>;
+* only the first char of two strings is considered in the comparison.</p>
+
+<p>So the value of <code>$_[0]</code> can be between <code>0</code> and <code>f</code> only.</p>
+
+<p>Trying single chars, from <code>0</code> to <code>f</code>, for the input of <code>pass</code> and User-Agent header, will reveal that <code>b</code> is the char that returns the flag.</p>
+
+<p><code>
+35c3_password_saltf1sh_30_seconds_max
+</code></p>

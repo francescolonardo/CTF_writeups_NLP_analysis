@@ -1,0 +1,28 @@
+<h1>Gadget Santa (300)</h1>
+
+<h2>Problem</h2>
+
+<blockquote>
+  <p>It seems that the evil elves have broken the controller gadget for the good old candy cane factory! Can you team up with the real red teamer Santa to hack back?</p>
+</blockquote>
+
+<ul>
+<li><a href="./web_gadget_santa.zip">web<em>gadget</em>santa.zip</a></li>
+</ul>
+
+<h2>Solution</h2>
+
+<ol>
+<li><p>The website allows us to view some properties about a linux system. The output looks just like standard linux commands. The output of the "List Storage" command seems to be executing <code>df -h</code>.</p></li>
+<li><p>At this point, I guessed that this was a command injection challenge and I tried accessing <code>http://IP:PORT/?command=ls"</code> to see if I could list the contents of the current directory. Sure enough, this worked, confirming my suspicions. This is in fact a command injection challenge.</p></li>
+<li><p>Looking at the source code, we see in <code>challenge/models/MonitorModel.php</code> that <code>shell_exec</code> is used to run the <code>santa_mon.sh</code> script. Our input in the <code>command</code> URL parameter is then appended to <code>/santa_mon.sh</code> so that the final command looks like this: <code>/santa_mon.sh [COMMAND PARAMETER INPUT]</code>. In other words, we control the first argument passed to the <code>santa_mon.sh</code> program. Importantly, The <code>sanitize</code> function is called on our input, which removes spaces using the <code>s+</code> regular expression.</p></li>
+<li><p>We can see the source code of the <code>santa_mon.sh</code> program in <code>config/santa_mon.sh</code> in our downloaded ZIP. We see that the buttons in the web interface do indeed run standard linux commands. At the bottom we see that if there is an argument to the program, it is executed as a command.</p></li>
+<li><p><code>config/santa_mon.sh</code> shows that the <code>ups_status</code> and <code>restart_ups</code> commands return the output from a local web server using curl. If you check the output of the "List Processes" command you will see <code>python3 /root/ups_manager.py</code>. Let's check out the source code for <code>config/ups_manager.py</code>. This file runs an HTTP server with the two endpoints accessed by the <code>ups_status</code> and <code>restart_ups</code> commands, but it also has a <code>/get_flag</code> endpoint that prints the flag!</p></li>
+<li><p>So, our approach to get the flag is to craft a command injection payload without using spaces that will run <code>curl http://localhost:3000/get_flag</code> and return the output to us through the webpage. Using a standard approach to remove spaces (such as those from the excellent guide at <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Command%20Injection#bypass-without-space">swisskyrepo/PayloadsAllTheThings</a>) will not work here because our input is stripped of whitespace and then passed as an argument to another program. Thus, use can use something like the <code>IFS</code> variable, since hte PHP code will not strip that out, but when it is parsed by bash it will be interpreted as a second argument to the <code>santa_mon.sh</code> script. For instance, if our command injection is <code>curl${IFS}http://localhost:3000/get_flag</code> then PHP will execute, <code>/santa_mon.sh curl${IFS}http://localhost:3000/get_flag</code>, bash will interpret this as <code>/santa_mon.sh curl http://localhost:3000/get_flag</code>, and then the <code>santa_mon.sh</code> script will see <code>curl</code> as the first argument and will run <code>curl</code> without any arguments.</p></li>
+<li><p>To solve this, we simply wrap our payload in double quotes like so: <code>"curl${IFS}http://localhost:3000/get_flag"</code> (URL encoded: <code>%22curl${IFS}http://localhost:3000/get_flag%22</code>). This way, PHP will execute <code>/santa_mon.sh "curl${IFS}http://localhost:3000/get_flag"</code>, bash will interpret this as <code>/santa_mon.sh "curl http://localhost:3000/get_flag"</code>, then the <code>santa_mon.sh</code> script will see the string <code>"curl http://localhost:3000/get_flag"</code> as the first parameter, it will run our payload, and the PHP server will return the output containing the flag.</p></li>
+<li><p>So, the final payload is <code>http://IP:PORT/?command=%22curl${IFS}http://localhost:3000/get_flag%22</code>.</p></li>
+</ol>
+
+<h3>Flag</h3>
+
+<p><code>HTB{54nt4_i5_th3_r34l_r3d_t34m3r}</code></p>

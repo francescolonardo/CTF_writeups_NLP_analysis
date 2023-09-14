@@ -1,0 +1,150 @@
+<hr />
+
+<h2>description: Bypassing Nginx directive through manipulating Gunicorn WSGI variables</h2>
+
+<h1>Gatekeeping</h1>
+
+<h2>Description</h2>
+
+<p>My previous flag file got encrypted by some dumb ransomware. They didn't even tell me how to pay them, so I'm totally out of luck. All I have is the site that is supposed to decrypt my files (but obviously that doesn't work either).</p>
+
+<p>Author: <code>itszn</code>, Ret2 Systems</p>
+
+<p>http://web.chal.csaw.io:5004</p>
+
+<h2>Solution</h2>
+
+<p>When inspecting the provided Nginx configuration, I found an interesting directive:</p>
+
+<p>```</p>
+
+<h1>INFO(brad)</h1>
+
+<h1>Thought I would explain this to clear it up:</h1>
+
+<h1>When we make a request, nginx forwards the request to gunicorn.</h1>
+
+<h1>Gunicorn then reads the request and calculates the path (which is put into the WSGI variable <code>path_info</code>)</h1>
+
+<p>#</p>
+
+<h1>We can prevent nginx from forwarding any request starting with "/admin/". If we do this</h1>
+
+<h1>there is no way for gunicorn to send flask a <code>path_info</code> which starts with "/admin/"</h1>
+
+<h1>Thus any flask route starting with /admin/ should be safe :)</h1>
+
+<p>location ^~ /admin/ {
+    deny all;
+}
+```</p>
+
+<p>I think "Brad" explained it quite well, but essentially, this disallows all requests with URL paths starting with <code>/admin/</code>. Nginx serves as the "front-end" forwarder that passes requests to Gunicorn, which is a WSGI server. Gunicorn is the one that serves the actual Flask application.</p>
+
+<p>Interesting! Looking at the server code revealed a hidden endpoint under <code>/admin/key</code>.</p>
+
+<p>```python</p>
+
+<h1>=== CL Review Comments - 5a7b3f</h1>
+
+<h1><Alex> Is this safe?</h1>
+
+<h1><Brad> Yes, because we have <code>deny all</code> in nginx.</h1>
+
+<h1><Alex> Are you sure there won't be any way to get around it?</h1>
+
+<h1><Brad> Here, I wrote a better description in the nginx config, hopefully that will help</h1>
+
+<h1><Brad> Plus we had our code audited after they stole our coins last time</h1>
+
+<h1><Alex> What about dependencies?</h1>
+
+<h1><Brad> You are over thinking it. no one is going to be looking. everyone we encrypt is so bad at security they would never be able to find a bug in a library like that</h1>
+
+<h1>===</h1>
+
+<p>@app.route('/admin/key')
+def get<em>key():
+    return jsonify(key=get</em>info()['key'])
+```</p>
+
+<p>Clearly, we had to get to the <code>/admin/key</code> endpoint to get the key. But how?</p>
+
+<p>There is another interesting part of the Nginx configuration. When forwarding requests to Gunicorn, the request headers are preserved.</p>
+
+<p><code>
+proxy_pass http://unix:/tmp/gunicorn.sock;
+proxy_pass_request_headers on;
+</code></p>
+
+<p>I began wondering if HTTP headers could somehow manipulate the processing of the URL path by Gunicorn, and found <a href="https://stackoverflow.com/questions/63419829/nginx-and-gunicorn-wsgi-variables">this stackoverflow thread</a>. </p>
+
+<p>Apparently, when the <code>SCRIPT_NAME</code> WSGI variable is set, the <code>SCRIPT_NAME</code> prefix is stripped from <code>PATH_INFO</code>. According to the <a href="https://docs.gunicorn.org/en/stable/faq.html#how-do-i-set-script-name">documentation</a>, the <code>SCRIPT_NAME</code> can be set through a HTTP header.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-09-13 at 6.33.45 PM.png" alt="" /></p>
+
+<p>Interesting! Consider the following request:</p>
+
+<p>```http
+GET /test/admin/key HTTP/1.1</p>
+
+<p>...</p>
+
+<p>SCRIPT_NAME: /test
+```</p>
+
+<p>Nginx first receives the request. It checks against the directives specified in the configuration file, and confirms that access is not denied (<code>/test/admin/key</code> does not start with <code>/admin</code>). The request is now forwarded to Gunicorn.</p>
+
+<p>Gunicorn sees the <code>SCRIPT_NAME</code> HTTP header, and hence uses <code>/test</code> as the <code>SCRIPT_NAME</code> WSGI variable. Gunicorn strips <code>SCRIPT_NAME</code> from the  beginning of the URL path, leaving us with <code>/admin/key</code>. Therefore, <code>/admin/key</code> is the final endpoint that is served by the Flask application.</p>
+
+<p>Great! We have access to the <code>/admin/key</code> endpoint. In order to get the decryption key, we have to suppply a <code>key_id</code>.</p>
+
+<p><code>python
+def get_info():
+    key = request.headers.get('key_id')
+    if not key:
+        abort(400, 'Missing key id')
+    if not all(c in '0123456789ABCDEFabcdef'
+            for c in key):
+        abort(400, 'Invalid key id format')
+    path = os.path.join('/server/keys',key)
+    if not os.path.exists(path):
+        abort(401, 'Unknown encryption key id')
+    with open(path,'r') as f:
+        return json.load(f)
+</code></p>
+
+<p>Fortunately, the logic for generating the <code>key_id</code> is already implemented in the site's JavaScript. Add a line to log the <code>key_id</code> to the console:</p>
+
+<p>```javascript
+let data = new Uint8Array(evt.target.result);</p>
+
+<p>let key<em>id = data.slice(0,16);
+key</em>id = buf2hex(key_id);</p>
+
+<p>console.log(key_id)
+```</p>
+
+<p>The <code>key_id</code> for the flag file is <code>05d1dc92ce82cc09d9d7ff1ac9d5611d</code>. </p>
+
+<p>Using this <code>key_id</code>, we can find that the decryption key is <code>b5082f02fd0b6a06203e0a9ffb8d7613dd7639a67302fc1f357990c49a6541f3</code>.</p>
+
+<p><img src="../../.gitbook/assets/image (77).png" alt="" /></p>
+
+<p>The only thing left to do is to decrypt the file. I modified the <code>/decrypt</code> endpoint to do this.</p>
+
+<p>```python
+@app.route('/decrypt', methods=['POST'])
+def pwn():
+    key = binascii.unhexlify('b5082f02fd0b6a06203e0a9ffb8d7613dd7639a67302fc1f357990c49a6541f3')
+    data = request.get<em>data()
+    iv = data[:AES.block</em>size]</p>
+
+<pre><code>data = data[AES.block_size:]
+cipher = AES.new(key, AES.MODE_CFB, iv)
+return cipher.decrypt(data)
+</code></pre>
+
+<p>```</p>
+
+<p>The flag is <code>flag{gunicorn_probably_should_not_do_that}</code>.</p>

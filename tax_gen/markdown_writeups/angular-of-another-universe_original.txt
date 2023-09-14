@@ -1,0 +1,28 @@
+<h2>Angular of another Universe (239 points, 8 solves)</h2>
+
+<p>This was basically the Flag#1 challenge, but the request was double proxied with Apache and Nginx. </p>
+
+<p><code>
+Apache2 -&gt; Nginx -&gt; Express -&gt; Angular
+</code></p>
+
+<p>Unlike Nginx, Apache2 is very restrictive towards parsing the HTTP request. The <code>Host</code> header is very restrictive for invalid values and <code>\</code> character is encoded with <code>%5C</code>. Therefore trick from <a href="#Bonus">#Bonus</a> will not work. </p>
+
+<p>Now not only the Nginx forbids <code>/debug*</code> but also Apache. It is blocked via:</p>
+
+<p><code>xml
+  &lt;Location /debug&gt;
+    Order Allow,Deny
+    Deny from all
+  &lt;/Location&gt;
+</code></p>
+
+<p>While the challenge wasn't supposed to be too hard, it was proven to be so with the little number of solves on it. </p>
+
+<p>Angular allows for secondary segments in the path, which is well explained in the <a href="https://subscription.packtpub.com/book/application_development/9781787288904/3/ch03lvl1sec23/secondary-segments">article</a> I found. Although it was clear to me it will be something with this feature, it took us hours on debugging and finding how to exploit this. By diving into Angular source codes, I <a href="https://github.com/angular/angular/blob/1801d0c6500ea5e677e753fbcfb73dbd3675f054/packages/router/src/url_tree.ts#L321">discovered</a> a <code>primary</code> segment in code, which quickly led me to the solution, which was <a href="http://another-universe.chal.ctf.westerns.tokyo/(primary:debug/answer)">http://another-universe.chal.ctf.westerns.tokyo/(primary:debug/answer)</a>.</p>
+
+<p>This was probably the intended way of solving the previous challenge as well. </p>
+
+<p>After visiting the URL, I got the flag</p>
+
+<h4>TWCTF{theremightbeanotheranotheranotherissuesinuniverse}</h4>

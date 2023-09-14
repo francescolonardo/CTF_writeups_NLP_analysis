@@ -1,0 +1,36 @@
+<h1>Access Denied 1.2 2018 – Monica's fear</h1>
+
+<ul>
+<li><strong>Category:</strong> web</li>
+<li><strong>Points:</strong> 150</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>Monica figured out Phoebe's grandmother's secret recipe and asked Chandler to hide it somewhere safe. However he was drunk and he can not remember where he kept it.</p>
+  
+  <p>Can you find it ?</p>
+  
+  <p>Challenge running at : http://13.58.20.227:8080/</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>In the home page of the website there is a strange message:</p>
+
+<blockquote>
+  <p>Wow INSTRUO team loves :cookie:</p>
+</blockquote>
+
+<p>Analyzing browser cookies, you can find the following one:</p>
+
+<p><code>
+flag : YWNjZXNzZGVuaWVke2MwMGtpM3NfNHIzX3Q0c3R5XzY1OXdkczF9
+</code></p>
+
+<p>Decoding the Base64 cookie value will give you the flag.</p>
+
+<p><code>
+accessdenied{c00ki3s_4r3_t4sty_659wds1}
+</code></p>

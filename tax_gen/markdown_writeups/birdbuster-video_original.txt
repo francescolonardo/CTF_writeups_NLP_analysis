@@ -1,0 +1,32 @@
+<h1>Birdbuster Video</h1>
+
+<h3>Category: Web Exploitation</h3>
+
+<h3>Author: James Lowther (Articuler)</h3>
+
+<h2>Description</h2>
+
+<p>Weren't video rental stores the best?! See if you can break into this one!</p>
+
+<h2>Hints</h2>
+
+<ol>
+<li>80s action movies really inject you full of adrenaline!</li>
+</ol>
+
+<h2>Solution</h2>
+
+<p>This challenge gives provides you a website with the ability to upload a barcode. The website will "scan" this barcode and will return information about the movie title that was encoded.</p>
+
+<ol>
+<li>To solve this challenge, generate a barcode with a SQL injection that returns all rows using an online barcode generator.
+<ul>
+<li>For example, <code>' OR 1=1;  --</code></li>
+</ul></li>
+<li>Upload the barcode to the website.</li>
+<li>The flag can be found at the bottom of the returned results.</li>
+</ol>
+
+<h2>Flag</h2>
+
+<p>magpie{80s<em>m0v135</em>4r3<em>th3</em>b35t}</p>

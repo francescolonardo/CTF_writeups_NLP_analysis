@@ -1,0 +1,31 @@
+<h1>inspector-general</h1>
+
+<p>Author: <a href="https://github.com/roerohan">roerohan</a></p>
+
+<p>Basic source code challenge.</p>
+
+<h1>Requirements</h1>
+
+<ul>
+<li>Viewing source of HTML</li>
+</ul>
+
+<h1>Source</h1>
+
+<ul>
+<li>https://redpwn.net/</li>
+</ul>
+
+<h1>Exploitation</h1>
+
+<p>Press <code>Ctrl + U</code> on your browser to view the source code of the <code>HTML</code> file. Search for <code>flag{...}</code>. </p>
+
+<p><code>html
+&lt;meta name="redpwnctf2020" content="flag{1nspector_g3n3ral_at_w0rk}"&gt;
+</code></p>
+
+<p>The flag is:</p>
+
+<p><code>
+flag{1nspector_g3n3ral_at_w0rk}
+</code></p>

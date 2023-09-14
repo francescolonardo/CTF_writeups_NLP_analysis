@@ -1,0 +1,47 @@
+<h2>Git Good</h2>
+
+<blockquote>
+  <p>Solved By : thewhiteh4t</p>
+</blockquote>
+
+<ul>
+<li>Robots reveal an <code>admin</code> page and <code>.git</code> directory</li>
+</ul>
+
+<p><img src="https://i.imgur.com/vORc05a.png" alt="" /></p>
+
+<ul>
+<li>I used a very useful tool which helps to dump file contents of websites which use GIT version control system</li>
+<li><p>https://github.com/internetwache/GitTools</p></li>
+<li><p><code>.git</code> directory dumped :</p></li>
+</ul>
+
+<p><img src="https://i.imgur.com/zfQ1jga.png" alt="" /></p>
+
+<ul>
+<li>now we can use extractor to get files from the dump</li>
+</ul>
+
+<p><img src="https://i.imgur.com/0gRaxDM.png" alt="" /></p>
+
+<ul>
+<li>I found 2 <code>users.db</code> files, both are sqlite3 databases</li>
+<li>one contains <code>bcrypt</code> hashes and other one contains <code>md5</code> hashes</li>
+<li>I cracked md5 hashes first because they take less time</li>
+</ul>
+
+<p><img src="https://i.imgur.com/RRJlEIX.png" alt="" /></p>
+
+<ul>
+<li>one valid credential found :</li>
+</ul>
+
+<p><code>
+aaron@cgau.sdc.tf : weakpassword
+</code></p>
+
+<ul>
+<li>login on <code>admin.html</code> and we get the flag</li>
+</ul>
+
+<p><img src="https://i.imgur.com/VIC6bxW.png" alt="" /></p>

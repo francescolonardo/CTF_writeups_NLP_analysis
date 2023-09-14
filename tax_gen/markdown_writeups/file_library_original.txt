@@ -1,0 +1,135 @@
+<h1>File Library</h1>
+
+<p>Author: <a href="https://github.com/roerohan">roerohan</a></p>
+
+<h2>Description</h2>
+
+<p>Express query parsing vulnerability.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>Express.js</li>
+<li>qs package used by Express.js</li>
+</ul>
+
+<h2>Sources</h2>
+
+<ul>
+<li><a href="./server.js">server.js</a></li>
+<li>Deployed website using server.js</li>
+</ul>
+
+<p><code>
+This is my file library. I don't have a lot of files, but I hope you like the ones I have!
+</code></p>
+
+<h2>Exploit</h2>
+
+<p>This exploit is owing to the <code>qs</code> package used by <code>express</code> to parse <code>req.query</code>. You can send an array instead of a string through the GET params in the following manner:</p>
+
+<p><code>ja
+/route?words[]=hello&amp;words[]=world
+</code></p>
+
+<p>This makes the <code>req.names</code> in the backend an array: <code>['hello', 'world']</code>.</p>
+
+<p>```javascript
+const express = require('express');
+const path = require('path');
+const fs = require('fs');</p>
+
+<p>const app = express();</p>
+
+<p>const PORT = process.env.PORT || 3000;</p>
+
+<p>app.listen(PORT, () =&gt; {
+    console.log(<code>Listening on port ${PORT}</code>);
+});</p>
+
+<p>app.get('/getFile', (req, res) =&gt; {
+    let { file } = req.query;</p>
+
+<pre><code>// If file name is undefined
+if (!file) {
+    res.send(`file=${file}\nFilename not specified!`);
+    return;
+}
+
+try {
+    // If file name has characters like ' ', '/', fail.
+    if (file.includes(' ') || file.includes('/')) {
+        res.send(`file=${file}\nInvalid filename!`);
+        return;
+    }
+} catch (err) {
+    res.send('An error occured!');
+    return;
+}
+
+// Check if file type is allowed.
+if (!allowedFileType(file)) {
+    res.send(`File type not allowed`);
+    return;
+}
+
+// If the file name is too long, shorten it.
+if (file.length &gt; 5) {
+    file = file.slice(0, 5);
+}
+
+// Get the path for the file.
+const returnedFile = path.resolve(__dirname + '/' + file);
+
+// Read file to check if file exists
+fs.readFile(returnedFile, (err) =&gt; {
+    if (err) {
+        if (err.code != 'ENOENT') console.log(err);
+        res.send('An error occured!');
+        return;
+    }
+
+    res.sendFile(returnedFile);
+});
+</code></pre>
+
+<p>});</p>
+
+<p>app.get('/*', (req, res) =&gt; {
+    res.sendFile(__dirname + '/index.html');
+});</p>
+
+<p>function allowedFileType(file) {
+    const format = file.slice(file.indexOf('.') + 1);</p>
+
+<pre><code>// Allow only `js` and `txt` files.
+if (format == 'js' || format == 'ts' || format == 'c' || format == 'cpp') {
+    return true;
+}
+
+return false;
+</code></pre>
+
+<p>}
+```</p>
+
+<p>The <code>/getFile</code> route is meant to get you a file from the server. But there are certain restrictions. First, you can't have <code></code>s or <code>/</code>s in your file. This prevents path traversal to an extent. 
+<br /></p>
+
+<p>Then, it checks that the <code>file</code> parameter has a length of less than 5 characters. If not, it takes just the first 5 characters. Then, it checks if the file extension is <code>js</code>, <code>ts</code>, <code>cpp</code>, or <code>c</code>, if yes, it allows you to read that file. If all these are satisfied, the path is resolved using <code>path.resolve()</code>.
+<br /></p>
+
+<p>In the <code>a.cpp</code> file, it says <code>system("cat flag.txt")</code>, indicating that the flag is present in the same directory in the <code>flag.txt</code>. We can pass in an array which passes the first 2 checks. Then it has to check if the <code>.slice(file.indexOf('.') + 1)</code>, so the last 2 elements have to be <code>['.', 'js']</code>. So, we can try passing <code>['flag.txt', '.', 'js']</code>, which makes the path <code>/home/user/flag.txt,.,js</code>, which is invalid. However, we can make use of the <code>path.resolve()</code>, and the fact that only the first 5 elements are used. If the array becomes <code>['a', 'b', 'c', 'd', '/../flag.txt', '.', 'js']</code> (<code>js</code> because <code>txt</code> is not allowed). So, this passed the file check, because <code>.slice()</code> returns <code>['js']</code> and <code>['js'] == 'js'</code> is true (not used <code>===</code>). Now, to get rid of this, we add 4 random elements before the element having <code>flag.txt</code>.
+<br /></p>
+
+<p>Now, the string upon concatenation will give <code>${pwd}/a,b,c,d,/../flag.txt</code> (now you see why we added <code>/../</code>), so that it resolves to <code>${pwd}/flag.txt</code> because of <code>flag.txt</code>. The payload, therefore, is:</p>
+
+<p><code>
+/getFile?file[]=a&amp;file[]=b&amp;file[]=c&amp;file[]=d&amp;file[]=/../flag.txt&amp;file[]=.&amp;file[]=js
+</code></p>
+
+<p>The flag is:</p>
+
+<p><code>
+csictf{5h0uld_5tr1ng1fy_th3_p4r4ms}
+</code></p>

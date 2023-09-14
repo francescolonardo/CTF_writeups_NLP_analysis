@@ -1,0 +1,33 @@
+<hr />
+
+<h2>description: Filtered SQL injection</h2>
+
+<h1>no pass needed</h1>
+
+<h2>Description</h2>
+
+<p>It's all about who you know and I know 'admin'.</p>
+
+<p>http://web.chal.csaw.io:5001</p>
+
+<h2>Solution</h2>
+
+<ul>
+<li>The username is reflected back into the username field (its <code>value</code> attribute) after failed authentication</li>
+<li>By fuzzing username inputs, we can find that anything after a whitespace is removed.</li>
+<li>Furthermore, 'admin' is replaced <strong>non-recursively</strong>.</li>
+</ul>
+
+<p>We can exploit an SQL injection in the username parameter. The payload is:</p>
+
+<p><code>text
+username=adadminmin';#&amp;password=
+</code></p>
+
+<p>This will translate to the query:</p>
+
+<p><code>text
+SELECT * FROM users WHERE username='admin';#
+</code></p>
+
+<p>The flag is <code>flag{wh0_n3ed5_a_p4ssw0rd_anyw4y}</code>.</p>

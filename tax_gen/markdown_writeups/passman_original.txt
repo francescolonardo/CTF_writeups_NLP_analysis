@@ -1,0 +1,48 @@
+<h2>Passman</h2>
+
+<blockquote>
+  <p>Solved by Starry-Lord</p>
+</blockquote>
+
+<p><img src="https://i.imgur.com/DL7HClI.png" alt="" /></p>
+
+<p>This app meets us with another login page, where we can also register an account.</p>
+
+<p><img src="https://i.imgur.com/KRwOPL4.png" alt="login, register, login again" /></p>
+
+<p>Checking the network tab actually showed a familiar name:</p>
+
+<p><img src="https://i.imgur.com/IhMS5D3.png" alt="graphql endpoint" /></p>
+
+<p>We can go to https://ivangoncharov.github.io/graphql-voyager/ in order to grab the infamous introspection query for graphql, which essentially returns all the content of the graphql schema. Click on “change schema”, then select the introspection tab and click on “Copy Introspection Query” to get the query to your clipboard.</p>
+
+<p>Now we need to send it to this graphql endpoint but since its set to accept strings, we need to get rid of the new lines:</p>
+
+<p><img src="https://i.imgur.com/BJOnVR4.png" alt="remove new lines" /></p>
+
+<p>Then sending the request through BurpSuite’s repeater tab to the /graphql endpoint returns the full introspection as expected:</p>
+
+<p><img src="https://i.imgur.com/2Ytt52V.png" alt="graphql introspection" /></p>
+
+<p>With this data, we can go back to the graphql voyager tool and paste it in the box below the “Copy introspection query” button. This will give us a good sense of what data is built into this endpoint:</p>
+
+<p><img src="https://i.imgur.com/A3obPEf.png" alt="graphql voyager" /></p>
+
+<p>There’s nothing much about this Query, except returning the phrases owned by the logged user. But there were actual “Mutation” queries used when logging in, registering a new user, or adding a new phrase. It turned out there was another function (or mutation) allowing us to change a supplied user password, which seems like a bad thing to leave laying around unused.</p>
+
+<p><img src="https://i.imgur.com/z3upnC8.png" alt="Mutations or available functions" /></p>
+
+<p>UpdatePassword was the ticket to the flag, but first we needed to syntax it properly. I gladly used the content of the login graphql request shown below:</p>
+
+<p><img src="https://i.imgur.com/ZFZL9yl.png" alt="LoginUser graphql query" /></p>
+
+<p>From there it was just a matter of editing the request properly and updating the admin password with a cool password:</p>
+
+<p><img src="https://i.imgur.com/SBpvrSR.png" alt="Winning query" /></p>
+
+<p>After logging in with the admin account and the new password, we can see the flag in the password of the note:</p>
+
+<p><img src="https://i.imgur.com/8JmPbOA.png" alt="flag in Phrase password" /></p>
+
+<pre><code>HTB{1d0r5_4r3_s1mpl3_4nd_1mp4ctful!!}
+</code></pre>

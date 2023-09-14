@@ -1,0 +1,32 @@
+<h2>Amidst Us</h2>
+
+<blockquote>
+  <p>Solved by : thewhiteh4t, Starry-Lord, Taz34, Avantika, Legend</p>
+</blockquote>
+
+<p><img src="https://i.imgur.com/r7mbpDi.png" alt="" /></p>
+
+<p>The downloadable files gives us a few clues in the files in requirements.txt and util.py:</p>
+
+<ul>
+<li>It’s a python environment</li>
+<li>It uses a vulnerable version of the python Pillow library</li>
+</ul>
+
+<p><img src="https://i.imgur.com/oeEjFBA.png" alt="" /></p>
+
+<p>https://github.com/python-pillow/Pillow/pull/5923</p>
+
+<p>link: <a href="https://github.com/python-pillow/Pillow/pull/5923">python-pillow/Pillow#5923</a></p>
+
+<p>This exchange provided some great insights on how to trigger SSRF</p>
+
+<p>In util.py we find eval is being used on the data provided in the POST request, which allows us to upload a random image with background rgb parameters.</p>
+
+<p>After a couple trial and errors we managed to grab the flag.txt and send it to our webhook by replacing one of the RGB values of “background”:</p>
+
+<p><img src="https://i.imgur.com/8kemcYF.png" alt="" /></p>
+
+<p><code>
+HTB{i_slept_my_way_to_rce}
+</code></p>

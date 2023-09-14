@@ -1,0 +1,7 @@
+<h3>Port 8080 [Web]</h3>
+
+<p>This was a simple cookie manipulation challenge. Cookies are set at every stage of authentication, and the following cookies grant us access to <code>/admin</code>.</p>
+
+<p><code>
+Cookie: username=admin; visited-main-page=true; made-an-account=true; authenticated-user=true; admin=true
+</code></p>

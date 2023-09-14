@@ -1,0 +1,53 @@
+<h2>Angular of the Universe</h2>
+
+<p>The challenge was about bypassing the Angular application that was set up behind Nginx reverse proxy. The challenge contained two flags:
+- first was hidden in the angular endpoint <code>/debug/answer</code> restricted by the Nginx and the application
+- second hidden in the express endpoint <code>/api/true-answer</code> which yielded results only for <code>127.0.0.1</code> IP addresses.</p>
+
+<h3>Flag#2 /api/true-answer (149 points, 34 solves)</h3>
+
+<p>As mentioned, the application was displaying the flag if the request came from the loopback network.</p>
+
+<p>```js</p>
+
+<p>server.get('/api/true-answer', (req, res) =&gt; {
+    console.log('HIT: %s', req.ip)
+    if (req.ip.match(/127.0.0.1/)) {
+      res.json(<code>hello admin, this is true answer: ${process.env.FLAG2}</code>)
+    } else {
+      res.status(500).send('Access restricted!')
+    }
+  });</p>
+
+<p>```</p>
+
+<p>Because the application was hidden behind Nginx proxy, <code>req.ip</code> was always pointing to the same IP address of the reverse proxy. The application didn't also trust <code>X-Forwarded-*</code> headers so this value couldn't be overridden. </p>
+
+<p>When accessing <code>/q</code> endpoint, the application was displaying contents of <code>/api/answer</code>. It was done on the server-side via the below snippet.</p>
+
+<p><code>ts
+  ngOnInit(): void {
+    ...
+    // fetch answer via API
+    this.service.getAnswer().subscribe((answer: string) =&gt; {
+      this.answer = answer
+    })
+  }
+}
+</code></p>
+
+<p><code>this.service.getAnswer()</code> was yielding <code>this.http.get('/api/answer')</code>.</p>
+
+<p><code>ts
+  getAnswer() {
+    return this.http.get('/api/answer')
+  }
+</code></p>
+
+<p>Apparently angular when doing HTTP requests uses <code>Host</code> header, something around <code>PROTOCOL + HOST + / PATH</code>. Not only that but also follows the redirects. Therefore by providing a custom host and redirecting anything to <code>127.0.0.1/api/true-answer</code>, we get the flag. </p>
+
+<p><code>sh
+curl 'http://universe.chal.ctf.westerns.tokyo/a' -H 'Host: terjanq.me'
+</code></p>
+
+<h4>TWCTF{you-have-to-eat-tomato-yume-chan!}</h4>

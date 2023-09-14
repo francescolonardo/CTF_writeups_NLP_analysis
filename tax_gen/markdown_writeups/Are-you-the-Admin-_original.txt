@@ -1,0 +1,40 @@
+<h1>Are you the Admin?</h1>
+
+<h2>The App</h2>
+
+<p>The app is a page with a form which says "Create user". After entering a name and clicking on "Ctrate", it lists the created users with name and if they are admins.</p>
+
+<p>The source code for the app is avaliable as a download for the challenge.</p>
+
+<h2>Review</h2>
+
+<p>The app is a Node.js TypeScript app written with Next JS. The <code>auth.ts</code> file is the most interesting:
+```typescript
+export default async function handler(
+    req: NextApiRequest,
+    res: NextApiResponse
+) {
+    const body = req.body;
+    await prisma.user.create({
+        data: body,
+    });</p>
+
+<pre><code>return res.status(200).end();
+</code></pre>
+
+<p>}
+```</p>
+
+<p>It just seems to store the body object into the database which is also seen in the requests made to API endpoint: <code>{"username":"our-username"}</code>.</p>
+
+<p>The shema file <code>shema.prism</code> shows, that there is a field <code>isAdmin</code>:</p>
+
+<p><code>prism
+model User {
+  id       String  @id @default(uuid())
+  username String
+  isAdmin  Boolean @default(false)
+}
+</code></p>
+
+<p>By sending a custom request body where <code>isAdmin</code> is set to <code>true</code> we can reveal the flag.</p>

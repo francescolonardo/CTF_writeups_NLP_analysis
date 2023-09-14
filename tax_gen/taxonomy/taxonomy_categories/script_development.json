@@ -1,0 +1,14 @@
+{
+    "Script Development": {
+        "Description": "Creating custom scripts or tools to automate tasks or exploit vulnerabilities.",
+        "Actions": [
+            "DEVELOP AUTOMATION SCRIPTS",
+            "EXPLOIT DEVELOPMENT",
+            "BRUTE FORCE SCRIPTS",
+            "DECODING/ENCODING TOOLS",
+            "CUSTOM WORDLISTS",
+            "STEGANOGRAPHY TOOLS",
+            "USE EXISTING TOOLS"
+        ]
+    }
+}

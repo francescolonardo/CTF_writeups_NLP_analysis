@@ -1,0 +1,16 @@
+<h1>Robots and Music</h1>
+
+<h2>The App</h2>
+
+<p>The App consists only of a web page displaying "I hope you loke robots!. Other paths do not work and they always display the same HTML with the <code>200 OK</code> status code.</p>
+
+<h2>Tried solutions &amp; solution</h2>
+
+<p>Because the challenge is called "Robots and Music" and the text says "I hope you like robots!" I tried opening <code>robots.txt</code>:</p>
+
+<p><code>
+User-agent: *
+Disallow: /g00d_old_mus1c.php
+</code></p>
+
+<p>Opening the page reveals the flag.</p>

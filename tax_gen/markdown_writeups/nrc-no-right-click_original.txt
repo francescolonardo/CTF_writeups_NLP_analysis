@@ -1,0 +1,13 @@
+<h2>NRC - no right click</h2>
+
+<blockquote>
+  <p>Solved By : Starry-Lord</p>
+</blockquote>
+
+<p>To bypass the right click problem:</p>
+
+<p><code>
+view-source:https://no-right-click.hsc.tf/useless-file.css
+</code></p>
+
+<p><img src="https://i.imgur.com/euUZBnG.jpg" alt="" /></p>

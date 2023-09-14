@@ -1,0 +1,209 @@
+<h1>Senpai</h1>
+
+<blockquote>
+  <p>Rin or Sakura?\
+  \
+  http://chals.ctf.sg:40201\
+  \
+  author: Gladiator</p>
+</blockquote>
+
+<h3>Authentication Logic</h3>
+
+<p>The end-goal, of course, is to get to <code>/flag</code>, but there is a <code>role</code> attribute in the JWT token that we must change to <code>admin</code> in order to pass the <code>IsAdmin</code> check.</p>
+
+<p><code>go
+func flagHandler(w http.ResponseWriter, r *http.Request) {
+    config.SetupResponse(&amp;w, r)
+    role, _ := config.GetTokenRole(r)
+    username, err := config.GetTokenUsername(r)
+    if err != nil {
+        http.Error(w, "An error has occured", http.StatusBadRequest)
+        return
+    }
+    user, _ := data.GetUser(username)
+    if (config.TokenValid(r, user.Otp)) == nil {
+        if config.IsAdmin(role) {
+            fmt.Fprint(w, logic.Flagger())
+        }
+        return
+    }
+    return
+}
+</code></p>
+
+<p>Let's look at the registration and login flow. This time, it seems like <code>user.Otp</code> is actually the JWT key - each user's key would be different!</p>
+
+<p>```go
+func newJWTUserKey() string {
+    partOne := strings.Replace(config.GenUUID(), "-", "", -1)
+    partTwo := strings.Replace(config.GenUUID(), "-", "", -1)
+    partThree := strings.Replace(config.GenUUID(), "-", "", -1)
+    newOTP := partOne + partTwo + partThree
+    return newOTP
+}</p>
+
+<p>func Register(account data.RegisterAccount) bool {
+    var newAccount data.UserAccount
+    newAccount.Username = account.Username
+    newAccount.Password = account.Password
+    newOTP := newJWTUserKey()
+    newAccount.Otp = newOTP
+    newAccount.Verified = "true"
+    return data.InsertUser(&amp;newAccount)
+}
+```</p>
+
+<p>The JWT key is then used to sign the token when we log in.</p>
+
+<p><code>go
+func loginHandler(w http.ResponseWriter, r *http.Request) {
+    config.SetupResponse(&amp;w, r)
+    var login data.UserAccount
+    err := json.NewDecoder(r.Body).Decode(&amp;login)
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusBadRequest)
+        return
+    }
+    state, jwtKet := logic.Login(login)
+    if state == false {
+        http.Error(w, "Account does not exists, or account credentials are wrong", http.StatusBadRequest)
+        return
+    }
+    token, _ := config.CreateToken(login.Username, jwtKet)
+    fmt.Fprint(w, "Account logged in, your token is: "+token)
+}
+</code></p>
+
+<p>What's interesting, though, is that there is a caching mechanism that stores each user's JWT key in a Redis cache after logging in. Presumably, in real-world applications such a caching mechanism would save time in performing database lookups each time JWT authentication occurs.</p>
+
+<p><code>go
+func Login(account data.UserAccount) (bool, string) {
+    var user *data.UserAccount
+    user, _ = data.GetUser(account.Username)
+    if user == nil {
+        return false, ""
+    }
+    if config.CheckPasswordHash(account.Password, user.Password) == false {
+        return false, ""
+    }
+    if user.Verified == "false" {
+        return false, ""
+    }
+    cache.Set(user.Username, user.Otp, 999999999999)
+    return true, user.Otp
+}
+</code></p>
+
+<p>Sidenote: the key is only stored for two seconds, so we have to be quick here!</p>
+
+<p>```go
+func Set(key string, jwtkey string, exp int) error {
+    client := redis.NewClient(&amp;redis.Options{
+        Addr:     "localhost:6379",
+        Password: "",
+        DB:       0,
+    })
+    err := client.Set(key, jwtkey, time.Second*2).Err()
+    if err != nil {
+        return err
+    }
+    return nil</p>
+
+<p>}
+```</p>
+
+<h3>SSRF and Obtaining Cached Secrets</h3>
+
+<p>There exists a non-admin path, <code>/sakura</code> that does allow us to interact with the Redis cache.</p>
+
+<p><code>go
+func sakuraeHandler(w http.ResponseWriter, r *http.Request) {
+    config.SetupResponse(&amp;w, r)
+    output := logic.CacheHelper(r)
+    fmt.Fprint(w, output)
+    return
+}
+</code></p>
+
+<p>However, we could see in the cache-fetching mechanism that the client URL is validated to be <code>127.0.0.1</code>.</p>
+
+<p><code>go
+func IsLocal(ip string) bool {
+    return ip == "127.0.0.1"
+}
+</code></p>
+
+<p><code>go
+func CacheHelper(r *http.Request) string {
+    ip, _ := remoteaddr.Parse().IP(r)
+    if !config.IsLocal(ip) {
+        return "I get older but your lovers stay my age."
+    }
+    result, err := cache.Get(r.URL.Query().Get("key"))
+    if err != nil {
+        return ""
+    }
+    return result
+}
+</code></p>
+
+<p>That leaves us with <code>/rin</code>. The handler logic presents us with the all-too-familiar SSRF code:</p>
+
+<p><code>go
+func HeavensFeel(r *http.Request) http.Response {
+    val := config.Process(r)
+    if val == "" {
+        return http.Response{Status: "500 Internal Server Error", StatusCode: 500, Body: nil}
+    }
+    resp, err := http.Get(val)
+    if err != nil {
+        return http.Response{Status: "500 Internal Server Error", StatusCode: 500, Body: nil}
+    }
+    return *resp
+}
+</code></p>
+
+<p>Again, the client IP is checked. But this time, the logic is slightly different. Instead of using <code>remoteaddr.Parse().IP(r)</code>, the server is directly looking at the <code>X-Forwarded-For</code> header!</p>
+
+<p>```go
+var local string = "X-Forwarded-For"</p>
+
+<p>...</p>
+
+<p>func GetIP(r *http.Request) string {
+    return r.Header.Get(local)
+}</p>
+
+<p>...</p>
+
+<p>func Process(r *http.Request) string {
+    if IsLocal(GetIP(r)) {
+        return r.URL.Query().Get("url")
+    }
+    return ""
+}
+```</p>
+
+<p>By adding <code>X-Forwarded-For: 127.0.0.1</code>, we can access this function and perform an SSRF to the <code>/sakura</code> endpoint.</p>
+
+<p><code>http
+POST /rin?url=http://localhost:8081/sakura?key=socengexp HTTP/1.1
+Host: chals.ctf.sg:40201
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NDcyNDI0NDIsInJvbGUiOiJ1c2VyIiwidXNlcm5hbWUiOiJzb2NlbmdleHAifQ.Y56UmyxoibdVHxvFjN03GI_RXeIgVBl76pQZDmih6Mo
+X-Forwarded-For: 127.0.0.1
+</code></p>
+
+<p>As mentioned earlier, the cached secret only exists for 2 seconds after logging in, so we must make the above request right after logging in.</p>
+
+<h3>Gaining the Admin Role</h3>
+
+<p>When we have the JWT secret, we could essentially craft any JWT attributes we want.</p>
+
+<p>Using <a href="https://jwt.io">https://jwt.io/</a> (or any JWT-signing library), supply the JWT secret and change the <code>role</code> to <code>admin</code>. We now have a new JWT token with an admin role.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2022-03-14 at 12.41.08 PM.png" alt="" /></p>
+
+<p>Using this new JWT token, simply make a request to <code>/flag</code> to get the flag!</p>
+
+<p>The flag is <code>CTFSG{Rin_Tohsaka_Best_Girl_uwu}</code>.</p>

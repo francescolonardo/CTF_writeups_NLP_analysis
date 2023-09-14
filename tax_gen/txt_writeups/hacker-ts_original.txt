@@ -1,0 +1,8 @@
+Hacker TS
+We have some kind of image renderer that places our text onto a T-Shirt image. After some fuzzing, we would find that HTML injection is possible.
+
+If we try to load an external resource (e.g. JavaScript or stylesheet), we can capture the request made by the server, and see that the user agent is wkhtmltoimage.
+It seems that SSRF vulnerabilities through wkhtmltoimage and wkhtmltopdf are pretty well known, so we could craft the following payload to exfiltrate the contents of http://localhost:5000/admin.
+```markup
+
+

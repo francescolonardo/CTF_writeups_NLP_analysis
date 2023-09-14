@@ -1,0 +1,14 @@
+{
+    "Initial Reconnaissance": {
+        "Description": "The initial phase of gathering information and understanding the challenge.",
+        "Actions": [
+            "VISIT THE PROVIDED URL",
+            "INSPECT WEBPAGE/RESOURCE",
+            "IDENTIFY COOKIES",
+            "ENUMERATE ENDPOINTS",
+            "SOURCE CODE ANALYSIS",
+            "FINGERPRINTING",
+            "DIRECTORY AND FILE ENUMERATION"
+        ]
+    }
+}

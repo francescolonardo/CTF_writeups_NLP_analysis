@@ -1,0 +1,33 @@
+<h1>Devo(ps)</h1>
+
+<h3>Category: Web Exploitation</h3>
+
+<h3>Author: Emily Baird (Analytical Engine)</h3>
+
+<h2>Description</h2>
+
+<p>Did you know that the guys in DEVO thought that humanity was getting stupider? Luckily, we here at Magpie Inc. are here to prove them wrong!</p>
+
+<h2>Hint</h2>
+
+<p>Github can be used for more than just storing code. The 'Actions' tab at the top of the repo might provide some insight.</p>
+
+<h2>Solution</h2>
+
+<p>This challenge's exploit takes advantage of a misconfigured GitHub Actions build script.</p>
+
+<ol>
+<li>The description mentions that this is a 'fully-automated release.' Instead of a link to a C binary, the challenge links us to a GitHub repo from a user named <a href="https://github.com/magpie-inc/flag-checker">Magpie Inc</a></li>
+<li>The <code>magpie-inc</code> user seems to have a single public repo. The source code for the binary, <code>flagchecker.c</code>, is out here in the open. Looking closer at the source code, it appears that our Flag-Checker 9000 takes user input, hashes the input using MD5, and compares the result to a macro called <code>FLAG_HASH</code>.</li>
+<li>As the hint mentions, there seems to be a lot of code here that isn't related to <code>flagchecker.c</code>. Perhaps the exploit isn't in the source code of Flag-Checker 9000 itself?</li>
+<li>In the folder <code>.github/workflows</code>, we find a file called <code>build_flag_checker.yml</code>. It appears that this GitHub Action is the automated script responsible for packaging Flag-Checker 9000.</li>
+<li>Reading the script <code>./build.sh</code> referenced in step 'Build Flag Checker Program' we can see that it uses the 1st command-line argument as the value assigned to the macro. <code>build_flag_checker.yml</code> is using the output of a previous step as the arg to the 'Build Flag Checker Program' step: "${{ steps.get<em>hash.outputs.HASH</em>VALUE }}"</li>
+<li>The output of the 'Get hash' step is the result of a second bash script, <code>flaghash.sh</code>. This one appears to cURL an IP address, and then hashes the results using MD5. We know that <code>flagchecker.c</code> is converting the user's guess to an MD5 hash and tells us that our flag is right if our hash matches the value of <code>FLAG_HASH</code>. However, the value of the cookie 'auth' in the curl request is set to <code>${ secrets.FLAG_AUTH }</code> which doesn't seem to be accessible in any of the files. In the workflow runs (accessible under the 'actions' tab on the repo), the value of FLAG_AUTH is starred out.</li>
+<li>The last thing to investigate is the commit history. We can see that there is a commit with the message 'Fix auth!!!' </li>
+<li>If we look at the changes made for the commit, we see that an earlier version was set up slightly differently, with the 'auth' cookie set in the code of <code>gethash.sh</code> itself.</li>
+<li>Run <code>curl http://ipaddress/api.php --cookies 'auth=f4e53e561c6580d6d304f3f31e3102f5</code> for yourself, and the result is the flag!</li>
+</ol>
+
+<h2>Flag</h2>
+
+<p>magpie{build<em>automation</em>genius}</p>

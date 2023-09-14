@@ -1,0 +1,84 @@
+<h2>Yeunote - writeup by @terjanq</h2>
+
+<blockquote>
+  <p>After a very, very, very long time of development, I am extremely excited to announce that yeunote, a free, simple and secure note manager, is ready to be released publicly. However, to ensure that it does not have any security vulnerabilities (yeah, I care much about the security), I want to ask you, an ethical hacker, to check it one more time before the launch. The rule is simple: There is a private &amp; password protected note at https://yeunote.ctf.yeuchimse.com/note/view/3, which contains the flag. If you can read it, the flag is yours! Good luck.</p>
+  
+  <p>https://yeunote.ctf.yeuchimse.com/</p>
+</blockquote>
+
+<h3>Page funcionality</h3>
+
+<p>We can create a note containing  <code>title</code> and <code>description</code> with two options available: <code>public</code> and <code>private</code>. If we choose the <code>private</code> option then only people added to <code>share list</code> can see the note. Additionally, each note can be protected with the <code>password</code>. </p>
+
+<p>On the main page, we see the titles of random <em>public</em> notes and their <code>id</code>. </p>
+
+<p>Every query related to the note follows the syntax <code>https://yeunote.ctf.yeuchimse.com/note/&lt;action&gt;/&lt;note id&gt;</code>.</p>
+
+<p>Every <code>form</code> on the page is protected by <code>csrf</code> token created by the following script:</p>
+
+<p>```js
+function add<em>csrf</em>token(csrf_token) {
+    $('form').each(function () {
+        if ($(this).attr('method').toLowerCase() == 'post') {
+            $('<input type="hidden" name="csrf" value="' + csrf_token + '" />').appendTo($(this));
+        }
+    })
+}</p>
+
+<p>if (document.domain == 'yeunote.ctf.yeuchimse.com') {
+    add<em>csrf</em>token('bdf0ae82-2284-4b7f-a0b3-26e6d291ff1f');
+}
+```</p>
+
+<p>Where <code>bdf0ae82-2284-4b7f-a0b3-26e6d291ff1f</code> is a value from the  <code>csrf</code> cookie. We can change it to <code>')|alert('xss</code> which results with successfully attached <code>xss injection</code>. It is also the only place on the site where I found the mentioned vulnerability but it seems to be not exploitable. </p>
+
+<h3>Bug Bounty</h3>
+
+<p>In the tab <code>Bug Bounty</code> we have a simple form allowing us to send the suspicious URL to the admin. There is also <code>description</code> field but I don't think it does anything at all. If we send the URL <code>http://yoursite/csrf.html</code> he will visit the link using <code>headless chrome 67</code>. </p>
+
+<h3>CSRF page &ndash; add_share</h3>
+
+<p>So what we want to do is to craft a <code>csrf page</code> which will allow us to do malicious things using admin's account. But every form is protected with <code>csrf token</code> and we have to somehow steal admin's <code>csrf</code> cookie. Have we? </p>
+
+<p>Earlier posted script adding <code>csrf token</code> is hosted on <code>https://yeunote.ctf.yeuchimse.com/csrf.js</code> so we can just attach this script on our page. But if we try that, we get the <code>no permissions</code> error or something like that. A quick inspection showed that the reason for this is the <code>referrer header</code> set to <code>https://yoursite</code>. 
+Hopefully no referrer is allowed and adding <code>&lt;meta name="referrer" content="no-referrer"&gt;</code> solves the problem.</p>
+
+<p>Another protection we have to bypass is <code>if (document.domain == 'yeunote.ctf.yeuchimse.com'</code>. We cannot change the value of this property directly because of <code>CORS Policy</code> so <code>document.domain = 'yeunote.ctf.yeuchimse.com'</code> won't work. But it is easy to bypass. Just overwrite the property with new one before <code>csrf.js</code> is loaded - <code>Object.defineProperty(document, 'domain', {value: "yeunote.ctf.yeuchimse.com"});</code>. </p>
+
+<p>So this is it. Now we are able to add ourselves to admin's <code>share list</code> by a simple <code>post form</code></p>
+
+<p>```html</p>
+
+<form method="post" action="https://yeunote.ctf.yeuchimse.com/note/add_share/3">
+<input name="emails" value="my_email@foo.com"/>
+<input type="submit" value="submit">
+</form>
+
+<p>```</p>
+
+<p>The complete document [csrf.html]</p>
+
+<h3>CSRF page &ndash; password</h3>
+
+<p>After the previous step, we are now able to visit <code>https://yeunote.ctf.yeuchimse.com/note/view/3</code> but it results with <code>password</code> prompt. So our task now is to get the password somehow.</p>
+
+<p>On the page <code>My Notes</code> there are buttons attached for each note: <code>Facebook</code>, <code>Google</code> and <code>Twitter</code>. The first two will redirect us to the facebook/google page and ask our permission to share the post containing the full URL, i.e <code>https://yeunote.ctf.yeuchimse.com/note/view/&lt;note id&gt;?p=&lt;password&gt;</code>. </p>
+
+<p>The third one is using backend app. In order to successfully post the tweet we have to authorize the app before clicking the button, but only once. Clicking on the button redirects us to <code>https://yeunote.ctf.yeuchimse.com/note/twitter/&lt;note id&gt;</code> which if we have the note with the <code>&lt;note id&gt;</code> in our inventory redirects us to <code>https://api.twitter.com/oauth/authenticate?oauth_token=&lt;oauth token&gt;</code>. If we already authorized the app then it will redirect us to <code>https://yeunote.ctf.yeuchimse.com/note/twitter?oauth_token=&lt;oauth token&gt;&amp;oauth_verifier=&lt;oauth verifier&gt;</code> and if everything went alright we will see the tweet with an URL containing the password on our twitter account. </p>
+
+<p>But how do we do it? I've spent hours and hours trying to make it work but I didn't manage o get the password by myself... Well, the guy who solved the task left the tweet undeleted so anyone could see the password! I tried to report this but nor the <code>admins</code> nor the <code>team jinmo123x</code> were responding to my requests. Link to the tweet: <a href="https://twitter.com/wwydid/status/1008044466677039105">https://twitter.com/wwydid/status/1008044466677039105</a></p>
+
+<p>My attempt was to log in the admin to my dummy twitter account and then share the password into this account (no confirmation needed). I could achieve that using a similar method as for the previous step but with a little help of backed script generating the <code>authenticity_token</code> needed to login into the twitter account. But it didn't work. Twitter is not accepting any referrer different from <code>https://twitter.com</code> including <code>no referrer</code>. Tried some different versions of login page: <a href="https://mobile.twitter.com/login">https://mobile.twitter.com/login</a>, <a href="https://twitter.com/login">https://twitter.com/login</a>, also version of <code>legacy Twitter</code> with JavaScript disabled.</p>
+
+<p>I was also trying to generate <code>oauth token</code> for flag note which would allow me to terminate the redirection from <code>twitter</code> to <code>yeunote</code> and send the generated URL to the admin. But this trial results with <code>Note not found</code> error and I couldn't find any way to bypass it.</p>
+
+<h3>CSRF page &ndash; the missing piece</h3>
+
+<p>Comes out that getting the password is as simple as two additional requests by admin's side
+<code>GET https://yeunote.ctf.yeuchimse.com/note/twitter/3</code> and then <code>GET https://yeunote.ctf.yeuchimse.com/note/twitter?oauth_token=&lt;oauth token&gt;&amp;oauth_verifier=&lt;oauth verifier&gt;</code>. The first one tries to share the note on Twitter but since admin is not currently logged into an account connected to the app, the page will wait for authorization. </p>
+
+<p>After that, we send the second query with pre-generated <code>&lt;oauth token&gt;</code> and <code>&lt;oauth verifier&gt;</code> created by either sharing random note on the page or from <em>login with twitter</em> funcionality. It is important that tokens can be used only once so in orded to successfully intercept them we have to terminate/stop request from <code>twitter</code> to <code>yeunote</code> before it gets executed. It can be done, for example, using [burp].</p>
+
+<p>Although <code>oauth tokens</code> generated with these steps don't match this solution will work. It is probably because the app doesn't match the token with an action on the page but setting something similar to <code>waiting for &lt;action&gt;</code> per session.</p>
+
+<p>Updated [csrf.html] file.</p>

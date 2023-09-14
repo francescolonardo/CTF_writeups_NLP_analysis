@@ -1,0 +1,65 @@
+<h1>Marcodowno</h1>
+
+<p><strong>Category</strong>: Web</p>
+
+<p>105 Points</p>
+
+<p>158 Solves</p>
+
+<p><strong>Problem description</strong>:
+Someone told me to use a lib, but real developers rock regex one-liners.</p>
+
+<hr />
+
+<p>So it's XSS challenge and we basically have to XSS a page and send them a URL popping alert(1) to get the flag</p>
+
+<p>Here is the source of the webpage. It's apparently a "Markdown" converter which uses regex</p>
+
+<p>```html
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+</head></p>
+
+<script>
+input = decodeURIComponent(location.search.match(/input=([^&#]+)/)[1]);
+
+function markdown(text){
+  text = text.replace(/[<]/g, '').replace(/----/g,'<hr>').replace(/> ?([^\n]+)/g, '<blockquote>$1</blockquote>').replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/__([^_]+)__/g, '<b>$1</b>').replace(/\*([^\s][^*]+)\*/g, '<i>$1</i>').replace(/\* ([^*]+)/g, '<li>$1</li>').replace(/##### ([^#\n]+)/g, '<h5>$1</h5>').replace(/#### ([^#\n]+)/g, '<h4>$1</h4>').replace(/### ([^#\n]+)/g, '<h3>$1</h3>').replace(/## ([^#\n]+)/g, '<h2>$1</h2>').replace(/# ([^#\n]+)/g, '<h1>$1</h1>').replace(/(?<!\()(https?:\/\/[a-zA-Z0-9./?#-]+)/g, '<a href="$1">$1</a>').replace(/!\[([^\]]+)\]\((https?:\/\/[a-zA-Z0-9./?#]+)\)/g, '<img src="$2" alt="$1"/>').replace(/(?<!!)\[([^\]]+)\]\((https?:\/\/[a-zA-Z0-9./?#-]+)\)/g, '<a href="$2">$1</a>').replace(/`([^`]+)`/g, '<code>$1</code>').replace(/```([^`]+)```/g, '<code>$1</code>').replace(/\n/g, "<br>");
+  return text;
+}
+
+window.onload=function(){
+  $("#markdown").text(input);
+  $("#rendered").html(markdown(input));
+}
+
+</script>
+
+<p><h1>Input:</h1><br>
+<pre contenteditable id="markdown" class="background-grey"></pre><br>
+<br>
+<button onclick='$("#rendered").html(markdown($("#markdown").text()))'>Update preview</button>
+<hr>
+<br>
+<h1>Preview:</h1><br></p>
+
+<div id="rendered" class="rendered background-grey"></div>
+
+<p>```</p>
+
+<p>In the first replace, it removes all the open (&lt;) HTML tags. How do we XSS without open tags? </p>
+
+<p>The replace that caught my eye was</p>
+
+<p><code>
+replace(/!\[([^\]]+)\]\((https?:\/\/[a-zA-Z0-9./?#]+)\)/g, '&lt;img src="$2" alt="$1"/&gt;')
+</code>
+It woulb be used to transform the image tags in Markdown such as <code>![img1](http://url)</code> into <code>&lt;img src="http://url" alt="img1"&gt;</code>. The URL is decently sanitized but alt is not. We can inject a double quote and break out of the alt tag, inject a event handler which would then pop up an XSS. </p>
+
+<p>Here was the final URL</p>
+
+<p><code>
+http://marcodowno-01.play.midnightsunctf.se:3001/markdown?input=![" onerror="alert(1)"](http://x)
+</code></p>

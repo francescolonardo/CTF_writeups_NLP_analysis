@@ -1,0 +1,104 @@
+<h1>b01lers CTF 2020 – Scrambled</h1>
+
+<ul>
+<li><strong>Category:</strong> web</li>
+<li><strong>Points:</strong> 200</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>I was scanning through the skies. And missed the static in your eyes. Something blocking your reception. It's distorting our connection. With the distance amplified. Was it all just synthesized? And now the silence screams that you are gone. You've tuned me out. I've lost your frequency.</p>
+  
+  <p>http://web.ctf.b01lers.com:1002/</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>Analyzing the webpage, two strange cookies can be discovered: 
+* <code>frequency</code>;
+* <code>transmissions</code>.</p>
+
+<p><code>frequency</code> is incremented at each refresh, <code>transmissions</code> contains a fixed part – at the beginning and at the end – and a variable part in the middle.</p>
+
+<p><code>
+kxkxkxkxshle22kxkxkxkxsh
+^^^^^^^^^^    ^^^^^^^^^^
+  fixed   ^^^^  fixed
+        variable
+</code></p>
+
+<p>If you enumerate a great amount of cookies, you can notice that the format of variable part is the following:
+* previous char of the flag;
+* actual char of the flag;
+* index of the actual char.</p>
+
+<p>So you can write a <a href="scrambled.py">script</a> to retrieve all chars and compose the flag.</p>
+
+<p>```python</p>
+
+<h1>!/usr/bin/python</h1>
+
+<p>import re
+import requests
+import urllib.parse</p>
+
+<p>target<em>endpoint = "http://web.ctf.b01lers.com:1002/"
+headers = {
+   "User-Agent": "Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US);", 
+}
+user</em>agent = "Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US);"
+noise = "kxkxkxkxsh"</p>
+
+<p>cookies = ""
+transmissions = []
+i = 0</p>
+
+<h1>Reading transmissions.</h1>
+
+<p>while len(transmissions) &lt; 68:</p>
+
+<pre><code>print("[*] Step {}.".format(i))
+i += 1
+if len(cookies) &gt; 0:
+    r = requests.get(target_endpoint, headers=headers, cookies=cookies)
+else:
+    r = requests.get(target_endpoint, headers=headers)
+cookies = r.cookies
+
+transmission = None
+for cookie in cookies:
+    print("[*] Found cookie: {}={}".format(cookie.name, cookie.value))
+    if cookie.name == "transmissions" and cookie.value != "0":
+        transmission = urllib.parse.unquote(cookie.value.replace(noise, ""))
+if transmission is not None:
+    print("[*] Transmission value: {}".format(transmission))
+    transmissions.append(transmission)
+    transmissions = list(dict.fromkeys(transmissions)) # Removing duplicates.
+    print("[*] Different transmissions read: ".format(len(transmissions)))
+</code></pre>
+
+<p>print(len(transmissions))
+print(transmissions)</p>
+
+<h1>Composing flag.</h1>
+
+<p>flag = "p"
+char<em>index = 0
+while flag == "" or flag[-1] != "}":
+    for transmission in transmissions:
+        index = transmission[2:]
+        if index == str(char</em>index):
+            flag += transmission[1]
+            char_index += 1
+            print("[*] Composing flag: {}".format(flag))
+            break</p>
+
+<p>print("[*] The FLAG is: {}".format(flag))
+```</p>
+
+<p>The flag is the following.</p>
+
+<p><code>
+pctf{Down_With_the_Fallen,Carnivore,Telescope,It_Has_Begun,My_Demons}
+</code></p>

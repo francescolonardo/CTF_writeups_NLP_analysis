@@ -1,0 +1,67 @@
+<h2>Trapped Source</h2>
+
+<blockquote>
+  <p>Solved by Starry-Lord</p>
+</blockquote>
+
+<p><img src="https://i.imgur.com/QhaEep8.png" alt="challenge description" /></p>
+
+<p>When we open the devtools and check the network tab, we can already catch a script.js:</p>
+
+<p><img src="https://i.imgur.com/hV9DZ4t.png" alt="network tab" /></p>
+
+<p>script.js content:</p>
+
+<pre><code>currentPin = []
+
+const checkPin = () =&gt; {
+        pin = currentPin.join('')
+
+        if (CONFIG.correctPin == pin) {
+                fetch('/flag', {
+                        method: 'POST',
+                        headers: {
+                                'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                                'pin': CONFIG.correctPin
+                        })
+                })
+                .then((data) =&gt; data.json())
+                .then((res) =&gt; {
+                        $('.lockStatus').css('font-size', '8px')
+                        $('.lockStatus').text(res.message)
+                })
+                return
+        }
+
+        $('.lockStatus').text('INVALID!')
+        setTimeout(() =&gt; {
+                reset()
+        }, 3000)
+
+}
+
+const unlock = (pin) =&gt; {
+        currentPin.push(pin)
+
+        if (currentPin.length &gt; 4) return
+
+        $('.lockStatus').text(currentPin.join(' '))
+}
+
+const reset = () =&gt; {
+        currentPin.length = 0
+        $('.lockStatus').css('font-size', 'x-large')
+
+        $('.lockStatus').text('LOCKED')
+}
+</code></pre>
+
+<p>We can see some code that checks for a 4 digit pin and fetches the flag, depending on the pin being equal to the value of “CONFIG.correctPin” or not. Switching to the console, we can try and log the “CONFIG”, to see what comes back:</p>
+
+<p><img src="https://i.imgur.com/0NPqIRJ.png" alt="get variables" /></p>
+
+<p>Typing the correct pin and pressing enter returns our flag:</p>
+
+<p><img src="https://i.imgur.com/YmTsLrt.png" alt="flag for this challenge" /></p>

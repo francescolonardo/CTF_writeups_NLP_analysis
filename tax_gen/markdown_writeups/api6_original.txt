@@ -1,0 +1,7 @@
+<h1>API6</h1>
+
+<ul>
+<li>Use /apisix/batch-requests to SSRF to localhost only admin endpoint with the hardcoded key</li>
+<li>Use CRLF injection in Lua's HTTP library to bypass the X-Real-IP protection</li>
+<li>See <a href="./solve.py">solve.py</a></li>
+</ul>

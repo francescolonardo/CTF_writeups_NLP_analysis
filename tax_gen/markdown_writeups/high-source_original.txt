@@ -1,0 +1,30 @@
+<h1>TUCTF 2017 – High Source</h1>
+
+<ul>
+<li><strong>Category:</strong> web</li>
+<li><strong>Points:</strong> 25</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>This guy is getting wayyy too full of himself. He's called himself a master programmer, and he believes he has written a secure login function. Knock him off his high source.</p>
+  
+  <p><a href="http://highsource.tuctf.com/">http://highsource.tuctf.com/</a></p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>The login is performed via a JavaScript script (i.e. <code>scripts/login.js)</code>.</p>
+
+<p>Analyzing the code you can see the password that should be used to login:</p>
+
+<p><code>
+I4m4M4st3rC0d3rH4x0rsB3w43
+</code></p>
+
+<p>Using that password, you can find the flag:</p>
+
+<p><code>
+TUCTF{H1gh_S0urc3_3qu4ls_L0ng_F4ll}
+</code></p>

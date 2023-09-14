@@ -1,0 +1,83 @@
+<h1>XSPwn - Solution</h1>
+
+<p><strong>Author</strong>: zeyu2001</p>
+
+<p><strong>Category</strong>: Web</p>
+
+<ol>
+<li>There is a Use After Free (UAF) when deleting a node. The <code>HEAD</code> is never updated if the first index is removed.</li>
+</ol>
+
+<p><code>c
+int deleteNameAtIndex(int index) {
+    JARED *curr = HEAD;
+    JARED *prev = NULL;
+    int i = 0;
+    while (curr != NULL) {
+        if (i == index) {
+            prev-&gt;next = curr-&gt;next;
+            free(curr);
+            return 0;
+        }
+        prev = curr;
+        curr = curr-&gt;next;
+        i++;
+    }
+    return 1;
+}
+</code></p>
+
+<ol start="2">
+<li>Therefore, we can control <code>HEAD-&gt;name</code> by overwriting it in the next <code>malloc()</code> call in <code>insertSorted()</code>.</li>
+</ol>
+
+<p>```c
+int insertSorted(char *name) {</p>
+
+<pre><code>char *newName = malloc(strlen(name) + 1);
+strcpy(newName, name);
+</code></pre>
+
+<p>```</p>
+
+<ol start="3">
+<li>In WASM, there is no ASLR. We can predict the address where our XSS payload is inserted - this information can be obtained by debugging with Chrome DevTools.</li>
+</ol>
+
+<p>Notice that the <code>name</code> is written to memory, regardless of whether it passes the XSS check in <code>validateJared()</code>.</p>
+
+<p>```c
+char *newName = malloc(strlen(name) + 1);
+strcpy(newName, name);</p>
+
+<p>printf("Inserting: %s\n", newName);
+if (validateJared(newName)) {
+    return 1;
+}
+```</p>
+
+<p>We could make use of this by first "inserting" our XSS payload (which will fail but write the payload to memory nonetheless), then overwriting the <code>HEAD-&gt;name</code> to the address of this XSS payload. <code>getNameAtIndex(0)</code> will then return the XSS payload when displaying the table!</p>
+
+<p>For instance, if the first item we insert is our XSS payload, then the newly inserted item after the head node is deleted should have the name <code>\x20\x0e\x50\x00</code>.</p>
+
+<p>We could set a breakpoint after the <code>malloc</code> call and before the <code>strcpy</code> call. Notice that <code>$var8</code> is set immediately after <code>call $dlmalloc</code> - this would be the pointer to the newly allocated memory where the payload will be stored.</p>
+
+<p><img src="1.png" alt="1.png" /></p>
+
+<p>In this case, after htiting the breakpoint for the 4th time (since three names are inserted before the user input is processed), we could see the pointer to our XSS payload in <code>$var8</code>: 5246496 = 0x500e20</p>
+
+<p><img src="2.png" alt="2.png" /></p>
+
+<ol start="4">
+<li>Since the index here is randomized, we have a 10% chance of success:</li>
+</ol>
+
+<p><code>javascript
+if (numJareds &gt; MAX_JAREDS) {
+    console.log("Too many jareds!");
+    Module.ccall('deleteNameAtIndex', 'number', ['number'], [Math.floor(Math.random() * 10)]);
+    numJareds--;
+}
+</code></p>
+
+<p>We could simply do this multiple times until the index is 0.</p>

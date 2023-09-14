@@ -1,0 +1,57 @@
+<h1>Challenge Name</h1>
+
+<p>Author: <a href="https://github.com/roerohan">roerohan</a></p>
+
+<p>Brief Description</p>
+
+<h1>Requirements</h1>
+
+<ul>
+<li>PHP Local File Inclusion (LFI)</li>
+</ul>
+
+<h1>Source</h1>
+
+<ul>
+<li>http://web.zh3r0.ml:7777/</li>
+<li>The description on the website mentions <code>page</code> and <code>upload</code>.</li>
+</ul>
+
+<h1>Exploitation</h1>
+
+<p>The first part of the challenge is a sort of vague guesswork. In the challenge description, there are two words - <code>page</code> and <code>upload</code> - which the author wants you to notice. Also, when you view the homepage source, it has a comment <code>&lt;!-- get the 'page' :eyes: --&gt;</code>. 
+<br /></p>
+
+<p><img src="./static/img1.png" alt="comment" width="600"/></p>
+
+<p>So, the first try was to pass a query <code>page</code> in the flag. So, we tried to visit <code>http://web.zh3r0.ml:7777/?page=flag</code>. Here, we get a gif.
+<br /></p>
+
+<p>Now, since the description had the word <code>upload</code> in it, we tried to checkout if there is a page called upload, and there was!
+<br /></p>
+
+<p><img src="./static/img2.png" alt="upload" width="600"/></p>
+
+<p>Here, we can assume that we have to do some sort of local file inclusion. So we created a file called <code>payload.php</code>, and tried to <code>ls</code> the directory. We saw a lot of files called <code>flag</code>, so we just decided to print all files and just search on the browser. Here's the final payload:</p>
+
+<p><code>php
+&lt;?php
+system('find . -type f -exec cat {} +');
+?&gt;
+</code></p>
+
+<p>Now you can visit the route <code>/?page=payload</code> (name of the file you uploaded). This gives a page with a lot of stuff.
+<br /></p>
+
+<p><img src="./static/img3.png" alt="page" width="600"/></p>
+
+<p>So, the contents of all the files are now on the browser. All you have to do is open the source code and search for the flag format.
+<br /></p>
+
+<p><img src="./static/img4.png" alt="flag" width="600"/></p>
+
+<p>The flag is:</p>
+
+<p><code>
+zh3r0{h3y_d1d_y0u_upl04d_php_c0rr3ct1y???_84651320}
+</code></p>

@@ -1,0 +1,54 @@
+<h1>Sokosoko Secure Uploader</h1>
+
+<blockquote>
+  <h2>Description</h2>
+  
+  <p>I encrypted my file by using this <a href="#">service</a>. Attachment is the encrypted file, but I accidentally deleted the UUID of the file. All I remember is the UUID starts with 9e5a :(</p>
+  
+  <ul>
+  <li>[flag.png.encrypted]</li>
+  <li>[src.zip]</li>
+  </ul>
+  
+  <p>(Web, 100 points)</p>
+</blockquote>
+
+<h2>Description</h2>
+
+<p>We are given the URL of the <a href="#">service</a> where we can decrypt an encrypted image and the information about the UUID prefix <code>9e5a</code> needed to decrypt the image.</p>
+
+<p>![site.png]</p>
+
+<p>We are also provided with [src.zip] archive containing a source code of the entire site and with the file [flag.png.encrypted], which as the name suggests is an encrypted image of the searched flag.   </p>
+
+<h1>Solution</h1>
+
+<p>By a quick look at the [decrypt.php], I noticed a possibility of the <code>SQL Injection</code> inside <code>UUID POST data</code>.</p>
+
+<p><code>php
+$uuid = $_POST['uuid'];
+if (!is_string($uuid) || !is_uuid($uuid)) {
+  die('invalid UUID');
+}
+⋮
+$stmt = $pdo-&gt;query("SELECT key FROM decryption_key WHERE id = '$uuid'");
+</code>
+However, there is a function inside [functions.php] validating the correctness of the <code>UUID</code> input.</p>
+
+<p><code>php
+function is_uuid($str) {
+  if (strlen($str) !== 36) {
+    return false;
+  }
+  if ($str[8] !== '-' or $str[13] !== '-' or $str[18] !== '-' or $str[23] !== '-') {
+    return false;
+  }
+  return true;
+}
+</code></p>
+
+<p>So, we are forced to make an injection in <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code> format. <br />
+We would like to use the given information about UUID needed to decrypt the image, so our query should look like <code>SELECT id LIKE '9e5a%'</code>. <br />
+Comes out that we can do it by the following input: <code>'OR id/*-aaaa-aaaa-aaaa-*/LIKE'9e5a%</code>, which after uploading in tandem with the [flag.png.encrypted] returns an image with the flag inside.</p>
+
+<p>Flag: <strong>HarekazeCTF{k41k4n<em>j1kk4n</em>j1n615uk4n}</strong></p>

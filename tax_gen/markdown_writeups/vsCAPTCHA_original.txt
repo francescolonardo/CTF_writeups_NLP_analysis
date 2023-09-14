@@ -1,0 +1,49 @@
+<h1>vsCAPTCHA</h1>
+
+<h2>The App</h2>
+
+<p>vsCAPTCHA is secured by a special CAPTCHA kind of thing written in TypeScript and Deno.</p>
+
+<ol>
+<li><code>b1</code> and <code>b2</code> are initialized with a random number from 0-500</li>
+<li>app starts to listen to <code>POST</code> requests in <code>/captcha</code>
+<ol>
+<li>if Header <code>x-captcha-state</code> is set, it checks if body JSON value <code>solution</code> is equal to expected CAPTCHA</li>
+<li>expected CPATCHAs are stored in a Map <code>random JWT UUID</code> =&gt; expected</li>
+<li>If expeted value does not match <code>solution</code>, it returns and sets JWT field <code>failed</code> to <code>true</code></li>
+<li>else it generates a new CPATCHA, stores it in the map of expected value</li>
+<li>You can get the flag if you have more than 1000 CAPTCHA solves</li>
+</ol></li>
+</ol>
+
+<p>The CAPTCHA is generated with following code:</p>
+
+<p>```typescript
+const num1 = Math.floor(Math.random() * 7) + b1;
+const num2 = Math.floor(Math.random() * 3) + b2;</p>
+
+<p>const captchaText = <code>${num1} + ${num2}</code>;
+```</p>
+
+<h2>Tried solutions</h2>
+
+<h3>Brute force</h3>
+
+<p>The shown CAPTCHA is only 6 random Digits max. Because <code>b1</code> and <code>b2</code> are only initialized at startup of the application, they never change. If we have at least 1 CAPTCHA image, it sould be possible to try out what <code>b1</code> and <code>b2</code> is and then we can brute force a new captcha by just trying out all remaining expected values because the range is really low (just maximum of 15 for <code>num1</code> and maximum of 7 for <code>num2</code>).</p>
+
+<h4>Pitfalls</h4>
+
+<ul>
+<li>The JWT success counter is reset to 0 if the old token is invalid</li>
+<li>the expiry was not not extended for failed solving attempts which makes brute force on the original server more complicated</li>
+</ul>
+
+<h4>Problems</h4>
+
+<p>The Python code didn't work at first because of multiple bugs. I worked them out and it worked on the local setup but not on the CTF server beacuse the connection had ~500 ms delay and the token was reset to early. Then I tried to refactor my code and limit the try range but this only broke the code.</p>
+
+<h2>Considered solutions</h2>
+
+<h3>Cracking the random generator state/predicting random numbers</h3>
+
+<p>Because the random range is so small and non cryptographically secure random numbers were used, it might be possible to predict them. But not sure how to approach that.</p>

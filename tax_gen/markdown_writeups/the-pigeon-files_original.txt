@@ -1,0 +1,63 @@
+<h1>The Pigeon Files - Solution</h1>
+
+<p><strong>Author</strong>: zeyu2001</p>
+
+<p><strong>Category</strong>: Web</p>
+
+<ol>
+<li>Notice that <code>mootools</code> JavaScript library is used. This is vulnerable to client-side prototype pollution.</li>
+</ol>
+
+<p>```html</p>
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mootools/1.6.0/mootools-core.min.js"></script>
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mootools-more/1.6.0/mootools-more-compressed.js"></script>
+
+<p>```</p>
+
+<p>Refer to the <a href="https://github.com/BlackFan/client-side-prototype-pollution/blob/master/pp/mootools-more.md">PoC</a>.</p>
+
+<ol start="2">
+<li>Notice that if the request token is wrong, then the <code>request.accessGranted</code> attribute is never set and is thus undefined.</li>
+</ol>
+
+<p>```javascript
+if (note.startsWith(request.search)) {
+    request.result = note;
+}
+else {
+    request.result = null;
+}</p>
+
+<p>if (request.token === uuid) {
+    request.accessGranted = true;
+}</p>
+
+<p>return request;
+```</p>
+
+<p>By exploiting the prototype pollution vulnerability, we are able to pollute the <code>accessGranted</code> attribute and prevent the access denied error.</p>
+
+<p><code>javascript
+if (!request.accessGranted) {
+    output.textContent = "Access denied.";
+}
+else if (!request.result) {
+    output.textContent = "Note not found.";
+}
+else {
+    output.textContent = request.result;
+    setTimeout(() =&gt; {window.location.search = ""}, 5000);
+}
+</code></p>
+
+<ol start="3">
+<li>Notice that the note is "found" as long as <code>note.startsWith(request.search)</code>. This, combined with the fact that a navigation occurs (redirection after 5 seconds of viewing the note) on a successful search allows us to perform an XS leak.</li>
+</ol>
+
+<p>This attack is performed by inspecting <code>history.length</code> and is described <a href="https://xsleaks.dev/docs/attacks/navigations/">here</a></p>
+
+<p>As long as a navigation has occured, i.e. <code>history.length === 3</code>, our substring exists in the flag.</p>
+
+<p>Extract the full flag character by character: <code>SEE{w4k3_up_5h33pl3_1t's_obv10us}</code>.</p>

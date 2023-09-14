@@ -1,0 +1,31 @@
+<h1>2 of spades</h1>
+
+<blockquote>
+  <p>Solved by: Taz34</p>
+</blockquote>
+
+<p>Did a NIKTO scan on the target</p>
+
+<p><code>
+nikto -h http://172.17.15.117:443/
+</code></p>
+
+<p>and one of the lines in the result showed this :</p>
+
+<p><code>
++ /.env: .env file found. The .env file may contain credentials.
+</code></p>
+
+<p>so i headed to this sub directory</p>
+
+<p><img src="https://i.imgur.com/OpsJm7G.png" alt="" /></p>
+
+<p>inserted the file name in the URL</p>
+
+<p><code>
+http://172.17.15.117:443/3e6f0e21-7faa-429f-8a1d-3f715a520da4.png
+</code></p>
+
+<p><img src="https://i.imgur.com/BvCCwrW.png" alt="" /></p>
+
+<p>and we have the flag.</p>

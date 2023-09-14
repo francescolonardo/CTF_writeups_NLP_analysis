@@ -1,0 +1,14 @@
+<h2>grading</h2>
+
+<blockquote>
+  <p>Solved by: Taz34</p>
+</blockquote>
+
+<p>Simply login as <code>admin</code> using password <code>admin</code>
+Go to the simple quiz section and here we have the flag.</p>
+
+<p><img src="https://i.imgur.com/ppinHMz.png" alt="" /></p>
+
+<p><code>
+flag{th3_an5w3r_w4s_HSCTF_0bvi0us1y}
+</code></p>

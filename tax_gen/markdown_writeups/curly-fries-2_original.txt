@@ -1,0 +1,52 @@
+<h1>Curly Fries 2 - Web</h1>
+
+<p>Author - <a href="https://github.com/UnknownAbyss">UnknownAbyss</a></p>
+
+<p>Requirements : cURL</p>
+
+<hr />
+
+<p>The challenge gives us the following text -</p>
+
+<blockquote>
+  <p>Normal fries are nice, but everything's better with a curl in it. Why do logos make things so recognizable?</p>
+</blockquote>
+
+<p><code>
+very.uniquename.xyz:2052    
+</code></p>
+
+<h4>Upon opening the link we see -</h4>
+
+<p align="center"><img src="https://i.imgur.com/h0cj6FI.png" alt="Chall Image"></p>
+
+<p>We see the logo of xbox and linux on the screen. This is me accessing this page on a windows device</p>
+
+<p>Putting User-Agent as Linux...</p>
+
+<p><code>sh
+curl -H "User-Agent: Linux" very.uniquename.xyz:2052
+</code></p>
+
+<p>...we get this back</p>
+
+<p>```html
+...
+<body></p>
+
+<article class="xbox"><img src="https://compass-ssl.xbox.com/assets/f8/17/f817aa8c-02c1-4ba9-84a8-20d357d52939.jpg?n=Microsoft-Store-2018_Feature-0_Pay_1040x585.jpg" alt="Xbox"></article>
+
+<p></body>
+...
+```</p>
+
+<p>We see the linux logo is gone. Hence we put user agent as both Linux and Xbox</p>
+
+<p><code>sh
+curl -H "User-Agent: Linux Xbox" very.uniquename.xyz:2052
+</code></p>
+
+<p>This gives us the flag inside the body of the page...
+<code>
+dsc{1m4g1n3_l1nux_0n_4n_xb0x}
+</code></p>

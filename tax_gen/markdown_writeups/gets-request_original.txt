@@ -1,0 +1,35 @@
+<h2>GETS Request</h2>
+
+<blockquote>
+  <p>Solved By : thewhiteh4t</p>
+</blockquote>
+
+<ul>
+<li>The challenge hints at memory issues</li>
+<li>we can enter an integer and the web app sends a reply</li>
+<li>there are few checks which the web app makes:</li>
+</ul>
+
+<p><code>javascript
+if(!req.query.n) {
+    res.status(400).send('Missing required parameter n');
+    return;
+}
+</code>
+* so <code>n</code> cannot be blank</p>
+
+<p>```javascript
+const BUFFER_SIZE = 8;</p>
+
+<p>if(req.query.n.length &gt; BUFFER_SIZE) {
+    res.status(400).send('Requested n too large!');
+    return;
+}
+```</p>
+
+<ul>
+<li>so max length of <code>n</code> can be <code>8</code></li>
+<li>the web app does not check for duplicate parameters, so we can send another n along with the first</li>
+</ul>
+
+<p><img src="https://i.imgur.com/wyyLaq7.png" alt="" /></p>

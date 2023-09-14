@@ -1,0 +1,103 @@
+<h1>CCC</h1>
+
+<p>Author: <a href="https://github.com/roerohan">roerohan</a></p>
+
+<h2>Description</h2>
+
+<p>This challenge is based on Path Traversal and JWTs.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>Docker: <a href="./Dockerfile">Dockerfile</a></li>
+<li>Knowledge of JWT</li>
+</ul>
+
+<h2>Sources</h2>
+
+<p><code>
+You can steal a car if you steal its key.
+</code></p>
+
+<h2>Exploit</h2>
+
+<p>First, in the website source, you can see that there's a route to login (<code>/login</code>) and a route to get the names of the admins (<code>/adminNames</code>). So, when you try to visit <code>/login</code>, you see a form. Post that and check the response on the Network Tab in your browser. You can see there's a header called <code>token</code> which stores a JWT. You can decode the token (maybe on <a href="https://jwt.io">jwt.io</a>) to see that the payload is of this format (I typed username: asd, password: asd):</p>
+
+<p><code>
+{
+  "username": "nfq",
+  "password": "nfq",
+  "admin": "snyfr",
+  "iat": 1593506966
+}
+</code></p>
+
+<p>We can see that the <code>username</code> changed from <code>asd</code> to <code>nfq</code>. So this hints that this could be <code>rot13</code>. When you apply the <code>rot13</code> cipher on the admin value <code>snyfr</code>, you see that it returns a string <code>false</code>. So, we can change this to a rot13 encrypted string for <code>true</code>, but to do that, we need the JWT secret.
+<br /></p>
+
+<p>On going back to the page, you see there's a route called <code>/adminNames</code>. It downloads a file for you, which has sort of a URL: <code>csivitu/authorized_users/blob/master/</code>. Seems familiar? This looks like a GitHub URL. So, if you visit that repository on GitHub, and checkout the <code>root</code> file <a href="https://github.com/csivitu/authorized_users/blob/master/csivit/root">here</a>, you can see a list of usernames.</p>
+
+<p><code>
+thebongy
+roerohan
+namsnath
+sudo-nan0-RaySK
+theProgrammerDavid
+sauravhiremath
+</code></p>
+
+<p>These are the usernames of the website admins! Now, in the JWT you were creating, you can change the <code>username</code> key to a rot13 encrypted version of one of these, for example, <code>ebrebuna</code> is the rot13 encrypted ciphertext for <code>roerohan</code>. Here's what our JWT payload looks like now:</p>
+
+<p><code>
+{
+  "username": "ebrebuna",
+  "password": "nfq",
+  "admin": "gehr",
+  "iat": 1593506966
+}
+</code></p>
+
+<p>But, we still need the JWT secret. If you observe the request on <code>/adminNames</code>, you see that it actally redirects to <code>/getFile?file=admins</code>. This route seems suspicious. We can try to include other files using this. When you try <code>/getFile?file=.env</code>, it returns <code>No such file or directory: /app/public/.env</code>. So, we can try <code>../.env</code> to come out of the public folder. You get a file in return, which is the <code>.env</code> containing the secret!</p>
+
+<p><code>
+JWT_SECRET=Th1sSECr3TMu5TN0Tb3L43KEDEv3RRRRRR!!1
+</code></p>
+
+<p>Use this secret to create a new token. Now, visit the <code>/admin</code> route. It says:</p>
+
+<p><code>
+{
+  "success": false,
+  "message": "Invalid Token, Headers?"
+}
+</code></p>
+
+<p>Which means, you'll have to pass the JWT in the headers. Auth tokens are generally passed in the Authorization header, so let's try that. When you pass the new formed JWT in the Authorization header. You can do this using python.</p>
+
+<p>```python</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>import requests
+      r= requests.get('http://localhost:3000/admin', headers={'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVicmVidW5hIiwicGFzc3dvcmQiOiJuZnEiLCJhZG1pbiI6ImdlaHIiLCJpYXQiOjE1OTM1MDY5NjZ9.LCbBdHCDlx64bTFeErtBAeoL000HIqyFStvUxlTtVE8'})
+      r.text
+      ```</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>The text in the response is:</p>
+
+<p><code>
+Hey roerohan! Here's your flag: pfvpgs{1a_gu3_3aq_1g_q0rfa'g_3i3a_z4gg3e}
+</code></p>
+
+<p>rot13 decrypt this flag to get the real flag.
+<br /></p>
+
+<p>The flag is:</p>
+
+<p><code>
+csictf{1n_th3_3nd_1t_d0esn't_3v3n_m4tt3r}
+</code></p>

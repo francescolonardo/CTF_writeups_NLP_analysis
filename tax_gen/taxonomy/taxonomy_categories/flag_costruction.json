@@ -1,0 +1,12 @@
+{
+    "Flag Construction": {
+        "Description": "Building the flag or solution incrementally as more information is gathered.",
+        "Actions": [
+            "PIECE TOGETHER THE FLAG",
+            "ITERATIVE FLAG BUILDING",
+            "REVERSE ENGINEERING",
+            "CRYPTOGRAPHIC ANALYSIS",
+            "MATHEMATICAL ANALYSIS"
+        ]
+    }
+}

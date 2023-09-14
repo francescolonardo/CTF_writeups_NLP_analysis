@@ -1,0 +1,29 @@
+<h1>login</h1>
+
+<p>Author: <a href="https://github.com/roerohan">roerohan</a></p>
+
+<p>Basic SQL Injection.</p>
+
+<h1>Requirements</h1>
+
+<ul>
+<li>Basic knowledge of SQL Injection.</li>
+</ul>
+
+<h1>Source</h1>
+
+<ul>
+<li>https://login.2020.redpwnc.tf/</li>
+</ul>
+
+<h1>Exploitation</h1>
+
+<p>This is a beginner SQL Injection challenge. Just pass the username and the password as <code>' or 1=1 --</code>, it will return the flag in an <code>alert</code>.</p>
+
+<p><img src="./static/img1.png" alt="disas main" width="600"/></p>
+
+<p>The flag is:</p>
+
+<p><code>
+flag{0bl1g4t0ry_5ql1}
+</code></p>

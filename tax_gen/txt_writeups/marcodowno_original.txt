@@ -1,0 +1,35 @@
+Marcodowno
+Category: Web
+105 Points
+158 Solves
+Problem description:
+Someone told me to use a lib, but real developers rock regex one-liners.
+
+So it's XSS challenge and we basically have to XSS a page and send them a URL popping alert(1) to get the flag
+Here is the source of the webpage. It's apparently a "Markdown" converter which uses regex
+```html
+
+
+
+
+
+
+Input:
+
+
+Update preview
+
+
+Preview:
+
+```
+In the first replace, it removes all the open (<) HTML tags. How do we XSS without open tags? 
+The replace that caught my eye was
+
+replace(/!\[([^\]]+)\]\((https?:\/\/[a-zA-Z0-9./?#]+)\)/g, '<img src="$2" alt="$1"/>')
+
+It woulb be used to transform the image tags in Markdown such as ![img1](http://url) into <img src="http://url" alt="img1">. The URL is decently sanitized but alt is not. We can inject a double quote and break out of the alt tag, inject a event handler which would then pop up an XSS. 
+Here was the final URL
+
+http://marcodowno-01.play.midnightsunctf.se:3001/markdown?input=![" onerror="alert(1)"](http://x)
+

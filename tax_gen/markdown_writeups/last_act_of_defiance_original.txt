@@ -1,0 +1,29 @@
+<h1>Last Act of Defiance</h1>
+
+<h3>Category: Web Exploitation</h3>
+
+<h3>Author: Greg Vance (Expergefied)</h3>
+
+<h2>Description</h2>
+
+<p>We received a message from the founder of Flag West. They said that there was one flag that they were able to hide before Mom &amp; Pops got them all. The message said that it is hidden somewhere in the website, and that you just need to inspect it a little. Flag West was one of the first aquisitions that Mom &amp; Pops made, so it is surprising to hear that there still might be a flag left. Get in there and find that flag, make Flag West's last act of defiance worth something.</p>
+
+<h2>Hints</h2>
+
+<ol>
+<li>Use Dirb</li>
+</ol>
+
+<h2>Solution</h2>
+
+<ol>
+<li>The flag is broken up into three parts that can be found by inspecting the code.</li>
+<li>The first part is found as a comment within the HTML.</li>
+<li>The second part of the flag is found as a comment in the style.css file</li>
+<li>By using Dirb the thrird part of the flag can be found in the path academic/developers/secrets/final.txt</li>
+<li>Combine all of the parts for the full flag submission</li>
+</ol>
+
+<h2>Flag</h2>
+
+<p>magpie{w3<em>5pi7</em>1n<em>7h3</em>f4c3<em>0f</em>7yr4nny}</p>

