@@ -1,0 +1,47 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Corporate MFA",
+        "AttackerCapabilities": [
+            "Ability to analyze and manipulate serialized objects",
+            "Knowledge of PHP and its functions",
+            "Ability to perform web requests"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Object injection vulnerability in the unserialize function",
+                "Lack of input validation and sanitization"
+            ],
+            "SecurityMeasures": [
+                "String comparison for username verification",
+                "Bcrypt password hashing for password verification"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit the object injection vulnerability to manipulate the MFA token",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by injecting a manipulated object into the unserialize function, they can bypass the MFA token verification.",
+                    "Action": "The attacker crafts a serialized object payload that sets the correct MFA token value as the _correctValue property of the user data.",
+                    "Result": "The unserialize function processes the manipulated object, setting the MFA token value to match the correct value.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Construct the userdata parameter with the manipulated object payload",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by encoding the manipulated object payload as base64 and passing it as the userdata parameter in the URL, they can exploit the vulnerability and gain access to the system.",
+                    "Action": "The attacker encodes the manipulated object payload as base64 and appends it to the URL as the userdata parameter.",
+                    "Result": "The web application processes the userdata parameter, triggering the unserialize function with the manipulated object payload and bypassing the MFA token verification.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

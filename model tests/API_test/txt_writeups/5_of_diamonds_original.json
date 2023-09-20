@@ -1,0 +1,45 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "5 of diamonds",
+        "AttackerCapabilities": [
+            "SQL Injection",
+            "Use of sqlmap",
+            "Burp Suite"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SQL Injection in the login page"
+            ],
+            "SecurityMeasures": [
+                "Input validation on the login page"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit the SQL Injection vulnerability to retrieve the password from the database.",
+                "ToolsUsed": "sqlmap",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the password can be retrieved through SQL Injection.",
+                    "Action": "The attacker uses sqlmap to send SQL Injection payloads and analyze the response to extract the password from the database.",
+                    "Result": "The attacker successfully retrieves the password from the database.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Bypass the login page using the retrieved password.",
+                "ToolsUsed": "Burp Suite",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that bypassing the login page with the retrieved password will grant access to the system.",
+                    "Action": "The attacker modifies the password field in the login request with the retrieved password and sends the request using Burp Suite.",
+                    "Result": "The attacker successfully bypasses the login page and gains access to the system.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

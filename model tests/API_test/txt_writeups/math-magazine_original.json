@@ -1,0 +1,94 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Math magazine",
+        "AttackerCapabilities": [
+            "Knowledge of XSS vulnerability",
+            "Ability to analyze HTML source code",
+            "Ability to manipulate cookies"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "XSS vulnerability",
+                "Insecure cookie handling"
+            ],
+            "SecurityMeasures": [
+                "None specified"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit the XSS vulnerability to inject malicious LaTeX script",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to exploit the XSS vulnerability to execute arbitrary JavaScript code on the target's browser.",
+                    "Action": "The attacker crafts a LaTeX script payload that will execute JavaScript code when viewed on the website.",
+                    "Result": "The attacker successfully injects the malicious LaTeX script into the website.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Submit the malicious LaTeX script to trigger XSS and leak admin cookies",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to trigger the XSS vulnerability and retrieve the admin cookies.",
+                    "Action": "The attacker submits the malicious LaTeX script and observes the resulting output.",
+                    "Result": "The attacker successfully triggers the XSS vulnerability and retrieves the admin cookies.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Analyze the website's HTML source code",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to inspect the HTML source code for potential vulnerabilities or hidden information.",
+                    "Action": "The attacker analyzes the HTML source code of the website.",
+                    "Result": "The attacker discovers an interesting comment with a link to download the src.zip file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Download and analyze the source code",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects to find vulnerabilities or sensitive information in the website's source code.",
+                    "Action": "The attacker downloads and analyzes the source code from the src.zip file.",
+                    "Result": "The attacker discovers an if statement where the real flag is set into a cookie.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Craft and set malicious cookies to steal admin session",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to steal the admin session by manipulating cookies.",
+                    "Action": "The attacker crafts and sets the necessary cookies to mimic the admin session.",
+                    "Result": "The attacker successfully steals the admin session by changing their cookie.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 6,
+                "Description": "Access the list functionality to retrieve the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects to find the flag within the list functionality.",
+                    "Action": "The attacker accesses the list functionality with the stolen admin session.",
+                    "Result": "The attacker retrieves the flag from the FLAG cookie.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

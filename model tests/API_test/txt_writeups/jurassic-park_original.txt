@@ -1,0 +1,14 @@
+Jurrassic Park
+
+Solved By : Starry-Lord
+
+This easy challenge made me (finally) realise John Hammond has the same name as the Owner of the Jurrassic Park in the first movies. 
+Pretty cool site by the way:
+
+
+content of /robots.txt
+
+User-agent: *
+Disallow: /ingen/
+
+The flag was here http://challenge.nahamcon.com/ingen/flag.txt

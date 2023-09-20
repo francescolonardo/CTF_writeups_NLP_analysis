@@ -1,0 +1,58 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Blind XPath injection",
+        "AttackerCapabilities": [
+            "Understanding of XPath language and syntax",
+            "Knowledge of XPath injection techniques",
+            "Ability to identify and exploit blind injection vulnerabilities"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Blind XPath injection"
+            ],
+            "SecurityMeasures": [
+                "Unknown or insufficient input validation in the application's XPath queries",
+                "Lack of proper error handling or feedback in the application's response to XPath queries"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker starts by analyzing the web application and identifies that it is vulnerable to blind XPath injection.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal in this step is to confirm the existence of a blind XPath injection vulnerability.",
+                    "Action": "The attacker inputs a payload into an input field, such as ' or 1=1 -- '.",
+                    "Result": "The application's response indicates whether the injected XPath query returned a true or false result.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker proceeds to extract information from the application's database using blind XPath injection.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal in this step is to extract sensitive information from the database.",
+                    "Action": "The attacker carefully crafts an XPath payload to extract specific information, such as the username or password.",
+                    "Result": "By observing the application's response, the attacker can determine whether their XPath query returned a true or false result.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker automates the extraction process by using automated scripts or tools.",
+                "ToolsUsed": "XPath injection automation tools, such as 'sqlmap' or custom scripts",
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal in this step is to streamline the extraction process and gather more data efficiently.",
+                    "Action": "The attacker uses automated tools or scripts to iterate through different XPath payloads and extract data from the database.",
+                    "Result": "The automated process allows the attacker to gather a large amount of data without manual effort.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

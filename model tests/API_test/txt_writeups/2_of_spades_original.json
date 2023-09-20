@@ -1,0 +1,58 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "2 of spades",
+        "AttackerCapabilities": [
+            "Knowledge of NIKTO scanning tool",
+            "Ability to identify vulnerabilities in scan results",
+            "Ability to access files or directories on a web application"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Exposed .env file",
+                "Lack of access control to specific directories or files"
+            ],
+            "SecurityMeasures": [
+                "Unknown"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker performs a NIKTO scan on the target web application to identify potential vulnerabilities.",
+                "ToolsUsed": "NIKTO",
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to find vulnerabilities in the web application.",
+                    "Action": "The attacker runs the NIKTO scan on the target web application.",
+                    "Result": "NIKTO scan results show the presence of a .env file, which may contain credentials.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker accesses the subdirectory containing the .env file.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to access the .env file and potentially obtain credentials.",
+                    "Action": "The attacker inserts the file name in the URL to access the subdirectory.",
+                    "Result": "The attacker successfully accesses the subdirectory and finds the .env file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker retrieves the flag from the accessed .env file.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to find the flag within the .env file.",
+                    "Action": "The attacker retrieves the flag from the .env file.",
+                    "Result": "The attacker successfully obtains the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

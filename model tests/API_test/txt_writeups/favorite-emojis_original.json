@@ -1,0 +1,50 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Prerender dynamic rendering leads to SSRF",
+        "AttackerCapabilities": [
+            "Understanding of SSRF vulnerabilities",
+            "Knowledge of Nginx configuration",
+            "Ability to perform XSS attacks",
+            "Familiarity with HTTP headers and redirects"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Server-side Request Forgery (SSRF)",
+                "Cross-Site Scripting (XSS)"
+            ],
+            "SecurityMeasures": [
+                "Dynamic rendering using prerender",
+                "HTTP User-Agent header validation",
+                "HTTP Host header validation",
+                "Port-based access restrictions"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit the SSRF vulnerability to bypass port-based access restrictions",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to bypass the port-based access restrictions to directly access the API server at port 8000.",
+                    "Action": "The attacker sets the host header in the HTTP request to their own controlled site and includes a redirect to the API server.",
+                    "Result": "The Nginx server follows the redirect and the renderer's browser is redirected to the attacker's second exploit page.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Perform XSS attack within the renderer to access the iframe's contents",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to access the contents of the iframe that loads the API server's URL.",
+                    "Action": "The attacker includes an XSS payload in the onload handler of the iframe to fetch the iframe's contents and send them to the attacker-controlled site.",
+                    "Result": "The attacker successfully fetches the contents of the iframe, which includes the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

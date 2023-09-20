@@ -1,0 +1,59 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "3 of hearts",
+        "AttackerCapabilities": [
+            "Knowledge of HTTP request smuggling",
+            "Ability to craft HTTP requests",
+            "Ability to use command-line tools (e.g., nc)",
+            "Knowledge of BurpSuite"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "HTTP request smuggling"
+            ],
+            "SecurityMeasures": [
+                "Apache traffic server 7.1.1",
+                "Nginx server 1.15.5"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploiting HTTP request smuggling through CLI",
+                "ToolsUsed": "nc",
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by injecting empty spaces between two GET requests, they can bypass the server's request handling and view the content of the internal website.",
+                    "Action": "The attacker crafts a malicious request using the CLI command and sends it to the target IP:33337.",
+                    "Result": "The first request results in a 400 error, but the second request successfully bypasses the server and displays the content of the internal website.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploiting HTTP request smuggling through BurpSuite",
+                "ToolsUsed": "BurpSuite",
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by intercepting the request using BurpSuite and modifying the 'Host' header to 'threeofhearts.ctf.net', they can view the content of the internal website.",
+                    "Action": "The attacker intercepts the request in BurpSuite, modifies the 'Host' header, and forwards the request.",
+                    "Result": "The request is successfully forwarded, and the content of the internal website is displayed.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploiting HTTP request smuggling to access /private.php",
+                "ToolsUsed": "BurpSuite",
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by splitting the request and crafting the right cookie, they can access /private.php and obtain the flag.",
+                    "Action": "The attacker crafts a request with a specific cookie and sends it to the target.",
+                    "Result": "The server responds with the necessary headers in /out/save.txt, including the admin headers. The attacker obtains the un-guessable page link for the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

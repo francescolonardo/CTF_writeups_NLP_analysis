@@ -1,0 +1,58 @@
+{
+"AttackModel": {
+    "NameOfTheChallenge": "Madlibbin",
+    "AttackerCapabilities": [
+        "Knowledge of Python",
+        "Understanding of Flask framework",
+        "Ability to analyze code and identify vulnerabilities"
+    ],
+    "Target": {
+        "Type": "Web Application",
+        "Vulnerabilities": [
+            "Injection vulnerability in Python's "".format(args=request.args) function",
+            "Flask debug mode enabled"
+        ],
+        "SecurityMeasures": [
+            "None mentioned in the writeup"
+        ]
+    },
+    "Steps": [
+        {
+            "StepNumber": 1,
+            "Description": "Exploit the injection vulnerability in the template string to execute arbitrary code.",
+            "ToolsUsed": null,
+            "StepDetails": {
+                "Hypothesis": "The attacker is attempting to exploit the injection vulnerability to execute code and gain access to sensitive information.",
+                "Action": "Craft a template string that will invoke the desired chain of properties to access the secret_key value.",
+                "Result": "By running the server locally and using a script, the attacker successfully identifies the chain of properties that leads to the secret_key value.",
+                "Success": "Success",
+                "FailingReason": null
+            }
+        },
+        {
+            "StepNumber": 2,
+            "Description": "Retrieve the secret_key value.",
+            "ToolsUsed": "Script from https://github.com/PequalsNP-team/pequalsnp-team.github.io/blob/master/assets/search.py",
+            "StepDetails": {
+                "Hypothesis": "The attacker's goal is to retrieve the secret_key value.",
+                "Action": "Run the search.py script to find the chain of properties that leads to the secret_key value.",
+                "Result": "The script successfully identifies the chain of properties and retrieves the secret_key value.",
+                "Success": "Success",
+                "FailingReason": null
+            }
+        },
+        {
+            "StepNumber": 3,
+            "Description": "Obtain the flag.",
+            "ToolsUsed": null,
+            "StepDetails": {
+                "Hypothesis": "The attacker's goal is to obtain the flag.",
+                "Action": "Use the secret_key value to access the flag.",
+                "Result": "The attacker successfully obtains the flag: actf{traversedtheworldandthesevenseas}",
+                "Success": "Success",
+                "FailingReason": null
+            }
+        }
+    ]
+}
+}

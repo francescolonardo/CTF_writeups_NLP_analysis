@@ -1,0 +1,45 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Filtered SQLite injection",
+        "AttackerCapabilities": [
+            "Knowledge of SQL syntax",
+            "Understanding of SQL injection vulnerabilities",
+            "Ability to manipulate SQL queries"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SQLite injection vulnerability"
+            ],
+            "SecurityMeasures": [
+                "Input filtering to prevent SQL injection"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Craft a SQL injection payload to bypass the input filtering.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to inject malicious SQL code that alters the original query to retrieve sensitive data.",
+                    "Action": "Craft a payload that exploits the SQLite injection vulnerability by using the '||' operator to concatenate strings and the 'trim' function to ignore the 'AND' condition.",
+                    "Result": "The attacker successfully injects a payload that alters the query and retrieves the data of the 'admin' user.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Access the filter page with the manipulated query.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to test if the manipulated query is successful in bypassing the filter and retrieving the desired data.",
+                    "Action": "Access the filter page with the manipulated query.",
+                    "Result": "The attacker successfully accesses the filter page and retrieves the data of the 'admin' user.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

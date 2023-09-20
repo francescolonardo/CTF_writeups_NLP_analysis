@@ -1,0 +1,50 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Beginners web",
+        "AttackerCapabilities": [
+            "Knowledge of JavaScript",
+            "Understanding of request manipulation",
+            "Ability to exploit JavaScript prototype pollution",
+            "Understanding of promises and asynchronous programming",
+            "Ability to identify and exploit vulnerabilities in web applications"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Prototype pollution",
+                "Insecure session management",
+                "Insufficient input validation"
+            ],
+            "SecurityMeasures": [
+                "Session management",
+                "Input validation"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploiting prototype pollution to control request.body.converter",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to manipulate the request body and control the 'converter' parameter.",
+                    "Action": "The attacker sets '__defineSetter__' on 'converters' with their sessionID as the first parameter.",
+                    "Result": "The attacker gains control over the 'converter' parameter.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Manipulating the promise resolution and error handling",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to set 'flagConverted' on the resolved promise with their sessionID.",
+                    "Action": "The attacker sets 'flagConverted' on the resolved promise using their sessionID.",
+                    "Result": "The promise gets resolved, an error is printed, and the attacker obtains the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

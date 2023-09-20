@@ -1,0 +1,101 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Easy PHP",
+        "AttackerCapabilities": [
+            "Knowledge of PHP code execution vulnerabilities",
+            "Ability to craft malicious payloads",
+            "Understanding of base64 encoding and decoding"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Remote Code Execution (RCE) using /e modifier in preg_replace",
+                "Lack of input validation on user-supplied payload",
+                "Insecure file handling allowing arbitrary file read"
+            ],
+            "SecurityMeasures": [
+                "Input validation on user-supplied payload to prevent dangerous PHP functions",
+                "Restrictions on dangerous PHP functions in is_payload_danger() function"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Connect to http://easy-php.darkarmy.xyz/?lmao to retrieve the PHP code.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to identify the presence of any additional functionality or vulnerabilities in the PHP code.",
+                    "Action": "Access the /?lmao endpoint to retrieve the PHP code.",
+                    "Result": "Obtain the PHP code that contains the vulnerable logic.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Craft a payload to execute arbitrary PHP code using the preg_replace vulnerability.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to exploit the /DarkCON/e modifier in the preg_replace function to execute arbitrary PHP code.",
+                    "Action": "Craft a payload by specifying the 'bruh' and 'nic3' GET parameters.",
+                    "Result": "Execute the specified PHP code and obtain the desired output.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Attempt to execute system commands using the preg_replace vulnerability.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to execute system commands to gain further control over the target system.",
+                    "Action": "Attempt to execute system commands like 'system('id')' using the preg_replace vulnerability.",
+                    "Result": "The attempt is blocked by the is_payload_danger() function.",
+                    "Success": "Failed",
+                    "FailingReason": "Blocked by the is_payload_danger() function"
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Identify available file handling functions for reading arbitrary files.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to find a way to read arbitrary files on the server.",
+                    "Action": "Analyze the code to identify available file handling functions.",
+                    "Result": "Discover the availability of fread and fopen functions for file reading.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Read the contents of the config.php file using the fread and fopen functions.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to read the sensitive contents of the config.php file.",
+                    "Action": "Craft a payload to read the config.php file using the fread and fopen functions.",
+                    "Result": "Obtain the base64-encoded contents of the config.php file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 6,
+                "Description": "Decode and analyze the base64-encoded contents of the config.php file.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects to find useful information or code within the config.php file.",
+                    "Action": "Decode the base64-encoded contents of the config.php file.",
+                    "Result": "Discover the source code of the is_payload_danger() function.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 7,
+                "Description": "Use the glob function to find interesting files.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to find additional files of interest on the server.",
+                    "Action": "Craft a payload using the glob function to search for files with the '.php' extension.",
+                    "Result": "Obtain the name of an interesting file ('flag210

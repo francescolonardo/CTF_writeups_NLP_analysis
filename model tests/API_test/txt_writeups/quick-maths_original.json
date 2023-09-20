@@ -1,0 +1,71 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Quick Maths",
+        "AttackerCapabilities": [
+            "Knowledge of web application vulnerabilities",
+            "Understanding of PHP eval() function",
+            "Ability to execute system commands"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Use of PHP eval() function",
+                "Lack of input validation",
+                "Command injection"
+            ],
+            "SecurityMeasures": [
+                "Unknown"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Trigger an error and discover the use of PHP eval() function",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By causing an error, the attacker expects to uncover the use of PHP eval() function.",
+                    "Action": "Send a POST request with a malformed statement to the target web application.",
+                    "Result": "The response includes a syntax error message indicating the use of PHP eval() function.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit the PHP eval() function to execute commands",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to execute system commands using the PHP eval() function.",
+                    "Action": "Send a POST request with a statement parameter containing a system command to the target web application.",
+                    "Result": "The response includes the output of the executed command.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "List the directory to gather information",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to gather information about the directory structure and files.",
+                    "Action": "Send a POST request with a statement parameter containing a command to list the directory.",
+                    "Result": "The response includes a list of files and directories in the current directory.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Print the index.php file to discover the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to view the contents of the index.php file to find the flag.",
+                    "Action": "Send a POST request with a statement parameter containing a command to print the index.php file.",
+                    "Result": "The response includes the contents of the index.php file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

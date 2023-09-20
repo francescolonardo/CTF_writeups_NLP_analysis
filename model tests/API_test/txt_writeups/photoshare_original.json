@@ -1,0 +1,75 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Photoshare",
+        "AttackerCapabilities": [
+            "Knowledge of web technology",
+            "Ability to read and understand HTML code",
+            "Familiarity with Python programming language",
+            "Ability to perform basic web requests"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure password handling",
+                "Predictable session IDs",
+                "Insufficient access controls"
+            ],
+            "SecurityMeasures": [
+                "Use of HTML form for login",
+                "Masked password input field",
+                "Use of secret question for password verification",
+                "Usage of session IDs for authentication"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Extract necessary information from the website's HTML code.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By analyzing the HTML code, the attacker can identify the fields and values required for login.",
+                    "Action": "Using regular expressions, the attacker extracts the secret question, answer, field name, and token from the HTML code.",
+                    "Result": "The attacker obtains the necessary information for the login process.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Brute force the password using the extracted information.",
+                "ToolsUsed": "Python",
+                "StepDetails": {
+                    "Hypothesis": "By iterating through a list of possible passwords, the attacker can find the correct password for the user 'jack'.",
+                    "Action": "The attacker runs a Python script that tries different combinations of year and month values as the password.",
+                    "Result": "The attacker successfully determines the password for the user 'jack': 195408.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploit the predictable session IDs to impersonate the 'admin' user.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By manipulating the session ID, the attacker can impersonate the 'admin' user.",
+                    "Action": "The attacker replaces the session ID hash for 'jack' with the hash for 'admin' ('06d6d78ec1dd8f97a0475ecfd034c55c').",
+                    "Result": "The attacker successfully changes the session ID to impersonate the 'admin' user.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Access restricted content by directly accessing image URLs.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By directly accessing the URLs of images associated with the 'admin' user, the attacker can gather information about the admin.",
+                    "Action": "The attacker accesses the URL for an image with ID 3, which reveals the name 'Mr. Tashakkor' as the admin's name.",
+                    "Result": "The attacker successfully obtains the name of the admin: 'Mr. Tashakkor'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

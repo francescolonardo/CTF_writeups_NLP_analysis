@@ -1,0 +1,59 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "RWDN",
+        "AttackerCapabilities": [
+            "Ability to upload files",
+            "Knowledge of file inclusion vulnerabilities",
+            "Knowledge of Apache configuration"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Improper handling of req.files in check.js",
+                "File inclusion vulnerability in app.post('/upload')",
+                "Arbitrary file read vulnerability"
+            ],
+            "SecurityMeasures": [
+                "None mentioned in the writeup"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit the improper handling of req.files in check.js to upload an .htaccess file.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to upload an .htaccess file to gain control over the server configuration.",
+                    "Action": "The attacker uploads an .htaccess file using the invalid req.files[req.query.formid] parameter.",
+                    "Result": "The .htaccess file is successfully uploaded.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit the file inclusion vulnerability in app.post('/upload') to read arbitrary files.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to read sensitive files on the server.",
+                    "Action": "The attacker crafts a payload using Redirect 307 and base64 encoding to read files like /etc/passwd.",
+                    "Result": "The attacker successfully reads the contents of the /etc/passwd file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploit the ExtFilterDefine configuration in apache.conf to achieve code execution.",
+                "ToolsUsed": "solv.py",
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to execute arbitrary code on the server.",
+                    "Action": "The attacker combines the output filter and LD_PRELOAD to execute code when running gzip.",
+                    "Result": "The attacker successfully achieves code execution on the server.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

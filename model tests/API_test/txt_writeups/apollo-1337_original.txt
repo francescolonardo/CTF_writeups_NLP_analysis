@@ -1,0 +1,135 @@
+Apollo 1337
+
+Solved By : Nigamelastic and thewhiteh4t
+
+
+https://space.sdc.tf/
+On view the page source we find something interesting:
+
+```javascript
+
+```
+* on performing a GET request with :
+json
+{
+    "GET":{
+        "scheme":"https",
+        "host":"space.sdc.tf",
+        "filename":"/api/status",
+        "remote":{
+            "Address":"172.67.178.219:443"
+        }
+    }
+}
+
+
+we get a response
+
+json
+{
+    "status":"health",
+    "longStatus":"Healthy. All routes are functioning properly.",
+    "version":"1.0.0"
+}
+
+
+only playing around i see three endpoints
+
+json
+{
+    "status":"health",
+    "longStatus":"Healthy. All routes are functioning properly.",
+    "version":"1.0.0",
+    "routes":[
+        {
+            "path":"/status",
+            "status":"healthy"
+        },
+        {
+            "path":"/rocketLaunch",
+            "status":"healthy"
+        },
+        {
+            "path":"/fuel",
+            "status":"healthy"
+        }
+    ]
+}
+
+
+hitting the /fuel endpoint we get
+
+json
+[
+    {
+        "name":"west1 pump",
+        "id":0
+    },
+    {
+        "name":"east1 pump",
+        "id":1
+    },
+    {
+        "name":"south1 pump",
+        "id":2
+    },
+    {
+        "name":"north1 pump",
+        "id":3
+    },
+    {
+        "name":"west2 pump",
+        "id":4
+    },
+    {
+        "name":"lil pump",
+        "id":5
+    }
+]
+
+
+hitting /rocketLaunch with a simple GET request 
+
+
+request body must be json
+
+
+But since we have to launch the rocket we can assume that we need to POST something to the endpoint
+One of the first few things that come to mind is the launch keyword
+we know that endpoint expects a JSON body
+we first sent : 
+
+json
+{
+    "launch":true
+}
+
+
+
+we get the above response, lets specify a random rocket name since we dont know the rocket name
+
+
+
+endpoint tell us that triton is available
+
+
+
+now we need a launch time but we don't know what format it expects so we tried to make it tell us again
+
+
+
+after sending time in correct format we get this
+
+
+
+we can get a list of pumps and their IDs from /fuel endpoint
+
+
+
+interesting, now it wants a token, so we looked into the page source, we did not find anything so we started looking into the JS files of the web app and we found the token
+
+
+
+after sending the token we get our flag!
+
+

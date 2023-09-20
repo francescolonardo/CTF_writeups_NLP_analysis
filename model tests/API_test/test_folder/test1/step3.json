@@ -1,0 +1,13 @@
+{
+    "Step3": {
+        "Description": "The attacker realizes that only the last line of command output is displayed, making it challenging to locate files.",
+        "ToolsUsed": "null",
+        "StepDetails": {
+            "Hypothesis": "The attacker decides to modify the payload to make it easier to navigate the server's file system.",
+            "Action": "The attacker modifies the payload to '; <command> | tr '\\n' '' #', replacing newlines with spaces in the output.",
+            "Result": "The attacker successfully obtains cleaner output, making it easier to navigate the server.",
+            "Success": "Success",
+            "FailingReason": "null"
+        }
+    }
+}

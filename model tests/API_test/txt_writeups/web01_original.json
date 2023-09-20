@@ -1,0 +1,94 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "web01",
+        "AttackerCapabilities": [
+            "Understanding of web servers",
+            "Knowledge of directory traversal vulnerabilities",
+            "Ability to manipulate HTTP requests",
+            "Understanding of file permissions and their implications"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Directory traversal vulnerability in POST filename"
+            ],
+            "SecurityMeasures": [
+                "Restriction of file permissions to prevent overwriting sensitive files"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Identify the vulnerability by adding debug prints to the file for the GET path and POST filename.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker suspects a directory traversal vulnerability in either the GET path handling or the POST filename.",
+                    "Action": "Add debug prints to the file for the GET path and POST filename.",
+                    "Result": "Confirmation of a directory traversal vulnerability in POST filename.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit the directory traversal vulnerability to overwrite a file in the root directory.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes they can overwrite a file in the root directory using the directory traversal vulnerability.",
+                    "Action": "Craft a POST request with a filename that includes directory traversal (e.g., '../lol.txt').",
+                    "Result": "Successful overwrite of the file 'lol.txt' in the root directory with the content 'hacked'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Identify the target file to overwrite by analyzing the challenge description.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker suspects that they need to overwrite the '.bashrc' file to execute a command when the user 'manhndd' SSH-es in.",
+                    "Action": "Analyze the challenge description to identify the target file.",
+                    "Result": "Confirmation that the target file is the '.bashrc' file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Exploit the ability to overwrite the '.bashrc' file to execute a command when the user 'manhndd' SSH-es in.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes they can execute a command when the user 'manhndd' SSH-es in by overwriting the '.bashrc' file.",
+                    "Action": "Craft a POST request with a filename that includes directory traversal to overwrite the '.bashrc' file with a command execution payload.",
+                    "Result": "Successful overwrite of the '.bashrc' file with a command execution payload.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Race against other players to win the race and execute the command in the '.bashrc' file before others.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker understands that there will be a race against other players to execute a command in the '.bashrc' file.",
+                    "Action": "Use Burp's repeater to repeatedly send the crafted POST request to win the race.",
+                    "Result": "Successful execution of the command in the '.bashrc' file before other players.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 6,
+                "Description": "Read the flag from '/var/secret' and write it to '/opt/mydank'.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes they can read the flag from '/var/secret' and write it to '/opt/mydank'.",
+                    "Action": "Write a Python script to read from '/var/secret' and write it to '/opt/mydank'.",
+                    "Result": "Successful reading of the flag from '/var/secret' and writing it to '/opt/mydank'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

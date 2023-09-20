@@ -1,0 +1,58 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Log Files",
+        "AttackerCapabilities": [
+            "Fuzzing",
+            "Web scraping",
+            "Command line tools (grep, wget)",
+            "Network communication (nc)"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Leakage of sensitive information (bash history, password)"
+            ],
+            "SecurityMeasures": [
+                "Unknown"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Fuzz the challenge site to find more log files using a custom wordlist.",
+                "ToolsUsed": "ffuf",
+                "StepDetails": {
+                    "Hypothesis": "Assuming that one of the additional log files will contain the flag.",
+                    "Action": "Fuzz the challenge site using a custom wordlist to find more log files.",
+                    "Result": "Gather over 1900 log files.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Download all available logs and search for unusual content.",
+                "ToolsUsed": "wget, grep",
+                "StepDetails": {
+                    "Hypothesis": "Expecting to find leaked information or the flag in the logs.",
+                    "Action": "Download all available logs and search for unusual content using grep.",
+                    "Result": "Find leaked bash history and a password.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Connect to a network service using the provided IP and port.",
+                "ToolsUsed": "nc",
+                "StepDetails": {
+                    "Hypothesis": "Possibly interact with a network service to gain more information or access.",
+                    "Action": "Connect to a network service using the provided IP and port.",
+                    "Result": "Successful connection to the network service.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

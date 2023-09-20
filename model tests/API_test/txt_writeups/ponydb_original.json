@@ -1,0 +1,84 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "SQL injection and truncation attack",
+        "AttackerCapabilities": [
+            "Knowledge of SQL injection and truncation vulnerabilities",
+            "Understanding of web application development",
+            "Ability to analyze source code",
+            "Familiarity with Python and MySQL"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SQL injection vulnerability",
+                "Truncation vulnerability"
+            ],
+            "SecurityMeasures": [
+                "Input validation for single quotes",
+                "Length checks for input parameters"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyze the source code to understand the application's behavior and identify vulnerabilities.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By analyzing the source code, the attacker can gain insights into the application's database structure, query statements, and data handling processes.",
+                    "Action": "Read and understand the provided source code.",
+                    "Result": "The attacker gains knowledge about the database schema, table creation, query execution, and potential vulnerabilities.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Identify the SQL injection vulnerability in the GET / endpoint.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker can inject malicious SQL code into the query executed in the GET / endpoint, allowing them to manipulate the database.",
+                    "Action": "Analyze the source code and identify the vulnerable SQL statement.",
+                    "Result": "The attacker identifies the SQL injection vulnerability in the SELECT statement that fetches pony data based on the session ID.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploit the SQL injection vulnerability to bypass the flag condition in the Jinja template.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By injecting a custom 'number': 1337 key-value pair into the JSON data stored in the database, the attacker can pass the condition in the Jinja template and retrieve the flag.",
+                    "Action": "Craft a payload to inject the 'number': 1337 key-value pair into the JSON data stored in the database.",
+                    "Result": "The attacker successfully injects the 'number': 1337 key-value pair into the JSON data, but the repeated key issue prevents the flag from being displayed.",
+                    "Success": "Failed",
+                    "FailingReason": "The repeated key issue in the JSON data handling prevents the flag from being displayed."
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Identify the truncation vulnerability in the POST /pony endpoint.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker can exploit the truncation vulnerability to insert a manipulated JSON data string that bypasses the repeated key issue.",
+                    "Action": "Analyze the source code and identify the truncation vulnerability in the INSERT statement.",
+                    "Result": "The attacker identifies the truncation vulnerability caused by the lack of error handling for the length checks of the favorite_key and favorite_value parameters.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Exploit the truncation vulnerability to bypass the repeated key issue and retrieve the flag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By manipulating the length of the favorite_value parameter, the attacker can truncate the JSON data string and bypass the repeated key issue during parsing.",
+                    "Action": "Craft a payload to manipulate the favorite_value parameter and create a truncated JSON data string that bypasses the repeated key issue.",
+                    "Result": "The attacker successfully creates a truncated JSON data string that bypasses the repeated key issue and retrieves the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

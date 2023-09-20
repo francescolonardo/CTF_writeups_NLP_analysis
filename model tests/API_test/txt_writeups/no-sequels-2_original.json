@@ -1,0 +1,57 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "No Sequels 2",
+        "AttackerCapabilities": [
+            "Knowledge of blind NoSQL injection",
+            "Ability to perform bruteforce attacks"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Blind NoSQL injection vulnerability"
+            ],
+            "SecurityMeasures": [
+                "Input validation and sanitization",
+                "Access controls"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Perform blind NoSQL injection to extract password characters.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by using a specific payload, they can determine if a character in the password is greater than a given value.",
+                    "Action": "The attacker sends a payload with the username set to 'admin' and the password set to {'$gt': 'a'}.",
+                    "Result": "The application returns 'true' if the character in the password is greater than 'a' and 'false' otherwise.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Bruteforce all characters in the password.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by bruteforcing all characters in the password, they can determine the correct characters through the true/false responses.",
+                    "Action": "The attacker iterates through all possible characters and sends a payload with the username set to 'admin' and the password set to {'$gt': '<character>'}.",
+                    "Result": "For each character, the attacker receives a true or false response, indicating whether the character is greater than the one being tested.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Retrieve the password and obtain the flag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by combining all the characters obtained through the bruteforce process, they can reconstruct the password.",
+                    "Action": "The attacker concatenates all the characters obtained and obtains the password 'congratsyouwin'. They then use this password to obtain the flag.",
+                    "Result": "The attacker successfully retrieves the flag 'actf{stillnosqlinthe_sequel}'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

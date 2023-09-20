@@ -1,0 +1,73 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Server-Side Template Injection (SSTI) in SMS template",
+        "AttackerCapabilities": [
+            "Understanding of web application vulnerabilities",
+            "Knowledge of Server-Side Template Injection (SSTI)",
+            "Ability to manipulate user-controllable inputs"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Exposure of .git directory and source code",
+                "Insecure usage of Flask's render_template_string function",
+                "Server-Side Template Injection (SSTI)"
+            ],
+            "SecurityMeasures": [
+                "Authorization requirement for certain routes",
+                "Usage of reCAPTCHA for verification",
+                "Limited phone number acceptance"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit exposure of .git directory and source code to find the flag in app.py.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By inspecting the exposed source code, the attacker hypothesizes that the flag can be found in app.py.",
+                    "Action": "The attacker accesses the exposed .git directory and source code on the webserver to find the flag in app.py.",
+                    "Result": "The attacker successfully finds the flag in app.py.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit the Server-Side Template Injection (SSTI) vulnerability in the 'new chat' feature.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the Server-Side Template Injection (SSTI) vulnerability in the 'new chat' feature can be exploited to execute arbitrary code.",
+                    "Action": "The attacker crafts a payload to manipulate the 'login' variable and invoke the 'add_money_to_login' function.",
+                    "Result": "The attacker successfully manipulates the 'login' variable to invoke the 'add_money_to_login' function.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploit the manipulated 'login' variable to add money to the attacker's account.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by adding money to the attacker's account, they will have sufficient funds to buy the flag.",
+                    "Action": "The attacker sends an SMS message with the manipulated 'login' variable, triggering the execution of the 'add_money_to_login' function and adding money to the attacker's account.",
+                    "Result": "The attacker successfully adds money to their account.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Buy the flag with the sufficient funds in the attacker's account.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that with sufficient funds in their account, they can successfully buy the flag.",
+                    "Action": "The attacker uses the funds in their account to buy the flag.",
+                    "Result": "The attacker successfully buys the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

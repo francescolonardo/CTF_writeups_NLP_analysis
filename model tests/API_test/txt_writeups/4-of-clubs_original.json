@@ -1,0 +1,44 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "IDOR Vulnerability",
+        "AttackerCapabilities": [
+            "Username enumeration",
+            "Ability to test for IDOR vulnerability",
+            "Ability to scan for potential files"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Username enumeration",
+                "IDOR vulnerability"
+            ],
+            "SecurityMeasures": []
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Perform username enumeration to identify valid usernames.",
+                "ToolsUsed": "dirb wordlist",
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to identify valid usernames in order to exploit the IDOR vulnerability.",
+                    "Action": "The attacker uses a wordlist to brute force potential usernames at the /users/<username> endpoint.",
+                    "Result": "The attacker identifies the following valid usernames: admin, root, builder, employee, staff.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit the IDOR vulnerability to access files belonging to other users.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to access files belonging to other users by bypassing ownership checks.",
+                    "Action": "The attacker tries accessing files at /users/<username>/files/<filename> of different usernames, even if they are not the owner.",
+                    "Result": "The attacker successfully accesses the file /users/employee/files/fileadmin, which is the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

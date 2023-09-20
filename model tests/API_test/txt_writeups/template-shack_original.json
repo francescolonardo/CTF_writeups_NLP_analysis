@@ -1,0 +1,103 @@
+{
+  "AttackModel": {
+    "NameOfTheChallenge": "Template Shack",
+    "AttackerCapabilities": [
+      "Knowledge of JWT",
+      "Ability to use John The Ripper for brute forcing",
+      "Understanding of template injection vulnerabilities",
+      "Ability to use Python MRO (Method Resolution Order)",
+      "Knowledge of subprocess.Popen",
+      "Understanding of reverse shell techniques",
+      "Ability to start a netcat listener"
+    ],
+    "Target": {
+      "Type": "Web Application",
+      "Vulnerabilities": [
+        "JWT secret is brute forcible",
+        "Template injection vulnerability in the 404 page"
+      ],
+      "SecurityMeasures": [
+        "JWT authentication for user sessions"
+      ]
+    },
+    "Steps": [
+      {
+        "StepNumber": 1,
+        "Description": "Brute force the JWT secret using John The Ripper.",
+        "ToolsUsed": "John The Ripper",
+        "StepDetails": {
+          "Hypothesis": "The attacker wants to find the secret used to hash the JWT.",
+          "Action": "The attacker uses John The Ripper with a wordlist to brute force the JWT secret.",
+          "Result": "The attacker successfully finds the secret: 'supersecret'.",
+          "Success": "Success",
+          "FailingReason": null
+        }
+      },
+      {
+        "StepNumber": 2,
+        "Description": "Craft a JWT with the username 'admin' and add it to the cookie.",
+        "ToolsUsed": null,
+        "StepDetails": {
+          "Hypothesis": "The attacker wants to authenticate as the 'admin' user.",
+          "Action": "The attacker creates a JWT with the username 'admin' and adds it to the cookie.",
+          "Result": "The attacker is now authenticated as the 'admin' user.",
+          "Success": "Success",
+          "FailingReason": null
+        }
+      },
+      {
+        "StepNumber": 3,
+        "Description": "Identify the template injection vulnerability in the 404 page.",
+        "ToolsUsed": null,
+        "StepDetails": {
+          "Hypothesis": "The attacker wants to find a way to execute arbitrary code on the server.",
+          "Action": "The attacker visits a random route starting with '/admin/' which throws a 404 error. They notice that the 404 page is vulnerable to template injection.",
+          "Result": "The attacker confirms the presence of a template injection vulnerability.",
+          "Success": "Success",
+          "FailingReason": null
+        }
+      },
+      {
+        "StepNumber": 4,
+        "Description": "Exploit the template injection vulnerability to climb up the Python MRO and find the subprocess.Popen class.",
+        "ToolsUsed": null,
+        "StepDetails": {
+          "Hypothesis": "The attacker wants to find a class that can be used to execute arbitrary commands on the server.",
+          "Action": "The attacker uses the __class__ and __bases__ attributes to climb up the Python MRO and identify the subprocess.Popen class.",
+          "Result": "The attacker successfully finds the subprocess.Popen class.",
+          "Success": "Success",
+          "FailingReason": null
+        }
+      },
+      {
+        "StepNumber": 5,
+        "Description": "Craft a payload to spawn a reverse shell using subprocess.Popen.",
+        "ToolsUsed": null,
+        "StepDetails": {
+          "Hypothesis": "The attacker wants to execute a reverse shell command on the server.",
+          "Action": "The attacker constructs a payload using subprocess.Popen to spawn a reverse shell to their server.",
+          "Result": "The attacker successfully spawns a reverse shell on the server.",
+          "Success": "Success",
+          "FailingReason": null
+        }
+      },
+      {
+        "StepNumber": 6,
+        "Description": "Start a netcat listener on the specified port.",
+        "ToolsUsed": null,
+        "StepDetails": {
+          "Hypothesis": "The attacker wants to receive the reverse shell connection on their server.",
+          "Action": "The attacker starts a netcat listener on their server at the specified port.",
+          "Result": "The attacker successfully sets up a listener to receive the reverse shell connection.",
+          "Success": "Success",
+          "FailingReason": null
+        }
+      },
+      {
+        "StepNumber": 7,
+        "Description": "Retrieve the flag using the obtained shell.",
+        "ToolsUsed": null,
+        "StepDetails": {
+          "Hypothesis": "The attacker wants to find and retrieve the flag file on the server.",
+          "Action": "The attacker navigates the file system and finds the flag file.",
+          "Result": "The attacker successfully retrieves the flag: 'flag{easy_jinja

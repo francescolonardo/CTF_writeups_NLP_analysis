@@ -1,0 +1,58 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Amidst Us",
+        "AttackerCapabilities": [
+            "Knowledge of Python and Python libraries",
+            "Understanding of SSRF vulnerabilities",
+            "Ability to manipulate requests and data"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SSRF vulnerability",
+                "Use of eval function on user-provided data"
+            ],
+            "SecurityMeasures": [
+                "Unknown security measures"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Identify the vulnerable version of the python Pillow library",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By identifying the vulnerable version of the python Pillow library, the attacker can determine if there are any known vulnerabilities or exploits that can be leveraged.",
+                    "Action": "Examine the files in requirements.txt and util.py to find information about the python environment and the version of the Pillow library being used.",
+                    "Result": "The attacker discovers that the application is using a vulnerable version of the python Pillow library.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit SSRF vulnerability to upload a random image with manipulated RGB values",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By exploiting the SSRF vulnerability, the attacker can manipulate the RGB values of the uploaded image to trigger a specific action.",
+                    "Action": "Submit a POST request with a random image and manipulate the RGB values of the 'background' parameter to execute arbitrary code.",
+                    "Result": "The attacker successfully replaces one of the RGB values of 'background' and triggers the execution of code.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Retrieve the flag.txt file and send it to a webhook",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to obtain the flag.txt file and exfiltrate it to a controlled location.",
+                    "Action": "Modify the code execution triggered by the manipulated RGB values to retrieve the flag.txt file and send it to a webhook controlled by the attacker.",
+                    "Result": "The attacker successfully retrieves the flag.txt file and exfiltrates it to their webhook.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

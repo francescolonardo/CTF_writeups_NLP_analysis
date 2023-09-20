@@ -1,0 +1,69 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "More SQLi",
+        "AttackerCapabilities": [
+            "Knowledge of SQL injection",
+            "Ability to craft SQL queries",
+            "Understanding of database systems"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SQL Injection"
+            ],
+            "SecurityMeasures": [
+                "Unknown"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Identify the login form and attempt to bypass authentication.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the login form is vulnerable to SQL injection.",
+                    "Action": "The attacker inputs 'or 1=1;--' in the password field to bypass authentication.",
+                    "Result": "The login query returns a successful result, allowing the attacker to proceed.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Determine the database system in use.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the database system used can be determined through SQL injection.",
+                    "Action": "The attacker crafts a query '123' UNION SELECT 1, sqlite_version(), 3;--' to retrieve the version of SQLite.",
+                    "Result": "The query returns the version of SQLite, confirming that it is the database system in use.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Enumerate the database tables.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that they can list all tables in the database.",
+                    "Action": "The attacker uses the query '123' UNION SELECT name, sql, null from sqlite_master;--' to list all tables.",
+                    "Result": "The query returns a list of table names and their respective SQL definitions.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Retrieve the flag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the flag is stored in a table called 'more_table'.",
+                    "Action": "The attacker executes the query '123' UNION SELECT flag, null, null from more_table;--' to retrieve the flag.",
+                    "Result": "The query returns the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

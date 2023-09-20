@@ -1,0 +1,10 @@
+{
+    "SubStep": [
+        {
+            "Subject": "The attacker",
+            "ActionTarget": "Cookie-based authentication",
+            "TypeOfAction": "Bypass",
+            "GainedResources": "Access to the restricted page"
+        }
+    ]
+}

@@ -1,0 +1,82 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "The Smurfs Cipher",
+        "AttackerCapabilities": [
+            "Knowledge of PHP loose comparison vulnerability",
+            "Ability to reverse engineer code",
+            "Ability to create and upload files"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "PHP loose comparison vulnerability",
+                "Insecure file upload"
+            ],
+            "SecurityMeasures": [
+                "None mentioned in the writeup"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Obtain the file named cipher and the source code used to return the flag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to analyze the source code to identify any vulnerabilities that can be exploited.",
+                    "Action": "Download the file named cipher and the source code.",
+                    "Result": "The attacker now has access to the files needed for further analysis.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Reverse engineer the source code to understand how the flag is obtained.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to identify the specific vulnerability and the necessary conditions to exploit it.",
+                    "Action": "Analyze the source code and identify the PHP loose comparison vulnerability.",
+                    "Result": "The attacker understands that by setting $to_check to 0, the flag can be obtained.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Create a file that is equivalent to cipher + 0xd34db33f.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to create a file that, when XORed with cipher + 0xd34db33f, results in zero.",
+                    "Action": "Create an 8-byte file with the necessary content.",
+                    "Result": "The attacker now has a file that can be used to exploit the vulnerability.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Upload the created file.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to upload the file to the target system and trigger the vulnerability.",
+                    "Action": "Upload the created file to the target system.",
+                    "Result": "The uploaded file is now present on the target system.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Exploit PHP loose comparison by setting $to_check to 0.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to trigger the vulnerability by setting $to_check to 0.",
+                    "Action": "Set $to_check to 0, allowing the flag to be echoed back.",
+                    "Result": "The flag is echoed back due to the PHP loose comparison vulnerability.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

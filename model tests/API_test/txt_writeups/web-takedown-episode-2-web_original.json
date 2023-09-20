@@ -1,0 +1,101 @@
+{
+"AttackModel": {
+    "NameOfTheChallenge": "Web Takedown Episode 2",
+    "AttackerCapabilities": [
+        "Python scripting",
+        "Understanding of HTTP requests",
+        "Knowledge of regular expressions",
+        "Understanding of hashing algorithms (SHA-256)",
+        "Webshell exploitation"
+    ],
+    "Target": {
+        "Type": "Web Application",
+        "Vulnerabilities": [
+            "Insecure handling of user input",
+            "Command injection",
+            "Insecure file upload"
+        ],
+        "SecurityMeasures": [
+            "Session management"
+        ]
+    },
+    "Steps": [
+        {
+            "StepNumber": 1,
+            "Description": "The attacker starts by sending an HTTP GET request to the target website to retrieve the content.",
+            "ToolsUsed": "null",
+            "StepDetails": {
+                "Hypothesis": "The attacker assumes that the target website contains a string that matches the pattern of a SHA-256 hash.",
+                "Action": "The attacker uses regular expressions to search for the SHA-256 hash pattern in the response content.",
+                "Result": "The attacker successfully finds the SHA-256 hash in the response content.",
+                "Success": "Success",
+                "FailingReason": "null"
+            }
+        },
+        {
+            "StepNumber": 2,
+            "Description": "The attacker calculates the SHA-256 hash of the found string.",
+            "ToolsUsed": "null",
+            "StepDetails": {
+                "Hypothesis": "The attacker assumes that the target website uses the found string as input for a hashing operation.",
+                "Action": "The attacker uses the hashlib library in Python to calculate the SHA-256 hash of the found string.",
+                "Result": "The attacker successfully calculates the SHA-256 hash of the found string.",
+                "Success": "Success",
+                "FailingReason": "null"
+            }
+        },
+        {
+            "StepNumber": 3,
+            "Description": "The attacker constructs a POST request with the calculated hash and sends it to the target website.",
+            "ToolsUsed": "null",
+            "StepDetails": {
+                "Hypothesis": "The attacker assumes that the target website accepts the calculated hash as input and performs a specific action.",
+                "Action": "The attacker constructs a POST request with the calculated hash as a parameter and sends it to the target website.",
+                "Result": "The attacker successfully sends the POST request to the target website.",
+                "Success": "Success",
+                "FailingReason": "null"
+            }
+        },
+        {
+            "StepNumber": 4,
+            "Description": "The attacker receives the response from the target website.",
+            "ToolsUsed": "null",
+            "StepDetails": {
+                "Hypothesis": "The attacker expects to receive some sensitive information or confirmation of successful exploitation in the response.",
+                "Action": "The attacker captures the response from the target website.",
+                "Result": "The attacker successfully captures the response from the target website.",
+                "Success": "Success",
+                "FailingReason": "null"
+            }
+        },
+        {
+            "StepNumber": 5,
+            "Description": "The attacker modifies a specific cookie value to gain unauthorized access.",
+            "ToolsUsed": "null",
+            "StepDetails": {
+                "Hypothesis": "The attacker assumes that changing the value of a specific cookie will grant them unauthorized access.",
+                "Action": "The attacker modifies the value of the 'aWFkbWlu' cookie from 0 to 1.",
+                "Result": "The attacker successfully modifies the value of the 'aWFkbWlu' cookie.",
+                "Success": "Success",
+                "FailingReason": "null"
+            }
+        },
+        {
+            "StepNumber": 6,
+            "Description": "The attacker sends a request to the target website with the modified cookie value.",
+            "ToolsUsed": "null",
+            "StepDetails": {
+                "Hypothesis": "The attacker assumes that the target website grants them access or performs a specific action based on the modified cookie value.",
+                "Action": "The attacker sends a request to the target website with the modified cookie value.",
+                "Result": "The attacker successfully gains unauthorized access or triggers a specific action on the target website.",
+                "Success": "Success",
+                "FailingReason": "null"
+            }
+        },
+        {
+            "StepNumber": 7,
+            "Description": "The attacker uploads a file with a .phar extension to execute system commands on the target server.",
+            "ToolsUsed": "null",
+            "StepDetails": {
+                "Hypothesis": "The attacker assumes that the target website allows file uploads and does not properly validate file extensions, allowing execution of arbitrary code.",
+                "Action

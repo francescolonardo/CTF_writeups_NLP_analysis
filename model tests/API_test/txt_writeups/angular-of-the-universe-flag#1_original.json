@@ -1,0 +1,46 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Angular of the Universe",
+        "AttackerCapabilities": [
+            "Understanding of URL parsing and encoding",
+            "Ability to identify and exploit access restrictions"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Improper access control",
+                "Insecure URL parsing"
+            ],
+            "SecurityMeasures": [
+                "IP address restriction",
+                "Keyword filtering"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploiting IP address restriction",
+                "ToolsUsed": "curl",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by bypassing the IP address restriction, they can access the /debug/answer endpoint.",
+                    "Action": "The attacker sends a request to the /%64ebug/answer endpoint, utilizing URL encoding to bypass the keyword filtering and IP address restriction.",
+                    "Result": "The attacker successfully accesses the /debug/answer endpoint and obtains the first flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploiting insecure URL parsing",
+                "ToolsUsed": "curl",
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by injecting a specially crafted host value, they can manipulate the URL parsing process to access the /api/true-answer endpoint.",
+                    "Action": "The attacker sends a request to the target host with the injected host value \"\\debug\\answer\".",
+                    "Result": "The Angular application parses the URL and retrieves the path as /debug/answer, allowing the attacker to access the /api/true-answer endpoint and obtain the second flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

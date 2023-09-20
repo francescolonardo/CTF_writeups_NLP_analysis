@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Spooky Store",
+        "AttackerCapabilities": [
+            "Understanding of XML",
+            "Knowledge of XXE (XML External Entity) attacks"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "XXE (XML External Entity) vulnerability"
+            ],
+            "SecurityMeasures": []
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Craft a payload to exploit the XXE vulnerability.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker is trying to exploit the XXE vulnerability in the web application to read files on the server.",
+                    "Action": "Craft an XML payload that includes the XXE payload.",
+                    "Result": "The server reflects the response, allowing the attacker to read files on the server.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

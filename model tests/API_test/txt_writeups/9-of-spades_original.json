@@ -1,0 +1,59 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "PHP File Upload",
+        "AttackerCapabilities": [
+            "Knowledge of PHP file upload vulnerabilities",
+            "Ability to bypass file extension restrictions",
+            "Ability to execute arbitrary code",
+            "Ability to download files from the target server"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Lack of proper file extension validation",
+                "Ability to upload arbitrary files"
+            ],
+            "SecurityMeasures": [
+                "Blocking of common PHP file extensions"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Craft a malicious .htaccess file to bypass file extension restrictions.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by uploading a .htaccess file, they can configure the server to interpret arbitrary file extensions as PHP files.",
+                    "Action": "The attacker uploads a .htaccess file containing the directive 'AddHandler application/x-httpd-php .php16' to specify that files with the .php16 extension should be executed as PHP scripts.",
+                    "Result": "The server now interprets files with the .php16 extension as PHP scripts.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Upload a PHP file with the .php16 extension to achieve remote code execution (RCE).",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by uploading a PHP file with the .php16 extension, the server will execute the code within the file.",
+                    "Action": "The attacker uploads a PHP file named 'test.php16' containing arbitrary code.",
+                    "Result": "The server executes the code within 'test.php16', allowing the attacker to achieve remote code execution.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Download the flag file from the target server.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that they can download the flag file from the target server by accessing it through the uploaded PHP file.",
+                    "Action": "The attacker includes code in 'test.php16' to read and download the flag file.",
+                    "Result": "The flag file is successfully downloaded by the attacker.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

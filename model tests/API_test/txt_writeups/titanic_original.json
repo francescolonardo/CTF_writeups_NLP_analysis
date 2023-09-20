@@ -1,0 +1,83 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Titanic",
+        "AttackerCapabilities": [
+            "Web application reconnaissance",
+            "Exploiting URL capture service",
+            "Identifying hidden paths",
+            "Accessing server logs"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Exposed login credentials",
+                "Unrestricted access to server status page"
+            ],
+            "SecurityMeasures": [
+                "Login page"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker recognizes the website as the target and identifies the URL capture service and admin buttons.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the URL capture service and admin buttons may provide opportunities for unauthorized access or exploitation.",
+                    "Action": "The attacker explores the URL capture service and admin buttons for potential vulnerabilities.",
+                    "Result": "The attacker confirms the presence of a URL capture service and an admin login page.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker attempts to access the admin login page by trying a common URL, such as http://localhost.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that the admin login page may be accessible via a common URL, such as http://localhost.",
+                    "Action": "The attacker tries accessing the admin page using the URL http://localhost.",
+                    "Result": "The attacker successfully gains access to the admin login page.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker checks the robots.txt file and discovers a new path, /server-status.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker speculates that the robots.txt file may contain hidden paths or information.",
+                    "Action": "The attacker views the robots.txt file and finds the path /server-status.",
+                    "Result": "The attacker confirms the existence of the path /server-status.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "The attacker attempts to access the /server-status path and successfully gains access.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the /server-status path may provide information or access to sensitive resources.",
+                    "Action": "The attacker tries accessing the /server-status path.",
+                    "Result": "The attacker successfully accesses the /server-status page.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "The attacker examines the server logs available on the /server-status page and discovers the login credentials.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects that the server logs may contain valuable information, such as login credentials.",
+                    "Action": "The attacker reviews the server logs available on the /server-status page.",
+                    "Result": "The attacker finds the login credentials in the server logs.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

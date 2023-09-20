@@ -1,0 +1,77 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Gadget Santa",
+        "AttackerCapabilities": [
+            "Command Injection"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Command Injection"
+            ],
+            "SecurityMeasures": []
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit command injection vulnerability",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to execute arbitrary commands on the target system.",
+                    "Action": "The attacker injects a command in the 'command' URL parameter to execute arbitrary commands.",
+                    "Result": "The attacker successfully executes the injected command and confirms the presence of command injection vulnerability.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Analyze the source code and identify the script being executed",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to understand how the injected command is executed and what it can achieve.",
+                    "Action": "The attacker analyzes the source code and identifies the 'santa_mon.sh' script being executed with the injected command as an argument.",
+                    "Result": "The attacker gains knowledge about the script and its functionality.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Identify sensitive functionality in the script",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to identify sensitive functionality that can be leveraged to retrieve the flag.",
+                    "Action": "The attacker identifies the '/get_flag' endpoint in the 'ups_manager.py' script that prints the flag.",
+                    "Result": "The attacker discovers the '/get_flag' endpoint that can be accessed to retrieve the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Craft a command injection payload to retrieve the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to create a command injection payload that will execute the '/get_flag' endpoint and return the flag.",
+                    "Action": "The attacker crafts a command injection payload using the IFS variable to bypass the whitespace removal and execute 'curl http://localhost:3000/get_flag'. The payload is wrapped in double quotes to ensure proper interpretation by bash.",
+                    "Result": "The attacker creates the final payload that can be used to retrieve the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Execute the final payload and retrieve the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to execute the final payload and obtain the flag.",
+                    "Action": "The attacker executes the final payload by sending a request to the target web application with the crafted payload as the 'command' URL parameter.",
+                    "Result": "The attacker successfully retrieves the flag from the output returned by the web application.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,58 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Personnel",
+        "AttackerCapabilities": [
+            "Knowledge of regular expressions",
+            "Ability to analyze code",
+            "Ability to use debugging tools"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Inadequate input validation",
+                "Insufficient regex filtering"
+            ],
+            "SecurityMeasures": [
+                "Regular expression filtering"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyze the code and identify the regex filtering logic.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that there may be a vulnerability in the regex filtering logic used by the application.",
+                    "Action": "The attacker examines the code and tests it on the live link using different inputs.",
+                    "Result": "The attacker observes that the application ignores the first letter if it is uppercase and applies logic around it.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Research special characters that can be used in regular expressions.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that there may be special characters that can be used to bypass the regex filtering.",
+                    "Action": "The attacker explores the official Python documentation on regular expressions.",
+                    "Result": "The attacker discovers the '|' operator, which creates a regular expression that matches either A or B. This operator can be used to bypass the filtering.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Craft a new regex pattern using the discovered '|' operator.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by removing the initial regex and using the '|' operator with the flag format, they can bypass the filtering and match the flag.",
+                    "Action": "The attacker constructs the new regex pattern: |flag{.*}|",
+                    "Result": "The attacker successfully matches the flag and obtains the solution.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "I don't like needles",
+        "AttackerCapabilities": [
+            "Knowledge of SQL injection",
+            "Ability to craft malicious HTTP requests"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SQL Injection"
+            ],
+            "SecurityMeasures": [
+                "Authentication form",
+                "Password check for the presence of the character '1'"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Craft a malicious HTTP POST request to bypass the password check.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that bypassing the password check will allow access to the flag.",
+                    "Action": "Craft a POST request with the username 'flagman69' and a password containing a SQL injection payload.",
+                    "Result": "The attacker successfully bypasses the password check and gains access to the authenticated section of the website.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Craft a UNION SQL injection payload to extract data from the users table.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the users table contains the flag and can be accessed through a UNION SQL injection.",
+                    "Action": "Craft a POST request with a UNION SQL injection payload to retrieve the flag from the users table.",
+                    "Result": "The attacker successfully retrieves the flag from the users table.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

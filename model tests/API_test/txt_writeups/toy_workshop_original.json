@@ -1,0 +1,96 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Toy Workshop",
+        "AttackerCapabilities": [
+            "Knowledge of web application vulnerabilities",
+            "Understanding of SQL databases",
+            "Familiarity with cross-site scripting (XSS) attacks",
+            "Ability to run a server to receive requests"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Stored cross-site scripting (XSS)"
+            ],
+            "SecurityMeasures": [
+                "Database access control",
+                "Input validation and sanitization",
+                "Access restrictions on the /queries endpoint"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Examine the source code files",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "To understand the application's functionality and identify potential vulnerabilities",
+                    "Action": "Review the code in challenge/index.js, database.js, challenge/routes/index.js, and challenge/bot.js",
+                    "Result": "Identify the stored cross-site scripting (XSS) vulnerability and the functionality of the application",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Craft a malicious script payload",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "To exploit the stored XSS vulnerability and steal the user's cookies",
+                    "Action": "Create a malicious script that grabs the current cookies and redirects to a controlled webpage",
+                    "Result": "Obtain the user's cookies and redirect to the attacker's webpage",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Set up a server to receive the stolen cookies",
+                "ToolsUsed": "Flask",
+                "StepDetails": {
+                    "Hypothesis": "To receive the stolen cookies and log them for later use",
+                    "Action": "Run a Flask server that listens for requests and saves the cookies to a file",
+                    "Result": "Successfully set up a server to receive and log the stolen cookies",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Expose the server to the internet",
+                "ToolsUsed": "ngrok",
+                "StepDetails": {
+                    "Hypothesis": "To make the server accessible to the application and receive the stolen cookies",
+                    "Action": "Use ngrok to create a tunnel and expose the server to the internet",
+                    "Result": "Obtain a public URL for the server",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Inject the malicious payload into the application",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "To trigger the stored XSS vulnerability and steal the user's cookies",
+                    "Action": "Paste the malicious payload into the application's frontend",
+                    "Result": "Trigger the stored XSS vulnerability and send the stolen cookies to the attacker's server",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 6,
+                "Description": "Retrieve the stolen cookies",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "To obtain the stolen cookies and retrieve the flag",
+                    "Action": "Check the terminal running Flask and the cookies.txt file on the attacker's server",
+                    "Result": "Find the stolen cookies and obtain the flag",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

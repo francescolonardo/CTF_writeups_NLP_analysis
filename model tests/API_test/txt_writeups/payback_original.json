@@ -1,0 +1,71 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Payback",
+        "AttackerCapabilities": [
+            "Knowledge of web application vulnerabilities",
+            "Understanding of code review",
+            "Ability to manipulate HTTP requests"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Parameter pollution",
+                "Insufficient balance check"
+            ],
+            "SecurityMeasures": [
+                "ED25519 signature for message verification",
+                "Separate user accounts for frontend and backend"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Perform code review to understand the application's functionality and vulnerabilities.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to identify any vulnerabilities that can be exploited to manipulate the payment process.",
+                    "Action": "Review the code to understand how the application handles transactions and verifies messages.",
+                    "Result": "The attacker gains knowledge of the vulnerabilities present in the code, such as parameter pollution and insufficient balance check.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit parameter pollution vulnerability to manipulate the transaction message.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to modify the transaction message to add coins to their account.",
+                    "Action": "Create a user with the username FRONTEND_USERNAMEamount1337 to generate a specific message format.",
+                    "Result": "The attacker generates a message with the format userFRONTEND_USERNAMEamount1337amount0nonceNONCE.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploit parameter pollution vulnerability to manipulate the frontend parameters.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to trick the frontend into verifying the manipulated message and adding coins to their account.",
+                    "Action": "Craft an HTTP request with the parameter pollution technique: GET /callback?user=FRONTEND_USERNAME&amount=1337&amount=0&nonce=NONCE&sig=SIGNATURE.",
+                    "Result": "The manipulated message is processed by the frontend, leading to the addition of 1337 coins to the attacker's account.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Obtain the flag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to retrieve the flag after successfully manipulating the payment process.",
+                    "Action": "Refer to the writeup to find the flag: CSR{sometimes_it's_really_hard_to_create_good_flags}.",
+                    "Result": "The attacker successfully obtains the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

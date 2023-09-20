@@ -1,0 +1,134 @@
+{
+    "AttackModel": {
+        "AttackerCapabilities": [
+            "Web application penetration testing",
+            "Linux command-line usage",
+            "Understanding of web vulnerabilities (e.g., code execution, privilege escalation)",
+            "Password cracking"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure comparison of the 'password' cookie to the environment variable 'PASSWORD'.",
+                "Command injection vulnerability in the 'wc.php' script."
+            ],
+            "SecurityMeasures": [
+                "Setting the 'max_execution_time' to 5 seconds to limit execution time for PHP scripts."
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Taxon": "Planning and Preparation",
+                "Description": "The attacker starts by analyzing the web application source code and its behavior.",
+                "ToolsUsed": null,
+                "Dependency": null,
+                "StepDetails": {
+                    "Hypothesis": "Identify the existence of a password check.",
+                    "Action": "Check the source code for a password comparison involving the 'password' cookie and 'PASSWORD' environment variable.",
+                    "Result": "Confirmed the presence of a password check that compares the 'password' cookie to 'PASSWORD'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Taxon": "Vulnerability Analysis",
+                "Description": "Exploit the command injection vulnerability in 'wc.php' to gain remote code execution.",
+                "ToolsUsed": null,
+                "Dependency": null,
+                "StepDetails": {
+                    "Hypothesis": "Exploit the command injection vulnerability by injecting a payload.",
+                    "Action": "Inject a payload '; ls #' to execute a command.",
+                    "Result": "Successfully executed the 'ls' command and obtained a directory listing.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Taxon": "Vulnerability Analysis",
+                "Description": "Exploit the limited output of the command execution to reveal additional files.",
+                "ToolsUsed": null,
+                "Dependency": null,
+                "StepDetails": {
+                    "Hypothesis": "Leverage the limited output to uncover more files in the directory.",
+                    "Action": "Modify the payload to '; <command> | tr '\\n' '' #' to replace newlines with spaces.",
+                    "Result": "Successfully obtained a more complete directory listing revealing additional files.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Taxon": "Exploitation",
+                "Description": "Spawn a reverse shell to gain interactive access to the server.",
+                "ToolsUsed": null,
+                "Dependency": null,
+                "StepDetails": {
+                    "Hypothesis": "Leverage the command injection to establish a reverse shell connection.",
+                    "Action": "Inject a payload that spawns a reverse shell to the attacker's server.",
+                    "Result": "Successfully established a reverse shell connection to the attacker's server.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Taxon": "Post-Exploitation",
+                "Description": "Explore the file system to locate the flag file.",
+                "ToolsUsed": null,
+                "Dependency": null,
+                "StepDetails": {
+                    "Hypothesis": "Search for the flag file within the file system.",
+                    "Action": "Navigate to the '/ctf' directory and identify the flag file.",
+                    "Result": "Located the flag file '/ctf/system/of/a/down/flag.txt'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 6,
+                "Taxon": "Post-Exploitation",
+                "Description": "Attempt to read the flag file, realizing it requires elevated privileges.",
+                "ToolsUsed": null,
+                "Dependency": null,
+                "StepDetails": {
+                    "Hypothesis": "Try to read the flag file.",
+                    "Action": "Attempt to 'cat' the flag file, resulting in 'Permission denied'.",
+                    "Result": "Failed to read the flag file due to insufficient permissions.",
+                    "Success": "Failed",
+                    "FailingReason": "Insufficient permissions"
+                }
+            },
+            {
+                "StepNumber": 7,
+                "Taxon": "Post-Exploitation",
+                "Description": "Use the cracked password to escalate privileges.",
+                "ToolsUsed": null,
+                "Dependency": null,
+                "StepDetails": {
+                    "Hypothesis": "Leverage the cracked password to escalate privileges.",
+                    "Action": "Switch to the 'ctf' user using the cracked password 'csictf'.",
+                    "Result": "Successfully switched to the 'ctf' user.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 8,
+                "Taxon": "Post-Exploitation",
+                "Description": "Read the flag as the 'ctf' user.",
+                "ToolsUsed": null,
+                "Dependency": 7,
+                "StepDetails": {
+                    "Hypothesis": "Attempt to read the flag file as the 'ctf' user.",
+                    "Action": "Execute 'cat' on the flag file.",
+                    "Result": "Successfully read the flag content.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

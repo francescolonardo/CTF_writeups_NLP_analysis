@@ -1,0 +1,62 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "The Magician's Den",
+        "AttackerCapabilities": [
+            "Knowledge of Magecart's past TTPs",
+            "Ability to analyze web page contents",
+            "Understanding of XSS and SQL injection vulnerabilities",
+            "Ability to craft payloads to exploit XSS and SQL injection",
+            "Ability to steal cookies",
+            "Familiarity with SQL errors and debugging"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "XSS vulnerability in the admin interface",
+                "SQL injection vulnerability in the filter parameter"
+            ],
+            "SecurityMeasures": [
+                "Authentication for admin access",
+                "Filtering of input for the filter parameter"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Finding the Target Server",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker suspects that the challenge is inspired by Magecart and investigates the webpage's Favicon.",
+                    "Action": "Decodes the base64 payload in the Favicon and discovers a new endpoint.",
+                    "Result": "Obtains the URL of the new endpoint.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Authenticating as the Admin",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker realizes that they can send POST requests to the new endpoint and decides to attempt an XSS attack on the admin.",
+                    "Action": "Crafts an HTML payload and sends it as a POST request to the new endpoint.",
+                    "Result": "Successfully performs an XSS attack on the admin and steals their cookie.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Getting the Flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker discovers the presence of an SQL injection vulnerability in the filter parameter and decides to exploit it to obtain the flag.",
+                    "Action": "Crafts an SQL injection payload using the 'or'1'#' technique and sets the debug parameter to TRUE.",
+                    "Result": "Successfully exploits the SQL injection vulnerability and obtains the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,82 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Blog from the future",
+        "AttackerCapabilities": [
+            "Web application recon",
+            "Web application vulnerability analysis",
+            "SQL injection exploitation"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SQL Injection"
+            ],
+            "SecurityMeasures": [
+                "Input validation and sanitization",
+                "Authentication mechanism"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Reconnaissance: Accessing robots.txt",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to gather information about the target web application.",
+                    "Action": "Access the robots.txt file to find potential restricted or sensitive areas of the website.",
+                    "Result": "Discovers the /admin page.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Authentication bypass attempt",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to bypass the authentication mechanism to gain unauthorized access to the admin panel.",
+                    "Action": "Modify the HTML form to change the input field from password to totp.",
+                    "Result": "Authentication form is not vulnerable to SQL injection and the attacker cannot bypass the authentication mechanism.",
+                    "Success": "Failed",
+                    "FailingReason": "Authentication form is not vulnerable to SQL injection."
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "SQL injection on post ID parameter",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to exploit a potential SQL injection vulnerability in the post ID parameter.",
+                    "Action": "Inject a UNION SELECT statement using null values to retrieve data from different database tables.",
+                    "Result": "Successfully retrieves data from the users table and posts table.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Retrieve user information",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to gather information about the users of the blog.",
+                    "Action": "Inject a SQL statement to retrieve the usernames from the users table.",
+                    "Result": "Successfully retrieves usernames from the users table.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Retrieve flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to retrieve the flag from the blog.",
+                    "Action": "Inject a SQL statement to retrieve the flag from the posts table.",
+                    "Result": "Successfully retrieves the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

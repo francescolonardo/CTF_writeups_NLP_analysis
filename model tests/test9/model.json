@@ -1,0 +1,134 @@
+{
+    "AttackModel": {
+        "AttackerCapabilities": [
+            "Web application security",
+            "PHP code injection",
+            "Reverse shell setup"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                {
+                    "Type": "File Inclusion",
+                    "Description": "The target web application allows file inclusion via the 'file' parameter in the URL.",
+                    "Documentation": "Link to documentation on file inclusion vulnerability, if available"
+                },
+                {
+                    "Type": "Code Injection",
+                    "Description": "The target web application is vulnerable to PHP code injection.",
+                    "Documentation": "Link to documentation on PHP code injection vulnerability, if available"
+                }
+            ],
+            "SecurityMeasures": []
+        },
+        "PreliminaryAnalysisSteps": [
+            {
+                "Step": 1,
+                "Taxon": "Information Gathering",
+                "Description": "Identify the behavior of the web application when different files are included using the 'file' parameter.",
+                "ToolsUsed": "Python, requests library",
+                "ToolsDescription": "Python script with the 'requests' library is used to make HTTP requests.",
+                "ToolDocRef": "Link to 'requests' library documentation, if available",
+                "Actions": [
+                    {
+                        "Hypothesis": "The attacker expects that the web application allows file inclusion.",
+                        "Action": "Make an HTTP GET request to '?file=wc.php' and observe the redirection.",
+                        "Result": "The web application redirects to '/?file=wc.php', indicating potential file inclusion.",
+                        "Success": "Success",
+                        "FailingReason": null
+                    }
+                ]
+            },
+            {
+                "Step": 2,
+                "Taxon": "Information Gathering",
+                "Description": "Check for the existence of a 'robots.txt' file.",
+                "ToolsUsed": "Python, requests library",
+                "ToolsDescription": "Python script with the 'requests' library is used to make HTTP requests.",
+                "ToolDocRef": "Link to 'requests' library documentation, if available",
+                "Actions": [
+                    {
+                        "Hypothesis": "The attacker suspects that there may be a 'robots.txt' file.",
+                        "Action": "Make an HTTP GET request to '?file=robots.txt' and observe the response.",
+                        "Result": "The web application responds with 'Disallow: /?file=checkpass.php', revealing the existence of 'robots.txt'.",
+                        "Success": "Success",
+                        "FailingReason": null
+                    }
+                ]
+            },
+            {
+                "Step": 3,
+                "Taxon": "Information Gathering",
+                "Description": "Retrieve the content of 'checkpass.php' using base64 encoding.",
+                "ToolsUsed": "HTTP request with 'php://filter/convert.base64-encode/resource' URL",
+                "ToolsDescription": "Using 'php://filter' in the URL to encode the contents of 'checkpass.php' in base64.",
+                "ToolDocRef": "Link to 'php://filter' documentation, if available",
+                "Actions": [
+                    {
+                        "Hypothesis": "The attacker aims to retrieve the source code of 'checkpass.php'.",
+                        "Action": "Make an HTTP GET request to '?file=php://filter/convert.base64-encode/resource=checkpass.php' to encode the file contents in base64.",
+                        "Result": "Base64-encoded content of 'checkpass.php' is obtained.",
+                        "Success": "Success",
+                        "FailingReason": null
+                    }
+                ]
+            }
+        ],
+        "AttackSteps": [
+            {
+                "Step": 1,
+                "Taxon": "Exploitation",
+                "Description": "Identify a suspicious variable ('$password') in the decoded 'checkpass.php' source code.",
+                "ToolsUsed": "Manual inspection",
+                "ToolsDescription": "Manual inspection of the source code for suspicious variables.",
+                "ToolDocRef": null,
+                "Dependency": "Preliminary Analysis Step 3",
+                "Actions": [
+                    {
+                        "Hypothesis": "The attacker hypothesizes that the '$password' variable may be important.",
+                        "Action": "Inspect the decoded source code of 'checkpass.php' to find the '$password' variable.",
+                        "Result": "A suspicious '$password' variable is found in the source code.",
+                        "Success": "Success",
+                        "FailingReason": null
+                    }
+                ]
+            },
+            {
+                "Step": 2,
+                "Taxon": "Exploitation",
+                "Description": "Examine the source code of 'wc.php' for potential vulnerabilities or weaknesses.",
+                "ToolsUsed": "Manual inspection",
+                "ToolsDescription": "Manual inspection of the source code for vulnerabilities or weaknesses.",
+                "ToolDocRef": null,
+                "Dependency": "Preliminary Analysis Step 1",
+                "Actions": [
+                    {
+                        "Hypothesis": "The attacker aims to find potential vulnerabilities or weaknesses in 'wc.php'.",
+                        "Action": "Inspect the source code of 'wc.php' for vulnerabilities or weaknesses.",
+                        "Result": "No vulnerabilities or weaknesses are found in 'wc.php'.",
+                        "Success": "Failed",
+                        "FailingReason": "No vulnerabilities or weaknesses found."
+                    }
+                ]
+            },
+            {
+                "Step": 3,
+                "Taxon": "Exploitation",
+                "Description": "Attempt to exploit the PHP code injection vulnerability using the discovered '$password' variable.",
+                "ToolsUsed": "PHP code injection",
+                "ToolsDescription": "Exploiting PHP code injection using the discovered variable.",
+                "ToolDocRef": "Link to PHP code injection documentation, if available",
+                "Dependency": "Attack Step 1",
+                "Actions": [
+                    {
+                        "Hypothesis": "The attacker expects that the PHP code injection vulnerability can be exploited with the '$password' variable.",
+                        "Action": "Attempt PHP code injection using the discovered '$password' variable.",
+                        "Result": "The attacker successfully exploits the PHP code injection vulnerability and gains control over the application.",
+                        "Success": "Success",
+                        "FailingReason": null
+                    }
+                ]
+            }
+        ]
+    }
+}

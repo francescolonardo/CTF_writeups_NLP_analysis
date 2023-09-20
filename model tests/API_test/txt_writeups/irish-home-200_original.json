@@ -1,0 +1,63 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Irish Home (Web-200)",
+        "AttackerCapabilities": [
+            "SQL injection",
+            "Local File Inclusion (LFI)",
+            "Path traversal",
+            "Blind SQL injection",
+            "Brute-forcing"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SQL injection",
+                "LFI",
+                "Path traversal",
+                "Blind SQL injection"
+            ],
+            "SecurityMeasures": [
+                "Filters applied on double quotes (\"), which mitigate SQL injection",
+                "Maintenance mode disabling destructive actions"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit SQL injection vulnerability to bypass login",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By providing a specially crafted username and password, the attacker can bypass the login mechanism by injecting SQL code.",
+                    "Action": "Set the username as '\\' (escaping the double quote) and the password as 'OR 1=1;#' to bypass authentication.",
+                    "Result": "The attacker successfully logs in as admin.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit LFI vulnerability to access a sensitive file",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By manipulating the 'page' parameter, the attacker can include a sensitive file via LFI.",
+                    "Action": "Access the URL 'http://ctf.sharif.edu:8082/pages/show.php?page=php://filter/read=convert.base64-encode/resource=../delete' to read the 'delete.php' file.",
+                    "Result": "The attacker obtains the contents of 'delete.php', which reveals information about the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploit LFI vulnerability to access the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By manipulating the 'page' parameter, the attacker can include the 'flag' file via LFI.",
+                    "Action": "Access the URL 'http://ctf.sharif.edu:8082/pages/show.php?page=php://filter/read=convert.base64-encode/resource=../deleted_3d5d9c1910e7c7/flag' to read the 'flag' file.",
+                    "Result": "The attacker obtains the flag by brute-forcing the password using the provided script.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "SubStep": {
+        "Subject": "The attacker",
+        "ActionTarget": "The server's file system",
+        "TypeOfAction": "Locating a file",
+        "GainedResources": "The path to 'flag.txt': '/ctf/system/of/a/down/flag.txt'"
+    }
+}

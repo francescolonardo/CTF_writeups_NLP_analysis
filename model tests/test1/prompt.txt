@@ -1,0 +1,5 @@
+I'll give you a CTF writeup, from it I need you to extract a model of the attack. The most important thing is that I need to understand how the attacker reasoned to arrive at the solution he found. 
+Each step of the attack must have a taxon. You can nest steps.
+If there is a step related to the execution of an exploit, the step must report if the exploit succeeded or not.
+Try to abstract as much as possible in order to create a generic attack model not related to the specific writeup.
+The model you'll provide will be a json. Just provide the model without further information.

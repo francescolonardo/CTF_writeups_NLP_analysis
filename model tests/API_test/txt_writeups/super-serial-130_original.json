@@ -1,0 +1,71 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Super Serial",
+        "AttackerCapabilities": [
+            "Knowledge of PHP object injection vulnerability",
+            "Ability to analyze source code",
+            "Knowledge of PHP magic methods",
+            "Ability to craft a serialized object with desired properties"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "PHP object injection (deserialization vulnerability)"
+            ],
+            "SecurityMeasures": [
+                "SQLite database for user authentication",
+                "Serialization and deserialization of user permissions"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyze the source code to identify vulnerabilities and potential attack vectors.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The deserialization vulnerability can be exploited to gain arbitrary file read access.",
+                    "Action": "Review the source code and identify the relevant code segments.",
+                    "Result": "Identify the vulnerable code segments and potential attack vectors.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit the deserialization vulnerability to read the flag file.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By crafting a serialized object with the desired properties, the access_log object can be used to read the flag file.",
+                    "Action": "Craft a serialized object of the access_log class with the log_file property set to '../flag'.",
+                    "Result": "Obtain the serialized and encoded object.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Set the crafted serialized object as the login cookie and trigger the deserialization process.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "During the deserialization process, the crafted serialized object will be deserialized into the $perm variable.",
+                    "Action": "Set the crafted serialized object as the value of the 'login' cookie.",
+                    "Result": "The crafted serialized object is deserialized into the $perm variable.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Trigger an error to invoke the __toString() method of the access_log object and read the flag file.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "An error will be triggered due to the mismatch of methods in the deserialized object. This will invoke the __toString() method of the access_log object.",
+                    "Action": "Access the page where the deserialization error handling code is present.",
+                    "Result": "The error message displays the content of the flag file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

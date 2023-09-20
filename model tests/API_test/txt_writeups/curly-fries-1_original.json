@@ -1,0 +1,32 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Curly Fries 1 - Web",
+        "AttackerCapabilities": [
+            "Ability to use cURL",
+            "Knowledge of HTTP headers"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Improper handling of Accept-Language header"
+            ],
+            "SecurityMeasures": [
+                "No rate limiting or authentication"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker begins by opening the provided link and observing the web page.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that there may be a language-based vulnerability in the web application.",
+                    "Action": "The attacker sets the language headers to Swedish (sv-SE) using cURL.",
+                    "Result": "The attacker successfully obtains the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

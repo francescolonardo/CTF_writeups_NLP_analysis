@@ -1,0 +1,73 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "XSS leads to information leakage of hidden endpoint and authentication bypass",
+        "AttackerCapabilities": [
+            "Knowledge of XSS techniques",
+            "Ability to craft malicious HTML payloads",
+            "Ability to intercept and analyze HTTP requests"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Cross-Site Scripting (XSS)",
+                "Information Leakage",
+                "Authentication Bypass"
+            ],
+            "SecurityMeasures": [
+                "Input validation and sanitization",
+                "Proper handling of user-submitted HTML",
+                "Access control mechanisms"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Submit arbitrary HTML to the 'Send a feedback to admin' endpoint.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the submitted HTML will be rendered by the admin's browser.",
+                    "Action": "The attacker crafts and submits HTML payloads to the endpoint.",
+                    "Result": "The attacker confirms that the submitted HTML is indeed rendered by the admin's browser.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Obtain information from the victim's browser using JavaScript payloads.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that they can extract useful information from the victim's browser.",
+                    "Action": "The attacker crafts and submits JavaScript payloads to extract the page URL, contents, and cookies.",
+                    "Result": "The attacker successfully obtains the page URL, the submitted HTML as the page content, and the available cookies.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploit the discovered 'Secret_admin_cookie_panel' endpoint to obtain the admin cookie.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the 'Secret_admin_cookie_panel' endpoint can be used to obtain the admin cookie.",
+                    "Action": "The attacker visits the 'Secret_admin_cookie_panel' endpoint and analyzes the response.",
+                    "Result": "The attacker discovers that the endpoint returns a Set-Cookie header for a new cookie with the HttpOnly flag set.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Access the previously inaccessible '/flag' endpoint using the obtained admin cookie.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the admin cookie can be used to bypass authentication and access the '/flag' endpoint.",
+                    "Action": "The attacker visits the '/flag' endpoint with the admin cookie set.",
+                    "Result": "The attacker successfully accesses the '/flag' endpoint and obtains the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

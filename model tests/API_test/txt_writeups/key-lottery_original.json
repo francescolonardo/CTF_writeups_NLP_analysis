@@ -1,0 +1,80 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Key-Lottery",
+        "AttackerCapabilities": [
+            "Basic understanding of web applications",
+            "Ability to manipulate HTTP requests"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Improper input validation allowing special characters as input"
+            ],
+            "SecurityMeasures": [
+                "Comma-separated input restriction"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Attempt different characters as input",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker is trying to identify if any special characters are allowed as input.",
+                    "Action": "Enter various special characters as input.",
+                    "Result": "The attacker receives an error message indicating that special characters are not allowed.",
+                    "Success": "Failed",
+                    "FailingReason": "Special characters are not allowed."
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Analyze the server.py attachment",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker is trying to understand the server's behavior and potential vulnerabilities.",
+                    "Action": "Review the server.py attachment.",
+                    "Result": "Identify that the server expects keys to be sent as a comma-separated string.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Enter a single comma as input",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker is testing if a single comma is allowed as input.",
+                    "Action": "Enter a single comma as input.",
+                    "Result": "The attacker receives a response containing a character set.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Enter three commas as input",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker is attempting to fulfill the requirement of providing three keys by using three commas.",
+                    "Action": "Enter three commas as input.",
+                    "Result": "The attacker receives a response containing a character set.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Use the character set as input",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker is testing if using the previously obtained character set as input will yield the flag.",
+                    "Action": "Enter the character set as input, separated by three commas.",
+                    "Result": "The attacker receives the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

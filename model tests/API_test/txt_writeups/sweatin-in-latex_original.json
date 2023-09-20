@@ -1,0 +1,58 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Richard Simmons: Sweatin' in LaTeX",
+        "AttackerCapabilities": [
+            "Knowledge of LaTeX and its file reading capabilities",
+            "Understanding of blacklisted characters and how to bypass them",
+            "Ability to read and analyze HTML source code"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Ability to read files using LaTeX",
+                "Blacklisted characters filter that can be bypassed"
+            ],
+            "SecurityMeasures": [
+                "Blacklisted characters filter"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyze the website and its functionality",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to find a way to read the flag from the file /sweatin/to/the/oldies/flag.txt.",
+                    "Action": "The attacker examines the website and discovers that it is a renderer for LaTeX code. Clicking on 'Generate PDF' provides a link to a rendered PDF and displays the output LOG of the LaTeX renderer.",
+                    "Result": "The attacker determines that they need to find a way to bypass the blacklisted characters filter in order to create the path to read the flag file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Identify a method to bypass the blacklisted characters filter",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by isolating the '/' character from the index.html source code using the \StrMid function from the xstring package, they can bypass the blacklisted characters filter.",
+                    "Action": "The attacker writes LaTeX code that uses the \StrMid function to extract the '/' character from index.html and saves it in a variable.",
+                    "Result": "The attacker successfully isolates the '/' character for use in building the path to read the flag file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Build the path and read the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to construct the path to the flag file using the isolated '/' character and read its contents.",
+                    "Action": "The attacker writes LaTeX code that builds the path using the isolated '/' character and the defined sections of the path. They then use LaTeX code to read and display the contents of the flag file.",
+                    "Result": "The attacker successfully constructs the path and reads the flag file, which is displayed in the returned LOG data.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Medium is overrated",
+        "AttackerCapabilities": [
+            "Knowledge of bash scripting",
+            "Analyzing bzr log and diff",
+            "Using wget and file manipulation commands",
+            "Decoding base64 and hexadecimal strings",
+            "Using OpenSSL command for encryption/decryption"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure handling of version control files (.bzr)",
+                "Sensitive information disclosure in index.php"
+            ],
+            "SecurityMeasures": [
+                "Proper access control and protection of version control files",
+                "Secure storage and handling of sensitive information"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Create a local repository and retrieve necessary files",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to create a local copy of the target repository to analyze its files and history.",
+                    "Action": "The attacker runs a bash script that initializes a local repository, retrieves specific files from the target server, and checks for any missing files.",
+                    "Result": "The attacker successfully creates a local repository and retrieves necessary files for analysis.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Analyze the history and differences in index.php file",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the flag may be hidden within the history or differences of the index.php file.",
+                    "Action": "The attacker analyzes the history and differences of the index.php file using bzr diff.",
+                    "Result": "The attacker identifies two important differences in the index.php file that contain sensitive information.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Decode the base64 encoded Bitcoin wallet password",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to decode the base64 encoded Bitcoin wallet password to gain access to the wallet.",
+                    "Action": "The attacker decodes the base64 encoded password using an online tool or command-line tools.",
+                    "Result": "The attacker successfully decodes the base64 encoded password.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Decrypt the Bitcoin wallet password using the AES ECB key",
+                "ToolsUsed": "OpenSSL command",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the decrypted Bitcoin wallet password will reveal the flag.",
+                    "Action": "The attacker uses the decrypted AES ECB key and the encoded Bitcoin wallet password with the OpenSSL command to decrypt the password.",
+                    "Result": "The attacker successfully decrypts the Bitcoin wallet password and obtains the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

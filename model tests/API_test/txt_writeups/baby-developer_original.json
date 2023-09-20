@@ -1,0 +1,73 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Directory Traversal and SSRF",
+        "AttackerCapabilities": [
+            "Web application testing",
+            "Exploiting directory traversal vulnerabilities",
+            "Exploiting SSRF vulnerabilities",
+            "SSH key exfiltration",
+            "SSH authentication"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Directory Traversal",
+                "SSRF"
+            ],
+            "SecurityMeasures": [
+                "Remote address and user agent checks",
+                "Rendering pages as screenshots"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploiting SSRF to access the flag server",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to access the flag server by exploiting the SSRF vulnerability.",
+                    "Action": "The attacker needs to send a request to http://genflag/flag from the website. They can do this by executing a command on the website server that makes the request.",
+                    "Result": "The attacker successfully executes the command on the website server, which sends a request to http://genflag/flag and retrieves the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploiting directory traversal to access the SSH key",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to access the SSH key by exploiting the directory traversal vulnerability.",
+                    "Action": "The attacker constructs a URL that includes a path traversal sequence (e.g., ../../../../../home/stypr/.ssh/id_rsa) to access the SSH key file.",
+                    "Result": "The attacker successfully accesses the SSH key file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "SSH into the server using the obtained SSH key",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to SSH into the server using the obtained SSH key.",
+                    "Action": "The attacker uses the obtained SSH key to authenticate and SSH into the server.",
+                    "Result": "The attacker successfully SSHes into the server.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Retrieve the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to retrieve the flag from the server.",
+                    "Action": "The attacker executes a command on the server to retrieve the flag.",
+                    "Result": "The attacker successfully retrieves the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

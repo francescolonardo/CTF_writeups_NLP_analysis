@@ -1,0 +1,67 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "uploooadit",
+        "AttackerCapabilities": [
+            "Understanding HTTP headers",
+            "Identifying HTTP Desync Attack CL.TE scenario"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [],
+            "SecurityMeasures": [
+                "Proxy server (haproxy)",
+                "Application server (gunicorn)"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Identify interesting HTTP headers in the responses",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The interesting HTTP headers may reveal information about the infrastructure and potential vulnerabilities.",
+                    "Action": "Analyze the responses and identify the Server, Via, and X-Served-By headers.",
+                    "Result": "The headers indicate the presence of a proxy server (haproxy) and application server (gunicorn).",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Recognize the HTTP Desync Attack CL.TE scenario",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The architecture and response headers suggest the possibility of an HTTP Desync Attack CL.TE scenario.",
+                    "Action": "Refer to external resources to understand the scenario.",
+                    "Result": "Confirmation that the scenario is an HTTP Desync Attack CL.TE.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Craft a malicious HTTP request",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Crafting a specific HTTP request with a modified Transfer-Encoding header may exploit the HTTP Desync Attack CL.TE scenario.",
+                    "Action": "Create a POST request with a modified Transfer-Encoding header and send it to the /files/ endpoint.",
+                    "Result": "Successful creation of an object in the application.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Retrieve the defined object",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By sending a GET request to the /files/ endpoint with the specified GUID, the object can be retrieved.",
+                    "Action": "Send a GET request to the /files/ endpoint with the specified GUID.",
+                    "Result": "Successful retrieval of the object, which contains the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

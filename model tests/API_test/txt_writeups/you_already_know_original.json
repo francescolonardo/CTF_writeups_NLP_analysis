@@ -1,0 +1,32 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "You Already Know",
+        "AttackerCapabilities": [
+            "Ability to analyze network traffic",
+            "Knowledge of web application vulnerabilities",
+            "Familiarity with Google Chrome console"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insufficient client-side input validation",
+                "Lack of server-side validation"
+            ],
+            "SecurityMeasures": []
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "After attempting wordplay and failing, the attacker decides to inspect the network traffic using the Google Chrome console.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that there may be some hidden information in the network traffic that could reveal the flag.",
+                    "Action": "The attacker opens the Network tab in the Google Chrome console to monitor the network requests and responses.",
+                    "Result": "The attacker discovers a JSON response containing the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

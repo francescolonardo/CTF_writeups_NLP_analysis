@@ -1,0 +1,51 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Treasury 2",
+        "AttackerCapabilities": [
+            "SQL injection",
+            "XML External Entity (XXE) attack",
+            "Exploiting vulnerability in XML parsing",
+            "Understanding file inclusion vulnerabilities",
+            "Crafting malicious payloads"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SQL injection",
+                "XML parsing vulnerability",
+                "File inclusion vulnerability"
+            ],
+            "SecurityMeasures": [
+                "Input validation and sanitization",
+                "Properly configured XML parsing",
+                "Secure file inclusion practices"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit SQL injection vulnerability to trigger XXE attack.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the application is vulnerable to XXE attacks and can be exploited via a UNION operation.",
+                    "Action": "The attacker crafts a malicious payload using XML external entity (XXE) attack and encodes it using URL encoding.",
+                    "Result": "The attacker successfully triggers the remote file read operation and obtains the contents of the /etc/passwd file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Use PHP filters to read source code via base64 encoding.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that PHP filters can be used to read the source code of the application.",
+                    "Action": "The attacker crafts a new malicious payload using PHP filters to encode the contents of the /flag file in base64 format.",
+                    "Result": "The attacker successfully reads the source code of the application by decoding the base64 encoded result.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

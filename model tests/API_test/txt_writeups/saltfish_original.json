@@ -1,0 +1,58 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "saltfish",
+        "AttackerCapabilities": [
+            "Knowledge of PHP",
+            "Understanding of type conversions in PHP",
+            "Knowledge of MD5 hashing algorithm"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Type confusion vulnerability in the if statement #2",
+                "Weak comparison in the if statement #3"
+            ],
+            "SecurityMeasures": [
+                "Input validation for the pass parameter"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker notices the PHP snippet on the web page.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal in this step is to understand the code and identify potential vulnerabilities.",
+                    "Action": "The attacker reads the code and identifies the if statements #2 and #3 as potential vulnerabilities.",
+                    "Result": "The attacker gains an understanding of the code structure and identifies the vulnerabilities.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker attempts to bypass the type confusion vulnerability in the if statement #2.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal in this step is to find a value for the 'pass' parameter and the 'User-Agent' header that bypasses the type confusion check.",
+                    "Action": "The attacker tries different values for the 'pass' parameter and the 'User-Agent' header, testing for successful bypass.",
+                    "Result": "The attacker discovers that using the same value for 'pass' and 'User-Agent' bypasses the type confusion check.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker attempts to bypass the weak comparison vulnerability in the if statement #3.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal in this step is to find a value for the 'pass' parameter and the 'User-Agent' header that satisfies the weak comparison condition.",
+                    "Action": "The attacker tries different single characters (0-9, a-f) for the 'pass' parameter and the 'User-Agent' header, testing for successful bypass.",
+                    "Result": "The attacker discovers that using the character 'b' for both 'pass' and 'User-Agent' satisfies the weak comparison condition and reveals the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

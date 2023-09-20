@@ -1,0 +1,83 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Jinja2 SSTI filter bypass",
+        "AttackerCapabilities": [
+            "Knowledge of Jinja2 template injection",
+            "Understanding of filter bypass techniques",
+            "Ability to construct arbitrary payloads",
+            "Ability to bruteforce values"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Jinja2 template injection",
+                "Insufficient input sanitization"
+            ],
+            "SecurityMeasures": [
+                "Filtering certain keywords and characters"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Bypassing '{{' and '}}'",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to bypass the filter and inject code into the template.",
+                    "Action": "The attacker uses an if-else statement with a payload to bypass the filter.",
+                    "Result": "The filter is bypassed and code injection is possible.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Bypassing '.', '[', ']'",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to access elements of a list or dictionary.",
+                    "Action": "The attacker uses the 'attr' filter to bypass the use of '.' and '[]'. They also use the 'first', 'last', and 'list' filters to access specific elements.",
+                    "Result": "The attacker is able to access elements of a list or dictionary.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Bypassing '_', '\\', 'class', 'subclasses', 'getitem'",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker needs to construct a payload to achieve Remote Code Execution (RCE). They require access to '__class__', '__subclassess__', and '__getitem__'.",
+                    "Action": "The attacker uses the 'attr' and 'lower' filters to bypass the banned keywords. They also use the 'join' filter to concatenate strings.",
+                    "Result": "The attacker is able to construct a payload for RCE.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Gaining RCE",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to achieve Remote Code Execution.",
+                    "Action": "The attacker uses the payload ().__class__.__subclasses__.__getitem__(x) to bruteforce the value of x until RCE is achieved.",
+                    "Result": "The attacker successfully gains Remote Code Execution.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Final Payload",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to construct a final payload to execute a specific bash command.",
+                    "Action": "The attacker constructs the final payload using various filters and concatenation techniques.",
+                    "Result": "The attacker's final payload allows for the execution of the specified bash command.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

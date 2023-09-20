@@ -1,0 +1,62 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Log4Security",
+        "AttackerCapabilities": [
+            "Knowledge of Java programming language",
+            "Understanding of web application vulnerabilities",
+            "Ability to manipulate HTTP requests"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure deserialization in /api/preferences endpoint",
+                "Lack of proper authentication in /logs endpoint",
+                "Server-side template injection (SSTI) vulnerability in /home endpoint"
+            ],
+            "SecurityMeasures": [
+                "Input validation and sanitization",
+                "Secure authentication process",
+                "Secure session management",
+                "Proper handling of user-controlled input in templates"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Enable logging through the API",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to modify the logging attribute of the UserPreferences object in order to enable logging.",
+                    "Action": "Send a POST request to /api/preferences endpoint with the desired values for name, location, and logging attributes.",
+                    "Result": "The logging attribute of the UserPreferences object is set to true, enabling logging.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Authentication",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to bypass the authentication process to view the account logs.",
+                    "Action": "Send a GET request to /logs endpoint with a token parameter. Calculate the SHA1 hash of the SUPER_SECRET environment variable and compare it with the provided token.",
+                    "Result": "The attacker successfully bypasses the authentication by providing a valid token.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Log Poisoning and SSTI",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to exploit the server-side template injection vulnerability to inject arbitrary code and retrieve sensitive information.",
+                    "Action": "Send a GET request to /home endpoint with a manipulated User-Agent header containing a server-side template injection payload.",
+                    "Result": "The attacker successfully injects code into the logs, allowing them to retrieve the value of the FLAG environment property.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

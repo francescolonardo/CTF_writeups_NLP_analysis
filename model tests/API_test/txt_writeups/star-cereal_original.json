@@ -1,0 +1,60 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Star Cereal PHP insecure deserialization vulnerability",
+        "AttackerCapabilities": [
+            "Understanding PHP object injection vulnerabilities",
+            "Knowledge of deserialization",
+            "Ability to construct malicious objects",
+            "Understanding of SQL injection"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "PHP object injection vulnerability",
+                "SQL injection vulnerability"
+            ],
+            "SecurityMeasures": [
+                "Cookie-based authentication",
+                "Prepared statements for database queries"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Inspect the source code of the login page",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The source code inspection may reveal vulnerabilities in the authentication process.",
+                    "Action": "Review the source code of the login page and analyze the authentication logic.",
+                    "Result": "Identify the PHP object injection vulnerability and SQL injection vulnerability.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit the PHP object injection vulnerability",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By exploiting the PHP object injection vulnerability, the attacker can bypass the authentication process.",
+                    "Action": "Construct a malicious object to bypass the MFA token check and modify the SQL query.",
+                    "Result": "Successfully bypass the MFA token check and modify the SQL query to authenticate as an admin.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploit the SQL injection vulnerability",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "By exploiting the SQL injection vulnerability, the attacker can retrieve the flag.",
+                    "Action": "Modify the SQL query to return a valid result set with email and password columns.",
+                    "Result": "Successfully retrieve the flag by authenticating as an admin.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

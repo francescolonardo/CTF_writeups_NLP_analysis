@@ -1,0 +1,47 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "HTML Injection and SSRF through Image Renderer",
+        "AttackerCapabilities": [
+            "Knowledge of HTML Injection",
+            "Ability to craft malicious payloads",
+            "Understanding of SSRF vulnerabilities"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "HTML Injection",
+                "Server-Side Request Forgery (SSRF)"
+            ],
+            "SecurityMeasures": [
+                "Input validation and sanitization",
+                "Access control for sensitive resources"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Inject malicious HTML code to exploit HTML Injection vulnerability.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to inject HTML code that triggers a server-side action.",
+                    "Action": "Inject HTML code that includes a request to an internal resource (http://localhost:5000/admin) and captures the request made by the server.",
+                    "Result": "The server processes the injected HTML code and makes a request to the specified internal resource.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Craft a payload to exfiltrate the contents of http://localhost:5000/admin using SSRF.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to abuse the SSRF vulnerability in wkhtmltoimage to exfiltrate the contents of http://localhost:5000/admin.",
+                    "Action": "Craft a payload that includes a request to http://localhost:5000/admin and captures the response.",
+                    "Result": "The SSRF vulnerability allows the attacker to make a request to http://localhost:5000/admin and retrieve its contents.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

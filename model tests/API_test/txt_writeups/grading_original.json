@@ -1,0 +1,54 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Grading",
+        "AttackerCapabilities": [
+            "Knowledge of default credentials",
+            "Ability to navigate through web application"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [],
+            "SecurityMeasures": [
+                "User authentication"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker attempts to login as admin using the default password 'admin'.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the default password may not have been changed.",
+                    "Action": "The attacker enters 'admin' as the password when trying to login.",
+                    "Result": "The attacker successfully logs in as the admin user.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker navigates to the 'simple quiz' section of the web application.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the flag is located in the 'simple quiz' section.",
+                    "Action": "The attacker clicks on the 'simple quiz' section.",
+                    "Result": "The attacker successfully accesses the 'simple quiz' section.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker finds the flag within the 'simple quiz' section.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the flag is present within the 'simple quiz' section.",
+                    "Action": "The attacker locates the flag within the 'simple quiz' section.",
+                    "Result": "The attacker finds the flag: flag{th3_an5w3r_w4s_HSCTF_0bvi0us1y}",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}
