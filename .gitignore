@@ -16,3 +16,8 @@ README.md
 README.docx
 
 openai_chat.py
+
+openai/venv
+openai/api_keys
+openai/dataset_writeups
+openai/dataset_writeups.BAK
