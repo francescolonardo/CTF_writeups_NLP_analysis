@@ -1,0 +1,59 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "The Lady is a Smuggler",
+        "AttackerCapabilities": [
+            "Web application scanning",
+            "HTML parsing",
+            "Network traffic analysis"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure Direct Object References (IDOR)",
+                "Information Disclosure"
+            ],
+            "SecurityMeasures": [
+                "Secure coding practices",
+                "Access control mechanisms"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker scans the web application for vulnerabilities.",
+                "ToolsUsed": "Web application scanner",
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to identify vulnerabilities in the web application.",
+                    "Action": "The attacker uses a web application scanner to automatically identify potential vulnerabilities.",
+                    "Result": "The web application scanner detects an insecure direct object reference (IDOR) vulnerability in the HTML code.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker analyzes the HTML code to find hidden information.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to extract hidden information from the HTML code.",
+                    "Action": "The attacker manually inspects the HTML code and finds an image URL containing the flag.",
+                    "Result": "The attacker discovers the flag 'DawgCTF{ClearEdge_ElizebethSmith}' in the image URL.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker retrieves the flag by accessing the image URL.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to obtain the flag by accessing the image URL.",
+                    "Action": "The attacker accesses the image URL directly.",
+                    "Result": "The attacker successfully retrieves the flag 'DawgCTF{ClearEdge_ElizebethSmith}'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

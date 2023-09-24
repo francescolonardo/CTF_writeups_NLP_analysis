@@ -1,0 +1,5 @@
+Generate a comprehensive attack model from a CTF writeup, elucidating the attacker's thought process leading to their solution. 
+Ensure that each step of the attack is categorized using a taxonomy, which can be nested. 
+Include information on whether any exploit execution steps were successful. 
+Strive for maximal abstraction to create a generic attack model independent of the specific writeup. 
+The output should be in JSON format, containing solely the attack model without additional details.

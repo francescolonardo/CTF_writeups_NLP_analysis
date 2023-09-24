@@ -1,0 +1,59 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Secure Portal",
+        "AttackerCapabilities": [
+            "Knowledge of JavaScript",
+            "Ability to analyze obfuscated code",
+            "Ability to reverse engineer code"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Obfuscated JavaScript code",
+                "Lack of server-side password validation"
+            ],
+            "SecurityMeasures": [
+                "Client-side password validation",
+                "Use of localStorage to store password parts"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyze the obfuscated JavaScript code and identify the password validation logic.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal in this step is to understand how the password is validated and identify any vulnerabilities or weaknesses in the code.",
+                    "Action": "The attacker examines the obfuscated JavaScript code and decodes the hex-encoded list to understand the key-value pairs.",
+                    "Result": "The attacker successfully decodes the hex-encoded list and identifies the key-value pairs corresponding to password parts and localStorage methods.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Reverse engineer the obfuscated code to understand the actual methods being called.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal in this step is to translate the obfuscated code into its original form to understand how the password is validated.",
+                    "Action": "The attacker analyzes the code, identifies the repetitive 'window.localStorage' pattern, and translates it to 'localStorage' methods.",
+                    "Result": "The attacker successfully translates the obfuscated code into its original form, revealing the use of localStorage methods for password validation.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Reconstruct the password from the assigned key-value pairs and test it against the validation logic.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal in this step is to reconstruct the password from the assigned key-value pairs and test it against the validation logic to gain unauthorized access.",
+                    "Action": "The attacker combines the password parts stored in localStorage keys and enters the reconstructed password into the login form.",
+                    "Result": "The attacker's reconstructed password matches the validation logic, granting them unauthorized access to the secure portal.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

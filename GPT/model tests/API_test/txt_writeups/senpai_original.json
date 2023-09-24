@@ -1,0 +1,73 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Authentication Logic",
+        "AttackerCapabilities": [
+            "Knowledge of JWT authentication",
+            "Understanding of HTTP requests",
+            "Ability to perform SSRF attacks"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure JWT key generation",
+                "Caching mechanism allowing unauthorized access",
+                "SSRF vulnerability"
+            ],
+            "SecurityMeasures": [
+                "JWT token authentication",
+                "User role check",
+                "IP address validation"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Obtain the JWT secret by registering and logging in as a user",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to obtain the JWT secret to craft a new JWT token with an admin role.",
+                    "Action": "The attacker registers an account and logs in, triggering the generation of a unique JWT secret.",
+                    "Result": "The attacker successfully obtains the JWT secret.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Perform an SSRF attack to access the Redis cache",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to access the Redis cache to retrieve the cached secret.",
+                    "Action": "The attacker sends a POST request to the /rin endpoint with a crafted URL parameter pointing to the /sakura endpoint.",
+                    "Result": "The attacker successfully retrieves the cached secret from the Redis cache.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Craft a new JWT token with an admin role",
+                "ToolsUsed": "JWT signing library",
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to change the role attribute in the JWT token to admin.",
+                    "Action": "The attacker uses a JWT signing library to generate a new JWT token using the obtained secret and modifies the role attribute to admin.",
+                    "Result": "The attacker successfully crafts a new JWT token with an admin role.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Access the /flag endpoint with the new JWT token",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to access the /flag endpoint, which requires an admin role.",
+                    "Action": "The attacker makes a request to the /flag endpoint with the crafted JWT token.",
+                    "Result": "The attacker successfully accesses the /flag endpoint and obtains the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

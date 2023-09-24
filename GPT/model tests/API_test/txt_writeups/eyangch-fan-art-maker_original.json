@@ -1,0 +1,33 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "EYANGCH Fan Art Maker",
+        "AttackerCapabilities": [
+            "Understanding of XML syntax",
+            "Ability to modify XML files"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure XML configuration",
+                "Lack of input validation/sanitization"
+            ],
+            "SecurityMeasures": [
+                "None mentioned in the writeup"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker hypothesizes that they can manipulate the location of the flag component by modifying the XML file.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to change the location of the flag component to potentially reveal the flag.",
+                    "Action": "The attacker modifies the XML file to set different values for the 'x' and 'y' attributes of the flag component.",
+                    "Result": "The flag component is successfully repositioned to the new coordinates specified by the attacker.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

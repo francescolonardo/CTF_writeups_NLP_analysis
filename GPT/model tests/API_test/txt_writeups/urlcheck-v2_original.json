@@ -1,0 +1,70 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Urlcheck v2",
+        "AttackerCapabilities": [
+            "Knowledge of WAF bypass techniques",
+            "Familiarity with the ipaddress library in Python",
+            "Understanding of DNS resolution and DNS rebinding attacks"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Weak IP address validation",
+                "Improper handling of redirect URLs"
+            ],
+            "SecurityMeasures": [
+                "WAF (Web Application Firewall)"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit weak IP address validation",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to bypass the IP address check implemented in the 'validip' function. By providing a crafted IP address, they expect to bypass the check and proceed further into the system.",
+                    "Action": "The attacker adds two A records to the DNS entry, associating the 'double.terjanq.me' hostname with both '127.0.0.1' and '51.38.138.162'.",
+                    "Result": "The weak IP address validation check in the 'validip' function allows IP addresses associated with the 'double.terjanq.me' hostname to pass as valid. This allows the attacker to proceed with the attack.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit improper handling of redirect URLs",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to exploit the improper handling of redirect URLs in the 'get' function. By manipulating the 'location' header, they can control the URL used for subsequent requests and potentially bypass security checks.",
+                    "Action": "The attacker sends a GET request to the target URL, which triggers a redirect response. They intercept the 'location' header and modify the URL to their advantage.",
+                    "Result": "The attacker successfully modifies the URL in the 'location' header to include a crafted hostname, 's-35.185.206.165-127.0.0.1-RANDOM-fs-e.d.rebind.it'. This hostname triggers DNS resolution and potentially bypasses security measures.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploit DNS rebinding",
+                "ToolsUsed": "Singularity",
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to exploit DNS rebinding to set up their own DNS server that responds with a public IP address followed by a local IP address. This allows them to control the order of DNS resolves and potentially bypass security measures.",
+                    "Action": "The attacker sets up a DNS server using Singularity and configures it to respond with the public IP address first, followed by the local IP address.",
+                    "Result": "The attacker successfully sets up their own DNS server and configures it to respond with the desired IP addresses in the desired order. This allows them to bypass security measures and proceed with the attack.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Exploit DNS rebinding using the attacker's DNS server",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "With the attacker's DNS server in place, they can now exploit DNS rebinding by sending a GET request to the target URL with a crafted hostname that triggers DNS resolution using their DNS server.",
+                    "Action": "The attacker sends a GET request to the target URL, replacing the hostname with 's-35.185.206.165-127.0.0.1-RANDOM-fs-e.d.rebind.it' and ensuring that 'RANDOM' is replaced with a random value.",
+                    "Result": "The attacker successfully triggers DNS resolution using their DNS server. This allows them to potentially bypass security measures and obtain the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

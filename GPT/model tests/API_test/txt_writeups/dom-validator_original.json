@@ -1,0 +1,61 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "DOM Validator",
+        "AttackerCapabilities": [
+            "Knowledge of XSS vulnerabilities",
+            "Understanding of DOMValidator.js script",
+            "Ability to manipulate query parameters"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "XSS vulnerability in the custom HTML upload page",
+                "Lack of X-XSS-Protection header",
+                "Vulnerable XSS-Auditor in Chrome 74"
+            ],
+            "SecurityMeasures": [
+                "DOMValidator.js script for calculating document's hash",
+                "Comparison of calculated hash with original hash",
+                "Filtering of reflected XSS by XSS-Auditor in Chrome 74"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker appends the xss=<script src=\"https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha512.js\"> parameter to the query.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to bypass the XSS-Auditor filter and execute arbitrary JavaScript code.",
+                    "Action": "The attacker appends the xss=<script src=\"https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha512.js\"> parameter to the query.",
+                    "Result": "The sha512.js script gets filtered by the XSS-Auditor, causing the DOMValidator.js script to crash.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker's JavaScript payload <script>alert('pwned')</script> is executed.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to execute arbitrary JavaScript code.",
+                    "Action": "The attacker's JavaScript payload <script>alert('pwned')</script> is executed.",
+                    "Result": "The JavaScript payload <script>alert('pwned')</script> is executed.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker reports the URL to the admin.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to obtain the flag from the admin.",
+                    "Action": "The attacker reports the URL to the admin.",
+                    "Result": "The attacker receives the flag: actf{itsallrelative}",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

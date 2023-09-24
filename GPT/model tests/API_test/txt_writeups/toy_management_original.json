@@ -1,0 +1,93 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Toy Management",
+        "AttackerCapabilities": [
+            "Knowledge of SQL injection",
+            "Ability to analyze source code",
+            "Understanding of password cracking"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SQL injection vulnerability"
+            ],
+            "SecurityMeasures": [
+                "Password hashing"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyze the source code and database.sql file",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The database.sql file may contain password hashes and the source code may reveal vulnerabilities.",
+                    "Action": "Review the source code and database.sql file for potential vulnerabilities and password hashes.",
+                    "Result": "Discover the password hashes for the manager and admin users in the database.sql file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Crack the password hash",
+                "ToolsUsed": "CrackStation",
+                "StepDetails": {
+                    "Hypothesis": "The password hashes can be cracked to obtain the actual passwords.",
+                    "Action": "Use CrackStation to attempt to crack the password hashes.",
+                    "Result": "Successfully crack the password hashes for the manager and admin users: manager:bigsanta! and admin:tryharder.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Login as the manager",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Logging in as the manager may provide additional access or information.",
+                    "Action": "Use the obtained credentials manager:bigsanta! to login as the manager.",
+                    "Result": "Successfully login as the manager and gain access to the toy list and properties.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Identify the flag entry",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The flag may be stored within the toy list in the database.",
+                    "Action": "Inspect the toy list and properties to identify the flag entry.",
+                    "Result": "Find the flag entry in the toy list with the approved value set to 0 instead of 1.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Exploit the SQL injection vulnerability",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The SQL injection vulnerability in the authentication mechanism can be exploited to bypass the admin check.",
+                    "Action": "Attempt SQL injection payloads on the main login page.",
+                    "Result": "Successfully bypass the admin check using the payload 'username admin' --' and any password.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 6,
+                "Description": "Retrieve the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The flag is associated with the unapproved toy entry.",
+                    "Action": "Access the toy list again after bypassing the admin check.",
+                    "Result": "Obtain the final 'unapproved toy' entry, which contains the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

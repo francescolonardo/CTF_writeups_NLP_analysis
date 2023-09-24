@@ -1,0 +1,85 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "message-board",
+        "AttackerCapabilities": [
+            "Ability to analyze code files",
+            "Knowledge of BurpSuite and its features",
+            "Understanding of HTTP requests and cookies",
+            "Ability to manipulate and modify requests",
+            "Knowledge of common web vulnerabilities"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insufficient password authentication",
+                "Insecure cookie handling"
+            ],
+            "SecurityMeasures": [
+                "Username and password authentication",
+                "Proper cookie validation and encryption"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker logs in using the provided credentials.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by logging in, they will gain access to the application.",
+                    "Action": "The attacker uses the provided credentials to log in.",
+                    "Result": "The attacker successfully gains access to the application.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker examines the server code files and finds a vulnerability in app.js",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by analyzing the server code files, they may find a vulnerability.",
+                    "Action": "The attacker looks through the server code files and discovers a vulnerability in app.js.",
+                    "Result": "The attacker successfully identifies a vulnerability in app.js.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker uses BurpSuite to manipulate the request and bypass authentication.",
+                "ToolsUsed": "BurpSuite",
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by manipulating the request using BurpSuite, they can bypass authentication.",
+                    "Action": "The attacker configures BurpSuite to modify the request by replacing the username with 'admin' and setting the payload parameter as the userID.",
+                    "Result": "The attacker successfully modifies the request and bypasses authentication.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "The attacker searches for the flag in the response using BurpSuite's grep match feature.",
+                "ToolsUsed": "BurpSuite",
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that the flag is present in the response and can be located by using BurpSuite's grep match feature.",
+                    "Action": "The attacker configures BurpSuite to search for the flag by setting up a grep match for 'flag{' in the response.",
+                    "Result": "The attacker successfully identifies the flag in the response.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "The attacker confirms the flag on the website by changing the cookie values.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by changing the cookie values, they can confirm the flag on the website.",
+                    "Action": "The attacker modifies the cookie values by setting userID to 768 and username to admin.",
+                    "Result": "The attacker successfully confirms the flag on the website.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

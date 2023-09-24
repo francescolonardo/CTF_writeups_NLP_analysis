@@ -1,0 +1,59 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Apache Traffic Server (ATS) CVE-2018-8004 Request Smuggling",
+        "AttackerCapabilities": [
+            "Knowledge of Apache Traffic Server (ATS) CVE-2018-8004 vulnerability",
+            "Ability to craft HTTP requests",
+            "Understanding of request smuggling attacks"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Apache Traffic Server (ATS) 7.1.1 vulnerability to CVE-2018-8004",
+                "Lack of validation for Content-Length headers"
+            ],
+            "SecurityMeasures": [
+                "Use of Apache Traffic Server (ATS) 7.1.1",
+                "Backend server (Nginx) processing Transfer-Encoding header instead of Content-Length header"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Craft a CL-TE request smuggling attack to direct the admin to /save.php.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to trick the ATS server into forwarding a request to the backend server (Nginx) while bypassing its processing of the Transfer-Encoding header.",
+                    "Action": "Craft a payload with the initial request containing a Content-Length header and Transfer-Encoding header, followed by the second request.",
+                    "Result": "The ATS server processes the Content-Length header and forwards the entire payload as a single request to the Nginx backend. The Nginx backend sees the Transfer-Encoding header and decides that the first request ends early. The second request is not yet completed.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Append the admin's request to the incomplete request created in step 1.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to combine the incomplete request created in step 1 with the admin's request, thereby including the admin's Cookie and X-Access headers.",
+                    "Action": "When the admin visits the site, make sure their request is appended to the incomplete request created in step 1.",
+                    "Result": "The admin's request is processed along with the incomplete request, and the log file contains the admin's Cookie and X-Access headers.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Access private.php using the admin's credentials.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to access the flag by visiting private.php with the admin's credentials.",
+                    "Action": "Craft a request to private.php with the admin's Cookie and X-Access headers.",
+                    "Result": "The attacker successfully accesses private.php and views the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

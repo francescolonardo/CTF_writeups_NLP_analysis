@@ -1,0 +1,46 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Confidentiality",
+        "AttackerCapabilities": [
+            "Ability to navigate and search for files within a directory",
+            "Ability to read files"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Improper directory listing",
+                "Inadequate file access control"
+            ],
+            "SecurityMeasures": [
+                "Proper file access control",
+                "Limited directory listing"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker begins by searching for the flag file within the /home directory.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to find the flag file in the target system.",
+                    "Action": "The attacker navigates to the /home directory and searches for the flag file.",
+                    "Result": "The attacker successfully finds the flag file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker reads the contents of the flag file.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to retrieve the flag contents.",
+                    "Action": "The attacker uses the 'cat' command to read the contents of the flag file.",
+                    "Result": "The attacker successfully reads the contents of the flag file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

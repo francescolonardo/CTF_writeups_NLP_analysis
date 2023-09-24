@@ -1,0 +1,9 @@
+{
+    "SubStep": 
+    {
+        "Subject": "The attacker",
+        "ActionTarget": "'flag.txt'",
+        "TypeOfAction": "Read operation",
+        "GainedResources": "The flag: 'csictf{1nj3ct10n_15_p41nfu1}'"
+    }
+}

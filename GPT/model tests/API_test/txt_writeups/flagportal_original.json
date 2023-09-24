@@ -1,0 +1,46 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Flag Portal",
+        "AttackerCapabilities": [
+            "Understanding of HTTP protocol",
+            "Knowledge of HTTP request smuggling vulnerabilities",
+            "Ability to craft and send HTTP requests"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "HTTP request smuggling between ATS and Puma",
+                "HTTP request smuggling between ATS and Waitress"
+            ],
+            "SecurityMeasures": [
+                "URL mapping configurations"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploiting HTTP request smuggling between ATS and Puma",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to perform an SSRF by smuggling a request to /admin in flagportal.",
+                    "Action": "Craft a malicious HTTP request with chunked transfer encoding and invalid/unsupported TE values to confuse ATS and Puma.",
+                    "Result": "The attacker successfully smuggles a request to /admin and obtains the Admin-Key.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploiting HTTP request smuggling between ATS and Waitress",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to smuggle multiple requests to perform an action in the backend server.",
+                    "Action": "Craft a malicious HTTP request with chunked transfer encoding and LF in chunk extensions to confuse ATS and Waitress.",
+                    "Result": "The attacker successfully smuggles multiple requests and obtains the flag from the backend server.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

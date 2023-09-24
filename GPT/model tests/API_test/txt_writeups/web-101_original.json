@@ -1,0 +1,45 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Web 101",
+        "AttackerCapabilities": [
+            "SQL injection",
+            "Knowledge of UNION-based injection"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Blacklist filter bypass",
+                "SQL injection vulnerability"
+            ],
+            "SecurityMeasures": [
+                "Blacklist filter for # and ="
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Bypass the blacklist filter to obtain account credentials.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that bypassing the blacklist filter will allow them to obtain account credentials.",
+                    "Action": "The attacker injects 'test' or 1-- - into the username and password fields to bypass the blacklist filter.",
+                    "Result": "The attacker successfully obtains account credentials, but logging in with these credentials does not give them the flag.",
+                    "Success": "Failed",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Perform a UNION-based injection to dump the database and retrieve the flag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that performing a UNION-based injection will allow them to retrieve the flag by dumping the database.",
+                    "Action": "The attacker injects 'test' or 1 UNION SELECT *, null from flag-- - into the username and password fields to perform a UNION-based injection.",
+                    "Result": "The attacker successfully dumps the database and retrieves the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,72 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Privilege escalation through SUID files and PATH variable manipulation",
+        "AttackerCapabilities": [
+            "Knowledge of SUID files",
+            "Ability to manipulate environment variables like PATH",
+            "Ability to execute arbitrary code",
+            "Knowledge of privilege escalation techniques"
+        ],
+        "Target": {
+            "Type": "Binary executable",
+            "Vulnerabilities": [
+                "Improper use of SUID flag",
+                "Insecure PATH variable configuration"
+            ],
+            "SecurityMeasures": [
+                "Setting correct permissions on SUID files",
+                "Properly configuring the PATH variable to prevent unauthorized execution"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker identifies that the target binary has the SUID flag set and can be manipulated to execute arbitrary code.",
+                "ToolsUsed": "null",
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to spawn a root shell to access the flag.txt file.",
+                    "Action": "The attacker creates a malicious id payload that checks if the caller is root and spawns a shell if true.",
+                    "Result": "The attacker successfully creates the malicious payload.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker manipulates the PATH variable to include the directory where the malicious payload is located.",
+                "ToolsUsed": "null",
+                "StepDetails": {
+                    "Hypothesis": "By manipulating the PATH variable, the attacker ensures that the target binary will execute the malicious payload instead of the legitimate id command.",
+                    "Action": "The attacker changes the PATH variable to include the directory where the malicious payload is located.",
+                    "Result": "The PATH variable is successfully manipulated.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker executes the target binary, which calls the id command.",
+                "ToolsUsed": "null",
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects the target binary to execute the malicious payload due to the manipulated PATH variable.",
+                    "Action": "The attacker runs the target binary.",
+                    "Result": "The target binary executes the malicious payload, spawning a root shell.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "The attacker is now able to access the flag.txt file and obtain the flag.",
+                "ToolsUsed": "null",
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects to find the flag.txt file and reads its content.",
+                    "Action": "The attacker uses the root shell to read the flag.txt file.",
+                    "Result": "The attacker successfully reads the flag.txt file and obtains the flag.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            }
+        ]
+    }
+}

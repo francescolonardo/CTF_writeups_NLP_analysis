@@ -1,0 +1,46 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Fire/place",
+        "AttackerCapabilities": [
+            "Web application analysis",
+            "Knowledge of Firestore database"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure Firestore configuration",
+                "Exposure of sensitive data"
+            ],
+            "SecurityMeasures": [
+                "Firestore API key",
+                "Firestore document access control"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyze the HTML file and Firestore configuration.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the Firestore configuration may contain sensitive information.",
+                    "Action": "The attacker inspects the HTML file to find the Firestore configuration.",
+                    "Result": "The attacker finds the Firestore configuration containing the API key and other credentials.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Interact with the Firestore installation using the browser console.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that they can retrieve data from Firestore using the provided code snippet.",
+                    "Action": "The attacker executes the code snippet in the browser console.",
+                    "Result": "The attacker successfully retrieves data from Firestore, including the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

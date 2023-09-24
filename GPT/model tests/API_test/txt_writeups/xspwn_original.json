@@ -1,0 +1,61 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "XSPwn",
+        "AttackerCapabilities": [
+            "Understanding of Use After Free vulnerability",
+            "Knowledge of C programming language",
+            "Knowledge of Web Application Security",
+            "Ability to debug with Chrome DevTools",
+            "Knowledge of JavaScript"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Use After Free (UAF) vulnerability when deleting a node",
+                "Lack of ASLR in WASM"
+            ],
+            "SecurityMeasures": [
+                "Validation of input in validateJared() to prevent XSS",
+                "Randomized index for deleting nodes"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit the Use After Free vulnerability to control HEAD->name",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to control HEAD->name by overwriting it in the next malloc() call in insertSorted().",
+                    "Action": "The attacker inserts their XSS payload as the first item, which will fail but write the payload to memory. They then overwrite the HEAD->name to the address of this XSS payload.",
+                    "Result": "The HEAD->name is overwritten with the address of the XSS payload.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Predict the address of the XSS payload in memory",
+                "ToolsUsed": "Chrome DevTools for debugging",
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to find the address where their XSS payload is inserted in memory.",
+                    "Action": "The attacker debugs the application using Chrome DevTools to obtain the address of the XSS payload.",
+                    "Result": "The attacker obtains the address of the XSS payload in memory: 0x500e20.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Delete nodes until the index is 0",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to delete nodes until the index is 0, which increases the chances of the XSS payload being displayed.",
+                    "Action": "The attacker repeatedly calls the 'deleteNameAtIndex' function with a random index until the index is 0.",
+                    "Result": "The index eventually becomes 0, increasing the chances of the XSS payload being displayed.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,26 @@
+Passman
+
+Solved by Starry-Lord
+
+
+This app meets us with another login page, where we can also register an account.
+
+Checking the network tab actually showed a familiar name:
+
+We can go to https://ivangoncharov.github.io/graphql-voyager/ in order to grab the infamous introspection query for graphql, which essentially returns all the content of the graphql schema. Click on “change schema”, then select the introspection tab and click on “Copy Introspection Query” to get the query to your clipboard.
+Now we need to send it to this graphql endpoint but since its set to accept strings, we need to get rid of the new lines:
+
+Then sending the request through BurpSuite’s repeater tab to the /graphql endpoint returns the full introspection as expected:
+
+With this data, we can go back to the graphql voyager tool and paste it in the box below the “Copy introspection query” button. This will give us a good sense of what data is built into this endpoint:
+
+There’s nothing much about this Query, except returning the phrases owned by the logged user. But there were actual “Mutation” queries used when logging in, registering a new user, or adding a new phrase. It turned out there was another function (or mutation) allowing us to change a supplied user password, which seems like a bad thing to leave laying around unused.
+
+UpdatePassword was the ticket to the flag, but first we needed to syntax it properly. I gladly used the content of the login graphql request shown below:
+
+From there it was just a matter of editing the request properly and updating the admin password with a cool password:
+
+After logging in with the admin account and the new password, we can see the flag in the password of the note:
+
+HTB{1d0r5_4r3_s1mpl3_4nd_1mp4ctful!!}
+

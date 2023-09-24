@@ -1,0 +1,70 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Browser-based Port Scan + Puppeteer Remote Debugging",
+        "AttackerCapabilities": [
+            "Knowledge of web application security",
+            "Understanding of the DevTools protocol",
+            "Ability to scan for open ports"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Exposure of a random debugging port",
+                "Lack of proper port validation"
+            ],
+            "SecurityMeasures": [
+                "Timeout for the browser instance"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Launch a browser instance with a random debugging port.",
+                "ToolsUsed": "Puppeteer",
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to gain access to the debugging port in order to communicate with the Chromium instance.",
+                    "Action": "The attacker launches a browser instance with a random debugging port using Puppeteer.",
+                    "Result": "The browser instance is successfully launched with a random debugging port.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Scan for open ports within the possible range.",
+                "ToolsUsed": "Port scanning tool",
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to find the open debugging port within the possible range.",
+                    "Action": "The attacker scans for open ports within the possible range.",
+                    "Result": "The attacker finds an open debugging port.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Attempt to load the debugging port as a resource.",
+                "ToolsUsed": "Web browser",
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to determine if the debugging port is open or closed.",
+                    "Action": "The attacker attempts to load the debugging port as a resource.",
+                    "Result": "If the port is closed, a Connection Refused error is triggered and the onerror event handler is fired. If the port is open, the onload event handler is fired.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "If the port is open, communicate with the Chromium instance to open a new page with the file:///tmp/flag URL and read its contents.",
+                "ToolsUsed": "DevTools protocol",
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to open a new page with the file:///tmp/flag URL and read its contents.",
+                    "Action": "The attacker communicates with the Chromium instance through the DevTools protocol to open a new page with the file:///tmp/flag URL and read its contents.",
+                    "Result": "The attacker successfully reads the contents of the flag file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

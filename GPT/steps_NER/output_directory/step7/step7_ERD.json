@@ -1,0 +1,40 @@
+{
+    "entities": [
+        {
+            "name": "Attacker",
+            "attributes": [
+                {"name": "ID", "type": "integer"}
+            ]
+        },
+        {
+            "name": "PasswordHash",
+            "attributes": [
+                {"name": "HashValue", "type": "string"}
+            ]
+        },
+        {
+            "name": "User",
+            "attributes": [
+                {"name": "ID", "type": "integer"},
+                {"name": "Name", "type": "string"}
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Discovers",
+            "entities": ["Attacker", "PasswordHash"],
+            "cardinality": "one-to-many"
+        },
+        {
+            "name": "Has",
+            "entities": ["PasswordHash", "User"],
+            "cardinality": "one-to-one"
+        },
+        {
+            "name": "Cracks",
+            "entities": ["Attacker", "PasswordHash"],
+            "cardinality": "one-to-one"
+        }
+    ]
+}

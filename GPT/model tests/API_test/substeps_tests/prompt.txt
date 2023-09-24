@@ -1,0 +1,28 @@
+The following json is a step extracted from an attack model obtained from a CTF's writeup.
+
+{
+    "StepNumber": 1,
+    "Description": "Bypass cookie-based authentication",
+    "ToolsUsed": null,
+    "StepDetails": {
+        "Hypothesis": "The attacker wants to gain access to the restricted page by bypassing the cookie-based authentication.",
+        "Action": "Set the 'password' cookie to the value 'w0rdc0unt123' to impersonate a user from 'csivit'.",
+        "Result": "Successfully bypasses authentication and gains access to the page.",
+        "Success": "Success",
+        "FailingReason": null
+    }
+}
+
+Given this step, I need to extract a more structured source of information.
+Use this json as guide:
+{
+    "SubStep": [
+    {
+        "Subject": "Who performs this action?",
+        "Target": "The action has a target?",
+        "TypeOfAction": "Which type of action has been performed?",
+        "GainedResources": "What the subject gained from this action?
+    }, //Add more substeps as needed
+    ]
+
+}

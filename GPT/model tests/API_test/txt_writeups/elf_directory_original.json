@@ -1,0 +1,96 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Elf Directory",
+        "AttackerCapabilities": [
+            "Web application exploitation",
+            "Command injection",
+            "File upload vulnerability",
+            "Remote code execution"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure file upload",
+                "Command injection"
+            ],
+            "SecurityMeasures": [
+                "Session management",
+                "File type validation"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Create an account and sign in",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that creating an account and signing in might provide access to additional functionality or information.",
+                    "Action": "The attacker creates an account and signs in.",
+                    "Result": "The attacker gains access to a profile screen with limited permissions.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Analyze the HTML and discover missing JS code",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker suspects that there might be hidden functionality or vulnerabilities in the HTML or JS code.",
+                    "Action": "The attacker inspects the HTML and discovers missing JS code.",
+                    "Result": "The attacker finds HTML IDs that do not refer to anything on the page.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Manipulate the session cookie to gain admin access",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that modifying the session cookie might grant higher privileges.",
+                    "Action": "The attacker decodes and modifies the session cookie to set 'approved' to true.",
+                    "Result": "The attacker successfully gains admin access.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Bypass file type validation",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that bypassing the file type validation will allow them to upload malicious files.",
+                    "Action": "The attacker uploads a PNG file with PHP code embedded.",
+                    "Result": "The attacker successfully uploads a file with a valid PNG extension but containing PHP code.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Achieve remote code execution",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects to execute arbitrary commands on the server by uploading a PHP file.",
+                    "Action": "The attacker creates a PNG file with PHP code that echoes the system command.",
+                    "Result": "The attacker achieves remote code execution and gains control over the server.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 6,
+                "Description": "Retrieve the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that the flag is stored on the server and can be accessed through a file.",
+                    "Action": "The attacker runs a command to list and read the flag file.",
+                    "Result": "The attacker successfully retrieves and prints the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

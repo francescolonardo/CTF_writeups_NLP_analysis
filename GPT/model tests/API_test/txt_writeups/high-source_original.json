@@ -1,0 +1,82 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "High Source",
+        "AttackerCapabilities": [
+            "Web application analysis",
+            "JavaScript code analysis",
+            "Password cracking"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Hardcoded password in JavaScript code",
+                "Insecure authentication mechanism"
+            ],
+            "SecurityMeasures": [
+                "None mentioned in the writeup"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyze the web application",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker suspects that there might be vulnerabilities in the web application's login mechanism.",
+                    "Action": "The attacker performs a thorough analysis of the web application, inspecting its source code and functionality.",
+                    "Result": "The attacker discovers that the login is performed via a JavaScript script.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Analyze the JavaScript code",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that there might be sensitive information or vulnerabilities in the JavaScript code.",
+                    "Action": "The attacker carefully examines the JavaScript code responsible for the login functionality.",
+                    "Result": "The attacker identifies a hardcoded password in the JavaScript code.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Crack the password",
+                "ToolsUsed": "Password cracking tool",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by cracking the hardcoded password, they will be able to login to the web application.",
+                    "Action": "The attacker uses a password cracking tool to attempt to crack the hardcoded password.",
+                    "Result": "The attacker successfully cracks the password: I4m4M4st3rC0d3rH4x0rsB3w43.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Login using the cracked password",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that by using the cracked password, they will be able to login to the web application.",
+                    "Action": "The attacker enters the cracked password into the login form on the web application.",
+                    "Result": "The attacker successfully logs in to the web application.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Find the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by successfully logging in, they will be able to find the flag.",
+                    "Action": "The attacker explores the web application after logging in.",
+                    "Result": "The attacker finds the flag: TUCTF{H1gh_S0urc3_3qu4ls_L0ng_F4ll}.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

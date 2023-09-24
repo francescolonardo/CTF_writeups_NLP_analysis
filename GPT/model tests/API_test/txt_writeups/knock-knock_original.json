@@ -1,0 +1,58 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "knock-knock",
+        "AttackerCapabilities": [
+            "Understanding of JavaScript programming",
+            "Knowledge of cryptographic functions and attacks",
+            "Familiarity with web application vulnerabilities"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Improper use of crypto.randomUUID as the secret",
+                "Insecure token generation"
+            ],
+            "SecurityMeasures": [
+                "Using cryptographic functions for token generation"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Identify the vulnerability in the code",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that there is a vulnerability in the code related to the usage of crypto.randomUUID as the secret.",
+                    "Action": "The attacker examines the code and notices the mistake in the constructor where crypto.randomUUID is used instead of calling the function.",
+                    "Result": "The attacker confirms the presence of the vulnerability and gains knowledge about the actual secret.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit the vulnerability to generate the token",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by generating the token for id=0, they can bypass the token check.",
+                    "Action": "The attacker manually generates the token for id=0 using the correct secret.",
+                    "Result": "The attacker successfully generates the token for id=0, which remains the same every time.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Retrieve the note using the generated token",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects that by providing the generated token, they can retrieve the note associated with id=0.",
+                    "Action": "The attacker sends a GET request to /note with the generated token and id=0 as query parameters.",
+                    "Result": "The attacker successfully retrieves the note associated with id=0, which contains the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

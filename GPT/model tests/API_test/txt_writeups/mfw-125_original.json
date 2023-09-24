@@ -1,0 +1,57 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Web 125 - MFW",
+        "AttackerCapabilities": [
+            "Ability to analyze website's .git folder",
+            "Knowledge of GitTools to access files in .git folder",
+            "Understanding of source code evaluation in PHP",
+            "Ability to identify flaws in server code"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Accessible .git folder",
+                "Source code evaluation vulnerability"
+            ],
+            "SecurityMeasures": []
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploiting the accessible .git folder",
+                "ToolsUsed": "GitTools",
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the .git folder may contain sensitive information or source code.",
+                    "Action": "The attacker uses GitTools to access the .git folder and its files.",
+                    "Result": "The attacker confirms that the .git folder can be accessed and identifies the existence of index.php and flag.php files.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Identifying source code evaluation vulnerability",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker suspects that there might be a flaw in the server code that allows for source code evaluation.",
+                    "Action": "The attacker analyzes the source code files and identifies the usage of asserts in strings in index.php.",
+                    "Result": "The attacker confirms the presence of a source code evaluation vulnerability in the server code.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploiting the source code evaluation vulnerability",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that by injecting a specific string in the 'page' parameter, they can trigger the source code evaluation and reveal the content of flag.php.",
+                    "Action": "The attacker crafts a URL with the 'page' parameter set to '%27%20and%20die(show_source(%27templates/flag.php%27))%20or%20%27' to trigger the source code evaluation and display the source code of flag.php.",
+                    "Result": "The attacker successfully exploits the vulnerability and obtains the source code of flag.php.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "SQLite Injection",
+        "AttackerCapabilities": [
+            "Knowledge of SQL injection",
+            "Understanding of SQL queries",
+            "Ability to manipulate input parameters"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SQLite Injection"
+            ],
+            "SecurityMeasures": [
+                "Unknown"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploiting the SQLite Injection vulnerability to retrieve table names",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker is performing this action to gather information about the structure of the database. By retrieving table names, they can identify potential targets for further exploitation.",
+                    "Action": "The attacker manipulates the 'moneys' parameter in the URL by adding the payload '|| (SELECT GROUP_CONCAT(tbl_name) FROM sqlite_master)'.",
+                    "Result": "The SQLite injection successfully retrieves the names of all tables in the database.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploiting the SQLite Injection vulnerability to retrieve column names",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to gather information about the columns in a specific table ('startup_users'). By retrieving column names, they can identify the data they want to extract.",
+                    "Action": "The attacker manipulates the 'moneys' parameter in the URL by adding the payload '|| (SELECT GROUP_CONCAT(sql) FROM sqlite_master WHERE type!='meta' AND sql NOT NULL AND name ='startup_users')'.",
+                    "Result": "The SQLite injection successfully retrieves the names of all columns in the 'startup_users' table.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploiting the SQLite Injection vulnerability to dump data",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to extract sensitive data from the 'startup_users' table, specifically the 'wordpass' column.",
+                    "Action": "The attacker manipulates the 'moneys' parameter in the URL by adding the payload '|| (SELECT GROUP_CONCAT(wordpass) FROM startup_users)'.",
+                    "Result": "The SQLite injection successfully retrieves the values of the 'wordpass' column in the 'startup_users' table, revealing the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

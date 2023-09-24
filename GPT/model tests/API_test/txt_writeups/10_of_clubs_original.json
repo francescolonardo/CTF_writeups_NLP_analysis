@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "10 of clubs",
+        "AttackerCapabilities": [
+            "Knowledge of Apache httpd vulnerabilities",
+            "Ability to perform HTTP requests using curl",
+            "Understanding of path traversal and remote code execution"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Apache httpd 2.4.49 path traversal vulnerability (CVE-2021-41773)",
+                "Apache httpd 2.4.49 remote code execution vulnerability (CVE-2021-42013)"
+            ],
+            "SecurityMeasures": [
+                "Using Apache httpd 2.4.49"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit the path traversal vulnerability to access sensitive files on the server.",
+                "ToolsUsed": "curl",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by exploiting the path traversal vulnerability, they can access the flag.png file located in the ../secret/safe/ directory.",
+                    "Action": "The attacker crafts an HTTP request using curl to access the file by traversing back directories and retrieving its contents.",
+                    "Result": "The attacker successfully retrieves the contents of the flag.png file and encodes it as base64.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

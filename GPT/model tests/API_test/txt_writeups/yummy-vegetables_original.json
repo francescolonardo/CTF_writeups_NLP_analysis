@@ -1,0 +1,47 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Yummy Vegetables",
+        "AttackerCapabilities": [
+            "SQL injection",
+            "Understanding of SQL syntax",
+            "Ability to craft malicious inputs"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SQL Injection"
+            ],
+            "SecurityMeasures": [
+                "Input validation",
+                "Parameterized queries",
+                "Proper error handling"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Craft a malicious input to exploit the SQL injection vulnerability.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to inject a UNION query to retrieve additional table names.",
+                    "Action": "Craft a payload that includes the UNION SELECT statement to retrieve table names from the database.",
+                    "Result": "Successfully retrieve table names, including the one containing the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Retrieve the flag by querying the table containing it.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to extract the flag from the table containing it.",
+                    "Action": "Craft a payload that includes the UNION SELECT statement to retrieve the flag.",
+                    "Result": "Successfully retrieve the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

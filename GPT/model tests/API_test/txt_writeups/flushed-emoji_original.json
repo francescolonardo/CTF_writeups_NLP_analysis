@@ -1,0 +1,86 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Flushed Emoji",
+        "AttackerCapabilities": [
+            "Knowledge of Server-Side Template Injection (SSTI)",
+            "Knowledge of SQL Injection",
+            "Knowledge of command injection",
+            "Knowledge of scripting in Python",
+            "Ability to send HTTP requests"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Server-Side Template Injection (SSTI)",
+                "SQL Injection"
+            ],
+            "SecurityMeasures": [
+                "Input validation/sanitization",
+                "Properly parameterized SQL queries",
+                "Restricted network access"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit the SSTI vulnerability in the password field to execute arbitrary code.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to exploit the vulnerability in the password field to perform Server-Side Template Injection (SSTI).",
+                    "Action": "The attacker enters a payload into the password field that triggers the SSTI vulnerability.",
+                    "Result": "The attacker successfully executes arbitrary code on the server.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit the SQL injection vulnerability in the data-server project.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to exploit the SQL injection vulnerability to execute SQL queries on the server.",
+                    "Action": "The attacker crafts a SQL injection payload and injects it into the username and password fields.",
+                    "Result": "The attacker successfully executes the SQL injection payload and retrieves sensitive information from the database.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Discover the inaccessible address of the data-server program.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker suspects the existence of an inaccessible address for the data-server program.",
+                    "Action": "The attacker examines the main.py file to find the inaccessible address.",
+                    "Result": "The attacker finds the address http://172.24.0.8:8080/runquery, which is not accessible from the outside.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Send SQL queries to the inaccessible address of the data-server program.",
+                "ToolsUsed": "Python script, requests library",
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to send SQL queries to the inaccessible address of the data-server program.",
+                    "Action": "The attacker uses a Python script with the requests library to send SQL queries to the address http://172.24.0.8:8080/runquery.",
+                    "Result": "The attacker successfully sends SQL queries to the data-server program.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Bypass character filter and extract sensitive information from the database.",
+                "ToolsUsed": "Python script, base64 encoding",
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to bypass the character filter and extract sensitive information from the database.",
+                    "Action": "The attacker uses a Python script to iterate through characters and send SQL queries with modified payloads to bypass the character filter.",
+                    "Result": "The attacker successfully extracts sensitive information from the database.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

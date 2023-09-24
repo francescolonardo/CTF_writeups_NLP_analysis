@@ -1,0 +1,86 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Git Good",
+        "AttackerCapabilities": [
+            "Knowledge of Git version control system",
+            "Ability to use GitTools tool",
+            "Ability to crack MD5 hashes",
+            "Knowledge of SQL and database manipulation"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Exposure of admin page and .git directory",
+                "Use of weak passwords",
+                "Storage of passwords in MD5 and bcrypt hashes"
+            ],
+            "SecurityMeasures": [
+                "Properly secure admin page and .git directory",
+                "Use stronger passwords",
+                "Use stronger hash algorithms for password storage"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker uses the GitTools tool to dump the contents of the .git directory on the target website.",
+                "ToolsUsed": "GitTools",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the .git directory may contain sensitive information or files that could be useful for further exploitation.",
+                    "Action": "The attacker runs the GitTools tool to dump the contents of the .git directory on the target website.",
+                    "Result": "The attacker successfully obtains the contents of the .git directory.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker uses an extractor tool to retrieve files from the dumped .git directory.",
+                "ToolsUsed": "Extractor tool",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the dumped .git directory may contain important files that could be useful for further exploitation.",
+                    "Action": "The attacker uses an extractor tool to retrieve files from the dumped .git directory.",
+                    "Result": "The attacker successfully retrieves files from the dumped .git directory.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker identifies two users.db files within the retrieved files, one containing bcrypt hashes and the other containing MD5 hashes.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the users.db files may contain credentials or other sensitive information.",
+                    "Action": "The attacker identifies the presence of two users.db files within the retrieved files.",
+                    "Result": "The attacker successfully identifies two users.db files, one containing bcrypt hashes and the other containing MD5 hashes.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "The attacker cracks the MD5 hashes to obtain the plaintext passwords.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that cracking the MD5 hashes will reveal valid plaintext passwords.",
+                    "Action": "The attacker uses a password cracking technique to crack the MD5 hashes and obtain the plaintext passwords.",
+                    "Result": "The attacker successfully cracks the MD5 hashes and obtains a valid plaintext password: aaron@cgau.sdc.tf : weakpassword.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "The attacker logs in using the obtained valid credentials on the admin.html page.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that logging in with the valid credentials will provide access to the admin functionalities and potentially reveal the flag.",
+                    "Action": "The attacker logs in using the obtained valid credentials on the admin.html page.",
+                    "Result": "The attacker successfully logs in and obtains the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

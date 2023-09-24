@@ -1,0 +1,62 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Turing Test",
+        "AttackerCapabilities": [
+            "Web application reconnaissance",
+            "Knowledge of Alan Turing",
+            "Password guessing",
+            "Knowledge of security questions"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure password reset functionality",
+                "Predictable security questions",
+                "Lack of rate limiting or account lockout"
+            ],
+            "SecurityMeasures": [
+                "Password field validation",
+                "Highlighting wrong fields",
+                "Checkbox for security question agreement"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Perform web application reconnaissance to identify the password reset functionality.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker is trying to find the password reset functionality on the web application.",
+                    "Action": "The attacker explores the web application to locate the password reset functionality.",
+                    "Result": "The attacker finds the password reset functionality on the web application.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Research information about Alan Turing to answer the security questions.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker needs to gather information about Alan Turing to answer the security questions correctly.",
+                    "Action": "The attacker searches for information about Alan Turing online to find the answers to the security questions.",
+                    "Result": "The attacker gathers the necessary information to answer the security questions.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Submit the correct answers to the security questions.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that submitting the correct answers to the security questions will bypass the password reset functionality.",
+                    "Action": "The attacker fills out the password reset form with the correct answers to the security questions.",
+                    "Result": "The password reset functionality is successfully bypassed, granting access to the account.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

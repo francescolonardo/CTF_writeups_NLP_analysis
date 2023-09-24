@@ -1,0 +1,59 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Angular of another Universe",
+        "AttackerCapabilities": [
+            "Knowledge of web application vulnerabilities",
+            "Ability to debug and analyze source code",
+            "Understanding of HTTP requests and headers"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Improperly configured Apache and Nginx proxies",
+                "Lack of input validation on primary segments in Angular path"
+            ],
+            "SecurityMeasures": [
+                "Restrictive parsing of HTTP requests by Apache2",
+                "Blocking of /debug* path by both Nginx and Apache"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit the double proxy setup and restrictive parsing of HTTP requests.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to find a way to bypass the restrictive parsing of the Host header and the blocked /debug* path.",
+                    "Action": "The attacker analyzes the HTTP request headers and the proxy configurations to understand the restrictions in place.",
+                    "Result": "The attacker discovers that the Apache2 proxy encodes the \\ character as %5C and the /debug* path is blocked by both Nginx and Apache.",
+                    "Success": "Failed",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit the secondary segment feature in Angular paths.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the secondary segment feature in Angular paths can be exploited to bypass the blocked /debug* path.",
+                    "Action": "The attacker dives into the Angular source code to understand how the secondary segments work and how they can be manipulated.",
+                    "Result": "The attacker discovers a primary segment in the code that can be used to construct a URL that bypasses the blocked path.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploit the discovered primary segment to access the flag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by constructing a URL with the discovered primary segment, they can access the flag.",
+                    "Action": "The attacker constructs the URL http://another-universe.chal.ctf.westerns.tokyo/(primary:debug/answer) using the primary segment.",
+                    "Result": "The attacker successfully accesses the URL and obtains the flag TWCTF{theremightbeanotheranotheranotherissuesinuniverse}.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

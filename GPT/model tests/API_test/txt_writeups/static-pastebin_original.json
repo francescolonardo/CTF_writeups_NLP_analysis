@@ -1,0 +1,105 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "static-pastebin",
+        "AttackerCapabilities": [
+            "Knowledge of XSS",
+            "Ability to set up a web server"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Cross-Site Scripting (XSS)"
+            ],
+            "SecurityMeasures": [
+                "Input validation to prevent XSS",
+                "Matching bracket pairs requirement"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Check if HTML can be injected into the pastebin by using a random <h1>Hello</h1> tag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to determine if HTML injection is possible.",
+                    "Action": "Add the <h1>Hello</h1> tag to the pastebin and observe the result.",
+                    "Result": "If the tag is rendered as HTML, it confirms the possibility of HTML injection.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Analyze the JavaScript code on the page to understand its functionality.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker needs to understand how the page retrieves and displays content.",
+                    "Action": "Examine the JavaScript code and identify key functions and their purpose.",
+                    "Result": "The attacker learns that the page content is obtained from the URL and that the clean function checks for matching bracket pairs.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploit the clean function to bypass the matching bracket pair requirement.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to inject malicious code by breaking the clean function's validation.",
+                    "Action": "Add an extra > at the start of the XSS script to bypass the bracket pair check.",
+                    "Result": "The clean function allows the injection of the XSS script.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Craft the payload URL to execute the XSS script and steal the admin bot's cookies.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to steal the admin bot's cookies containing the flag.",
+                    "Action": "Encode the XSS script in base64 and construct the payload URL.",
+                    "Result": "The payload URL is created and ready to be used.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Send the payload URL to the Admin Bot to trigger the XSS.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects the Admin Bot to visit the payload URL and execute the XSS script.",
+                    "Action": "Send the payload URL to the Admin Bot.",
+                    "Result": "The Admin Bot visits the payload URL and the XSS script steals its cookies.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 6,
+                "Description": "Receive the stolen cookies on the attacker's server.",
+                "ToolsUsed": "Netcat (nc)",
+                "StepDetails": {
+                    "Hypothesis": "The attacker anticipates receiving a request containing the stolen cookies.",
+                    "Action": "Set up a netcat listener on the attacker's server and wait for the request to arrive.",
+                    "Result": "The request containing the stolen cookies is received by the attacker's server.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 7,
+                "Description": "Extract the flag from the stolen cookies.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker knows that the flag is contained within the stolen cookies.",
+                    "Action": "Extract the flag value from the cookies.",
+                    "Result": "The flag value is successfully extracted from the stolen cookies.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

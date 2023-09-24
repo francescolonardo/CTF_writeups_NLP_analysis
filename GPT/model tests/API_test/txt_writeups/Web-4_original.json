@@ -1,0 +1,68 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Web-4",
+        "AttackerCapabilities": [
+            "Knowledge of JWT (JSON Web Tokens) and its vulnerabilities",
+            "Ability to use tools like jwt_tool"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Weak secret_key used for JWT encryption"
+            ],
+            "SecurityMeasures": [
+                "Token-based authentication using JWT"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker logs in with junk values and checks the cookies to find a token.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the token contains a secret_key used for encryption.",
+                    "Action": "The attacker checks the cookies and uses jwt.io to decode the token.",
+                    "Result": "The token is found and decoded, revealing that it uses HS256 algorithm with a secret_key.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker searches for a tool to brute force the secret_key.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that brute forcing the secret_key will allow access to restricted areas.",
+                    "Action": "The attacker finds and uses the jwt_tool tool with a wordlist (rockyou.txt) to brute force the secret_key.",
+                    "Result": "The secret_key 'redraider' is successfully brute forced.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker crafts a new token with the cracked secret_key and desired user role.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects that using the cracked secret_key and a desired user role will grant access to restricted areas.",
+                    "Action": "The attacker creates a new token using the jwt.sign function with the cracked secret_key and desired user role.",
+                    "Result": "A new token is successfully generated with the desired user role.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "The attacker accesses a restricted area using the crafted token as a cookie.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that using the crafted token as a cookie will grant access to the restricted area.",
+                    "Action": "The attacker accesses the /flag endpoint using the crafted token as a cookie.",
+                    "Result": "The flag is successfully obtained.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

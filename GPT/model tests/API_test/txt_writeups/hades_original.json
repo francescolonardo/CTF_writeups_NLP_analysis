@@ -1,0 +1,84 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "jQuery-facilitated XSS",
+        "AttackerCapabilities": [
+            "Understanding of XSS vulnerabilities",
+            "Knowledge of jQuery and AJAX",
+            "Ability to analyze and manipulate HTTP requests and responses",
+            "Ability to craft malicious payloads"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Improper escaping of user input in the jQuery AJAX request",
+                "HTML injection vulnerability in the /ajax/articles endpoint"
+            ],
+            "SecurityMeasures": [
+                "Prepending a backslash (\) to escape special characters in user input",
+                "Removing parentheses and escaping subsequent quotes in the user input"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker observes that the news string is reflected twice in the JavaScript.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker suspects that the duplicated reflection of the news string may indicate a potential vulnerability.",
+                    "Action": "The attacker attempts to break out of the string by appending a single quote (/?cat=news').",
+                    "Result": "The backslash (\) is prepended to the single quote, preventing the attacker from breaking out of the string.",
+                    "Success": "Failed",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker discovers that the backslash (\) character is not escaped.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by using double backslashes (/?cat=news\\'), they can break out of the string.",
+                    "Action": "The attacker tests the hypothesis by appending double backslashes to the cat parameter.",
+                    "Result": "The attacker successfully breaks out of the string.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker realizes that they cannot produce valid JavaScript after breaking out of the string due to the removal of parentheses and the escaping of subsequent quotes.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker theorizes that they need to find another way to achieve XSS.",
+                    "Action": "The attacker explores other potential injection vectors in the /ajax/articles endpoint.",
+                    "Result": "The attacker discovers that injecting an attribute into the <img> element in the response allows for HTML injection.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "The attacker leverages jQuery's .load() method to insert the injected HTML into the #ajax-load element.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by specifying a specific portion of the remote document to insert, they can bypass the <noscript> tag and only load the injected <img> element.",
+                    "Action": "The attacker crafts a request with the cat parameter that injects the desired attribute into the <img> element.",
+                    "Result": "The attacker successfully achieves XSS by rendering the injected <img> element.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "The attacker crafts a payload to steal the admin's cookie and retrieve the flag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by using an onerror event and window.location, they can redirect the user's browser to a malicious site and steal the admin's cookie.",
+                    "Action": "The attacker constructs a payload that injects the onerror event and the desired JavaScript code.",
+                    "Result": "The attacker successfully steals the admin's cookie and retrieves the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

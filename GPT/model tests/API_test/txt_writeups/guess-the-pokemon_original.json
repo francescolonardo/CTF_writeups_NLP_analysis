@@ -1,0 +1,44 @@
+{
+"AttackModel": {
+"NameOfTheChallenge": "Guess The Pokemon",
+"AttackerCapabilities": [
+"Knowledge of SQL injection",
+"Ability to identify and exploit vulnerabilities"
+],
+"Target": {
+"Type": "Web Application",
+"Vulnerabilities": [
+"SQL injection vulnerability"
+],
+"SecurityMeasures": [
+"Unknown"
+]
+},
+"Steps": [
+{
+"StepNumber": 1,
+"Description": "Exploiting the SQL injection vulnerability to bypass authentication and retrieve sensitive information.",
+"ToolsUsed": null,
+"StepDetails": {
+"Hypothesis": "The attacker wants to bypass authentication and retrieve sensitive information from the database.",
+"Action": "Injecting the payload '1 OR 1=1--' into the 'name' parameter of the SQL query.",
+"Result": "The SQL query becomes 'SELECT * FROM pokemon WHERE names=1 OR 1=1--' which always evaluates to true, bypassing the authentication check.",
+"Success": "Success",
+"FailingReason": null
+}
+},
+{
+"StepNumber": 2,
+"Description": "Obtaining the flag from the database.",
+"ToolsUsed": null,
+"StepDetails": {
+"Hypothesis": "The attacker wants to find the flag stored in the database.",
+"Action": "Executing the modified SQL query to retrieve the flag.",
+"Result": "The query returns the flag 'LITCTF{flagr3l4t3dt0pok3m0n0rsom3th1ng1dk}'.",
+"Success": "Success",
+"FailingReason": null
+}
+}
+]
+}
+}

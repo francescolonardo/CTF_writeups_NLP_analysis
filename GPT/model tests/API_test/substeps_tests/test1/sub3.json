@@ -1,0 +1,8 @@
+{
+    "SubStep": {
+        "Subject": "The attacker",
+        "ActionTarget": "The server's file system",
+        "TypeOfAction": "Exploration",
+        "GainedResources": "Access to the '/ctf' directory"
+    }
+}

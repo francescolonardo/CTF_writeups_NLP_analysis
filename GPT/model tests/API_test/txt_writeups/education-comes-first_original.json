@@ -1,0 +1,70 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Education Comes First",
+        "AttackerCapabilities": [
+            "Web application analysis",
+            "JavaScript debugging"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure code execution",
+                "Lack of input validation/sanitization",
+                "Lack of client-side security measures"
+            ],
+            "SecurityMeasures": [
+                "None mentioned in the writeup"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Inspect the page",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to analyze the web page to identify any vulnerabilities or clues.",
+                    "Action": "The attacker opens the developer tools and inspects the page's source code, network requests, and other relevant information.",
+                    "Result": "The attacker gains insights into the structure and behavior of the web application.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Navigate to the sources tab and open the JavaScript file",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the JavaScript file may contain relevant clues or vulnerabilities.",
+                    "Action": "The attacker navigates to the sources tab in the developer tools and opens the JavaScript file associated with the web application.",
+                    "Result": "The attacker gains access to the JavaScript code and can analyze its contents.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Create a breakpoint in this JavaScript file",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to pause the execution of the JavaScript code to investigate its behavior and potentially modify it.",
+                    "Action": "The attacker sets a breakpoint at a specific location in the JavaScript file, which will pause the code execution when reached.",
+                    "Result": "The code execution pauses at the specified breakpoint, allowing the attacker to inspect variables, manipulate values, or step through the code.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Reload the page and the flag will stay on the screen",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by reloading the page with the breakpoint set, they can prevent the flag from quickly changing or disappearing.",
+                    "Action": "The attacker reloads the web page, triggering the execution of the JavaScript code. The breakpoint pauses the code execution at the specified location.",
+                    "Result": "The flag is displayed on the screen and remains visible for the attacker to read.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

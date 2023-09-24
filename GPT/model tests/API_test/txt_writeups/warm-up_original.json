@@ -1,0 +1,59 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "ASIS CTF Quals 2020 - Web Warm-up",
+        "AttackerCapabilities": [
+            "Knowledge of PHP",
+            "Understanding of bitwise XOR operation",
+            "Knowledge of bypassing checks on input parameters"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Strict check on input parameter",
+                "Use of eval function"
+            ],
+            "SecurityMeasures": [
+                "Length check on input parameter",
+                "Restriction on alphanumeric characters"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Craft a payload to bypass the strict check on the 'warmup' GET parameter",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to bypass the strict check on the 'warmup' GET parameter in order to execute arbitrary code.",
+                    "Action": "Craft a payload using bitwise XOR operation to create a non-alphanumeric representation of the '_GET' string and assign it to a variable with a non-alphanumeric name.",
+                    "Result": "The payload successfully bypasses the strict check on the 'warmup' GET parameter.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Specify the execution of the content of a GET parameter using the crafted payload",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to execute the content of a GET parameter using the non-alphanumeric representation of the '_GET' string.",
+                    "Action": "Use the non-alphanumeric representation of the '_GET' string to invoke the specified GET parameter.",
+                    "Result": "The content of the specified GET parameter is executed.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Compose the complete payload to read the 'flag.php' file",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to read the 'flag.php' file by executing the 'file_get_contents' function.",
+                    "Action": "Compose a payload that includes the execution of 'file_get_contents' on the 'flag.php' file.",
+                    "Result": "The 'flag.php' file is read and its contents are obtained.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

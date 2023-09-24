@@ -1,0 +1,101 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Apollo 1337",
+        "AttackerCapabilities": [
+            "Ability to analyze web application source code",
+            "Knowledge of API endpoints and their functionality",
+            "Understanding of JSON format and structure"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Lack of authentication on API endpoints",
+                "Exposure of sensitive information in JavaScript files"
+            ],
+            "SecurityMeasures": [
+                "HTTPS communication",
+                "Health checks on API endpoints"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyzing the page source reveals the existence of API endpoints.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the API endpoints may provide access to sensitive information or functionality.",
+                    "Action": "The attacker sends a GET request to the /api/status endpoint.",
+                    "Result": "The attacker receives a response containing the status, version, and available routes of the API.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploring the available routes, the attacker discovers the /fuel and /rocketLaunch endpoints.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker suspects that these endpoints may be exploitable to gain control over the rocket launch process.",
+                    "Action": "The attacker sends GET requests to the /fuel and /rocketLaunch endpoints.",
+                    "Result": "The attacker receives a response containing information about available fuel pumps and rocket launch details.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker attempts to launch the rocket by sending a POST request to the /rocketLaunch endpoint.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that sending a JSON body with the 'launch' keyword set to true may trigger the rocket launch process.",
+                    "Action": "The attacker sends a POST request with the JSON body {\"launch\": true}.",
+                    "Result": "The attacker receives a response indicating that a rocket named 'triton' is available.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "The attacker tries to determine the launch time format by sending different time values.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that the launch time format may be a required parameter for launching the rocket.",
+                    "Action": "The attacker sends POST requests with different time values to the /rocketLaunch endpoint.",
+                    "Result": "The attacker receives a response indicating the required format for the launch time.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "The attacker retrieves the list of fuel pumps and their IDs from the /fuel endpoint.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker suspects that the fuel pump IDs may be needed for the rocket launch process.",
+                    "Action": "The attacker sends a GET request to the /fuel endpoint.",
+                    "Result": "The attacker receives a response containing a list of fuel pumps and their corresponding IDs.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 6,
+                "Description": "The attacker discovers a token required for further actions.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that the token is necessary to authenticate and authorize certain operations.",
+                    "Action": "The attacker examines the JavaScript files of the web application to find the token.",
+                    "Result": "The attacker successfully locates the token in one of the JavaScript files.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 7,
+                "Description": "The attacker sends a request with the token to obtain the flag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that providing the token will grant access to the flag.",
+                    "Action": "The attacker sends a request with the token to the appropriate endpoint.",
+                    "Result": "The attacker receives the flag as a response.",
+                    "Success": "Success",

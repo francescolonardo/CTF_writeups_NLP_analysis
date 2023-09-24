@@ -1,0 +1,34 @@
+Curly Fries 2 - Web
+Author - UnknownAbyss
+Requirements : cURL
+
+The challenge gives us the following text -
+
+Normal fries are nice, but everything's better with a curl in it. Why do logos make things so recognizable?
+
+
+very.uniquename.xyz:2052    
+
+Upon opening the link we see -
+
+We see the logo of xbox and linux on the screen. This is me accessing this page on a windows device
+Putting User-Agent as Linux...
+sh
+curl -H "User-Agent: Linux" very.uniquename.xyz:2052
+
+...we get this back
+```html
+...
+
+
+
+...
+```
+We see the linux logo is gone. Hence we put user agent as both Linux and Xbox
+sh
+curl -H "User-Agent: Linux Xbox" very.uniquename.xyz:2052
+
+This gives us the flag inside the body of the page...
+
+dsc{1m4g1n3_l1nux_0n_4n_xb0x}
+

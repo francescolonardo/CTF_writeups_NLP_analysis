@@ -1,0 +1,46 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "PHP Eval White-List",
+        "AttackerCapabilities": [
+            "Knowledge of PHP",
+            "Ability to analyze source code",
+            "Understanding of basic web vulnerabilities"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Misconfigured basedir restriction",
+                "Improper use of eval or shell_exec function"
+            ],
+            "SecurityMeasures": [
+                "White-listing allowed file paths"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyze the source code and identify potential vulnerabilities.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to find a way to bypass the basedir restriction and execute arbitrary commands.",
+                    "Action": "The attacker opens the source code and searches for relevant strings or functions that may indicate vulnerabilities.",
+                    "Result": "The attacker finds the mention of 'shell_exec' function in the source code.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit the potential vulnerability by executing the desired command.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that 'shell_exec' function is allowed and can be used to execute arbitrary commands.",
+                    "Action": "The attacker runs the command 'echo shell_exec(\"../flag\");' to retrieve the flag.",
+                    "Result": "The command successfully executes and returns the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

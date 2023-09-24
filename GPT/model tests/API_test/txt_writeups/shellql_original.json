@@ -1,0 +1,98 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "ShellQL",
+        "AttackerCapabilities": [
+            "Knowledge of PHP shellcoding",
+            "Understanding of seccomp sandboxing",
+            "Knowledge of MySQL protocol",
+            "Ability to develop and test shellcode"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Arbitrary code execution vulnerability through the shellme() function",
+                "Lack of input validation on the shell input",
+                "Insecure use of the MySQL protocol"
+            ],
+            "SecurityMeasures": [
+                "Seccomp sandboxing with restricted syscalls",
+                "String length limitation to prevent null bytes",
+                "MySQL server connection with specific file descriptor"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Obtain the source code by appending ?source to the index.php URL",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "To understand the code and identify potential vulnerabilities",
+                    "Action": "Append ?source to the URL",
+                    "Result": "The source code is displayed",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Analyze the source code and shared object (shellme.so) to understand the functionality and limitations",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "To identify the vulnerable points in the code and possible attack vectors",
+                    "Action": "Analyze the PHP source code and the shellme.so shared object",
+                    "Result": "Understanding of how the input is passed to the shellme() function and the seccomp sandboxing mechanism",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Plan the attack to execute arbitrary SQL queries and fetch the flag from the MySQL server",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "To design a shellcode that can bypass the seccomp restrictions and execute the desired SQL query",
+                    "Action": "Plan the attack strategy and design the shellcode",
+                    "Result": "A plan to bypass seccomp and execute SQL queries is formulated",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Develop and test the shellcode",
+                "ToolsUsed": "Custom shellcode development environment",
+                "StepDetails": {
+                    "Hypothesis": "To ensure the shellcode is functional and does not contain null bytes",
+                    "Action": "Develop the shellcode and test it in the development environment",
+                    "Result": "Functional shellcode without null bytes",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Execute the attack by sending the crafted shellcode as the input to the web application",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "To exploit the arbitrary code execution vulnerability and execute the crafted shellcode",
+                    "Action": "Send the crafted shellcode as the input to the web application",
+                    "Result": "The shellcode is executed, and the SQL query is sent to the MySQL server",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 6,
+                "Description": "Read the response from the MySQL server and write it to the standard output",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "To retrieve the flag from the MySQL server",
+                    "Action": "Read the response from the MySQL server and write it to the standard output",
+                    "Result": "The flag is retrieved and displayed",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

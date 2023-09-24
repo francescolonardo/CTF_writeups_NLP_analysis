@@ -1,0 +1,56 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "SWAGGY",
+        "AttackerCapabilities": [
+            "Ability to change server configuration",
+            "Knowledge of default credentials",
+            "Ability to execute requests"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure server configuration",
+                "Default credentials in use"
+            ],
+            "SecurityMeasures": []
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Change the server to the testing server",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that changing the server to the testing server will provide them with access to additional features or lower security measures.",
+                    "Action": "The attacker modifies the server configuration to point to the testing server.",
+                    "Result": "The server is now configured to communicate with the testing server.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Authorize using the admin:admin credentials",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that using the default admin credentials will grant them administrative access to the system.",
+                    "Action": "The attacker submits the admin:admin credentials for authorization.",
+                    "Result": "The attacker is granted administrative access to the system.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Execute the request to get the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that executing the request will provide them with the flag.",
+                    "Action": "The attacker submits the request to retrieve the flag.",
+                    "Result": "The attacker successfully retrieves the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

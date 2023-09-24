@@ -1,0 +1,91 @@
+{
+"AttackModel": {
+    "NameOfTheChallenge": "Star Cereal Episode 3: The Revenge of the Breakfast",
+    "AttackerCapabilities": [
+        "Understanding SSRF (Server-Side Request Forgery) vulnerabilities",
+        "Knowledge of SSRF-as-a-service",
+        "Exploiting SSRF vulnerabilities to access sensitive internal endpoints",
+        "Tricking dynamic renderers using custom host headers",
+        "Bypassing Same Origin Policy",
+        "Creating client-side redirects",
+        "Bypassing URL validation mechanisms",
+        "Bypassing script removal mechanisms"
+    ],
+    "Target": {
+        "Type": "Web Application",
+        "Vulnerabilities": [
+            "Unsafe use of dynamic renderers (e.g., Prerender) leading to SSRF vulnerabilities",
+            "Insecure Nginx configuration allowing SSRF exploitation",
+            "Inadequate URL validation mechanism",
+            "Naive script removal mechanism"
+        ],
+        "SecurityMeasures": [
+            "Nginx configuration rewriting URLs using host header",
+            "URL validation mechanism checking for specific URL format",
+            "Script removal mechanism removing script tags"
+        ]
+    },
+    "Steps": [
+        {
+            "StepNumber": 1,
+            "Description": "Exploit SSRF vulnerability to trick the dynamic renderer into rendering a sensitive internal endpoint.",
+            "ToolsUsed": null,
+            "StepDetails": {
+                "Hypothesis": "The attacker is performing this action to gain access to a sensitive internal endpoint by tricking the dynamic renderer.",
+                "Action": "The attacker sends a request with a custom host header to the target web application.",
+                "Result": "The Nginx configuration rewrites the URL using the host header and forwards the request to the dynamic renderer.",
+                "Success": "Success",
+                "FailingReason": null
+            }
+        },
+        {
+            "StepNumber": 2,
+            "Description": "Bypass URL validation mechanism by using a specific URL format.",
+            "ToolsUsed": null,
+            "StepDetails": {
+                "Hypothesis": "The attacker is attempting to bypass the URL validation mechanism to prevent access restrictions.",
+                "Action": "The attacker modifies the request URL to include the format 'app@ATTACKER_URL'.",
+                "Result": "The URL validation mechanism is bypassed, allowing the request to proceed.",
+                "Success": "Success",
+                "FailingReason": null
+            }
+        },
+        {
+            "StepNumber": 3,
+            "Description": "Bypass script removal mechanism by using onload event handlers and similar techniques.",
+            "ToolsUsed": null,
+            "StepDetails": {
+                "Hypothesis": "The attacker is trying to bypass the script removal mechanism to execute malicious scripts.",
+                "Action": "The attacker includes onload event handlers or similar techniques in the request to evade script removal.",
+                "Result": "The script removal mechanism is bypassed, allowing the execution of malicious scripts.",
+                "Success": "Success",
+                "FailingReason": null
+            }
+        },
+        {
+            "StepNumber": 4,
+            "Description": "Achieve XSS within the Chromium renderer to bypass the Same Origin Policy.",
+            "ToolsUsed": null,
+            "StepDetails": {
+                "Hypothesis": "The attacker aims to bypass the Same Origin Policy to access the flag.",
+                "Action": "The attacker finds a vulnerability in the Chromium renderer and exploits it to achieve XSS.",
+                "Result": "XSS is successfully achieved within the Chromium renderer, enabling access to the flag.",
+                "Success": "Success",
+                "FailingReason": null
+            }
+        },
+        {
+            "StepNumber": 5,
+            "Description": "Use localhost:3000 origin to bypass the Same Origin Policy and read the flag.",
+            "ToolsUsed": null,
+            "StepDetails": {
+                "Hypothesis": "The attacker is leveraging the localhost:3000 origin to bypass the Same Origin Policy and access the flag.",
+                "Action": "The attacker utilizes the localhost:3000/render?url= feature to bypass the Same Origin Policy and read the flag.",
+                "Result": "The Same Origin Policy is bypassed, allowing the attacker to read the flag.",
+                "Success": "Success",
+                "FailingReason": null
+            }
+        }
+    ]
+}
+}

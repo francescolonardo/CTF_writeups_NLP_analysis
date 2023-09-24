@@ -1,0 +1,105 @@
+{
+    "AttackModel": {
+      "Objective": "Compromise the web server and obtain the flag.",
+      "Attacker": {
+        "Motivation": "Gain unauthorized access to the system and extract sensitive information (flag).",
+        "Capabilities": [
+          "Basic web application testing skills",
+          "Knowledge of PHP vulnerabilities",
+          "Ability to craft malicious HTTP requests"
+        ]
+      },
+      "Target": {
+        "Type": "Web Application",
+        "Vulnerabilities": [
+          "PHP eval() function usage",
+          "Command injection through PHP system() function"
+        ],
+        "Security Measures": [
+          "Web server running Apache",
+          "PHP version 7.0.33",
+          "Input validation for the 'statement' parameter missing"
+        ]
+      },
+      "AttackSteps": [
+        {
+          "Step": 1,
+          "Description": "Access the target web application",
+          "Actions": [
+            "Open a web browser",
+            "Navigate to http://challenges.auctf.com:30021"
+          ],
+          "Success": true
+        },
+        {
+          "Step": 2,
+          "Description": "Identify the application's behavior",
+          "Actions": [
+            "Observe the web page with an online calculator",
+            "Submit a simple calculation (1+1) to see how the server responds"
+          ],
+          "Success": true
+        },
+        {
+          "Step": 3,
+          "Description": "Trigger an error in the application",
+          "Actions": [
+            "Submit a malformed statement: {{}}"
+          ],
+          "Success": true
+        },
+        {
+          "Step": 4,
+          "Description": "Discover the usage of PHP eval() function",
+          "Actions": [
+            "Observe the error message indicating the use of eval()",
+            "Identify that user input is directly used in eval()"
+          ],
+          "Success": true
+        },
+        {
+          "Step": 5,
+          "Description": "Exploit PHP eval() for command injection",
+          "Actions": [
+            "Craft a statement that executes a system command: statement=system('id')"
+          ],
+          "Success": true
+        },
+        {
+          "Step": 6,
+          "Description": "Execute a command and retrieve user information",
+          "Actions": [
+            "Submit the crafted statement to the application"
+          ],
+          "Success": true
+        },
+        {
+          "Step": 7,
+          "Description": "List directory contents to gather information",
+          "Actions": [
+            "Craft a statement to list directory contents: statement=system('ls -al')",
+            "Submit the crafted statement to the application"
+          ],
+          "Success": true
+        },
+        {
+          "Step": 8,
+          "Description": "Retrieve the flag by reading the 'index.php' file",
+          "Actions": [
+            "Craft a statement to read the 'index.php' file: statement=system('cat index.php')",
+            "Submit the crafted statement to the application"
+          ],
+          "Success": true
+        },
+        {
+          "Step": 9,
+          "Description": "Locate the flag in the 'index.php' file",
+          "Actions": [
+            "Inspect the response for the flag: auctf{p6p_1nj3c7i0n_iz_k3wl}"
+          ],
+          "Success": true
+        }
+      ]
+    }
+  }
+  

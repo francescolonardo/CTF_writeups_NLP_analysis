@@ -1,0 +1,25 @@
+{
+    "entities": [
+        {
+            "name": "Attacker",
+            "attributes": [
+                {"name": "ID", "type": "integer"},
+                {"name": "Name", "type": "string"}
+            ]
+        },
+        {
+            "name": "File",
+            "attributes": [
+                {"name": "Name", "type": "string"},
+                {"name": "Permission", "type": "string"}
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "name": "AttemptsToRead",
+            "entities": ["Attacker", "File"],
+            "cardinality": "one-to-many"
+        }
+    ]
+}

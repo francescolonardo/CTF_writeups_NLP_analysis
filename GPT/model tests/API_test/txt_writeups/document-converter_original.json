@@ -1,0 +1,74 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Document-Converter",
+        "AttackerCapabilities": [
+            "Knowledge of HTML",
+            "Understanding of SSRF and file inclusion vulnerabilities",
+            "Familiarity with LibreOffice document format",
+            "Ability to modify files within a zip archive"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Allowing arbitrary file uploads",
+                "SSRF vulnerability in LibreOffice document conversion",
+                "File inclusion vulnerability"
+            ],
+            "SecurityMeasures": [
+                "Input validation and file type checks for uploaded files",
+                "Restricted access to sensitive files",
+                "Secure configuration of the server"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Upload HTML file with SSRF payload",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Test if the application is susceptible to SSRF or file inclusion vulnerabilities",
+                    "Action": "Upload HTML file with SSRF payload",
+                    "Result": "Receive a callback to the attacker's server from LibreOffice",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Research SSRF vulnerability in LibreOffice documents",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Exploit SSRF vulnerability in LibreOffice document conversion",
+                    "Action": "Research and find a writeup on SSRF using LibreOffice documents",
+                    "Result": "Find a writeup explaining how to exploit the vulnerability",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Create modified LibreOffice document with payload",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Use the discovered vulnerability to include a link to the /flag file",
+                    "Action": "Modify the content.xml file of a sample LibreOffice document to include the payload",
+                    "Result": "Create a modified.odt file with the payload",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Upload modified LibreOffice document",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Exploit the file inclusion vulnerability to access the /flag file",
+                    "Action": "Upload the modified.odt file to the application",
+                    "Result": "Obtain the flag from the /flag file",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

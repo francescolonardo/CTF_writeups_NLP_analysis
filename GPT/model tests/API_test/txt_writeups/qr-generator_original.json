@@ -1,0 +1,70 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "QR Generator",
+        "AttackerCapabilities": [
+            "Knowledge of web vulnerabilities",
+            "Ability to analyze HTML source code",
+            "Understanding of Remote Code Execution (RCE)",
+            "Python scripting skills"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Remote Code Execution (RCE)"
+            ],
+            "SecurityMeasures": [
+                "Input sanitization"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyzing the HTML source code reveals a comment indicating the presence of a QR code generator.",
+                "ToolsUsed": "null",
+                "StepDetails": {
+                    "Hypothesis": "The attacker suspects that the QR code generator may have vulnerabilities.",
+                    "Action": "The attacker inspects the HTML source code to gather more information.",
+                    "Result": "The attacker finds the endpoint URL for the QR code service.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploiting the QR code generator to execute arbitrary commands.",
+                "ToolsUsed": "null",
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that they can execute arbitrary commands through the QR code generator.",
+                    "Action": "The attacker inserts backticks and a command (e.g., echo 'X') into the QR code generator URL.",
+                    "Result": "The QR code generated reflects the output of the executed command.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Developing a Python script to exfiltrate the output of executed commands.",
+                "ToolsUsed": "Python, requests library",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that a Python script can automate the process of executing commands and extracting the output.",
+                    "Action": "The attacker writes a Python script that sends requests to the QR code generator endpoint with different payloads to exfiltrate command output.",
+                    "Result": "The Python script successfully retrieves the output of executed commands.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Interacting with the QR code generator to execute remote commands.",
+                "ToolsUsed": "Python script",
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects that they can interact with the QR code generator by providing remote commands.",
+                    "Action": "The attacker runs the Python script with different command arguments (e.g., whoami, ls, cat flag.txt) to interact with the target system.",
+                    "Result": "The attacker successfully executes remote commands and retrieves sensitive information, including the flag.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            }
+        ]
+    }
+}

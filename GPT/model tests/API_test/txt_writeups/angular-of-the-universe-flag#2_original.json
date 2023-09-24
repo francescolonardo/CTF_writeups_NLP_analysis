@@ -1,0 +1,48 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Angular of the Universe",
+        "AttackerCapabilities": [
+            "Knowledge of Angular applications",
+            "Understanding of reverse proxies",
+            "Ability to manipulate HTTP headers"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Improper trust in client IP address",
+                "Missing validation of X-Forwarded-* headers",
+                "Insecure direct object reference (IDOR)"
+            ],
+            "SecurityMeasures": [
+                "Nginx reverse proxy",
+                "Access restrictions based on client IP address"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Manipulate the HTTP Host header to bypass the reverse proxy.",
+                "ToolsUsed": "curl",
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to manipulate the Host header to redirect the request to a specific IP address.",
+                    "Action": "The attacker sends a request to the target application with a custom Host header pointing to the desired IP address.",
+                    "Result": "The request is redirected to the /api/true-answer endpoint on the loopback network (127.0.0.1).",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit insecure direct object reference (IDOR) to access the hidden flag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to access the hidden flag by bypassing the access restrictions based on client IP address.",
+                    "Action": "The attacker accesses the /q endpoint, which displays the contents of the /api/answer endpoint.",
+                    "Result": "The contents of the /api/true-answer endpoint are displayed, revealing the hidden flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

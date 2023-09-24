@@ -1,0 +1,58 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Roboworld",
+        "AttackerCapabilities": [
+            "Web application security",
+            "Source code analysis",
+            "Exploitation"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Authentication bypass",
+                "Insecure storage of user credentials"
+            ],
+            "SecurityMeasures": [
+                "Username and password authentication"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyze the source code to understand the authentication mechanism.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to identify any vulnerabilities in the authentication mechanism.",
+                    "Action": "Read the leaked source code to understand how the login process works.",
+                    "Result": "The attacker finds that the login process compares the provided username and password with hardcoded values.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Identify potential authentication bypass vulnerabilities.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that there may be a way to bypass the authentication process.",
+                    "Action": "Analyze the login function to identify any potential weaknesses or ways to manipulate the authentication process.",
+                    "Result": "The attacker discovers that the login function does not properly validate the provided credentials and can be tricked into granting access.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploit the authentication bypass vulnerability to access the secret files.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to gain unauthorized access to the secret files.",
+                    "Action": "Submit a specially crafted request to the login endpoint to bypass the authentication check.",
+                    "Result": "The attacker successfully bypasses the authentication check and gains access to the secret files.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

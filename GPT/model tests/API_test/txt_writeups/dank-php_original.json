@@ -1,0 +1,79 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Inferno CTF 2019 - Dank PHP",
+        "AttackerCapabilities": [
+            "Understanding PHP serialization",
+            "Crafting serialized input",
+            "Bypassing checks in PHP code",
+            "Exploiting eval() function",
+            "Crafting non-alphanumeric payloads",
+            "Understanding bitwise XOR operation in PHP",
+            "Crafting HTTP GET parameters"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Unserialize vulnerability",
+                "Insecure object assignment",
+                "Insecure input validation",
+                "Use of eval() function"
+            ],
+            "SecurityMeasures": [
+                "Serialization checks",
+                "Length validation",
+                "Pattern matching with regex",
+                "Use of eval() function"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Craft serialized input",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker needs to replicate a serialized input to pass via the 'id' HTTP GET parameter.",
+                    "Action": "Craft a serialized payload using the provided code snippet.",
+                    "Result": "Obtain the serialized payload that can be passed as the 'id' parameter.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Bypass the first check",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker needs to bypass the check that compares the 'name' and 'pass' fields with the 'secret' field.",
+                    "Action": "Reference the 'secret' field from the 'pass' field using the R clause in PHP serialization.",
+                    "Result": "Bypass the check and make the 'name', 'pass', and 'secret' fields equal.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Craft the final URL",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker needs to craft a URL that triggers the execution of the second check and executes the 'echoFlag()' function.",
+                    "Action": "Craft a payload that uses non-alphanumeric characters to bypass the length and regex checks, and executes the 'echoFlag()' function.",
+                    "Result": "Craft the final URL with the payload and the non-alphanumeric HTTP GET parameter.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Obtain the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects to obtain the flag after successfully bypassing the checks and executing the 'echoFlag()' function.",
+                    "Action": "Invoke the final URL and check the response.",
+                    "Result": "Obtain the flag as part of the response.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "4 of hearts",
+        "AttackerCapabilities": [
+            "Ability to access and navigate web applications"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [],
+            "SecurityMeasures": [
+                "Access control to limit who can access challenges",
+                "Authentication to verify user identity",
+                "Secure Sockets Layer (SSL) encryption for secure communication"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Access the web application and navigate to the challenge page",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to access the challenge page to find the flag.",
+                    "Action": "Open a web browser and enter the URL of the web application. Navigate to the challenge page.",
+                    "Result": "The attacker successfully accesses the challenge page.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Observe the challenge page and search for the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the flag is hidden somewhere on the challenge page.",
+                    "Action": "Scan the challenge page for any hidden text, images, or clues that may indicate the presence of the flag.",
+                    "Result": "The attacker finds the flag displayed on the challenge page.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

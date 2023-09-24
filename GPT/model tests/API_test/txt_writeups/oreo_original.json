@@ -1,0 +1,47 @@
+{
+  "AttackModel": {
+    "NameOfTheChallenge": "Oreo",
+    "AttackerCapabilities": [
+      "Knowledge of web technologies",
+      "Basic understanding of cookies",
+      "Ability to intercept and modify HTTP requests"
+    ],
+    "Target": {
+      "Type": "Web Application",
+      "Vulnerabilities": [
+        "Lack of input validation on the cookie value",
+        "Insecure storage or transmission of cookies"
+      ],
+      "SecurityMeasures": [
+        "Use of secure cookies with encryption and integrity protection",
+        "Input validation and sanitization on cookie values"
+      ]
+    },
+    "Steps": [
+      {
+        "StepNumber": 1,
+        "Description": "The attacker intercepts the HTTP request/response between the client and the server.",
+        "ToolsUsed": null,
+        "StepDetails": {
+          "Hypothesis": "The attacker wants to modify the cookie value to gain unauthorized access or achieve a specific goal.",
+          "Action": "The attacker modifies the cookie value to the base64 value of 'chocolate'.",
+          "Result": "The modified cookie value is sent back to the server in the subsequent requests.",
+          "Success": "Success",
+          "FailingReason": null
+        }
+      },
+      {
+        "StepNumber": 2,
+        "Description": "The server receives the modified cookie value.",
+        "ToolsUsed": null,
+        "StepDetails": {
+          "Hypothesis": "The attacker expects the server to process the modified cookie value and potentially grant unauthorized access or provide desired functionality.",
+          "Action": "The server processes the modified cookie value.",
+          "Result": "The server may grant unauthorized access or provide the desired functionality based on the modified cookie value.",
+          "Success": "Success",
+          "FailingReason": null
+        }
+      }
+    ]
+  }
+}

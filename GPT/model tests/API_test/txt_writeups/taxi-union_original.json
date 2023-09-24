@@ -1,0 +1,93 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Taxi Union",
+        "AttackerCapabilities": [
+            "Knowledge of SQL Injection",
+            "Ability to write Python scripts",
+            "Understanding of HTTP requests"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SQL Injection"
+            ],
+            "SecurityMeasures": [
+                "Unknown"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker begins by importing necessary modules, initializing variables, and setting the target URL based on the challenge being attempted.",
+                "ToolsUsed": "null",
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to exploit a SQL injection vulnerability in the target web application.",
+                    "Action": "The attacker sets the URL and other variables based on the challenge being attempted.",
+                    "Result": "The attacker sets the URL, check string, key, and column variables based on the challenge.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker starts a loop to iterate over each character in the 'domain' string, which contains lowercase letters, uppercase letters, digits, and underscore.",
+                "ToolsUsed": "null",
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to use brute force to guess each character of the flag.",
+                    "Action": "The attacker iterates over each character in the 'domain' string.",
+                    "Result": "The attacker selects a character from the 'domain' string and assigns it to the 'char' variable.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker constructs a payload for SQL injection by appending the 'char' variable to the 'flag' variable, and includes it in a SQL query.",
+                "ToolsUsed": "null",
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to inject a SQL query that will return true if the current character exists in the flag at that position.",
+                    "Action": "The attacker constructs a payload by appending the 'char' variable to the 'flag' variable and including it in a SQL query.",
+                    "Result": "The attacker constructs a payload in the form of ' or {} like '{}%'; --' where '{}' is the column being queried, and '{}' is the constructed flag so far.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "The attacker sends a POST request to the target URL with the constructed payload as the value for the 'key' parameter.",
+                "ToolsUsed": "requests library",
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to send the SQL injection payload to the target web application.",
+                    "Action": "The attacker sends a POST request to the target URL with the constructed payload as the value for the 'key' parameter.",
+                    "Result": "The attacker sends the POST request and receives a response.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "The attacker checks if the response contains the 'check' string, indicating that the SQL injection was successful.",
+                "ToolsUsed": "null",
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to determine if the SQL injection was successful by checking if the response contains the 'check' string.",
+                    "Action": "The attacker checks if the response contains the 'check' string.",
+                    "Result": "The attacker checks if the 'check' string is present in the response.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            },
+            {
+                "StepNumber": 6,
+                "Description": "If the 'check' string is present, the attacker appends the 'char' variable to the 'flag' variable and prints the success message.",
+                "ToolsUsed": "null",
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to update the flag with the correct character if the SQL injection was successful.",
+                    "Action": "The attacker appends the 'char' variable to the 'flag' variable and prints the success message.",
+                    "Result": "The attacker updates the flag with the correct character and prints the success message.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,100 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Kryptos Support",
+        "AttackerCapabilities": [
+            "Knowledge of web application vulnerabilities",
+            "Ability to send HTTP requests",
+            "Understanding of JWT and cookie manipulation"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Vulnerability in the support page allowing arbitrary code execution",
+                "Improper authentication mechanism allowing access to user accounts",
+                "Insufficient authorization checks allowing privilege escalation"
+            ],
+            "SecurityMeasures": [
+                "JWT-based session management",
+                "API endpoint for password update"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker sends a payload to the support page to steal the user's cookie.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to obtain the user's session token (JWT) by executing arbitrary code.",
+                    "Action": "The attacker sends a payload containing a JavaScript code that triggers an error and sends the user's cookie to a specified URL.",
+                    "Result": "The attacker successfully obtains the JWT token from the user's cookie.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker decodes the obtained JWT token and identifies the user's username and ID.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to gather information about the user to plan further actions.",
+                    "Action": "The attacker decodes the JWT token to extract the username, user ID, and issue timestamp.",
+                    "Result": "The attacker obtains the username 'moderator' and the user ID '100'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker attempts to use the obtained cookie for login but fails.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that the stolen JWT token can be used to bypass the login authentication.",
+                    "Action": "The attacker tries to log in using the obtained JWT token as the session.",
+                    "Result": "The login attempt fails, indicating that the stolen JWT token is not valid for authentication.",
+                    "Success": "Failed",
+                    "FailingReason": "Invalid JWT token for authentication"
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "The attacker discovers an API endpoint for user password update.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker is searching for alternative ways to gain access to user accounts.",
+                    "Action": "The attacker explores the web application and finds an API endpoint for password update.",
+                    "Result": "The attacker identifies the '/api/users/update' endpoint for changing user passwords.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "The attacker sends a request to change the password of the user account.",
+                "ToolsUsed": "XHR",
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to change the password to gain unauthorized access to the account.",
+                    "Action": "The attacker sends a request to the '/api/users/update' endpoint to change the password of the user account.",
+                    "Result": "The attacker successfully changes the password of the user account.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 6,
+                "Description": "The attacker logs in with the new password but realizes the account does not have the flag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to access the account with the updated password to find the flag.",
+                    "Action": "The attacker logs in using the updated password but realizes that the 'moderator' account does not have the flag.",
+                    "Result": "The attacker gains access to the 'moderator' account but does not find the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 7,
+                "Description": "The attacker attempts to escalate privileges by changing the user ID in the JWT token.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that changing the user ID in the JWT token might grant admin privileges.",
+                    "Action": "

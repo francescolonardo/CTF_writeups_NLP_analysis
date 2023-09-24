@@ -1,0 +1,155 @@
+{
+    "AttackModel": {
+        "Attacker Capabilities": [
+            "Web application enumeration",
+            "Command injection",
+            "Exploiting Shellshock vulnerability",
+            "Directory traversal",
+            "Hexadecimal representation manipulation"
+        ]
+    },
+    "Target": {
+        "Type": "Web Application",
+        "Vulnerabilities": [
+            "Default Apache2 installation page (No specific CVE)",
+            "Shellshock vulnerability (CVE-2014-6271)"
+        ],
+        "Security Measures": [
+            "Apache/2.4.29 (Ubuntu) server version",
+            "Directory and file permissions"
+        ]
+    },
+    "Preliminary Analysis Steps": [
+        {
+            "Step": 1,
+            "Taxon": "Web Application Enumeration",
+            "Description": "Enumerate the web application to discover hidden endpoints.",
+            "Tools used": "dirb",
+            "Tools Description": "A directory brute-forcing tool",
+            "Tool Doc ref": "https://tools.kali.org/web-applications/dirb",
+            "Actions": [
+                {
+                    "Hypothesis": "Hidden endpoints might exist on the web server.",
+                    "Action": "Run dirb to brute-force directories and discover hidden content.",
+                    "Result": "Discovered /cgi-bin/ directory.",
+                    "Success": "Success",
+                    "Failing Reason": "N/A"
+                }
+            ]
+        },
+        {
+            "Step": 2,
+            "Taxon": "Shellshock Vulnerability Identification",
+            "Description": "Identify and exploit the Shellshock vulnerability in the /cgi-bin/scriptlet endpoint.",
+            "Tools used": "Manual HTTP request",
+            "Tools Description": "Manual crafting of HTTP requests to exploit the Shellshock vulnerability.",
+            "Tool doc ref": "https://en.wikipedia.org/wiki/Shellshock_(software_bug)",
+            "Actions": [
+                {
+                    "Hypothesis": "The /cgi-bin/scriptlet endpoint may be vulnerable to Shellshock.",
+                    "Action": "Craft an HTTP request with a payload to check for Shellshock vulnerability.",
+                    "Result": "Obtained the www-data user's information.",
+                    "Success": "Success",
+                    "Failing Reason": "N/A"
+                }
+            ]
+        },
+        {
+            "Step": 3,
+            "Taxon": "Directory Traversal",
+            "Description": "Perform directory traversal to find the flag file.",
+            "Tools used": "Manual HTTP request",
+            "Tools Description": "Manual crafting of HTTP requests to traverse directories.",
+            "Tool doc ref": "N/A",
+            "Actions": [
+                {
+                    "Hypothesis": "The /cgi-bin/scriptlet endpoint allows directory traversal.",
+                    "Action": "Craft an HTTP request to list the root directory.",
+                    "Result": "Obtained a list of files and directories in the root directory, including 'flag.file'.",
+                    "Success": "Success",
+                    "Failing Reason": "N/A"
+                }
+            ]
+        },
+        {
+            "Step": 4,
+            "Taxon": "Hexadecimal Representation Manipulation",
+            "Description": "Manipulate the hexadecimal representation to extract the flag.",
+            "Tools used": "Manual manipulation",
+            "Tools Description": "Manual manipulation of hexadecimal data.",
+            "Tool doc ref": "N/A",
+            "Actions": [
+                {
+                    "Hypothesis": "The 'flag.file' contains the flag but is represented in hexadecimal format.",
+                    "Action": "Craft an HTTP request to read the contents of 'flag.file'.",
+                    "Result": "Obtained hexadecimal data representing a GZip archive.",
+                    "Success": "Success",
+                    "Failing Reason": "N/A"
+                },
+                {
+                    "Hypothesis": "The hexadecimal data represents a GZip archive.",
+                    "Action": "Recreate the GZip archive from the hexadecimal data.",
+                    "Result": "Recovered the 'flag.txt' file from the GZip archive.",
+                    "Success": "Success",
+                    "Failing Reason": "N/A"
+                }
+            ]
+        }
+    ],
+    "Attack Steps": [
+        {
+            "Step": 1,
+            "Taxon": "Exploiting Shellshock Vulnerability",
+            "Description": "Exploit the Shellshock vulnerability to execute commands on the server.",
+            "Tools used": "Manual HTTP request",
+            "Tools Description": "Manual crafting of HTTP requests to execute commands via Shellshock.",
+            "Tool doc ref": "https://en.wikipedia.org/wiki/Shellshock_(software_bug)",
+            "Dependency": "Preliminary Analysis Step-2 (Shellshock Vulnerability Identification)",
+            "Actions": [
+                {
+                    "Hypothesis": "The Shellshock vulnerability can be used to execute commands.",
+                    "Action": "Craft an HTTP request with a command injection payload to retrieve directory contents.",
+                    "Result": "Successfully executed commands to list directories.",
+                    "Success": "Success",
+                    "Failing Reason": "N/A"
+                }
+            ]
+        },
+        {
+            "Step": 2,
+            "Taxon": "Directory Traversal",
+            "Description": "Perform directory traversal to locate the 'flag.file'.",
+            "Tools used": "Manual HTTP request",
+            "Tools Description": "Manual crafting of HTTP requests to traverse directories.",
+            "Tool doc ref": "N/A",
+            "Dependency": "Preliminary Analysis Step-3 (Directory Traversal)",
+            "Actions": [
+                {
+                    "Hypothesis": "The 'flag.file' may be located in a specific directory.",
+                    "Action": "Craft an HTTP request to list directories and files to locate 'flag.file'.",
+                    "Result": "Identified the location of 'flag.file'.",
+                    "Success": "Success",
+                    "Failing Reason": "N/A"
+                }
+            ]
+        },
+        {
+            "Step": 3,
+            "Taxon": "Flag Extraction",
+            "Description": "Extract the flag from the 'flag.file'.",
+            "Tools used": "Manual HTTP request",
+            "Tools Description": "Manual crafting of HTTP requests to extract data from files.",
+            "Tool doc ref": "N/A",
+            "Dependency": "Preliminary Analysis Step-4 (Hexadecimal Representation Manipulation)",
+            "Actions": [
+                {
+                    "Hypothesis": "The 'flag.file' contains the flag data.",
+                    "Action": "Craft an HTTP request to read and extract the flag data.",
+                    "Result": "Successfully extracted the flag.",
+                    "Success": "Success",
+                    "Failing Reason": "N/A"
+                }
+            ]
+        }
+    ]
+}

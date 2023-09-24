@@ -1,0 +1,72 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "FBI WARNING",
+        "AttackerCapabilities": [
+            "Understanding code snippets",
+            "Brute forcing IP addresses",
+            "Analyzing network traffic"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Vulnerability in tripcode generation",
+                "Leakage of database dump",
+                "Lack of access controls"
+            ],
+            "SecurityMeasures": [
+                "Static HTML pages",
+                "URL shortening service"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker identifies the vulnerability in the tripcode generation logic of the web application.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that they can obtain the IP address of the poster by reverse engineering the tripcode generation.",
+                    "Action": "The attacker analyzes code snippets of futaba-ng and identifies the relevant code responsible for tripcode generation.",
+                    "Result": "The attacker successfully reverse engineers the tripcode generation logic.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker attempts to obtain the IP address of the poster using the reverse engineered tripcode generation logic.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that they can obtain the IP address of the poster by brute forcing the unknown octets of the IP address.",
+                    "Action": "The attacker iterates over all possible IP addresses and generates the tripcode for each IP address using the reverse engineered tripcode generation logic.",
+                    "Result": "The attacker finds a matching tripcode and obtains the IP address of the poster.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker accesses the leaked database dump to find the IP address of the poster.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the IP address of the poster is stored in the leaked database dump.",
+                    "Action": "The attacker downloads the leaked database dump from the provided URL.",
+                    "Result": "The attacker finds the IP address of the poster in the leaked database dump.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "The attacker identifies the IP address of the poster.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the IP address of the poster is the key information needed to complete the challenge.",
+                    "Action": "The attacker retrieves the IP address either from the successful brute forcing or from the leaked database dump.",
+                    "Result": "The attacker successfully identifies the IP address of the poster.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

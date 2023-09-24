@@ -1,0 +1,83 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Rigged Election",
+        "AttackerCapabilities": [
+            "Web application testing",
+            "JavaScript",
+            "MD5 hash manipulation"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure generation of challenge strings",
+                "Insecure comparison of challenge strings",
+                "Lack of rate limiting"
+            ],
+            "SecurityMeasures": [
+                "None mentioned"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Submit an idea on the website",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to create an entry in the voting system to gain the ability to vote.",
+                    "Action": "Submit an idea by filling out the name and idea text fields in the website form.",
+                    "Result": "The idea is submitted and assigned an ID.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Retrieve the challenge string",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker needs the challenge string to find a matching MD5 hash.",
+                    "Action": "Send a GET request to '/vote.php?g=1' to retrieve the challenge string.",
+                    "Result": "The challenge string is obtained from the server's response.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Find a matching MD5 hash",
+                "ToolsUsed": "MD5 hashing algorithm",
+                "StepDetails": {
+                    "Hypothesis": "The attacker needs to find a string that produces an MD5 hash with the first characters matching the challenge string.",
+                    "Action": "Generate random strings of varying lengths and hash them using MD5. Compare the first characters of the hash to the challenge string until a match is found.",
+                    "Result": "A string is found that produces an MD5 hash with the first characters matching the challenge string.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Vote using the found string",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker can use the found string to vote on the idea they submitted.",
+                    "Action": "Send a GET request to '/vote.php?id=<idea_id>&h=<found_string>&u=1' to vote positively for the idea.",
+                    "Result": "The vote is successfully cast.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Repeat steps 2-4 until desired number of votes is reached",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to cast multiple votes to reach the required number of votes to win the prize.",
+                    "Action": "Repeat steps 2-4 until the desired number of votes is reached.",
+                    "Result": "The attacker successfully casts the desired number of votes.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,71 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Chained Web Challenges (SQLi, RCE)",
+        "AttackerCapabilities": [
+            "SQL injection",
+            "Webshell upload",
+            "Remote code execution",
+            "Privilege escalation"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SQL injection in Tenant and Management login pages",
+                "Flawed validation allowing upload of PHP webshell"
+            ],
+            "SecurityMeasures": [
+                "Unknown"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit SQL injection vulnerability to dump users table.",
+                "ToolsUsed": "SQLMap",
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to extract information from the database by exploiting the SQL injection vulnerability.",
+                    "Action": "Using SQLMap, the attacker dumps the users table in the database.",
+                    "Result": "The users table containing sensitive information (id, name, role, password, username) is successfully dumped.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit flawed image upload validation to upload a PHP webshell.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to upload a PHP webshell to gain remote access to the system.",
+                    "Action": "The attacker crafts a request with a file named 'pwned.jpg.php' and uploads it using the flawed image upload validation.",
+                    "Result": "The PHP webshell is successfully uploaded and can be accessed at http://10.8.201.87/HTXIC/vendor/images/.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Gain remote access to the system using the PHP reverse shell payload.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to establish a remote shell on the target system.",
+                    "Action": "The attacker executes a PHP reverse shell payload to establish a bash shell on the system.",
+                    "Result": "The attacker successfully gains a bash shell on the system.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Escalate privileges by exploiting the SUID bit on the systemctl binary.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to escalate their privileges to root on the system.",
+                    "Action": "The attacker creates a service using the systemctl binary with the SUID bit set.",
+                    "Result": "The attacker successfully escalates their privileges to root on the system.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

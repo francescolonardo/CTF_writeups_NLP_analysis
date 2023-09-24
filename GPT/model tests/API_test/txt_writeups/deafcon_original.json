@@ -1,0 +1,47 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Deafcon",
+        "AttackerCapabilities": [
+            "Knowledge of RFC5322 validation for email addresses",
+            "Understanding of Server-Side Template Injection (SSTI) vulnerabilities",
+            "Ability to craft malicious payloads"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure validation of name parameter",
+                "SSTI vulnerability in the email parameter"
+            ],
+            "SecurityMeasures": [
+                "Validation of alphanumeric characters for name parameter",
+                "RFC5322 validation for email parameter"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploiting the RFC5322 validation for the email parameter",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the email parameter can be manipulated to bypass the RFC5322 validation.",
+                    "Action": "The attacker crafts a payload that includes a domain-literal format in the email parameter, allowing them to inject arbitrary HTML code.",
+                    "Result": "The payload successfully injects HTML code into the email parameter, bypassing the RFC5322 validation.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploiting the SSTI vulnerability in the email parameter",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the email parameter is vulnerable to SSTI and can be used to execute arbitrary code.",
+                    "Action": "The attacker crafts a payload that utilizes SSTI to read the 'flag.txt' file on the server.",
+                    "Result": "The payload successfully executes the code and reads the contents of the 'flag.txt' file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

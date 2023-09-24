@@ -1,0 +1,57 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Access Denied 1.2 2018 – Monica's fear",
+        "AttackerCapabilities": [
+            "Ability to analyze browser cookies",
+            "Knowledge of Base64 encoding and decoding"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Insecure storage of sensitive information (secret recipe) in browser cookies",
+                "Lack of encryption or obfuscation of sensitive information in cookies"
+            ],
+            "SecurityMeasures": [
+                "None mentioned in the writeup"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyzing the home page of the website",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that there might be some clue or hint in the home page that can lead to the location of the secret recipe.",
+                    "Action": "The attacker analyzes the content of the home page.",
+                    "Result": "The attacker discovers a strange message mentioning the love for cookies from the INSTRUO team.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Analyzing browser cookies",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that there might be a cookie containing some information related to the secret recipe.",
+                    "Action": "The attacker inspects the browser cookies.",
+                    "Result": "The attacker finds a cookie with the name 'flag' and a Base64 encoded value.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Decoding the Base64 cookie value",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the Base64 encoded value of the 'flag' cookie might contain the location of the secret recipe.",
+                    "Action": "The attacker decodes the Base64 encoded value of the 'flag' cookie.",
+                    "Result": "The attacker obtains the flag: accessdenied{c00ki3s_4r3_t4sty_659wds1}",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,81 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Asuna Waffles",
+        "AttackerCapabilities": [
+            "SQL injection",
+            "Fuzzing",
+            "Knowledge of AWS WAF"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "SQL Injection"
+            ],
+            "SecurityMeasures": [
+                "AWS WAF with SizeRestrictions_BODY rule"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Attempt classic SQL injection payloads",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the target web application is vulnerable to SQL injection.",
+                    "Action": "The attacker sends classic SQL injection payloads to the target web application.",
+                    "Result": "The attacker receives a 403 Forbidden response.",
+                    "Success": "Failed",
+                    "FailingReason": "The SQL injection payloads are being blocked by the AWS WAF."
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Investigate AWS WAF",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker suspects that the AWS WAF is blocking their SQL injection payloads.",
+                    "Action": "The attacker examines the HTTP response headers and finds the Server header, indicating the presence of an AWS ELB and AWS WAF.",
+                    "Result": "The attacker confirms that the AWS WAF is blocking their SQL injection payloads.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploit the AWS WAF bypass",
+                "ToolsUsed": "SQLMap tamper script",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that they can bypass the AWS WAF by exceeding the default payload size limit.",
+                    "Action": "The attacker creates a SQLMap tamper script that prepends 8192 'a' characters to SQL injection payloads.",
+                    "Result": "The attacker successfully bypasses the AWS WAF and dumps the database using SQLMap.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Retrieve the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects to find the flag in the database.",
+                    "Action": "The attacker executes SQLMap to dump the database and retrieves the flag from the dumped data.",
+                    "Result": "The attacker successfully retrieves the flag from the dumped database.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Mitigation",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker considers the possibility of mitigating the SQL injection vulnerability.",
+                    "Action": "The attacker reviews the AWS WAF managed rule groups changelog and discovers the SizeRestrictions_BODY rule that blocks payloads larger than 8kB.",
+                    "Result": "The attacker suggests using the SizeRestrictions_BODY rule together with SQLi detection to mitigate the SQL injection vulnerability.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

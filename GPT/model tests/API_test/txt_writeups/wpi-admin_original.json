@@ -1,0 +1,59 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "WPI Admin",
+        "AttackerCapabilities": [
+            "Brute forcing credentials",
+            "Identifying vulnerable endpoints",
+            "Exploiting weak passwords"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Weak passwords",
+                "Lack of brute force protection"
+            ],
+            "SecurityMeasures": [
+                "Email visibility restricted to authorized users",
+                "Password strength requirements"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Identify the target's vulnerable endpoint.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the target web application has a vulnerable endpoint that can be exploited.",
+                    "Action": "The attacker searches for any visible or accessible endpoints on the target web application.",
+                    "Result": "The attacker discovers the 'topStudents' endpoint which reveals a list of student emails.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Perform brute force attack on student logins.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that some students have weak passwords that can be easily brute forced.",
+                    "Action": "The attacker uses a brute force attack to try different passwords for each student email.",
+                    "Result": "The attacker successfully brute forces the passwords for all the student emails.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Check each profile to find the flag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the flag is hidden in one of the student profiles.",
+                    "Action": "The attacker checks each profile using the brute forced credentials.",
+                    "Result": "The attacker finds the flag in the profile of 'dennisb@uupeye.edu'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

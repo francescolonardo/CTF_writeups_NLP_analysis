@@ -1,0 +1,101 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "My First Blog",
+        "AttackerCapabilities": [
+            "Web application vulnerability assessment",
+            "Exploiting misconfigurations",
+            "Command line tools usage",
+            "Web scraping"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Directory listing enabled",
+                "Exposed Bazaar version control system",
+                "Insecure file permissions",
+                "Missing input validation"
+            ],
+            "SecurityMeasures": [
+                "HTTP 403 Forbidden error for certain directories",
+                "Basic authentication for some resources"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Discover the existence of Bazaar repository folder",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the target may have a Bazaar repository folder due to the owner's interest in Canonical products.",
+                    "Action": "The attacker tries to access the '.bzr' directory on the target website.",
+                    "Result": "The attacker receives an HTTP 403 Forbidden error, indicating the presence of the directory.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Retrieve the last revision of the Bazaar repository",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the last revision of the Bazaar repository may contain sensitive information or credentials.",
+                    "Action": "The attacker accesses the 'last-revision' file within the '.bzr/branch' directory.",
+                    "Result": "The attacker obtains the last revision number 'bzr_lover-20181206184825-790ppqxy6l69f581'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Create a local Bazaar repository and download necessary files",
+                "ToolsUsed": "Bazaar command-line tools",
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to recreate the website files by crafting a similar '.bzr' directory.",
+                    "Action": "The attacker creates a local Bazaar repository, adds a file, commits the changes, and then removes the file.",
+                    "Result": "The attacker creates the necessary directory structure for the '.bzr' folder and deletes the added file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Download missing files from the target's Bazaar repository",
+                "ToolsUsed": "wget",
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that downloading missing files from the target's Bazaar repository will allow them to recreate the website files.",
+                    "Action": "The attacker downloads the missing files from the target's '.bzr/repository' directory using the 'wget' command.",
+                    "Result": "The attacker successfully obtains the missing files: indices and packs.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Check the status of the local repository",
+                "ToolsUsed": "Bazaar command-line tools",
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to verify the success of the previous steps and identify any missing files.",
+                    "Action": "The attacker uses the 'bzr status' command to check the status of the local repository.",
+                    "Result": "The attacker identifies the missing file 'index.php'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 6,
+                "Description": "Revert the missing file in the local repository",
+                "ToolsUsed": "Bazaar command-line tools",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that reverting the missing file will recreate the website's index.php file.",
+                    "Action": "The attacker uses the 'bzr revert' command to recreate the 'index.php' file.",
+                    "Result": "The attacker successfully reverts the missing file, recreating the website's index.php file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 7,
+                "Description": "Retrieve the flag",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker anticipates that the flag may be stored in the index

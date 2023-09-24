@@ -1,0 +1,43 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Robots.txt Disallowed Route",
+        "AttackerCapabilities": [
+            "Knowledge of robots.txt"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Improper access control allowing access to a disallowed route"
+            ],
+            "SecurityMeasures": [
+                "Robots.txt file with a disallowed route"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker Googles the challenge description and discovers that it is related to Mr. Robot. This indicates that they should check the robots.txt file for the website.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects to find valuable information in the robots.txt file.",
+                    "Action": "The attacker opens the website and navigates to the robots.txt file.",
+                    "Result": "The attacker discovers the disallowed route '/fade/to/black'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker decides to visit the disallowed route mentioned in the robots.txt file.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that visiting the disallowed route will lead to the flag.",
+                    "Action": "The attacker navigates to the '/fade/to/black' route.",
+                    "Result": "The attacker obtains the flag: csictf{br0b0t_1s_pr3tty_c00l_1_th1nk}",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

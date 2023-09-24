@@ -1,0 +1,44 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Prototype pollution and off-by-one error",
+        "AttackerCapabilities": [
+            "Understanding of prototype pollution and off-by-one error",
+            "Ability to analyze JavaScript code for vulnerabilities",
+            "Knowledge of HTTP requests and responses"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Prototype pollution in utils.merge() function",
+                "Off-by-one error in background.js font validation"
+            ],
+            "SecurityMeasures": []
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploit prototype pollution in utils.merge()",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to exploit the prototype pollution vulnerability in the utils.merge() function.",
+                    "Action": "The attacker crafts a payload to pollute the utils.FONTS array and bypass the validation in the for loop.",
+                    "Result": "The attacker successfully pollutes the utils.FONTS array, allowing them to use a malicious font.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Leverage the off-by-one error in background.js font validation",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to exploit the off-by-one error in the font validation to bypass the validation and load an external font using the fetch() call.",
+                    "Action": "The attacker manipulates the fetch() call in setFont.js to use the credentials for http://app/ by polluting the credentials: include option.",
+                    "Result": "The attacker successfully loads an external font and the output is placed in the exploit page's style element.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

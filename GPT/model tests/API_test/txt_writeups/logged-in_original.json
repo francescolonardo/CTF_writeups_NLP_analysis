@@ -1,0 +1,61 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Logged In",
+        "AttackerCapabilities": [
+            "Web vulnerability analysis",
+            "API analysis",
+            "Understanding of authentication mechanisms",
+            "Cookie manipulation"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Lack of double opt-in email verification",
+                "Code disclosure in API response"
+            ],
+            "SecurityMeasures": [
+                "User registration",
+                "Authentication system",
+                "Cookie-based session management"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyze the authentication API response",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the authentication API response may contain a secret code.",
+                    "Action": "The attacker intercepts the authentication API response and inspects its payload.",
+                    "Result": "The attacker finds a code in the payload that is required for login.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Complete the login process",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that inserting the code into the login window will complete the login process.",
+                    "Action": "The attacker enters the code into the login window.",
+                    "Result": "The login process is successfully completed.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Manipulate the cookie",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that manipulating the cookie will grant access to the flag.",
+                    "Action": "The attacker modifies the logged_in cookie to include the flag.",
+                    "Result": "The logged_in cookie is successfully modified to include the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,71 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "The Usual Suspects",
+        "AttackerCapabilities": [
+            "Knowledge of server-side template injection",
+            "Ability to manipulate HTTP requests",
+            "Understanding of cookie manipulation"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Server-side Template Injection",
+                "Insecure cookie handling"
+            ],
+            "SecurityMeasures": [
+                "Use of secure cookies",
+                "Limited privileges for the server process"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Identify the presence of server-side template injection vulnerability by injecting arbitrary code as the 'icecream' value",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to determine if the target application is vulnerable to server-side template injection.",
+                    "Action": "Inject {{globals()}} as the 'icecream' value in the HTTP request.",
+                    "Result": "The response contains the 'application' variable, revealing the name of the variable used to instantiate the tornado.web.Application object.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Retrieve the value of the 'cookie_secret' variable used to sign the secure cookie",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to obtain the 'cookie_secret' value to forge a valid signed cookie.",
+                    "Action": "Inject {{application.settings['cookie_secret']}} as the 'icecream' value in the HTTP request.",
+                    "Result": "The response contains the 'cookie_secret' value, which is MangoDB.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Manipulate the 'admin' secure cookie to obtain a signed cookie with the value 'true'",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to modify the 'admin' secure cookie to obtain a valid signed cookie.",
+                    "Action": "Change the value of the 'admin' secure cookie to 'true'.",
+                    "Result": "The 'admin' secure cookie is updated with the value 'true'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Replace the original signed cookie with the manipulated signed cookie",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to use the manipulated signed cookie to gain access to the flag.",
+                    "Action": "Replace the original signed cookie with the manipulated signed cookie in the browser.",
+                    "Result": "The server recognizes the manipulated signed cookie as valid and sets the 'secret' variable to the flag value.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

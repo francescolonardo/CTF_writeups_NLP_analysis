@@ -1,0 +1,56 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Free Wi-Fi Part 1",
+        "AttackerCapabilities": [
+            "Ability to analyze network traffic (pcap files)",
+            "Ability to navigate web pages"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Missing authentication for guest login"
+            ],
+            "SecurityMeasures": [
+                "None mentioned in the writeup"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyzing the HTML code of the page",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that there might be an authentication mechanism in the HTML code.",
+                    "Action": "The attacker analyzes the HTML code of the page to look for any authentication mechanisms.",
+                    "Result": "The attacker discovers that there is no authentication mechanism implemented.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Analyzing the network traffic (pcap file)",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that there might be additional web pages accessible through the network traffic.",
+                    "Action": "The attacker analyzes the network traffic captured in the pcap file.",
+                    "Result": "The attacker discovers a network request for https://freewifi.ctf.umbccd.io/staff.html.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Accessing the discovered web page",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the flag might be present on the discovered web page.",
+                    "Action": "The attacker accesses the discovered web page at https://freewifi.ctf.umbccd.io/staff.html.",
+                    "Result": "The attacker finds the flag on the web page.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

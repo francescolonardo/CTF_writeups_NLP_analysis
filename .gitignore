@@ -4,6 +4,7 @@ __pycache__/
 
 api_keys.json
 secrets.py
+.env
 
 venv/
 models/

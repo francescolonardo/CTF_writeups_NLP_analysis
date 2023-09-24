@@ -1,0 +1,50 @@
+{
+    "AttackModel": {
+      "Objective": "Execute arbitrary code on the web server and retrieve the flag.",
+      "Phases": [
+        {
+          "Phase": 1,
+          "Description": "Initial reconnaissance of the target website.",
+          "Actions": [
+            {
+              "Action": "Visit the provided URL",
+              "Result": "Identify that the website is an online calculator."
+            }
+          ]
+        },
+        {
+          "Phase": 2,
+          "Description": "Exploit the website's vulnerability to execute arbitrary code.",
+          "Actions": [
+            {
+              "Action": "Submit a POST request with a simple arithmetic expression (1+1) as the statement parameter",
+              "Result": "Observe that the website uses PHP eval() function and returns the result (2)."
+            },
+            {
+              "Action": "Submit a POST request with a payload containing double curly braces ({{}}) as the statement parameter",
+              "Result": "Trigger a syntax error in the PHP eval() function, confirming the use of eval()."
+            },
+            {
+              "Action": "Submit a POST request with a payload containing 'system('id')' as the statement parameter",
+              "Result": "Execute the 'id' command on the server and obtain the result, revealing the user as 'www-data'."
+            }
+          ]
+        },
+        {
+          "Phase": 3,
+          "Description": "Exploit the ability to execute system commands to gather information.",
+          "Actions": [
+            {
+              "Action": "Submit a POST request with a payload containing 'system('ls -al')' as the statement parameter",
+              "Result": "List the directory contents on the server, revealing the 'index.php' file."
+            },
+            {
+              "Action": "Submit a POST request with a payload containing 'system('cat index.php')' as the statement parameter",
+              "Result": "Retrieve the content of the 'index.php' file, which contains the flag 'auctf{p6p_1nj3c7i0n_iz_k3wl}'."
+            }
+          ]
+        }
+      ]
+    }
+  }
+  

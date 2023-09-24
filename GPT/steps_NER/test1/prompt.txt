@@ -1,0 +1,23 @@
+Given this step of a CTF's writeup, produce an ERD basing on the description field. The relations must be one word.
+
+{
+    "Step1": {
+        "Description": "The attacker attempts to access the web application but is denied due to a password check based on a cookie.",
+        "ToolsUsed": "null",
+        "StepDetails": {
+            "Hypothesis": "The attacker's goal is to bypass the authentication mechanism to gain access to the application.",
+            "Action": "The attacker sets the 'password' cookie to 'w0rdc0unt123', which matches the expected password value.",
+            "Result": "Access to the application is granted, and the attacker proceeds to interact with it.",
+            "Success": "Success",
+            "FailingReason": "null"
+        }
+    }
+}
+
+Follow this structure:
+
+scss"""
+[Entity 1] --(Relationship 1)--> [Entity 2]
+[Entity 1] --(Relationship 2)--> [Entity 3]
+[Entity 3] --(Relationship 3)--> [Entity 2]
+"""

@@ -1,0 +1,71 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Clubmouse",
+        "AttackerCapabilities": [
+            "Knowledge of web application vulnerabilities (e.g., SQL injection)",
+            "Ability to use tools like Burp Suite and SQLMap",
+            "Understanding of HTTP headers and their manipulation"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "IP-based access control bypass",
+                "SQL injection"
+            ],
+            "SecurityMeasures": [
+                "IP filtering on the login page",
+                "Blacklist filter on SQL injection endpoints"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Bypass IP-based access control on the login page",
+                "ToolsUsed": "Burp Suite Intruder",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the X-Forwarded-For header can be manipulated to bypass IP filtering.",
+                    "Action": "The attacker runs a Burp Suite Intruder scan with different payloads for the X-Forwarded-For header, specifically targeting the internal subnet address (192.168.3.x).",
+                    "Result": "The attacker discovers that setting the X-Forwarded-For header to 192.168.3.16 grants access to the login page.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit SQL injection on the login page",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker suspects that the username parameter is vulnerable to SQL injection.",
+                    "Action": "The attacker inputs the payload 'test' or 1=1 LIMIT 1;# in the username parameter.",
+                    "Result": "The attacker successfully bypasses authentication and gains access as the admin.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Exploit SQL injection on the users.php page",
+                "ToolsUsed": "SQLMap",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the users.php page is vulnerable to SQL injection and that there might be additional SQL injection endpoints.",
+                    "Action": "The attacker uses SQLMap to identify SQL injection vulnerabilities on the users.php page. They discover a second SQL injection endpoint with a blacklist filter.",
+                    "Result": "The attacker obtains injection vectors and successfully dumps the database, retrieving usernames, card numbers, and the existence of a 'R34L_F14G' column.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Retrieve the flag using blind SQL injection",
+                "ToolsUsed": "SQLMap",
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the 'R34L_F14G' column can be retrieved using blind SQL injection on the login.php page.",
+                    "Action": "The attacker uses SQLMap with specific parameters to dump the 'R34L_F14G' column, given the table and where clause.",
+                    "Result": "The attacker successfully retrieves the flag, which is S3D{G0_De3Per_L1k3_a_pr0_r3d_T3aMEr}.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

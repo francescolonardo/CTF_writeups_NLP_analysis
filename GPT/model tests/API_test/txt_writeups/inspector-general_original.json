@@ -1,0 +1,43 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "inspector-general",
+        "AttackerCapabilities": [
+            "Basic knowledge of HTML source code",
+            "Ability to search for specific content in source code"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Lack of access control to view HTML source code",
+                "Inclusion of sensitive information in HTML source code"
+            ],
+            "SecurityMeasures": []
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker views the source code of the HTML file.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the flag may be present in the HTML source code.",
+                    "Action": "The attacker presses Ctrl + U on their browser to view the source code of the HTML file.",
+                    "Result": "The attacker finds the flag in the HTML source code.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker searches for the flag{...} format in the HTML source code.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the flag may be in the flag{...} format.",
+                    "Action": "The attacker searches for the flag{...} format in the HTML source code.",
+                    "Result": "The attacker finds the flag{1nspector_g3n3ral_at_w0rk} in the HTML source code.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

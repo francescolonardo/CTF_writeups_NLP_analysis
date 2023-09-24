@@ -1,0 +1,13 @@
+SWAGGY
+
+Solved by: Taz34
+
+
+Change the server to the testing server
+
+now authorize using the admin:admin credentials
+
+now try and execute the request to get the flag
+
+
+here we have the flag.

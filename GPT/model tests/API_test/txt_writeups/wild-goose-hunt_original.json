@@ -1,0 +1,70 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Wild Goose Hunt",
+        "AttackerCapabilities": [
+            "Knowledge of NoSQL injection",
+            "Ability to write and execute Python scripts",
+            "Understanding of regular expressions"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "NoSQL injection"
+            ],
+            "SecurityMeasures": [
+                "MongoDB database with no authentication",
+                "Use of regular expressions for password validation"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker discovers that the flag is stored as the password of the 'admin' user in the MongoDB database.",
+                "ToolsUsed": "null",
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that they can exploit NoSQL injection to extract the password.",
+                    "Action": "The attacker attempts a normal login and observes the error message in Burp.",
+                    "Result": "The attacker confirms that the target is vulnerable to NoSQL injection.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker switches to the Repeater tool in Burp to modify the login request.",
+                "ToolsUsed": "Burp Suite Repeater",
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that they can bypass authentication by injecting a payload in the username and password fields.",
+                    "Action": "The attacker tries the payload 'username[$ne]=lol&password[$ne]=lol'.",
+                    "Result": "The attacker successfully bypasses authentication.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker tries different payloads for NoSQL injection.",
+                "ToolsUsed": "Burp Suite Repeater",
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that they can extract the password character by character using a wildcard in the payload.",
+                    "Action": "The attacker tries the payload 'username=admin&password[$regex]=A*'.",
+                    "Result": "The attacker successfully extracts the password character by character.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "The attacker creates a Python script to automate the process of brute-forcing the password character by character.",
+                "ToolsUsed": "Python",
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that they can automate the process of extracting the password character by character.",
+                    "Action": "The attacker writes a Python script that sends requests with different payloads to extract the password character by character.",
+                    "Result": "The attacker successfully retrieves the entire flag.",
+                    "Success": "Success",
+                    "FailingReason": "null"
+                }
+            }
+        ]
+    }
+}

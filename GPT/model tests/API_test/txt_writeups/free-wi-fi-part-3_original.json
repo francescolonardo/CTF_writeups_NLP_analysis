@@ -1,0 +1,61 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Free Wi-Fi Part 3",
+        "AttackerCapabilities": [
+            "Ability to analyze network traffic",
+            "Understanding of web page structure and functionality",
+            "Knowledge of authentication mechanisms",
+            "Ability to intercept and modify HTTP requests"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Lack of server-side validation for password reset functionality",
+                "Insecure storage of credentials in HTML source code"
+            ],
+            "SecurityMeasures": [
+                "Client-side validation of input fields",
+                "Encryption of sensitive data during transmission (HTTPS)",
+                "Strong password hashing and storage practices"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyzing the PCAP file, the attacker identifies interesting packets related to the forgot password functionality.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker suspects that the forgot password functionality may have vulnerabilities that can be exploited.",
+                    "Action": "The attacker analyzes the PCAP file to inspect the HTTP requests and responses.",
+                    "Result": "The attacker finds a POST request to /forgotpassword.html and retrieves the HTML response containing the forgot password form.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker examines the HTML response and identifies the presence of a username, password, and email input fields.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the forgot password functionality may have separate fields for username and email, and that the email field may not have server-side validation.",
+                    "Action": "The attacker inspects the HTML source code and identifies the input fields for username, password, and email.",
+                    "Result": "The attacker confirms the presence of separate fields for username and email, and notes the JavaScript code that copies the value from the username field to the email field.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker intercepts and modifies the forgot password request to change the email address to one they control.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that by modifying the email field in the forgot password request, they can receive the password reset link for a user's account.",
+                    "Action": "The attacker intercepts the forgot password request and modifies the email field to their own email address.",
+                    "Result": "The attacker receives the password reset link in their own email inbox.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

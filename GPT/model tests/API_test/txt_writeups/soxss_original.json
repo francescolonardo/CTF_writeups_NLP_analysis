@@ -1,0 +1,60 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "soXSS",
+        "AttackerCapabilities": [
+            "Knowledge of XSS vulnerabilities",
+            "Understanding of same-origin policy",
+            "Ability to bypass iframe origin checks"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Lax session cookie",
+                "Insecure origin check in iframe",
+                "Potential XSS vulnerability"
+            ],
+            "SecurityMeasures": [
+                "DOMPurify",
+                "Sandbox attribute in iframe"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Bypass the origin check in the iframe.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to bypass the origin check in the iframe to gain access to the rendered content.",
+                    "Action": "Embed the iframe via <iframe sandbox=\"allow-scripts\" src=\"https://so-xss.terjanq.me/iframe.php\"> to force a null origin.",
+                    "Result": "The origin is set to null, allowing the attacker to proceed to the next step.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Steal the identifier from the popup.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to steal the identifier stored in the user's session.",
+                    "Action": "Open a popup to https://so-xss.terjanq.me/iframe.php from a sandboxed page.",
+                    "Result": "The attacker sends a simple XSS payload to the popup and successfully steals the identifier.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Steal the saved note with the stolen identifier.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker's goal is to use the stolen identifier to access the saved note from the main page.",
+                    "Action": "Open https://so-xss.terjanq.me/iframe.php and send an XSS payload with the stolen identifier.",
+                    "Result": "The attacker successfully steals the saved note with the stolen identifier, as the origin is set to so-xss.terjanq.me.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

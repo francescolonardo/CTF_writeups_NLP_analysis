@@ -1,0 +1,60 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Agent-U",
+        "AttackerCapabilities": [
+            "Web application vulnerability analysis",
+            "SQL injection",
+            "Error-based SQL injection",
+            "Knowledge of Updatexml() function"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Default credentials",
+                "User-Agent-based SQL injection"
+            ],
+            "SecurityMeasures": [
+                "IP-based authentication",
+                "User-Agent string validation"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Analyzing the HTML source code reveals default credentials.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The default credentials can be used to bypass authentication and access additional information.",
+                    "Action": "Use the default credentials to log in.",
+                    "Result": "The User-Agent and an image are displayed.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Attempt to alter the User-Agent during authentication.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Modifying the User-Agent may lead to a SQL injection vulnerability.",
+                    "Action": "Send a POST request with a modified User-Agent.",
+                    "Result": "A SQL error is displayed, indicating a potential SQL injection vulnerability.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Attempt to leak the database name using an error-based approach.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "Using the Updatexml() function in the User-Agent payload can cause an error and reveal the database name.",
+                    "Action": "Craft a SQL payload with the Updatexml() function to leak the database name.",
+                    "Result": "The database name is leaked in the SQL error response.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

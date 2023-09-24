@@ -1,0 +1,84 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Base element CSP bypass",
+        "AttackerCapabilities": [
+            "Knowledge of client-side web development",
+            "Understanding of HTML injection vulnerabilities",
+            "Ability to craft and execute XSS payloads"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Client-side HTML injection in the user's profile",
+                "Content Security Policy (CSP) that restricts loading arbitrary scripts"
+            ],
+            "SecurityMeasures": [
+                "Use of the DOMPurify library to sanitize user input",
+                "Content Security Policy (CSP) configuration that restricts script and object sources",
+                "Use of the <base> HTML tag to set the base URL for relative URLs"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Identify potential injection points in the web application.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to find a way to inject malicious code into the user's profile.",
+                    "Action": "Search for potential injection points in the web application.",
+                    "Result": "Identify the 'bio' field in the user's profile as a potential injection point.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Analyze the libraries used by the web application for any known vulnerabilities.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to determine if any known vulnerabilities exist in the libraries used for parsing the user's bio.",
+                    "Action": "Inspect the versions of the marked and DOMPurify libraries used by the web application.",
+                    "Result": "No known vulnerabilities were found in the versions of the libraries.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "Investigate if there are other potential injection vectors.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to find alternative ways to perform HTML injection in the web application.",
+                    "Action": "Search for other injection vectors in the web application.",
+                    "Result": "Identify the use of the Jinja2 template engine and the |safe filter as a potential injection vector.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "Exploit the HTML injection vulnerability using the |safe filter and the <base> tag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker wants to bypass the Content Security Policy (CSP) by injecting a <base> tag and loading a script from their controlled URL.",
+                    "Action": "Craft an XSS payload that uses the <base> tag to set the base URL and load a script from the attacker's controlled server.",
+                    "Result": "Successfully create an XSS payload that fetches the flag from the /flag endpoint and sends it to the attacker's server.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 5,
+                "Description": "Inject the XSS payload into the user's profile.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to inject the crafted XSS payload into the user's profile to trigger the exploit.",
+                    "Action": "Insert the XSS payload into the user's profile through the 'title' or 'lab' fields.",
+                    "Result": "Successfully inject the XSS payload into the user's profile.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

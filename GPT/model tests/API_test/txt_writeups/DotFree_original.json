@@ -1,0 +1,82 @@
+{
+"AttackModel": {
+    "NameOfTheChallenge": "Dot Free",
+    "AttackerCapabilities": [
+        "Knowledge of XSS attacks",
+        "Ability to craft malicious payloads"
+    ],
+    "Target": {
+        "Type": "Web Application",
+        "Vulnerabilities": [
+            "XSS vulnerability",
+            "Improper validation of input"
+        ],
+        "SecurityMeasures": [
+            "Input validation and sanitization",
+            "Proper encoding/escaping of user input"
+        ]
+    },
+    "Steps": [
+        {
+            "StepNumber": 1,
+            "Description": "The attacker discovers a web application that accepts a URL as input and submits it.",
+            "ToolsUsed": null,
+            "StepDetails": {
+                "Hypothesis": "The attacker hypothesizes that the web application has an XSS vulnerability that can be exploited.",
+                "Action": "The attacker tries submitting a non-existent page and receives an error message indicating the existence of an 'XSSWebsite'.",
+                "Result": "The attacker concludes that the challenge is likely an XSS challenge and assumes there is a bot running on the backend that visits the URLs submitted.",
+                "Success": "Success",
+                "FailingReason": null
+            }
+        },
+        {
+            "StepNumber": 2,
+            "Description": "The attacker analyzes the source code of the web application and finds interesting JavaScript code.",
+            "ToolsUsed": null,
+            "StepDetails": {
+                "Hypothesis": "The attacker hypothesizes that the JavaScript code is responsible for validating and processing the submitted URLs.",
+                "Action": "The attacker examines the code and identifies checks for the presence of dots and slashes in the URL value.",
+                "Result": "The attacker determines that the URL value should not contain dots or slashes.",
+                "Success": "Success",
+                "FailingReason": null
+            }
+        },
+        {
+            "StepNumber": 3,
+            "Description": "The attacker exploits the XSS vulnerability to bypass the URL validation checks.",
+            "ToolsUsed": null,
+            "StepDetails": {
+                "Hypothesis": "The attacker hypothesizes that by crafting a payload that does not contain dots or slashes, they can bypass the URL validation checks.",
+                "Action": "The attacker crafts a payload using a data URI scheme that executes JavaScript code to send the bot's cookie to their server.",
+                "Result": "The attacker successfully crafts a payload and constructs a URL with the payload to be submitted.",
+                "Success": "Success",
+                "FailingReason": null
+            }
+        },
+        {
+            "StepNumber": 4,
+            "Description": "The attacker submits the URL with the crafted payload to the web application.",
+            "ToolsUsed": null,
+            "StepDetails": {
+                "Hypothesis": "The attacker expects the bot running on the backend to visit the submitted URL and execute the payload, sending the bot's cookie to their server.",
+                "Action": "The attacker sends the URL to the web application.",
+                "Result": "The bot visits the URL, executes the payload, and sends the cookie to the attacker's server.",
+                "Success": "Success",
+                "FailingReason": null
+            }
+        },
+        {
+            "StepNumber": 5,
+            "Description": "The attacker receives the flag on their server.",
+            "ToolsUsed": null,
+            "StepDetails": {
+                "Hypothesis": "The attacker expects the bot to send the flag as a response to the payload execution.",
+                "Action": "The attacker checks their server logs and finds the flag in the response received from the bot.",
+                "Result": "The attacker successfully obtains the flag.",
+                "Success": "Success",
+                "FailingReason": null
+            }
+        }
+    ]
+  }
+}

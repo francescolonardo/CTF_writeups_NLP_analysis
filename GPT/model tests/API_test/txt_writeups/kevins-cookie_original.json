@@ -1,0 +1,44 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Kevin's Cookies",
+        "AttackerCapabilities": [
+            "Basic knowledge of web applications",
+            "Ability to modify request parameters"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Improper validation of cookie value"
+            ],
+            "SecurityMeasures": [
+                "None mentioned"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker modifies the value of the 'likeCookie' cookie from false to true.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that changing the value of the 'likeCookie' cookie to true will trigger a specific message or behavior in the web application.",
+                    "Action": "The attacker sends a request to the target web application with the modified cookie value.",
+                    "Result": "The web application displays a message indicating that liking a true cookie is silly.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker iterates through different values for the 'likeCookie' cookie to find the flag.",
+                "ToolsUsed": "Python requests library",
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that one of the values for the 'likeCookie' cookie will reveal the flag in the response from the web application.",
+                    "Action": "The attacker sends multiple requests to the target web application, each with a different value for the 'likeCookie' cookie.",
+                    "Result": "One of the requests returns a response containing the flag 'LITCTF{Bd1mens10n_15_l1k3_sup3r_dup3r_0rzzzz}'.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

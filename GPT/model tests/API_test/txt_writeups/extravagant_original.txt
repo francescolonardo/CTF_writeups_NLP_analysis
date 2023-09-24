@@ -1,0 +1,21 @@
+EXtravagant
+
+Solved By : nigamelastic
+  
+
+The challenge mentions the following:
+
+The flag is in /var/www
+
+on accessing the website we see a normal interface with xml parsing as a service
+
+from the mentioning of XML it seems that this might be an XXE
+Since we already know the locaiton of the flag I used the following payload:
+
+I simply uploaded it to the trial tab:
+
+
+and then used view XML tab to view my xml
+
+This would give flag
+

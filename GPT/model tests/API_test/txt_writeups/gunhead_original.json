@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Gunhead",
+        "AttackerCapabilities": [
+            "Hacking skills",
+            "Understanding of shell_exec vulnerability"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Unsanitized shell_exec command"
+            ],
+            "SecurityMeasures": []
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Exploiting the unsanitized shell_exec command",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker aims to exploit the unsanitized shell_exec command to run arbitrary shell commands.",
+                    "Action": "The attacker inputs a command into the command prompt, trying to escape the shell_exec function.",
+                    "Result": "The command is successfully executed, allowing the attacker to read the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "Digits of Pi 1",
+        "AttackerCapabilities": [
+            "Ability to analyze formulas in spreadsheets",
+            "Knowledge of spreadsheet accessibility tools"
+        ],
+        "Target": {
+            "Type": "Spreadsheet",
+            "Vulnerabilities": [
+                "Hidden sheet containing sensitive information"
+            ],
+            "SecurityMeasures": [
+                "Hiding the sheet from view"
+            ]
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "Check the cells and find a formula.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that there might be a hidden sheet containing the flag.",
+                    "Action": "The attacker activates the accessibility tools in the spreadsheet software.",
+                    "Result": "The hidden sheet called 'Source' is revealed.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "Access the hidden sheet and search for the flag.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the flag might be stored in the hidden sheet.",
+                    "Action": "The attacker navigates to the hidden sheet called 'Source' and searches for the flag.",
+                    "Result": "The flag is found in the hidden sheet.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,69 @@
+{
+    "AttackModel": {
+        "NameOfTheChallenge": "McDonald",
+        "AttackerCapabilities": [
+            "Web application reconnaissance",
+            "Ability to download files",
+            "Knowledge of macOS .DS_Store files and their contents",
+            "Ability to run scripts"
+        ],
+        "Target": {
+            "Type": "Web Application",
+            "Vulnerabilities": [
+                "Exposure of sensitive files (.DS_Store)",
+                "Lack of access restrictions on backup files"
+            ],
+            "SecurityMeasures": []
+        },
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "Description": "The attacker visits the 'robots.txt' file on the target website.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker hypothesizes that the 'robots.txt' file may contain information about hidden or sensitive files.",
+                    "Action": "The attacker navigates to 'http://35.207.91.38/robots.txt' in their web browser.",
+                    "Result": "The attacker finds the content of the 'robots.txt' file, which reveals the existence of a '.DS_Store' file in the '/backup/' directory.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 2,
+                "Description": "The attacker downloads the '.DS_Store' file from the '/backup/' directory.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker believes that the '.DS_Store' file may contain hidden or sensitive data.",
+                    "Action": "The attacker downloads the '.DS_Store' file from 'http://35.207.91.38/backup/.DS_Store'.",
+                    "Result": "The attacker successfully downloads the '.DS_Store' file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 3,
+                "Description": "The attacker uses the 'ds_store_exp.py' script to extract hidden data from the '.DS_Store' file.",
+                "ToolsUsed": "https://github.com/lijiejie/dsstoreexp",
+                "StepDetails": {
+                    "Hypothesis": "The attacker expects that running the 'ds_store_exp.py' script on the '.DS_Store' file will reveal hidden files or directories.",
+                    "Action": "The attacker runs the 'ds_store_exp.py' script on the downloaded '.DS_Store' file by executing './ds_store_exp.py http://35.207.91.38/backup/.DS_Store'.",
+                    "Result": "The attacker successfully extracts the hidden file 'backup/b/a/c/flag.txt' from the '.DS_Store' file.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            },
+            {
+                "StepNumber": 4,
+                "Description": "The attacker retrieves the flag from the extracted hidden file.",
+                "ToolsUsed": null,
+                "StepDetails": {
+                    "Hypothesis": "The attacker assumes that the extracted hidden file contains the flag needed to solve the challenge.",
+                    "Action": "The attacker opens the extracted file 'backup/b/a/c/flag.txt' and retrieves the flag '35c3_Appl3s_H1dden_F1l3s'.",
+                    "Result": "The attacker successfully obtains the flag.",
+                    "Success": "Success",
+                    "FailingReason": null
+                }
+            }
+        ]
+    }
+}
