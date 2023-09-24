@@ -1,0 +1,28 @@
+{
+    "entities": [
+        {
+            "name": "Step3",
+            "attributes": [
+                {"name": "Description", "type": "string"},
+                {"name": "ToolsUsed", "type": "string"}
+            ]
+        },
+        {
+            "name": "StepDetails",
+            "attributes": [
+                {"name": "Hypothesis", "type": "string"},
+                {"name": "Action", "type": "string"},
+                {"name": "Result", "type": "string"},
+                {"name": "Success", "type": "string"},
+                {"name": "FailingReason", "type": "string"}
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "name": "Has",
+            "entities": ["Step3", "StepDetails"],
+            "cardinality": "one-to-one"
+        }
+    ]
+}
