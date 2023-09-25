@@ -2,12 +2,15 @@
 __pycache__/
 *.py[cod]
 
+# secrets
 api_keys.json
 secrets.py
 .env
 
 venv/
 models/
+dataset_writeups_test/
+dataset_writeups_test.BAK/
 **/code_dataset/
 .vscode/
 .DS_Store
@@ -17,8 +20,3 @@ README.md
 README.docx
 
 openai_chat.py
-
-openai/venv
-openai/api_keys
-openai/dataset_writeups
-openai/dataset_writeups.BAK
