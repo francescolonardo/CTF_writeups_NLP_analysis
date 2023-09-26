@@ -9,14 +9,13 @@ secrets.py
 
 venv/
 models/
-dataset_writeups_test/
-dataset_writeups_test.BAK/
-**/code_dataset/
 .vscode/
 .DS_Store
 .ipynb_checkpoints
 
+**/code_dataset/
+dataset_writeups_test/
+dataset_writeups_test.BAK/
+
 README.md
 README.docx
-
-openai_chat.py
