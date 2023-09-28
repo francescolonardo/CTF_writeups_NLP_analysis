@@ -1,28 +1,45 @@
 {
     "Information Gathering": {
         "Web Interaction": {
-            "Navigation": {},
-            "User Interaction": {}
+            "Navigation": {
+                "URL Exploration": {},
+                "Subdomain Enumeration": {}
+            },
+            "User Interaction": {
+                "Form Interaction": {},
+                "User Interface Exploration": {}
+            }
         },
         "Security Analysis": {
             "Observational Analysis": {
                 "Static Analysis": {
-                    "Code Review": {},
+                    "Code Review": {
+                        "Syntax Analysis": {},
+                        "Logic Analysis": {}
+                    },
                     "Configuration Review": {}
                 },
                 "Dynamic Analysis": {
-                    "Runtime Analysis": {},
                     "Behavior Analysis": {}
                 }
             },
             "Evaluative Analysis": {
-                "Vulnerability Scanning": {},
-                "Vulnerability Validation": {}
+                "Vulnerability Assessment": {
+                    "Vulnerability Scanning": {
+                        "Automated Scanning": {},
+                        "Manual Scanning": {}
+                    },
+                    "Vulnerability Validation": {
+                        "Proof of Concept Development": {}
+                    }
+                }
             }
         },
         "Knowledge Acquisition": {
-            "Documentation Research": {},
-            "Data Research": {}
+            "Documentation Research": {
+                "Official Documentation Review": {},
+                "Community Documentation Review": {}
+            }
         },
         "Hypothesis Formation": {}
     },
@@ -45,21 +62,35 @@
         "Exploit Development": {
             "Payload Crafting": {
                 "Injection Crafting": {
-                    "SQL Injection": {},
-                    "Object Injection": {},
-                    "Template Injection": {}
+                    "SQL Injection Crafting": {},
+                    "Object Injection Crafting": {},
+                    "Template Injection Crafting": {}
                 },
-                "Link Crafting": {}
-            },
-            "Exploit Testing": {}
+                "Buffer Overflow Crafting": {},
+                "Link Crafting": {},
+                "Script Crafting": {
+                    "Cross-Site Scripting (XSS)": {},
+                    "Cross-Site Request Forgery (CSRF)": {}
+                }
+            }
         },
         "Exploit Implementation": {
-            "Payload Delivery": {},
+            "Payload Delivery Methods": {
+                "Direct Input": {},
+                "File Upload": {},
+                "Web Request": {}
+            },
             "Exploit Execution": {}
         },
         "Exploit Assessment": {
-            "Success Evaluation": {},
-            "Failure Analysis": {}
+            "Success Evaluation": {
+                "Data Access Confirmation": {},
+                "Privilege Escalation Confirmation": {}
+            },
+            "Failure Analysis": {
+                "Error Analysis": {},
+                "Mitigation Identification": {}
+            }
         }
     },
     "Implementation and Utilization": {
@@ -67,30 +98,31 @@
             "Software Usage": {
                 "Networking Tools": {
                     "Packet Sniffing Tools": {},
-                    "Port Scanning Tools": {}
+                    "Port Scanning Tools": {},
+                    "Network Analysis Tools": {},
+                    "Proxy Tools": {}
                 },
-                "Cryptography Tools": {}
-            },
-            "Command-Line Execution": {
-                "Specific Commands": {
-                    "Netcat Commands": {}
+                "Cryptography Tools": {
+                    "Encryption Tools": {},
+                    "Hashing Tools": {}
+                }
+            }
+        },
+        "Manual Procedures": {
+            "Command-Line Usage": {
+                "Shell Commands": {
+                    "General Shell Commands": {},
+                    "Network Commands": {}
                 }
             }
         },
         "Automated Procedures": {
-            "Script Development": {
-                "Script Crafting": {
-                    "Python Scripting": {
-                        "HTTP Scripting": {}
-                    }
-                }
-            },
-            "Script Implementation": {
-                "Script Execution": {
-                    "Python Scripts Execution": {
-                        "HTTP Scripts Execution": {}
-                    }
-                }
+            "Script Utilization": {
+                "Python Scripting": {
+                    "HTTP Scripting": {},
+                    "Socket Programming": {}
+                },
+                "Bash Scripting": {}
             }
         }
     },
