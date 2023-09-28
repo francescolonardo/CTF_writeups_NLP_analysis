@@ -1,0 +1,15 @@
+Assume I am creating a hierarchy of categories structured in the following way (JSON):
+
+
+I need this hierarchy to label some attacker actions I have extracted from a dataset of CTF writeups in the context of web application security.
+
+Given the preceding hierarchy, can you try to label (inserting the actions strings in the hierarchy into list of strings) the following attacker actions?
+
+Add for all the actions you are not sure how to label (for which you have doubts about where to place them), put them in the "Miscellaneous Actions" category under the subcategories you think are correct (new categories added by you).
+
+Please respond with just the JSON output.
+
+Attacker's actions:
+```
+
+```

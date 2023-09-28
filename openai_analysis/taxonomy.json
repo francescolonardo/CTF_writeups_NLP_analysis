@@ -1,0 +1,98 @@
+{
+    "Information Gathering": {
+        "Web Interaction": {
+            "Navigation": {},
+            "User Interaction": {}
+        },
+        "Security Analysis": {
+            "Observational Analysis": {
+                "Static Analysis": {
+                    "Code Review": {},
+                    "Configuration Review": {}
+                },
+                "Dynamic Analysis": {
+                    "Runtime Analysis": {},
+                    "Behavior Analysis": {}
+                }
+            },
+            "Evaluative Analysis": {
+                "Vulnerability Scanning": {},
+                "Vulnerability Validation": {}
+            }
+        },
+        "Knowledge Acquisition": {
+            "Documentation Research": {},
+            "Data Research": {}
+        },
+        "Hypothesis Formation": {}
+    },
+    "Data Management": {
+        "Information Extraction": {
+            "Data Capture": {},
+            "Data Retrieval": {}
+        },
+        "Information Analysis": {
+            "Data Interpretation": {},
+            "Data Understanding": {}
+        },
+        "Data Modification": {
+            "URL Manipulation": {},
+            "Cookie Manipulation": {},
+            "Header Manipulation": {}
+        }
+    },
+    "Vulnerability Exploitation": {
+        "Exploit Development": {
+            "Payload Crafting": {
+                "Injection Crafting": {
+                    "SQL Injection": {},
+                    "Object Injection": {},
+                    "Template Injection": {}
+                },
+                "Link Crafting": {}
+            },
+            "Exploit Testing": {}
+        },
+        "Exploit Implementation": {
+            "Payload Delivery": {},
+            "Exploit Execution": {}
+        },
+        "Exploit Assessment": {
+            "Success Evaluation": {},
+            "Failure Analysis": {}
+        }
+    },
+    "Implementation and Utilization": {
+        "Tool Utilization": {
+            "Software Usage": {
+                "Networking Tools": {
+                    "Packet Sniffing Tools": {},
+                    "Port Scanning Tools": {}
+                },
+                "Cryptography Tools": {}
+            },
+            "Command-Line Execution": {
+                "Specific Commands": {
+                    "Netcat Commands": {}
+                }
+            }
+        },
+        "Automated Procedures": {
+            "Script Development": {
+                "Script Crafting": {
+                    "Python Scripting": {
+                        "HTTP Scripting": {}
+                    }
+                }
+            },
+            "Script Implementation": {
+                "Script Execution": {
+                    "Python Scripts Execution": {
+                        "HTTP Scripts Execution": {}
+                    }
+                }
+            }
+        }
+    },
+    "Miscellaneous Actions": {}
+}
