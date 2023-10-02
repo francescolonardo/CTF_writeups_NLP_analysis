@@ -1,130 +1,37 @@
 {
-    "Information Gathering": {
-        "Web Interaction": {
-            "Navigation": {
-                "URL Exploration": {},
-                "Subdomain Enumeration": {}
-            },
-            "User Interaction": {
-                "Form Interaction": {},
-                "User Interface Exploration": {}
-            }
+    "Reconnaissance": {
+        "Navigation and Interaction": {
+            "Navigation": {},
+            "Interaction": {}
         },
-        "Security Analysis": {
-            "Observational Analysis": {
-                "Static Analysis": {
-                    "Code Review": {
-                        "Syntax Analysis": {},
-                        "Logic Analysis": {}
-                    },
-                    "Configuration Review": {}
-                },
-                "Dynamic Analysis": {
-                    "Behavior Analysis": {}
-                }
-            },
-            "Evaluative Analysis": {
-                "Vulnerability Assessment": {
-                    "Vulnerability Scanning": {
-                        "Automated Scanning": {},
-                        "Manual Scanning": {}
-                    },
-                    "Vulnerability Validation": {
-                        "Proof of Concept Development": {}
-                    }
-                }
-            }
-        },
-        "Knowledge Acquisition": {
-            "Documentation Research": {
-                "Official Documentation Review": {},
-                "Community Documentation Review": {}
-            }
-        },
-        "Hypothesis Formation": {}
+        "Research/Knowledge Acquisition": {}
     },
-    "Data Management": {
-        "Information Extraction": {
-            "Data Capture": {},
-            "Data Retrieval": {}
-        },
-        "Information Analysis": {
-            "Data Interpretation": {},
-            "Data Understanding": {}
-        },
-        "Data Modification": {
-            "URL Manipulation": {},
-            "Cookie Manipulation": {},
-            "Header Manipulation": {}
-        }
+    "Analysis": {
+        "Static Analysis": {},
+        "Dynamic Analysis": {},
+        "Vulnerability Assessment": {},
+        "Information Extraction": {},
+        "Inference (Assumption/Guesses)": {}
     },
-    "Vulnerability Exploitation": {
+    "Exploitation": {
         "Exploit Development": {
-            "Payload Crafting": {
-                "Injection Crafting": {
-                    "SQL Injection Crafting": {},
-                    "Object Injection Crafting": {},
-                    "Template Injection Crafting": {}
-                },
-                "Buffer Overflow Crafting": {},
-                "Link Crafting": {},
-                "Script Crafting": {
-                    "Cross-Site Scripting (XSS)": {},
-                    "Cross-Site Request Forgery (CSRF)": {}
-                }
-            }
+            "Payload Crafting": {}
         },
         "Exploit Implementation": {
-            "Payload Delivery Methods": {
-                "Direct Input": {},
-                "File Upload": {},
-                "Web Request": {}
-            },
+            "Payload Delivery": {},
             "Exploit Execution": {}
         },
         "Exploit Assessment": {
-            "Success Evaluation": {
-                "Data Access Confirmation": {},
-                "Privilege Escalation Confirmation": {}
-            },
-            "Failure Analysis": {
-                "Error Analysis": {},
-                "Mitigation Identification": {}
-            }
-        }
-    },
-    "Implementation and Utilization": {
-        "Tool Utilization": {
-            "Software Usage": {
-                "Networking Tools": {
-                    "Packet Sniffing Tools": {},
-                    "Port Scanning Tools": {},
-                    "Network Analysis Tools": {},
-                    "Proxy Tools": {}
-                },
-                "Cryptography Tools": {
-                    "Encryption Tools": {},
-                    "Hashing Tools": {}
-                }
-            }
+            "Success Evaluation": {},
+            "Failure Analysis": {}
         },
-        "Manual Procedures": {
-            "Command-Line Usage": {
-                "Shell Commands": {
-                    "General Shell Commands": {},
-                    "Network Commands": {}
-                }
-            }
+        "Data Manipulation": {
+            "URL Manipulation": {},
+            "Cookie Manipulation": {},
+            "JWT Manipulation": {},
+            "Header Manipulation": {}
         },
-        "Automated Procedures": {
-            "Script Utilization": {
-                "Python Scripting": {
-                    "HTTP Scripting": {},
-                    "Socket Programming": {}
-                },
-                "Bash Scripting": {}
-            }
-        }
+        "Objective Achievement": {}
     },
     "Miscellaneous Actions": {}
 }
