@@ -1,0 +1,44 @@
+10.1 Vulnerability Research:
+    - Knowledge Research and Understanding
+    - Vulnerability Analysis and Exploitation
+    - Vulnerability Identification and Research
+    - Challenge Identification
+    - Observation and Data Analysis
+    - Vulnerability and Exploitation Research
+
+10.2 Reconnaissance & Server Discovery:
+    - Problem Understanding and Goal Definition
+    - CTF Problem Understanding
+    - Goal Understanding and Implementation
+    - System and Challenge Insights
+    - System and Application Understanding
+    - Hints and External References
+    - Enumeration and Information Gathering
+    - Site and Service Identification
+    - Target Identification and Reconnaissance
+    - Suspicion and Precaution
+    - Site Access and Initial Observation
+    - External Analysis and Research
+
+10.3 Web Security Concepts & Techniques:
+    - Website and Web Application Analysis
+    - Website Exploration and Navigation
+    - Website Interactions and Endpoint Discovery
+    - URL and Webpage Analysis
+    - Web Application Behavior and Functionality
+    - Web Application Navigation
+    - Website Code and Functionality Exploration
+    - Security and Vulnerability Analysis
+    - Network and Traffic Analysis
+    - Network Traffic Capture
+    - Network Scanning and Enumeration
+    - DNS Configuration
+    - Web Application Security Analysis
+    - Directory and File Operations
+    - Directory and File Discovery
+    - File Operations and Security Analysis
+    - Miscellaneous Actions
+    - Targeted Actions and Path Selection
+    - Web Interactions and Exploitations
+    - Attack Confirmation and Feedback
+    - Initial System Exploration

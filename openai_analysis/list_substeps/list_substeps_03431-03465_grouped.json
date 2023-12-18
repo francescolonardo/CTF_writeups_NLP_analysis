@@ -1,0 +1,59 @@
+{
+    "Server-side Exploitation": [
+        "Specify 'changelog.js' script in the path of the JSON payload.",
+        "Use the URL 'http://35.207.189.79/api/login'",
+        "Using the constructed base, tried to enumerate DB tables.",
+        "Commit the change to the repository.",
+        "Identify the first function that sets specific server response headers if the request is 127.0.0.1.",
+        "Access files such as '.git/HEAD'",
+        "Confirm server-side file inclusion.",
+        "Discover a 'primary' segment in Angular.",
+        "Recognize correct rearrangement as 'sRPd45w_0'.",
+        "Acquire the file from the provided link",
+        "Include the final payload as part of form data.",
+        "Include 'Transfer-Encoding: chunked' header in the request.",
+        "Used the 'view XML' tab on the web interface.",
+        "Change the base URI of the page.",
+        "Realize that the setting name is user-controlled",
+        "Modified the requests after reaching the backend server.",
+        "Duplicate the server environment.",
+        "Start the Flask python server with 'python xss-cookie-stealer.py' and then run '/ngrok http 16361'."
+    ],
+    "Web Exploitation": [
+        "Post each successful guess to the exploit server.",
+        "Identified the challenge as an XPATH injection challenge.",
+        "Suspect possible SQL Injection.",
+        "Find the `login` cookie with base64 content",
+        "Fetch the flag using 'innerHTML'.",
+        "Find the feedback form on the website.",
+        "The absence of 'nc' and any exfiltration method restricts the options",
+        "Finally, found the flag 'ACSC{it_is_hard_to_name_a_flag...isn't_it?}'."
+    ],
+    "Payload Manipulation": [
+        "Prepared an XML payload.",
+        "Retrieve the cookie_secret value 'MangoDB'.",
+        "Realized a '<script>' payload wouldn't work due to Content Security Policy blocking arbitrary scripts without a randomly-generated nonce."
+    ],
+    "Web Navigation & Interaction": [
+        "Access the website homepage",
+        "Navigate to the bottom of the results.",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges.",
+        "Connect to source code link",
+        "Access the target website.",
+        "Find the `login` cookie with base64 content",
+        "Find the feedback form on the website."
+    ],
+    "Code Analysis": [
+        "Analyze the entrypoint.sh bash file.",
+        "Identify the first function that sets specific server response headers if the request is 127.0.0.1."
+    ],
+    "Tool Usage": [
+        "Use Burp Suite."
+    ],
+    "Data Extraction": [
+        "Using the constructed base, tried to enumerate DB tables."
+    ]
+}

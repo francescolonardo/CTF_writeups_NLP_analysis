@@ -1,0 +1,56 @@
+{
+    "Authentication and Authorization": [
+        "Realize that the endpoint can be accessed without authentication.",
+        "The execution of '.bashrc' occurs when the user 'manhndd' SSH-es into the server",
+        "Accessed the URL `http://yai.sstf.site/paperdetail.php?idx=32%27%20and%20@published=%27no%27%20or%20%27a%27=%27b` to execute the injection attack.",
+        "Log in to investigate any intermediate requests.",
+        "Uploaded the first created PDF file to the website.",
+        "Used the website functionality to get the uploaded PDF file signed.",
+        "Set the origin as the target URL",
+        "Display current cookies",
+        "Login to the website",
+        "Register an account on the website",
+        "Edit the user profile on the website",
+        "Include multiple script tags",
+        "Inject the authenticated session cookie into the browser or curl.",
+        "Use 'flag.flag' as the 'id' to purchase the flag from the store for $1.",
+        "Understand that the input format for the SQL injection should match the UUID format.",
+        "Bypass the restriction caused by the referrer header.",
+        "Add the attacker's email to the admin's shared list.",
+        "Try different versions of the Twitter login page."
+    ],
+    "Information Gathering": [
+        "Analyse the given hyperlinks.",
+        "Identify that nginx concatenates alias directives with location directives.",
+        "Recognize the tripcode as 'ueyUrcwA'",
+        "Observe that the system environment flag is displayed when the response contains the specific IP address (119.29.29.29).",
+        "Used wordplay in the answers.",
+        "Observe functionalities for login/register, edit profile, and support",
+        "Observe the 'User-Agent header' and note the admin uses 'Firefox 61.0'"
+    ],
+    "Web Application Exploitation": [
+        "The encoded XMLHttpRequest retrieves document's cookie.",
+        "Trigger the XSS alert attack using the final URL.",
+        "The third payload ends up triggering an alert.",
+        "Identify the reason for the failure as JavaScript trying to parse parentheses",
+        "Performed SSRF to rabbitmq http API",
+        "Run arbitrary javascript with the 'outputFunctionName' option",
+        "Bypassed duration check",
+        "Recognized the necessity to write a php-cgi header before executing the MySQL query.",
+        "Waited and read the response as it came in.",
+        "Cause the pop-up to inherit the sandboxed attributes"
+    ],
+    "Server Exploitation and Security": [
+        "Realize that the endpoint can be accessed without authentication.",
+        "The execution of '.bashrc' occurs when the user 'manhndd' SSH-es into the server",
+        "Uploaded the first created PDF file to the website.",
+        "Set the origin as the target URL",
+        "Display current cookies",
+        "Understand that the input format for the SQL injection should match the UUID format.",
+        "Bypass the restriction caused by the referrer header.",
+        "Add the attacker's email to the admin's shared list."
+    ],
+    "SQL Injection": [
+        "Accessed the URL `http://yai.sstf.site/paperdetail.php?idx=32%27%20and%20@published=%27no%27%20or%20%27a%27=%27b` to execute the injection attack."
+    ]
+}

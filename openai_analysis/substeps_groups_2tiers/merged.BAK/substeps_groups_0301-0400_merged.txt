@@ -1,0 +1,140 @@
+1. **Web Interaction**
+   * Website Visits
+   * Browser & User Interaction
+   * Web Element & Structure Identification
+   * Web Interaction & Manipulation
+
+2. **Data Manipulation**
+   * Encoding and Decoding
+   * Base64 Encoding
+   * Parameter Manipulation
+   * File Access & Manipulation
+   * Date Manipulation
+   * File and Content Manipulation
+   * Web Parameter & Data Manipulation
+   * Cookie Analysis & Manipulation
+
+3. **HTTP Handling**
+   * HTTP & File Manipulation
+   * HTTP Header Observation
+   * HTTP Request Execution
+   * User-Agent Modification
+   * POST Request Action
+
+4. **Security Analysis**
+   * Exploitation & Vulnerability Assessment
+   * IP Whitelisting
+   * Permission Control
+   * Continuous Authentication
+   * Security Vulnerability
+   * Vulnerability Research
+
+5. **Exploitation Techniques**
+   * JWT Exploitation
+   * Shell Insertion Possibility
+   * Exploitation & Flag Retrieval
+   * Exploitation of Vulnerabilities
+   * XSS Attacks
+   * Redirect Exploitation
+   * CSRF Vulnerability
+
+6. **Code Evaluation**
+   * Challenge Identification
+   * Code Execution & Interactions
+   * Code Analysis and Evaluation
+   * Source Code Analysis & Information Gathering
+   * Source Code Examination
+   * Code Manipulation & Exploitation
+   * Payload Execution & Exploitation
+
+7. **Server Interactions**
+   * Server & Connection Handling
+   * Server Interaction & Access
+   * Endpoint Interaction
+   * Server Interaction
+   * Endpoint & Server Discovery
+   * Server-side Vulnerabilities
+
+8. **Network Analysis**
+   * Network & Traffic Analysis
+   * Network Communication Analysis
+   * Debugging & Port Discovery
+
+9. **File Analysis**
+   * Downloaded Files Observation
+   * File Identification
+   * File System Actions
+   * File Verification
+   * File Flag Extraction
+   * File System Exploration
+
+10. **Database Interactions**
+    * Database Access
+    * Database & SQL
+    * Database & Firestore
+
+11. **Response Handling**
+    * Response Processing
+    * Response Handling
+
+12. **Command Execution**
+    * Command Injection
+    * Shell and Command Execution
+    * Length Extension Attack Hint
+
+13. **Web Exploitation**
+    * Prototype Pollution
+    * Web Exploitation & Attacks
+    * Payload Creation & Execution
+    * Template Injection Identification
+
+14. **Debugging and Research**
+    * Online Research
+    * JavaScript & Browser Debugging
+    * Debugging Tool Utilization
+    * Application Exploration
+
+15. **Request & Cookie Handling**
+    * URL Parameter Analysis
+    * Request Filtering
+    * Cookie Manipulation
+
+16. **Additional Web Protocols**
+    * Websockets
+    * Gopher Protocol Interaction
+
+17. **CTF Specifics**
+    * CTF Challenges & Events
+    * Flag Searching
+
+18. **Account & Session Management**
+    * Account Credential Enumeration
+    * Session Management
+
+19. **Examination**
+    * Page Analysis & Examination
+    * Attribute Observation
+
+20. **Script & Payloads**
+    * Alert Exploitation
+    * Payload Generation & Encoding
+
+21. **Web Discovery**
+    * Resource Discovery
+    * Web Scraping and Analysis
+    * Web Scraping
+
+22. **Miscellaneous**
+    * QR Code Analysis
+    * Accessibility Testing
+    * Character Testing
+    * Output Extraction
+    * Frontend Verification
+    * Bot Interaction
+    * Promise Handling
+    * Flask Web Server
+    * CGI Header Manipulation
+    * Abuse of Attributes
+    * Key Update Analysis
+    * Serialization Exploit
+    * Performance Considerations

@@ -1,0 +1,65 @@
+{
+    "SSH Attacks": [
+        "Get the SSH key to the attacker site."
+    ],
+    "URL Manipulation": [
+        "Succeed in accessing localhost on the URL capture service",
+        "Identify the URL 'ip.address/?lang=es.php' as a potential target for LFI.",
+        "Make a GET request to /secret.html.",
+        "Use '?length=' as the query string."
+    ],
+    "Redirection & Flow Control": [
+        "Check redirection in the window."
+    ],
+    "Button & Element Identification": [
+        "Locate the 'GET FLAG' button"
+    ],
+    "Code Manipulation": [
+        "Replace the initial regex in the Python code.",
+        "Bypassed 'disable_functions' on PHP 7.0-8.0 versions.",
+        "Exploited the SQL Injection protection bypass.",
+        "Understood the presence of a blacklist filter for '=' symbol",
+        "Identify hashes that start with the '0e' prefix.",
+        "Found potential injection points in the feature allowing us to edit our bio in Markdown.",
+        "Use RegEx payload.",
+        "Note that messages were not being escaped.",
+        "Submitted an SQL injection in the 'email' and 'pass' parameters.",
+        "Set the username as '{open('/flag').read()}' to trigger a Remote Code Execution during authentication."
+    ],
+    "Data Analysis & Extraction": [
+        "Note that comma separation is added between each element of the array in the string format",
+        "Identify the flag utflag{n3xt_y3ar_go1ng_bl1nd} in the returned data.",
+        "Use 'request.args' to bypass banned characters."
+    ],
+    "File System Actions": [
+        "List the files.",
+        "Remove the intermediate 'merged.pdf' file."
+    ],
+    "Flag Acquisition": [
+        "Discovered the flag.",
+        "Acquire the flag."
+    ],
+    "Server Interactions": [
+        "Used the same request to read the flag from the '/readflag' binary.",
+        "Realized the input was being reflected into an XSL document.",
+        "Deploy the provided Docker image.",
+        "Constructed the payload to send encoded cookies to a pre-defined URL controlled by the attacker.",
+        "Check the cookies."
+    ],
+    "Challenge Completion": [
+        "Performed the action of claiming the Free Flag."
+    ],
+    "Base64 Encoding": [
+        "Encode the flag.png file using Base64 encoding."
+    ],
+    "Flag Discovery": [
+        "Check if the page content contains 'MCA{'.",
+        "Found another part of the flag: us3full_1nf0rm4tion}"
+    ],
+    "Server Response Analysis": [
+        "The flag was found in the error, leading to successful completion of the challenge."
+    ],
+    "Account Manipulation": [
+        "Set 'user.code' to a random 4-digit number."
+    ]
+}

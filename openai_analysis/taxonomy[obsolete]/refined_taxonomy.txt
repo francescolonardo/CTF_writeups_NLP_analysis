@@ -1,0 +1,72 @@
+Web Interaction & Analysis:
+	- Webpage & Application Interaction
+	- Website Exploration
+	- Web Application Testing & Exploitation
+	- Browser Automation & Scraping
+	- Web Form & User Interaction
+	- HTTP Requests & Headers
+
+Network & System Operations:
+	- Network Tool Usage
+	- Network Communication & Protocol
+	- Traffic & Packet Monitoring
+	- Network Scanning & Analysis
+	- Server Setup & Configuration
+	- Server & Network Interaction
+
+Database Operations:
+	- SQL & NoSQL (MongoDB) Operations
+	- Database Exploration
+	- Data Leakage
+	- SQL Injection & Analysis
+
+Debugging & Analysis:
+	- Error Identification & Exploitation
+	- Source Code Review
+	- Debugging & Testing
+	- Code Execution Analysis
+	- Prototype Pollution Analysis
+
+Code & Script Analysis:
+	- Language & Script Identification
+	- Code Injection
+	- JavaScript Obfuscation & Client-Side Analysis
+	- Asynchronous Programming Analysis
+
+Security & Exploitation:
+	- Payload & Exploit Crafting
+	- Server & Web Vulnerability Identification
+	- Command & System Exploitation
+	- Web Security Exploit Techniques
+
+Authentication:
+	- JWT Manipulation
+	- LocalStorage & Password Analysis
+	- Authentication Bypass & Session Hijacking
+	- User Account Management
+	- Token & Authentication Handling
+	- Access Control Mechanisms
+
+API & Service Interaction:
+	- API & WebSocket Interaction
+	- API Request Analysis
+
+Programming & Automation:
+	- Scripting & Automation Techniques
+
+File & Data Management:
+	- File Inspection & Analysis
+	- File System Exploration
+	- Directory Structure Analysis
+	- Data Extraction & Encoding
+
+Tools & Configuration:
+	- Tool Configuration
+	- DNS & IP Management
+	- System Configuration
+
+Miscellaneous Tasks:
+	- Strategy & Approach
+	- External Research & Information Gathering
+	- Media (Image & Email) Interaction
+	- QR Code Analysis

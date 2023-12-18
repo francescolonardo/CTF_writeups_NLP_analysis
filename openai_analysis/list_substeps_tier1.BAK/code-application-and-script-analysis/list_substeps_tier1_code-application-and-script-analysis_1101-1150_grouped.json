@@ -1,0 +1,71 @@
+{
+    "Identifying Functions": [
+        "Identify verifyUsername() within the verify() function.",
+        "Identify verifyPassword() within the verify() function.",
+        "Identify verifyMFA() within the verify() function."
+    ],
+    "Analyzing Functions": [
+        "Analyze verifyUsername() and find the simple string comparison indicating the correct username to be 'D0loresH4ze'.",
+        "Investigate verifyPassword() and observe the use of bcrypt password verification.",
+        "Examine verifyMFA() and observe the check for a 10-digit random number."
+    ],
+    "XML Manipulation": [
+        "Open the XML file",
+        "Locate the flag component in the XML",
+        "Modify the location of the flag component in the XML"
+    ],
+    "Web Application Vulnerabilities": [
+        "Identify a Server-Side Template Injection (SSTI) vulnerability in the password field within the code.",
+        "Identify a SQL injection vulnerability in the 'data-server' project.",
+        "Execute commands using the SSTI vulnerability to read directory contents.",
+        "Recognize user input concatenation in the SQL query",
+        "Add comments to comment out the rest of the query"
+    ],
+    "Scripting and Execution": [
+        "Write a python script.",
+        "Create a script.",
+        "Note that the server filters the character '.'.",
+        "Perform code analysis",
+        "Execute the function",
+        "Execute the script to obtain the CTF flag."
+    ],
+    "API and File Exploitation": [
+        "Analyzed the provided PHP code for the application's API request handling.",
+        "Found that the user check 'is_admin()' would proceed to handle the 'c2' admin command parameter if true, otherwise would call 'redirect()'.",
+        "Identified that 'redirect()' function did not actually terminate the script, but printed HTML output, allowing further code execution.",
+        "Discovered that 'export_db' function could be exploited to read file contents if the passcode was correct.",
+        "Recognized that file path in 'export_db' function could be manipulated for path traversal.",
+        "Performed a POST request to the /api.php endpoint with 'id', 'pw', 'c', 'c2', 'pas', and 'db' parameters, using path traversal to access the flag.",
+        "Inject character that echoes the FLAG environment variable"
+    ],
+    "Server-Side Request Forgery (SSRF)": [
+        "Recognize it is intended for Server Side Request Forgery (SSRF).",
+        "Determine the need to use '/home/stypr/readflag' on 'website'.",
+        "Discover that 'website' runs 'yarn dev'.",
+        "Realize 'yarn dev' runs 'vitepress dev src'."
+    ],
+    "Code Analysis": [
+        "Analyzed the code of the website",
+        "Identified the '/usr/games/cowsay' game",
+        "Identified that the game is operated from 'child_process.spawnSync'",
+        "Observed the settings endpoint",
+        "Identified 'ctx.state.user' as the target of the settings"
+    ],
+    "Prototype Pollution": [
+        "Realized that the setting name is user-controlled",
+        "Realized the potential for prototype pollution",
+        "Injected a command that echoes the FLAG environment variable"
+    ],
+    "Dynamic Rendering and Server Configuration": [
+        "Identify that the server uses dynamic rendering.",
+        "Understand that dynamic rendering renders JavaScript on the server-side before serving web crawlers.",
+        "Check the Nginx configuration.",
+        "Detect the usage of Prerender to handle the requests.",
+        "Construct `exploit.html` file.",
+        "Notice the dependency on 'jsonwebtoken' 3.2.2 in the target application.",
+        "Examine the application's server code."
+    ],
+    "Language Constraints": [
+        "Understand the constraints of the language input."
+    ]
+}

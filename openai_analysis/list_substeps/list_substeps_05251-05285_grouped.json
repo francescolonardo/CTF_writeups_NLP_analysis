@@ -1,0 +1,50 @@
+{
+    "Source Code Analysis": [
+        "Analyzed the source code",
+        "Identify the `database.sql` file in the source code.",
+        "Analyze the source codes provided.",
+        "Notice that a 'note' is 'found' if it starts with 'request.search'.",
+        "Spot '@login_required' annotations as indicators.",
+        "Identify that 'RS256' and 'HS256' algorithms are allowed for decryption in 'challenge/helpers/JWTHelper.js'.",
+        "First part constructs a string representation.",
+        "Identified the challenge as involving wkhtmltopdf, a tool that translates HTML content into a PDF."
+    ],
+    "Database": [
+        "Obtain all entries in a column as a single row",
+        "Received a custom error as a response to the SQL injection.",
+        "Print out the corresponding 'likeCookie' value.",
+        "Used `1'; SHOW DATABASES;`."
+    ],
+    "Web Endpoint Discovery": [
+        "Received a webpage from '/com/seaerch/' endpoint.",
+        "Discover /private.php.",
+        "Locate the POST requests to '/login.php'."
+    ],
+    "File and Directory Discovery": [
+        "Dig into tar documentation to find alternatives.",
+        "Confirm the challenge 'Gif2png' exists.",
+        "Check if an 'upload' page exists",
+        "Confirmed a Bazaar repository's existence."
+    ],
+    "Encoding and Decoding": [
+        "Base64 encode the filenames `index.php` and `getimg.php`.",
+        "URL encoded the second binary string."
+    ],
+    "Response Manipulation": [
+        "Reflected the result into the 'user' tag of the HTML response.",
+        "Obtained the flag in the response of the smuggled request."
+    ],
+    "Code Injection": [
+        "Injected Carriage Return Line Feed (CRLF) in the username field",
+        "Indicated potential 'eval' being done on the string",
+        "Had to devise a new strategy as this query was of type 'INSERT'."
+    ],
+    "Browser and Cookie Inspection": [
+        "Inspect browser cookies.",
+        "Discovered interesting information in the 'iam list-instance-profiles' response",
+        "Observed the settings endpoint"
+    ],
+    "Web Navigation & Interaction": [
+        "Navigate to the bottom of the results."
+    ]
+}

@@ -1,0 +1,61 @@
+{
+    "Flag Manipulation": [
+        "Iteratively added a character to the flag.",
+        "Checking if the character's index matches the desired one.",
+        "Put together all obtained parts of the flag.",
+        "Combined both parts of the flag to solve the challenge."
+    ],
+    "Website Vulnerability Identification": [
+        "Found that 'POST' and 'PUT' returned a different result.",
+        "Observed that the web application uses PhantomJS/2.1.1",
+        "Identified that the underpinning technology of the web application is PhantomJS/2.1.1.",
+        "Applied the knowledge of the discovered vulnerability to infer certain characteristics of the web application."
+    ],
+    "Cross-site Scripting (XSS)": [
+        "Used the knowledge of the vulnerability to conclude that the web application potentially parses the HTML content and interpret it",
+        "Concluded that the web application may interpret HTML content, thus implying a potential for Cross-site Scripting (XSS)."
+    ],
+    "Template Injection": [
+        "Inject a template operation (7*7)",
+        "Verify if the injected template operation (7*7) triggers the SSTI vulnerability",
+        "Test the character '%'",
+        "Test the character '['",
+        "Test the character ']'",
+        "Test the character '\"'",
+        "Test the character '+'",
+        "Test the character '_'",
+        "Check if any of the tested characters bypass the template engine"
+    ],
+    "Remote Code Execution (RCE)": [
+        "Notice that the site's PHP code allows for the crafting of 'preg_replace'",
+        "Discover that 'preg_replace' is vulnerable to RCE (Remote Code Execution) using '/e'",
+        "Trigger phpinfo() output by visiting 'http://easy-php.darkarmy.xyz/?bruh=phpinfo()&nic3=/DarkCON/e'",
+        "Discover that the 'is_payload_danger' method prevents certain functions such as 'system'",
+        "Use the 'fread' and 'fopen' functions to craft a payload to read 'config.php'",
+        "Visit 'http://easy-php.darkarmy.xyz/?bruh=base64_encode(fread(fopen($_GET[%27pwn%27],%27r%27),512))&nic3=/DarkCON/e&pwn=config.php'",
+        "Reveal the source code of 'config.php'"
+    ],
+    "Git Repository Analysis": [
+        "Identify the presence of a Git repository in the target URL (http://meme-stash.darkarmy.xyz/).",
+        "Extract all the contents of the Git repository from the website.",
+        "Inspect the 'git log'.",
+        "View all previous commits in the repository.",
+        "Identify a suspicious commit with a message 'oops'.",
+        "Check differences between the suspicious commit and its preceding commit.",
+        "Recognize the presence of a file named 'flag.jpg'."
+    ],
+    "File Upload Vulnerability": [
+        "Find a comment containing PHP code to upload a file",
+        "Note that the PHP code renames the uploaded file with a random name while preserving the file extension"
+    ],
+    "Web Application Inspection": [
+        "Observe the PHP code of the website",
+        "Identify the type juggling scenario",
+        "Note the comparison $session_data['hash'] != strtoupper(MD5($cfg_pass))"
+    ],
+    "Class Manipulation": [
+        "Find the required (subprocess.Popen) class among the identified subclasses",
+        "Determine the position of the (subprocess.Popen) class, which is 407",
+        "Use the identified class (subprocess.Popen) to execute the 'id' command"
+    ]
+}

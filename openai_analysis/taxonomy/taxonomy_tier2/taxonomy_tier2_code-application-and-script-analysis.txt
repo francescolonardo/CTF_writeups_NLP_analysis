@@ -1,0 +1,79 @@
+1. Code, Script, and Application Analysis
+    • Codebase Exploration and Discovery
+    • Static and Dynamic Analysis of Code and Scripts
+    • Code and Script Vulnerability Analysis
+    • Code Substitution and Relationship Analysis
+    • Auditing and Inspecting Code and Scripts
+    • JavaScript, PHP, and General Code Analysis
+    • Code Execution, Injection, and Shellcode
+    • Code Functionality and Logic Understanding
+    • Reverse Engineering and Dynamic Rendering Analysis
+    • Code and Technology Familiarization
+    • Programming Language Analysis
+    • Parsing and Analyzing Code
+    • HTML, DOM, and Markup Processing
+
+2. Web Application and Environment Analysis
+    • Web Application Navigation, Interaction, and Testing
+    • Web Application Security Analysis and Testing
+    • Application Functionality and Analysis
+    • Server and Application Analysis
+    • Directory, File, and Configuration Analysis
+    • Web Technologies and Execution Environment
+    • Web Application Reconnaissance and Discovery
+    • Inspecting Code and Application Environment
+    • Application and Environment Analysis
+
+3. Web Content and Structure Analysis
+    • Web Rendering, Browser, and Structure Analysis
+    • Web Page Access, Interaction, and Analysis
+    • URL, String, and Character Manipulation
+    • HTTP Request and Response Analysis
+    • Form, User Interaction, and UI Analysis
+
+4. Payload, Injection, and Exploitation Techniques
+    • Vulnerability Discovery, Identification, and Exploitation
+    • Payload and Exploit Crafting and Modification
+    • Injection Techniques (SQL, Command, Code, etc.)
+    • Web Exploitation and Payload Analysis
+    • Security Bypass, Input Manipulation, and Exploitation Techniques
+    • Client and Server-Side Vulnerabilities
+    • Cross-Site Scripting (XSS) and File Inclusion (LFI/RFI)
+
+5. Data and File Analysis
+    • Data Extraction, Retrieval, and Manipulation
+    • File System and Directory Analysis
+    • Database and Data Analysis
+    • File, Resource, and Endpoint Discovery
+    • Log and Data Processing Analysis
+    • File Inclusion and Path Traversal
+
+6. Security Analysis and Procedures
+    • Security Vulnerability Identification and Analysis
+    • Cryptography, Encoding, and Decryption
+    • Input Validation, Filtering, and Error Handling
+    • Flag, Payload Searching, and Configuration Analysis
+    • Server-side Filtering and Vulnerabilities
+
+7. System and Network Analysis
+    • Command Execution, Analysis, and Manipulation
+    • Scripting, Automation, and Programming
+    • API Testing and Exploitation
+    • Server Interaction and Network Analysis
+    • System-Level, Database, and Environment Analysis
+
+8. Tools, Techniques, and Technologies
+    • Browser Tools, Techniques, and Dynamic Web Rendering
+    • Working with Frameworks and Technologies
+    • Command Execution and Server-Side Interaction
+    • Alphanumeric Iteration and Case Sensitivity
+
+9. Syntax, Pattern, and Content Analysis
+    • Identifying Code Patterns, Structures, and Syntax
+    • Blacklisting, Whitelisting, and Case Sensitivity
+    • Content Verification, Validation, and Exploration
+
+10. Miscellaneous and General Actions
+    • Documentation, Observation, and Conceptual Understanding
+    • Functionality Recognition, Constraints, and Actions
+    • Version Control, Configuration Management, and Miscellaneous Analysis

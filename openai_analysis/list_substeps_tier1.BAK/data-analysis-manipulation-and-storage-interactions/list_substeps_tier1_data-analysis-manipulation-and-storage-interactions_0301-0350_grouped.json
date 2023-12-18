@@ -1,0 +1,59 @@
+{
+    "Data Analysis and Manipulation": [
+        "Identify that 6 parameters are read from the server response",
+        "Recognize the parameters as 'author', 'hidden', 'id', 'postDate', 'text', 'title'",
+        "Retrieved data from each document in the Firestore database using the code snippet.",
+        "Verified the contents of the retrieved data.",
+        "Found that the data are structures that contain all the RGB values for pixels.",
+        "Verified the contents of the 'flag' document.",
+        "Located the flag within the 'flag' document data.",
+        "Received SQL query result and examined the output.",
+        "Discovered that the 'users' table had 3 columns.",
+        "Identified that the second column contains usernames.",
+        "Retrieve the flag from the file \"flag.txt\".",
+        "Enumerate the characters that are converted to underscores.",
+        "Extract the flag from the server response.",
+        "Identify a file 'flag_for_this_INFERNO.txt' in the listed contents.",
+        "Retrieve the flag.",
+        "Discover files in the directory, including the 'flag' file, amongst others.",
+        "Manipulated the IP address parameter in the SQL query.",
+        "Determined the position of the column used to return data, it was found to be the last one.",
+        "Discovered the presence of only two tables - nxf8_users and nxf8_sessions.",
+        "Enumerated the columns of the user table.",
+        "Analyzed the composition of the sessions table.",
+        "Retrieved the 'id' of Maria from the user table.",
+        "Queried the 'nxf8_sessions' table for session IDs where 'user_id' is 5.",
+        "Use S3Scanner to dump the contents of the suspect S3 bucket",
+        "Use the 'cat' command to display the contents of youfoundme-asd897kjm.txt",
+        "Duplicate an image file"
+    ],
+    "File Operations and Downloads": [
+        "Downloaded the provided HTML file.",
+        "Download the unlinked source file",
+        "Receive the contents of the 'flag' file in the HTTP response.",
+        "Use the 'strings' command to extract the flag from the binary data in the 'print-flag' file."
+    ],
+    "Canvas and Graphics Manipulation": [
+        "Observed that colored pixels on the canvas get stored into Firestore repository."
+    ],
+    "Web Application Exploration": [
+        "Visited the website.",
+        "Accessed the webpage.",
+        "Navigate to the '/example' route.",
+        "Observed that the HTML file establishes a connection to a Firestore environment.",
+        "Found an interesting comment in the HTML source code: '?sauce'.",
+        "Noticed the user's IP address being attributed to an SQL query.",
+        "Interpreted the returned error message to infer the use of an SQLite database.",
+        "Created a UNION SQL operation with 'null'.",
+        "Use the directory listing to identify a 'print-flag' file.",
+        "Observe message indicating the ability to upload, list, and view LaTeX documents",
+        "Upload a LaTeX document",
+        "Upload another LaTeX document",
+        "Analyze the cookies",
+        "Find the `login` cookie with base64 content",
+        "Decode the base64 content",
+        "Encode the malicious payload in base64",
+        "Analyzing the requested pages",
+        "Observe images displayed in a gallery"
+    ]
+}

@@ -1,0 +1,54 @@
+{
+    "Server Requests & SQL Queries": [
+        "Target '/reset2fa' as the destination of the POST request.",
+        "Username and signup date were passed into the SQL query.",
+        "Send requests with the newly encoded 'Admin' JWT token to attempt user role update and flag access.",
+        "Observe that the decoded value of 'admin' is 'false'.",
+        "Note the comparison $session_data['hash'] != strtoupper(MD5($cfg_pass))"
+    ],
+    "Authentication & Authorization": [
+        "If it does, append guessed character to 'flag' and continue process",
+        "Received a collection of CSV files containing network traffic data",
+        "Receive a message that the user is not an admin.",
+        "Identified the opportunity for a PHP Object Injections vulnerability.",
+        "Decode the JWT."
+    ],
+    "Web Page Analysis": [
+        "Checked the PHP source code.",
+        "Analyze the HTML of the page.",
+        "Search for the function addCaptcha() in the JavaScript code",
+        "Observe the presence of a 'nonce' in the Content-Security-Policy that allows a script with src='assets/js/bootstrap.js'.",
+        "Search for a string formatted as 'flag{...}' in the HTML source code."
+    ],
+    "Code Exploitation & Manipulation": [
+        "Understood that the admin bot visits any URL provided.",
+        "Have the intention to alter the JWT 'username'.",
+        "Combined both parts of the flag to solve the challenge.",
+        "Decode the JWT.",
+        "Create the file '--checkpoint=1'.",
+        "Executed a HTTP GET request",
+        "Used the public key as a secret for the HMAC token."
+    ],
+    "Web Navigation & Interaction": [
+        "Determine inaccessibility of /private.php.",
+        "Open a web browser.",
+        "Try different versions of the Twitter login page.",
+        "Observe the form to fill.",
+        "Access the URL",
+        "In the script, manipulate the multiple URL opens."
+    ],
+    "File & Data Manipulation": [
+        "Received a collection of CSV files containing network traffic data",
+        "Analyzed the generated PDF.",
+        "Realized that caching modules use 'pickle.load()' to load cached data",
+        "Decode the JWT.",
+        "Encode the serialized object with base64",
+        "Validate the content of the command."
+    ],
+    "Networking & Traffic Analysis": [
+        "Receive a message that the user is not an admin.",
+        "Decode the JWT.",
+        "Decode the JWT.",
+        "Executed a HTTP GET request"
+    ]
+}

@@ -1,0 +1,52 @@
+{
+    "Payload Injection": [
+        "Introduced the crafted payload into either the top text or bottom text of a request."
+    ],
+    "File Manipulation": [
+        "Went to the '/tmp' directory",
+        "Recognized that file path in 'export_db' function could be manipulated for path traversal.",
+        "Navigate into the bucket directory",
+        "Made the decision to overwrite '.bashrc' file"
+    ],
+    "URL Manipulation": [
+        "Created a malicious URL.",
+        "Visit 'http://easy-php.darkarmy.xyz/?bruh=base64_encode(fread(fopen($_GET[%27pwn%27],%27r%27),512))&nic3=/DarkCON/e&pwn=config.php'",
+        "Find the option to pass it as a URL parameter.",
+        "Visited '/?file=checkpass.php'."
+    ],
+    "Injection Attacks": [
+        "Investigate if injecting a NULL byte can bypass the 'ereg' instruction.",
+        "Recognize that the specific replace function changes markdown format images into HTML image tags.",
+        "Understand that due to the productId parameter being reflected in the response, the system may be susceptible to XXE attacks.",
+        "Identified that functions for shell command execution were disabled.",
+        "Understood that a user-controlled 'uri' is involved in the attack."
+    ],
+    "Web Requests & Interactions": [
+        "Spawn a reverse shell.",
+        "Send POST request to server",
+        "Observe that the end-point returns base64-encoded result of each ping request.",
+        "Formed a hypothesis.",
+        "Retrieve the flag from the response page.",
+        "Access the '/admin' directory.",
+        "Performed the action of accessing challenges.",
+        "Attempt to discover the generated token",
+        "Understand the need to 'steal' an admin cookie and gain admin access."
+    ],
+    "HTML Manipulation": [
+        "Inserted HTML through 'preview' feature.",
+        "Injected arbitrary HTML"
+    ],
+    "Code Analysis": [
+        "Discover the usage of XML envelopes",
+        "Note the various constraints mentioned in the header",
+        "Research on whether the HTTP headers can manipulate the processing of URL path by Gunicorn",
+        "Understand the necessity of having at least 32 characters in the 'fqdn'.",
+        "Find the required (subprocess.Popen) class among the identified subclasses"
+    ],
+    "Database Analysis": [
+        "Decided to leak the database name."
+    ],
+    "Redirects & Flags": [
+        "Get redirected to the flag page."
+    ]
+}

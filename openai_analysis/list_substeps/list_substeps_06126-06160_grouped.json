@@ -1,0 +1,49 @@
+{
+    "Command Injection": [
+        "Decide to exploit the unsanitized 'alt' parameter.",
+        "Use the 'git diff' command.",
+        "Confirmed command injection challenge."
+    ],
+    "File Access & Manipulation": [
+        "Download the nginx.conf file successfully.",
+        "View files using the 'file://' protocol."
+    ],
+    "Authentication & Authorization": [
+        "Recognize 'login' as the user-controllable portion",
+        "Attempted SQL login bypass",
+        "Check the value of the cookie 'not_admin'",
+        "Set the token as a cookie.",
+        "Access the login page.",
+        "Successful bypass of all server checks",
+        "Access the found Laravel panel"
+    ],
+    "Code Analysis & Exploitation": [
+        "Identify the character from the script output.",
+        "Wrote a python script",
+        "Interpreted the returned error message to infer the use of an SQLite database.",
+        "Note the returned HTML",
+        "Inspect the front-end JavaScript source code.",
+        "Ensure understanding of the code."
+    ],
+    "Web Navigation & Interaction": [
+        "Access the website home page.",
+        "Identified a voting procedure challenge.",
+        "Considered using a cache probing attack to detect whether a search was successful.",
+        "Realized that this allows the cache probing attack to succeed.",
+        "Craft another post request",
+        "Discovered another flag and a GitHub repository.",
+        "Discover that the web app is running in debug mode."
+    ],
+    "Data Manipulation & Extraction": [
+        "Use the `fast-json-patch` library for the modification.",
+        "Get a reverse shell on the Python microservice",
+        "Observe that the contents of 'secret' tags are replaced with 'Protected'."
+    ],
+    "Security Testing Techniques": [
+        "Base decision on receiving multiple 'flag' files",
+        "Successful bypass of all server checks",
+        "Identify that the form only allows the uploading of PDF and DOCX files",
+        "Identify that a new CAPTCHA is generated.",
+        "Checked for an extra div when search is correct."
+    ]
+}

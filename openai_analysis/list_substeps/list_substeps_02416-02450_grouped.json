@@ -1,0 +1,52 @@
+{
+    "Content Analysis": [
+        "Examined the Content-Security-Policy (CSP) of the site.",
+        "Explore the alternative of exploiting Cross-Origin Resource Sharing (CORS) policy violation as a faster and more efficient method",
+        "Note that this method of passing an array satisfies the filename restrictions",
+        "Planned to redirect anything to '127.0.0.1/api/true-answer' to capture the flag.",
+        "Discover that the website uses JWT tokens.",
+        "Intend to run arbitrary PHP code.",
+        "Execute '/bin/sh' with an argument to read the flag file and redirect the output to '/tmp/jizz'.",
+        "Identify the Laravel version used in the challenge",
+        "Inspect the 'git log'.",
+        "Modify the number of pages stored in 'app.xml'",
+        "Retrieve the flag",
+        "Recognized that 'this.noteData' remained the same after sanitization.",
+        "Recognized that the app is rendered on a `<canvas>`.",
+        "View the source code of the PHP page",
+        "Analyze the obfuscated front-end source code.",
+        "Create a working script",
+        "Execute our malicious JavaScript code when the page loads."
+    ],
+    "Parameter Manipulation": [
+        "Submit multiple 'n' parameters with the same value in the web application."
+    ],
+    "Cookie Exploitation": [
+        "Visit the website with the updated cookies.",
+        "Attempt a command injection via the cookie."
+    ],
+    "File Manipulation": [
+        "Submit the file upload request and monitor for any callbacks from the server.",
+        "Confirm the ability to upload TPL files.",
+        "Find a 'flag' file.",
+        "Uploaded the XML payload."
+    ],
+    "Web Navigation": [
+        "'/opt' is the web facing directory",
+        "Access 'login.php.bak'",
+        "Open Postman or a similar tool for sending HTTP requests.",
+        "Attempt to checkout the master branch.",
+        "Receive a response from the server."
+    ],
+    "Web Application Interaction": [
+        "Realize that the access to '/admin/key' is needed to get the key",
+        "Attempt different passwords",
+        "Opened the browser console."
+    ],
+    "Browser and Client-Side Analysis": [
+        "Understand that STTF allows scrolling to a specific portion of the page using a text snippet in the URL."
+    ],
+    "Network Analysis": [
+        "Realized that the cache is not separated between headless and non-headless Chrome instances."
+    ]
+}

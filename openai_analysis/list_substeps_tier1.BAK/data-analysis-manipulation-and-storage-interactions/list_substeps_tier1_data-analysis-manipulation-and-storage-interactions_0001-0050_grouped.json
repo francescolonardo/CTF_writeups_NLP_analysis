@@ -1,0 +1,72 @@
+{
+    "Server-side File Inclusion": [
+        "Confirmed server-side file inclusion.",
+        "Identified that the user input '$text' from get param 'text' was being used.",
+        "Discovered a folder '/ctf'.",
+        "Located 'flag.txt'."
+    ],
+    "Payload Analysis and Manipulation": [
+        "Inspect the decoded payload.",
+        "Inspect the downloaded file and find a GitHub URL.",
+        "Identify the route as '/getFile?file=admins'.",
+        "Replace 'admins' with '.env' in the route.",
+        "Or replace 'admins' with '../.env' in the route.",
+        "Download the '.env' file."
+    ],
+    "Flag Identification and Extraction": [
+        "Recognize that the response text contains the flag.",
+        "Identify the conditions for file retrieval",
+        "Note that spaces or slashes in the filename are not allowed",
+        "Note that filename length must be five or less",
+        "Note that only js, ts, cpp, c files are allowed",
+        "Infer that the flag is inside a `flag.txt`",
+        "Note that an array passed in 'file' GET parameter gets converted and concatenated into a string",
+        "Note that comma separation is added between each element of the array in the string format",
+        "Construct a parameter that meets the conditions and requests the flag file",
+        "Use only the first five elements of the array to create the file name",
+        "The file name resolves to flag.txt after the process"
+    ],
+    "Data Analysis and Manipulation": [
+        "Read the information about 'Brobot' in the 'index.html' file",
+        "Translate the hex-encoded list, var _0x575c, into a more readable format",
+        "Realize the split parts were stored against assigned keys",
+        "Combine all password parts into a single string"
+    ],
+    "Web Application Interactions and Manipulation": [
+        "Enter a color",
+        "Get the value from the cookie",
+        "Observe that the server script takes user input as the 'icecream' value.",
+        "Retrieve the cookie_secret value 'MangoDB'.",
+        "Successfully change the website content from the original message to the target flag value 'csictf{h3r3_i_4m}'.",
+        "Notice that to match the value of 'hash' and 'target', the 'hash' param cannot equal '10932435112'."
+    ],
+    "Redis Caching and Pickle Exploitation": [
+        "Found that the 'flask_caching' module can store a python pickle in redis",
+        "Realized that caching modules use 'pickle.load()' to load cached data"
+    ],
+    "File Upload and Analysis": [
+        "Intend to use the crafted payload as the filename of the uploaded gif file.",
+        "Perform the action of uploading the gif.",
+        "Use the crafted filename for the uploaded gif.",
+        "Conduct an analysis on the resulting PNG file.",
+        "Discover that the flag is written on the resulting PNG file."
+    ],
+    "HTTP Request Modification": [
+        "Receive the flag in the body of the returned page",
+        "Add a JSON object '{\"foo\":\"bar\"}' to the body.",
+        "Add 'messi' as a key in the JSON object in the HTTP request.",
+        "Change the value of the 'messi' key to 'psg'.",
+        "Include 'payload' as the data"
+    ],
+    "Response Analysis and Flag Extraction": [
+        "If it does, append guessed character to 'flag' and continue process",
+        "Identified the new flag value in the response",
+        "Identified a different flag value in the response",
+        "Concluded the phrase to be a flag after concatenating the chunks"
+    ],
+    "Request Parameter Initialization and Manipulation": [
+        "Para meters and values such as 'domain', 'check', 'key', and 'column' are initialized.",
+        "These parameters are set up to be manipulated later.",
+        "The data content for the request is constructed dynamically with a key-value pair."
+    ]
+}

@@ -1,0 +1,57 @@
+{
+    "SQL Injection": [
+        "Inject a SQL query into the barcode generation process."
+    ],
+    "Database Exploration": [
+        "Discovered a column named 'whatsthis'.",
+        "Used GROUP_CONCAT function to concatenate all retrieved column names into a single string."
+    ],
+    "XSS Protection": [
+        "Note the presence of a Content Security Policy (CSP) to prevent XSS attacks."
+    ],
+    "Header Analysis": [
+        "Noted that the single request contains the admin's headers."
+    ],
+    "Authentication": [
+        "Logged in using the newly created admin account.",
+        "Log in using the provided credentials."
+    ],
+    "System Understanding": [
+        "Tried to understand how the website works."
+    ],
+    "Browser Exploitation": [
+        "Consider the possibility of exploiting a browser zero-day to spoof Origin headers."
+    ],
+    "JSON Manipulation": [
+        "Attempted to remove the 'password' key from the JSON body"
+    ],
+    "Code Analysis": [
+        "Find opportunity to bypass the second 'If' statement",
+        "Make a note of any hints about versioning control systems, specifically git.",
+        "Return the real flag in the 'uberadmin' directory.",
+        "Understood from the code snippet that the md5 hash must collide.",
+        "Compare the resulting origins of the pages",
+        "Discover that the secret key is 'butter'.",
+        "Generate a webpage with the XSS payload.",
+        "Discover an edge case where not closing a BBCode tag results in an unencoded content being reflected"
+    ],
+    "Web Form Manipulation": [
+        "Click on a captcha box",
+        "Sent the POST request",
+        "Set the GET parameter to 'print=echo+'';phpinfo()'",
+        "The content in MiniMag and BBCode format is accepted as 'format' in the post submission request data",
+        "Used only characters from a-z and A-Z in the note.",
+        "Find a workaround for using '.' by employing the 'attr' filter.",
+        "Note that we can leave a comment on this page."
+    ],
+    "Server Interaction": [
+        "Inserted a series of directory traversal characters (/%2e%2e/%2e%2e) in the request to access server root directories",
+        "Use Python scripting to manipulate the PDF files.",
+        "Researched about PhantomJS/2.1.1",
+        "Understanding the extensive filter used for the challenge.",
+        "Observe the flag in the request header.",
+        "Understand that the previous request smuggling method will not capture the second response from Puma.",
+        "Note that the class index is 405.",
+        "Noticed that the decrypted string could form a meaningful phrase"
+    ]
+}

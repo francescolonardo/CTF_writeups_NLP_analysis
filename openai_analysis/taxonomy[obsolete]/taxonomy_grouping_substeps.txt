@@ -1,0 +1,75 @@
+1. Analysis and Investigation
+    a. Code and System Review
+        Inspect code, system behavior, error messages, URLs, applications, and their responses.
+        Examine source code, application behavior, payload, page bodies, HTTP requests, JavaScript files, HTML elements for potential risks, and vulnerabilities.
+    b. Information and Data Analysis
+        Extract and validate information from various sources like JSON format, server responses, and files.
+        Analyze decrypted values, execution flow of scripts, serialization and unserialization functions, command executions, and interactions with provided inputs.
+    c. Research and Learning
+        Study technologies, vulnerabilities, functionalities, security implications, algorithms like RS256, and official documentation.
+        Focus on learning and understanding to exploit vulnerabilities effectively.
+
+2. Interaction and Navigation
+    a. Web and File Interaction
+        Navigate and interact with web elements and various sections of websites.
+        Access, download, upload, and manipulate files and data.
+        Navigate to specific URLs and explore various paths and endpoints of the application.
+        Monitor executions and connections and observe system and application behavior.
+    b. Request and Response Management
+        Modify HTTP methods and initiate requests to appropriate endpoints.
+        Send, formulate, dispatch various HTTP requests, and monitor server responses.
+        Examine and analyze the responses received, focusing on extracting flags and understanding server behavior.
+
+3. Exploitation and Access
+    a. Unauthorized Access and Security Exploitation
+        Gain unauthorized access through various methods like cookie manipulation and token alteration.
+        Identify and exploit vulnerabilities, including SQLi, LFI, path traversal, XSS, and command injection.
+        Develop strategies for exploiting potential vulnerabilities and explore possibilities of remote code execution.
+    b. Payload Development and Injection
+        Craft, construct, and inject payloads; test their efficacy.
+        Develop various payloads and exploits to target vulnerabilities.
+
+4. Configuration and Setup
+    a. Connection, Proxy, and Environment Setup
+        Set up connections, proxies, configure interactions between systems and websites.
+        Create and modify files, environment settings, and configurations.
+        Configure servers and implement endpoints to log and receive information.
+
+5. Decoding and Translation
+    Translate or decode encoded or encrypted data.
+    Re-encode modified payloads and elements.
+
+6. Tool and Platform Utilization
+    Use various tools and platforms like Postman, developer tools, GitTools, John The Ripper, and calculate hash values.
+    Employ brute-force scripts to construct potential URLs and flags.
+
+7. Token, Session, and Credential Management
+    Manipulate tokens, cookies, and sessions to alter access and permissions.
+    Utilize extracted and reconstructed passwords and credentials to access restricted areas and functionalities of the applications.
+
+8. Monitoring and Assessment
+    Monitor and identify the presence of vulnerabilities and the output from the system.
+    Monitor network listeners, incoming connections, and data using tools like netcat and browser's developer tools.
+
+9. Modification and Manipulation
+    Modify exploits, payloads, cookies, parameters, and other elements to manipulate application behavior and to exploit vulnerabilities effectively.
+
+10. Automation and Script Writing
+    Write and execute scripts in languages like Python or PHP for tasks such as conversions, file listing, or system commands.
+    Automate tasks or send HTTP requests using libraries like requests.
+
+11. Data Extraction and Retrieval
+    Review server responses for flags, passwords, or valuable data.
+    Extract sensitive information from various parts of the applications, including columns, tables, alert boxes, and images.
+
+12. Validation, Verification, and Testing
+    Test and verify the functionality of payloads, application behavior, constructed URLs, and exploit effects.
+    Validate the success of an action based on server responses, evidence, or educated assumptions.
+    Confirm vulnerabilities, command executions, or system details.
+
+13. Documentation and Learning
+    Carefully read and analyze received texts, official documentation, and algorithms like HS256 to comprehend implications, mechanics, vulnerabilities, and references to various elements.
+
+14. Submission and Execution
+    Submit inputs, execute shell commands, transmit requests, and execute payloads.
+    Observe outcomes, responses, and system behaviors.

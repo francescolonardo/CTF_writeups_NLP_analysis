@@ -1,0 +1,77 @@
+{
+    "XML Analysis": [
+        "The identification was based on the mention of XML."
+    ],
+    "Python Code Inspection": [
+        "Inspect the Python file provided in the challenge.",
+        "Note the inclusion of regex functionality.",
+        "Analyze the Python code.",
+        "Note that the code ignores the first letter if it's uppercase."
+    ],
+    "Regex Pattern Identification": [
+        "Establish a pattern based on the previous observation.",
+        "Identify the '|' operator as potentially useful.",
+        "Note that the '|' operator allows for matching of either of two separate regular expressions.",
+        "Test the code with 'flag{randomString}'.",
+        "Determine suitable regular expressions based on the test.",
+        "Create a new regex matching the 'flag{randomString}' pattern.",
+        "Use the '|' operator in the created regex.",
+        "Replace the initial regex in the Python code.",
+        "Use the newly created regex as the replacement."
+    ],
+    "Code Debugging and Analysis": [
+        "View code specifics using the debugging tool.",
+        "Ensure understanding of the code."
+    ],
+    "Website Source Exploration": [
+        "View the page source.",
+        "Identify unique JavaScript with nextExport attribute.",
+        "Identify unique JavaScript with autoExport attribute.",
+        "Identify unique JavaScript with buildId attribute."
+    ],
+    "POST Request Manipulation": [
+        "Add a random rocket name to the POST request body.",
+        "Scour the page source and Javascript files to locate the token.",
+        "Incorporate the token identified in the Javascript files into the POST request."
+    ],
+    "Text Search with grep": [
+        "Run grep command to search for unusual text."
+    ],
+    "HTML Analysis and Manipulation": [
+        "Inspected page source",
+        "Modified the given example json file",
+        "Investigate the HTML code of the website.",
+        "Write a Python script to automate the extraction of hidden fields from the website's HTML.",
+        "Create a function 'get_hidden' in the Python script."
+    ],
+    "Looping and Guessing Passwords": [
+        "Create an infinite loop.",
+        "Loop through each character.",
+        "Set the range of characters to loop through as '0123456789abcdef' (hexadecimal).",
+        "Use a flag variable to denote a successful guess.",
+        "If a guess was successful, restart the loop to guess the next character.",
+        "If a guess was not successful, the full password has been guessed.",
+        "Break the infinite loop.",
+        "Exit the script."
+    ],
+    "Hashing with md5": [
+        "Launch Python.",
+        "Import the 'md5' function from 'hashlib' in Python.",
+        "Use the '.lower()' method on the variable to convert the string to lowercase.",
+        "Combine the hashed string with the text 'SharifCTF{' and '}' to form the flag."
+    ],
+    "Website Source Code Analysis": [
+        "Check the source code of the website.",
+        "Find CSP settings in the source code.",
+        "Identify that the site allows script tags with nonces as external resources."
+    ],
+    "XSS Attack": [
+        "Recognize the possibility of embedding any code into HTML using GET parameter.",
+        "Understand the purpose of the attack is to display an image only when the bot accesses the site.",
+        "Discover plan of attack involving creating a new script tag.",
+        "Minify the code to be read as XSS."
+    ],
+    "Function Analysis": [
+        "Begin analysis of the verify() function."
+    ]
+}

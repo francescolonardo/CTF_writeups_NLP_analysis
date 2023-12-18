@@ -1,0 +1,96 @@
+Scripting and Code Execution
+    Scripting and Automation
+    Script Execution
+    Script Development
+    Programming and Code Execution
+    Loops and Iterations
+    Python Scripting
+    Python Scripts and Subclasses
+    Creating and Running Scripts
+    Python Scripting and Alfabet Iteration
+    Code Execution
+    Script Execution and Analysis
+
+Web Development and Application Interactions
+    Web Development and Deployment
+    Web Development and Debugging
+    Web Application Interaction
+    Web Requests and Server Interaction
+    Web Application Framework
+    Web Application Testing and Exploitation
+    Web Application Security Analysis
+    Web Application Security
+    Deployment
+    Web Exploitation
+    Environment Setup
+
+Command-Line and System Operations
+    Command Line and System Manipulation
+    Command Line Operations
+    Command Line Interaction
+    Shell Manipulation
+    Server Setup and Manipulation
+    Server Analysis and Utilization
+
+File and Data Manipulation
+    File Manipulation
+    Data Extraction and Manipulation
+    Data Manipulation
+    File Manipulation and Payloads
+    File System Exploration
+    File System Access
+    Downloading and Managing Files
+    Directory Operations
+
+Network and Request Analysis
+    Network Analysis and Testing
+    Network Analysis
+    HTTP Requests and Libraries
+    Accessing and Manipulating Request Data
+    Network Requests
+    Web Requests and Server Interaction
+    HTTP Requests and SQL Injection
+    URL Manipulation and Testing
+    User-Agent Manipulation
+
+Security and Exploitation Tools
+    Shellcode and Exploitation
+    Webshell and Reverse Shell
+    Reverse Shell Setup
+    Post-exploitation Actions
+    Burp Suite
+    Use of S3Scanner
+    Web Security
+    JWT Manipulation
+    Json Web Tokens (JWT)
+    JWT Handling
+    API Manipulation
+    Form Submission and Interaction
+    Command Injection
+    Payload Manipulation
+    Web Application Security
+
+Observation and Analysis
+    Observing and Analyzing Code
+    Code Assessment and Analysis
+    Importing and Configuration
+    Response Handling and Output
+    Encoding and Decoding
+
+Version Control and Repository Operations
+    Bazaar Repository Operations
+    Git Commands
+
+Authentication and Authorization
+    SMS Messaging
+    Authentication and Authorization
+
+Specialized Framework and Tools
+    Flutter Widgets
+    Python Flask Application
+    Remote Server Setup
+
+Miscellaneous
+    Miscellaneous
+    Automated Tools and Utilities
+    

@@ -1,0 +1,57 @@
+Web Interaction:
+	- Webpage Exploration
+	- Application Interaction
+	- HTTP Analysis
+
+Network Operations:
+	- Tool Usage
+	- Communication & Protocol Analysis
+	- Traffic Monitoring
+	- Infrastructure Exploration
+	- Server Interaction
+
+Database Interaction:
+	- Query Execution
+	- Structure Exploration
+	- Data Leakage Identification
+	- SQL Injection
+
+Code & Debugging:
+	- Error Analysis
+	- Source Code Review
+	- Debugging & Execution Flow
+	- Script & Language Identification
+	- Injection & Exploitation
+	- JavaScript Analysis
+
+Security Exploitation:
+	- Payload Crafting
+	- Vulnerability Identification
+	- System Commands
+	- Web Attack Techniques
+
+Authentication & Access:
+	- Token Manipulation
+	- Storage Analysis
+	- Bypass Techniques
+	- Access Controls
+
+Backend Interactions:
+	- API Analysis
+	- Automation & Scripting
+
+File & Data Analysis:
+	- File Inspection
+	- FileSystem Navigation
+	- Data Decoding
+
+Tool & System Setup:
+	- Tool Setup
+	- Network Management
+	- System Adjustments
+
+Miscellaneous:
+	- Strategic Planning
+	- External Information Gathering
+	- Multimedia Analysis
+	- QR Analysis

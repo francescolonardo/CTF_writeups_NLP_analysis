@@ -1,0 +1,65 @@
+{
+    "Web Interaction": [
+        "Right click on the webpage",
+        "Access the website homepage",
+        "Navigate to the bottom of the results.",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges.",
+        "Confirm that the URL is a file sharing site",
+        "Found a response header",
+        "Performed a GET request on the chosen URL.",
+        "Include the payload in the username parameter.",
+        "Developed a Python script to retrieve the flag",
+        "Base assumption on the upload page validation",
+        "Review the input form logic.",
+        "Use 'cd buckets/bucketsoffun-ctf/'",
+        "Recognize the existence of the 'new chat' feature",
+        "Identify the bug in the API.",
+        "Executed the Python script"
+    ],
+    "Code Injection": [
+        "Realize that using string interpolation instead of object properties can lead to code injection vulnerabilities."
+    ],
+    "HTTP Requests & Responses": [
+        "Received different responses from the '/two/' endpoint with 'CONNECT' HTTP verb.",
+        "Included a second 'Content-Length' header with a value of 26.",
+        "Verified this by submitting HTML enclosed in script tags to catch the HTTP request."
+    ],
+    "Directory Traversal": [
+        "Scan the contents of the 'flag_is_here' directory"
+    ],
+    "Vulnerability Research": [
+        "Conduct research to identify potential vulnerabilities of the LibreOffice tool."
+    ],
+    "Prototype Pollution": [
+        "Controlled 'pkgPath' by polluting '__proto__.path'."
+    ],
+    "Header Manipulation": [
+        "Aim to steal the VIP user's cookies."
+    ],
+    "File Manipulation": [
+        "Build a HTML page to automate this process.",
+        "Recognize them as screenshots.",
+        "Read the contents of 'flag.txt'.",
+        "Realize modification of point history with each purchase request.",
+        "Dump file contents of websites."
+    ],
+    "Command Execution & Environment Manipulation": [
+        "Utilized SHATTERED tool.",
+        "Recognized the need to manipulate the PATH variable due to the SUID flag being set",
+        "Updated the '$url' attribute in the serialized object.",
+        "Found 'ups_status' and 'restart_ups' commands return output from local web server."
+    ],
+    "Miscellaneous": [
+        "Submitted a malformed statement.",
+        "Noticed that ws.origin corresponds to the Origin request header."
+    ],
+    "Flag Retrieval": [
+        "Claim the flag."
+    ],
+    "Exploit Database": [
+        "Find them in the exploit database."
+    ]
+}

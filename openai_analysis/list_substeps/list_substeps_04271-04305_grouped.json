@@ -1,0 +1,73 @@
+{
+    "PCAP Analysis": [
+        "Analyze the provided PCAP file."
+    ],
+    "Database Operations": [
+        "Retrieved data from each document in the Firestore database using the code snippet."
+    ],
+    "Application Start": [
+        "Started the app with 'PORT=8080 npm run start'"
+    ],
+    "Form Submission": [
+        "Submit the form presented on the webpage"
+    ],
+    "URL Manipulation": [
+        "Identify that the URL of the created webpage is a base64 encoded form.",
+        "Performed parameter pollution on the frontend with 'GET /callback?user=FRONTEND_USERNAME&amount=1337&amount=0&nonce=NONCE&sig=SIGNATURE'.",
+        "These parameters are set up to be manipulated later."
+    ],
+    "Command Execution": [
+        "Use the custom command from 'phpggc' repo",
+        "Open Python.",
+        "Analyze 'calc.js'",
+        "Encode the malicious payload in base64",
+        "Observed that the source code of the site became visible.",
+        "Write a Python script that automates this process"
+    ],
+    "Technology Identification": [
+        "Identified that the underpinning technology of the web application is PhantomJS/2.1.1.",
+        "Identified that the 'read online' button opens a new window upon clicking.",
+        "Observed that the web application uses PhantomJS/2.1.1",
+        "Identify the rule within the configuration file."
+    ],
+    "Cookie Handling": [
+        "Receive and log the cookie transferred as a query parameter."
+    ],
+    "Flask Web Server": [
+        "Understand the workflow of the Flask web server."
+    ],
+    "SQL Injection": [
+        "Observed an SQL query at the start of the HTML page returned.",
+        "Used the page string as '' and die(show_source('templates/flag.php')) or ''",
+        "Observe that the authentication process terminates if the `bind_param()` call returns false."
+    ],
+    "File Access": [
+        "Accessed 'README' file within '.bzr' directory.",
+        "Read '/proc/self/environ' to retrieve the flag.",
+        "Website displays the content of the '/flag.txt' file"
+    ],
+    "Redirection": [
+        "Observe redirection when the queried amount exceeds the user's actual balance."
+    ],
+    "Cryptography": [
+        "Realize that the secret key needs to be cracked.",
+        "Start the decoding process by reversing the function: encoded_arr.split('').map( x => key.indexOf(x) ).reverse().",
+        "Discover that instead of 'gopher://' protocol, 'inctf://' should be used."
+    ],
+    "Security Check Bypass": [
+        "Bypass further server checks"
+    ],
+    "Parameter Manipulation": [
+        "Perform a test with an invalid productId value"
+    ],
+    "Server Blocking": [
+        "Realize 'os.exec' is blocked."
+    ],
+    "Admin Functionality": [
+        "Found that the user check 'is_admin()' would proceed to handle the 'c2' admin command parameter if true, otherwise would call 'redirect()'.",
+        "Admin Bot visits the URL."
+    ],
+    "HTTP Headers": [
+        "Understand that this value can be fetched from HTTP headers."
+    ]
+}

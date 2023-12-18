@@ -1,0 +1,63 @@
+{
+    "JWT and Authentication": [
+        "Identify that the JWT expiry was not extended for failed solving attempts."
+    ],
+    "IP Spoofing": [
+        "Decided to use the 'X-Forwarded-For' field to send the fake IP address."
+    ],
+    "DOM Manipulation": [
+        "Notice that DOMPurify is applied on HTML."
+    ],
+    "Error Handling": [
+        "Observed the resulting error message"
+    ],
+    "Code Analysis": [
+        "Identify the structure of the Python script",
+        "Identify it as a Python environment."
+    ],
+    "Flag Discovery": [
+        "Password found: 'I4m4M4st3rC0d3rH4x0rsB3w43'",
+        "Discover the 'schema.prism' file.",
+        "Identify the URL parameter labelled 'flag'",
+        "Successfully got the challenge flag",
+        "Identified the flag to be 'rtcp{d0n't_g1ve_us3rs_db_a((3ss}'"
+    ],
+    "Web Shell Usage": [
+        "Ran the shell script by visiting the URL 'http://138.68.228.12/alien_message/super_secret_shell.php?_=system&__=rgrep MeePwn /var/www/'."
+    ],
+    "Authentication Bypass": [
+        "Given login credentials for an online portal with MFA and Captcha code protection.",
+        "Inject similar code into the input box",
+        "Modify the 'role' field to 'Admin'.",
+        "Check the 6th character of the flag in the SQL database"
+    ],
+    "File Handling": [
+        "Craft a file upload request with specific HTML content."
+    ],
+    "Information Gathering": [
+        "Identified an S3 bucket in the HTML source",
+        "Understood that to trigger curl execution, 'doit' method must be invoked.",
+        "Noted that most common PHP file extensions are blocked.",
+        "Identify leaks of bash history in the logs.",
+        "Identify the debugging private key.",
+        "Examined 'auth.py'."
+    ],
+    "Network Exploitation": [
+        "Specify the target URL as 'http://0177.0.0.1/admin-status'.",
+        "Discovered that headless mode of Chrome doesn't perform cache partitioning.",
+        "Validate the encoding function by checking if it produces the same encoded message as captured in unmasked WebSocket packets in Wireshark."
+    ],
+    "Database Manipulation": [
+        "Understand the variable sets the type attribute for the script element",
+        "Understand that the mysqljs/mysql package is used without the option stringifyObjects: true."
+    ],
+    "User Management": [
+        "Registered a new user."
+    ],
+    "Web Navigation & Interaction": [
+        "Explore the search functionality.",
+        "Printed the flag.",
+        "Search for the flag on the browser",
+        "Observe the image"
+    ]
+}

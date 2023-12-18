@@ -1,0 +1,61 @@
+{
+    "Error Analysis": [
+        "Review the second error received.",
+        "Confirm that IP 18.213.16.123 is not a local IP.",
+        "Observe the 'Wrong Referrer' error",
+        "Received a 403 Forbidden error from the login.php page."
+    ],
+    "Web Interaction": [
+        "Open http://18.213.16.123:5000/ in a web browser.",
+        "Report the HTML file link to trick admin into opening it.",
+        "Get the uploaded HTML file link from the webpage.",
+        "Place the URL-encoded string in the URL parameter 'demo'.",
+        "Access the website.",
+        "URL: http://172.17.15.117:443/3e6f0e21-7faa-429f-8a1d-3f715a520da4.png"
+    ],
+    "Cookie Manipulation": [
+        "Modified the PHPSESSIONID cookie in the browser to Maria's session ID.",
+        "Inspected cookies."
+    ],
+    "Exploit Scripting": [
+        "Control the 'window.name' variable with the exploit script.",
+        "Implemented SQLmap to exploit the potential SQL injection vulnerability."
+    ],
+    "File Operations": [
+        "Identify the list of references to the PDF pages in the merged PDF file.",
+        "Append the decoded result to a file.",
+        "Extract the source code from /src.tgz."
+    ],
+    "Web Security Analysis": [
+        "Check if the body JSON value 'solution' is equal to the expected CAPTCHA.",
+        "Alter the JWT's header to change the algorithm to HS256.",
+        "Realize that the server signs new RS256 tokens with the private key, signKey.",
+        "Identified the specified `apiGet` URL.",
+        "Analyze the PCAP file.",
+        "Gather information about the server-side tools used for document conversions.",
+        "Identify that the code involves an XML parser."
+    ],
+    "Shell and Command Execution": [
+        "Utilize the web shell to gain access to the file system.",
+        "Observe that remote shell functionality is blocked due to 'seccomp' filter preventing 'execve'."
+    ],
+    "Text Analysis": [
+        "Search for the flag format",
+        "Confirm text 'infernoCTF{F33l_Th3_Sh0ck}' in the accessed file.",
+        "Each page had one letter for the name"
+    ],
+    "Request Handling": [
+        "Receive the server's response.",
+        "Received a request from the proxy server.",
+        "Include the parameter in the request."
+    ],
+    "HTML Manipulation": [
+        "Injected arbitrary HTML through HTML comments."
+    ],
+    "PHP Specific Techniques": [
+        "Used PHP filters."
+    ],
+    "Note Management": [
+        "Create a secondary note"
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "Cookie Manipulation": [
+        "Sent the encoded cookies to a pre-defined URL controlled by the attacker."
+    ],
+    "Command Execution": [
+        "Identify attribute that can be polluted to spawn a new process or execute a command."
+    ],
+    "API Endpoint Analysis": [
+        "Found API endpoint details in the downloaded files"
+    ],
+    "HTML Sanitization": [
+        "Identified the BeautifulSoup module being used to sanitize HTML."
+    ],
+    "JavaScript Analysis": [
+        "Identify the presence of 'news' string in the JavaScript code."
+    ]
+}

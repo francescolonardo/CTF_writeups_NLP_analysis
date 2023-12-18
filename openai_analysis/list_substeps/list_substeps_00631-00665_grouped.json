@@ -1,0 +1,64 @@
+{
+    "Field Decoding": [
+        "Decode the field First-Flag."
+    ],
+    "Bruteforcing": [
+        "Find that the password is 'congratsyouwin' via the bruteforcing method."
+    ],
+    "String Manipulation": [
+        "Accounted for the replace operation which changed the string length."
+    ],
+    "Code Analysis & Manipulation": [
+        "The 'smtp_exec' variable is used as an argument to the Exec2 routine",
+        "Identify the password check code.",
+        "Create a plan to circumvent MFA token check and SQL by manipulating variables: Set `$mfa_token` as a reference to `$_correctValue` and modify `$query`."
+    ],
+    "Web Request": [
+        "Sent a POST request to /login.php.",
+        "Attempt a simple GET request to /rocketLaunch.",
+        "Executed a HTTP POST request"
+    ],
+    "Web Exploitation Techniques": [
+        "Host a document type definition (DTD).",
+        "Developed a payload utilizing 'x:script' to exploit the vulnerability.",
+        "Confirm that the observed behavior indicates a Blind SQL Injection vulnerability",
+        "Used the value ':wq' for the 'exit' parameter.",
+        "Note the behavior of the web application when a blank 'n' parameter is submitted.",
+        "Understand that the crash of DOMValidator.js will allow the execution of <script>alert('pwned')</script>.",
+        "Use double URL encoding."
+    ],
+    "Web Navigation & Exploration": [
+        "Access the specified path in the website",
+        "Return to the problem.",
+        "Discovered a treasury.js file in the HTML source.",
+        "Site has a login screen.",
+        "Located the flag at `/users/employee/files/fileadmin`."
+    ],
+    "Data Processing & Analysis": [
+        "Apply Base64 decoding to the padded text.",
+        "Inspect the decoded payload.",
+        "Interpret that 'b1' is initialized with a random number from 0-500.",
+        "Recognize that STTF is a Chromium feature."
+    ],
+    "Exploit Development": [
+        "Build a second-stage exploit.",
+        "Find out that the encryption function is not secure enough to prevent decryption."
+    ],
+    "Authentication & Session Handling": [
+        "Had the right PHPSESSID in cookies.",
+        "Copy the JWT token from the payload."
+    ],
+    "System Interaction": [
+        "Constructed a command to be executed"
+    ],
+    "Server & Communication Analysis": [
+        "Receive a response from the server."
+    ],
+    "PDF Manipulation": [
+        "Create 'second.pdf' using the chosen input PDF.",
+        "Analyze the certificate."
+    ],
+    "Flag Acquisition": [
+        "Receive the flag."
+    ]
+}

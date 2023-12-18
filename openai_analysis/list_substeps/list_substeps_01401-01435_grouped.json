@@ -1,0 +1,61 @@
+{
+    "Server Exploration": [
+        "Investigated gallery.php.",
+        "Identified the condition that only PDF files containing 'ECHO' would be signed.",
+        "Included an overflowing 'Content-Length' header.",
+        "Realized that these values are used for the calculation and comparison",
+        "Remove the first file created.",
+        "Write script to automate this process of generating payloads and making POST requests.",
+        "Prepared the SQL query to send to File Descriptor (FD) 4, which is the MySQL server.",
+        "Expect to find the flag before the suspicious commit.",
+        "Find in the robots.txt file that /signing.pem is disallowed.",
+        "Find that Vitepress running in dev mode enables CORS.",
+        "Configured the attacker server to make 19 redirects.",
+        "Access the URL `https://xmas.2020.chall.actf.co/report`",
+        "Identify that '.jpg', '.png', and '.gif' extensions are blacklisted in the header-setting function.",
+        "Inject the SQL Injection payload into the username field.",
+        "Enumerated the columns of the flag table.",
+        "Craft the AJP request to leak the source code of index.jsp."
+    ],
+    "Web Vulnerability Identification": [
+        "Discover that the chat functionality was vulnerable to HTML tag injection."
+    ],
+    "Exploitation Attempts": [
+        "Try the second exploit.",
+        "When the admin's hash is used, the /api/create handler does not sanitize data",
+        "Understood the structure of the 'Login' object.",
+        "Recognize the need for an 'Authorization' header.",
+        "Received a list of users as a response.",
+        "Read the hint for this challenge",
+        "HTTP POST request to sell flag with negative price",
+        "Realize that the tokens are used to count the number of 'boops'.",
+        "Arrived at the support page."
+    ],
+    "Web Navigation": [
+        "Go to a third-party website.",
+        "Visit route '/?page=payload'",
+        "Access the URL `https://xmas.2020.chall.actf.co/report`",
+        "Arrived at the support page."
+    ],
+    "Session & Authentication": [
+        "Set 'flagConverted' on the previously set sessionID.",
+        "Use combination of uppercase, lowercase, numbers, underscore, and curly braces for domain"
+    ],
+    "Request Manipulation": [
+        "Included an overflowing 'Content-Length' header.",
+        "Redefine `window.callback` and `trustedTypes` using the DOM Clobbering technique"
+    ],
+    "File System Analysis": [
+        "Investigated gallery.php.",
+        "Analyze the entrypoint.sh bash file.",
+        "Remove the first file created.",
+        "Prepared the SQL query to send to File Descriptor (FD) 4, which is the MySQL server.",
+        "Read the hint for this challenge",
+        "Craft the AJP request to leak the source code of index.jsp."
+    ],
+    "Resource Interaction": [
+        "Access the URL `https://xmas.2020.chall.actf.co/report`",
+        "Visit route '/?page=payload'",
+        "Access the website homepage"
+    ]
+}

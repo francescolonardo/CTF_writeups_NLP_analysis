@@ -1,0 +1,62 @@
+{
+    "Password Handling": [
+        "Face an obstacle due to the password length exceeding the character limit of the login page"
+    ],
+    "Page Loading & Wait Time": [
+        "Wait for a few seconds for the puppeteer instance to start and load the page."
+    ],
+    "Secret Key Handling": [
+        "Retrieve the found secret_key 'redraider'.",
+        "Leaked secret key '19eb794c831f30f099a31b1c095a17d6' from 'config.py'"
+    ],
+    "HTTP Error Handling": [
+        "Print any HTTP error during the page request."
+    ],
+    "PDF Manipulation": [
+        "Applied the retrieved signature to the second PDF."
+    ],
+    "User Interaction & Clicking": [
+        "Acknowledge that squares should be avoided while clicking."
+    ],
+    "Endpoint Sensitivity": [
+        "Recognized that the '/flag' endpoint is case sensitive."
+    ],
+    "XSS & SSRF Vulnerability Research": [
+        "Investigated methods for exploiting XSS attacks.",
+        "Realized that direct exploitation of SSRF is not possible."
+    ],
+    "Command Line Operations": [
+        "Used curl command"
+    ],
+    "Token Usage": [
+        "Identify the need for a 'token' to perform certain actions."
+    ],
+    "Request Manipulation": [
+        "Insert '__proto__' attribute in the request payload."
+    ],
+    "Webpage Access & Navigation": [
+        "Access the flag purchase system",
+        "Observe a login form with JavaScript check.",
+        "Accessed the Favicon of the webpage",
+        "Take into account that JavaScript is a case-sensitive language.",
+        "Downloaded the code for the app",
+        "Paste the introspection query into BurpSuite.",
+        "Take a URL as an argument.",
+        "Inspect the source code of the website.",
+        "Visualize the data structure using the graphql voyager tool.",
+        "Noticed a website related to the challenge.",
+        "Decode the initial array with base64 encoded strings in the JavaScript script.",
+        "Use the output of the script.",
+        "Verified that Angular parses the URL created from 'PROTOCOL + HOST + PATH'."
+    ],
+    "Bot Interaction": [
+        "Admin bot visits URL submissions"
+    ],
+    "Access Control Analysis": [
+        "Identify that if the request token is wrong, then the 'request.accessGranted' attribute would not be set.",
+        "The reason for inability to modify is due to a lack of appropriate permission"
+    ],
+    "Network Communication": [
+        "Sent the request to 'http://18.179.178.246:8003'"
+    ]
+}

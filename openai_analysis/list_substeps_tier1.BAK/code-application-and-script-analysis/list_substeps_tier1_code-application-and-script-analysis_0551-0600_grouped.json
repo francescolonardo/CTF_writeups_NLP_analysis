@@ -1,0 +1,59 @@
+{
+    "Password Discovery": [
+        "Discover a hardcoded password within the JavaScript file.",
+        "Password found: 'I4m4M4st3rC0d3rH4x0rsB3w43'",
+        "Decide to discover each character of the password one at a time.",
+        "Use the information obtained from the previous step."
+    ],
+    "Webpage Analysis": [
+        "Analyze the webpage's HTML and JavaScript code.",
+        "Note that messages were not being escaped.",
+        "Examine the source code of the main web page."
+    ],
+    "Local File Inclusion (LFI)": [
+        "Realize that the endpoint `getimg.php` is vulnerable to Local File Inclusion (LFI), allowing files on the server to be read.",
+        "Base64 encode the filenames `index.php` and `getimg.php`.",
+        "Use the encoded filenames as parameter values for `getimg.php` to test the LFI vulnerability.",
+        "Reveal the source code of both `index.php` and `getimg.php`.",
+        "Use knowledge of local git repository structure to start pulling files from the server's .git directory.",
+        "Examine the `.git/logs/HEAD` file.",
+        "Use commit IDs to determine when the flag was removed from the source.",
+        "Use the commit IDs to fetch further git objects from the server.",
+        "Fail to restore source code due to missing git objects.",
+        "Attempt to checkout the master branch.",
+        "Fetch the missing git objects from the server.",
+        "Encounter additional missing git objects.",
+        "Fetch further missing git objects from the server.",
+        "Successfully display the differences between the two git commits."
+    ],
+    "XXE Vulnerability": [
+        "Perform a test with an invalid productId value",
+        "Recognize the vulnerability associated with the parameter being reflected in the response",
+        "Determine successful exploitation of an XXE vulnerability",
+        "Discover the usage of XML envelopes via two JavaScript files when buttons are pressed.",
+        "Identify the Javascript file responsible for crafting the XML envelope.",
+        "Identify the second Javascript file responsible for sending the XML envelope and reading the answer.",
+        "Test the system's reaction by passing an invalid productId value."
+    ],
+    "SQL Injection": [
+        "Analyzed the HTML source code.",
+        "Understood how MySQL executes query portions inside comments.",
+        "Retrieved the flag from the table content.",
+        "Examined the HTML source code.",
+        "Reviewed JavaScript 'index.js'.",
+        "Noticed that each challenge string must be found every time it is called.",
+        "Recognized the potential for optimization.",
+        "Implemented a smart voter script.",
+        "Ensured the script utilizes a previously saved cache.",
+        "Minimized time spent on creating strings to match the server's challenge.",
+        "Script was launched causing the browser to start the voting process."
+    ],
+    "Source Code Analysis": [
+        "Analyse the HTML code.",
+        "Review the provided Python code.",
+        "Examine the Python code.",
+        "Identify the debugging private key.",
+        "Download the source code attached to the CTF challenge.",
+        "Review the given source code, which is a Javascript calculator web app."
+    ]
+}

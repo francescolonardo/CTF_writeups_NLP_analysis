@@ -1,0 +1,54 @@
+{
+    "Password Discovery": [
+        "Discovered the password 'w0rdc0unt123'.",
+        "Found password 'csictf'.",
+        "Recognize that the '.env' file contains the JWT secret.",
+        "Extract the admin cookie 'password'",
+        "Understand that the password was split into various parts",
+        "Guess combinations of characters",
+        "Reveal the entire password",
+        "Continue script until full password is discovered"
+    ],
+    "Authentication and Authorization": [
+        "Switched to the user 'ctf'.",
+        "Authenticated using the password 'csictf'.",
+        "Take note of the 'username' from the form inputs.",
+        "Have the intention to alter the 'admin' value.",
+        "Have the intention to alter the JWT 'username'.",
+        "Use the JWT secret and the altered payload for the new token.",
+        "Identify headers that require a token.",
+        "Identify that the 'Authorization' header should contain a JWT.",
+        "Include the correct 'Authorization' header.",
+        "Use the new token for authentication.",
+        "Verify if all 5 captchas are collected",
+        "Assign specific values to variables if challenge is 'Gate keeper'",
+        "A valid login has been achieved.",
+        "Inferred the username to be michelle",
+        "Used the exploit to log in"
+    ],
+    "JWT Handling": [
+        "Look for a JWT in the 'token' header of the responses.",
+        "Decode the JWT at jwt.io."
+    ],
+    "Cookie Manipulation": [
+        "Plugged the password ('w0rdc0unt123') from '$password' variable to the cookie.",
+        "Identify the cookie related to flavor",
+        "Replace the existing flavor value in the cookie with 'chocolate'",
+        "Replace the original cookie with the new base64 encoded 'chocolate' cookie on the website",
+        "Adjust the value of the secure cookie 'admin' to the desired comparison value 'true'.",
+        "Create a signed cookie in the browser.",
+        "Replace the original signed cookie with the new one generated.",
+        "Set the cookie as 'user=root'.",
+        "Set the cookie to a given string",
+        "Set the new flag value as the cookie"
+    ],
+    "Route Examination": [
+        "Examine the request route for '/adminNames'.",
+        "Visit the disallowed route"
+    ],
+    "Script Understanding and Manipulation": [
+        "Note that this method of passing an array satisfies the filename restrictions",
+        "Note that the password for the portal is being checked by the script",
+        "Identify that the 'check' is a predefined string expected in the response of a successful login."
+    ]
+}

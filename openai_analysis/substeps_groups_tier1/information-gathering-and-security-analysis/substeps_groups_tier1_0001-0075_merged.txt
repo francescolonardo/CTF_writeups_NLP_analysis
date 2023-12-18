@@ -1,0 +1,80 @@
+1. Problem Understanding and Goal Definition
+    - CTF Problem Understanding
+    - Goal Understanding and Implementation
+    - System and Challenge Insights
+    - System and Application Understanding
+    - Knowledge Research and Understanding
+2. Pre-Attack Information Gathering
+    - Hints and External References
+    - User and Token Interactions
+    - Enumeration and Information Gathering
+    - Site and Service Identification
+    - Target Identification and Reconnaissance
+3. Website and Web Application Analysis
+    - Website Exploration and Navigation
+    - Website Interactions and Endpoint Discovery
+    - URL and Webpage Analysis
+    - Website Code and Functionality Exploration
+    - Web Application Behavior and Functionality
+    - Web Application Navigation
+    - Website Visits and Navigations
+4. Content and Information Retrieval
+    - Content Retrieval and Exploration
+    - Content Observation and Recognition
+    - File and Endpoint Discovery
+    - Information Gathering and Analysis
+    - Source File Retrieval
+    - File Discovery
+    - String and Password Retrieval
+5. Security and Vulnerability Analysis
+    - Vulnerability Analysis and Exploitation
+    - Vulnerability Identification
+    - Challenge Identification
+    - Vulnerability Research and Analysis
+    - System Exploration
+    - Observation and Data Analysis
+    - Vulnerability and Exploitation Research
+    - Vulnerability Research and Exploitation
+    - Exploitation and Vulnerability Detection
+    - Vulnerability Detection and Exploitation
+    - Vulnerability Research and Understanding
+6. Interactive Actions and Explorations
+    - Challenge Participation and Enumeration
+    - Website Analysis and Exploration
+    - System Exploitation and Interaction
+    - Data and Server Analysis
+    - File and Directory Enumeration
+    - Information Gathering and System Exploration
+    - Service Usage and Exploration
+    - Exploratory Actions and Initial Observations
+    - Discovery and Initial Exploration
+7. Coding and Design Analysis
+    - Web Application Reconnaissance
+    - Feedback and Error Analysis
+    - Code Modification and Web Design
+    - Code Analysis and Exploitation
+    - Parameter and Algorithm Identification
+8. Flag Identification and Retrieval
+    - Flag Discovery and Acquisition
+    - Flag Identification and Retrieval
+    - Flag Discovery and Retrieval
+    - Flag Identification and Collection
+    - Obtaining Flags
+9. Network and Traffic Analysis
+    - Website Code and Web Design
+    - Network Traffic Capture
+    - Web Application Security Analysis
+    - Network Scanning and Enumeration
+    - DNS Configuration
+10. Task and Process Modification
+    - Task Manipulation and Modification
+11. Directory and File Operations
+    - Directory and File Discovery
+    - File Operations and Security Analysis
+12. Miscellaneous Actions
+    - Miscellaneous Actions
+    - Targeted Actions and Path Selection
+    - Web Interactions and Exploitations
+    - Attack Confirmation and Feedback
+    - Initial System Exploration
+    - Username Enumeration.

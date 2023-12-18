@@ -1,0 +1,49 @@
+{
+    "CSRF Vulnerability": [
+        "Recognize the potential CSRF vulnerability based on the CSRF token."
+    ],
+    "Source Code Analysis": [
+        "Discover a conditional statement in the source code",
+        "Identify Shellshock vulnerability",
+        "Modify the comparison to always allow login even with incorrect password",
+        "View the code of 'cmd.php'.",
+        "Identify that the web application has registration, login, and readfile functionalities",
+        "Find the specific vulnerability in the PHP code that allows object injection.",
+        "Observe that the JWT key is only stored for 2 seconds.",
+        "Noticed 'frequency' increments with each page refresh.",
+        "Examine the blacklist filter code.",
+        "Write a PHP program."
+    ],
+    "HTTP Requests & Response Manipulation": [
+        "Added a header named 'answer'",
+        "Send the modified request.",
+        "Identified admin credentials and passcode from the accessed user database and passcode files.",
+        "Observed that Nginx sees the 'Transfer-Encoding' header.",
+        "Use 'JsonCookies' to create a json object",
+        "Identified the additional table holding the flag.",
+        "Received a `Set-Cookie` header from this page for a new cookie with HttpOnly flag set.",
+        "Observed the application displaying contents of '/api/answer'.",
+        "Use it to SSH onto the target server.",
+        "Attempted to navigate to '.bzr' directory.",
+        "Decoded the JWT token.",
+        "Obtain the flag",
+        "Receive a pending request response."
+    ],
+    "XSS Exploitation": [
+        "Understand that exploitation involves creation of a Stored XSS",
+        "Input {{ state.flag }}"
+    ],
+    "Websockets": [
+        "Implement a recursive function to retrieve one character from 'msg' for each WebSocket packet."
+    ],
+    "File System Manipulation": [
+        "Examined the contents of the downloaded code",
+        "Decide to print all file contents"
+    ],
+    "Database & SQL": [
+        "Recognize the SQL injection vulnerability in the 'id' parameter"
+    ],
+    "General Actions": [
+        "Noted the process of converting markdown input to PDF file for download."
+    ]
+}

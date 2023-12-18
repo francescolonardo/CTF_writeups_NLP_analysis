@@ -1,0 +1,76 @@
+1. Action/Implementation
+    - Web Interaction
+        - Web Form Manipulation
+        - Web Interface & Navigation
+        - Web Navigation and Interaction
+        - Frontend Processing
+    - Data Interaction
+        - Data Interception & Manipulation
+        - API Interaction
+        - JSON Manipulation
+        - Cookie Manipulation & Analysis
+        - Data Analysis & Exploitation
+    - File Interaction
+        - File/System Manipulation 
+        - File Retrieval & Arbitrary File Access
+    - Message/Triggers Analysis
+        - Message Observations
+        - Result Observation
+        - Response Extraction
+
+2. Security Analysis/Exploration
+    - Exploitation Techniques Research
+        - Web Security Analysis
+        - Vulnerability Analysis & Exploitation Techniques
+        - Exploitation Analysis
+        - Injection Techniques
+        - Web Vulnerability Identification
+    - Server Research
+        - Server & Technology Understanding
+        - Server Interactions
+        - Remote Server Interaction
+        - Server Administration & User Management
+    - Analysis Tools & Methods
+        - API & Data Analysis
+        - Script & File Analysis
+        - Code & Technology Analysis
+        - Challenge Analysis
+
+3. Vulnerability Exploitation
+    - Code Exploitation
+        - Numeric Cast & SQL Operations
+        - Scripting & Code Execution
+        - Command Execution & Injection
+        - Command Execution & Remote Code Execution (RCE)
+        - Python Scripting
+        - Python Exploitation
+        - JavaScript Manipulation
+    - Authentication Exploitation
+        - JWT Token
+        - User Login & Authentication
+        - User Registration & Authentication
+        - CSRF Token & Protection
+        - Authentication
+        - Authentication & Session Handling
+    - Payload/Flag Manipulation
+        - Database Operations
+        - Flag Retrieval & Viewing
+        - Flag Discovery
+        - Payload Visualization & Execution
+    - Web Exploitation Techniques
+        - Microservice Command Execution
+        - HTTP Requests & Responses
+        - HTTP Request Manipulation & Exploitation
+        - POST Request & File Access
+        - HTTP Operation & Authentication
+        - Web Request Manipulation
+    - File & Database Exploitation
+        - File System & Flag Access
+        - Database
+        - SQLite Version Discovery
+    - Use of Special Web Exploits
+        - Client-Side Prototype Pollution Vulnerability
+        - Deserialization Vulnerability
+        - Access Control Bypass
+        - Security Checks & Authentication Evasion
+        - Security Bypass

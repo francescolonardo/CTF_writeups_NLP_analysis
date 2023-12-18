@@ -1,0 +1,14 @@
+I'll provide you with some context.
+Assume I'm trying to create a taxonomy to categorize a set of actions taken from web application CTF writeups.
+The aim is to develop a hierarchy that allows these actions to be specifically grouped under strict categories, making them easily identifiable and organized.
+
+The following is my current taxonomy (actually a portion of it) with three levels of depth:
+```
+
+```
+
+Do you see some obvious overlapping/redundancies between its entries?
+
+------------------------------------------------------------------------------------------------
+
+Can you please aggregate them?

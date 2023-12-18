@@ -1,0 +1,59 @@
+{
+    "Passing Parameters": [
+        "Pass serialized input via 'id' HTTP GET parameter",
+        "Pass payload as parameter"
+    ],
+    "Observing and Noting Information": [
+        "Notice that the form allows execution of a ping command.",
+        "Note the session info",
+        "Use the modified cookie",
+        "Received a 'HTTP 403 Forbidden' error, suggesting the '.bzr' directory's presence."
+    ],
+    "Web Page Exploration": [
+        "Use 'cd S3Scanner/'",
+        "Use 'cd buckets/bucketsoffun-ctf/'",
+        "Receive a message that this page is for authentication with an API located at port 4000.",
+        "Receive an error: Forbidden, missing JWT authorization.",
+        "Receive a JWT(token).",
+        "Discover a comment from the API documentation page's HTML source hinting about a robots.txt file located at http://ctfchallenges.ritsec.club:3000/robots.txt.",
+        "Identify additional pages: upload.php and photos.php",
+        "Attempt to access common pages like foo.php.",
+        "Note that the server response includes the author of the feedback.",
+        "Recognize that the username taken from the session is not properly sanitized",
+        "Login with the registered user once",
+        "Logout",
+        "Re-login",
+        "Identified that the blog owner has preference for Canonical and Bazaar.",
+        "Determine that the certificate seems invalid.",
+        "Observe the flag displayed on the website.",
+        "Web page performs a password reset function using security questions",
+        "Confirm that the URL is a file sharing site",
+        "Inspect how the website stores the 'name' parameter",
+        "Retrieve the flag from the refreshed webpage",
+        "Login using the found password.",
+        "Analyze the webpage's HTML and JavaScript code.",
+        "Craft an HTTP request.",
+        "Target the chat endpoint.",
+        "Get HTTP `403 Forbidden` response.",
+        "Examine the source code of the main web page.",
+        "Discover the usage of XML envelopes",
+        "Identify the use of a productId value",
+        "Observe the server reflecting the productId value in the response",
+        "Observe that the server reflects the passed productId value in the response.",
+        "Discovered an interesting comment with the parameter '?source=1'.",
+        "Retrieved the PHP source code.",
+        "Tried to enumerate DB tables.",
+        "Noticed that an idea can be posted with an assigned ID.",
+        "Understood the idea can be voted on.",
+        "Examined the HTML source code.",
+        "Include the payload in the request.",
+        "Observe the presence of three files on the webpage.",
+        "Tried to bypass Content Security Policy (CSP)",
+        "Attempted to inject XSS after bypassing",
+        "Identified the presence of protected DIG records.",
+        "Discover that the web app is running in debug mode."
+    ],
+    "HTTP Header Manipulation": [
+        "Passed an arbitrary character(',') into the X-FORWARDED-FOR HTTP header."
+    ]
+}

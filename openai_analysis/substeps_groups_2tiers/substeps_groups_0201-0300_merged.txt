@@ -1,0 +1,124 @@
+1. "Authentication and Credentials":
+   - Length Query Parameter Verification
+   - Token Authentication
+   - Authentication & Credential Attacks
+   - OTP Brute Force
+
+2. "Code and File Analysis":
+   - Code Analysis & Inspection
+   - Code & Structural Analysis
+   - File Creation & Manipulation
+   - File & Directory Manipulation
+   - File System Manipulation
+   - File Operations
+   - File Management
+   - File Retrieval
+   - File Handling & Exploitation
+
+3. "Communication and Networking":
+   - Network Manipulation & Exploitation
+   - Network Interaction
+   - Networking & Listener Setup
+   - Microservice Communication
+   - Server Communication & Exploitation
+   - Network & Security Manipulation
+   - Network & Server Exploration
+   - Listening Host Setup
+   - IP and Network Analysis
+
+4. "Data Manipulation":
+   - Data Manipulation & Reading
+   - XML Entities & Data Manipulation
+   - Data Retrieval
+   - Data Leakage
+   - Data Retrieval & Extraction
+
+5. "Exploitation Techniques":
+   - Exploitation Techniques & Payloads
+   - Server-Side Exploitation
+   - Exploitation & Vulnerabilities
+   - Vulnerability Testing & Exploitation
+   - Server-Side Manipulation
+   - Injection Attacks
+   - Web Security Techniques & Exploits
+   - Payload Structure & Formatting
+   - Exploitation Attempts
+
+6. "HTTP and Web Operations":
+   - HTTP Error Handling
+   - Web Server & Authentication
+   - Web Scraping & Automation
+   - Web Navigation & Exploration
+   - Web Interaction
+   - Web Requests & APIs
+   - Website Exploration & Navigation
+
+7. "Investigation and Research":
+   - Information Gathering & Research
+   - Backend Investigation
+   - Server Log Analysis & Manipulation
+   - Documentation Review
+   - Server Discovery
+
+8. "Scripting and Automation":
+   - Combination & Concatenation
+   - Scripting & Automation
+   - Script Execution & Conditions
+   - Scripting & Command Line Interactions
+
+9. "Security Assessment":
+   - SQL Injection & Payload Crafting
+   - Fuzzing & Exploration
+   - Error Handling & Debugging
+   - Web Application Security Testing & Analysis
+   - Security Vulnerabilities
+   - Cryptography & Hash Decryption
+   - Geolocation Operations
+
+10. "Server and Database Operations":
+    - Git Operations
+    - Server Identification & Exploitation
+    - Server-Side Detection & Exploitation
+    - Database Exploitation
+    - Git & Server Interaction
+
+11. "Web and Server Exploitation":
+    - XSS Exploitation
+    - Remote Code Execution
+    - SQL Injection
+    - Directory Traversal
+    - Buffer Overflow
+    - Constructing Requests
+    - Attribute Identification
+    - Command & Server Interaction
+    - Installation & Environment Setup
+    - URL Navigation
+    - Server Identification & Exploitation
+
+12. "Other":
+    - Image Manipulation
+    - Chat & Session
+    - Browser Manipulation
+    - Flutter & Mobile App Exploitation
+    - Character Range
+    - SSH Attacks
+    - Flag Location & Retrieval
+    - Referrer Header Bypass
+    - Time-Based Analysis
+    - JWT Manipulation
+    - Bypass Technique
+    - Function Evaluation
+    - Web Directory Scanning
+    - PHP Upload & Token Usage
+    - Regular Expressions & String Matching
+    - Regular Expression Analysis
+    - Exploit Scripting
+    - CTF Challenge Interaction
+    - Response Analysis
+    - System Interaction
+    - API Response Analysis
+    - SQL Injection Payload Injection
+    - Jinja2 Filter Bypass
+    - Timing Attacks
+    - File and Data Manipulation
+    - Client-Side JavaScript Exploration

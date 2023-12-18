@@ -1,0 +1,77 @@
+{
+    "Access Control Bypass": [
+        "Bypass the access control implemented on ATS."
+    ],
+    "Session Management & Hashing": [
+        "Note that you need the secret key due to Flask's hash based on session data, timestamp, and the secret key."
+    ],
+    "Server-Side Template Injection": [
+        "Recognize 'SSTI' in the given URL"
+    ],
+    "Request Construction": [
+        "Construct the request for the flag"
+    ],
+    "Source Code Analysis": [
+        "Analyzed the provided source code."
+    ],
+    "URL Manipulation": [
+        "Investigate the behaviour of appending different strings after the '/pleb' directory in the site URL.",
+        "Visit http://35.207.91.38/backup/.DS_Store."
+    ],
+    "Authentication Analysis": [
+        "Identify the relevant classes and methods used for authentication."
+    ],
+    "Version Control System (VCS) Exploration": [
+        "Navigated to 'branch' folder within '.bzr' directory."
+    ],
+    "Challenge-Specific Knowledge": [
+        "Note the UUID prefix '9e5a' mentioned in the challenge description.",
+        "App was composed of frontend and payment backend.",
+        "Assign specific values to variables if challenge is 'Gate keeper'",
+        "Ensure the template holds identical initial content and MD5 hashes.",
+        "Understand the concept of $$ variable in PHP",
+        "Modify the server configuration settings",
+        "Complete the challenge.",
+        "Found that the document contained the lyrics of a song and the required flag."
+    ],
+    "JavaScript Analysis": [
+        "Find a JavaScript feature called Template Literals."
+    ],
+    "Web Form Exploration": [
+        "Located a form on the login page."
+    ],
+    "CSS Exploitation": [
+        "Realized that this allows loading of a CSS file from the exploit domain."
+    ],
+    "JWT Exploitation": [
+        "Include the crafted JWT in the `Authorization` header"
+    ],
+    "Network Scanning & Enumeration": [
+        "Initiated a network scan using Nmap"
+    ],
+    "SQL Injection": [
+        "Craft the payload with the SQL Injection and set it as the request body."
+    ],
+    "XSS Exploitation": [
+        "Successfully fetch the flag using the XSS payload."
+    ],
+    "Reconnaissance & Enumeration": [
+        "Identify remote address and user agent checks as the reasons.",
+        "Suspect that a reverse proxy might be stripping the X-Forwarded-For header."
+    ],
+    "Flag Extraction": [
+        "If 'True' is present, append the flag string character to the flag."
+    ],
+    "Page Source Analysis": [
+        "View the page source."
+    ],
+    "Injection Attack": [
+        "Accessed the URL `http://yai.sstf.site/paperdetail.php?idx=32%27%20and%20@published=%27no%27%20or%20%27a%27=%27b` to execute the injection attack."
+    ],
+    "Command Execution": [
+        "Construct a command."
+    ],
+    "Deserialization Vulnerability": [
+        "Recognize that the 'guest' cookie is base 64 decoded in the deserialization process."
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "Range Identification": [
+        "Identify a specific range 'A:B'"
+    ],
+    "Flag Identification": [
+        "Identify the 'secret' tag which contains the flag.",
+        "Find the flag inside the environment file."
+    ],
+    "Server Interactions": [
+        "Accounted for pipelining in the server.",
+        "Attempted to escalate privileges by changing the 'uid' from 100 to 1 using the previous payload.",
+        "Attempted to access the /flag directory.",
+        "Identify the existence of a WebSocket tunnel from the 'HTTP/1.1 101 Switching Protocols' packet."
+    ],
+    "SQL Injection": [
+        "Craft an SQL injection payload.",
+        "Include the SQL injection payload in a complete request.",
+        "Compiled the modified injection query.",
+        "Identified the application as vulnerable to XXE.",
+        "Tried to bypass Content Security Policy (CSP)."
+    ],
+    "Web Navigation & Interaction": [
+        "Decide to add the base64-encoded serialized object as a 'login' cookie in the browser",
+        "Note that an array passed in 'file' GET parameter gets converted and concatenated into a string",
+        "Set 'program' as the id for the new HTML script element",
+        "Understood the layout and elements of the webpage.",
+        "Send the crafted POST request to the server",
+        "Look for available endpoints in the downloaded `openapi.json` file.",
+        "Analyze the URL 'http://35.207.189.79/pyserver/server.py'.",
+        "Note the session info",
+        "Opened the web-browser's developer tools",
+        "Discovered that '/lib/db/user.db' and '/lib/db/passcode.db' can be directly accessed from the server.",
+        "Observed a request to '/save.php'.",
+        "Analyze the JWT"
+    ],
+    "Payload Analysis": [
+        "Test inputting content in MiniMag format",
+        "Conduct an extraction of the flag character by character.",
+        "Analyze the encoded string",
+        "Get information about the PHP configuration",
+        "The usage of 'smtp_exec' indicates that Remote Code Execution (RCE) could be possible",
+        "Analyze the JWT"
+    ],
+    "File Manipulation": [
+        "Created 'foo.txt' file within the 'ctf-bzr' directory."
+    ],
+    "Credentials Verification": [
+        "Verify the obtained credentials: `manager:bigsanta!` and `admin:tryharder`."
+    ]
+}

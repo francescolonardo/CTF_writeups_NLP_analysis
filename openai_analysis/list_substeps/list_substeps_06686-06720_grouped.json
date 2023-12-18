@@ -1,0 +1,49 @@
+{
+    "Directory and File Manipulation": [
+        "Choose to target the '/uberadmin' directory.",
+        "Conjectured that the 'flagman69' user may not exist in the database given the failed flag output.",
+        "Examine the `.git/logs/HEAD` file."
+    ],
+    "Authentication & Authorization": [
+        "Login on 'admin.html'.",
+        "Evaluate the if statement `0 == 'whatever the password is'`.",
+        "Identify a value in Base64 within the cookie.",
+        "Realized that the invalid characters in the payload can bypass the regex validation",
+        "Analyze verifyUsername() and find the simple string comparison indicating the correct username to be 'D0loresH4ze'.",
+        "Input the SQL injection payload in the 'password' field as `username=admin&password=' or '1`.",
+        "Obtain the admin's cookie"
+    ],
+    "Content Manipulation & Observation": [
+        "Note the changes in the displayed content.",
+        "Recognize the purpose of normalization: prevent directory traversal attacks.",
+        "Include a script to alert the document's cookies in the uploaded LaTeX document",
+        "The content written in the request was 'HACKED'",
+        "Observe images displayed in a gallery"
+    ],
+    "Server Communication & Exploitation": [
+        "Realized the ATS server forwards the payload as a single request to the Nginx backend.",
+        "Used '${IFS}' to get around the regex match restriction.",
+        "Included the 'Transfer-Encoding' header in the payload.",
+        "Download the PCAP file.",
+        "Exploit PHP's type conversion",
+        "Found the chain of properties",
+        "Used previous step's vulnerability to upload.",
+        "Ensure the 'file_get_contents' instruction is used.",
+        "Briefly analyze the encoding function to get the basic idea for decoding messages.",
+        "Note that client's 'User-Agent' value is used in the encoding function.",
+        "Load the CTF challenge.",
+        "Construct `exploit.html` file.",
+        "Recognize the potential for Server-Side Template Injection (SSTI)"
+    ],
+    "Research & Information Gathering": [
+        "Search for related pull requests on github."
+    ],
+    "Code Analysis & Reverse Engineering": [
+        "Analyzation of the entrypoint.sh bash file.",
+        "Received an XPATH syntax error."
+    ],
+    "Web Navigation & Interaction": [
+        "Read and understand the hints provided in the challenge.",
+        "Choose reading another HTTP GET parameter."
+    ]
+}

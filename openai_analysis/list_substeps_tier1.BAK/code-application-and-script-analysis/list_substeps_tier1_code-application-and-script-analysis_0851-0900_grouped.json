@@ -1,0 +1,72 @@
+{
+    "Function Identification": [
+        "Identify when this function is called."
+    ],
+    "Token Verification": [
+        "Understand that the crucial check occurs in the 'checkout(req, res)' function that verifies the token's signature matches the key."
+    ],
+    "Template Injection Exploit": [
+        "Consider ways to apply the Template Injection exploit with the 'setter' and 'getter' properties for 'key'.",
+        "Try to access or replace 'store.key' through the Template Injection vulnerability.",
+        "Consider redefining the Object prototype if it's necessary.",
+        "Find a way around the lack of access to the constructor property.",
+        "Consider using older object manipulation features like '__defineSetter__' and '__defineGetter__'.",
+        "Override the prototype using a payload to set a context to the prototype of [object].",
+        "Redefine 'key' through '__defineSetter__' and '__defineGetter__'.",
+        "Verify that the accessor for 'key' has been overridden and behaves as expected."
+    ],
+    "Window Manipulation": [
+        "'name' is a short form of 'window.name' property",
+        "Trigger the 'window.open' function with the payload",
+        "Set 'window.name' to the long payload"
+    ],
+    "JavaScript Analysis": [
+        "Detect that the JavaScript file 'bundle.js' is used to calculate the hash value.",
+        "Analyze the JavaScript bundle to understand how the hash is calculated.",
+        "Inspect the injected JavaScript code that is responsible for WebSocket communication.",
+        "Validate the encoding function by checking if it produces the same encoded message as captured in unmasked WebSocket packets in Wireshark.",
+        "Determine that 'key2' is a shuffled version of 'key'.",
+        "Briefly analyze the encoding function to get the basic idea for decoding messages.",
+        "Start the decoding process by reversing the function: encoded_arr.split('').map( x => key.indexOf(x) ).reverse().",
+        "Continue the decoding process by solving for 'c' in the equation: c = seed, c0 = c + prev_encoded_arr[0] * 256, encoded_arr[0] == c0 % 58.",
+        "Use brute force to solve for a set of possible solutions for 'c' and 'prev_encoded_arr[0]'.",
+        "Narrow down the solutions by progressing through succeeding elements of 'prev_encoded_arr[]'.",
+        "Implement a recursive function to retrieve one character from 'msg' for each WebSocket packet."
+    ],
+    "JavaScript Code Analysis": [
+        "Recognized the obfuscation of the JavaScript code",
+        "Opened the web-browser's developer tools",
+        "Activated the JavaScript debugger",
+        "Monitored the execution flow of function calls",
+        "Noted the sequence of function calls",
+        "Identified a string within the JavaScript scope",
+        "Recognized the string as representing the flag"
+    ],
+    "Function and File Inspection": [
+        "Focus on the 'decrypt.php' file.",
+        "Further inspect the contents of 'functions.php' file.",
+        "Identify a function that validates the input of a UUID in 'functions.php'.",
+        "Understand the correct UUID format and the known prefix."
+    ],
+    "SQL Exploitation": [
+        "Include a statement to match the initial UUID sequence.",
+        "Restructure the query to generate a SQL query that operates as 'SELECT id LIKE '9e5a%'.",
+        "Retrieve the flag from the decrypted image.",
+        "Analyze the web application/database setup's behavior.",
+        "Develop an SQL payload that determines the length of the intended data ('flag').",
+        "Leverage dual hexing technique to transform the flag.",
+        "Identify all instances of the 152-digit number.",
+        "Assemble the migrated instances of the 152-digit number.",
+        "Identify the final flag from the assembled digits."
+    ],
+    "JavaScript Conditionals": [
+        "Notice that the JavaScript code checks if the outcome equals 1337 to give the flag",
+        "Note that the code must contain only lowercase letters, parentheses, and periods",
+        "Improve the payload further by using different JavaScript functions to reduce the character count",
+        "Meet the condition in the JavaScript code by running a payload such that it equals 1337",
+        "The code gives flag upon meeting the condition"
+    ],
+    "Admin Access": [
+        "Attempt to add the attacker's email to the admin's shared note."
+    ]
+}

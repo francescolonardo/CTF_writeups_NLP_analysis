@@ -1,0 +1,44 @@
+{
+    "Payload Visualization & Execution": [
+        "Ensure the payload visualizes and reads contents of 'flag.php'.",
+        "Generated a payload for executing a command.",
+        "Make the JavaScript payload fetch localStorage.getItem('flag') and send it to the attacker's URL.",
+        "Intercept the HTTP request",
+        "Perform the SQL injection using the constructed input string.",
+        "Utilize 'first' to get the first item of a list.",
+        "Include the path '/index.php/config.php/%ff?source' in the payload",
+        "Identify the second Javascript file responsible for sending the XML envelope and reading the answer.",
+        "Print the flag."
+    ],
+    "Web Application Analysis": [
+        "Identify the '/queue' WebSocket endpoint.",
+        "Observe the presence of a CSRF token.",
+        "Identify the usage of Python 3's f-Strings functionality in the 'login' method.",
+        "Discovered that the flag is returned by the backend server only if the 'secret' cookie is present.",
+        "Through the request captured",
+        "Realize that this JS file calculates some sort of document's hash.",
+        "Observed the status report of the combat robot and a command prompt.",
+        "Discover the .phtml extension.",
+        "Note that 'scandir' and 'file_get_contents' are not disabled",
+        "Observe the extracted password is very long and alphanumeric",
+        "Inspect the response from index.jsp.",
+        "Added the id=like to the injected 'a' tag.",
+        "Note that the message 'Not authenticated' is displayed",
+        "Obtain the flag from within the target server."
+    ],
+    "Code Analysis & Exploitation": [
+        "Create an infinite loop.",
+        "Change the value of the 'messi' key to 'psg'.",
+        "Open the 'build.sh' script referenced in the GitHub Actions file",
+        "Manipulate `utils.FONTS[10]` using the off-by-one error",
+        "Create a URL with the successful payload.",
+        "Use the '.lower()' method on the variable to convert the string to lowercase."
+    ],
+    "Web Navigation & Interaction": [
+        "Accessed the provided web page http://wp6p6avs8yncf6wuvdwnpq8lfdhyjjds.ctf.sg:14719",
+        "Submit the URL."
+    ],
+    "File Manipulation": [
+        "Download the '.env' file."
+    ]
+}

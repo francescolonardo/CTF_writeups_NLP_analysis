@@ -1,0 +1,89 @@
+1. Web Interaction and Navigation
+Description: This category encompasses activities related to browsing, interacting with, and examining the structure and behavior of web applications and pages.
+Subcategories:
+    - Web Navigation and Functionality: Involves general browsing, page navigation, and the understanding of web application's primary functions.
+    - Page Source and Web Element Analysis: Examines the underlying code or elements of a web page.
+    - Webpage Tracking and Performance Testing: Focuses on understanding user behavior or how efficiently a page operates.
+    - Web Request and Endpoint Interaction: Entails direct interactions with web servers.
+    - URL and Web Browser Manipulation: Involves manipulating the URL or exploiting certain browser behaviors.
+
+2. Authentication, Session, and User Management
+Description: Encompasses actions related to user authentication mechanisms, session management, and user data handling within a web application.
+Subcategories:
+    - Authentication Bypass and Exploitation: Relates to circumventing standard authentication processes.
+    - JWT, Web Token, and Cookie Handling: Involves management and manipulation of web authentication tokens.
+    - Session and OTP Management: Pertains to handling user sessions and one-time-password mechanisms.
+    - Credential and Password Discovery: Focuses on identifying user credentials.
+    - User Registration and Authorization: Relates to creating new user profiles and defining user permissions.
+
+3. Data Analysis, Manipulation, and Storage Interactions
+Description: Covers actions where data is being processed, analyzed, stored, or manipulated, either on the client-side or server-side.
+Subcategories:
+    - Data Processing and Visualization: Relates to analyzing and presenting data.
+    - User Input and Parameter Analysis: Involves analyzing user-provided data for vulnerabilities or insights.
+    - Data Leakage, Extraction, and Encoding: Pertains to obtaining unintended data from the system.
+    - Database Manipulation, Exploration and Injections: Involves interactions with databases to gather, alter, or exploit information.
+    - File System Access, Upload, and Retrieval: Relates to managing and analyzing files within the system.
+
+4. Code, Application, and Script Analysis
+Description: Focuses on examining, debugging, and understanding the underlying code and scripts of a web application, along with how the application behaves.
+Subcategories:
+    - Code Inspection, Debugging and Manipulation: Relates to deep-diving into the codebase for insights and vulnerabilities.
+    - Application, System and Server Analysis: Involves understanding the broader environment where the application resides.
+    - Script Analysis and Payload Modification: Focuses on understanding and altering scripts, especially for malicious purposes.
+    - Dynamic Rendering and Web Development: Relates to analyzing how web pages are dynamically built and presented.
+    - Function, Method and Web Content Analysis: Focuses on diving into specific pieces of code or web content.
+
+5. Exploitation Techniques and Payload Handling
+Description: Encompasses methods attackers use to exploit vulnerabilities, including the development and deployment of payloads.
+Subcategories:
+    - Injection Attacks (SQL, XSS, etc.): Relates to inserting malicious data into systems.
+    - Vulnerability Identification and Exploitation: Focuses on finding and leveraging system weaknesses.
+    - Web Security Techniques and Attack Mechanics: Relates to general methods and tactics for compromising web security.
+    - HTTP Request Smuggling and Redirect Exploitation: Involves manipulating web requests for malicious purposes.
+    - Exploit and Payload Development: Relates to creating tools or scripts to exploit vulnerabilities.
+
+6. Network and System Analysis
+Description: Pertains to activities related to understanding and manipulating network communications and interactions with servers and systems.
+Subcategories:
+    - Networking and Communication Protocols: Involves understanding how different network protocols function and are structured.
+    - Proxy and Microservice Communication: Relates to manipulating or understanding the communications between different services.
+    - IP, DNS and Protocol Analysis: Involves understanding and potentially exploiting networking systems and structures.
+    - Network and Server Configurations and Interactions: Relates to how systems are set up and communicate with each other.
+
+7. Debugging, Monitoring, and Troubleshooting
+Description: Covers actions taken to understand abnormal behaviors, monitor activities, and fix issues within a web application.
+Subcategories:
+    - Troubleshooting and Debugging Techniques: Involves methods and processes to identify and resolve issues.
+    - Error, Response, and Server Message Analysis: Relates to understanding and exploiting the messages and errors systems provide.
+    - Logging and Behavior Observation: Involves monitoring and understanding the recorded activities of systems and users.
+
+8. Cryptography, Encoding, and Decoding Techniques
+Description: Focuses on activities related to encryption, hashing, and the encoding or decoding of data for various purposes.
+Subcategories:
+    - Base64, JWT, CAPTCHA and Encryption Techniques: Involves methods and tools used to encrypt, decrypt, or otherwise obscure data.
+    - Cryptographic Analysis and Exploits: Relates to finding vulnerabilities or insights within cryptographic implementations.
+    - Hashing, Decoding and Encoding Techniques: Focuses on methods to change how data is represented.
+
+9. Tools, Scripting, and System Interactions
+Description: Encompasses the use of external tools, scripts, and interactions with underlying operating systems to assist in the attack process.
+Subcategories:
+    - Custom Tools and Script Hosting: Involves using specialized software or scripts in the attack process.
+    - Scripting Techniques, Automation and Shell Execution: Relates to automating processes or directly interfacing with system shells.
+    - Operating System and Terminal Commands: Involves commands or actions taken within the system's primary interface.
+    - Regular Expression and String Manipulation: Focuses on understanding and manipulating text or data streams.
+
+10. Information Gathering and Security Analysis
+Description: Involves researching, collecting data, and analyzing security aspects of a web application or the environment it resides in.
+Subcategories:
+    - Vulnerability Research: Involves understanding known vulnerabilities and how they might be relevant.
+    - Reconnaissance and Server Discovery: Relates to the initial exploration and identification of systems or targets.
+    - Web Security Concepts and Techniques: Focuses on broader security principles and their applications.
+
+11. Documentation, Strategy, and Miscellaneous Techniques
+Description: Covers general strategies, reviewing related documents, and a variety of other techniques that don't neatly fit into the other categories.
+Subcategories:
+    - Challenge Understanding and Gameplay Strategy: Relates to understanding the broader context of a challenge or attack scenario.
+    - Documentation and Clues Review: Involves reviewing any provided information for insights.
+    - Git Operations, Browser Behavior, and Mobile App Exploits: Diverse set of tactics, from leveraging version control insights to exploiting mobile apps.
+    - Time-Based Analysis and Specific Techniques: Involves exploiting or analyzing systems based on timing or other specific techniques.

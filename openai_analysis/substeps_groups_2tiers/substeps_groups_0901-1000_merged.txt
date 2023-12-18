@@ -1,0 +1,96 @@
+1. Code Analysis: 
+    - Source Code Review
+    - Function & Method Analysis
+    - Code Analysis & Manipulation
+    - Prototype & Constructor Manipulation
+    - Commit Analysis
+    - Dynamic Rendering
+    
+2. Web Application Analysis:
+    - Web Application Security
+    - Web Content Analysis
+    - Web Development & JavaScript
+    - Web Navigation
+    - Web Request
+    - Web Actions
+    - Page Manipulation
+    - Web Security & Exploitation
+    
+3. Security Assessment:
+    - Security Vulnerability Exploitation 
+    - Vulnerability Assessment
+    - Security Vulnerability Identification
+    - Vulnerability Analysis
+    - Exploitation Techniques
+    - Access Control
+    - Endpoint Sensitivity
+     
+4. Network & Server Analysis:
+    - System & Server Information
+    - Network & Request Handling
+    - Network Analysis
+    - Network Actions
+    - Network Operations
+    - Server Interaction & Script Execution
+    - Server Communication
+  
+5. Payload & Injection Handling: 
+    - Payload Injection
+    - Payload and Injection
+    - XSS Payload Injection
+    - Payload Crafting & Submission
+    - Payload Optimization
+    - JWT Payload Generation
+
+6. Response & Request Management:
+    - Response Extraction & Verification
+    - HTTP Analysis
+    - Request Manipulation & Intercepting
+    - Response Parsing
+    - Networking and Requests
+
+7. Data & File Analysis: 
+    - File & System Analysis
+    - File Manipulation & Generation
+    - Data Processing & Analysis
+    - File & Directory Analysis
+    - Data Visualization & Analysis
+
+8. Manipulation & Exploitation Techniques:  
+    - Text Decoding & Manipulation
+    - DOM Manipulation 
+    - URL & Parameter Manipulation
+    - Redirection & Payloads
+    - Bypassing Filters
+    - Endpoint Parameter Identification
+    - String Identification & Analysis
+    - SQL Query Analysis
+    - Logical Operator Analysis
+
+9. System & Application Interactions:
+    - User Registration
+    - Balance Validation
+    - Environment Discovery
+    - Command Line Operations
+    - Function Execution
+
+10. Cryptographic Handling:
+    - Encryption & Encoding
+    - Cryptography & Key Handling
+
+11. Session & Authentication Handling:
+    - Basic Authentication
+    - Cookie Handling
+    - Password Discovery
+    - Password Verification
+    - CAPTCHA & JWT
+    - Token & Signature Analysis
+
+12. Miscellaneous Processes & Techniques:
+    - Image Analysis & Security Questions
+    - CSS Attribute Selector Exploitation
+    - Debugging & Troubleshooting
+    - PDF Manipulation
+    - Text Analysis
+    - Signature Extraction & Analysis
+    - Prototype Injection & Exploitation. 

@@ -1,0 +1,51 @@
+{
+    "Command Execution": [
+        "Executed 'ls -al' command."
+    ],
+    "Web Development & JavaScript": [
+        "Access the browser's developer tools.",
+        "Create a final script to send the command for flag extraction to the server.",
+        "Identify that the init() function changes the displayed note's innerHTML to the /get response on load.",
+        "Find a way around the lack of access to the constructor property.",
+        "Create a Python script to convert the hexadecimal values in the line to strings."
+    ],
+    "Flag Retrieval": [
+        "Retrieve the flag from the server.",
+        "Obtain the flag through the execution of solve.py",
+        "Access the website 'http://filereader.darkarmy.xyz/'",
+        "Attempt to use the /api/admin endpoint using the obtained JWT."
+    ],
+    "Security Analysis & Exploitation": [
+        "Formulate the payload in the format 'csictf.gif' -vf drawtext=\\\"text=$(grep ffLaG main.py)\\\"'.gif'.",
+        "Check the response for the text 'No such person'.",
+        "Identify the caching mechanism for user JWT keys.",
+        "Noticed that the SHA256 hash is calculated using the concatenation of 'password' and 'salt'",
+        "Determine the potential for privilege escalation",
+        "Noticed that `$var8` is set immediately after `call $dlmalloc`.",
+        "Recognize ATS interpreting \\\"chunked\\\" as chunked.",
+        "Identified that the application didn't trust 'X-Forwarded-*' headers.",
+        "Decipher that the JavaScript in the source code was obfuscated",
+        "Found new endpoint for POST requests",
+        "Recognize image upload functionality",
+        "Escalate privileges",
+        "Crafted a record by setting a password with a ':' character.",
+        "Set the effective user and group IDs to that of the SUID and SGID permissions.",
+        "Determine the 'value' attribute is at the end of the Java serialized object",
+        "Referenced 'solv.py' file."
+    ],
+    "User Interaction & Account Manipulation": [
+        "Assign different nonce to each script tag",
+        "Create two user accounts",
+        "Tuned the starting point of the redirection",
+        "Visit the CTF challenge site.",
+        "Finalized the solution.",
+        "Send a POST request.",
+        "Study the given codes on the page which are written in PHP."
+    ],
+    "Source Code Inspection": [
+        "Download the source code attached to the CTF challenge."
+    ],
+    "Data Analysis & Manipulation": [
+        "Create a payload"
+    ]
+}

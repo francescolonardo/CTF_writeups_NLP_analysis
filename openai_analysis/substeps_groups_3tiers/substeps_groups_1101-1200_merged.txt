@@ -1,0 +1,88 @@
+Tier 1: Web Attack Techniques
+- Tier 2: Code Manipulation
+    - Tier 3: Regex Manipulation
+    - Tier 3: Code Injection & Payload Crafting
+    - Tier 3: Server-Side Template Injection (SSTI)
+    - Tier 3: Server-side Code Injection
+    - Tier 3: Template Injection
+    - Tier 3: Method & Invocation Utilization
+- Tier 2: Web Navigation Manipulation
+    - Tier 3: Web Page Analysis
+    - Tier 3: Bypass Check
+    - Tier 3: Arbitrary URL Input
+    - Tier 3: Website Navigation
+    - Tier 3: Web Interaction & Exploitation
+    - Tier 3: URL Navigation & Interaction
+    - Tier 3: Input Manipulation & Bypassing Checks
+- Tier 2: Script Handling
+    - Tier 3: Window Control & Script Execution
+    - Tier 3: Script Inspection
+    - Tier 3: Script Execution & Flag Retrieval
+    - Tier 3: Python Script Execution
+    - Tier 3: Python Script Analysis & Modification
+    - Tier 3: Script Development
+- Tier 2: Network and Configuration Analysis
+    - Tier 3: DNS Server Setup
+    - Tier 3: Network Traffic Analysis
+    - Tier 3: DNS Configuration & Resolution
+    - Tier 3: Network Communication & Tools
+
+Tier 1: Web Security Analysis
+- Tier 2: Network & File Analysis
+    - Tier 3: Web Browser & Network Manipulation
+    - Tier 3: File Analysis
+    - Tier 3: Network & Configuration
+    - Tier 3: URL Analysis
+    - Tier 3: Network Communication
+    - Tier 3: Server Requests & Manipulation
+    - Tier 3: File Analysis & Exploitation
+    - Tier 3: Webpage Manipulation
+- Tier 2: Vulnerability Analysis
+    - Tier 3: Payload Testing
+    - Tier 3: Web Server Configuration & Vulnerabilities
+    - Tier 3: Remote Code Execution Testing
+    - Tier 3: Vulnerability Identification & Testing
+    - Tier 3: Web Functionality Analysis
+    - Tier 3: PHP Exploitation
+- Tier 2: Data & Information Analysis
+    - Tier 3: Serialization & Deserialization Analysis
+    - Tier 3: Information Search
+    - Tier 3: Data Extraction
+    - Tier 3: Data Analysis & Manipulation
+    - Tier 3: Data Manipulation & Analysis
+
+Tier 1: Web Security Management
+- Tier 2: Sessions & Authentication
+    - Tier 3: CAPTCHA Handling
+    - Tier 3: Cookie Validation
+    - Tier 3: Recovery and Security Questions
+    - Tier 3: Mitigation Strategies
+    - Tier 3: Session Manipulation
+    - Tier 3: Authentication & Session Management
+    - Tier 3: Geolocation & Mapping
+    - Tier 3: Token Manipulation
+- Tier 2: Web Technology & Tools
+    - Tier 3: Web Security Concepts
+    - Tier 3: Lambda Functions
+    - Tier 3: XML Parsing & Exploitation
+    - Tier 3: SSH & File Management
+    - Tier 3: Web Application Technologies
+- Tier 2: Web Security Testing
+    - Tier 3: Security Testing Techniques
+    - Tier 3: Hashing
+    - Tier 3: Hashed Values and Passcodes
+    - Tier 3: Cryptography
+    - Tier 3: XOR Operations
+    - Tier 3: Web Technologies & Protocols
+    - Tier 3: Web Scanning & Reconnaissance
+    - Tier 3: Attack Origin Investigation 
+
+Tier 1: Other Actions
+- Tier 2: Web Browser Actions
+    - Tier 3: Web Server Requests
+    - Tier 3: File Interactions
+    - Tier 3: Misc Actions
+- Tier 2: Communication and Miscellaneous Techniques
+    - Tier 3: Communication and Collaboration
+    - Tier 3: Alternative Solution
+    - Tier 3: Application Start

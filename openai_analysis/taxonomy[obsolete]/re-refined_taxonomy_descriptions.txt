@@ -1,0 +1,58 @@
+Web Interaction: Direct interaction with web resources.
+	- Webpage Exploration: Navigating through websites, directory traversal, and content discovery.
+	- Application Interaction: Engaging with web applications, forms, and user elements.
+	- HTTP Analysis: Observing and modifying HTTP requests, headers, and payloads.
+
+Network Operations: Tasks focused on networking aspects.
+	- Tool Usage: Using specific tools designed for network tasks.
+	- Communication & Protocol Analysis: Understanding and manipulating network protocols.
+	- Traffic Monitoring: Observing and analyzing network traffic.
+	- Infrastructure Exploration: Discovering devices, services, or vulnerabilities.
+	- Server Interaction: Direct actions on a server or system over the network.
+
+Database Interaction: Actions associated with databases.
+	- Query Execution: Running SQL or MongoDB queries.
+	- Structure Exploration: Understanding a database's organization or content.
+	- Data Leakage Identification: Finding unintentional data exposure.
+	- SQL Injection: Using SQL-based vulnerabilities.
+
+Code & Debugging: Analyzing and understanding code and its execution.
+	- Error Analysis: Identifying and exploiting application errors.
+	- Source Code Review: Evaluating application's code for vulnerabilities.
+	- Debugging & Execution Flow: Understanding how sections of code operate.
+	- Script & Language Identification: Recognizing script techniques or programming languages.
+	- Injection & Exploitation: Manipulating code behavior with malicious segments.
+	- JavaScript Analysis: Decoding or reviewing JavaScript, including prototype pollution.
+
+Security Exploitation: Activities targeted at security breaches.
+	- Payload Crafting: Creating malicious payloads or exploits.
+	- Vulnerability Identification: Recognizing weak points in systems or applications.
+	- System Commands: Executing commands leveraging vulnerabilities.
+	- Web Attack Techniques: Specialized methods for compromising web apps.
+
+Authentication & Access: Bypassing or analyzing access controls.
+	- Token Manipulation: Altering or analyzing tokens like JWT for authentication.
+	- Storage Analysis: Investigating stored data like LocalStorage or password patterns.
+	- Bypass Techniques: Methods to circumvent authentication or hijack sessions.
+	- Access Controls: Studying or exploiting mechanisms limiting access.
+
+Backend Interactions:
+	Description: Engaging with the application's backend processes.
+	- API Analysis: Engaging and understanding APIs or WebSockets.
+	- Automation & Scripting: Using programming techniques for automated tasks.
+
+File & Data Analysis: Investigating files and data structures.
+	- File Inspection: Examining file content or potential threats within.
+	- FileSystem Navigation: Understanding filesystem structures and permissions.
+	- Data Decoding: Interpreting data encodings or structures.
+
+Tool & System Setup: Configuring tools and systems.
+	- Tool Setup: Adjusting tools for tasks.
+	- Network Management: Handling domain names and IP configurations.
+	- System Adjustments: Changing system settings.
+
+Miscellaneous: Various actions not strictly fitting elsewhere.
+	- Strategic Planning: Deciding on an approach or method for exploitation.
+	- External Information Gathering: Researching from external sources.
+	- Multimedia Analysis: Engaging with multimedia or email content. 
+	- QR Analysis: Investigating QR codes for data or vulnerabilities.

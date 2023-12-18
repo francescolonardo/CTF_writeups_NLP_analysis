@@ -1,0 +1,15 @@
+[
+    "Authentication Exploitation",
+    "Web Navigation & Interaction",
+    "System Exploration & Manipulation",
+    "File Handling & Retrieval",
+    "Password & Username Exploitation",
+    "Hashing & Encryption Analysis",
+    "Server Interactions & Debugging",
+    "Web API & Network Exploitation",
+    "HTTP Header Manipulation",
+    "Command Execution",
+    "Shell Manipulation",
+    "Database Interactions & SQL Payloads",
+    "Data Analysis & CSV Exploitation"
+]

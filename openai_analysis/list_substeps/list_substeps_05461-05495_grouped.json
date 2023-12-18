@@ -1,0 +1,55 @@
+{
+    "Server Interactions": [
+        "Infer the presence of additional log files.",
+        "Navigate to the /flag URL.",
+        "Server returned all allowed methods.",
+        "Print response from the server using command r.text.",
+        "Remove the intermediate 'hacked.pdf' file.",
+        "Get the flag",
+        "Identify another part of the Nginx configuration that preserves request headers when requests are forwarded to Gunicorn",
+        "Notice that the URL changes when querying any other galleries.",
+        "Observe the code structure.",
+        "Enumerate the characters that are converted to underscores.",
+        "Identify use of the 'tar' command when downloading files.",
+        "Injected '\\debug\\answer' as the host in a curl request.",
+        "Take note of the directory contents returned by the server.",
+        "Identified that urllib.parse.urljoin can return the appended path as the base URL when handling malformed paths.",
+        "Understand the purpose of the attack is to display an image only when the bot accesses the site.",
+        "Understand it as a potential workaround for the blacklist.",
+        "Replaced the current 'dirstate' file with the newly downloaded one.",
+        "Terminate 'cat' command with '|'.",
+        "Realized the Content-Type was 'text/xsl'.",
+        "Decode `aW1nMS5qcGc=` to identify it as `img1.jpg`.",
+        "Understood that the function decodes a user's cookie",
+        "Realized this would truncate any shellcode at null bytes."
+    ],
+    "Web Navigation": [
+        "Visited the website."
+    ],
+    "Code Analysis": [
+        "Found that the preview feature is an iframe",
+        "Observe a list of four different image galleries.",
+        "Observe the code structure."
+    ],
+    "Form Interaction": [
+        "Noticed 'email' and 'pass' fields.",
+        "Access the GET request arguments through `request.args`",
+        "Understand the need to create a controlled filename."
+    ],
+    "DOM Manipulation": [
+        "Modify the script to append the created 'img' element to the document body."
+    ],
+    "File Manipulation": [
+        "Understand the need to create a controlled filename.",
+        "Remove the intermediate 'hacked.pdf' file.",
+        "Identify use of the 'tar' command when downloading files.",
+        "Replaced the current 'dirstate' file with the newly downloaded one."
+    ],
+    "Response Processing": [
+        "Print response from the server using command r.text.",
+        "Terminate 'cat' command with '|'.",
+        "Realized the Content-Type was 'text/xsl'.",
+        "Decode `aW1nMS5qcGc=` to identify it as `img1.jpg`.",
+        "Understand that the function decodes a user's cookie"
+    ]
+}

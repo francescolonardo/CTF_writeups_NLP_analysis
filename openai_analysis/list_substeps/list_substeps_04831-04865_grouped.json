@@ -1,0 +1,53 @@
+{
+    "Password Discovery": [
+        "Discovered the password 'w0rdc0unt123'."
+    ],
+    "Code Analysis": [
+        "Identify 'process.argv[2]' as undefined.",
+        "Analyze the structure of the store object.",
+        "Identified the message event handler added to the window.",
+        "Find information on Angular's secondary segments in paths.",
+        "Discover connection between successful HTTP request smuggling attack and second request with admin headers.",
+        "Identify potential vulnerabilities and points of entry in the website.",
+        "Attempted to bypass `is_valid_email(email)` function.",
+        "Realize the vulnerability allows command execution via shell.",
+        "Identified the HTML injection vector via 'profile.html' template.",
+        "Exploited MFA token check bypass."
+    ],
+    "Web Application Testing": [
+        "Place the newly crafted cookie back into the application using Burpsuite.",
+        "Split the data because it exceeded the length limit for the URL.",
+        "Attempted to induce an SQL injection by inputting the URL 'https://poems.asisctf.com/books.php?type=excerpt&id=0%27%20or%20id=%271'.",
+        "Read the information about logging in via POST and using json request",
+        "Understand the possibility of accessing the session file through the LFI vulnerability.",
+        "Implement the necessary steps to exploit the vulnerability",
+        "Submit the script in the URL",
+        "Use the crafted query to access the admin console via internal request.",
+        "Modify the exploit script to target the provided site and the located /flag.txt",
+        "Indicate that the exploitation of an XXE vulnerability was successful.",
+        "Planned to execute 'curl http://localhost:3000/get_flag' to obtain output through the webpage.",
+        "Analyzed the results from the SQLmap.",
+        "Check the server logs."
+    ],
+    "File/System Manipulation": [
+        "Found the bundle.js file",
+        "Choose a .php file for upload."
+    ],
+    "Command Execution": [
+        "Execute the command 'curl -H \"Accept-Language: sv-SE\" very.uniquename.xyz:8880'",
+        "Realized that http://flagportal.chall.seetf.sg:10001/api//flag-plz would be mapped to http://backend/flag-plz.",
+        "Execute the script to obtain the CTF flag."
+    ],
+    "Flag Verification": [
+        "Verified the flag value: HarekazeCTF{j4v4scr1pt-0bfusc4t0r_1s_tsur41}",
+        "Obtain the final flag: 'flag{y4m_y4m_c00k13s}'."
+    ],
+    "Web Navigation": [
+        "Open a pop-up to the target URL",
+        "Click the submit button",
+        "Go to 'Inspect' -> 'Storage' -> 'Cookies'."
+    ],
+    "Information Gathering": [
+        "Identify the URL 'http://challs.houseplant.riceteacatpanda.wtf:30003/admin' from the 'robots.txt' file"
+    ]
+}

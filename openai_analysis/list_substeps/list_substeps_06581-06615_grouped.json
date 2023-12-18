@@ -1,0 +1,53 @@
+{
+    "Git Manipulation": [
+        "Discover the missing git objects.",
+        "Fetch the missing git objects from the server."
+    ],
+    "Message Creation & Sharing": [
+        "Understand that it allows the creation and sharing of messages"
+    ],
+    "Command Execution on Website": [
+        "Determine the need to use '/home/stypr/readflag' on 'website'.",
+        "Send POST request to upload the '--checkpoint-action=exec=sh shell.txt' file."
+    ],
+    "PHP Configuration & Disabled Functions": [
+        "Notice that the PHP configuration has several functions disabled"
+    ],
+    "Hashed Values and Passcodes": [
+        "Discover that 'passcode' values are the first 8 characters of the hashed 'nonce' value."
+    ],
+    "Web Navigation & Interaction": [
+        "Take the screenshot of the flag.",
+        "Make the second GET request: 'GET https://yeunote.ctf.yeuchimse.com/note/twitter?oauth_token=<oauth token>&oauth_verifier=<oauth verifier>'.",
+        "Understand the relationship between the endpoints and the user's ID cookie in the Notes map.",
+        "Click on the link to enter the chat.",
+        "Receive 400 error response for the first GET request.",
+        "If identified, manipulated the XPath query to bypass authentication mechanisms of the application.",
+        "Entered the parameter '?source=1' in the HTTP request.",
+        "Recognise potential exploit",
+        "Trigger the browser to fetch the attacker-controlled site's root path, '/' with the cookie value appended.",
+        "Attempt reading a file from the server using the crafted payload.",
+        "Looked for potential Apache Tomcat vulnerabilities.",
+        "Investigate the GitHub Actions workflow runs",
+        "Realized the existence of a HTTP request smuggling vulnerability.",
+        "Deduce that style scoped only works in Firefox versions 21-54.",
+        "Access the provided URL.",
+        "Caused Apache2 to crash due to ':' in directory name.",
+        "Send first GET request with 65534 empty spaces."
+    ],
+    "SQL Injection": [
+        "Executed SQL statement: SELECT username, password FROM users WHERE username='adm' || trim('in',' AND password=') || ''",
+        "Execute a SQL query via URL manipulation",
+        "Identified a heavily filtered error-based blind sql injection.",
+        "Prepared an SQL injection using 'UNION' clause to search for 'flagman69' user.",
+        "Bypassed regex filters.",
+        "Run SQLMap command 'sqlmap http://127.0.0.1/test.php?search=abc -p search --tamper=space2comment --technique=B --risk 3 --dump --threads 10 -D db -T internal_api_infos' to inject and dump database data."
+    ],
+    "Web Exploitation Techniques": [
+        "Use the /find endpoint to inject a Set-Cookie header.",
+        "Observe that JavaScript inside the uploaded HTML does execute.",
+        "The 'access_log' class is defined in /authentication.php",
+        "Implement research knowledge.",
+        "The payload utilized was designed to fetch cookies."
+    ]
+}

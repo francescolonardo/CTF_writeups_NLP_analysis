@@ -1,0 +1,60 @@
+{
+    "Identification and Analysis": [
+        "Identified SSRF vulnerability",
+        "Discover that the tripcode is generated from a snippet of futaba-ng code",
+        "Identify the components of the encrypted string: remote IP address, a seed (IDSEED), and current date",
+        "Identify `/getflag` endpoint",
+        "Identify `/cookies` endpoint",
+        "Discovered that the goal was to read the 'app.secret_key' value",
+        "Identify potential vulnerabilities and points of entry in the website.",
+        "Note what actions trigger the key's update.",
+        "Identify needed parameters: username, nonce, and cnonce.",
+        "Understand that this shuffle is based on seeded random values tied to the 'User-Agent'.",
+        "Identify unrelated packets such as 'pings'.",
+        "Analyzed server-side JavaScript handling requests to '/api/true-answer'.",
+        "Identify that the program attempts to validate IP addresses.",
+        "Identify that the program checks if IP matches certain values to confirm it's a valid non-private IP.",
+        "Identify the goal: Bypass a WAF (Web Application Firewall).",
+        "Find the exploit related to the identified CVE",
+        "Gain insights from the related pull request.",
+        "Identified a payload that could potentially exploit the vulnerability in 'md-to-pdf'.",
+        "Discovered a hint.",
+        "Confirm that the login page does not contain any JavaScript code.",
+        "Investigate the site.",
+        "Read and understand the requirement for three keys."
+    ],
+    "Interactions and Requests": [
+        "Deserialize the object of the Image type using PHP.",
+        "Identify the list of banned words and special characters that the injection string must not contain.",
+        "Compare the generated tripcode with the target",
+        "Target only admin endpoint.",
+        "Tried submitting possible answers.",
+        "Steal the identifier from the pop-up",
+        "Led to the Flask.app object",
+        "Predict the next 'nonces'",
+        "Compare all characters in a possible range.",
+        "Provide 'Link to profile' and 'Message' in the selected message type",
+        "Perform a dirbuster scan",
+        "Access the provided URL for the decryption service.",
+        "Make the second GET request: 'GET https://yeunote.ctf.yeuchimse.com/note/twitter?oauth_token=<oauth token>&oauth_verifier=<oauth verifier>'.",
+        "Planned to redirect anything to '127.0.0.1/api/true-answer' to capture the flag.",
+        "Use the ipaddress library in Python to check the IP address.",
+        "Configure the personal DNS server to respond with a public IP during the IP check.",
+        "Configure the personal DNS server to resolve to the local IP during the GET request.",
+        "Set up the DNS server similar to DNS Rebinding.",
+        "Visit the webpage.",
+        "Log the \"CONFIG\".",
+        "Investigate the response to the input."
+    ],
+    "Realizations and Observations": [
+        "Return to the problem.",
+        "Observed the expected output - 'Content-type: text/html' cgi header.",
+        "Realized the flag was in the comment within the response.",
+        "Realized the IP address couldn't be overridden as a result."
+    ],
+    "Techniques and Approaches": [
+        "Utilize the 'subdomain enumeration' technique when guessing proves unsuccessful.",
+        "Configure a grep match for 'flag{' to locate the start of the flag.",
+        "Observe the output."
+    ]
+}

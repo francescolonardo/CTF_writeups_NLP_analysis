@@ -1,0 +1,60 @@
+{
+    "SQL Injection": [
+        "Execute the query '123' UNION SELECT 1, sqlite_version(), 3;--'.",
+        "Utilized SQLMap.",
+        "Identified the vulnerable order_by() function",
+        "Execute the SQL injection payload created in the previous step."
+    ],
+    "Application Examination": [
+        "Examined the application.",
+        "Discovered Angular uses a Host header - 'PROTOCOL + HOST + / PATH' while performing HTTP requests.",
+        "Observe that the service doesn't allow for file:// protocol.",
+        "Found an issue on Google's issue tracker regarding YouTube's 'oembed' API not implementing JSONP.",
+        "Identify the usage of the Python Pillow library.",
+        "Identify the usage of a simple Web server written in Python",
+        "Notice that Nginx considers the first request ended with the 'Transfer-Encoding' header.",
+        "Recognize that 'urllib.parse' was updated to strip newline characters."
+    ],
+    "Web Navigation": [
+        "Visit the robots.txt page for the site.",
+        "Go to jwt.io",
+        "Accessed the `/robots.txt` file.",
+        "Attempted to access /server-status"
+    ],
+    "Code Analysis": [
+        "Analyze the code snippet",
+        "Identify the second part of the flag within a comment"
+    ],
+    "Base64 Encoding": [
+        "Resulted in a base64-encoded result."
+    ],
+    "Access Control": [
+        "Notice that one gallery is set to private.",
+        "Enter the combined password into the portal",
+        "Admin visits the page"
+    ],
+    "IP Whitelisting": [
+        "Identify the whitelist of allowed IP ranges: 10.0.0.0/24, 10.0.42.0/24, and 10.0.43/24."
+    ],
+    "XSS Vulnerability": [
+        "Try XSS payloads on different input fields.",
+        "Confirm the existence of XSS vulnerability at a specific URL."
+    ],
+    "Flag Retrieval": [
+        "Identify the target 'config.php' file.",
+        "Retrieve the flag.",
+        "Discovered in the SQLmap results that the 'ASISCTF' database has one table termed 'books'.",
+        "The response text contains the new 2FA token."
+    ],
+    "Interaction with Hosted Files/Web Pages": [
+        "Host the 'outer.html' file"
+    ],
+    "Miscellaneous Actions": [
+        "Checked if the 'recv' query parameter was a subdomain of 'jsapi.tech'.",
+        "Attempted to pass an object in place of password",
+        "Successfully log in to the system."
+    ],
+    "Database Interactions": [
+        "Used GROUP_CONCAT function to concatenate all retrieved table names into a single string."
+    ]
+}

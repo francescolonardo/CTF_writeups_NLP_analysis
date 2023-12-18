@@ -1,0 +1,51 @@
+{
+    "Page Manipulation": [
+        "Observe the flag after refreshing the page",
+        "Saw that search results affect which image loads.",
+        "Inspect the webpage",
+        "Inspect the webpage"
+    ],
+    "File Operations": [
+        "Removed 'foo.txt' from the 'ctf-bzr' directory.",
+        "Find the source code of the web app in the www.zip file."
+    ],
+    "Crypto Operations": [
+        "Identified the need for a 'GET' request with two parameters having the same md5 hash.",
+        "Combine it with the input of three commas to meet the requirement.",
+        "Realize that the `file://` protocol was not banned, allowing the encryption.",
+        "Use an Integrated Development Environment (IDE) for examination.",
+        "Realize that removing a portion of the 'counter' cookie triggers a zlib Input Error"
+    ],
+    "Code Analysis": [
+        "Found the `clipboard_getData` function in `main.dart.js`.",
+        "Check the output after executing the command.",
+        "Look at the unit tests for the SAFE_FOR_JQUERY flag on DOMPurify's GitHub.",
+        "Discover that the tripcode is generated from a snippet of futaba-ng code",
+        "Attempted to decode the data contents.",
+        "Understand that the verify.pug template has an unescaped username.",
+        "Encode the payload using Python on the server.",
+        "Understand that the 'demo()' function is called on the 'demo' GET request parameter."
+    ],
+    "Authentication & Authorization": [
+        "Copy the value of the content attribute: 'flag{1nspector_g3n3ral_at_w0rk}'",
+        "Successfully obtain the flag.",
+        "Fail the authentication.",
+        "Check the profile of each accessed account",
+        "Use the admin's cookie to retrieve the flag",
+        "Type a random base username and password for the login.",
+        "Specify the '/admin' path as the target."
+    ],
+    "Network Operations": [
+        "Send a request to obtain a list of all users.",
+        "Executed the 'dig' command on 'asdf.jsapi.tech'.",
+        "Receive an HTTP response containing the Flag"
+    ],
+    "XSS & DOM Manipulation": [
+        "Explore the copy profile link feature.",
+        "Add a JavaScript event handler for the XSS attack."
+    ],
+    "Miscellaneous": [
+        "Set the number of 'boops' in the token to 1501.",
+        "Name the cookie 'visited-main-page'."
+    ]
+}

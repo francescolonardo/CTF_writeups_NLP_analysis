@@ -1,0 +1,82 @@
+{
+    "Manipulating Cookies with JavaScript": [
+        "Generate URLs that set cookies with parts of manipulated JavaScript code."
+    ],
+    "Modifying Python Code Output": [
+        "Modify the output of the Python code.",
+        "Format the output of the Python code to look like a JavaScript script."
+    ],
+    "Client-side Execution of Malicious JavaScript": [
+        "The malicious JavaScript code is executed on the client's side.",
+        "The malicious code fetches an exploitative script.",
+        "The exploitative script is run in the background."
+    ],
+    "Server Code Analysis and Investigation": [
+        "Verify the server code location from the provided Dockerfile as '/code/app.py'.",
+        "Review the server code.",
+        "Observe that 'Requests_On_Steroids' function in 'main.py' supports Gopher protocol.",
+        "Identify the 'GopherAdapter' code in 'modules/Gophers.py'.",
+        "Find that the Gopher adapter used was modified from a GitHub gist."
+    ],
+    "Exploiting Protocol and Input Vulnerabilities": [
+        "Realize the inability to send multi-line input using RESP protocol.",
+        "Recognize that 'urllib.parse' was updated to strip newline characters.",
+        "Send the command 'SET <userID>_isAdmin \"yes\"'."
+    ],
+    "Exploiting Local File Inclusion Vulnerability": [
+        "Recognize the presence of a Local File Inclusion vulnerability on '/post.php'.",
+        "Make a decision to achieve remote code execution.",
+        "Recognize that the set input reflects in the included PHP code."
+    ],
+    "Analyzing and Exploiting JavaScript Code": [
+        "Analyzed the initial JavaScript code.",
+        "Identified a line of code where user input is passed unfiltered."
+    ],
+    "Exploiting SQL Injection Vulnerability": [
+        "Injected a UNION query.",
+        "Ran a final UNION query."
+    ],
+    "Exploiting Directory Traversal Vulnerability": [
+        "Inserted a series of directory traversal characters (/%2e%2e/%2e%2e) in the request to access server root directories"
+    ],
+    "Analyzing PHP Source Code and File Extensions": [
+        "View the page source",
+        "Identify the 'role' attribute",
+        "Analyzed the provided PHP source code.",
+        "Identified vulnerabilities in the PHP source code.",
+        "Noted that most common PHP file extensions are blocked.",
+        "Observed that .htaccess extension is allowed.",
+        "Created a .htaccess file.",
+        "Modified .htaccess to interpret .php16 as PHP.",
+        "Uploaded the .htaccess file.",
+        "Created a .php16 file.",
+        "Used the remote code execution."
+    ],
+    "Identifying Server Side Request Forgery (SSRF) Issue": [
+        "Identify the challenge as a Server Side Request Forgery (SSRF) issue.",
+        "Determine the vulnerable parameter as 'galleryUrl'."
+    ],
+    "Exploiting Object Property Equivalence in JavaScript": [
+        "Analyze the source codes provided.",
+        "Write an exploit script that creates an object with properties : 'username', 'password', '_correctValue' and 'mfa'. 'username' and 'password' are provided. '_correctValue' is set to NULL and 'mfa' is assigned the address of '_correctValue'. This ensures that 'mfa' and '_correctValue' are always identical."
+    ],
+    "Exploiting Curl Inputs and Werkzeug": [
+        "Discover that the app uses curl for certain inputs.",
+        "Spaces aren't allowed.",
+        "Understand that the API is powered by Werkzeug.",
+        "Find the secret key for the debugger.",
+        "Identify that the secret key is hardcoded in the JavaScript."
+    ],
+    "Exploiting PDF Template Divergence and Adjusting Offsets": [
+        "Diverge the template at a certain point to create two different PDFs.",
+        "Use the 'mutool clean' command to adjust the offsets in the PDF."
+    ],
+    "Analyzing and Exploiting Website Backend": [
+        "Investigate the source code provided.",
+        "Understand how the application works and what needs to be exploited.",
+        "Find the cookie name that matches the signature.",
+        "Run the script.",
+        "Estimated the SQL query structure in the website's backend, taking into consideration the potential manipulation of the 'moneys=' parameter.",
+        "Reveal source code for index.php"
+    ]
+}

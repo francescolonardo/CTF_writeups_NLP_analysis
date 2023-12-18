@@ -1,0 +1,30 @@
+1. Web Application Navigation
+   - Web Page Access and Navigation
+   - Application Functionality and Analysis
+   - File and Resource Discovery
+
+2. Code Analysis
+   - Code Analysis and Inspection
+   - Code Functionality and Logic Understanding
+   - Code Exploitation
+   - PHP Analysis
+
+3. Command Interaction
+   - Command Execution and Output Analysis
+   - Command Injection
+   - Command Line and System Manipulation
+   - Code Execution and Shellcode
+
+4. Data Manipulation and Analysis
+   - Data and File Manipulation
+   - File Inclusion and Path Traversal
+   - Log Analysis and Exploitation
+
+5. Security Analysis
+   - Flag and Payload Searching
+   - Configuration Analysis
+   - Cryptography and Encoding
+
+6. System-Level Analysis
+   - Scripting and Programming
+   - System-Level Analysis

@@ -1,0 +1,13 @@
+I'll provide you with some context.
+Assume I am tasked with creating a taxonomy to categorize a set of actions taken from web application CTF writeups.
+
+So I'll send you a list of sub-categories.
+Try to merge all the following sub-categories, reducing overlapping and avoiding redundancies.
+Provide me with a taxonomy, with two levels of depth, with the intention of using them later for labelling the actions taken by attackers in the CTF writeups of web applications.
+
+In this specific case, the goal is to merge th sub-categories of the "{category}" category, whose description is as follows:
+`{description}`
+
+I would like a response in the format of a numbered list of sub-categories based on the aforementioned category.
+Additionally, within each sub-category, I would like a bullet-pointed list that breaks them down into further sub-sub-categories.
+Return in response just that, ensuring no additional content or remarks are added.

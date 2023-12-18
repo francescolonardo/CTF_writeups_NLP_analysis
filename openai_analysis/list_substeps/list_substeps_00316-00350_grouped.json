@@ -1,0 +1,52 @@
+{
+    "Command & Server Interactions": [
+        "Target the URL file:///tmp/flag.txt.",
+        "Perform a directory busting scan using gobuster",
+        "Analyze the file named apache_ctf.conf.",
+        "Upload a PHP file to the server.",
+        "Send the specially constructed requests to the server."
+    ],
+    "Web Navigation & Interaction": [
+        "Find the onclick attribute",
+        "Find the redirection URL.",
+        "Emulate local host client access",
+        "Observe the page showing logos of Xbox and Linux",
+        "Create a fetch request",
+        "Located an input field on the provided webpage",
+        "Analyze the browser cookies."
+    ],
+    "Code Analysis & Exploitation": [
+        "Parsed the challenge PHP source code.",
+        "Leverage a Local File Inclusion (LFI) vulnerability for Server Side Request Forgery (SSRF).",
+        "Decode the ASCII representation to readable text using JavaScript console",
+        "Execute a SQL query via URL manipulation",
+        "Acknowledged this version is vulnerable to a recent path traversal zero-day.",
+        "Identify that the 'member' field within the token object is currently set to 0.",
+        "Identify that eval() function is vulnerable.",
+        "Determine which patterns will allow or block requests.",
+        "Interpreted a template string"
+    ],
+    "Authentication & Authorization": [
+        "Log into the admin account.",
+        "Sent the specially constructed requests to the server.",
+        "Encode the session.",
+        "Identify JWT 'secret' cookie as 'dawgCTF?heckin#bamboozle'",
+        "Aim to reset the admin's 2FA code through the POST request."
+    ],
+    "Data Manipulation & Exploitation": [
+        "Passed a SQL command into the X-FORWARDED-FOR header.",
+        "Enclosed payload in double quotes for PHP.",
+        "Plan to send requests containing SQL to the server."
+    ],
+    "File & Content Manipulation": [
+        "Identify a redirection URL.",
+        "Check if the combined size of uploaded files exceeds the size of 10 tar records."
+    ],
+    "Vulnerability Testing & Exploitation": [
+        "Tried all HTTP verbs for each endpoint.",
+        "Identify that the 'member' field within the token object is currently set to 0.",
+        "Ensure the payload bypasses the blacklist.",
+        "Test the theory.",
+        "Design the script to automate the trial and error process"
+    ]
+}

@@ -1,0 +1,57 @@
+{
+    "Source Code Analysis": [
+        "Examined the application's source code",
+        "Work out bugs in the Python code.",
+        "Find the comment indicating the source code location.",
+        "Analyze the weak encryption."
+    ],
+    "Command Execution": [
+        "Set 'x' corresponding to the index of 'subprocess.Popen'.",
+        "Note the possibility of command injection in the 'execSync' call.",
+        "Executed './findaas flag.txt' command.",
+        "Utilize the code snippet to list the directory content."
+    ],
+    "Web Application Security Testing": [
+        "Check the network tab.",
+        "Upload a DOCX file",
+        "Check if the uploaded zip file should contain a `run` bash script.",
+        "Assess the web application.",
+        "Scanned the 'flag_db' DynamoDB table"
+    ],
+    "Data Manipulation": [
+        "Use the 'fetch' function to send the response text to an external URL.",
+        "Encode the lowercase string into bytes.",
+        "Decode the flagged text.",
+        "Inject another cookie.",
+        "Utilize the code snippet to list the directory content.",
+        "Obtain the flag from the decoded string."
+    ],
+    "Authentication and Authorization": [
+        "Impersonate an admin.",
+        "Login into the system.",
+        "Used the SQL injection to enumerate the columns of the flag table."
+    ],
+    "Network Interaction": [
+        "Discover that the user can add notes.",
+        "Refresh the page",
+        "Visit the URL: https://redpwn.net/",
+        "Discover the PHP sessions are file-based.",
+        "Identify `/cookies` endpoint"
+    ],
+    "Flag Retrieval": [
+        "Retrieve and examine the contents of the 'flag.txt' file",
+        "Receive the output displaying the flag.",
+        "Retrieve the challenge flag."
+    ],
+    "Batching and CAPTCHA": [
+        "Perform batching in GraphQL to send multiple queries at once, with the anticipation that the server will process all queries together using the same CAPTCHA code."
+    ],
+    "Recovery and Security Questions": [
+        "Security questions are related to Alan Turing's account recovery"
+    ],
+    "Others": [
+        "Realized the previous solution may not have been intended.",
+        "Understand that the program is executed when 10 records are reached by default.",
+        "Create a paste"
+    ]
+}

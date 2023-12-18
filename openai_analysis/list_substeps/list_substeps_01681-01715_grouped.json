@@ -1,0 +1,103 @@
+{
+    "Regular Expressions": [
+        "Use regular expressions to find specific fields."
+    ],
+    "Configuration Analysis": [
+        "Analyse the downloaded nginx.conf file."
+    ],
+    "Request Manipulation": [
+        "Replace the email value in the intercepted Post Request with a controlled one."
+    ],
+    "JavaScript Analysis": [
+        "Identify JavaScript variable storing user details."
+    ],
+    "Error Handling": [
+        "Trigger an error."
+    ],
+    "Database Manipulation": [
+        "Attempt to concatenate large integers in SQLite."
+    ],
+    "URL and Redirect Analysis": [
+        "Understand that redirects to 'http://app/login.php' will not solve the challenge"
+    ],
+    "Token and Security Analysis": [
+        "Discover that the server generates a JWT token."
+    ],
+    "Network Communication Analysis": [
+        "Understood that the server uses Python's requests library to issue GET requests to the submitted URL."
+    ],
+    "API Endpoint Analysis": [
+        "Examine the /get endpoint."
+    ],
+    "Accessibility Testing": [
+        "Using Accessibility Tool"
+    ],
+    "Web Page Analysis": [
+        "Observe register and login pages."
+    ],
+    "Gopher Protocol Interaction": [
+        "Communicate with any TCP server using Gopher protocol."
+    ],
+    "Cookie Handling": [
+        "Ensure the completion of navigation and placement of the cookie by sleeping for 1 second."
+    ],
+    "URL Access": [
+        "Access the provided URL for the decryption service."
+    ],
+    "Password Verification Analysis": [
+        "Investigate verifyPassword() and observe the use of bcrypt password verification."
+    ],
+    "String Manipulation": [
+        "The iterated character is added to the 'flag'."
+    ],
+    "XSS Payload Injection": [
+        "Sent this XSS payload through the data endpoint",
+        "Include the XSS payload in the URL."
+    ],
+    "External Script Usage": [
+        "Use the script available at https://github.com/lijiejie/ds_store_exp."
+    ],
+    "URL Length Limit Testing": [
+        "Experiment with creating a URL that just hits the length limit"
+    ],
+    "Time-Based Analysis": [
+        "Checked if the search took more than 50ms."
+    ],
+    "Shell Command Execution": [
+        "Attempted to run shell commands."
+    ],
+    "PHP Shell Execution": [
+        "Note that the PHP shell can be executed by visiting the uploaded file"
+    ],
+    "HTTP Method Analysis": [
+        "Leverage the assumption that a POST request might be needed."
+    ],
+    "Account Credential Enumeration": [
+        "Discovered that using 'test' or 1-- - can obtain possible account credentials"
+    ],
+    "Note Manipulation": [
+        "Identify the POST request to /add for adding notes.",
+        "Deduce that the '$ne' filter checks if the body of the notes is not empty."
+    ],
+    "Email Variable Analysis": [
+        "'smtp_exec' variable is used in sending activation emails"
+    ],
+    "Hashing Requirement Analysis": [
+        "Identify the requirement of same MD5 hash for the two PDFs."
+    ],
+    "File Inclusion Vulnerability": [
+        "Recognize that XInclude directives allow the parsing of files."
+    ],
+    "Cookie Value Modification": [
+        "Set the new flag value as the cookie"
+    ],
+    "Cross-Site Scripting (XSS) Attack": [
+        "Understand that the challenge involves a Same-Origin XSS attack"
+    ],
+    "Git Repository Analysis": [
+        "Encounter additional missing git objects."
+    ],
+    "Script Execution": [
+        "Run the script."
+    ]
+}

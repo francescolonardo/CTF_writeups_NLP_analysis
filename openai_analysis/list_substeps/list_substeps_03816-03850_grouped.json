@@ -1,0 +1,65 @@
+{
+    "User Interaction": [
+        "Determine the correct answers to the security questions",
+        "Used localhost:55043/login.php as the target URL.",
+        "Successfully won the race",
+        "Extracted the page URL.",
+        "Collect the flag from the server's response.",
+        "Discover a text file named flag.txt.",
+        "Receive in response an 'image' encoded in base64.",
+        "Observe within the content of the page.",
+        "Accessed the website.",
+        "Observe the information revealed about the server environment.",
+        "Discover that the correct user id is required for admin access, not the password.",
+        "Notice a graphql endpoint.",
+        "Engaged in a race with other players",
+        "Repeat the previous substep 4 more times",
+        "Loop through a range of integers.",
+        "Attempted accessing 'http://IP:PORT/?command=ls'."
+    ],
+    "Code Analysis & Exploitation": [
+        "Identify that the snippet converts a base64 string to ASCII and stores it in local storage under the key 'flag'.",
+        "Mutable objects within namedtuple and tuple can still be modified.",
+        "Include a statement to match the initial UUID sequence.",
+        "Check the robots.txt on the site.",
+        "Identify that `aW1nMS5qcGc=` is a Base64 encoded string.",
+        "Obtained index.php source code from source code."
+    ],
+    "Command Execution": [
+        "Craft a request with the following parameters: `confidential_documents=kontammadur_klanvour.dev.local%3A5001%2Fconsole?__debugger__=yes&cmd=__import__('os').listdir('/')%3b&frm=0&s=IUrsy36AKlZ2zvT1vaPc`.",
+        "Run the modified exploit script",
+        "Engaged in a race with other players",
+        "Repeat the previous substep 4 more times",
+        "Loop through a range of integers.",
+        "Set X-Forwarded-For header",
+        "Attempted accessing 'http://IP:PORT/?command=ls'."
+    ],
+    "Vulnerability Discovery & Testing": [
+        "Confirmed the XXE vulnerability.",
+        "Attempted to connect to the homepage.",
+        "Input the URL 'https://poems.asisctf.com/books.php?type=excerpt&id=0%27%20union%20select%201%20%23' to further test for vulnerabilities.",
+        "Created an LFI payload with a form.",
+        "If the check is successful, it indicates that the payload was able to pass through SQL Injection.",
+        "Recognized vulnerability as a request smuggling vulnerability."
+    ],
+    "File/Content Manipulation": [
+        "Found database config info in config.py.",
+        "Observe within the content of the page.",
+        "The flag retrieval is possible due to the deserialization of the 'login' cookie"
+    ],
+    "Code Execution & Injection": [
+        "Identify that the snippet converts a base64 string to ASCII and stores it in local storage under the key 'flag'.",
+        "Attempted accessing 'http://IP:PORT/?command=ls'."
+    ],
+    "Web Scanning & Reconnaissance": [
+        "Discover a text file named flag.txt.",
+        "Check the robots.txt on the site.",
+        "Observe the information revealed about the server environment."
+    ],
+    "Miscellaneous": [
+        "Used localhost:55043/login.php as the target URL.",
+        "Engaged in a race with other players",
+        "Repeat the previous substep 4 more times",
+        "Loop through a range of integers."
+    ]
+}

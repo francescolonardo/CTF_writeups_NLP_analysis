@@ -1,0 +1,134 @@
+1. Information Gathering & Analysis
+   - Information Gathering & Reconnaissance
+   - Directory Enumeration
+   - Endpoint & Route Mapping
+   - IP Analysis
+   - Information Gathering & System Analysis
+   - Website Analysis
+   - Documentation & Research
+   - Database Exploration
+
+
+2. Web Navigation & Interaction
+   - User Input & Form Manipulation
+   - Web Page Interaction
+   - Web Page Navigation & Interactions
+   - Website Interaction & Exploration
+   - Laravel Panel Exploration
+   - Browser & Webpage Interaction
+   - Web Application Navigation
+
+
+3. Code Manipulation & Analysis
+   - Server-Side Code Manipulation
+   - JavaScript Bypass & Analysis
+   - DOM Manipulation & File Loading
+   - Code Analysis and Inspection
+   - JavaScript & Scope Analysis
+   - Code and Source Code Analysis
+
+
+4. Attack Techniques & Exploitation
+   - Exploit Database
+   - Exploitation & Attack Techniques
+   - Server-side Attacks
+   - Security Exploitation
+   - Remote Code Execution (RCE)
+   - Looping & Guessing
+
+
+5. Data & Communication Analysis
+   - Client Communication & Data Transmission
+   - Networking & Traffic Analysis
+   - Network Traffic & Manipulation
+   - Packet Analysis
+   - Network Communication & Protocols
+   - List Manipulation & Data Extraction
+   - PCAP Analysis
+
+
+6. User & Access Management
+   - User Authentication & Authorization 
+   - Account Manipulation
+   - Password Cracking
+   - User Permissions & Access Control
+   - User Identification
+   - Credentials Verification
+
+
+7. Input Validation & Manipulation
+   - API Manipulation
+   - Input Validation & Sanitization
+   - Input Parameter Manipulation
+   - JSON Payload Manipulation
+
+
+8. Web Security & Testing
+   - Web Security Testing
+   - Behaviour Observation & Vulnerability Identification
+   - CAPTCHA Understanding
+   - Vulnerability Recognition 
+   - Vulnerability Testing
+   - Vulnerability Discovery & Testing
+
+
+9. Specific Items Manipulation 
+   - Endpoint Identification
+   - URL Access
+   - File System & Server Interaction
+   - Terminal Usage
+   - File System Access & Manipulation
+   - JSON Web Tokens (JWT)
+   - AWS Lambda
+
+
+10. Exploitation Tool & Techniques
+   - Web Technology & Infrastructure
+   - Web Framework & Library Analysis
+   - Window Manipulation
+   - XSS & CSRF
+   - Remote Code Execution & File Inclusion
+   - SQL Injection & Database Analysis
+   - SQL Injection & String Manipulation
+   - Webshell Usage
+
+
+11. Data & Message Management
+   - Environmental Variable Pollution
+   - Backend Server & Flag Enumeration
+   - HTTP Requests & Response Manipulation
+   - Database Manipulation
+   - Message Validation Analysis
+   - Variable Verification
+   - Log Manipulation
+
+
+12. File Manipulation & Analysis
+   - File Manipulation & Exploitation
+   - File Manipulation & Content Modification
+   - File Manipulation & Recovery
+
+
+13. Service & Request Manipulation
+   - Service Analysis & Manipulation
+   - Server-Side Template Injection
+   - Event Listeners & Data Manipulation
+   - Request Manipulation & Exploitation
+
+
+14. Unique Actions
+   - Gameplay & Strategy
+   - PDF Processing
+   - Token Validation
+   - WASM Modul Analysis
+   - URL Manipulation & Reconnaissance
+   - Web Application Features
+   - PHP Specific Techniques
+   - External Data Handling
+   - External Script Usage
+   - General Actions
+   - Crafting Web Requests
+   - Conversion and Output Analysis
+   - Flag Brute-force
+   - Websocket Manipulation
+   - Documentation & Research

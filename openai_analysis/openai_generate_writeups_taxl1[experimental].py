@@ -8,7 +8,7 @@ def get_response(messages: list):
     response = openai.ChatCompletion.create(  # https://platform.openai.com/docs/api-reference/chat/create
         model="gpt-3.5-turbo",  # The name of the OpenAI chatbot model to use
         messages=messages,
-        temperature=1.0,
+        # temperature=1.0,
         stream=False,
     )
     return response.choices[0].message.content
@@ -76,6 +76,20 @@ if __name__ == "__main__":
 
             # Check if JSON is well-formed and complete
             if response_json_data is not None:
+                # Iterate over each step in the response_json_data
+                for step in response_json_data.get("AttackModel", {}).get("Steps", []):
+                    # Check if there's a 'Taxonomy' field in a step
+                    if "Taxonomy" in step:
+                        print(f"ERROR - Step {step['Id']} contains a 'Taxonomy' field.")
+
+                    # Iterate over each substep in the step
+                    for substep in step.get("Substeps", []):
+                        # Check if there's a 'Taxonomy' field in a substep
+                        if "Taxonomy" not in substep:
+                            print(
+                                f"ERROR - Substep {substep['Id']} doesn't contain a 'Taxonomy' field."
+                            )
+
                 # Check if the structure contains the expected keys and values
                 if (
                     "AttackModel" in response_json_data

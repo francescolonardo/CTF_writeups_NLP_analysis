@@ -1,0 +1,58 @@
+{
+    "Error Handling": [
+        "Received an error of HTTP method not allowed.",
+        "Received a SQL error.",
+        "Encounter an error page.",
+        "Observe the error indicating the names of the missing files.",
+        "Print any HTTP error during the page request.",
+        "Received a custom error as a response to the SQL injection."
+    ],
+    "Output Observation": [
+        "Observe the output details",
+        "Confirm the success message in the response.",
+        "Observe that the change does not work",
+        "Observe a successful flag output after authentication.",
+        "Print the flag.",
+        "Observe that the payload returns 'true'.",
+        "Observe that the payload returns 'false'."
+    ],
+    "Request Analysis": [
+        "Observe the HTTP 401 UNAUTHORIZED status in the response",
+        "Observe the response received after sending the manipulated request.",
+        "Check the website response.",
+        "Observed the need for a server response after each vote.",
+        "Wait for the bot to visit the URL.",
+        "Check the server logs.",
+        "Observe successful execution of the command.",
+        "Observe the 'User-Agent header' and note the admin uses 'Firefox 61.0'",
+        "Observe the 'Wrong Referrer' error",
+        "Identify unrelated packets such as 'pings'."
+    ],
+    "Script Execution and Control": [
+        "Increase the sleep time between requests",
+        "Pause the script for a random interval between 1 to 4 seconds.",
+        "Understand that this approach seems to be working",
+        "Realize manual checks are not efficient",
+        "Evaluate sequential requests",
+        "Continue running the script until the flag (password) is fully discovered.",
+        "Note what actions trigger the key's update.",
+        "Added debug prints to the file for the GET path",
+        "Added debug prints to the file for the POST filename",
+        "Take a break.",
+        "Return to the problem.",
+        "No success in submitting the answers.",
+        "Acknowledged the increased challenge in analyzing the code",
+        "Confirmed the successful acquisition of the flag",
+        "Realized the mutation could be simplified to create the exploit."
+    ],
+    "Server and Configuration Observation": [
+        "Note that the execution of the PHP shell was unsuccessful",
+        "Discover that the web app is running in debug mode.",
+        "The reason for inability to modify is due to a lack of appropriate permission",
+        "Observe the returned localhost.",
+        "Set up a listener.",
+        "Fail to inject the code with the embedded script",
+        "Realize that the method failed",
+        "Observe that the flag message requires waiting for such server response."
+    ]
+}

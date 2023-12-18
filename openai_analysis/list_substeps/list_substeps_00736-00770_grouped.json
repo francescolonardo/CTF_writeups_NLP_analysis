@@ -1,0 +1,51 @@
+{
+    "File and Directory Manipulation": [
+        "Find 'flag.file'",
+        "Open the www.zip file.",
+        "Create a file of 1024 bytes with a random name ending in '.txt'.",
+        "Download the file named configs.zip.",
+        "Aim to access internal files",
+        "Read the response from FD 4."
+    ],
+    "API Investigation": [
+        "Understand that the challenge involves investigating an unintentionally exposed internal API and finding a flag.",
+        "Created an XML HTTP request that references the /etc/flag.txt directory",
+        "Identify 'cat' command execution in GET request parameter 'f'.",
+        "Construct another GET request",
+        "Observe the result of the exploit leading to '/etc/passwd'."
+    ],
+    "Web Form & Input Manipulation": [
+        "Reinspect the source code with attention to the user authentication process.",
+        "Attempted the SQL injection on the authentication form.",
+        "Noted SQL errors",
+        "Notice a redirection with 302 Found to /index.php.",
+        "Discover that Apache2 is restrictive towards parsing the HTTP request.",
+        "Verified that 'link' and 'style' tags are explicitly permitted during sanitization."
+    ],
+    "Web Navigation & Interaction": [
+        "Access the website.",
+        "Identify additional pages: upload.php and photos.php",
+        "Used provided hexadecimal values.",
+        "Send the POST request to change the status of the services.",
+        "After unsuccessful attempts searching for YouTube's JSONP endpoints.",
+        "Test the character '\"'"
+    ],
+    "Command Execution & Exploitation": [
+        "Observe that the payload returns 'true'.",
+        "Confirmed buttons trigger standard Linux commands.",
+        "Triggered the `api_post` event."
+    ],
+    "Code Analysis & Exploitation": [
+        "Decide to use the same strategy to make admin accept the follow request.",
+        "Run arbitrary javascript with the 'outputFunctionName' option",
+        "Generate customized versions of the `User` and `Login` objects that allow bypassing the MFA token check."
+    ],
+    "Network Analysis & Exploitation": [
+        "Display the iframe in the screenshotting service.",
+        "Observe the HTTP response header",
+        "Observe the interface to a router with a ping functionality."
+    ],
+    "Zip File Manipulation": [
+        "Create a zip file."
+    ]
+}

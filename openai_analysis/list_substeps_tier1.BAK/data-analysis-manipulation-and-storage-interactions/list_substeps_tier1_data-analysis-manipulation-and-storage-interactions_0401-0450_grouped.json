@@ -1,0 +1,51 @@
+{
+    "Cookie Manipulation": [
+        "Check the value of the cookie 'not_admin'",
+        "Generate more base64 cookies.",
+        "Perform a basic analysis of the cookies."
+    ],
+    "Webpage Interaction": [
+        "Retrieve the flag from the refreshed webpage",
+        "Find a base64 encoded value.",
+        "Find a 'flag' file.",
+        "Retrieve the JavaScript file from the webpage.",
+        "Enumerate the folder content.",
+        "Identify two JavaScript files",
+        "Identify the use of a productId value",
+        "Observe the server reflecting the productId value in the response",
+        "Observe the data from the /etc/passwd file in the response",
+        "Observe that the server reflects the passed productId value in the response.",
+        "Observe that the response contains data from the /etc/passwd file.",
+        "Observe the returned data.",
+        "Identify the flag utflag{n3xt_y3ar_go1ng_bl1nd} in the returned data.",
+        "Received the cookies",
+        "Open one of the files.",
+        "Locate the file named '(wtf.mp4)'.",
+        "Find a www.zip file using dirsearch.",
+        "Open the www.zip file."
+    ],
+    "SQL Injection and Database Enumeration": [
+        "Decide to use the SQL LIKE clause.",
+        "Pull multiple .git files such as `.git/index`, `.git/config`, `.git/HEAD` etc., from the server.",
+        "Find commit IDs within the log.",
+        "Retrieved the PHP source code.",
+        "Using the constructed base, tried to enumerate DB tables.",
+        "Identified a flag table in the database.",
+        "Enumerated the columns of the flag table.",
+        "Discovered a column named 'whatsthis'.",
+        "Extracted the content of the 'whatsthis' table.",
+        "Tried to enumerate DB tables.",
+        "Used the SQL injection to enumerate the columns of the flag table.",
+        "Discovered a column named 'whatsthis'.",
+        "Executed another HTTP request to extract the content of the 'whatsthis' table.",
+        "Retrieved the flag from the table content."
+    ],
+    "File System Interaction": [
+        "Attempt to read a file from the server",
+        "Attempt reading a file from the server using the crafted payload.",
+        "Force the debugging private key in the payload.",
+        "Include the payload in the request.",
+        "Observe the presence of three files on the webpage.",
+        "The content written in the request was 'HACKED'"
+    ]
+}

@@ -1,0 +1,55 @@
+{
+    "Encryption & Encoding": [
+        "Discover that the URL is encrypted using `str_rot_pass($url, $key);`."
+    ],
+    "File Analysis & Exploitation": [
+        "Investigate the requirements and specifications of an uploaded zip file.",
+        "Inferred that the 'config.php' file must be printed via curl execution.",
+        "Identify the variables $blocked, $special_block, and $$special_block",
+        "Investigate the source code provided.",
+        "Analyze the query within the source code",
+        "Decide to attempt SQL injection on the input fields.",
+        "Retrieve the flag.",
+        "Analyze the webpage's HTML and JavaScript code.",
+        "Launch HTTP POST requests",
+        "Discover the SQL Injection payload from the URL 'http://challs.houseplant.riceteacatpanda.wtf:30003/#3/**/union/**/select/**/null,null,null,text,null,null/**/from/**/posts'",
+        "Explored different methods for conducting XSS attacks on XSL documents."
+    ],
+    "Cookie Manipulation": [
+        "Found a `token` cookie.",
+        "Craft a value for the cookie"
+    ],
+    "Filter & Input Manipulation": [
+        "Realize that the login site has filters applied to the quotation marks",
+        "Note that HTML tags are not allowed.",
+        "Fuzz the username input with various inputs."
+    ],
+    "Vulnerability Exploitation": [
+        "Determine successful exploitation of an XXE vulnerability",
+        "Once successful, noted the steps taken to reproduce the attack."
+    ],
+    "Server Communication": [
+        "POST the page",
+        "Send request to /save.php.",
+        "Visit the URL `confidential_documents=kontammadur_klanvour.dev.local%3A5001%2Fconsole`.",
+        "Configure the personal DNS server to resolve to the local IP during the GET request."
+    ],
+    "Data Extraction": [
+        "Enumerate the 'id' range between '18446744073709551463' to '18446744073709551615'.",
+        "Recognize that the response text contains the flag.",
+        "Observe the server's response."
+    ],
+    "URL Manipulation": [
+        "Inserted file name in the URL."
+    ],
+    "Browser Console Interaction": [
+        "Started interacting with the Firebase installation using the browser console."
+    ],
+    "Web Application Identification": [
+        "Conduct reconnaissance to identify potential target web application.",
+        "Identify that the web application is using 'ejs'."
+    ],
+    "JSON Manipulation": [
+        "Added more semesters to the json file"
+    ]
+}

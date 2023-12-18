@@ -1,0 +1,54 @@
+{
+    "File Operations": [
+        "Read the 'README' file."
+    ],
+    "Code Analysis & Exploitation": [
+        "Identified a line of code where user input is passed unfiltered.",
+        "Created a reverse shell script using only non-alpha chars.",
+        "Ensured the query returns 'email' and 'password' columns.",
+        "For each text fragment, detect if a callback is received.",
+        "Retrieve user and read permissions from the injected command.",
+        "Discover that the script can be bypassed by using a proxy tool for request interception and repetition.",
+        "Define a template for the final PDF files.",
+        "Realized this could lead to unreplaced `<` and `>` characters.",
+        "Decoded the base64 response.",
+        "Check differences between the suspicious commit and its preceding commit.",
+        "Fooled HAProxy into treating the request body as part of the first request.",
+        "Discovered that the website is using PHP eval() function.",
+        "Check the MD5 hash of 'collision2.pdf' using the hashlib library.",
+        "Identified that a successful password reset would set 'user.active' to 'True', activating the user account."
+    ],
+    "Email Interactions": [
+        "Triggered an email with the flag as content"
+    ],
+    "Command Execution": [
+        "Execute 'grep' command.",
+        "Executed commands.",
+        "Submit the URL."
+    ],
+    "Web Navigation & Interaction": [
+        "Form the flag",
+        "Change session username to 'root' using client-side cookies.",
+        "Access the JavaScript console in the devtools",
+        "Identify '/cmd.php' endpoint.",
+        "Review the source code of the homepage.",
+        "Visit the disallowed route",
+        "Obtain the fake flag and the admin's PHP Session ID",
+        "Monitor the websockets traffic",
+        "Guessed the presence of endpoints.",
+        "Get link to the source code"
+    ],
+    "SQL Query Analysis": [
+        "Recognize the visible SQL query as a potential vulnerability hint."
+    ],
+    "Network & HTTP Interactions": [
+        "Queries leading to a different domain will be blocked",
+        "Send a GET request to '/download_all' to trigger the exploit."
+    ],
+    "String Manipulation & Parsing": [
+        "Minimized time spent on creating strings to match the server's challenge."
+    ],
+    "Password-related Actions": [
+        "Initialize an empty password string."
+    ]
+}

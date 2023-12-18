@@ -1,0 +1,109 @@
+I. Website Interaction
+    A. Website Navigation
+    B. URL Navigation & Interaction
+    C. Arbitrary URL Input
+    D. Website Access
+
+II. Web Code Analysis & Manipulation
+    A. Code Analysis and Manipulation
+    B. Code Analysis & Debugging
+    C. Regex Manipulation
+    D. Python Script Analysis & Modification
+    E. Python Script Execution
+    F. Script Inspection
+    G. Window Control & Script Execution
+    H. Script Execution & Flag Retrieval
+    I. Command-Line & Script Interaction
+
+III. Payload & Injection handling
+    A. Code Injection & Payload Crafting
+    B. Server-side Code Injection
+    C. Payload Testing
+    D. Payload Analysis
+    E. Server-Side Template Injection (SSTI)
+    F. Template Injection
+
+IV. File & Resource Interaction
+    A. File Manipulation & Access
+    B. File & Resource Manipulation
+    C. File Exploration
+    D. File Interactions
+    E. File Analysis
+    F. File Analysis & Exploitation
+
+V. Server Interaction
+    A. Web Server Configuration & Vulnerabilities
+    B. Server Monitoring
+    C. DNS Server Setup
+    D. DNS Configuration & Resolution
+    E. Server Requests & Manipulation
+    F. Server Interaction & Web Requests
+    G. Server-side Operations
+
+VI. Web Application Requirements & Concepts
+    A. Web Browser & Network Manipulation
+    B. Web Security Concepts
+    C. Web Application Technologies
+    D. Webpage Manipulation
+    E.Web Technologies & Protocols
+    F. Application Start
+
+VII. Security Testing & Bypassing
+    A. Bypass Check
+    B. Security Testing Techniques
+    C. Vulnerability Identification & Testing
+    D. Input Manipulation & Bypassing Checks
+
+VIII. Data Management
+    A. Serialization & Deserialization Analysis
+    B. Data Manipulation & Extraction
+    C. Data Extraction
+    D. Data Manipulation & Analysis
+
+IX. Networking & Communications
+    A. Network & Configuration
+    B. Network Traffic Analysis
+    C. Network Communication
+    D. Network Communication & Tools
+
+X. Cryptography & Hashing
+    A. Cryptography
+    B. Hashing
+    C. Hashed Values and Passcodes
+
+XI. Session & Authentication Management
+    A. Cookie Validation
+    B. Client-Side Cookie Reading
+    C. Authentication & Session Management
+    D. Session Manipulation
+
+XII. Miscellaneous
+    A. Miscellaneous Actions
+    B. Alternative Solution
+    C. Communication and Collaboration
+    D. Information Search
+    E. Web Scanning & Reconnaissance
+    F. Exploits & References
+    G. Mitigation Strategies
+    H. Attack Origin Investigation
+    I. Geolocation & Mapping
+    J. Script Development
+    K. SSH & File Management
+    L. HTTP Interactions
+    M. Web Requests
+    N. Remote Code Execution Testing
+    O. Shellcoding & Unzipping
+    P. Networking & Request Handling
+    Q. API Modification
+    R. XOR Operations
+    S. Photo Upload Analysis
+    T. Web Functionality Analysis
+    U. HTML Manipulation & Sanitization
+    V. Method & Invocation Utilization
+    W. Infinite Loop Breaking
+    X. Webpage Manipulation
+    Y. PHP Exploitation
+    Z. Token Manipulation
+    AA. Reverse Shell
+    BB. CAPTCHA Handling
+    CC. Git Manipulation.

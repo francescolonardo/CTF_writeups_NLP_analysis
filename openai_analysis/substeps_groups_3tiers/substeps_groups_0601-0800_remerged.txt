@@ -1,0 +1,44 @@
+Tier 1: Web Interaction & Security
+    1.1 Web Interaction & Navigation
+        1.1.1 Webpage Access & Navigation
+        1.1.2 Web Form & Input Manipulation
+        1.1.3 URL and Redirect Analysis
+        1.1.4 Browser and Cookie Inspection
+        1.1.5 Page Loading & Wait Time
+    1.2 Web Application Analysis
+        1.2.1 Web Application Behavior
+        1.2.2 Web Application Interaction
+        1.2.3 Web Application Source Code Review
+    1.3 Security Analysis & Exploitation
+        1.3.1 Vulnerability Analysis & Discovery
+        1.3.2 Web Security Techniques
+        1.3.3 Exploits and Vulnerabilities
+        1.3.4 Malformed Input
+
+Tier 2: Data & User Management
+    2.1 Authentication & Authorization
+        2.1.1 User Access Analysis
+        2.1.2 Admin Access
+        2.1.3 Session Management & Hashing
+    2.2 Data Analysis & Retrieval
+        2.2.1 Data Extraction & Analysis
+        2.2.2 Data Retrieval & Observation
+        2.2.3 Data Leakage & Information Discovery
+    2.3 User & Session Management
+        2.3.1 User Management
+        2.3.2 Session & Cookie Exploitation
+        2.3.3 Profile Exploration
+
+Tier 3: System & Network Analysis
+    3.1 Server & Networking Interactions
+        3.1.1 Server-Side Vulnerabilities
+        3.1.2 Server-Client Communication & Response Handling
+        3.1.3 Endpoint & API Interaction
+    3.2 Code Analysis & Manipulation
+        3.2.1 Encoding & Hashing
+        3.2.2 Code Execution
+        3.2.3 Serialization & Input Manipulation
+    3.3 Environment & System Analysis
+        3.3.1 Technology Identification
+        3.3.2 System Configuration
+        3.3.3 System & Database Analysis

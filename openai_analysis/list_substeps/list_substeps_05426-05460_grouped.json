@@ -1,0 +1,55 @@
+{
+    "Command Execution": [
+        "Enclose 'ls' command in backticks."
+    ],
+    "Web URLs": [
+        "URL: http://challenge.nahamcon.com:31428/",
+        "Connect to the URL http://jh2i.com:50000"
+    ],
+    "Server Access & File Handling": [
+        "Recognize the requirement of having write access to a file on the server.",
+        "Observe the data from the /etc/passwd file in the response",
+        "The process includes sending the POST request, extracting the cookie, and getting the flag",
+        "Step 2: Validate and insert into the database.",
+        "Determine that 'key2' is a shuffled version of 'key'.",
+        "Replace the original signed cookie with the new one generated.",
+        "Observe the server returning the result of the operation.",
+        "Identify the need to steal the identifier",
+        "Realize that a hidden sheet's full range can be accessed",
+        "Download the unlinked source file"
+    ],
+    "Code Analysis & Exploitation": [
+        "Reveal a 'require_once()' function call",
+        "Determine from the result that the site uses SQLite as its database.",
+        "Noted the absence of ASLR in WASM.",
+        "Analysed the server's CSP policy.",
+        "Apply the same process to the challenge's 'nonce' value.",
+        "Understand that this makes the match vulnerable to type juggling.",
+        "Inspect the decoded JWT.",
+        "Analyze the authentication process to understand its flow and mechanisms.",
+        "Leverage 'lower' filter to bypass 'subclasses' string.",
+        "Found that `shellme()` leads to the function `shell_this()`.",
+        "Generated two different strings with the same md5 hash."
+    ],
+    "Web Interaction & Manipulation": [
+        "Identify an interaction with the website that involves a 'counter' cookie",
+        "Received the response from the web page.",
+        "Intend to rot13 encode the value 'true'.",
+        "Set the cookie as 'user=root'.",
+        "Review the challenge description again."
+    ],
+    "Server Information & Configuration": [
+        "Inspect the decoded JWT.",
+        "Identify the need to steal the identifier",
+        "Observe the server returning the result of the operation.",
+        "Review the challenge description again."
+    ],
+    "Web Application Security Techniques": [
+        "Circumvent restrictions.",
+        "Use OR operator to guess the next character in the password"
+    ],
+    "Web Technologies & Protocols": [
+        "Create a WebSocket connection to the DevTools of the browser instance.",
+        "Connect to the URL http://jh2i.com:50000"
+    ]
+}

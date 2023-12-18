@@ -1,0 +1,53 @@
+{
+    "File and Directory Manipulation": [
+        "Search for Robots.txt file.",
+        "View '/etc/passwd' using LFI vulnerability.",
+        "Execute the 'ls ../' command to check the parent directory."
+    ],
+    "Web Application Exploitation": [
+        "Manipulate the '<base>' tag in the target website to change the base URL to the control of the attacker.",
+        "Include 'Content-Type: application/json' in the request header.",
+        "Perform an SQL injection attack on the login form",
+        "Identify 'eval' syntax on 'warmup' GET parameter.",
+        "Retrieve the flag from the response received after visiting the '/api/flag' endpoint.",
+        "Understand that a 'Requests_On_Steroids' function is used for POST request.",
+        "Bypass double URL decoding by server.",
+        "Understand the need to overcome file extension restrictions.",
+        "Find the flag within a fan post after gaining admin's acceptance as a follower.",
+        "Understand the requirement of a 'Buffer' of 16 bytes.",
+        "Automate the process through script.",
+        "Host a server to capture the request.",
+        "Retrieved the CTF flag.",
+        "Attempt to change the input field from 'password' to 'totp'",
+        "Only found a minor vulnerability.",
+        "Discover the usage of XML envelopes via two JavaScript files when buttons are pressed.",
+        "Access all accounts with the obtained credentials",
+        "Recognize the location of the 'send_sms' function in 'sms.py'",
+        "Payload used: admin@uupeye.edu' or '1'='1",
+        "Understand successful modification of the list.",
+        "Realized that `getNameAtIndex(0)` will return the XSS payload when displaying the table.",
+        "Copy the 'session' cookie.",
+        "Identify the specific line of code related to the command line subprocess interaction."
+    ],
+    "Network and Server Configurations": [
+        "You can run this script anywhere that is internet accessible, port forward port '16361' or deploy on Google Cloud. But, the easiest method is to use ngrok."
+    ],
+    "Payload and Input Manipulation": [
+        "Ensure payload always returns true",
+        "Submit the constructed page to the '/share' endpoint.",
+        "Determine it is a hexadecimal representation",
+        "Submit the file for observation."
+    ],
+    "Web Navigation and Interaction": [
+        "Perform internet searches concerning Alan Turing's life",
+        "Find the flag within a fan post after gaining admin's acceptance as a follower."
+    ],
+    "Code Analysis and Evaluation": [
+        "Line shows: '+ /.env: .env file found. The .env file may contain credentials.'",
+        "Identify the specific line of code related to the command line subprocess interaction."
+    ],
+    "Data Encoding and Decoding": [
+        "Send base64 encoded image data to the requestbin.",
+        "The file name resolves to `flag.txt` after the process"
+    ]
+}

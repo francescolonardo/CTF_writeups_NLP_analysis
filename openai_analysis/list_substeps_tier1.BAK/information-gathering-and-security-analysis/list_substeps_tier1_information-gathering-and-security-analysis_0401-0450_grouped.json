@@ -1,0 +1,69 @@
+{
+    "File and Directory Enumeration": [
+        "Find a comment containing PHP code to upload a file",
+        "Get the flag by reading from a file in the '/etc' directory",
+        "Access the URL 'http://challs.houseplant.riceteacatpanda.wtf:30003/robots.txt'",
+        "Identify the URL 'http://challs.houseplant.riceteacatpanda.wtf:30003/admin' from the 'robots.txt' file",
+        "Discover files in the directory, including the 'flag' file, amongst others.",
+        "Receive API documentation including the endpoints: /api/admin and /api/normal.",
+        "Search the entire file system for files named 'flag'",
+        "Access the environment file.",
+        "Find the flag inside the environment file.",
+        "Start searching each revision.",
+        "Adjust script to identify differences made.",
+        "Read the flag from '/var/secret'",
+        "Choose to target the '/uberadmin' directory.",
+        "Find upload.php in the source.zip file."
+    ],
+    "Web Application Analysis": [
+        "Observe the output details",
+        "Identified the received flag.",
+        "Observe the HTTP 401 UNAUTHORIZED status in the response",
+        "Discover POST requests sent to '/forgotpassword.html' page.",
+        "Identify the algorithm mentioned in the cookie value.",
+        "Prepared for a possible request smuggling attack.",
+        "Craft another post request"
+    ],
+    "Network Analysis": [
+        "Find a different URL 'https://freewifi.ctf.umbccd.io/staff.html' in the packet",
+        "Perform SQL Injection to read 'username' from 'users'",
+        "Perform an nmap scan on IP 18.213.16.123.",
+        "Confirm that IP 18.213.16.123 is not a local IP.",
+        "Understand that the challenge is to pass checks.",
+        "Switch to a different IP address",
+        "Attempt to discover the generated token",
+        "Use the original token-generating IP address"
+    ],
+    "Code Analysis": [
+        "Identify the flag as 'INS{Wh1le_ld_k1nd_0f_forg0t_ab0ut_th3_x_fl4g}'.",
+        "Note the reference to a potentially fake flag",
+        "Obtain the fake flag and the admin's PHP Session ID",
+        "Realize that the submitted string is appended after the '$the_cow' variable in the script.",
+        "Utilize the code snippet to list the directory content.",
+        "Analyzed the source code",
+        "Noted the title 'advertisement'.",
+        "Lacked the knowledge on how to trigger the aforementioned error.",
+        "Recognize that the specific replace function changes markdown format images into HTML image tags.",
+        "Hint that XSS might be possible in this case.",
+        "Start looking for a payload to trigger the XSS."
+    ],
+    "Exploitation Techniques": [
+        "Exfiltrate all password characters via blind SQL injection",
+        "Identify XXE attacks as a potential exploitation technique",
+        "Determine successful exploitation of an XXE vulnerability",
+        "Discover the usage of XML envelopes via two JavaScript files when buttons are pressed.",
+        "Understood the voting system of the webpage.",
+        "Understood that a string needs to be found to match the MD5 hash of the challenge."
+    ],
+    "Miscellaneous": [
+        "Visited the webpage.",
+        "Observe a successful flag output after authentication.",
+        "Identify the flag as 'INS{Wh1le_ld_k1nd_0f_forg0t_ab0ut_th3_x_fl4g}'.",
+        "Switch to a different IP address",
+        "Adjust script to identify differences made.",
+        "Security questions are related to Alan Turing's account recovery",
+        "Start searching each revision.",
+        "Perform an nmap scan on IP 18.213.16.123.",
+        "Confirm that IP 18.213.16.123 is not a local IP."
+    ]
+}

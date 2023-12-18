@@ -1,0 +1,17 @@
+I'll provide you with some context.
+Assume I am tasked with categorizing a set of actions taken from web application CTF writeups.
+
+Given the input JSON provided (representing a single action), please label it with the second tier of the taxonomy provided.
+Assign the most appropriate sub-category name (second tier of the taxonomy below) to the 'Tier2TaxonomyMain' field.
+Assign the second most appropriate sub-category name (second tier of the taxonomy below) to the 'Tier2TaxonomyAlternative' field.
+Please consider that "Tier2TaxonomyMain" has just a limited set of possible values that depends on the "Tier1TaxonomyMain" value.
+Please consider that "Tier2TaxonomyAlternative" has just a limited set of possible values that depends on the "Tier1TaxonomyAlternative" value.
+
+This is the taxonomy:
+```
+{tier2_taxonomy}
+```
+
+When responding, please provide only the output JSON content without any additional information.
+
+Below is the input JSON:

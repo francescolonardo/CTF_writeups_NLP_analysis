@@ -1,0 +1,54 @@
+{
+    "File and Directory Manipulation": [
+        "Accessed the robots.txt file of the website",
+        "Design the XML code to expose the flag file from the current working directory.",
+        "Identify 'login.php' and 'login.php.bak' files",
+        "The log_file of the 'access_log' object is set to '../flag'",
+        "Display the content of 'flag.txt' remotely using the identified class"
+    ],
+    "Code Vulnerabilities & Exploits": [
+        "Found out that despite such constraints, the SQLmap successfully retrieved the flag 'ASIS{6e73c9d277cc0776ede0cbd36eb93960d0b07884}'.",
+        "Vulnerability found in `utils.merge()` method",
+        "Bypass 'class' by constructing a string.",
+        "Check the length of the window's history.",
+        "Recognize the vulnerability associated with the parameter being reflected in the response",
+        "Identified the use of strlen() function within the code.",
+        "Identify the SQL Injection vulnerability",
+        "Identified that the PHP code output the flag when a specific username 'flagman69' is used.",
+        "Successfully exploit the path traversal vulnerability using a triple URL-encoded payload.",
+        "Perform SQL Injection to read all posts from 'posts'"
+    ],
+    "Network Interactions": [
+        "Executed a POST request.",
+        "Crafted a malicious HTTP GET request to exploit the identified vulnerability",
+        "Or, use Wireshark for analyzing the HTTP traffic.",
+        "Connect to website",
+        "Establish a reverse shell."
+    ],
+    "Image Manipulation": [
+        "Manipulate RGB values in the uploaded images."
+    ],
+    "Web Development Techniques": [
+        "Wrote a script using 'setTimeout' function.",
+        "Directory switching.",
+        "Open the developer tools on the browser.",
+        "Clarified how to start the app locally using a non-privileged port",
+        "Notice the difference in redirect URLs when a note is found or not found",
+        "Identify unique JavaScript with nextExport attribute.",
+        "Identify the reason for the failure as JavaScript trying to parse parentheses",
+        "Understand that this approach seems to be working"
+    ],
+    "Web Form and Parameter Manipulation": [
+        "Guessed that 'application/x-www-form-urlencoded' parameter must be used.",
+        "Initial attempts to supply URLs were futile.",
+        "Recognize the vulnerability associated with the parameter being reflected in the response"
+    ],
+    "AWS Services": [
+        "Created an EC2 instance using the new role"
+    ],
+    "Web Page Navigation": [
+        "Decided to find a paper that was not published.",
+        "Performed the action of accessing challenges.",
+        "Opened the given link"
+    ]
+}

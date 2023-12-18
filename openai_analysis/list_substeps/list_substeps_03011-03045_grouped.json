@@ -1,0 +1,48 @@
+{
+    "JWT & Token Manipulation": [
+        "Note that the server will retrieve a value of 'undefined' for secret['randomstr'] and will not attempt to verify the JWT because the algorithm is 'none'",
+        "Identify the payload",
+        "Retrieve the flag from the server's response",
+        "Decode the JWT token."
+    ],
+    "Server Exploitation": [
+        "Executed a GET request `GET /cgi-bin/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/.%2e/flag.txt HTTP/1.1` to exploit this vulnerability.",
+        "Start examining the Dockerfile provided.",
+        "Utilize the secret key for crafting the new session cookie.",
+        "Constructed a PHP redirect to access 'localhost:8081/flag'.",
+        "Identified a possible SQL injection vulnerability."
+    ],
+    "Web Navigation & Interaction": [
+        "Redirect the browser using the `Location` header.",
+        "Open the website.",
+        "Open the webpage in a web browser",
+        "Consider size restrictions for choosing two small-sized PDFs.",
+        "Observe the presence of a cookie named userData with userID and username.",
+        "Investigate the site."
+    ],
+    "Payload Crafting & Submission": [
+        "Create a phar file",
+        "Attempted payload to inject XSS via `theme`",
+        "Encode the payload to base 64.",
+        "Send the crafted payload",
+        "Submitted the payload 'csrf&username=michelle&password[username]=michelle'",
+        "Submitted final payload that contained a script.",
+        "Submit a value for 'n' that is larger than 8 characters."
+    ],
+    "Code Analysis & Exploits": [
+        "Identify the suspicious logic of the JavaScript.",
+        "Find it to be ineffective.",
+        "Evaluate the object attribute and display it to the user",
+        "Recognized the 10% chance of success."
+    ],
+    "File Manipulation & Retrieval": [
+        "Fetch the contents of file 'flag.txt'",
+        "Check the 'robots.txt' file for the disallowed path.",
+        "Select the generated barcode file for upload."
+    ],
+    "Request Manipulation & Intercepting": [
+        "Enter an apostrophe in both the username and password fields.",
+        "Understand that a POST request must be sent to '/profile/request' to make admin accept the follow request.",
+        "Generate a GET request to the page, with the chosen strings as the values for 'i1' and 'i2'"
+    ]
+}

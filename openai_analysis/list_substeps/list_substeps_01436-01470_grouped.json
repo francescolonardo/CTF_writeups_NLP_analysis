@@ -1,0 +1,105 @@
+{
+    "Backend Investigation": [
+        "Investigate the backend."
+    ],
+    "PDF Generation & HTML Rendering": [
+        "HTML rendering by pdfkit/wkhtmltopdf"
+    ],
+    "Admin Route & Access": [
+        "Visit the '/admin' route."
+    ],
+    "Referrer Header Bypass": [
+        "Bypass the restriction caused by the referrer header."
+    ],
+    "Working Directory Access": [
+        "Access the reference to the current working directory using 'cwd/'."
+    ],
+    "Script Execution & Flag Retrieval": [
+        "The script printed out the flag after successful execution.",
+        "Obtained the flag."
+    ],
+    "Restrictions Identification": [
+        "Identify the restrictions set in the 'valid_ip' function."
+    ],
+    "Downloaded Files Observation": [
+        "Notice that files with commonly used extensions are downloaded."
+    ],
+    "SQLite Version Discovery": [
+        "Confirmed the use of SQLite version 3.22.0."
+    ],
+    "Content-Type Modification": [
+        "Set the 'Content-Type' as 'application/json'."
+    ],
+    "File Content Printing": [
+        "Printed the content of the index.php file."
+    ],
+    "PDF Page Count Extraction": [
+        "Extract the count of PDF pages from the merged PDF file."
+    ],
+    "Remote Code Execution": [
+        "Used the remote code execution."
+    ],
+    "Template Literals Usage": [
+        "Realize that Template Literals can be used to call functions without parentheses."
+    ],
+    "POST Request Action": [
+        "Perform a POST request to the path provided by the decoded message."
+    ],
+    "XSS Potential Identification": [
+        "Identify potential for XSS due to unescaped output upon viewing uploaded documents"
+    ],
+    "Unsuccessful Results Observation": [
+        "Observe unsuccessful results."
+    ],
+    "Attacker Server Creation": [
+        "Created an attacker server."
+    ],
+    "SQL Injection Payload Injection": [
+        "Inject a classic SQL Injection payload (' or 1=1 -- ) into the password field."
+    ],
+    "User-Agent Modification": [
+        "Change User-Agent to 'Linux' using a curl command"
+    ],
+    "Listening Host Setup": [
+        "Start a listening host with 'nc -lkv 1337'"
+    ],
+    "Note Submission": [
+        "Submit a note."
+    ],
+    "SSRF Message Identification": [
+        "Identified behavior: if SSRF is detected, a specific message is returned."
+    ],
+    "Source Code Review": [
+        "Review the given source code, which is a Javascript calculator web app."
+    ],
+    "Python Script Execution": [
+        "Execute the Python script"
+    ],
+    "Environmental Variable Pollution": [
+        "Understood that to reach this code path, 'npm_config_global' needs to be polluted."
+    ],
+    "Navigation to Quiz Section": [
+        "Click on the 'simple quiz' link or button to navigate to the quiz section."
+    ],
+    "MySQL Documentation Study": [
+        "Studied the official `mysql` docs"
+    ],
+    "HTTP Request Smuggling Vulnerabilities": [
+        "Identified 2 HTTP request smuggling vulnerabilities."
+    ],
+    "Length Extension Attack Hint": [
+        "Identify a hint suggesting a length extension attack"
+    ],
+    "Length Query Parameter Verification": [
+        "Verify if 'length' query parameter is a string of length 0."
+    ],
+    "Client-Side Prototype Pollution Vulnerability": [
+        "Identify that the JavaScript library is vulnerable to client-side prototype pollution."
+    ],
+    "Hint Discovery": [
+        "Discovered a hint."
+    ],
+    "Scan Result Directory Path Follow": [
+        "Followed directory path indicated in the scan result."
+    ]
+}

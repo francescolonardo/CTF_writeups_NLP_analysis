@@ -1,0 +1,342 @@
+[
+    {
+        "tier1_category": "Web Interaction and Navigation",
+        "tier2": [
+            {
+                "tier2_category": "Web Navigation and Interaction",
+                "tier2_description": "Activities associated with visiting, accessing, and generally interacting with web pages, including the progression through different stages of a web challenge."
+            },
+            {
+                "tier2_category": "Web Element Analysis and Manipulation",
+                "tier2_description": "This concerns the identification, examination, and modification of web components, such as HTML elements and forms, as well as the analysis of their frontend behaviors."
+            },
+            {
+                "tier2_category": "User Interaction and Behavior",
+                "tier2_description": "Actions revolving around tracking, analyzing, and manipulating user behaviors on the web. This includes the way users fill out forms, take notes, and iterate over repeated actions."
+            },
+            {
+                "tier2_category": "URL and Browser Analysis and Manipulation",
+                "tier2_description": "Activities focusing on examining and altering URLs and browser behaviors, including the analysis of parameters and the use of debugging tools."
+            },
+            {
+                "tier2_category": "HTTP and Network Interaction",
+                "tier2_description": "Actions related to the examination and modification of HTTP elements and network communications, encompassing headers, requests, responses, and broader network behaviors."
+            },
+            {
+                "tier2_category": "API and Endpoint Interaction",
+                "tier2_description": "Concerns the analysis and modification of web APIs and endpoints, including interactions with, and manipulations of, these components."
+            },
+            {
+                "tier2_category": "Configuration, Errors and Feedback",
+                "tier2_description": "This category involves examining and manipulating web configurations, handling errors, and analyzing feedback mechanisms on web platforms."
+            },
+            {
+                "tier2_category": "Miscellaneous Actions and Operations",
+                "tier2_description": "A catch-all for various web-related actions and operations that don't neatly fit into the other sub-categories, such as identifying content types or extracting specific data."
+            }
+        ]
+    },
+    {
+        "tier1_category": "Authentication, Session, and User Management",
+        "tier2": [
+            {
+                "tier2_category": "Authentication and Session Management",
+                "tier2_description": "Activities focusing on understanding and manipulating authentication mechanisms, as well as the management and analysis of user sessions."
+            },
+            {
+                "tier2_category": "Credentials, Token, and Cookie Management",
+                "tier2_description": "Actions related to the handling, discovery, and management of credentials, tokens, and cookies, including their associated processes and techniques."
+            },
+            {
+                "tier2_category": "User Management, Access Control, and Permissions",
+                "tier2_description": "Pertains to the management of user access, including the processes of registration, control of inappropriate or unauthorized access, and the general maintenance of user permissions."
+            }
+        ]
+    },
+    {
+        "tier1_category": "Data Analysis, Manipulation, and Storage Interactions",
+        "tier2": [
+            {
+                "tier2_category": "Data Analysis and Processing",
+                "tier2_description": "Activities concerned with interpreting and processing data, analyzing systems, and manipulating specific payloads."
+            },
+            {
+                "tier2_category": "Data Manipulation and Exploitation",
+                "tier2_description": "Actions related to altering and taking advantage of data, including various forms of injection and user input manipulations."
+            },
+            {
+                "tier2_category": "Data Storage and Retrieval",
+                "tier2_description": "Pertains to the storage, management, and extraction of data, encompassing both files and structured datasets."
+            },
+            {
+                "tier2_category": "File and Data Interaction",
+                "tier2_description": "Actions focused on analyzing, managing, and accessing files and directories on a web platform or associated systems."
+            },
+            {
+                "tier2_category": "Database Interaction and Exploitation",
+                "tier2_description": "This sub-category revolves around database analysis, exploitation techniques, and manipulations, such as SQL injections."
+            },
+            {
+                "tier2_category": "Advanced Data and File Processing",
+                "tier2_description": "Deals with specialized data and file processing tasks, including the analysis and manipulation of media files and PDFs."
+            },
+            {
+                "tier2_category": "Logging and Monitoring",
+                "tier2_description": "Activities concerning the logging and tracking of data and user actions on web platforms and systems."
+            },
+            {
+                "tier2_category": "Miscellaneous",
+                "tier2_description": "A catch-all for various data-related actions and processes that don't neatly fit into the other sub-categories, such as data exfiltration."
+            }
+        ]
+    },
+    {
+        "tier1_category": "Code, Application, and Script Analysis",
+        "tier2": [
+            {
+                "tier2_category": "Code and Script Analysis",
+                "tier2_description": "Pertains to the deep-dive inspection and understanding of codebases, scripts, and the technology stacks behind them, including reverse engineering efforts."
+            },
+            {
+                "tier2_category": "Web Application and Environment Analysis",
+                "tier2_description": "Actions surrounding the examination and testing of web applications, including their server environments and directory structures."
+            },
+            {
+                "tier2_category": "Web Content and Structure Analysis",
+                "tier2_description": "Addresses the structural analysis of web content, including the examination of URLs, strings, and characters found on web platforms."
+            },
+            {
+                "tier2_category": "Syntax, Pattern, and Content Analysis",
+                "tier2_description": "Focuses on identifying, understanding, and validating patterns and structures present in code and other digital content."
+            },
+            {
+                "tier2_category": "Miscellaneous and General Actions",
+                "tier2_description": "Broadly covers actions related to understanding documentation, concepts, and recognizing functionalities within applications and scripts."
+            }
+        ]
+    },
+    {
+        "tier1_category": "Exploitation Techniques and Payload Handling",
+        "tier2": [
+            {
+                "tier2_category": "Information Gathering and Analysis",
+                "tier2_description": "Activities centered around the discovery and understanding of system vulnerabilities."
+            },
+            {
+                "tier2_category": "Web Requests and Interactions",
+                "tier2_description": "Addresses the understanding, modification, and handling of web requests and their associated interactions."
+            },
+            {
+                "tier2_category": "Payload Handling and Design",
+                "tier2_description": "Revolves around designing, refining, and executing specific payloads against systems or applications."
+            },
+            {
+                "tier2_category": "Exploit Development and Execution",
+                "tier2_description": "Encompasses the process of creating, testing, and utilizing exploits, including leveraging various tools."
+            },
+            {
+                "tier2_category": "Specific Exploitation Techniques",
+                "tier2_description": "Actions and techniques related to executing targeted attacks, such as injection attacks or bypassing restrictions."
+            },
+            {
+                "tier2_category": "Manipulation and Exploitation Techniques",
+                "tier2_description": "Techniques associated with altering data or system configurations to gain unauthorized access or privileges."
+            },
+            {
+                "tier2_category": "File Inclusion and XML Exploitation",
+                "tier2_description": "Techniques targeting vulnerabilities related to XML processing and file inclusion mechanisms."
+            },
+            {
+                "tier2_category": "Other Actions and Miscellaneous",
+                "tier2_description": "Encompasses supplementary exploitation actions and activities, including post-exploitation investigations."
+            }
+        ]
+    },
+    {
+        "tier1_category": "Network and System Analysis",
+        "tier2": [
+            {
+                "tier2_category": "Server Analysis",
+                "tier2_description": "Activities related to understanding the setup, configuration, vulnerabilities, and interactions of servers."
+            },
+            {
+                "tier2_category": "Code and Configuration Examination",
+                "tier2_description": "Deep-dive analysis of source codes, server configurations, headers, and advanced techniques such as reverse engineering."
+            },
+            {
+                "tier2_category": "Network Communication and Identification",
+                "tier2_description": "Pertains to the understanding and management of network components, including traffic and protocol analysis."
+            },
+            {
+                "tier2_category": "Request and Response Management",
+                "tier2_description": "Activities related to the analysis, handling, and understanding of network requests, responses, and associated payloads."
+            },
+            {
+                "tier2_category": "Data Management, Retrieval, and Exploitation",
+                "tier2_description": "Actions centered around manipulating, transferring, and exploiting data within systems and networks."
+            },
+            {
+                "tier2_category": "IP and DNS Analysis",
+                "tier2_description": "Focuses on examining and understanding IP addresses, domain name systems, and their associated resolutions and queries."
+            },
+            {
+                "tier2_category": "Command Execution and Exploitation",
+                "tier2_description": "Revolves around executing and exploiting system commands to gain unauthorized access or privileges."
+            },
+            {
+                "tier2_category": "HTTP Specific Analysis",
+                "tier2_description": "In-depth analysis of HTTP-specific components, such as commands and parameters."
+            },
+            {
+                "tier2_category": "Miscellaneous System Analysis",
+                "tier2_description": "A catch-all for other analysis actions related to systems that don't neatly fit into the aforementioned sub-categories."
+            }
+        ]
+    },
+    {
+        "tier1_category": "Debugging, Monitoring, and Troubleshooting",
+        "tier2": [
+            {
+                "tier2_category": "Web Interactions and Analysis",
+                "tier2_description": "Activities associated with web development, testing, and understanding how different web components function and interact."
+            },
+            {
+                "tier2_category": "Data Validation, Verification, and Analysis",
+                "tier2_description": "Actions that ensure the accuracy and legitimacy of data, flags, and other actions on a web platform."
+            },
+            {
+                "tier2_category": "Monitoring and Observation",
+                "tier2_description": "Revolves around tracking and understanding system processes, responses, and other observable metrics."
+            },
+            {
+                "tier2_category": "Debugging and Error Handling",
+                "tier2_description": "Techniques and actions taken to identify, understand, and resolve errors and issues within applications and systems."
+            },
+            {
+                "tier2_category": "Input, Output, and Navigation",
+                "tier2_description": "Focuses on understanding, observing, and analyzing various inputs, outputs, and navigational behaviors on web platforms."
+            },
+            {
+                "tier2_category": "Information Gathering and Payload Management",
+                "tier2_description": "Activities related to gathering hints, understanding guidelines, and testing various payloads."
+            },
+            {
+                "tier2_category": "Tool and Configuration Analysis",
+                "tier2_description": "Revolves around leveraging browser tools and analyzing various network configurations and behaviors."
+            },
+            {
+                "tier2_category": "Preventive Measures and Character Handling",
+                "tier2_description": "Actions and techniques related to preventing certain behaviors and understanding character-based inputs and outputs."
+            }
+        ]
+    },
+    {
+        "tier1_category": "Cryptography, Encoding, and Decoding Techniques",
+        "tier2": [
+            {
+                "tier2_category": "Cryptographic Techniques",
+                "tier2_description": "Encompasses the study, analysis, and application of cryptography, including hashing and handling of JWTs."
+            },
+            {
+                "tier2_category": "Encoding, Decoding, and Data Representation",
+                "tier2_description": "Focuses on actions related to encoding data into formats like Base64, compressing data, serialization, and IP address conversion."
+            },
+            {
+                "tier2_category": "CAPTCHA Analysis and Solving",
+                "tier2_description": "Techniques and methodologies dedicated to understanding and resolving CAPTCHAs."
+            },
+            {
+                "tier2_category": "Observational Techniques",
+                "tier2_description": "Methods and strategies used to observe and analyze data patterns and behaviors without direct interaction."
+            }
+        ]
+    },
+    {
+        "tier1_category": "Tools, Scripting, and System Interactions",
+        "tier2": [
+            {
+                "tier2_category": "Tool Manipulation",
+                "tier2_description": "Actions related to using and configuring different tools, including third-party software."
+            },
+            {
+                "tier2_category": "System and Server Interactions",
+                "tier2_description": "Engages with system-level actions, server setups, managing network interactions, and understanding system permissions."
+            },
+            {
+                "tier2_category": "Scripting and Automation",
+                "tier2_description": "Techniques centered on creating, running, and automating scripts, as well as modifying existing scripts for unique tasks."
+            },
+            {
+                "tier2_category": "File and Directory Operations",
+                "tier2_description": "Actions related to managing files and directories, and the execution of commands interacting with these entities."
+            },
+            {
+                "tier2_category": "Data and Input Manipulation",
+                "tier2_description": "Techniques to manipulate data or input in desired ways, craft payloads, and observe and adjust tokens."
+            },
+            {
+                "tier2_category": "Web, Network and Service Interactions",
+                "tier2_description": "Engages in interactions with websites, networks, and services, focusing on requests, responses, and various APIs."
+            },
+            {
+                "tier2_category": "Command Elements and System Interaction",
+                "tier2_description": "Pertains to the handling of command-line interactions, system configurations, and automated processes."
+            },
+            {
+                "tier2_category": "Script Language Interactions",
+                "tier2_description": "Focuses on actions and challenges specific to interactions with scripting languages, particularly PHP and Python."
+            }
+        ]
+    },
+    {
+        "tier1_category": "Information Gathering and Security Analysis",
+        "tier2": [
+            {
+                "tier2_category": "Vulnerability Research",
+                "tier2_description": "Activities centered around identifying, analyzing, and exploiting vulnerabilities, as well as gaining knowledge about them."
+            },
+            {
+                "tier2_category": "Reconnaissance and Server Discovery",
+                "tier2_description": "Techniques associated with understanding problems, enumerating targets, gathering information, and gaining insights into systems and services."
+            },
+            {
+                "tier2_category": "Web Security Concepts and Techniques",
+                "tier2_description": "Encompasses the analysis of web sites/applications, discovery of network components, understanding security postures, and exploring files and directories for vulnerabilities."
+            }
+        ]
+    },
+    {
+        "tier1_category": "Documentation, Strategy, and Miscellaneous Techniques",
+        "tier2": [
+            {
+                "tier2_category": "Understanding and Analyzing",
+                "tier2_description": "Involves activities aimed at understanding and categorizing challenges, and gleaning insights from web applications."
+            },
+            {
+                "tier2_category": "Strategy Development and Implementation",
+                "tier2_description": "Pertains to formulating and executing strategies, understanding game mechanics, and reviewing challenge documentation."
+            },
+            {
+                "tier2_category": "Documentation and Information Review",
+                "tier2_description": "Techniques related to reviewing documentation, examining codes, and retrieving pertinent information."
+            },
+            {
+                "tier2_category": "Technique Deployment",
+                "tier2_description": "Encompasses actions related to deploying and testing different techniques, iterating over methods, and applying time-based strategies."
+            },
+            {
+                "tier2_category": "Note-taking and Review",
+                "tier2_description": "Activities related to recording observations, conducting research, and analyzing findings."
+            },
+            {
+                "tier2_category": "Version Control Management",
+                "tier2_description": "Methods for managing, reviewing, and gaining insights from version control systems and repositories."
+            },
+            {
+                "tier2_category": "Miscellaneous Techniques",
+                "tier2_description": "An umbrella for diverse techniques, strategies, and actions not strictly categorized elsewhere."
+            }
+        ]
+    }
+]
+

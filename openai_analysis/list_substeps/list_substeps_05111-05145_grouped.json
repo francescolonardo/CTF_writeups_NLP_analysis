@@ -1,0 +1,62 @@
+{
+    "Local File Inclusion (LFI) Vulnerability": [
+        "Find an unfixed issue revealing a Local File Inclusion (LFI) vulnerability in PHP-Proxy",
+        "Exploited the directory traversal vulnerability to execute commands and retrieve the contents of the flagged file located at /secret/safe/flag.png",
+        "Craft a payload to return the content of /flag/flag.txt."
+    ],
+    "SQL Injection": [
+        "Realized SQL queries can be dispatched to this open FD to read responses."
+    ],
+    "File Creation & Manipulation": [
+        "Create 'collision1.pdf' with the predetermined prefix.",
+        "Attempt to upload an HTML file containing a simple JavaScript function.",
+        "Ensure the file is empty."
+    ],
+    "Data Exfiltration": [
+        "Noted that the poll options are exfiltrated to `example.com`.",
+        "Decoded base64 strings to view the source code of 'wc.php'.",
+        "Understand that this keylogger sends each pressed key to an external server as an encoded message."
+    ],
+    "Web Server Configuration & Vulnerabilities": [
+        "Discovered that it allows for a domain-literal format, which permits just about any printable ASCII character.",
+        "Observe that directory listing is active",
+        "Understand that the API is powered by Werkzeug.",
+        "Identify potential vulnerabilities.",
+        "Investigated users.php page.",
+        "Inspect the code in the /redirect.",
+        "Identified lack of validation for 'Content-Length' headers as the cause of vulnerability.",
+        "Fail to find 'sdctf' in the logs."
+    ],
+    "Input Manipulation & Exploitation": [
+        "Pass things in the textbox",
+        "Indicate that only one note contains the flag."
+    ],
+    "Session & Cookie Exploitation": [
+        "Note that the 'secret' cookie contains the flag.",
+        "Unquoted and cleaned up the cookie values within the Python script."
+    ],
+    "Web Application Security Testing & Analysis": [
+        "Identify that the solution involves predicting the random numbers generated.",
+        "Understand that the constraints are due to a regex check.",
+        "Note the responses for each input."
+    ],
+    "Web Browser & Network Manipulation": [
+        "Open the Inspect Element tool",
+        "Set X-Forwarded-For header to 172.16.2.24.",
+        "Use the 'subprocess.Popen' class."
+    ],
+    "Authentication": [
+        "Enter the correct pin.",
+        "Authenticate into the system."
+    ],
+    "URL & Parameter Manipulation": [
+        "Retrieve the flag from the URL parameter",
+        "Appended `?source` to the index.php of the site."
+    ],
+    "Python Script Analysis & Modification": [
+        "Implemented a condition in the Python script."
+    ],
+    "Combination & Concatenation": [
+        "Combined both parts of the flag."
+    ]
+}

@@ -1,0 +1,52 @@
+{
+    "CAPTCHA & JWT": [
+        "Identify that the code uses random numbers to make the CAPTCHA text.",
+        "Capture the payload of the response, identifying the included JWT token."
+    ],
+    "Input Manipulation": [
+        "Tried submitting possible answers.",
+        "Bypass character filter.",
+        "Crafted payload '/search?q=socengexp'/**/AANDND/**/(SUBSTR(otp,<POSITION>,1))='<GUESS>'.",
+        "Recognize the use of repeated directory traversal sequences in payload modification.",
+        "Recognized that the user input is directly used in an SQL query.",
+        "Realize that the pickle python object could potentially be exploited for a pickle deserialization vulnerability.",
+        "Plug in a modified payload with a long sequence of directory traversal in the URL.",
+        "Run brute.py script to output arbitrary SQL queries",
+        "Craft a request to set the theme to '<?php phpinfo() ?>'.",
+        "Ensure the injection payload has been executed."
+    ],
+    "Web Requests": [
+        "Executed an HTTP request.",
+        "Download all the contents of the Git repository from the website.",
+        "Include 'credentials: include' in the request to bypass same-origin policy restrictions."
+    ],
+    "Source Code Analysis": [
+        "Recognized it as part of Angular's internal methods fetching '/api/answer' from server-side.",
+        "Realized that `HEAD->name` can be controlled.",
+        "Go through the provided source code.",
+        "Determine the code checks file extensions for uploaded files.",
+        "Used the provided code snippet.",
+        "Access the subclass information",
+        "Recreate the scenario where 'name' variable is never redeclared.",
+        "Create a Python script."
+    ],
+    "Authentication & Authorization": [
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Create a new user.",
+        "Figured out the need of a passcode to perform admin functions."
+    ],
+    "Web Navigation & Functionality": [
+        "Access the website homepage",
+        "Navigate to the bottom of the results.",
+        "Open a web browser."
+    ],
+    "Data Analysis & Manipulation": [
+        "Examine the feedback form on the website.",
+        "Attempt to show differences between the commit when the flag was removed and the commit when it was present."
+    ],
+    "Server-side Exploitation": [
+        "Recognize that Prerender is used to render sensitive endpoints",
+        "Print the 'flag' file content using a bash script."
+    ]
+}

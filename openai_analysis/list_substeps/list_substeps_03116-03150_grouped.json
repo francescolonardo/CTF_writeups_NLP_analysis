@@ -1,0 +1,67 @@
+{
+    "File Interactions": [
+        "Identify the allowed file extensions: 'txt', 'pdf', 'doc', 'docx', 'xls', 'xlsx'.",
+        "Received a PDF file from the '/circle/one/' endpoint.",
+        "Attempt to read the required file.",
+        "Retrieve required strings for password.",
+        "Discover list of created books hosted on the server.",
+        "Use knowledge of local git repository structure to start pulling files from the server's .git directory."
+    ],
+    "HTTP Interactions": [
+        "Included a special character between 'Transfer-Encoding:' and 'chunked'.",
+        "Identify that it uses proxy_pass to forward requests.",
+        "Observe cookies carrying the 'secret' cookie.",
+        "Exploited the secondary SQL injection vector.",
+        "Send the crafted URL, which includes the injected script, to the admin.",
+        "Constructed the MySQL query ensuring it follows the little-endian, 4 bytes format for length, used 1-byte for query type (0x3 for this specific query), and then added the actual query content.",
+        "Send a GET request to the URL.",
+        "Note that the XSS-Auditor in Chrome 74 is set to mode=filter."
+    ],
+    "Database Interactions": [
+        "Review the database.py file.",
+        "Described the '1919810931114514' table using the `1'; DESCRIBE tablename;` command.",
+        "Identified a column labeled 'R34L_F14G'."
+    ],
+    "Geolocation Operations": [
+        "Counted the number of cameras within the specified distance using the haversine formula",
+        "Implemented haversine formula"
+    ],
+    "Web Application Navigation": [
+        "Logout",
+        "Test the app.",
+        "Associate recognized components with their intended functionalities.",
+        "Visit the website."
+    ],
+    "Web Security Techniques": [
+        "Implement brute force for all possible remaining octets of the IP address within the range of 0 to 256",
+        "Note that the XSS-Auditor in Chrome 74 is set to mode=filter."
+    ],
+    "Security Exploitation": [
+        "Exploited the secondary SQL injection vector.",
+        "Send the crafted URL, which includes the injected script, to the admin."
+    ],
+    "Web Application Analysis": [
+        "Analyze the web application/database setup's behavior.",
+        "Minify the code to be read as XSS."
+    ],
+    "Token Manipulation": [
+        "Create a new token using HS256 algorithm."
+    ],
+    "Code Execution": [
+        "Constructed the MySQL query ensuring it follows the little-endian, 4 bytes format for length, used 1-byte for query type (0x3 for this specific query), and then added the actual query content.",
+        "Implemented a trick to bypass `innerText` resetting the prepared CONFIG clobbering in the payload."
+    ],
+    "PDF Manipulation": [
+        "Create a separate PDF page list for the second input PDF."
+    ],
+    "Username Scanning": [
+        "Scanned each discovered username for potential files associated with them."
+    ],
+    "DNS Server Setup": [
+        "Consider using a tool like singularity to set up a DNS server."
+    ],
+    "Brute Forcing": [
+        "Implement brute force for all possible remaining octets of the IP address within the range of 0 to 256",
+        "Start the brute forcing process"
+    ]
+}

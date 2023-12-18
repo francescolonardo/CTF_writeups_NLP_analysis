@@ -1,0 +1,95 @@
+1. Authentication Management
+    - Authentication Methods and Techniques
+    - Login and Authentication
+    - Authentication Bypass
+    - JWT and Authentication Bypass
+    - Authentication Attempts and Results
+    - Authentication and User Management
+    - Authentication and Session Interactions
+    - Bypassing Authentication and Access Control
+    - Web Tokens and Authentication
+
+2. Session and Token Management
+    - Web Token Handling
+    - Session Management and Cookies
+    - Session Management
+    - Handling Sessions and OTPs
+    - OTP and Process Handling
+    - Token Manipulation
+    - Session and User Management
+    - Session and Authentication Management
+    - Session Manipulation
+    - Token, Cookie, and Session Handling
+    - Session and Cookie Insights
+    - Cookies and Sessions
+    - Cookie and Session Manipulation
+    - Session Manipulation and User Management
+
+3. User Management and Access Control
+    - Access Control and Authorization
+    - User Authentication and Access Control
+    - Access Control and Restrictions
+    - User Privileges and Access Control
+    - User Management
+    - User Registration and User Management
+    - Authentication and User Management
+    - User Registration and Management
+    - Overseeing User Registrations and Permissions
+    - User Registration and Permissions
+    - Unauthorized Access and Actions
+
+4. Credential and Cookie Management
+    - Discovering Credentials and User Information
+    - Password and User Info
+    - Creating and Manipulating Cookies
+    - Cookie Manipulation and Utilization
+    - Cookie Handling
+    - Token and Credential Handling
+    - Credential and Password Handling
+    - Cookie Exploitation
+    - Web Tokens and Cookies
+
+5. Bypassing and Exploitation Techniques
+    - Brute Force
+    - Bypassing Processes and Filters
+    - Bypassing and Manipulation
+    - Bypassing Processes and Mechanisms
+    - Exploits and CSRF
+    - CSRF Attacks
+    - Payload and Exploit Execution
+
+6. Manipulation and Analysis 
+    - Input Manipulation and Exploitation
+    - Parameter and Endpoint Observations
+    - Response and Error Analysis
+    - Web Application Analysis
+    - Information Gathering and Analysis
+    - File and Data Manipulation
+    - Information Gathering and Exploitation
+    - Input Manipulation
+    - Password Manipulation and Recovery
+    - Web Application Vulnerabilities
+    - Intercepting and Manipulating Requests
+    - Request Smuggling Vulnerability
+    - File Handling and Protocol Manipulation
+    - Other Actions and Observations
+    - Miscellaneous Actions
+    - Input Validation and Sanitization
+    - Username Manipulation
+
+7. Security and Escalation Techniques 
+    - Security and Privilege Escalation
+    - Code Execution
+    - Cross-Origin Resource Sharing (CORS)
+    - Data Leakage
+    - Network Analysis and Interception
+    - Server and System Insights
+
+8. Specific Vulnerabilities
+    - CSRF (Cross-Site Request Forgery)
+    - Request Smuggling Vulnerability
+
+9. Information Gathering
+    - Information Gathering
+    - Information Gathering and Analysis
+    - Information Gathering and Exploitation

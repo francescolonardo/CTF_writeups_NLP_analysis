@@ -1,0 +1,51 @@
+{
+    "Code Execution & Serialization": [
+        "Note that the code ignores the first letter if it's uppercase.",
+        "Serialized the custom 'Login' object.",
+        "Brute force the JWT secret with John The Ripper.",
+        "Decode the ROT13 encrypted message in the HTTP response.",
+        "Combine the altered header, payload, and the generated signature.",
+        "Configure the exploit script with the necessary parameters.",
+        "Researched 'Code Execution through IIFE in node-serialize' advisory",
+        "Constructed a payload to test the exploit."
+    ],
+    "Web Interface & Navigation": [
+        "Note the challenge has a web interface.",
+        "Visit the `/cookies` endpoint",
+        "Inside the new HTML script element, decide to add an 'imports' key",
+        "Notice server-rendered pages.",
+        "Register a user",
+        "Identify the use of a productId value",
+        "Realize the effect of POST-ing certain data.",
+        "Inspect the HTTP Response.",
+        "Discover the existence of an admin login page",
+        "Observe the error response from the web application.",
+        "Gain access as an admin user.",
+        "Checked the filter page for clues or information"
+    ],
+    "File System & Resource Discovery": [
+        "Find an oddly-named nginx.conf file.",
+        "Visited the reported portion of the JavaScript file.",
+        "Attempt to extract database details.",
+        "Accessed robots.txt to find interesting entries",
+        "Identified the wildcard DNS configuration responsible for the pointing."
+    ],
+    "Injection & Exploitation": [
+        "Passed the input to the injection point at 'GET /legacy_invoice_system/*'.",
+        "Attempt to use the local-host address.",
+        "Test the character '+'",
+        "Apply the necessary adjustments to the injection to ensure it fits within the limitations."
+    ],
+    "Authentication & Authorization": [
+        "Note that the conditional statement sets a cookie with the true flag if certain values are present",
+        "Gain access as an admin user."
+    ],
+    "File Operations & Downloads": [
+        "Downloaded the flag.",
+        "Perform image file upload"
+    ],
+    "Network & Configuration": [
+        "Ngrok will display a URL in the form 'http://<subdomain>.ngrok.io'.",
+        "Configure the exploit script with the necessary parameters."
+    ]
+}

@@ -1,0 +1,23 @@
+[
+    "Identify the first change.",
+    "Identified /login and /forgotpassword.html as especially interesting.",
+    "Bypass SOP.",
+    "The HTML encoding process of individual characters is done in the loop function",
+    "Observe that the path '/' lists information including server source code.",
+    "Discover the server technology.",
+    "Send the crafted request to confirm the vulnerability and the input reflection.",
+    "Choose a .phtml file for upload.",
+    "Bypass the JavaScript check.",
+    "Bypass standard checks by exploiting the off-by-one error",
+    "Adjust necessary parameters in the python script.",
+    "Analyzed the source code for potential flaws",
+    "Access the website.",
+    "Analyzed the JavaScript source.",
+    "Have a clearer perspective.",
+    "Obtain the admin 2FA code from the decoded token.",
+    "Accessed the site.",
+    "Translated the bash script into a one-liner",
+    "Bypass 'subclasses' by constructing a string.",
+    "Analyze the challenge title for possible XSS vulnerability",
+    "Identify the publicly accessible functionality '/dogooo/deets/<postid>'."
+]

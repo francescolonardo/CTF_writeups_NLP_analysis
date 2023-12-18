@@ -1,0 +1,60 @@
+{
+    "Website URL and Page Actions": [
+        "Add the encoded payload to the URL.",
+        "Admin Bot visits the URL.",
+        "Visit 'http://web.zh3r0.ml:7777/?page=flag'",
+        "Visit route '/?page=payload'",
+        "Accessed the site.",
+        "Attempted '127.0.0.1;ls .' in the URL.",
+        "Used '127.0.0.1;echo $PWD' in URL.",
+        "Used '127.0.0.1;env' in URL."
+    ],
+    "Input and Form Interaction": [
+        "Notice the website allows HTML input.",
+        "Ensure the site URL in the payload is using HTTPS.",
+        "Prevent Content Security Policy Bypassing.",
+        "Send the generated webpage to the website.",
+        "Send the generated webpage URL.",
+        "Send the URL to the 'admin bot'.",
+        "Capture the payload of the response, identifying the included JWT token.",
+        "Clicked a button on the website.",
+        "Redirected to /index.php after a 302 Found.",
+        "Sent the request to '/data'.",
+        "Send a request body.",
+        "Customize the request body.",
+        "Observe the requests being made to the API endpoint."
+    ],
+    "Source Code Analysis and Inspections": [
+        "Opened the developer tools in the browser (F12 -> Sources in Google Chrome).",
+        "Inspected the static resources of the web page.",
+        "Inspected the index.html file.",
+        "Identified the endpoint for the POST request.",
+        "Notice a redirection with 302 Found to /index.php.",
+        "Found paths /, /logout, /login, /forgotpassword.html, /admin, and /dashboard."
+    ],
+    "Authentication and User Interactions": [
+        "Examine the login screen.",
+        "Examine the main screen with book selections.",
+        "Login with given credentials using the Google Chrome Network tab.",
+        "Started the instance on picoCTF.",
+        "Clarified how to start the app locally using a non-privileged port",
+        "Intended to display the flag on the welcome page",
+        "Identify the app as a page.",
+        "Discover clickable links that reveal 2 blog posts.",
+        "Find the blog post page '?p=1'.",
+        "Notice that comments need to be approved.",
+        "Observe the change in the URL after submitting a comment.",
+        "Observe two <link> tags.",
+        "Find the webpage of the 'Modern events calendar' plugin."
+    ],
+    "Web Crawling and Information Gathering": [
+        "Receive and log the cookie transferred as a query parameter.",
+        "Search for the flag on the browser",
+        "Search in the source code for the flag's presence.",
+        "Access the provided source code and link to the running instance.",
+        "Analyzed the web page.",
+        "Identify the application as a WordPress site.",
+        "Observe the text of the challenge that refers to 'robots'.",
+        "Check the 'robots.txt' file for the disallowed path."
+    ]
+}

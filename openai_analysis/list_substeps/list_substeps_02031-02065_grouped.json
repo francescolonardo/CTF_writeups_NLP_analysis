@@ -1,0 +1,56 @@
+{
+    "XOR Operations": [
+        "Check if the XOR result is zero."
+    ],
+    "Reverse Shell": [
+        "Failed at multiple attempts to get reverse shell."
+    ],
+    "User Interaction": [
+        "Find a 'follow' button on the admin's profile.",
+        "Access flag",
+        "Explore the website interface.",
+        "Visit the rule page."
+    ],
+    "Data Extraction": [
+        "Receive a list of pumps and their IDs.",
+        "Identify fields that need to be extracted.",
+        "Find students' emails exposed at https://wpiadmin.wpictf.xyz/topStudents",
+        "Analyse the given hyperlinks."
+    ],
+    "Bypassing Filters": [
+        "Attempt to bypass it by loading image URLs directly.",
+        "Determine that the .phtml extension is not being filtered."
+    ],
+    "Request Manipulation": [
+        "Incorporate the token identified in the Javascript files into the POST request.",
+        "Make a callback to our server with the data.",
+        "Utilize the un-blacklisted linux redirection character '<'.",
+        "Decode the cookie using the selected tool.",
+        "Implemented the newly crafted SQL injection on the authentication form."
+    ],
+    "Code Analysis": [
+        "Identify a hint in the website.",
+        "Summarize that the flag must be 'zer0pts{K4nt4n_m34ns_4dm1r4t1on_1n_J4p4n3s3}'.",
+        "Verified that the event handler is added after meeting several checks.",
+        "Examine the file UserController.java to identify any useful endpoints.",
+        "Study the source code."
+    ],
+    "Security Vulnerability": [
+        "Recognize that HTML markup injection is allowed.",
+        "Notice that the scripts are always executed due to the `nonce` in the CSP."
+    ],
+    "Response Analysis": [
+        "The flag was 'RS{4!way5_Ke3p-m0v1ng}'",
+        "Retrieved the flag 'S3D{G0_De3Per_L1k3_a_pr0_r3d_T3aMEr}'.",
+        "Fail to exploit the vulnerability.",
+        "Retrieved the flag in the response"
+    ],
+    "Tool Usage": [
+        "Use the OpenSSL tool to decode the Bitcoin Wallet password.",
+        "Used a tool like Burp Suite Intruder for the scan."
+    ],
+    "Loop Execution": [
+        "If the condition is not met, the script continues iterating.",
+        "Included a dummy value as the request body."
+    ]
+}

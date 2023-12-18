@@ -1,0 +1,77 @@
+1. Web Navigation & Interaction
+    Webpage Visiting and Navigation
+    General Web Interaction
+    Navigation and Browsing
+    User Interaction with Web Applications
+    Web Behavior Tracking and Analysis
+    Web Challenge Progression
+    Access and Navigation of Web Pages
+    Page Navigation and URL Manipulation
+    Web Interaction and Form Handling
+
+2. Web Element Analysis & Manipulation
+    Web Element Identification, Observation, and Analysis
+    Web Elements and Design Interaction
+    Form Interactions and Manipulations
+    Web Element Source Code Analysis
+    Frontend Behavior Analysis
+    Client-Side and Browser Interactions
+    Iframe and Web Component Manipulation
+    Web Sockets
+
+3. User Interaction & Behavior
+    User Behavior Tracking
+    User Interface Interaction and Content
+    Authentication, Authorization, and Account Management
+    User Profile Modification and Image Upload
+    Note-Taking and Organization
+    Repetition and Iteration
+    Input and Form Manipulation
+
+4. URL & Browser Analysis & Manipulation
+    URL Manipulation and Analysis
+    Browser Behavior, Analysis, and Debugging
+    Browser and Client-Side Manipulations
+    URL and Parameter Manipulation and Analysis
+
+5. HTTP & Network Interaction
+    HTTP Headers, Requests, and Responses
+    Network Manipulation and Analysis
+    Server and Network Interaction
+    Network Requests and Responses
+    Curl and Server-Side Requests and Responses
+
+6. Server Interaction & Analysis
+    Server Behaviors and Manipulation
+    Server-Side Interactions
+    Web Server Manipulation and Exploitation
+    Server Monitoring and Tracking
+
+7. API & Endpoint Interaction
+    Web API Interactions and Analysis
+    Endpoint and GraphQL Exploration
+    API Manipulation and Analysis
+
+8. Data & File Manipulation
+    Data Manipulation, Extraction, and Analysis
+    File Interaction, Analysis, and Download
+    Cookie Management and Manipulation
+    Payload Encoding, Decoding, and Injection
+
+9. Security & Exploitation
+    Vulnerability and Security Analysis
+    Exploitation Techniques and Payload Crafting
+    Web Security Analysis and Exploits
+    Network Analysis and Security Investigation
+    Vulnerability Assessment and Testing
+    Security Evasion and Bypassing Techniques
+
+10. Configuration, Errors & Feedback
+    Web Configuration, Settings, and Redirection
+    Web Error Handling and Analysis
+    Feedback and Error Responses
+
+11. Miscellaneous Actions & Operations
+    Miscellaneous Web Actions and Endeavors
+    Content Identification and Extraction
+    Header Manipulation and Analysis

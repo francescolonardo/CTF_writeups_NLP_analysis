@@ -1,0 +1,60 @@
+{
+    "Command Execution & Server Interactions": [
+        "Listed the directory contents.",
+        "Note that the server filters the character '.'.",
+        "Identify 'flag.file' contents",
+        "Apply logic to explore the use of commas as input.",
+        "Consider that the debugging port is randomized.",
+        "Mutable namedtuple assignment raises AttributeError.",
+        "View the login form",
+        "Find the public key in '/signature/key.pub' as indicated in the hint.",
+        "Use the dumped admin credentials to login to the first webpage.",
+        "We cannot reach the '/queries' endpoint as the IP address required is 127.0.0.1, any other IP is redirected to '/'.",
+        "Refresh the webpage",
+        "Examine the source code.",
+        "Obtain the process ID as the result of executing the PHP command",
+        "Examine the provided back-end source code.",
+        "Craft the parameter as '5779715767432985082/../../admin'.",
+        "Created a PHP script.",
+        "Locate a PRIVATE KEY within the file",
+        "Aim to steal the admin's secrets through the POST request.",
+        "Access '/robots.txt' on the website",
+        "Identify that the Python microservice runs on Flask's built-in server",
+        "Signify checking out the website's 'robots.txt'"
+    ],
+    "Loyalty Point Manipulation": [
+        "Increase loyalty point history minimum of 1337 times."
+    ],
+    "Flag Brute-force": [
+        "Bruteforced the flag letter by letter."
+    ],
+    "User Input & Form Manipulation": [
+        "Enter 'Science' for Favorite Primary School Subject",
+        "Replace the original cookie with the new base64 encoded 'chocolate' cookie on the website",
+        "Tried to manipulate the `clipboard_getData` function."
+    ],
+    "Error Handling & Debugging": [
+        "Collected from the error message.",
+        "Consider that the debugging port is randomized.",
+        "Mutable namedtuple assignment raises AttributeError."
+    ],
+    "Web Navigation & Interaction": [
+        "Navigate to the bottom of the results.",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Perform the action of accessing challenges.",
+        "Redirected to own account upon a successful enumeration (403 redirect).",
+        "Refresh the webpage",
+        "Review the problem statement."
+    ],
+    "Source Code Analysis": [
+        "Analyze the entrypoint.sh bash file.",
+        "Examine the source code.",
+        "Examine the provided back-end source code."
+    ],
+    "Session & Authentication": [
+        "Observe from user session that the session cookie was set to Lax",
+        "Log in using the newly changed credentials of the admin account."
+    ]
+}

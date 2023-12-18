@@ -1,0 +1,93 @@
+1. **Web Navigation and Analysis**
+- Browser Console Interaction
+- Web Browsing & Navigation
+- Website Functionality Study
+
+2. **Network and Server Interaction**
+- Network Intercept & Inspection
+- Server Vulnerabilities
+- Proxy and Server Analysis
+- Network Communication & Networking
+- Server Access & File Handling
+
+3. **Authentication and Access Control**
+- Login & Authentication
+- Authentication & Authorization Manipulation
+- Password Verification Analysis
+- Authorization Analysis
+
+4. **File Handling and Analysis**
+- File Access
+- File Operations & Downloads
+- File Enumeration
+- File Management & Inspection
+- Server-side File Handling
+
+5. **Exploitation and Attack Techniques**
+- Code Injection
+- Command Execution & Environment Manipulation
+- Exploitation
+- Browser Exploitation
+- Frontend Exploitation
+- Payload and Input Manipulation
+- Code Execution & Data Exfiltration
+- XSS Vulnerability & JSON Configuration
+- Evasion Techniques & Exploitation
+
+6. **Security Analysis and Bypass Techniques**
+- HTTPS Usage
+- Bot & Automation Identification
+- Web Security & Configuration Analysis
+- Security Check Bypass
+- Security Tools & Techniques
+- PHP Bypass & Exploitation
+
+7. **Programming and Scripting Techniques**
+- String Manipulation
+- Looping & Script Execution
+- PHP Scripting & Modification
+- JavaScript Techniques
+- Regular Expressions
+- Server-side Scripting
+- Regular Expression (Regex) Analysis
+- String Manipulation & Parsing
+
+8. **Data Management and Analysis**
+- Data Analysis & Extraction
+- Information Retrieval & Malicious Code
+- Token Analysis
+- Data Extraction & Parsing
+- Data Manipulation & Exploitation
+- Web Scraping and Data Extraction
+
+9. **Code and Configuration Analysis**
+- Scan Result Directory Path Follow
+- Code Inspection & Analysis
+- PHP Configuration & Disabled Functions
+- Code & Script Analysis
+- System Configuration Analysis
+- Code Review
+
+10. **Interaction and Automation**
+- Admin Actions
+- Note Manipulation
+- Flag Retrieval & Manipulation
+- User Actions & Interactions
+- GET Requests & Manipulation
+- Automation & Scripting
+
+11. **Information Gathering**
+- IP Spoofing
+- Content-Type Modification
+- XSS Potential Identification
+- DNS Configuration
+- Version Control System (VCS) Exploration
+- Information Gathering & Analysis
+- Server Information Gathering
+
+12. **Additional Techniques**
+- Email Interactions
+- Response Text Analysis
+- API & Endpoint Manipulation
+- Shared Object & Binary Analysis
+- JavaScript Analysis

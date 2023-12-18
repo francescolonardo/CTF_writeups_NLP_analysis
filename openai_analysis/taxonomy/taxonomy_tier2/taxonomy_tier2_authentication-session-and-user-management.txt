@@ -1,0 +1,70 @@
+1. Authentication and Session Management
+
+    Authentication Methods and Techniques
+    Login and Authentication Processes
+    JWT Processing and Analysis
+    Authentication Bypass Techniques
+    Authentication and Session Interactions
+    API and Service Authentication
+    SQL Injection in Authentication
+
+2. Credentials, Token, and Cookie Management
+
+    Discovering and Handling Credentials
+    Password Discovery and Manipulation
+    Web Token Handling and Manipulation
+    JWT and Token Specifics
+    Cookie Handling and Manipulation
+    Session and Cookie Management Techniques
+
+3. User Management, Access Control, and Permissions
+
+    User Registration and Management Processes
+    Access Control, Authorization, and Restrictions
+    User Privileges, Permissions, and Controls
+    Inappropriate and Unauthorized Access
+    Overseeing User Registrations and Permissions
+
+4. Manipulation, Analysis, and Exploitation
+
+    Input, Request, and Response Manipulation
+    Bypassing Processes, Filters, and Validations
+    Web Application Vulnerabilities and Exploits
+    Brute Force, Password Cracking, and Enumeration
+    File, Data, and Endpoint Manipulation
+    Payload and Exploit Execution
+    Code Injection and Execution
+
+5. Web Application Security and Techniques
+
+    Security and Privilege Escalation
+    Cross-Origin Resource Sharing (CORS) and CSRF
+    Network Analysis, Interception, and Data Leakage
+    Server, System, and Infrastructure Insights
+    WAF Bypass, Payload Encoding, and Prevention Techniques
+
+6. Information Gathering and Analysis
+
+    Information Gathering Techniques and Exploitation
+    Parameter, Response, and Error Analysis
+    Web Application, API, and Backend Analysis
+    Logging, Audit Trails, and Observations
+
+7. Content and Data Management
+
+    File Upload, Handling, and Execution
+    File, Flag, and Source Code Retrieval
+    Data and Input Validation and Sanitization
+
+8. Specific Vulnerabilities
+
+    CSRF (Cross-Site Request Forgery)
+    Request Smuggling
+    XSS and Other Injection Attacks
+
+9. Miscellaneous and Other Techniques
+
+    User Interactions, Actions, and Behaviors
+    Distributed Systems, Caching, and Rate Limiting
+    Miscellaneous Actions, Observations, and Techniques
+    

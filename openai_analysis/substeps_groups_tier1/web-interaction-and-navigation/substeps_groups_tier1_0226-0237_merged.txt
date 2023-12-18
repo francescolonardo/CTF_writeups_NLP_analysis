@@ -1,0 +1,21 @@
+1. Web Application Interaction
+   - Web Application Features
+   - Web Interaction and Navigation
+   - Web Challenge Progression
+
+2. User Interaction
+   - User Interactions and Inputs
+   - Authentication and Authorization
+   - Authorization and Authentication
+
+3. Web Elements and Infrastructure
+   - Web Sockets
+   - Element Identification and Analysis
+
+4. Exploitation Techniques 
+   - Exploitation and Payload Crafting
+   - Web Security and Exploits
+
+5. Data and File Interaction
+   - File Manipulation and Download
+   - Cookie Manipulation

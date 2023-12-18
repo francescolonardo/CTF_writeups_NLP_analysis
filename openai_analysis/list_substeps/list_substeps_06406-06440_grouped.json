@@ -1,0 +1,75 @@
+{
+    "PHP Exploitation": [
+        "Bypassed strip_tags using the PHP bug."
+    ],
+    "Password Verification": [
+        "Noticed password verification with passwordVerify."
+    ],
+    "HTTP Responses": [
+        "Received a 403 Forbidden response."
+    ],
+    "Script Inspection": [
+        "Inspect the visible scripts"
+    ],
+    "Request Manipulation": [
+        "Used request.args as the argument",
+        "Intercept an HTTP request or use a cookie editor tool."
+    ],
+    "Code Analysis": [
+        "Recognized the Mechanism `ApiMapper` in `poll.dart`.",
+        "Inspect the JavaScript file.",
+        "Identify the 1st command-line argument used as a value assigned to a macro",
+        "Analyze the code of the 'query_login_attempt' function.",
+        "Identified the presence of SQL object within User Class."
+    ],
+    "Rate Limiting & OTP": [
+        "Identified that the rate limiting limits the number of OTP attempts to 3."
+    ],
+    "Text Decoding & Manipulation": [
+        "Obtain the flag from the decoded text",
+        "Obtain the 'userId' from the decoded information.",
+        "Understood that the variable part contained the actual char of the flag."
+    ],
+    "Cookie Manipulation": [
+        "Decide to forge the cookies",
+        "Control 'Version' in cookie.",
+        "Name the cookie 'authenticated-user'."
+    ],
+    "File Operations": [
+        "Download the 'dirstate' file from the target server."
+    ],
+    "JWT Payload Generation": [
+        "Create a script to generate the JWT payload."
+    ],
+    "Exploit Server Interaction": [
+        "Use 'window.open()' on the exploit server."
+    ],
+    "Directory Navigation": [
+        "Encounter challenges while trying to navigate up directories."
+    ],
+    "Environment Discovery": [
+        "Locate one more environment: /secret_ctf_location/env."
+    ],
+    "SQL Payload": [
+        "Used 'Updatexml()' in the SQL payload."
+    ],
+    "Script Execution": [
+        "Inspect the server response.",
+        "Copy the introspection query.",
+        "Send a GET request to 'outer.html'",
+        "Received fire-place[0].html e4a4c2321d18246d027184605ca52866 as the challenge.",
+        "Set up the DNS server similar to DNS Rebinding."
+    ],
+    "Flag Extraction": [
+        "Build the path to the flag.",
+        "Successfully obtained the flag."
+    ],
+    "File Identification": [
+        "Spot the 'auth.ts' file.",
+        "Noted the mention of a removed 'index.php' file."
+    ],
+    "Payload Manipulation": [
+        "Use a similar approach to bypass '.' character for callback domain.",
+        "Set the values of 'user' and 'pass' as 'karma'"
+    ]
+}

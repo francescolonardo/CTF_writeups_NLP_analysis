@@ -1,0 +1,49 @@
+{
+    "Source Code Analysis": [
+        "Analyze the source code of the webpage."
+    ],
+    "Web Security Concepts": [
+        "Looked more into Jinja2 and found the 'safe' filter that renders unescaped HTML.",
+        "Recognized input appending pattern to '/santa_mon.sh'.",
+        "Recognize that 'allow-popups-to-escape-sandbox' can prevent the inheritance of sandbox attributes by pop-ups",
+        "Recognized that the admin's request is appended to the incomplete second request.",
+        "Found out that 'pkgPath' is the path to this package.",
+        "Identify that the structure of the script can be seen as something like '(x, y)()'.",
+        "Concluded from the SQLmap results that there are two databases available: 'ASISCTF' and 'information_schema'.",
+        "Identify the replacement of blacklisted characters.",
+        "Identify PHP-Proxy as having a Local File Inclusion (LFI) vulnerability.",
+        "Manipulated 'app.post('/upload' to process with invalid 'req.files[req.query.formid]'.",
+        "Determine that the input fields for the login function are 'username' and 'password'.",
+        "Identify that 'eval' is used on data from the POST request.",
+        "Enter the payload ' or '1'='1'.",
+        "Observe the text of the challenge that refers to 'robots'.",
+        "Consider redefining the Object prototype if it's necessary."
+    ],
+    "JavaScript & Browser Debugging": [
+        "Activated the JavaScript debugger",
+        "Open the JavaScript console in the web browser"
+    ],
+    "Server Interaction & Access": [
+        "Gain access to the application.",
+        "Use the located credential.",
+        "Use the primary segment to create a URL.",
+        "Observe the injected JavaScript code that is responsible for WebSocket communication.",
+        "Retrieve the flag from the decrypted image.",
+        "Attempt to read a file from the server",
+        "Include the caught admin cookies in the request"
+    ],
+    "Documentation & Research": [
+        "Read the official Firebase Firestore documentation."
+    ],
+    "Web Navigation & Exploration": [
+        "Open the provided URL.",
+        "Access /private.php.",
+        "Confirm that no error occurs.",
+        "Create a script."
+    ],
+    "Code Execution & Exploitation": [
+        "Isolate the '/' character.",
+        "Opened a remote code execution vulnerability.",
+        "Cause the checkpoint action to be executed by exceeding 10 records."
+    ]
+}

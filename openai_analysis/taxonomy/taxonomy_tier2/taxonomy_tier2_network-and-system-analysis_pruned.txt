@@ -1,0 +1,45 @@
+6.1 Server and Application Analysis
+    - Server Setup and Management
+    - Server Configuration and Environment Analysis
+    - Application & Server Vulnerability Exploration
+    - Server Actions and Interactions
+
+6.2 Code and Configuration Examination
+    - Source Code and Configuration Examination
+    - Configuration and Header Exploration
+    - Deeper Analysis and Reverse Engineering
+
+6.3 Network Communication Management
+    - Networking and Port Management
+    - IP and Network Communication Management
+    - Manage communications between services
+    - Packet and Traffic Analysis
+    - HTTP Protocol and Web Traffic Analysis 
+
+6.4 Server Identification and Analysis
+    - Server and Port Identification
+    - Server and Port Analysis
+
+6.5 Request and Response Monitoring
+    - Request and Payload Handling
+    - Request Analysis and Manipulation
+    - Request and Response Analysis
+
+6.6 Data Management and Exploitation
+    - Data & System Manipulation
+    - Data Retrieval and Exploitation
+    - File and Data Transfer
+
+6.7 IP and DNS Analysis
+    - IP and DNS Analysis
+    - DNS & IP Analysis
+    - Query and Domain Resolution
+
+6.8 Command Execution and Exploitation
+    - Exploitation and Attack Execution
+
+6.9 HTTP Specific Analysis
+    - HTTP Commands and Parameters
+
+6.10 Miscellaneous Analysis
+    - System Analysis and Monitoring

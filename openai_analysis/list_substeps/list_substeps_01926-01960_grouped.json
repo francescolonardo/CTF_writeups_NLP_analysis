@@ -1,0 +1,57 @@
+{
+    "PHP Functions & Code Manipulation": [
+        "Used 'hex2bin' PHP function."
+    ],
+    "File Manipulation & Generation": [
+        "Generate random content for the file."
+    ],
+    "Exploitation Techniques & Payloads": [
+        "Formulated a Property-Oriented Programming (POP) chain.",
+        "Injected an 'a' tag.",
+        "Wrote the final payload.",
+        "Modify the available PoC to suit the given context.",
+        "Construct a payload to do a redis.call() to set the serialized object with the sessionID."
+    ],
+    "Server-Client Communication & Response Handling": [
+        "Received the flag from the HTTP server.",
+        "Capture the response from the server."
+    ],
+    "Web Page Analysis & Manipulation": [
+        "Interpret the hint given",
+        "Experimented with each method.",
+        "Notice that one of the mentioned company names points to 'Robots.txt'.",
+        "Identify the parameter 'uuid' in the request URL",
+        "Observe the presence of three files on the webpage.",
+        "Access the webpage after the redirection.",
+        "Understand the control of the resulting template",
+        "Realize the endpoint changes to '$BACKEND/admin'.",
+        "Identify and store the authenticated session cookie for 'admin' from the response.",
+        "Understand how the SQL statement can transfer results from the select statement into a new table."
+    ],
+    "Automation & Scripting": [
+        "Decided to write a script to automate the process",
+        "Write a Python script to automate the URL enumeration and flag discovery.",
+        "Run the script."
+    ],
+    "Authentication & Authorization Bypass": [
+        "Steal the identifier from the pop-up",
+        "Bypassed authentication.",
+        "Verify admin privilege."
+    ],
+    "Data Manipulation & Analysis": [
+        "Print the content of the environment file.",
+        "Assign the document's cookie to the query parameter of a specified URL.",
+        "Decode the Base64 cookie value.",
+        "Find out the decryption key by using the 'key_id'",
+        "Retrieve the flag `STC{l0cal_f1l3_1nclus10n_328d47c2ac5b2389ddc47e5500d30e04}`.",
+        "No flaws found in OTP verification logic."
+    ],
+    "Network Communication & Tools": [
+        "Open the cURL tool",
+        "Prepared my server for listening with netcat"
+    ],
+    "System & Logic Analysis": [
+        "Check 'Is it a leap year?' checkbox",
+        "Noticed the use of `SECCOMP_MODE_STRICT` seccomp sandbox."
+    ]
+}

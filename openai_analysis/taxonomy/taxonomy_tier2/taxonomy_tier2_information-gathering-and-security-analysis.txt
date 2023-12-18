@@ -1,0 +1,77 @@
+1. Problem Understanding and Goal Definition
+    CTF Problem Understanding
+    Goal Understanding and Implementation
+    System and Challenge Insights
+    System and Application Understanding
+    Knowledge Research and Understanding
+
+2. Information Gathering
+    Hints and External References
+    User and Token Interactions
+    Enumeration and Information Gathering
+    Site and Service Identification
+    Target Identification and Reconnaissance
+    Suspicion and Precaution
+    Site Access and Initial Observation
+    External Analysis and Research
+
+3. Website and Web Application Analysis
+    Website Exploration and Navigation
+    Website Interactions and Endpoint Discovery
+    URL and Webpage Analysis
+    Web Application Behavior and Functionality
+    Web Application Navigation
+    Website Code and Functionality Exploration
+
+4. Content and Information Retrieval
+    Content Retrieval and Exploration
+    Content Observation and Recognition
+    File and Endpoint Discovery
+    Source File Retrieval
+    String and Password Retrieval
+    Data Extraction and Observation
+
+5. Security and Vulnerability Analysis
+    Vulnerability Analysis and Exploitation
+    Vulnerability Identification and Research
+    Challenge Identification
+    System Exploration
+    Observation and Data Analysis
+    Vulnerability and Exploitation Research
+
+6. Interactive Actions and Explorations
+    Challenge Participation and Enumeration
+    System Exploitation and Interaction
+    Data and Server Analysis
+    Service Usage and Exploration
+    Exploratory Actions and Initial Observations
+    Discovery and Initial Exploration
+    Task Manipulation and Modification
+    Username Enumeration
+
+7. Coding and Data Analysis
+    Code Analysis and Exploitation
+    Parameter and Algorithm Identification
+    Feedback and Error Analysis
+    Code Modification and Web Design
+    Data Extraction and Manipulation
+
+8. Flag Identification and Retrieval
+    Flag Discovery, Identification, and Collection
+    Obtaining Flags in CTF
+
+9. Network and Traffic Analysis
+    Network Traffic Capture
+    Network Scanning and Enumeration
+    DNS Configuration
+    Web Application Security Analysis
+
+10. Directory and File Operations
+    Directory and File Discovery
+    File Operations and Security Analysis
+
+11. Miscellaneous Actions
+    Targeted Actions and Path Selection
+    Web Interactions and Exploitations
+    Attack Confirmation and Feedback
+    Initial System Exploration

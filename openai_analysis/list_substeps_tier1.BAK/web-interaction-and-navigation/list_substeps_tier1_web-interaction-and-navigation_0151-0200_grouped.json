@@ -1,0 +1,49 @@
+{
+    "Page Visits and Navigations": [
+        "Open the '/g00d_old_mus1c.php' path.",
+        "Visited the website.",
+        "Access the website.",
+        "Enter the website URL in Dirb.",
+        "Access the specified path in the website.",
+        "Enter the website.",
+        "Visit the robots.txt page for the site.",
+        "Open the webpage in a web browser.",
+        "Reload or refresh the webpage.",
+        "Visited the challenge link."
+    ],
+    "Code Execution and Manipulation": [
+        "Observe that the path '/' lists information including server source code.",
+        "Observe that parentheses and some keywords are blocked.",
+        "Confirmed buttons trigger standard Linux commands.",
+        "Found 'ups_status' and 'restart_ups' commands return output from local web server.",
+        "Append the payload '?payload=directory`flag`' to the URL of the webpage.",
+        "After this, you should see the flag in your Flask terminal and in the 'cookies.txt' file.",
+        "Search for comments within the HTML source code.",
+        "Made HTTP GET requests to the provided URL.",
+        "Ran code using URL 'http://web.chal.csaw.io:8000/?page=%27%20and%20die(show_source(%27templates/flag.php%27))%20or%20%27'"
+    ],
+    "Developer Tools and Inspections": [
+        "Access the browser's developer tools.",
+        "Access the browser's developer tools.",
+        "Open the inspection tools in the web browser.",
+        "Navigate to the sources tab in the inspection tools.",
+        "Go to 'Inspect' -> 'Storage' -> 'Cookies'.",
+        "Intercept an HTTP request or use a cookie editor tool."
+    ],
+    "Form Interactions and Inputs": [
+        "Observe the post-login page.",
+        "Identify the `/api/toylist` endpoint and its behaviour.",
+        "We cannot reach the '/queries' endpoint as the IP address required is 127.0.0.1, any other IP is redirected to '/'.",
+        "Visit an online barcode generator website.",
+        "Access the website's file upload functionality.",
+        "Inspect the returned results after uploading the barcode.",
+        "Navigate to the bottom of the results.",
+        "Submit the payload through the form.",
+        "Receive the output displaying the flag.",
+        "Directory wasn't directly browsable or clonable.",
+        "Attempted to purchase 'flag' but failed.",
+        "Press 'login' on the login page.",
+        "Access the site and find the flag.",
+        "Get redirected to the flag page."
+    ]
+}

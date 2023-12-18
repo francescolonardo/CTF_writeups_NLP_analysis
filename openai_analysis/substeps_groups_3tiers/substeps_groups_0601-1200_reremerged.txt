@@ -1,0 +1,41 @@
+Tier 1: Web Security and Interaction
+    Tier 2: Web Interaction and Security Analysis
+        Tier 3: Web Interaction & Navigation
+        Tier 3: Web Application Analysis
+        Tier 3: Security Analysis & Exploitation
+    Tier 2: Data Management and User Security
+        Tier 3: Authentication & Authorization
+        Tier 3: Data Analysis & Retrieval
+        Tier 3: User & Session Management
+    Tier 2: System Analysis and Network Security
+        Tier 3: Server & Networking Interactions
+        Tier 3: Code Analysis & Manipulation
+        Tier 3: Environment & System Analysis
+
+Tier 1: Web Exploitation and Mitigation Techniques
+    Tier 2: Exploitation Techniques and Vulnerabilities
+        Tier 3: Web and Data Exploitation
+        Tier 3: Vulnerability Assessment and Management
+        Tier 3: Attack, Exploitation, and Mitigation Techniques
+    Tier 2: Injection and Payload Techniques
+        Tier 3: Payload and Injection Techniques
+        Tier 3: Manipulation & Bypass Techniques
+        Tier 3: Web Attack and Exploitation Techniques
+    Tier 2: Security Testing and Analysis
+        Tier 3: Security & Vulnerability Analysis
+        Tier 3: Testing & Analysis Techniques
+        Tier 3: Data & Information Analysis
+
+Tier 1: Tools, Knowledge, and Problem Solving for Web Security
+    Tier 2: Tools and Techniques for Security
+        Tier 3: Tools and Techniques
+        Tier 3: Web Technologies & Tools
+        Tier 3: Security Testing Techniques
+    Tier 2: Knowledge and Problem Solving in Security
+        Tier 3: Problem Solving and Knowledge
+        Tier 3: Code and Network Operations
+        Tier 3: Miscellaneous Actions and Techniques
+    Tier 2: Miscellaneous Techniques in Web Security
+        Tier 3: Web Browser Actions
+        Tier 3: Communication and Alternative Techniques
+        Tier 3: Sessions & Authentication Management

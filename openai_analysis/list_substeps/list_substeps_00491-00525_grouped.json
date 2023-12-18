@@ -1,0 +1,49 @@
+{
+    "SSH & File Management": [
+        "Cannot modify anything in '/home/manhndd/.ssh/'"
+    ],
+    "Payload Manipulation & Encoding": [
+        "URL-encode the payload again.",
+        "Create a script to modify the sessionID to valid lua.",
+        "Captured the flag with the payload."
+    ],
+    "Arbitrary URL Input": [
+        "Notice that the 'screenshotter' service allows users to enter arbitrary URLs."
+    ],
+    "Source Code Analysis": [
+        "Inspected the page source and found no abnormalities",
+        "Discover that the encryption function in PHP-Proxy is not secure",
+        "Search the blog for log file links.",
+        "Retrieve 'flag.txt'.",
+        "Search for a script.js file.",
+        "Examine the init() function of the website.",
+        "Locate flag.txt file",
+        "Write a PHP script",
+        "Construct a payload that uses the SQL LIKE clause.",
+        "Access the environment file.",
+        "Understood from the JSON response."
+    ],
+    "Web Application Testing": [
+        "Check if the Header 'x-captcha-state' is set.",
+        "Convert items in a dictionary to a list using 'list'.",
+        "Try to exploit Shellshock.",
+        "Successfully logged in as admin.",
+        "Check if 'True' is present in the response.",
+        "Followed the challenge description",
+        "Calculate the 'passcode'.",
+        "Attempted to connect to the homepage.",
+        "Injected the exploit into the 'login' cookie.",
+        "Intended to display the flag on the welcome page",
+        "Note the hint regarding the character set.",
+        "Assign the `login` cookie with the output obtained from the previous step.",
+        "Identified the next `malloc()` call in `insertSorted()` where the overwrite can happen.",
+        "Identify ability to control 'astProgram.type' variable",
+        "Observe the server response."
+    ],
+    "File System Manipulation": [
+        "Get the flag by reading from a file in the '/etc' directory"
+    ],
+    "Custom Script Hosting": [
+        "Host a custom script as 'assets/js/bootstrap.js' on the attacker-controlled site."
+    ]
+}

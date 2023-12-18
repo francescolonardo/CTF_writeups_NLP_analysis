@@ -1,0 +1,55 @@
+Tier 1: Web Attack and Exploitation Techniques
+    Tier 2: Exploitation Techniques
+        Tier 3: Server and Application Exploitation
+        Tier 3: Code & Script Exploitation
+        Tier 3: Data Extraction & Manipulation
+        Tier 3: Payload & Injection Techniques
+    Tier 2: Web Navigation and Interaction
+        Tier 3: Web Page Analysis and Manipulation
+        Tier 3: URL Navigation & Interaction
+        Tier 3: Web Requests & API Interactions
+    Tier 2: Manipulation & Bypass Techniques
+        Tier 3: Authentication & Session Management
+        Tier 3: File, Directory & Data Handling
+        Tier 3: Network & Protocol Manipulations
+        Tier 3: Data & Request Manipulation
+
+Tier 1: Web Security Analysis and Testing
+    Tier 2: Security & Vulnerability Analysis
+        Tier 3: Web Security Vulnerability Analysis
+        Tier 3: Exploit Analysis & Observation
+        Tier 3: Response Vulnerability Analysis
+        Tier 3: Security Analysis & Information Gathering
+    Tier 2: Testing & Analysis Techniques
+        Tier 3: Web Page & Application Analysis
+        Tier 3: Network & Communication Analysis
+        Tier 3: File & System Analysis
+        Tier 3: Debugging & Monitoring
+    Tier 2: Data & Information Analysis
+        Tier 3: Data Extraction & Manipulation
+        Tier 3: Information Search & Analysis
+        Tier 3: Serialization & Deserialization Analysis
+
+Tier 1: Web Security Management and Tools
+    Tier 2: Sessions & Authentication Management
+        Tier 3: CAPTCHA Handling & Validation
+        Tier 3: Session Manipulation & Geolocation Mapping
+        Tier 3: Token & Cookie Manipulation
+        Tier 3: Authentication & Recovery Strategies
+    Tier 2: Web Technologies & Tools
+        Tier 3: Web Application Technologies & Protocols
+        Tier 3: File Management & Security Tools
+        Tier 3: XML Parsing & Lambda Functions
+        Tier 3: SSH & Web Security Concepts
+    Tier 2: Security Testing Techniques
+        Tier 3: Web Scanning & Reconnaissance
+        Tier 3: Hashing & Cryptography Techniques
+        Tier 3: Attack Origin Investigation & Mitigation Strategies
+
+Tier 1: Miscellaneous Actions and Techniques
+    Tier 2: Web Browser Actions
+        Tier 3: Web Server Requests & File Interactions
+        Tier 3: Miscellaneous Web Actions & Techniques
+    Tier 2: Communication and Alternative Techniques
+        Tier 3: Communication & Collaboration Techniques
+        Tier 3: Alternative Solution & Application Start

@@ -1,0 +1,47 @@
+{
+    "Web Application Discovery": [
+        "Guessed that endpoints were present.",
+        "Noticed the presence of file upload capability.",
+        "Identify an inaccessible server that is hosting data-server.",
+        "Find the /login/ endpoint using dirsearch.",
+        "Locate the 'admin' page.",
+        "Identify a Flask webpage"
+    ],
+    "Code Execution": [
+        "Understood that 0 compared with 'michelle' returns true",
+        "Realized the susceptibility of SHA1 algorithm for PDFs.",
+        "Conducted a remote file read operation.",
+        "Request Chromium to open a new webpage.",
+        "Successfully read the remote files.",
+        "Leverage the `constructor/prototype/outputFunctionName` to achieve RCE.",
+        "Ensure the request is made from the localhost.",
+        "Embed the crafted JS snippet into an HTML file.",
+        "Diverge the template at a certain point to create two different PDFs."
+    ],
+    "Web Security Concepts": [
+        "Understood the website allowed changing the theme via a URL parameter `theme='value'`",
+        "Identify the anchor element that allows for a 'ping' attribute.",
+        "Identify the hexadecimal string.",
+        "Discover a template injection vulnerability.",
+        "Acknowledge that there is no known way to bypass the requirement for 'http://localhost' as the origin."
+    ],
+    "Server Interaction": [
+        "Retrieve all logs for further analysis."
+    ],
+    "Browser Interaction": [
+        "Open a web browser.",
+        "Select 'Inspect' or 'Inspect Element'",
+        "Access the webpage."
+    ],
+    "Web Application Analysis": [
+        "Manipulated the 'profile_img' attribute in the PHP object",
+        "Observe that the violation can be detected through a 'securitypolicyviolation' event listener",
+        "Understood the condition for adding DOMPurify-sanitized HTML into the child iframe.",
+        "Recognized the platform as SQLite database.",
+        "Analyze the resulting SQL query."
+    ],
+    "Web Application Behavior": [
+        "+= performs the operation in place when possible.",
+        "'next()' was called in each iteration causing express to continue."
+    ]
+}

@@ -1,0 +1,52 @@
+{
+    "Character Comparison": [
+        "Compare all characters in a possible range."
+    ],
+    "Path Traversal": [
+        "From the PHP, realize that there\u2019s a potential path traversal vulnerability."
+    ],
+    "Source Code Analysis": [
+        "View the HTML source code of the website",
+        "Observe a PHP snippet",
+        "Discover a comment from the API documentation page's HTML source hinting about a robots.txt file located at http://ctfchallenges.ritsec.club:3000/robots.txt.",
+        "Realized finally that both SQL statements are identical to 'SELECT username, password FROM users WHERE username='admin''",
+        "Note that '.' and 'js' need to be the last two elements of the array",
+        "Identify the requirement of different content for the two PDFs.",
+        "Identify the 'hidden token' protection",
+        "Identify the JavaScript event in the onclick attribute",
+        "Observe the information revealed about the file structure."
+    ],
+    "Key Retrieval & Usage": [
+        "Retrieve the received private key.",
+        "Use the remaining dumped credentials to login to the Admin page and access the flag.",
+        "Enter the password 'jjLLgTGk3uif2rKBVwqH'",
+        "Send the URL to the 'admin bot'.",
+        "Found a passcode in the downloaded files",
+        "Log in using the working payload and reveal the hidden flag: `HTB{1nj3cti0n_1s_in3v1t4bl3}`.",
+        "Receive the port number from the exfiltration attempt."
+    ],
+    "File Manipulation & Access": [
+        "The XML payload was uploaded to the 'trial' tab of the web interface.",
+        "Access the desired file using the exploited vulnerabilities."
+    ],
+    "Attack Tools & Techniques": [
+        "Include fetched headers in the request.",
+        "Found out the intended solution involves bypassing the cache partitioning.",
+        "Use `python3 solve.py` to exploit the Local File Inclusion (LFI) vulnerability.",
+        "Overrode the 'window.enable_experimental_features' property.",
+        "Send a GET request.",
+        "Find out that the website isn't protected by CSRF tokens but employs SameSite=Lax cookies.",
+        "Execute Prototype pollution attack.",
+        "Ran SQLMap with the script.",
+        "Included a calculation statement in the request."
+    ],
+    "CTF Challenges & Events": [
+        "Started the CTF Challenge in Houseplant CTF 2020 \u2013 Fire/place."
+    ],
+    "Code Analysis & Execution": [
+        "Create the payload",
+        "Review the given PHP code.",
+        "The PHP command is to display the ID of the current process",
+        "Analyzed the provided files."
+    ]
+}

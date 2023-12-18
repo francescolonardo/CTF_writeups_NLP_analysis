@@ -1,0 +1,53 @@
+"Identification & Analysis", 
+    - Include: "User Access Analysis", "Web Application Source Code Review", "System & Database Analysis", "Technology Identification", "Data Analysis", "Data Extraction & Analysis", "Identification Techniques", "UUID & Format Identification", "PHP Code Analysis", "Python Code Analysis"
+    
+"Testing & Monitoring", 
+    - Include: "Web Application Testing & Analysis", "Web Application Security Testing", "Server and Network Monitoring", "Server Monitoring", "Security Testing Techniques", "Method Failure Detection"
+
+"Exploration & Interaction", 
+    - Include: "Web Application Interaction", "Server Exploration", "Endpoint & API Interaction", "Website Exploration", "Profile Exploration", "Web Form Exploration", "Server-Client Communication & Response Handling", "Server Requests & SQL Queries", "API & Server Interactions", "Website Alerts & Messages"
+
+"Code Manipulation & Execution", 
+    - Include: "Code Execution", "Code Exploitation & Manipulation", "Shell Command Execution", "Code Execution & Serialization", "Code Analysis & Execution", "Deserialization & Code Execution"
+
+"Exploit & Vulnerability Handling", 
+    - Include: "Server-Side Vulnerabilities", "Web Application Vulnerabilities", "Exploits & Payloads", "Code Vulnerabilities & Exploits", "XML External Entity (XXE) Vulnerability"
+
+"Authentication & Authorization", 
+    - Include: "Authentication Analysis", "OAuth2 & Identity Provider", "Authentication & Authorization", "Session Management & Hashing", "User Management", "Privilege Escalation", "Admin Access"
+
+"Response & Error Handling", 
+    - Include: "Server Response Analysis", "Error Handling & Validation", "Error Analysis"
+
+"Data Manipulation & Handling", 
+    - Include: "Session & Cookie Exploitation", "Encoding & Hashing", "Data Retrieval & Observation", "Field Decoding", "Character Conversion & Manipulation", "Variable Identification & Utilization"
+
+"Security Measures & Bypass Techniques", 
+    - Include: "Bypassing Restrictions", "Bypassing Security Measures", "Bypass Techniques", "Injection & Exploitation", "File Restrictions & Bypass", "HTTP Header Manipulation"
+
+"Code Analysis & Reverse Engineering", 
+    - Include: "Code Analysis & Reverse Engineering", "Function Analysis", "JavaScript Payload Manipulation"
+
+"Web Application Behavior & Environment", 
+    - Include: "Web Application Behavior", "HTML Manipulation", "JavaScript & Browser Manipulation", "CSS & Style Manipulation", "Environmental Configurations", "Web Application Analysis & Manipulation", "Traversal & Search Technique"
+
+"Database Interactions & Management", 
+    - Include: "Redis Database Check", "Redis Store & Rate Limiting", "Database Interactions", "Advertisement & HAProxy", "Batching and CAPTCHA"
+
+"System & Application Configuration", 
+    - Include: "Server Configuration", "System Configuration", "Server Information & Configuration", "Application Logic & Programming Techniques", "CTF Management", "CTF Participation"
+
+"Flag & Payload Handling", 
+    - Include: "End Goal & Flag Acquisition", "Flag Assembly", "OpenSSL & Flag Retrieval"
+
+"Data Leakage & Information Discovery", 
+    - Include: "Data Leakage & Information Discovery", "Others", "Form Submission"
+
+"Brute Force Techniques", 
+    - Include: "Brute Force Attack", "Brute Forcing"
+
+"Security Protocol & Form Analysis", 
+    - Include: "HTTP Method Analysis", "Memory & Debugging Analysis", "Authentication Form", "Serialization Analysis", "Profile Exploration", "Web Application Interaction"
+
+"Hints & Clues", 
+    - Include: "Hints & Clues", "Looping"

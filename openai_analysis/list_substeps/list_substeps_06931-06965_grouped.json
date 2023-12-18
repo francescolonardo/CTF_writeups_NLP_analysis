@@ -1,0 +1,52 @@
+{
+    "Input Validation & Sanitization": [
+        "Find hint suggesting input was not sanitized.",
+        "Utilized 'x:script' to exploit the vulnerability.",
+        "Discover the encoded XMLHttpRequest retrieves document's cookie."
+    ],
+    "Git & Server Interaction": [
+        "Fetch further missing git objects from the server.",
+        "Set the 'Host' as 'dscvit.com'."
+    ],
+    "Command Execution": [
+        "Use the Python subprocess library's getoutput() function.",
+        "Use a basic SQL injection payload.",
+        "Perform XOR operation between the uploaded file and `cipher + 0xd34db33f`.",
+        "Exploit the Off-by-Slash bug.",
+        "Realized necessity to create raw HTTP requests.",
+        "Determine that Server: Apache/2.4.50 (Unix) is known to be vulnerable to a recent path traversal vulnerability."
+    ],
+    "Response Handling": [
+        "Received the response",
+        "Retrieve the flag from the returned results."
+    ],
+    "Code Analysis & Source Code Examination": [
+        "Observe that the new representation of the flag is a 152-digit long number.",
+        "Examine the page's source code.",
+        "Discover the usage of `node-serialize` in User.js.",
+        "Research about the versions of Node.js and ATS used."
+    ],
+    "Web Interaction & Exploitation": [
+        "Successfully accessed the '/debug/answer' endpoint.",
+        "Observe use of secret flag within a MD5 calculation.",
+        "Understood how objects are handled.",
+        "Discover the smarty-4.0.1 PHP library.",
+        "Call a specific function.",
+        "Decode the base64 content.",
+        "Find the usage of the username after authentication.",
+        "Perform URL enumeration.",
+        "Modify fetch request to include polluted `credentials: include` option.",
+        "Understand that 'ElementInclude.include(root)' allows the use of XInclude directives."
+    ],
+    "Scripting & Payload Creation": [
+        "Construct a payload that would fit the constraints and retrieve the flag.",
+        "Construct a Python script."
+    ],
+    "Server-side Implementation & Setup": [
+        "Create a payload.",
+        "Set up a simple Node.js server backend."
+    ],
+    "Data Manipulation & Extraction": [
+        "Recognize the first position in the JSON array as the winning position."
+    ]
+}

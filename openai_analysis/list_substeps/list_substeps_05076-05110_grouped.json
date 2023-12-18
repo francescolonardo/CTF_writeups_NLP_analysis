@@ -1,0 +1,57 @@
+{
+    "Command Execution & Exploits": [
+        "Exploit the arbitrary JavaScript execution via a broken image tag's onerror handler.",
+        "Execute the RS256-to-HS256 exploit using python3 jwt_tool.py.",
+        "Exploit the vulnerability to enable Request Smuggling.",
+        "Ensure the payload commands execution of another GET parameter.",
+        "Observe that it prompts a file download.",
+        "Create symlink on NFS filesystem using the SSRF exploit"
+    ],
+    "Information Gathering & Debugging": [
+        "Realized that Chrome DevTools can be used for debugging and obtaining the required information.",
+        "Observe the presence of a WAF named 'Skynet' that filters requests.",
+        "Discover that the certificate was created for the host 138.247.13.115.xip.io.",
+        "Read the provided challenge.",
+        "Identified behavior: if the host is not found or the URL is invalid, a specific message is returned.",
+        "Identified the presence of protected DIG records.",
+        "Observe that the application is behind AWS ELB.",
+        "Discover that the Express application is put behind a reverse proxy (Apache Traffic Server)."
+    ],
+    "Injection & Exploitation": [
+        "Determine that the 'uuid' parameter is vulnerable to injections (XSS/CSS)",
+        "Understand that by adding the necessary characters to the 'username', it is possible to close the double-quote and manipulate the fields following it in the token.",
+        "Determine a method to bypass Jinja2 SSTI filters",
+        "Discovered `<` and `>` characters were protected using a `replaceAll` function.",
+        "Identify the code normalizes file paths.",
+        "Successfully bypass the checks in the source code."
+    ],
+    "Web Navigation & Interaction": [
+        "Navigate to the bottom of the results.",
+        "Access the website homepage",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges.",
+        "Access the website's file upload functionality.",
+        "Visit 'http://easy-php.darkarmy.xyz/?bruh=base64_encode(fread(fopen($_GET[%27pwn%27],%27r%27),512))&nic3=/DarkCON/e&pwn=flag210d9f88fd1db71b947fbdce22871b57.php'",
+        "Notice an option to register a new account.",
+        "Open a new window from the exploit server."
+    ],
+    "Payload Manipulation": [
+        "Expect the execution to result in a reverse shell.",
+        "Improve the payload further by using different JavaScript functions to reduce the character count",
+        "Output the character if it returns a count larger than 0.",
+        "Include a calculation statement in the request",
+        "Additionally, by modifying the JSON payload, it is possible to execute other commands."
+    ],
+    "Security Checks & Bypassing": [
+        "Verify that an 'upload' page is mentioned in the challenge description",
+        "Prevent Content Security Policy Bypassing."
+    ],
+    "File Analysis": [
+        "Analyze the entrypoint.sh bash file."
+    ],
+    "Response Extraction & Verification": [
+        "Received the flag message returned by the server."
+    ]
+}

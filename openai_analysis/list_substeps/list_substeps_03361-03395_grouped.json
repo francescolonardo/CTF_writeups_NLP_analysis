@@ -1,0 +1,51 @@
+{
+    "Command Execution": [
+        "Execute 'ls -al' command"
+    ],
+    "Web Exploitation": [
+        "Sent a 'postMessage' linking the generated CSS to the target page.",
+        "Created `/cookie/` endpoint for receiving exploited cookies",
+        "Understand that the reverse shell payload will be fired when the data is deserialized.",
+        "Note that the Go microservice acts as a reverse proxy for the Python microservice when the PUT method is used",
+        "Reveal mapping in the Apache configuration file.",
+        "Explore the non-admin path, /sakura.",
+        "Construct regex pattern.",
+        "Send a POST request to upload the created file.",
+        "Use the newly crafted URL for the website response check.",
+        "Determine the command length limit of 15 characters from the code.",
+        "Copy the output from the crafted reverse shell payload.",
+        "Use the 'glob' function to find interesting files",
+        "Leveraged the server's behavior of following redirects.",
+        "Create a malicious input for the username",
+        "Decide to provide code in the form of JSON object",
+        "Analyze the server script running at the provided URL.",
+        "Use the encoded payload to bypass the WAF 'Skynet'.",
+        "Include `constructor/prototype/offline` in the POST data.",
+        "Note that the 'A' placeholder in the code has to be replaced with `\\n (`0x0a`) in a proxy.",
+        "Engaged with different features of the meme generator.",
+        "Realize that the flag is in the environment variable.",
+        "Export or send the content of flag.txt.",
+        "Use a similar approach to bypass '\"' character for bash command.",
+        "Understand that Waitress allows LF in chunked extensions."
+    ],
+    "Code Analysis": [
+        "Perform code analysis",
+        "Examine the provided source code.",
+        "Conduct research on the CVE related to this challenge"
+    ],
+    "Web Navigation & Interaction": [
+        "Open the inspection tools in the web browser",
+        "Ensure that a valid graph can be created using a specific format"
+    ],
+    "Data Manipulation": [
+        "Identify additional server check constraints",
+        "Identify the rendered HTML page from textarea inside an iframe",
+        "Decide to switch 'astToJs' to 'evalCode'"
+    ],
+    "Server Communication": [
+        "Downloaded website source code"
+    ],
+    "System Configuration": [
+        "Performed the action of setting up socks correctly."
+    ]
+}

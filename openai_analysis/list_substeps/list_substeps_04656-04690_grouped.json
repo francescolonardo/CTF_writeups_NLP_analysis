@@ -1,0 +1,62 @@
+{
+    "Proxy and Server Analysis": [
+        "Identify that the request was double proxied with Nginx."
+    ],
+    "Cross-Site Scripting (XSS)": [
+        "Recognize the XSS prevention methods implemented by the site."
+    ],
+    "Web Navigation & Interaction": [
+        "Visited the website and viewed the login page",
+        "Encounter a message saying browser is unsupported.",
+        "Open the website",
+        "Access the 'Support' section"
+    ],
+    "File Manipulation & Code Execution": [
+        "Upload a PHP shell",
+        "Decide to add custom JavaScript code to the 'code' key",
+        "Test the vulnerability using the crafted payload",
+        "Examine the Python code.",
+        "Notice the validation of arbitrary code execution",
+        "Review the results to list all tables.",
+        "Write a new PHP exploit",
+        "Look for a value for 'confidential_documents'.",
+        "Caused the source of 'flag.php' file to be revealed",
+        "Included the payload in the URL.",
+        "Read the file 'apache.conf'.",
+        "Injected two `reCAPTCHA` buttons.",
+        "Retrieve the corresponding IP address",
+        "Modify the output of the Python code."
+    ],
+    "Password Manipulation & Cracking": [
+        "If a guess was not successful, the full password has been guessed."
+    ],
+    "SQL Injection": [
+        "Created exploit using SQL injection: 'adm' || trim('in', ` Password: `) || ''",
+        "Attempt to break out of the string with a single quote in '?cat=news''."
+    ],
+    "Data Extraction & Analysis": [
+        "Ensured the script utilizes a previously saved cache.",
+        "Extract hidden data from the .DS_Store file."
+    ],
+    "Authentication & Session Management": [
+        "Sign the Flask cookie with the desired username to authenticate as 'root'.",
+        "Used the obtained OTP for verification and login."
+    ],
+    "Code and Source Analysis": [
+        "Check the source code of the website.",
+        "Recognize that 'mobile-viewer' couldn't directly interact with server."
+    ],
+    "Input Validation & Filtering": [
+        "Attempted various inputs.",
+        "Realize that JavaScript doesn't execute when directly input into the application's fields."
+    ],
+    "Redis Store & Rate Limiting": [
+        "Noticed rate limiting being enforced on a per-email basis through a Redis store."
+    ],
+    "Completion & Success": [
+        "Complete the challenge."
+    ],
+    "Others": [
+        "Perform this step to prevent unintended data loss or corruption."
+    ]
+}

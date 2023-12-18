@@ -1,0 +1,15 @@
+[
+    "Provided a callback parameter.",
+    "Steal the admin's cookie.",
+    "Create a policy that only allows form submissions to a specific domain",
+    "'smtp_exec' variable is used in sending activation emails",
+    "Upon granting admin privileges",
+    "Use the credentials for `http://app/` in the fetch request",
+    "Ensure the injected `style` element is readable by the attacker",
+    "Use the known hash of an empty string as a token value for authentication.",
+    "Provide authentication to view the server logs.",
+    "Use 'Host: app@ATTACKER_URL' to bypass the validation",
+    "Use the custom host header to target your own host",
+    "The first response is designed to pass the SSRF check.",
+    "Identify that if the request token is wrong, then the 'request.accessGranted' attribute would not be set."
+]

@@ -1,0 +1,55 @@
+{
+    "Scrolling and URL Navigation": [
+        "Understand that STTF allows scrolling to a specific portion of the page using a text snippet in the URL.",
+        "Detect if a scroll occurred when a text fragment is parsed in the URL."
+    ],
+    "Website Security and Vulnerabilities": [
+        "Note the presence of a Content Security Policy (CSP) to prevent XSS attacks.",
+        "Change the base URI of the page.",
+        "Recognize that this is usually not possible due to the CSP."
+    ],
+    "HTTP Requests and API Interactions": [
+        "HTTP POST request to sell flag with negative price",
+        "Directly access flag with 'flag_id=3' using HTTP POST /buy request",
+        "Send GET request to 'https://shiba.yactf.ru/'.",
+        "Send GET request to 'https://shiba.yactf.ru/api/boop' 1500 times within the loop.",
+        "Send GET request to 'https://shiba.yactf.ru/' to get the final page after 1500 iterations.",
+        "Look for '/robots.txt' to find a hint about the public key location.",
+        "Triggered a JSONP response from the YouTube API.",
+        "Request the website.",
+        "Specify the 'news' category by adding '?cat=news' to the URL.",
+        "Utilize the 'cat' parameter in a request to '/ajax/articles?cat=asdf\"x=\"'.",
+        "Explore the possibility of detecting a client-side error when exceeding Chrome's maximum URL length (2MB)",
+        "Experiment with creating a URL that just hits the length limit",
+        "Observe a redirection to an 'about:blank#blocked' page when the limit is exceeded",
+        "Notice that if the URL limit is hit, the origin of the page remains that of the parent window",
+        "Test the observation by creating a URL for a successful and unsuccessful query respectively",
+        "Queries leading to a different domain will be blocked",
+        "Create a fetch request",
+        "Modify fetch request to include polluted `credentials: include` option",
+        "Recognize ATS interpreting \"chunked\" as chunked.",
+        "Recognize Puma ignoring invalid / unsupported TE values.",
+        "Craft a request to smuggle a request to /admin in flagportal.",
+        "Understand that the previous request smuggling method will not capture the second response from Puma.",
+        "Recognized that /api/flag-plz is mapped to /forbidden.",
+        "Recognized that /api is mapped to /.",
+        "Realized that http://flagportal.chall.seetf.sg:10001/api//flag-plz would be mapped to http://backend/flag-plz.",
+        "Used the discovered mapping to smuggle a request to /admin in flagportal."
+    ],
+    "Website Structure and Rendering": [
+        "Visited the website.",
+        "Accessed the webpage.",
+        "Observe the form to fill.",
+        "Find the input box.",
+        "Click the submit button.",
+        "Load only the 'img' element.",
+        "Render the XSS payload: '<img src=\"/images/error.jpg\" alt=\"selected category random\"onerror=\"alert``\" />'",
+        "Inspect the search feature of the provided platform",
+        "Look at the responses when searching for a note",
+        "Examine the issued redirects",
+        "Notice the difference in redirect URLs when a note is found or not found",
+        "Test inputting content in MiniMag format",
+        "Test inputting content in BBCode format",
+        "The content in MiniMag and BBCode format is accepted as 'format' in the post submission request data"
+    ]
+}

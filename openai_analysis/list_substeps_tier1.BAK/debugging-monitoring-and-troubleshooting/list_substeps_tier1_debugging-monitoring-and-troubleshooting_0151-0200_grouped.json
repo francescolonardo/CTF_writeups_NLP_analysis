@@ -1,0 +1,59 @@
+{
+    "Observation and Analysis": [
+        "Observe the retrieval of the flag",
+        "The payload measures the time taken to fetch 'y.png'.",
+        "Observed the attack working even with Chrome's cache partitioning policy.",
+        "Test the payload to ensure it works.",
+        "Consider that the debugging port is randomized.",
+        "Confirm that the payload is not blocked.",
+        "No flaws found in OTP verification logic.",
+        "Avoided CORS issues.",
+        "Observe that the enumerated IDs correspond to the router's RAM.",
+        "Ensure the completion of navigation and placement of the cookie by sleeping for 1 second.",
+        "Observed any unusual behavior",
+        "Wait for the promise to resolve.",
+        "Wait for the promise to resolve.",
+        "Checked if the search took more than 50ms.",
+        "Discovered a workaround to fix the loading behavior.",
+        "Incorporated delays between consecutive requests.",
+        "Tested the method.",
+        "Identified that an error was thrown during rendering.",
+        "Found that an error was thrown.",
+        "Realize modification of point history with each purchase request.",
+        "Error is raised later in the assignment step.",
+        "Observe that the 'request.accessGranted' attribute becomes undefined in such cases.",
+        "Identified a suitable breakpoint after the `malloc` call and before the `strcpy` call.",
+        "Monitor the Network Tab responses.",
+        "Replace 'admins' with '.env' in the route.",
+        "Or replace 'admins' with '../.env' in the route.",
+        "Identify headers that require a token.",
+        "Observed the output on my netcat listener",
+        "Include code in 'payload.php' to list all directory files",
+        "Opened the developer tools in the browser (F12 -> Sources in Google Chrome).",
+        "Apply a payload.",
+        "Craft a payload."
+    ],
+    "Flag Retrieval": [
+        "Retrieve the flag",
+        "Find the flag in the backup/b/a/c/flag.txt file."
+    ],
+    "Web Application Testing": [
+        "Utilize the network tab in the browser's developer tools.",
+        "Test the payload.",
+        "Final part performs variable dump (var_dump($_0)).",
+        "Examine the script",
+        "Indicated the attack has worked."
+    ],
+    "Local Setup and Execution": [
+        "Attempted to start the app locally with 'npm run start'",
+        "Started the app with 'PORT=8080 npm run start'",
+        "Corrected the mistake to execute the payload after serialization",
+        "Observed output similar to standard Linux commands.",
+        "Analyze and review the Dirb scan results",
+        "Demonstrate successful Remote Code Execution (RCE)"
+    ],
+    "Request and Response Handling": [
+        "Submitted a malformed statement.",
+        "'check' is a predefined string expected in the response of a successful login."
+    ]
+}

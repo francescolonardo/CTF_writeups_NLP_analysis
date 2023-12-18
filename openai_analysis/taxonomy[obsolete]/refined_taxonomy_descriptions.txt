@@ -1,0 +1,77 @@
+Web Interaction & Analysis: Activities related to the direct interaction with web resources.
+	- Webpage & Application Interaction: Interacting with websites or web applications through standard or unconventional means.
+	- Website Exploration: Navigating through the website, including directory traversal and content discovery.
+	- Web Application Testing & Exploitation: Identifying vulnerabilities in web applications and attempting to exploit them.
+	- Browser Automation & Scraping: Using tools or scripts to automate browser actions or extract data from websites.
+	- Web Form & User Interaction: Engaging with forms or other user-centric web elements.
+	- HTTP Requests & Headers: Analyzing or modifying HTTP requests, including headers and payload data.
+
+Network & System Operations: Tasks linked with network-based interactions and server-level operations.
+	- Network Tool Usage: Employing specific tools designed for network-based tasks.
+	- Network Communication & Protocol: Understanding and manipulating network protocols.
+	- Traffic & Packet Monitoring: Observing and analyzing network traffic.
+	- Network Scanning & Analysis: Probing networks to discover devices, services, or vulnerabilities.
+	- Server Setup & Configuration: Setting up or reconfiguring server properties.
+	- Server & Network Interaction: Direct interactions with a server or system through network means.
+
+Database Operations: Actions centered around database interaction and exploitation.
+	- SQL & NoSQL (MongoDB) Operations: Tasks specific to SQL or MongoDB query execution.
+	- Database Exploration: Investigating a database's structure or content.
+	- Data Leakage: Identifying unintentional exposure or transmission of data.
+	- SQL Injection & Analysis: Exploiting vulnerabilities through SQL injection techniques.
+
+Debugging & Analysis: Processes focused on understanding and exploiting code or application flaws.
+	- Error Identification & Exploitation: Recognizing and leveraging application errors.
+	- Source Code Review: Examining the application's source code to identify vulnerabilities or logic flaws.
+	- Debugging & Testing: Running applications in debug mode or testing functionalities.
+	- Code Execution Analysis: Understanding how certain code sections are executed and their implications.
+	- Prototype Pollution Analysis: Investigating potential vulnerabilities in JavaScript objects.
+
+Code & Script Analysis:
+	Description: Activities around understanding and manipulating script-based behaviors.
+	- Language & Script Identification: Identifying the programming language or the scripting technique used.
+	- Code Injection: Inserting malicious or unexpected code segments to influence application behavior.
+	- JavaScript Obfuscation & Client-Side Analysis: Decoding obscured JavaScript or analyzing client-side scripts.
+	- Asynchronous Programming Analysis: Understanding and exploiting asynchronous operations.
+
+Security & Exploitation:
+	Description: Activities specifically aimed at compromising security measures.
+	- Payload & Exploit Crafting: Creating or modifying malicious payloads or exploits.
+	- Server & Web Vulnerability Identification: Recognizing potential weak points in servers or web applications.
+	- Command & System Exploitation: Leveraging system vulnerabilities to execute commands or scripts.
+	- Web Security Exploit Techniques: Using specialized techniques or methods to compromise web-based applications.
+
+Authentication: Processes associated with bypassing or analyzing authentication mechanisms.
+	- JWT Manipulation: Altering or analyzing JSON Web Tokens used for authentication.
+	- LocalStorage & Password Analysis: Investigating stored data or analyzing password behaviors.
+	- Authentication Bypass & Session Hijacking: Techniques to sidestep authentication or take over user sessions.
+	- User Account Management: Interactions with user account functionalities.
+	- Token & Authentication Handling: Analyzing or manipulating tokens used in authentication processes.
+	- Access Control Mechanisms: Investigating or exploiting controls that limit user or system access.
+
+API & Service Interaction:
+	Description: Interactions with application's backend services or APIs.
+	- API & WebSocket Interaction: Engaging directly with APIs or WebSockets, including sending or receiving data.
+	- API Request Analysis: Reviewing and understanding API requests or responses.
+
+Programming & Automation:
+	Description: Writing or utilizing scripts to automate tasks or operations.
+	- Scripting & Automation Techniques: Using programming techniques to automate actions or processes.
+
+File & Data Management:
+	Description: Operations related to file systems or data handling.
+	- File Inspection & Analysis: Examining files for content, metadata, or potential payloads.
+	- File System Exploration: Navigating and understanding the file system structure or permissions.
+	- Directory Structure Analysis: Investigating directory layouts, permissions, or hidden data.
+	- Data Extraction & Encoding: Retrieving data and understanding its encoding or structure.
+
+Tools & Configuration: Utilizing specialized software and their configurations.
+	- Tool Configuration: Setting up or adjusting tools for specific tasks.
+	- DNS & IP Management: Handling domain names and IP addresses.
+	- System Configuration: Adjusting system settings or properties.
+
+Miscellaneous Tasks: A diverse set of activities not fitting cleanly into other categories.
+	- Strategy & Approach: Planning or strategizing the exploitation process.
+	- External Research & Information Gathering: Seeking information from outside sources or public databases.
+	- Media (Image & Email) Interaction: Engaging with multimedia files or email content.
+	- QR Code Analysis: Examining QR codes for data or exploitation vectors.

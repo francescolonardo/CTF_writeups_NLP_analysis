@@ -1,0 +1,60 @@
+{
+    "Monitoring and Analysis": [
+        "Monitor the Network Tab responses.",
+        "Observed the output on my netcat listener",
+        "Found a response header",
+        "Received the server's response to the malicious `POST` request.",
+        "Observe the server's response.",
+        "Explored the site using ZAP Proxy.",
+        "Utilize the network tab in the browser's developer tools.",
+        "Or, use Wireshark for analyzing the HTTP traffic.",
+        "Analyze the format of response packets.",
+        "Analyze the provided PCAP file",
+        "Paid particular attention to the HTTP headers: 'Server', 'Via', 'X-Served-By'."
+    ],
+    "Server Setup and Configuration": [
+        "Prepared my server for listening with netcat",
+        "Set up a netcat listener on my server",
+        "Set up a netcat listener on a local server.",
+        "Capture incoming connections.",
+        "Cookies are sent by the executed payload to the netcat listener.",
+        "We need an actively running server to receive this request and log the cookie.",
+        "We run this server on all interfaces '0.0.0.0' on port '16361'.",
+        "You can run this script anywhere that is internet accessible, port forward port '16361' or deploy on Google Cloud. But, the easiest method is to use ngrok."
+    ],
+    "HTTP Request and Response Analysis": [
+        "Retrieve the flag from the server response",
+        "Retrieve the flag from the server.",
+        "Run the command 'curl -H \"Accept-Language: sv-SE\" very.uniquename.xyz:8880'",
+        "Locate the 'Host' header in the HTTP request.",
+        "Set the 'Host' as 'dscvit.com'.",
+        "Executed a curl command to make a POST request",
+        "Specify the port number.",
+        "Identify that the app listens to 'POST' requests.",
+        "Identify that the requests are made to '/captcha'.",
+        "Planned to execute 'curl http://localhost:3000/get_flag' to obtain output through the webpage.",
+        "Executed the modified command and obtained the flag output from the server.",
+        "Send the code to the site administrator",
+        "Executed the URL.",
+        "Analyze 'cgi-bin/' directory",
+        "Server returned all allowed methods.",
+        "Received different responses from '/two/' endpoint with 'PUT' and 'CONNECT' HTTP verbs.",
+        "Analyze the provided PCAP file",
+        "Identify a packet (#6) in the PCAP file",
+        "Identify packet #261 in the capture",
+        "Identify packet #263 in the capture",
+        "Observe the flag in the response from the server",
+        "Paid particular attention to the HTTP headers: 'Server', 'Via', 'X-Served-By'."
+    ],
+    "Miscellaneous": [
+        "Start the instance.",
+        "Understand that the app listens to 'POST' requests.",
+        "Download the source code.",
+        "Send a request to obtain a list of all users.",
+        "Wait for the admin cookies to be caught",
+        "Noted the server requests",
+        "Took note of the different server requests that were sent as a result.",
+        "Investigated the responses received.",
+        "Inspect the format of request packets."
+    ]
+}

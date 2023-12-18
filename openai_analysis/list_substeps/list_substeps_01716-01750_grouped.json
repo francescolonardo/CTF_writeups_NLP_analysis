@@ -1,0 +1,55 @@
+{
+    "Flag Retrieval": [
+        "Reveal the flag"
+    ],
+    "Token Validation": [
+        "Verify that the token is successfully signed."
+    ],
+    "Payload Manipulation": [
+        "Adjusted payload produced from serialization operation.",
+        "Open 'content.xml' and modify its contents to include a payload that links to the '/flag' file.",
+        "Append payload to '/readflag' command in 'f' GET parameter.",
+        "Apply the hashpumpy function to retrieve the contents of package.json",
+        "Attempt to send 'POST' data to 'manage.php' with a different 'Referrer'",
+        "Altered the pass field.",
+        "Restructure the query to generate a SQL query that operates as 'SELECT id LIKE '9e5a%'.",
+        "Payload 2: Obtained the page contents.",
+        "Failed as the function doesn't allow special characters like '%'.",
+        "Logged in as admin using the discovered SQL injection",
+        "Recognize that '--checkpoint=1' does not pass the file extension check.",
+        "Exfiltrate the data to 'http://ATTACKER_URL'.",
+        "Pass the encoded content into the cookie.",
+        "Identify a vulnerability in the form."
+    ],
+    "Response Monitoring": [
+        "Monitor the response for headers.",
+        "Review the error received.",
+        "Observe a web page",
+        "Viewed the backend activity in the Network tab."
+    ],
+    "Cookie Analysis": [
+        "Identify the algorithm mentioned in the cookie value.",
+        "Identify that representing the localhost (127.0.0.1) in a different notation can bypass the restrictions."
+    ],
+    "Web Navigation": [
+        "Logged in.",
+        "Perform a GET request to the discovered endpoint."
+    ],
+    "Web Application Interaction": [
+        "Remove the loop() function from addCaptcha()",
+        "Observe that the service validates the URL to be HTTP(S).",
+        "Realize that the endpoint can be accessed without authentication.",
+        "Capture wifi nonces.",
+        "Identify the 'eval()' vulnerability",
+        "Notice that 'mootools' JavaScript library is used."
+    ],
+    "HTTP Request Analysis": [
+        "Manage the response received in the console."
+    ],
+    "HTTP Header Inspection": [
+        "Locate the 'Content-Type' header in the HTTP request."
+    ],
+    "Environment Configuration": [
+        "Set up a Python-based environment."
+    ]
+}

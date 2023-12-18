@@ -1,0 +1,48 @@
+{
+    "Parameter Manipulation": [
+        "Identified possibility to use 'Parameter Pollution' by having two 'amount' arguments."
+    ],
+    "Command Execution": [
+        "Execute the 'cat' command to view the contents of a file.",
+        "Ensure the inserted PHP code can execute commands remotely",
+        "Use the identified class (subprocess.Popen) to list directory content"
+    ],
+    "Code Analysis": [
+        "Analyze the given Python script",
+        "Identified how to leverage the prototype pollution.",
+        "Analyze the source code.",
+        "Inspect the Beego source code"
+    ],
+    "File Execution": [
+        "Verify that .phtml extension executes PHP code.",
+        "Inject entity 'xxe' into 'app.xml'",
+        "Include the cleaned, manipulated PDF data in 'collision2.pdf'.",
+        "Use lesscss to evaluate CSS on the backend."
+    ],
+    "HTTP Analysis": [
+        "Identify that the code is reading an HTTP header.",
+        "Received instructions about the presence of certain elements inside the HTML page.",
+        "Identify unique JavaScript with buildId attribute.",
+        "Start at a login/register page.",
+        "Received a server response after successful SQL injection.",
+        "Discovered a script on the `index.php` page",
+        "Craft a '?cat=random\"onerror=\"alert`` img' request."
+    ],
+    "Data Manipulation": [
+        "Utilized the PHP serialize() function.",
+        "Obtain the content of the template files.",
+        "Use JavaScript code using `document.cookie` to control variables in the payload.",
+        "Recognize that the httpOnly attribute prevents retrieval of the cookie by XSS.",
+        "Determine that the second part of the packet represents the post ID",
+        "Discovered the presence of only two tables - nxf8_users and nxf8_sessions.",
+        "Manipulated the `widget` parameter.",
+        "Understood that `$var8` represents the pointer to the newly allocated memory for the payload.",
+        "Craft a payload for the attack."
+    ],
+    "Server Interaction": [
+        "Send a POST request with 'launch' attribute set to true.",
+        "Received the URL and Docker file for the challenge.",
+        "Used leaked secret key",
+        "Make the decision to use a UNION SELECT based query"
+    ]
+}

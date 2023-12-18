@@ -1,0 +1,64 @@
+{
+    "Server Interaction": [
+        "Attempt to connect to the real server.",
+        "Value: 127.0.0.1",
+        "Used a known attribute in the object",
+        "Identify the 'GopherAdapter' code in 'modules/Gophers.py'.",
+        "Finally, input the payload into the frontend for the application.",
+        "Check the 'Content-length' response header",
+        "Applied sqlmap on the saved login request.",
+        "Tried to access port 9006 directly but didn't get meaningful information.",
+        "Used the SQL injection payload to retrieve the flag",
+        "Find CSP settings in the source code.",
+        "Search for the flag within the server response.",
+        "Recognized the necessity to write a php-cgi header before executing the MySQL query.",
+        "Flag was located within the public news_article table of the database dump.",
+        "Inject the base64 version of the bash script."
+    ],
+    "Website Exploration": [
+        "Visit the GitHub exploit page 'https://github.com/ambionics/phpggc'",
+        "Observe that it leads to a list of admin usernames.",
+        "Considered the XML-related error spawned previously.",
+        "Inspect 'challenge/bot.js' to understand 'bot.readQueries(db)' function. It reveals that the bot imports puppeteer, a headless browser controlled via JavaScript, holds the flag, loads the application home page, sets the 'flag' cookie, visits the '/queries' endpoint, and then exits.",
+        "Decode the base64 response",
+        "Retrieve data from 'R34L_F14G' column in 'users_data' table.",
+        "Infer that the suffixes contain information about the product name and the purchase status.",
+        "Access the challenge PHP URL",
+        "Identify the onclick track event",
+        "Analyze the cookies"
+    ],
+    "Security Analysis": [
+        "Identified the use of a message event handler.",
+        "Acknowledge that DOMPurify is pretty secure.",
+        "Recognize the necessity to write a php-cgi header before executing the MySQL query.",
+        "Analyze the cookies"
+    ],
+    "Data Manipulation": [
+        "Decode the base64 response",
+        "Read and store the content of the merged PDF file.",
+        "Retrieved data from 'R34L_F14G' column in 'users_data' table.",
+        "Inferred that the suffixes contain information about the product name and the purchase status.",
+        "Flag was located within the public news_article table of the database dump."
+    ],
+    "Information Extraction": [
+        "Observe that it leads to a list of admin usernames.",
+        "Considered the XML-related error spawned previously."
+    ],
+    "Code Analysis": [
+        "Identify the 'GopherAdapter' code in 'modules/Gophers.py'.",
+        "Inspect 'challenge/bot.js' to understand 'bot.readQueries(db)' function. It reveals that the bot imports puppeteer, a headless browser controlled via JavaScript, holds the flag, loads the application home page, sets the 'flag' cookie, visits the '/queries' endpoint, and then exits.",
+        "Inspect the `User` object to find its instantiation of a `SQL` object."
+    ],
+    "Injection Attacks": [
+        "Used a known attribute in the object",
+        "Used 'username=test' or 1 UNION SELECT *, null from flag-- -&password=test' or 1 UNION SELECT *, null from flag-- -' as the injection payload",
+        "Applied sqlmap on the saved login request.",
+        "Used the SQL injection payload to retrieve the flag",
+        "Recognized the necessity to write a php-cgi header before executing the MySQL query.",
+        "Search for the flag within the server response.",
+        "Inject the base64 version of the bash script."
+    ],
+    "PDF Processing": [
+        "Read and store the content of the merged PDF file."
+    ]
+}

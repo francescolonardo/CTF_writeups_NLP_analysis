@@ -1,0 +1,9 @@
+[
+    "Look for '/robots.txt' to find a hint about the public key location.",
+    "Find that the feature allows specifying a remote document portion to insert.",
+    "Compare the resulting origins of the pages",
+    "The POST-based XSS vectors are not exploitable for admin privilege access",
+    "Modify the 'Pipe the emails through' command",
+    "Extract the first flag from the decoded field.",
+    "Identify LFI vulnerability."
+]

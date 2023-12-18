@@ -1,0 +1,53 @@
+{
+    "Browser Interaction": [
+        "Tested rendering of the reflected input in the browser.",
+        "Observe the response from the web application.",
+        "Examine the registration fields",
+        "Accessed the meme generator web application.",
+        "Open the source.zip file."
+    ],
+    "Code Injection & Remote Execution": [
+        "Perform a bruteforce attack.",
+        "Find the endpoint '/dogooo/runcmd' enabling remote shell functionality.",
+        "Use backticks to confirm remote code execution (RCE).",
+        "Ran '/readflag' by passing it as an argument to the defined 'pwn' function.",
+        "Bruteforce the value of 'x' by submitting RCE payload with different 'x' values until a shell is received."
+    ],
+    "File Manipulation & Analysis": [
+        "Locate the style.css file within the website files",
+        "Use an extractor tool.",
+        "Confirm that both files are sqlite3 databases.",
+        "Recreate GZip archive",
+        "Open the source.zip file."
+    ],
+    "Authentication & Authorization": [
+        "Use the manipulated cookies to gain access.",
+        "Attribute the challenges to the `basedir` restriction.",
+        "Logged in with a random value."
+    ],
+    "Information Gathering": [
+        "The flag is `csictf{5h0uld_5tr1ng1fy_th3_p4r4ms}`",
+        "Read the challenge's description.",
+        "Identify a meta tag with the name attribute 'redpwnctf2020' in the HTML source code.",
+        "Determine that the website is an online calculator",
+        "Identified a known vulnerability (CVE-2019-17221)"
+    ],
+    "Data Extraction & Manipulation": [
+        "Use an extractor tool.",
+        "Data is POST-ed to the /api/filter endpoint",
+        "Spot an interesting behavior with 'RegExp.prototype.test()' used with regex containing the global flag.",
+        "Constructed a payload.",
+        "Construct a parameter that meets the conditions and requests the flag file"
+    ],
+    "Error Handling & Debugging": [
+        "Found that an error was thrown.",
+        "Noted that exception messages are displayed in alert pop-ups"
+    ],
+    "Web Application Testing": [
+        "Perform a bruteforce attack.",
+        "Use an extractor tool.",
+        "Spot an interesting behavior with 'RegExp.prototype.test()' used with regex containing the global flag.",
+        "Confirm presence of characters in the password.",
+        "Code a web page that uses a Promise."
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "Hints & Clues": [
+        "Found a potential hint: c4n_r3ve4l_"
+    ],
+    "Server & Database Interactions": [
+        "Discovered a connection being made to a MySQL server prior to shellcode execution.",
+        "Inspect the code of the 'query_kill_time' function.",
+        "Execute child process for reading the flag file",
+        "Unzip 'src.zip'.",
+        "Successfully extracted the flag from /var/www.",
+        "Checked routes.py file.",
+        "Retrieve the flag from the 'flag' column in the 'flag' table",
+        "Discover that the 'language' field is set according to the parameter passed via the POST handler for '/localization-language'.",
+        "Retrieved column names of 'startup_users' table from the database using the SQL query."
+    ],
+    "Web Page Analysis": [
+        "Checked if the window was framed or opened by another window.",
+        "Check the site's 'Bug Bounty' form.",
+        "Discovered that arbitrary HTML submitted is rendered by the admin's browser.",
+        "Inspect the search feature of the provided platform",
+        "Notice that the SAFE_FOR_JQUERY flag is not being used.",
+        "Identify a scoped style attribute.",
+        "Opened 'last-revision', revealing the last update to the directory."
+    ],
+    "Web Requests & APIs": [
+        "Use the custom host header to target your own host",
+        "Send a GET request to /jwtlogin",
+        "Base64 encode an XMLHttpRequest.",
+        "Include the stolen 2FA codes in the request."
+    ],
+    "JSON Web Token (JWT) Analysis": [
+        "Understand the JWT processing by the server.",
+        "Received a JWT session token."
+    ],
+    "Client-Side JavaScript Exploration": [
+        "Identify JavaScript functions that handle creation of iframe or appending script source.",
+        "Test the character '['",
+        "Set the 'User-Agent' as per the requirement in the PHP code.",
+        "Derive a URL that starts with 32 bytes of hexadecimal characters using leading 0's.",
+        "Read the page carefully."
+    ],
+    "Application Security Bypass Techniques": [
+        "Cause the promise to resolve.",
+        "Noted the situation that even though the app was hidden behind Nginx reverse proxy.",
+        "Identify a scoped style attribute.",
+        "Receive a message stating flags are not for normal users."
+    ],
+    "Exploitation & Flag Retrieval": [
+        "Obtain flag.",
+        "Execute the 'cat index.php' command.",
+        "Find the flag"
+    ]
+}

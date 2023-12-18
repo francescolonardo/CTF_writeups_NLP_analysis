@@ -1,0 +1,84 @@
+1. Code, Script, and Application Analysis
+   - Codebase Exploration and Discovery
+   - Code Analysis and Reverse Engineering
+   - Auditing and Inspecting Code and Scripts
+   - Code and Script Inspection
+   - Code Analysis and Vulnerability Discovery
+   - Dynamic Analysis of Code and Scripts
+   - Code Execution and Injection
+
+2. Web Application Analysis
+   - Web Application and Form Analysis
+   - Web Functionality Analysis
+   - Web Application Interaction and Exploitation
+   - Web Application Security Testing
+   - Server and Application Analysis
+
+3. Payload and Injection Techniques
+   - Payload Construction and Modification
+   - Code Injection and Execution
+   - Injection Techniques
+
+4. Content Analysis and Manipulation
+   - Code and Web Content Dissection
+   - URL Manipulation
+   - String Analysis
+   - Character Manipulation
+   - Web Rendering and Structure Analysis
+
+5. Security Analysis and Exploitation
+   - Client-side Vulnerabilities
+   - Server-side Filtering
+   - Web Application Security and Vulnerabilities
+   - Security Vulnerabilities and Exploits
+   - Application Vulnerability Testing
+
+6. Data Analysis and Management
+   - Accessing and Manipulating Data
+   - Data Extraction and Retrieval
+   - Data Analysis and Processing
+
+7. Interaction and Automation
+   - Scripting and Automation
+   - System Interactions and Utilization
+   - API Testing and Exploitation
+   - Server Interaction Analysis
+
+8. Vulnerability Discovery and Exploitation
+   - API and Endpoint Analysis
+   - HTTP Request and Response Analysis
+   - Custom Scripting and Tampering
+   - Cryptographic Analysis and Decryption
+
+9. File and Directory Analysis
+   - Analyzing Directory and File Structures
+   - File and Configuration Analysis
+   - File Inclusion (LFI/RFI)
+   - File System Manipulation
+
+10. Web Page Interaction Details
+    - Web Page Interaction
+    - File and Directory Manipulation
+    - Interaction with Web Content
+
+11. General Actions and Understanding
+    - General Actions
+    - Conceptual Understanding of Actions and Functions
+    - Functionality Recognition and Constraints
+    - Version Control and Configuration Management
+
+12. Network and Environment Analysis
+    - Network Analysis
+    - Database Analysis and Enumeration
+    - Application Environment Analysis
+
+13. Syntax and Pattern Analysis
+    - Case Sensitivity and Syntax
+    - Identifying Code Patterns and Structures
+    - Blacklisting and Whitelisting
+
+14. Tools, Techniques, and Technologies
+    - Browser Tools and Techniques
+    - Working with Frameworks and Technologies
+    - Dynamic Web Rendering
+    - Command Execution and Server-Side Interaction

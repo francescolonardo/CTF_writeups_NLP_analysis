@@ -1,0 +1,81 @@
+{
+    "Payload Generation & SQL Injection": [
+        "Generate payloads with the SQL query to extract each character of the token",
+        "Discovered that a '<flag>' XML element is hidden in the 'books' table but not in the entry with 'id = 1'.",
+        "Identify the disallowed path '/g00d_old_mus1c.php'.",
+        "Discovered that `||` is the SQLite concatenation operator and is used to join strings together"
+    ],
+    "Web Application Analysis": [
+        "Identify the PHP source code provided that includes a User Submitted file inclusion vulnerability",
+        "Access the website at the URL: http://chals.ctf.sg:40401",
+        "Create the final URL.",
+        "Understand that the challenge is to bypass a script inside the iframe",
+        "Use PHP system() function",
+        "Identify the disallowed path '/g00d_old_mus1c.php'.",
+        "Visit the private section of the website",
+        "Observe that the loading splash screen is identical to the challenge website",
+        "Analyzed the challenge website where notes could be created and searched.",
+        "Consult a list of strings that generate these 'magic hashes' in PHP",
+        "Exploit the remote command execution vulnerability",
+        "Found out that ports 8080 and 9006 were open.",
+        "Analyzed the notes app's JavaScript source code.",
+        "Identify the 'secret key' as '1234'.",
+        "Identify the hostname as 'redis' and port as 6379.",
+        "Identify that the valid signature can be obtained from the .env file",
+        "Try to implement a similar mechanism to the CSRF mechanism used earlier.",
+        "Identify the text as the final flag of the challenge.",
+        "Observe that the server script takes user input as the 'icecream' value.",
+        "Examined the search function.",
+        "Identified failure due to Content Security Policy"
+    ],
+    "Web Navigation & Interaction": [
+        "Infer that Chrome is used for rendering JavaScript.",
+        "Prepared for a possible request smuggling attack.",
+        "Realize it can be used to execute shell commands from within Python.",
+        "Provide an empty array for 'variables'",
+        "Notice that the entered URLs are rendered by a Chromium instance.",
+        "Navigate to the root directory.",
+        "Deployed the Python script as a Lambda function"
+    ],
+    "Data Validation & Security Testing": [
+        "Validate the files with SHA256 sums",
+        "Identify that the valid signature can be obtained from the .env file",
+        "Found out that ports 8080 and 9006 were open."
+    ],
+    "Scripting & Command Line Interactions": [
+        "Use PHP system() function",
+        "Analyze the entrypoint.sh bash file.",
+        "Realize that the Javascript function can print itself, including comments, if its name is returned.",
+        "Deployed the Python script as a Lambda function",
+        "Navigate to the root directory."
+    ],
+    "Information Gathering & Reconnaissance": [
+        "Access the website at the URL: http://chals.ctf.sg:40401",
+        "Identify the disallowed path '/g00d_old_mus1c.php'.",
+        "Found out that ports 8080 and 9006 were open.",
+        "Identify the hostname as 'redis' and port as 6379."
+    ],
+    "Exploitation & Vulnerability Assessment": [
+        "Generate payloads with the SQL query to extract each character of the token",
+        "Realize that the challenge is to bypass a script inside the iframe",
+        "Use PHP system() function",
+        "Try to implement a similar mechanism to the CSRF mechanism used earlier.",
+        "Identify the disallowed path '/g00d_old_mus1c.php'.",
+        "Exploit the remote command execution vulnerability",
+        "Analyzed the notes app's JavaScript source code.",
+        "Identify the 'secret key' as '1234'.",
+        "Identify that the valid signature can be obtained from the .env file",
+        "Identify the text as the final flag of the challenge.",
+        "Observe that the server script takes user input as the 'icecream' value."
+    ],
+    "Web Security & Configuration Analysis": [
+        "Discovered that `||` is the SQLite concatenation operator and is used to join strings together",
+        "Identify the PHP source code provided that includes a User Submitted file inclusion vulnerability",
+        "Identify the disallowed path '/g00d_old_mus1c.php'.",
+        "Analyze the notes app's JavaScript source code.",
+        "Identify the 'secret key' as '1234'.",
+        "Identify the hostname as 'redis' and port as 6379.",
+        "Identify that the valid signature can be obtained from the .env file",
+        "Identified failure due to Content Security Policy"
+    ]
+}

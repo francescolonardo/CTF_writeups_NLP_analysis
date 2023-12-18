@@ -1,0 +1,54 @@
+7.1 Interactions and Execution
+    - Web Development and Testing
+    - Form Submission and Inputs
+    - Promise Handling
+
+7.2 Data Validation, Analysis, and Verification
+    - Verify and Validate
+    - Data Analysis
+    - Input Validation
+    - Action Verification
+    - Flag Verification and Extraction
+
+7.3 Monitoring, Observation, and Analysis
+    - Logging and Monitoring
+    - Response Monitoring and Analysis
+    - Observations and Analysis
+    - System Monitoring and Analysis
+    - Process Monitoring
+    - Monitoring and Observations
+    - Response Observation
+
+7.4 Debugging and Troubleshooting
+    - Troubleshooting and Workarounds
+    - Code Debugging
+    - Debugging and Troubleshooting
+    - Error Identification and Analysis
+    - Code Analysis and Troubleshooting
+
+7.5 Input and Output
+    - Form Input Observation
+    - Input and Output
+    - Output Analysis
+
+7.6 Navigation and Exploration
+    - Route Manipulation
+    - Webpage Observations
+    - Page Loading Optimization
+
+7.7 Network and Configuration Analysis
+    - Network Analysis
+    - Configuration Analysis
+
+7.8 Information Gathering and Verification
+    - Information Gathering
+    - Hints and Guidelines
+    - Testing and Payload Management
+    - Payload Testing and Verification
+
+7.9 Utilization and Review
+    - Browser Tools Utilization
+    - Analyze and Review
+
+7.10 Dealing with Preventive Measures
+    - Character Blacklisting

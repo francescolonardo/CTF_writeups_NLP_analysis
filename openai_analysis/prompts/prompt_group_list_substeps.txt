@@ -1,0 +1,44 @@
+Assume you are tasked with creating a taxonomy to categorize a set of actions taken from web application CTF writeups. The aim is to develop a hierarchy that allows these actions to be grouped under broader themes significant in the realm of web security, making them easily identifiable and organized.
+
+Please reply with a JSON object with the following structure:
+{
+    "Group 1": [ "...", "...", ...],
+    "Group 2": [ "...", "...", ...],
+    ...
+}
+
+Return in response just the JSON object, ensuring no additional content or remarks are added.
+
+Example of input:
+[
+    "Execute ls command on the server using subprocess.Popen",
+    "Access the website homepage",
+    "Navigate to the bottom of the results.",
+    "Use the mutool info -X command to verify collision1.pdf.",
+    "Successfully log into the admin panel.",
+    "Successfully log in to the system.",
+    "Open a web browser.",
+    "Analyze the entrypoint.sh bash file.",
+    "Performed the action of accessing challenges."
+    ...
+]
+
+Desired corresponding output example:
+{
+    "Command & Server Interactions": [
+        "Execute ls command on the server using subprocess.Popen",
+        "Use the mutool info -X command to verify collision1.pdf.",
+        "Analyze the entrypoint.sh bash file."
+    ],
+    "Web Navigation & Interaction": [
+        "Access the website homepage",
+        "Navigate to the bottom of the results.",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges."
+    ],
+    ...
+}
+
+Given the actions listed below, please segment them into relevant categories (please try to find at least 7 categories) that capture their essence and relationship:

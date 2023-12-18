@@ -1,0 +1,52 @@
+{
+    "Flag Manipulation": [
+        "Iteratively added a character to the flag.",
+        "Append the current character to the password string.",
+        "The characters from the 'domain' are progressively appended to the payload.",
+        "Appended unique transmission values to a list."
+    ],
+    "Request Manipulation": [
+        "Create a CSRF request.",
+        "Noticed the output of 'List Storage' command runs 'df -h'.",
+        "Send the request and receive a response",
+        "Notice that incorrect answers submitted in the form fields are highlighted in red",
+        "Notice the cookies.",
+        "Receive an HTTP 200 OK status code.",
+        "Target the URL for the GET request.",
+        "Check the URL parameter of the image tag",
+        "Request http://104.197.168.32:17012/bashferno.cgi.",
+        "Use a Python script to find `<class 'subprocess.Popen'>` in the subclasses",
+        "Identified a `/api/flag` endpoint.",
+        "Use inline commands of Redis to send commands directly.",
+        "Access the /robots.txt URL.",
+        "Created `/evil/` endpoint for cookie grabbing script",
+        "Log in to investigate any intermediate requests.",
+        "Identified the script calling `api.php` endpoint",
+        "Used Burp Suite to intercept the login request",
+        "Fetch data using the manipulated query.",
+        "Ensured that `$to_check` is assigned the value `0`."
+    ],
+    "Web Navigation & Interaction": [
+        "Successfully retrieved the flag",
+        "Spoof the cookies",
+        "Analyze SecretGenerator.Java.",
+        "Analyze and review the Dirb scan results",
+        "Note the reference to a potentially fake flag",
+        "Observe the result",
+        "Observe the post-login page."
+    ],
+    "Code Analysis": [
+        "Understand that the WebSockets library used is flask_sockets.",
+        "Understand that this trick helps continue the search from the previously found index onwards and it can allow multiple instances of 'fqdn'.",
+        "Analyze the results from the SQL payload tests."
+    ],
+    "File Manipulation": [
+        "Upload the modified DOCX file"
+    ],
+    "Regex Manipulation": [
+        "Create a new regex matching the 'flag{randomString}' pattern."
+    ],
+    "Miscellaneous": [
+        "Analyze SecretGenerator.Java."
+    ]
+}

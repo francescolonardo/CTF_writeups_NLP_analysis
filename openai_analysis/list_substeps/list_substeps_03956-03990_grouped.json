@@ -1,0 +1,59 @@
+{
+    "Command Execution & Remote Code Execution (RCE)": [
+        "Repeat for all potential starting letters",
+        "Explore the potential of achieving RCE.",
+        "Confirm remote command execution vulnerability.",
+        "Confirm that the SQL injection vulnerability exists.",
+        "Pay particular attention to rules blocking longer payloads.",
+        "Construct a base to perform SQL injection.",
+        "Send second GET request with 65534 empty spaces.",
+        "Used 'php://filter' to view the source of 'checkpass.php'.",
+        "Use 'chmod u+x s3scanner.py'."
+    ],
+    "Cross-Site Scripting (XSS)": [
+        "Understood the requirement for a reflected XSS exploit",
+        "Discovered a potential vulnerability with 'www.youtube.com' hosting a JSONP endpoint."
+    ],
+    "SQL Injection": [
+        "Discover the possibility of using a 'CREATE TABLE ... SELECT' SQL statement.",
+        "Find that content of the note is inserted into the HTML",
+        "Searched for additional SQL injection endpoints."
+    ],
+    "File Retrieval & Arbitrary File Access": [
+        "Noticed the absence of legitimate ownership verification during file retrieval.",
+        "Realize that the GET handler for '/localisation-file' allows the reading of arbitrary files."
+    ],
+    "Web Navigation & Interaction": [
+        "Access the website homepage",
+        "Navigate to the bottom of the results.",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges.",
+        "Impersonated Maria.",
+        "Realize that the private gallery cannot be unnecessarily accessed.",
+        "Visited the URL provided by the successful attack and obtained the flag.",
+        "Decided to look for another way to solve the challenge.",
+        "Examine the 'challenge/index.js' file in the source code zip.",
+        "Observe functionality to create custom cowfiles via the URL: `http://3.93.128.89:1204/cow_designer`."
+    ],
+    "API Interaction": [
+        "Send POST request to '/api/tet/years' endpoint.",
+        "Include var1 and var2 parameters in the request."
+    ],
+    "Regular Expression (Regex) Analysis": [
+        "Recognize that the 'Markdown' converter uses regex."
+    ],
+    "Cookie Manipulation": [
+        "Used the admin's cookies to visit 'private.php'."
+    ],
+    "Payload Optimization": [
+        "Ensure the payload exceeds 8kB."
+    ],
+    "Miscellaneous": [
+        "Understand that if the expected value does match.",
+        "Identified a potential vulnerability with 'www.youtube.com' hosting a JSONP endpoint.",
+        "Determined that the function is used in the index route",
+        "Realize that eval does not display the output"
+    ]
+}

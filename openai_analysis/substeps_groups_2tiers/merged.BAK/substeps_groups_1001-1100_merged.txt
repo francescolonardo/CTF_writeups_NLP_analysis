@@ -1,0 +1,78 @@
+1. Exploitation Techniques
+   - Server and Application Exploitation
+   - System Exploitation
+   - Web Exploitation & Web Application Security
+   - Authentication Bypass
+   - Response Vulnerability Analysis
+   - Network Smuggling Analysis
+   - CSRF Protection & Token Refresh
+   - CSRF Payload
+
+2. Code Analysis 
+   - Source Code Analysis
+   - Class Method Manipulation
+   - Code Analysis & Exploitation
+   - Serialization Analysis & Identification
+
+3. Authentication & Authorization 
+   - Username and Password Extraction
+   - Authentication & Cookies
+   - User Account Manipulation
+   - Token and Security Analysis
+   - Authentication Bypass
+
+4. Payloads
+   - Scripting & Payload Creation
+   - HTML Injection & Payloads
+   - Payload Manipulation & Encoding
+   - Payload Decoding
+   - Payload Generation & Injection
+
+5. Web Application Interaction
+   - Web Page Analysis & Manipulation
+   - Web Requests & API Interactions
+   - Web Development Techniques
+   - Web Application Discovery
+   - API Endpoint Analysis
+
+6. Security Analysis
+   - Crypto Operations
+   - Data Validation & Security Testing
+   - Security Analysis & Information Gathering
+   - Web Security Vulnerability Analysis
+   - Debugging & Logging
+   - Security Analysis & Exploitation
+
+7. File Handling
+   - File System & Configuration Analysis
+   - File Download
+   - File Upload & Manipulation
+   - File Hosting & Resource Insertion
+
+8. Network Interactions
+   - Network Scanning & Enumeration
+   - Network & HTTP Interactions
+   - Network and Server Configurations
+   - WebSocket Analysis
+
+9. HTTP(S) Analysis
+   - HTTP Responses
+   - HTTP Requests & File Operations
+   - HTTPS & Security Protocols
+
+10. XSS Techniques
+    - Cross-Site Scripting (XSS)
+    - XSS Vulnerability
+
+11. Information Extraction
+    - Information Disclosure
+    - Information Extraction
+
+12. Miscellaneous
+    - AWS Services
+    - Game Mechanics
+    - JavaScript Usage & Meta Tag
+    - Browser Interaction
+    - Other
+    - Loop Manipulation
+    - Page Discovery

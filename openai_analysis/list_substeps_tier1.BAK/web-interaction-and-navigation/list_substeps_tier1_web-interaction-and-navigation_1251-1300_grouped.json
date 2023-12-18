@@ -1,0 +1,54 @@
+{
+    "URL Manipulation": [
+        "Understand that the URL rewriting is done using the host header",
+        "Attempt to achieve this using client-sided redirects",
+        "Understand that redirects to 'http://app/login.php' will not solve the challenge",
+        "Use the navigation factor.",
+        "Leverage the navigation function and the XS leak.",
+        "Discorded 'robots.txt' file at '?file=robots.txt'."
+    ],
+    "Client-Server Interaction": [
+        "Encapsulated the second request within the chunked contents of the first request.",
+        "The URL is fetched for the first time to check for an SSRF attempt.",
+        "The URL is fetched for the second time once it's deemed legitimate.",
+        "Programmed the server to redirect to 'http://localhost/flag' in the second response.",
+        "Monitor the response for headers.",
+        "Include the correct 'Authorization' header.",
+        "Use the new token for authentication.",
+        "Set the 'Host' as 'dscvit.com'.",
+        "Set the cookie as 'user=root'.",
+        "Add a JSON object '{\"foo\":\"bar\"}' to the body.",
+        "Set the cookie to a given string"
+    ],
+    "Code Injection": [
+        "Understand that the usage of 'localhost:3000' origin avoids the Same Origin Policy",
+        "Understand that the mechanism validates the URL format",
+        "Realize it is similar to 'window[_0x4bbdc3[0x0]][_0x4bbdc3[0x1]]'",
+        "Test CSS injection",
+        "Create a signed cookie in the browser.",
+        "Discover a template injection vulnerability."
+    ],
+    "File Manipulation": [
+        "Host the 'outer.html' file",
+        "Host the 'inner.html' file",
+        "Use '?length=' as the query string.",
+        "Ensure that 'usernameLength' is empty through the query string.",
+        "Use only the first five elements of the array to create the file name",
+        "The file name resolves to flag.txt after the process",
+        "Read the information about 'Brobot' in the 'index.html' file",
+        "Understand the information as a hint towards 'robots.txt'",
+        "Confirmed server-side file inclusion."
+    ],
+    "Information Retrieval": [
+        "Access the website's source code",
+        "Observe the image",
+        "Identify a meta tag with the name attribute 'redpwnctf2020' in the HTML source code.",
+        "Retrieve the value of the content attribute from the identified meta tag."
+    ],
+    "Flag Identification": [
+        "Acknowledge the replacement of flags by Nginx",
+        "Identified the new flag value in the response",
+        "Identified a different flag value in the response",
+        "This solution works for the 'Gate Keeper' challenge as well."
+    ]
+}

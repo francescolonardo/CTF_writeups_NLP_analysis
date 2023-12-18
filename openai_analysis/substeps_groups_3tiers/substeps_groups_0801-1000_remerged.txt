@@ -1,0 +1,42 @@
+Tier 1: Web Security Analysis and Actions
+    Tier 2: Understanding and Analysis
+        Tier 3: Web Application Identification & Analysis
+        Tier 3: Application Usage, Testing & System Analysis
+        Tier 3: Code Evaluation & Execution
+        Tier 3: Data Investigation & Retrieval
+    Tier 2: Vulnerability Assessment and Management
+        Tier 3: Vulnerability Analysis & Assessment
+        Tier 3: Web Security Vulnerabilities Identification
+        Tier 3: Authorization, Authentication & Access Control
+    Tier 2: Information Gathering and Handling
+        Tier 3: Network and Request Analysis
+        Tier 3: File, Directory, & System Exploration
+        Tier 3: Data Handling, Processing & Encryption
+
+Tier 1: Attack, Exploitation, and Mitigation Techniques
+    Tier 2: Web and Data Exploitation
+        Tier 3: Web Exploitation & Injection Attacks
+        Tier 3: User and Authentication Exploitation
+        Tier 3: Server Interaction & Exploitation
+    Tier 2: Payload and Injection Techniques
+        Tier 3: Payload Crafting, Injection & Optimization
+        Tier 3: Injection Techniques & Vulnerability Exploitation
+        Tier 3: Auxiliary Techniques and Script Execution
+    Tier 2: Mitigation and Bypass Techniques
+        Tier 3: Code Manipulation & Injection Bypass
+        Tier 3: Security Bypass & Exploitation
+        Tier 3: File & Data Manipulation for Mitigation
+
+Tier 1: Tools, Troubleshooting, and Knowledge Specific to Challenges
+    Tier 2: Tools and Techniques
+        Tier 3: Tool Usage for Exploitation & Mitigation
+        Tier 3: Debugging, Troubleshooting & Script Development
+        Tier 3: Server Interaction & Script Execution
+    Tier 2: Problem Solving and Knowledge
+        Tier 3: Problem Isolation & Troubleshooting
+        Tier 3: Knowledge Specific to Challenges & Analysis
+        Tier 3: Information Discovery & Application
+    Tier 2: Code and Network Operations
+        Tier 3: Network Analysis & Operations
+        Tier 3: Code Inspection & Manipulation
+        Tier 3: File and Directory Analysis

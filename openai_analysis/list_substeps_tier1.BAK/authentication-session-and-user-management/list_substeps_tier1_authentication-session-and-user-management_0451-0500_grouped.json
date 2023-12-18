@@ -1,0 +1,59 @@
+{
+    "Token and Authentication Handling": [
+        "Try to generate 'oauth tokens' for the flag note.",
+        "Intercept 'oauth tokens' by stopping the request from 'twitter' to 'yeunote'.",
+        "Had the right PHPSESSID in cookies.",
+        "Received a JWT session token.",
+        "Decoded the JWT token.",
+        "Sent a request to update the password via XHR.",
+        "Logged in with the new password.",
+        "Logged back in with escalated privileges.",
+        "Submit the authorization request"
+    ],
+    "Bypass and Exploitation Techniques": [
+        "Identified task to bypass countermeasures.",
+        "Managed to bypass the 'strpos(urldecode($remote),'..')' condition.",
+        "Managed to bypass the 'parse_url($remote, PHP_URL_HOST)' condition.",
+        "Found a way to bypass the Angular application.",
+        "The '/debug/answer' endpoint was restricted by both Nginx and the application.",
+        "Successfully bypassed restrictions.",
+        "Successfully obtained the flag {you-have-to-eat-tomato-yume-chan!} as a result of the bypass.",
+        "Used the provided bypass.",
+        "Decide to use burpsuite to bypass the front-end input sanitization.",
+        "Attempt authentication bypass with advanced payloads."
+    ],
+    "Credential and Password Management": [
+        "Aim to extract the password serving as the flag.",
+        "Confirm presence of characters in the password.",
+        "Confirm that the flag begins with 'CHTB{'.",
+        "Check successful log-in messages to determine correct characters.",
+        "Capture the login request.",
+        "Log in using extracted credentials.",
+        "Logged in with the obtained credentials.",
+        "The 'Mutation' query allows change of a user password.",
+        "Use the 'UpdatePassword' mutation.",
+        "Change the admin account's password.",
+        "Log into the admin account.",
+        "Use the new password.",
+        "Enter the correct pin.",
+        "Enter the username 'admin'",
+        "Enter the password 'admin'",
+        "Discover the login credentials in the logs",
+        "Enter username 'admin' and password 'admin' to login."
+    ],
+    "Page and Input Interactions": [
+        "Identified that the challenge seemed to involve reCAPTCHA.",
+        "Add the first A record to the DNS entry to resolve to 127.0.0.1.",
+        "Add the second A record to the DNS entry to resolve to 51.38.138.162.",
+        "Observed login page.",
+        "Observe login page with no additional information.",
+        "Notice an option to register a new account.",
+        "Discover the existence of an admin login page",
+        "Enter an apostrophe in the username field.",
+        "Enter an apostrophe in the password field.",
+        "Enter an apostrophe in both the username and password fields.",
+        "Enter blank input enclosed in two apostrophes in the username field.",
+        "Enter a single apostrophe in the password field.",
+        "Enter blank input enclosed in two apostrophes in both the username and password fields."
+    ]
+}

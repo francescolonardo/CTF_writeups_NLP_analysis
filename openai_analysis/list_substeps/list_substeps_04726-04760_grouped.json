@@ -1,0 +1,68 @@
+{
+    "Server Interaction": [
+        "Utilized path traversal to access /etc/passwd file.",
+        "Modify permissions of s3scanner.py",
+        "Craft a request to '/post.php?post=../../../../../../etc/passwd'.",
+        "Injected a Set-Cookie header to set the admin's ID cookie to your own session.",
+        "Uploaded the .htaccess file.",
+        "Enumerated the columns of the user table.",
+        "Used 'shell' as the setting name in the POST request",
+        "Use the crafted filename for the uploaded gif.",
+        "Scan the 10.0.42.0/24 network.",
+        "Flip one random bit in the wordpress installation",
+        "Ran 'insecure' to obtain a root shell",
+        "Managed to control $whoareyou variable.",
+        "Read the 'pdf1.bin' file.",
+        "Inject the 'id' command in the input box."
+    ],
+    "Authentication Bypass & Exploitation": [
+        "Identify the password field as the entry point for bypassing authentication",
+        "Sign the JWT with 'dawgCTF?heckin#bamboozle' secret",
+        "Determine that the tripcode is a part of an encrypted string",
+        "Use the 2FA token on an authenticator application."
+    ],
+    "Web Interaction & Exploitation": [
+        "Visit the given URL",
+        "Understand the requirement of achieving XSS within the 'localhost:3000' origin",
+        "Locate the flag within the results.",
+        "Retrieve the flag value 'flag{th3_an5w3r_w4s_HSCTF_0bvi0us1y}'.",
+        "Identified parameters in the WebSocket message.",
+        "Read the information about 'Brobot' in the 'index.html' file",
+        "Receive a notice that the request body must be JSON.",
+        "Create a phar file.",
+        "Examine the Content-Security-Policy of the target website.",
+        "Realize that HTML files don't execute on the server side.",
+        "Read the 'pdf1.bin' file.",
+        "Obtain the flag",
+        "Inject the 'id' command in the input box."
+    ],
+    "File Access & Manipulation": [
+        "Utilized path traversal to access /etc/passwd file.",
+        "Modify permissions of s3scanner.py",
+        "Craft a request to '/post.php?post=../../../../../../etc/passwd'.",
+        "Upload the .htaccess file.",
+        "Enumerate the columns of the user table.",
+        "Read the 'pdf1.bin' file."
+    ],
+    "Network & Traffic Analysis": [
+        "Scan the 10.0.42.0/24 network.",
+        "Use Wireshark to read the packet capture file."
+    ],
+    "Privilege Escalation": [
+        "Flip one random bit in the wordpress installation",
+        "Ran 'insecure' to obtain a root shell",
+        "Managed to control $whoareyou variable."
+    ],
+    "SQL & Database Exploitation": [
+        "Enumerate the columns of the user table.",
+        "Dump data from 'startup_users' table by using the SQL query and concatenating usernames using the GROUP_CONCAT function."
+    ],
+    "Server-Side Manipulation": [
+        "Modify permissions of s3scanner.py",
+        "Upload the .htaccess file.",
+        "Flip one random bit in the wordpress installation",
+        "Ran 'insecure' to obtain a root shell",
+        "Managed to control $whoareyou variable.",
+        "Read the 'pdf1.bin' file."
+    ]
+}

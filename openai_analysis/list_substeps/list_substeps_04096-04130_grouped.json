@@ -1,0 +1,66 @@
+{
+    "Command Injection": [
+        "Chose to craft a spaceless command injection payload."
+    ],
+    "Shared Object": [
+        "Identified the presence of a shared object entitled `shellme.so`."
+    ],
+    "HTTP Redirect Exploitation": [
+        "Exploited the limit of 20 redirects using Fetch API.",
+        "Redirected the attacker server to the target URL after 19 redirects."
+    ],
+    "Web Navigation & Interaction": [
+        "Typed the URL 'http://challs.houseplant.riceteacatpanda.wtf:30001/?sauce' in the web browser and visited the webpage.",
+        "Visit /app",
+        "Visit the provided site"
+    ],
+    "Parameter Inspection": [
+        "Inspect how the website stores the 'name' parameter"
+    ],
+    "JWT Token Analysis": [
+        "Revealed the 'username', 'uid', and 'iat' from the decoded JWT token."
+    ],
+    "Website Functionality Study": [
+        "Study the functions of the website including 'flag store', create new store, update created store description, and create items in created store."
+    ],
+    "JavaScript Functionality Identification": [
+        "Identify the functionality of the addCaptcha() function"
+    ],
+    "Laravel Panel Exploration": [
+        "Search for 'ip/_ignition/execute-solution' in the Laravel panel"
+    ],
+    "Serialization Analysis": [
+        "Identify serialization in the __construct method."
+    ],
+    "Server Response Analysis": [
+        "Passed a random value.",
+        "Note that the server response includes the author of the feedback.",
+        "Check if response contains 'check' string",
+        "Realized it gives the possibility to pass an object in the query statement",
+        "Observe that anything after a whitespace is removed.",
+        "Received the admin's hash on the exploit server",
+        "Retrieved the flag: actf{traversed_the_world_and_the_seven_seas}",
+        "Executed another HTTP request.",
+        "Adjust exploit path based on Twitter inspiration from similar challenges.",
+        "Analyze the application's token verification process",
+        "Display current cookies",
+        "Received a successful response from the webserver.",
+        "Determine that the identified application is a web application.",
+        "Understand that the `login` cookie is transformed into a `Login` object during deserialization.",
+        "Found PHP script",
+        "Connect to 'https://web0.ctfsecurinets.com/_profiler/open?file=config/bootstrap.php'."
+    ],
+    "Command Execution": [
+        "Use the 'strings' command to extract the flag from the binary data in the 'print-flag' file.",
+        "Used the 'secret' token to send a request directly to the backend server."
+    ],
+    "User Access Analysis": [
+        "Try to load a webpage associated with the 'admin' user."
+    ],
+    "Method Failure Detection": [
+        "Realize that the method failed"
+    ],
+    "Cookie Analysis": [
+        "Analyze the cookies."
+    ]
+}

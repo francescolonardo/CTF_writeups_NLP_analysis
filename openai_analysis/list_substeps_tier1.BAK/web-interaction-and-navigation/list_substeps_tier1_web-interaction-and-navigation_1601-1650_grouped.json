@@ -1,0 +1,79 @@
+{
+    "Query-based Actions": [
+        "Noted that 'y.png' loads if the query is found within a note.",
+        "Noted that 'n.png' loads if the query is not found within a note.",
+        "Verify that the WebSocket client's origin starts with 'http://localhost'."
+    ],
+    "Web Framework Observations": [
+        "Recognize the usage of Flask's 'render_template_string' function",
+        "Note that the Go microservice uses the Beego web framework",
+        "Guess that the server was using FastAPI."
+    ],
+    "Server Behavior Observations": [
+        "Observed the attack working even with Chrome's cache partitioning policy.",
+        "Notice that files with commonly used extensions are downloaded.",
+        "Notice that .html files are rendered inline.",
+        "Note that the Flask server treats underscores ('_') as hyphens ('-')",
+        "Note that the Flask server allows duplicate 'Content-Length' headers",
+        "Take advantage of the Flask server's failure to comply with RFC norms",
+        "Note that the process only permits requests from a client URL validated to be 127.0.0.1.",
+        "Check the 'Content-length' response header",
+        "Observed any unusual behavior"
+    ],
+    "HTTP Request Exploitation": [
+        "Used a redirection through a PHP server, which revealed the flag in one of the headers.",
+        "Verified this by submitting HTML enclosed in script tags to catch the HTTP request.",
+        "Convince the server to communicate with arbitrary URL.",
+        "Caused the proxy server to send a request to the specified URL.",
+        "Set the auth token by making the bot visit 'http://localhost:7070/auth'.",
+        "The task of this payload is to exfiltrate the content from `http://localhost:5000/admin`",
+        "Included 'GET /flag HTTP/1.1' in the request body.",
+        "Set 'Content-Length: 0' for the first request."
+    ],
+    "Web Application User Interaction": [
+        "Visited the website.",
+        "Accessed the webpage.",
+        "Navigate to the '/example' route.",
+        "Observe the form to fill.",
+        "Submit the form.",
+        "Find the input box.",
+        "Click the submit button.",
+        "Registered a new account.",
+        "Noted that the `/api/token` endpoint returns the current authentication token.",
+        "Identified the specified `apiGet` URL.",
+        "Send GET requests with incrementing 'id' using the script.",
+        "Set the authentication cookie for the victim using JavaScript.",
+        "Ensure the completion of navigation and placement of the cookie by sleeping for 1 second.",
+        "Understand that the Origin request header cannot be modified by JavaScript.",
+        "Consider the possibility of exploiting a browser zero-day to spoof Origin headers.",
+        "Demonstrated DOM clobbering."
+    ],
+    "Front-end Security Analysis": [
+        "Enabled 'enable_experimental_features'.",
+        "Confirmed the possibility of creating a new repository with a CNAME file containing 'asdf.jsapi.tech'.",
+        "Examined the Content-Security-Policy (CSP) of the site.",
+        "Identified the allowance of loading stylesheets from '*.jsapi.tech'.",
+        "Realized that this allows loading of a CSS file from the exploit domain.",
+        "Observed the usage of 'asdf<link rel='stylesheet' href='...'>'."
+    ],
+    "Flag Retrieval": [
+        "Read the flag using the established reverse shell.",
+        "Bypassed the validation by using a different case.",
+        "Obtained the flag."
+    ],
+    "Browser and Network Exploitation": [
+        "Payload 1: Obtained the full URL of the browsing context.",
+        "Payload 2: Obtained the page contents.",
+        "Found that JavaScript couldn't read any cookies from the output of the payloads.",
+        "Received a `Set-Cookie` header from this page for a new cookie with HttpOnly flag set.",
+        "Ensure the completion of navigation and placement of the cookie by sleeping for 1 second."
+    ],
+    "Web Application Vulnerability Identification": [
+        "Note that Flask's built-in server can be susceptible to HTTP request smuggling attacks due to its insecure nature"
+    ],
+    "Miscellaneous Notes": [
+        "Convert your public IP address to octal form using an octal IP address converter.",
+        "Assume the application is likely behind AWS WAF.",
+        "Enabled 'enable_experimental_features'."
+    ]
+}

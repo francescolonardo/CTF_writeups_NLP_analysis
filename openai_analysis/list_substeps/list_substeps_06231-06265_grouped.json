@@ -1,0 +1,52 @@
+{
+    "Website Navigation": [
+        "Read the blog post on the home page",
+        "Locate the authenticated-user cookie.",
+        "Visit the manipulated URL.",
+        "Specify 'http://localhost:20011/admin' as the value for the 'galleryUrl' parameter.",
+        "Experimented with the meme generator functionality",
+        "Define the URL of the website.",
+        "Identify that the challenge consists of 3 services - a Python microservice",
+        "Identify what server-side checks are being done.",
+        "Identify that the restrictions include the localhost (127.0.0.1).",
+        "Analyze the HTML response.",
+        "Recognize the challenge in exploiting the vulnerability"
+    ],
+    "Vulnerability Assessment": [
+        "Looked for potential vulnerabilities in the search function.",
+        "Look for any unusual strings.",
+        "Identify ATS and Puma as the systems involved in the smuggling.",
+        "Find a HTTP request smuggling issue with incorrect parsing of chunk extensions."
+    ],
+    "Payload Manipulation": [
+        "Paste the introspection data received into the graphql voyager tool.",
+        "Set secret_key as 'redraider'.",
+        "Wait for the admin cookies to be caught",
+        "The filename used in the request was 'lol.txt'",
+        "Retrieve only 'P4s5_w0Rd' string.",
+        "The key for the key-value pair is retrieved from the 'key' variable.",
+        "Changed the payload to {'user':'admin'} using jwt.io",
+        "Break down the payload.",
+        "Receive an error indicating 'triton' as an available rocket name.",
+        "Invoked the 'render_template_string' function using the SMS message",
+        "Crafted a new session cookie with the `very_auth` variable set to 'admin'."
+    ],
+    "Command Execution": [
+        "Identified the task as finding the correct password",
+        "Launch Python."
+    ],
+    "Security Analysis": [
+        "Identify fast-json-patch as vulnerable to Prototype Pollution.",
+        "Identify that the secret is not 'secret-[random UUID]' as expected, but it is the string: 'secret-function randomUUID(options) { if (options !== undefined) validateObject(options, 'options'); const { disableEntropyCache = false, } = options || {}; validateBoolean(disableEntropyCache, 'options.disableEntropyCache'); return disableEntropyCache ? getUnbufferedUUID() : getBufferedUUID(); }'."
+    ],
+    "Data Retrieval": [
+        "Retrieve the flag",
+        "Read the first flag."
+    ],
+    "Server Interaction": [
+        "Saved the request."
+    ],
+    "File Verification": [
+        "Verify the output reflected in the `style.css` file."
+    ]
+}

@@ -1,0 +1,51 @@
+{
+    "Command & Server Interactions": [
+        "Submit the payload (__import__('subprocess').getoutput('cat /flag/flag.txt')).",
+        "Focus on the command line subprocess interaction."
+    ],
+    "Web Navigation & Interaction": [
+        "Accessed 'http://challenges.auctf.com:30020/robots.txt' on the browser",
+        "Submit the input.",
+        "Press 'login' on the login page.",
+        "Accessed the meme generator web application",
+        "Encountered an issue with the 'search' feature.",
+        "Recognize the existence of '/set.php' page."
+    ],
+    "Application Logic & Programming Techniques": [
+        "Identified application logic.",
+        "Create an object that resolves as a promise.",
+        "Use a payload with a length over 8kB.",
+        "Goal: Perform an XSS attack and make a URL to trigger alert(1) for getting the flag.",
+        "Notice the website information.",
+        "Guess that the flag is 'FLAG{r0uter_p0rtals_are_ultimately_impenetrable_because_they_are_real_weird}'.",
+        "Discovered the possibility of using an oracle.",
+        "Realized that an attacker can set up a GitHub Pages site with a subdomain that matches the site domain.",
+        "Crafted an SQL injection payload bypassing the filter limit",
+        "Determine that the website is using PHP eval() function"
+    ],
+    "Security Tools & Techniques": [
+        "Used Burp Suite Intruder scan.",
+        "Verify that the identified web application allows file uploads and conversions.",
+        "Confirmed that the exploit worked.",
+        "Queried the 'nxf8_sessions' table for session IDs where 'user_id' is 5."
+    ],
+    "Browser & Web Environment": [
+        "Change User-Agent to 'Linux Xbox' using curl",
+        "Guess that `shell_exec` might be allowed on the website.",
+        "Encounter the HttpOnly problem."
+    ],
+    "File & Resource Manipulation": [
+        "Use the SQL function 'max(A, B)' to sort through the concatenated 152-digit number.",
+        "Locate where 'store.key' is defined using 'crypto.randomBytes'.",
+        "Split the large image data into three parts."
+    ],
+    "Networking & Communication": [
+        "Make a POST request",
+        "Set up a `ngrok` TCP forwarder."
+    ],
+    "Code & Script Analysis": [
+        "Note that the '|' operator allows for matching of either of two separate regular expressions.",
+        "Set the 'imports' key to map '/js/ast-to-js.mjs' to '/js/eval-code.mjs'",
+        "Analyze the provided Python server script."
+    ]
+}

@@ -1,0 +1,22 @@
+[
+    "Add the first A record to the DNS entry to resolve to 127.0.0.1.",
+    "Add the second A record to the DNS entry to resolve to 51.38.138.162.",
+    "Send the request with the cookie to the intruder.",
+    "Inspect parameters in the request.",
+    "Spoofed the client IP address",
+    "Identify the '--checkpoint-action' option that executes a program at a checkpoint.",
+    "Create a reverse shell back to attacker's machine.",
+    "Understood that a shell needs to be spawned as root",
+    "Instructed to calculate the number of cameras within 1.3km radius of the origin point",
+    "Leverage the SSRF vulnerability to communicate with the Redis instance.",
+    "Observed that Nginx sees the 'Transfer-Encoding' header.",
+    "Obtained the headers from the log file.",
+    "Check the IP address against the whitelist.",
+    "Identify the whitelist of allowed IP ranges: 10.0.0.0/24, 10.0.42.0/24, and 10.0.43/24.",
+    "Exploited the secondary SQL injection vector.",
+    "Determine the presence of a vulnerability in the 'new chat' feature",
+    "Note that the Go microservice acts as a reverse proxy for the Python microservice when the PUT method is used",
+    "Create a WebSocket connection to the DevTools of the browser instance.",
+    "Constructed the payload to send encoded cookies to a pre-defined URL controlled by the attacker.",
+    "Exploited a difference in how ATS and Waitress process end-of-line symbols."
+]

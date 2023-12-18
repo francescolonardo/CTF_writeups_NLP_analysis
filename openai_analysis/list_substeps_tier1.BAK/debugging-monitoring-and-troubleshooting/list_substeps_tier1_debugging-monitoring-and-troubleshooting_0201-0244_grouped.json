@@ -1,0 +1,34 @@
+{
+    "Browser Console and Developer Tools": [
+        "Opened the browser console.",
+        "Opened the web-browser's developer tools",
+        "Activated the JavaScript debugger"
+    ],
+    "Cookie Analysis and Manipulation": [
+        "Analyze the cookies",
+        "Identify the received flag as a cookie in the HTTP GET request",
+        "Inject a cookie.",
+        "Name the cookie 'username'.",
+        "Assign the value 'admin' to the cookie."
+    ],
+    "Page Navigation and Refresh": [
+        "Refreshed the page.",
+        "Access Symfony profiler interface."
+    ],
+    "Code and File Analysis": [
+        "Print the content of the environment file.",
+        "Confirm the successful exposure of the /etc/passwd file.",
+        "The flag was found in the error, leading to successful completion of the challenge.",
+        "Conclude that the problem might have been misconfigured.",
+        "Realize that the filtering of sha512.js will cause the DOMValidator.js to crash.",
+        "Read the flag using the '< ../flag.txt' command.",
+        "Noted SQL errors",
+        "Give SUID and SGID permissions to the binary.",
+        "Consider that the debugging port is generated from the getRandomPort function."
+    ],
+    "Network Monitoring and Analysis": [
+        "Viewed the backend activity in the Network tab.",
+        "Observe the output of the \"CONFIG\" log.",
+        "Observe the HTTP response."
+    ]
+}

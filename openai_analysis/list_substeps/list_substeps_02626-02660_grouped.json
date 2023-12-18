@@ -1,0 +1,80 @@
+{
+    "Image Manipulation": [
+        "Recognize that RGB parameters can be manipulated in the uploaded image."
+    ],
+    "JavaScript Function Call": [
+        "Call the addCaptcha() function"
+    ],
+    "Documentation Examination": [
+        "Examined the documentation for RFC5322 to understand what characters are allowed in the email parameter."
+    ],
+    "Credential Discovery": [
+        "Revealed default credentials."
+    ],
+    "AWS Lambda": [
+        "Identified privileged permissions to invoke AWS Lambda functions"
+    ],
+    "Vulnerability Identification": [
+        "Developed a suspicion of a directory traversal vulnerability"
+    ],
+    "CTF Participation": [
+        "Participate in the CTF challenge"
+    ],
+    "Cookie Manipulation": [
+        "Capture the Admin Bot's cookies.",
+        "Directed the cookies from the server to the `/cookie/` endpoint",
+        "Check if the client has the correct 'auth' cookie set."
+    ],
+    "Bypass Technique": [
+        "Acknowledge that the bypass involves embedding the iframe"
+    ],
+    "Authentication Form": [
+        "Identified an authentication form on the webpage."
+    ],
+    "HTTP Header Observation": [
+        "Noticed that the server uses 'Content-Length' header even if 'Transfer-Encoding' header exists."
+    ],
+    "Data Extraction": [
+        "Extract data from the server."
+    ],
+    "Source Code Inspection": [
+        "Further inspect the contents of 'functions.php' file.",
+        "Examine the source code.",
+        "Analyse PHP code.",
+        "Examined server code"
+    ],
+    "Request Manipulation": [
+        "Decided to try sending a fake IP address in the headers.",
+        "Smuggle a request to the backend application."
+    ],
+    "URL Analysis": [
+        "Received the URL https://poems.asisctf.com/ as part of the challenge."
+    ],
+    "SQL Injection": [
+        "Used a payload conforming to the INSERT query syntax.",
+        "Identify a working payload with username `admin' -- ` and any password."
+    ],
+    "Leaked Contents Investigation": [
+        "Searched the leaked contents of the admin page"
+    ],
+    "HTTP Method Testing": [
+        "Make a 'POST' call.",
+        "Received an error of HTTP method not allowed."
+    ],
+    "Script Analysis": [
+        "Identify 'execSync' call in the script.",
+        "Realize the calls to 'window' essentially represent 'window.localStorage.setItem'"
+    ],
+    "Page Discovery": [
+        "Discover the 'manage.php' page"
+    ],
+    "Injection Vector Identification": [
+        "Identified possible injection vectors."
+    ],
+    "Client-Side Cookie Reading": [
+        "Found that JavaScript couldn't read any cookies from the output of the payloads."
+    ],
+    "DNS Resolution": [
+        "Perform the first DNS resolution to check if the destination is private."
+    ]
+}

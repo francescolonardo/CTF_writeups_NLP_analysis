@@ -1,0 +1,52 @@
+{
+    "Tripcodes": [
+        "Identify the presence of a tripcode"
+    ],
+    "File Manipulation": [
+        "Encoded the contents of the retrieved file in base64 format for smooth transfer without encoding issues"
+    ],
+    "Flag Retrieval": [
+        "Retrieved the flag from the table content.",
+        "Retrieve the flag."
+    ],
+    "Website Analysis": [
+        "Found out it is an online calculator.",
+        "Website parses the XML",
+        "Conclude that an alternative route to XSS is required."
+    ],
+    "Server Interaction": [
+        "Compose a POST request for the server's login endpoint.",
+        "Received the response",
+        "Navigate to the S3Scanner directory",
+        "Attempted to login with 'admin', 'admin' as username and password.",
+        "Verify that the WebSocket client's origin starts with 'http://localhost'.",
+        "Test the SQL injection vulnerability.",
+        "Used `1'; USE information_schema; SHOW TABLES;`.",
+        "Used %-decodes strings to match the '/debug/answer' endpoint.",
+        "Modify the SQL command using the pattern 'SELECT id FROM users WHERE password = '' or 1=1;--' and username set as '123'.",
+        "Decide to use the SQL LIKE clause.",
+        "Discover a command related to a netcat session.",
+        "Understand that if the expected value does not match 'solution'.",
+        "Understood that it is possible to set custom values for 'salt' and 'hash'",
+        "The action of setting 'shell=true' made the command run within a shell"
+    ],
+    "Web Interaction": [
+        "Navigate to the S3Scanner directory",
+        "Used `1'; USE information_schema; SHOW TABLES;`.",
+        "Conclude that an alternative route to XSS is required.",
+        "Noted that the `ApiMapper` makes a GET request.",
+        "Reached the total of 250 votes.",
+        "Send a GET request to '/localisation-file'.",
+        "Trigger a 404 error page."
+    ],
+    "Code Analysis": [
+        "Understand the behavior of the code.",
+        "Observed internal subnet addresses on the devices.",
+        "Understand implications for encoding and decoding JWT tokens.",
+        "Created a custom 'Login' object."
+    ],
+    "Data Manipulation": [
+        "Convert flag images to base64 data.",
+        "Modify the SQL command using the pattern 'SELECT id FROM users WHERE password = '' or 1=1;--' and username set as '123'."
+    ]
+}

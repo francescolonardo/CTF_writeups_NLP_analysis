@@ -1,0 +1,49 @@
+{
+    "File Analysis": [
+        "Inspect 'challenge/routes/index.js' file for SSTI vulnerability.",
+        "Examine the source.zip file.",
+        "Reviewed the source code."
+    ],
+    "Input Manipulation": [
+        "Add padding to the extracted text.",
+        "Bypassed message length restriction.",
+        "Construct an SQL injection query based on the format.",
+        "Constructed PHP payload.",
+        "Utilized DOM clobbering.",
+        "Verify that the accessor for 'key' has been overridden and behaves as expected.",
+        "Attempt to break out using '?cat=news\\\\''.",
+        "Develop an SQL payload that determines the length of the intended data ('flag').",
+        "Customize the request body."
+    ],
+    "Vulnerability Exploitation": [
+        "Determined the challenge requires bypassing an Angular application setup behind an Nginx reverse proxy.",
+        "Realize that 'jsonwebtoken' 3.2.2 has a known authentication bypass vulnerability.",
+        "Realize the execution of PHP code when reading a file through LFI",
+        "Attempt to upload a valid PHP file.",
+        "Recognize that it opens up path traversal vulnerabilities."
+    ],
+    "Web Source Investigation": [
+        "Locate the route '/adminNames' in the website source.",
+        "Investigate the source code of the website.",
+        "Observe that the website is a login form.",
+        "Locate admin button on the webpage.",
+        "Reviewed the source code.",
+        "Investigate the response to the input.",
+        "Use the directory listing to identify a 'print-flag' file.",
+        "The deserialized object is assigned to the $perm variable in 'authentication.php'"
+    ],
+    "Command Execution": [
+        "Execute 'id' command"
+    ],
+    "Web Security Concepts": [
+        "Find out that the URL capture service takes a screenshot",
+        "Recognize that the token uses the RS256 algorithm",
+        "Obtain a new session cookie as output."
+    ],
+    "Conversion and Output Analysis": [
+        "Observe the output of the conversion command to obtain the flag."
+    ],
+    "Environment and Configuration Discovery": [
+        "Locate the .env file"
+    ]
+}

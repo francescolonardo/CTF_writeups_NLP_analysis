@@ -8,7 +8,7 @@ def get_response(messages: list):
     response = openai.ChatCompletion.create(  # https://platform.openai.com/docs/api-reference/chat/create
         model="gpt-3.5-turbo",  # The name of the OpenAI chatbot model to use
         messages=messages,
-        temperature=1.0,
+        # temperature=1.0,
         stream=False,
     )
     return response.choices[0].message.content
@@ -76,20 +76,36 @@ if __name__ == "__main__":
 
             # Check if JSON is well-formed and complete
             if response_json_data is not None:
-                # Check if the structure contains the expected keys and values
-                if (
-                    "AttackModel" in response_json_data
-                    and "Steps" in response_json_data["AttackModel"]
-                ):
+                try:
+                    # Check if the structure contains the expected keys and values
+                    steps_list = response_json_data.get("AttackModel", {}).get(
+                        "Steps", []
+                    )
+
+                    if not steps_list:
+                        raise ValueError("ERROR - JSON is missing 'Steps' list.")
+
+                    for step in steps_list:
+                        if "Substeps" not in step or not isinstance(
+                            step["Substeps"], list
+                        ):
+                            raise ValueError(
+                                f"ERROR - Step {step.get('StepNumber')} does not contain a 'Substeps' list or 'Substeps' is not a list."
+                            )
+
                     print("INFO - JSON appears to be well-formed and complete.")
+
                     steps_filepath = step_filepath.replace(
                         "_steps.json", "_substeps.json"
                     )
                     with open(steps_filepath, "w", encoding="utf-8") as steps_file:
                         json.dump(response_json_data, steps_file, indent=4)
+
                     print(f"Saved `{steps_filepath}`")
-                else:
-                    print("ERROR - JSON is missing expected keys or values.")
+
+                except ValueError as ve:
+                    print(ve)
+
             else:
                 print("ERROR - JSON may be truncated or invalid.")
 

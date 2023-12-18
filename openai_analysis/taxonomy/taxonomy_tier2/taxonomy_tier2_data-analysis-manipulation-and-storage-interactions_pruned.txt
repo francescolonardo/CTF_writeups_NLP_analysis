@@ -1,0 +1,64 @@
+3.1 Data Analysis and Processing:
+    - Data Visualization and Analysis
+    - Data Identification and Interpretation
+    - Data Analysis and Extraction
+    - Data Analysis and Parsing
+    - Request and Response Analysis
+    - Data Analysis and Decoding
+    - Data Sorting and Manipulation
+    - System Analysis and Investigation
+    - System Memory Analysis
+    - Payload Analysis and Manipulation
+
+3.2 Data Manipulation and Exploitation:
+    - Data Manipulation and Injection
+    - Data Manipulation and Visualization
+    - Data Manipulation and Conversion
+    - Data Manipulation and Extraction
+    - Data Input and Manipulation
+    - User Input Manipulation
+    - Input Manipulation and Exploitation
+
+3.3 Data Storage, Retrieval, and Management:
+    - Data Storage and Management
+    - Data Retrieval and Discovery
+    - File Upload and Processing
+    - Accessing and Managing Notes
+    - Handling Note IDs
+    - File Downloading
+    - Data Read and Extraction
+    - Information Extraction and Exploitation
+    - Data Retrieval and Reading
+
+3.4 File and Data Interaction:
+    - File Analysis and Manipulation
+    - File Interactions and Manipulations
+    - File Interaction and Management
+    - File and Directory Access
+    - File and Folder Manipulation
+    - File and Data Retrieval
+    - File Discovery and Manipulation
+    - File and Directory Navigation
+    - Searching and Analyzing Files
+
+3.5 Database Interaction and Exploitation:
+    - Database Interactions
+    - Database Interaction and Extraction
+    - Database Interaction and Exploitation
+    - Database Exploitation and flag Retrieval
+    - SQL Injection
+    - Data Access and Database Interactions
+
+3.6 Advanced Data and File Processing:
+    - Image and Media Processing
+    - PDF Manipulation and File Creation
+    - PDF File Retrieval
+    - PDF Manipulation and Analysis
+
+3.7 Logging and Monitoring:
+    - Logging and Tracking
+
+3.8 Miscellaneous:
+    - Data Exfiltration
+    - Captcha Collection
+    - Miscellaneous Actions

@@ -1,0 +1,47 @@
+{
+    "Bash Scripting": [
+        "Used a bash script to extract the PHPSESSID with auth set."
+    ],
+    "Cookie Manipulation": [
+        "Find admin cookie",
+        "Note certain cookies are required."
+    ],
+    "File Analysis": [
+        "Open the server.py file.",
+        "Explore the source code files",
+        "Analyzed the source code of the web application"
+    ],
+    "Data Extraction & Parsing": [
+        "Extracted the challenge flag from the server response.",
+        "Exclude the reference to the dummy page from the list of PDF pages.",
+        "Identify code vulnerable to SQL injection in 'index.php'",
+        "Identify the potential SSTI vulnerability.",
+        "Identified a potential SQL injection point in the 'moneys=' parameter.",
+        "Checked for possible exploitations in the Java Servlet.",
+        "Identify attribute that can be polluted to spawn a new process or execute a command.",
+        "Recognize the need to rearrange password.",
+        "Identified the 'unserialize()' function",
+        "Successfully established the ability to enumerate usernames at `/users/<username>`."
+    ],
+    "HTTP Header Manipulation": [
+        "Include differing 'Content-Length' header values in the request"
+    ],
+    "URL Navigation": [
+        "Access the URL http://104.197.168.32:17012/flag_for_this_INFERNO.txt.",
+        "Select 'img/paperbots.svg' from the images provided by the server.",
+        "Access the requirements.txt file",
+        "Find the webpage of the 'Modern events calendar' plugin."
+    ],
+    "Code Injection": [
+        "Inject CSS through the input box",
+        "Used ``1';EXECUTE IMMEDIATE CONCAT('SEL', 'ECT * FROM `1919810931114514`');`` to retrieve data from the '1919810931114514' table.",
+        "Add phpinfo() to the code in the PHP shell",
+        "Understand that '../' is replaced in the code."
+    ],
+    "System & Server Information": [
+        "Discover it is running on Flask.",
+        "Reveal running as 'www-data'",
+        "Recognize the port scan needs to be completed within 30 seconds.",
+        "Recognize `ejs` as a library used for templating in web applications."
+    ]
+}

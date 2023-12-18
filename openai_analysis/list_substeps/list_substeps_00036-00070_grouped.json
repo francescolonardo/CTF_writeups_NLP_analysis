@@ -1,0 +1,53 @@
+{
+    "Endpoint Discovery": [
+        "Discover 'scriptlet' endpoint",
+        "Send POST request to '/api/tet/list' endpoint.",
+        "Craft a request to smuggle a request to /admin in flagportal.",
+        "Attempt to access common pages like foo.php.",
+        "Target only admin endpoint."
+    ],
+    "Command Execution & Exploitation": [
+        "Realize 'yarn dev' runs 'vitepress dev src'.",
+        "Exploit Shellshock vulnerability",
+        "Launch remote commands using the Python script.",
+        "Exploiting the fact that the token for id=0 is the same every time."
+    ],
+    "SQL Injection & Database Analysis": [
+        "Examined SQL queries executed for user authentication."
+    ],
+    "Web Navigation & Interaction": [
+        "Access the website",
+        "Connected to the website",
+        "Visit the website"
+    ],
+    "File & Content Manipulation": [
+        "Expect to receive the flag as a result of the successful injection.",
+        "Reveal the flag by accessing the path.",
+        "Extract 'flag.txt' from the GZip archive",
+        "Set a 'flag' variable based on the response of the previous POST request.",
+        "Used the GUID to retrieve the content."
+    ],
+    "Authentication & Access Control": [
+        "View the source code of authentication.php",
+        "Authenticated using the password 'csictf'.",
+        "Noted the validation preventing 'localhost' or '127.0.0.1'.",
+        "Consider using a domain starting with localhost, such as localhost.zeyu2001.com."
+    ],
+    "Code Analysis & Manipulation": [
+        "Identify the second function that is used to proxy images.",
+        "Know that the flag was located in /var/www.",
+        "Result: buyer's balance increases due to subtraction in 'buyFlag' function",
+        "Figured out how to use '--eval' option to run inline JavaScript.",
+        "Noted restrictions on space, 'AND', 'OR', etc."
+    ],
+    "Security Analysis & Information Gathering": [
+        "Examine the cookies in the HTTP request.",
+        "Install the required dependencies for s3scanner",
+        "Checked if both md5 hashes matched.",
+        "Generated the md5 hash for both binary data."
+    ],
+    "Serialization & Input Manipulation": [
+        "Craft serialized input",
+        "Noted the payload as {'user':'guest'}"
+    ]
+}

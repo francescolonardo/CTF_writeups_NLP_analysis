@@ -1,0 +1,51 @@
+{
+    "Website Visits": [
+        "Visited the challenge website.",
+        "Connect to the provided URL"
+    ],
+    "Server Response & Actions": [
+        "Understood obtaining the flag message requires waiting for such server response.",
+        "Send the generated webpage to the website.",
+        "Run the exploit",
+        "Bypass the X-Real-IP protection.",
+        "Received flag indicating successful completion of challenge",
+        "Make another GET request to obtain the signing certificate from the platform.",
+        "Made a POST request to the server.",
+        "Exfiltrated the '/readflag' output using the defined payload.",
+        "Levied MariaDB's support for the 'EXECUTE IMMEDIATE' command to run queries as strings.",
+        "Understand the constraints of the language input.",
+        "In each iteration, the author forms SQL Injection payload.",
+        "Check the window's 'history.length' attribute.",
+        "Review the site's JavaScript.",
+        "Review the provided Python code.",
+        "Identify XML External Entity (XXE) vulnerability when loading SVG files."
+    ],
+    "CSRF Token & Protection": [
+        "Identify that CSRF token is not being checked."
+    ],
+    "Webpage Manipulation": [
+        "Replace any 'secret' tags with the word 'Protected'.",
+        "Successfully change the website content from the original message to the target flag value 'csictf{h3r3_i_4m}'."
+    ],
+    "Deserialization & Code Execution": [
+        "Deserialize the object of the Image type using PHP.",
+        "Manipulate the fact that WebSocket connection validation does not guarantee that the page is hosted on localhost.",
+        "Identify XML External Entity (XXE) vulnerability when loading SVG files."
+    ],
+    "JWT Manipulation": [
+        "Decode the JWT at jwt.io.",
+        "Understand that the crucial check occurs in the 'checkout(req, res)' function that verifies the token's signature matches the key."
+    ],
+    "Hash Manipulation": [
+        "Select two strings from the 'magic hash' list that have a length of 15 or more characters",
+        "Understand that these hashes match the target through brute forcing."
+    ],
+    "Miscellaneous Actions": [
+        "Refreshed the page.",
+        "Navigate to the '/adminNames' route.",
+        "Access the 'Edit profile' section",
+        "Identified that the website is a GitHub Pages site.",
+        "Allowed reading the flag",
+        "Retrieve the value of the content attribute from the identified meta tag."
+    ]
+}

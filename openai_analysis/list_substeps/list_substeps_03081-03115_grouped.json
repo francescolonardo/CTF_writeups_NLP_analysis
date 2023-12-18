@@ -1,0 +1,108 @@
+{
+    "String Manipulation": [
+        "Identify the ASCII representation within the encoded string",
+        "Deduced that the suffix of 'c1' and 'cp1' are the same."
+    ],
+    "Web Application Exploitation": [
+        "Complete the CTF.",
+        "Rewrote the document to `/terjanq/` using the crafted payload.",
+        "Determine current user is 'www-data'",
+        "Inspected the 'flag.php' file and its history",
+        "Examine the Go microservice",
+        "Gain a shell.",
+        "Create a function named 'api'.",
+        "Noticed a change in website functionality.",
+        "List the contents of the current directory on the Challenge server.",
+        "Managed to bypass the 'strpos(urldecode($remote),'..')' condition.",
+        "Include the base64-encoded payload in the command.",
+        "Analyzed the Docker file.",
+        "Discovered that the PDF contains the flag.",
+        "Realized that the search function checks if a given fragment identifier substring is part of the flag.",
+        "Find a flag in the profile of dennisb@uupeye.edu",
+        "Checked the category and points of the challenge. It was a web category and was worth 1783 points.",
+        "Use hexadecimal content",
+        "Pass the decoded cookie to the 'app.render' function",
+        "Inspected the source code of the newly accessed webpage.",
+        "Build up the 'payload'",
+        "Attempts to open a reverse shell modified the PHP file.",
+        "Leverage the navigation function and the XS leak.",
+        "Assess the function of the 'handlebars' library within the system.",
+        "Access the flag.",
+        "Crafted the payload into a representation of a session cookie",
+        "Create account at ngrok, download the application, and login.",
+        "Examine GitHub repo linked in the challenge",
+        "Decide to exploit the SSRF vulnerability.",
+        "Understand that dynamic rendering renders JavaScript on the server-side before serving web crawlers.",
+        "Add 'account[role]' parameter with value 'admin'.",
+        "Filter for POST requests passing 'passcode' values."
+    ],
+    "OAuth2 & Identity Provider": [
+        "Choose 'discord' as the OAuth2 Identity Provider upon redirection."
+    ],
+    "Command Execution": [
+        "Run grep command to search for unusual text."
+    ],
+    "Payload Analysis": [
+        "Include the base64-encoded payload in the command.",
+        "Build up the 'payload'",
+        "Crafted the payload into a representation of a session cookie"
+    ],
+    "Directory Traversal": [
+        "Managed to bypass the 'strpos(urldecode($remote),'..')' condition.",
+        "List the contents of the current directory on the Challenge server."
+    ],
+    "Source Code Inspection": [
+        "Inspected the 'flag.php' file and its history",
+        "Examine the Go microservice",
+        "Inspected the source code of the newly accessed webpage.",
+        "Analyzed the Docker file."
+    ],
+    "File Manipulation": [
+        "Rewrote the document to `/terjanq/` using the crafted payload.",
+        "Discovered that the PDF contains the flag."
+    ],
+    "User Identification": [
+        "Determine current user is 'www-data'"
+    ],
+    "Web Functionality Analysis": [
+        "Noticed a change in website functionality."
+    ],
+    "Reverse Engineering": [
+        "Find a flag in the profile of dennisb@uupeye.edu",
+        "Leverage the navigation function and the XS leak.",
+        "Assess the function of the 'handlebars' library within the system."
+    ],
+    "Shell Access": [
+        "Gain a shell."
+    ],
+    "CTF Management": [
+        "Complete the CTF.",
+        "Checked the category and points of the challenge. It was a web category and was worth 1783 points."
+    ],
+    "Data Manipulation": [
+        "Use hexadecimal content",
+        "Pass the decoded cookie to the 'app.render' function"
+    ],
+    "Reverse Shell": [
+        "Attempts to open a reverse shell modified the PHP file."
+    ],
+    "Session Management": [
+        "Crafted the payload into a representation of a session cookie"
+    ],
+    "Third-Party Application Usage": [
+        "Create account at ngrok, download the application, and login."
+    ],
+    "Code Analysis": [
+        "Examine GitHub repo linked in the challenge",
+        "Analyzed the Docker file."
+    ],
+    "Vulnerability Exploitation": [
+        "Decide to exploit the SSRF vulnerability."
+    ],
+    "Web Rendering": [
+        "Understand that dynamic rendering renders JavaScript on the server-side before serving web crawlers."
+    ],
+    "Request Filtering": [
+        "Filter for POST requests passing 'passcode' values."
+    ]
+}

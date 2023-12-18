@@ -1,0 +1,4 @@
+[
+    "Verify if 'length' query parameter is a string of length 0.",
+    "Fetch the flag using 'innerHTML'."
+]

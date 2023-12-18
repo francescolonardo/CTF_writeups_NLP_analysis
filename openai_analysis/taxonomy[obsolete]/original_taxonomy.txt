@@ -1,0 +1,78 @@
+Web Interaction & Analysis:
+	- Webpage & Application Interaction
+	- Website Exploration & Navigation
+	- Web Application Testing & Exploitation
+	- Web Security & Exploitation
+	- Browser Automation & Scraping
+	- Web Form & User Interaction
+	- HTTP Requests & Parameters & Headers
+
+Network & System Operations:
+	- Network Tool Usage & Interaction
+	- Network Communication & Protocol
+	- Traffic & Packet Monitoring
+	- Network Scanning & Analysis
+	- Server Discovery & Setup & Configuration
+	- Server & Network Interaction
+
+Database Operations:
+	- SQL & MongoDB Operations
+	- Database Exploration & Interaction
+	- Data Leakage
+	- SQL Injection & Analysis
+
+Debugging & Analysis:
+	- Error Handling & Vulnerability Identification
+	- Source Code Analysis & Review
+	- Debugging & Testing
+	- Code Execution & Analysis
+	- Prototype Pollution Analysis
+
+Code & Script Analysis:
+	- Language & Script Identification
+	- Code Injection & Exploitation
+	- JavaScript Obfuscation & Client-Side Actions
+	- Promise & Asynchronous Programming
+
+Security & Vulnerabilities:
+	- Payload & Exploit Manipulation
+	- Server & Web Vulnerability
+	- Command Line & System Exploitation
+	- Server & Security Analysis
+	- Web Security Techniques & Exploits
+
+Authentication & Security:
+	- JWT Handling
+	- LocalStorage & Password Manipulation
+	- Authentication Bypass & Session Management
+	- User Account & Management
+	- Security & Vulnerability Assessment
+	- Token & Authentication Handling
+	- Authentication & Access Control
+
+API & Service Interaction:
+	- API & WebSocket Handling
+	- API Request & Analysis
+
+Programming & Scripting:
+	- Automation & Scripting
+
+File & Data Management:
+	- File Manipulation & Search & Analysis
+	- File System Interaction
+	- Directory Analysis
+	- Data Analysis & Manipulation
+	- Data Extraction & Encoding
+
+Tools & Configuration:
+	- Tool Usage & Configuration
+	- DNS & IP Management
+	- Server & Network Configuration
+
+Miscellaneous Tasks & Actions:
+	- Model Analysis & Approach
+	- External Research & Information Gathering
+	- Image & Email Interaction
+	- QR Code Analysis
+	- Miscellaneous
+	

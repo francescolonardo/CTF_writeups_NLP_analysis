@@ -1,0 +1,59 @@
+{
+    "User Registration": [
+        "Observed the user registration process.",
+        "Registered a new account."
+    ],
+    "Session Manipulation": [
+        "Change the hashed value in the session_id cookie to correspond to the username 'admin'."
+    ],
+    "HTTP Request Manipulation": [
+        "Craft a request with LF in chunk extension.",
+        "Submit the same payload multiple times.",
+        "Cause a GET request to the Python microservice to be executed",
+        "Submit the manipulated username and password.",
+        "Rewrite the JavaScript code",
+        "Successfully use the same CAPTCHA code to test two different MFA tokens by sending them both in the same HTTP request.",
+        "Recognize that the 'with' HTTP GET parameter can be manipulated.",
+        "Got two different URL encoded strings.",
+        "Create the file '--checkpoint-action=exec=sh shell.txt'."
+    ],
+    "Response Analysis": [
+        "Identify the flag in the response section of that response.",
+        "Observe the flag content as '35C3_M1Cr0_S3rvices_4R3_FUN!'.",
+        "Retrieved the flag after successful login.",
+        "Retrieved the flag from the table content."
+    ],
+    "HTTPS Usage": [
+        "Ensure the site URL in the payload is using HTTPS."
+    ],
+    "Code Analysis": [
+        "Retrieved the PHP source code.",
+        "Investigate the HTML code of the website.",
+        "Identified that the input is copied to a mmap-ed memory region within the function.",
+        "Discover that 'preg_replace' is vulnerable to RCE (Remote Code Execution) using '/e'",
+        "Create a token with the overridden '[object Object]' as the secret key.",
+        "Create and serialize an 'access_log' object"
+    ],
+    "Username and Password Extraction": [
+        "Identify the username and password values.",
+        "Successfully extract the user."
+    ],
+    "Directory and File Manipulation": [
+        "Utilize the '/proc/self/' directory."
+    ],
+    "Server Debugging": [
+        "Set debug parameter to TRUE"
+    ],
+    "Robustness Testing": [
+        "Submit the same payload multiple times."
+    ],
+    "Information Discovery": [
+        "Find a message containing a 'secret key' for the cookies.",
+        "Found a public key in the `/robots.txt` file.",
+        "Observe that the first check points to a GET parameter with underscores.",
+        "Cite the page http://104.197.168.32:17012/index.html as the challenge target."
+    ],
+    "Window Manipulation": [
+        "Open a window."
+    ]
+}

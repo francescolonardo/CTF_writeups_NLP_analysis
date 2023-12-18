@@ -1,0 +1,63 @@
+{
+    "Regular Expressions & String Matching": [
+        "Understood that the 're.match' only matches at the _beginning_ of the string."
+    ],
+    "Server Administration & User Management": [
+        "Switched to the user 'ctf'."
+    ],
+    "Command Execution": [
+        "Triggered the command execution on the server side",
+        "Trigger the command './flag_dispenser' when the __destruct method is called."
+    ],
+    "PHP Code Analysis": [
+        "Analyzed given PHP script to understand the functionality of different methods."
+    ],
+    "Networking & Listener Setup": [
+        "Start a 'netcat' listener on your server."
+    ],
+    "List Manipulation & Data Extraction": [
+        "Utilize 'last' to get the last item of a list."
+    ],
+    "JSON Web Tokens (JWT)": [
+        "Create a JWT with 'username: admin'.",
+        "Use the JWT secret to create a JWT with the admin role."
+    ],
+    "SQL Injection & String Manipulation": [
+        "' AND password=' is treated as a string and hence, ignored",
+        "Used the value ':wq' for the 'exit' parameter."
+    ],
+    "Parameter Recognition & Restrictions": [
+        "Recognize the parameters as 'author', 'hidden', 'id', 'postDate', 'text', 'title'",
+        "Observed restrictions on certain characters and strings."
+    ],
+    "Exploitation of Vulnerabilities": [
+        "Exploit the vulnerability."
+    ],
+    "Server Debugging & Behavior Observation": [
+        "Make the inference that if debugging is enabled, it would likely be on the development server.",
+        "Log in to the website using the username 'jack' and the discovered password."
+    ],
+    "File Upload & Manipulation": [
+        "Upload the HTML file to the user profile.",
+        "Create a working XSS",
+        "Send POST request to upload the 'shell.txt' file.",
+        "Setup a request",
+        "Determine that the removal of open HTML tags '<' makes a traditional XSS attack impossible.",
+        "Wrote the received response as the final output.",
+        "Create a LibreOffice word document with the name 'poc.odt'.",
+        "Observe the behavior of file downloads."
+    ],
+    "Web Interaction & Analysis": [
+        "Check the website response.",
+        "Identified that 'transmissions' had a variable part in the middle.",
+        "Realized that the two-fetch mechanism could be exploited with two different responses.",
+        "Determined that the treasury.js file can help understand the actions performed on the site.",
+        "Researched the trivia answer 'Fear the Old Blood'",
+        "Open source code of the webpage",
+        "Acknowledge that the bypass involves forcing a 'null' origin",
+        "Understand the requirements to pass the login authentication that includes correct username, password, and a Multi-factor Authentication (MFA) token."
+    ],
+    "Looping & Scripting": [
+        "Script composes the flag using the loop."
+    ]
+}

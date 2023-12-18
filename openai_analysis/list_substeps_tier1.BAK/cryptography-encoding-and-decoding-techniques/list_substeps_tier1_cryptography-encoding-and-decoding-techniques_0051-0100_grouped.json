@@ -1,0 +1,59 @@
+{
+    "Encoding and Decoding": [
+        "Decode the ROT13 encrypted message in the HTTP response.",
+        "Determine it is a hexadecimal representation",
+        "Use hexadecimal content",
+        "Decode the base64 response",
+        "Decode the base64 response",
+        "Decode the ASCII representation to readable text using JavaScript console",
+        "Encode the content via Base64.",
+        "Decode the base64 value.",
+        "Encode the compressed object to Base64",
+        "Identify that `aW1nMS5qcGc=` is a Base64 encoded string.",
+        "Decode `aW1nMS5qcGc=` to identify it as `img1.jpg`.",
+        "Base64 encode an XMLHttpRequest.",
+        "Determine that the tripcode is a part of an encrypted string",
+        "Encode the payload into 'multipart/form-data'.",
+        "Encode the JWT by setting the algorithm to 'none'",
+        "Decrypt the 'flag.png.encrypted' file.",
+        "Decode the JWT token.",
+        "Noticed that user cookie is double base64 encoded",
+        "Encode the lowercase string into bytes.",
+        "Use the 'md5' function to hash the bytes.",
+        "Note that it is an MD5 hash."
+    ],
+    "Hashing and Cryptography": [
+        "Note the regex format /^{\"hash\": [0-9A-Z\"]+}$/",
+        "Find the hint related to cookie value matching MD5 hash of '$cfg_pass' variable",
+        "Deduced that two different strings should give the same md5 hash.",
+        "Generated two different strings with the same md5 hash.",
+        "Generated the md5 hash for both binary data.",
+        "Checked and confirmed both strings had the same md5 hash.",
+        "Identify the algorithm mentioned in the cookie value.",
+        "Apply the algorithm to the captured wifi nonces.",
+        "Identify the AES ECB key for decoding the Bitcoin Wallet password.",
+        "Use the OpenSSL tool to decode the Bitcoin Wallet password.",
+        "Provide the AES ECB key and hex string as input.",
+        "Understood that a string needs to be found to match the MD5 hash of the challenge.",
+        "Note that the debugging private key is '8EE86735658A9CE426EAF4E26BB0450E' and it is the MD5 of the string: 'fuckingdog'.",
+        "Understood default signature algorithm of openssl_verify is SHA1.",
+        "Realized the susceptibility of SHA1 algorithm for PDFs.",
+        "Understand how the token is signed using 'store.key'.",
+        "Observe that the password is not given directly but might be related to the hash.",
+        "Understand that the client-server communication uses an encoding function.",
+        "Use the factorization of 1337 (7*191) to create the first payload",
+        "Noticed that the SHA256 hash is calculated using the concatenation of 'password' and 'salt'",
+        "Noticed that it is an MD5 hash."
+    ],
+    "Web Application Interactions": [
+        "Visited the website.",
+        "Accessed the webpage.",
+        "Navigate to the '/example' route."
+    ],
+    "Web Application Actions": [
+        "Observe the form to fill.",
+        "Submit the form.",
+        "Find the input box.",
+        "Click the submit button."
+    ]
+}

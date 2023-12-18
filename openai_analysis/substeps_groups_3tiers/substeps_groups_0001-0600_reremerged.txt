@@ -1,0 +1,61 @@
+Tier 1: Information Gathering & Analysis
+    Tier 2: Data Collection & Exploration
+        Tier 3: Web Scraping & Automation
+        Tier 3: Network & Server Exploration
+        Tier 3: Backend Investigation
+        Tier 3: Documentation Review
+        Tier 3: IP and Network Analysis
+    Tier 2: Vulnerability Identification & Assessment
+        Tier 3: Security Vulnerabilities & Exploits Analysis
+        Tier 3: File & Directory Analysis
+        Tier 3: Exploitation & Vulnerabilities
+        Tier 3: Behavior Observation & Vulnerability Identification
+    Tier 2: Debugging & Error Analysis
+        Tier 3: Error Handling & Debugging
+        Tier 3: Server Log Analysis & Manipulation
+        Tier 3: Response Analysis
+        Tier 3: Time-Based Analysis
+
+Tier 1: Web Interaction & User Engagement
+    Tier 2: Web Navigation & Functionality
+        Tier 3: Page Source Analysis
+        Tier 3: Button & Element Identification
+        Tier 3: Web Interaction and Testing
+        Tier 3: Game & Scenario Analysis
+        Tier 3: Web Request & Processing
+        Tier 3: User Interaction
+    Tier 2: User Input and Data Handling
+        Tier 3: User Script & Payload Modification
+        Tier 3: Decoding & Encoding: Base64, JWT
+        Tier 3: Password Handling
+        Tier 3: User Input Analysis
+        Tier 3: Data Manipulation
+        Tier 3: Message Creation & Sharing
+    Tier 2: URL and HTML Elements Manipulation
+        Tier 3: URL Manipulation & Restrictions
+        Tier 3: Header Manipulation
+        Tier 3: Endpoint Mapping
+        Tier 3: CSS Exfiltration & Code Constraints
+        Tier 3: Authentication and Authorization
+
+Tier 1: Exploitation & Security Techniques
+    Tier 2: Exploitation Techniques
+        Tier 3: Web Vulnerabilities: XSS, SSRF, XXE, LFI, etc.
+        Tier 3: Debugging & Exploitation
+        Tier 3: Injection and Bypass Techniques: SQL Injection, Code Injection, etc.
+        Tier 3: Exploiting Security Constraints
+        Tier 3: Server-side Exploitation
+        Tier 3: Authentication & Authorization Bypass
+    Tier 2: Security Analysis & Testing
+        Tier 3: Web Security Concepts & Techniques
+        Tier 3: Robustness Testing
+        Tier 3: Authentication & Authorization Testing
+        Tier 3: Vulnerability Identification
+        Tier 3: Secure Communication
+        Tier 3: Cryptography and CAPTCHA
+    Tier 2: Payloads and Scripts
+        Tier 3: Exploitation & Payload Manipulation
+        Tier 3: Shellcode Assembly & Debugging
+        Tier 3: Script Analysis
+        Tier 3: JavaScript & Frontend Analysis
+        Tier 3: Payload Execution

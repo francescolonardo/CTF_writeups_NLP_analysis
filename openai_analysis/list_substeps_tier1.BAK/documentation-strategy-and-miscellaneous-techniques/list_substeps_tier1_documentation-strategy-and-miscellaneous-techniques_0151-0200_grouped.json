@@ -1,0 +1,114 @@
+{
+    "Problem Identification": [
+        "Identify the problem that requires generating two PDFs.",
+        "Consider size restrictions for choosing two small-sized PDFs."
+    ],
+    "Attack Reproduction and Reporting": [
+        "Once successful, noted the steps taken to reproduce the attack.",
+        "Reported the findings on the platform provided for the CTF Challenge."
+    ],
+    "Flag Retrieval": [
+        "Retrieved the flag 'CTFSG{All_T00_W3ll_T3n_M1nutes_V3rs1on_Taylors_Version}'."
+    ],
+    "Application Understanding and Exploration": [
+        "Examined how the note taking app functions.",
+        "Created a new GitHub Pages site."
+    ],
+    "Flag Purchase and Resource Utilization": [
+        "Use the acquired financial resources to purchase the flag"
+    ],
+    "Exploitation Strategies and Techniques": [
+        "Understand that this trick helps continue the search from the previously found index onwards and it can allow multiple instances of 'fqdn'.",
+        "Complete the challenge."
+    ],
+    "AWS WAF Review and Mitigation Strategies": [
+        "Review the AWS WAF documentation.",
+        "Review the AWS managed rules changelog.",
+        "Review corresponding documentation for mitigation strategies."
+    ],
+    "Flutter App Understanding": [
+        "Recognized that `main.dart.js` is the Flutter app compiled by `dart2js`."
+    ],
+    "Flag Guessing": [
+        "Guess that the flag is 'FLAG{r0uter_p0rtals_are_ultimately_impenetrable_because_they_are_real_weird}'."
+    ],
+    "Binary Download": [
+        "Download binary."
+    ],
+    "Security Vulnerability Research": [
+        "Checked the version numbers of these libraries and searched for security vulnerabilities without any results."
+    ],
+    "Challenge Understanding": [
+        "Identified the challenge as involving wkhtmltopdf, a tool that translates HTML content into a PDF.",
+        "Examined the documentation for RFC5322 to understand what characters are allowed in the email parameter.",
+        "Recognize the challenge in exploiting the vulnerability",
+        "Reviewed the challenge."
+    ],
+    "Event Loop and JavaScript Nature": [
+        "Noted the single-threaded nature of the JavaScript event loop."
+    ],
+    "Filter Identification": [
+        "Understood the extensive filter used for the challenge."
+    ],
+    "HAProxy Version Identification": [
+        "Identified the specific version (2.4.0) of HAProxy."
+    ],
+    "Modification Verification": [
+        "Ensured the modifications reflected the initial intention."
+    ],
+    "LibreOffice Word Document Creation": [
+        "Create a LibreOffice word document with the name 'poc.odt'."
+    ],
+    "Oracle Purpose": [
+        "Noted the purpose of the oracle in determining flag correctness."
+    ],
+    "List Modification Understanding": [
+        "Understand successful modification of the list."
+    ],
+    "Node.js and ATS Version Research": [
+        "Research about the versions of Node.js and ATS used."
+    ],
+    "Scroll-To-Text-Fragment (STTF) Knowledge": [
+        "Learn about the Scroll-To-Text-Fragment (STTF)."
+    ],
+    "Challenge Review": [
+        "Review challenge"
+    ],
+    "Flag Purchase Goal": [
+        "Identify goal: purchase flag with starting balance of zero"
+    ],
+    "Attack Execution Confirmation": [
+        "Indicate the successful execution of the attack."
+    ],
+    "Issue Identification and Documentation Review": [
+        "Found an issue on Google's issue tracker regarding YouTube's 'oembed' API not implementing JSONP.",
+        "Review the jQuery documentation."
+    ],
+    "Feature Identification": [
+        "Identify a feature in the documentation."
+    ],
+    "PoC Downsides": [
+        "Consider the downside of the above PoC - the potential strain on the server due to very long URLs"
+    ],
+    "Parsing Commands Understanding": [
+        "The 'minimag' and 'bbcode' commands are used for parsing content into HTML in the post_view.tpl file"
+    ],
+    "Request Verification": [
+        "Confirm that Waitress sees both received requests."
+    ],
+    "Random Index Understanding": [
+        "Noted that the index is randomized."
+    ],
+    "Success Probability and Execution Strategy": [
+        "Recognized the 10% chance of success.",
+        "Understood the strategy of executing multiple times until the index is 0."
+    ],
+    "Flag Printing": [
+        "Printed the flag."
+    ],
+    "Flask Application Interaction": [
+        "Determine that the challenge requires interaction with a Flask application.",
+        "Wrote a Python script to automate the requests",
+        "Set 'EOF' as the termination condition of the script"
+    ]
+}

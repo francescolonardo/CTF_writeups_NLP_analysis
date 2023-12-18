@@ -1,0 +1,58 @@
+{
+    "Response Text Analysis": [
+        "A check is performed on the response text.",
+        "Note that the Flask server allows duplicate 'Content-Length' headers",
+        "Server returned all allowed methods."
+    ],
+    "Cookie Manipulation": [
+        "Find a 'secret' cookie."
+    ],
+    "SQL Injection": [
+        "Execute the query '123' UNION SELECT name, sql, null from sqlite_master;--'.",
+        "Used the SQL injection.",
+        "Understood that the desired flag is located within the 'flag' table in MySQL."
+    ],
+    "Character Testing": [
+        "Test single characters from '0' to 'f'",
+        "Experimented with `1' ORDER BY` commands."
+    ],
+    "Redis Database Check": [
+        "Check if the value of <userID>_isAdmin key in Redis database is 'yes'."
+    ],
+    "HTTP Requests & File Operations": [
+        "Add a JSON object '{\"foo\":\"bar\"}' to the body.",
+        "Sent a GET request",
+        "Downloaded the 'pack-names' file from 'repository' folder on the target server.",
+        "Retrieve the JavaScript file from the webpage.",
+        "Utilize the 'cat' parameter in a request to '/ajax/articles?cat=asdf\"x=\"'.",
+        "Upload the disguised phar file.",
+        "Access 'robots.txt'"
+    ],
+    "Web Security Vulnerability Analysis": [
+        "Website evaluates the 'xxe' entity",
+        "Checked the version numbers of these libraries and searched for security vulnerabilities without any results."
+    ],
+    "JavaScript Analysis": [
+        "Note that it executes file_get_contents('../flag.txt')",
+        "Identify the presence of 'news' string in the JavaScript code.",
+        "Monitor the output of the script.",
+        "The malicious JavaScript code is executed on the client's side.",
+        "Identify verifyUsername() within the verify() function."
+    ],
+    "Web Directory Scanning": [
+        "Identify server directories"
+    ],
+    "Admin Console Access": [
+        "Attempted to access the admin console ('/login.php').",
+        "Found a commented information indicating possible internal IP and an endpoint for admins.",
+        "Visit the admin's profile and find out it is private.",
+        "Verify that the service is the app mentioned in the challenge.",
+        "Note the mention of an FBI DB dump at https://tinyurl.com/fbi-hack"
+    ],
+    "HTML Analysis": [
+        "Analyze HTML"
+    ],
+    "Balance Validation": [
+        "Checked that balance never went below 0."
+    ]
+}

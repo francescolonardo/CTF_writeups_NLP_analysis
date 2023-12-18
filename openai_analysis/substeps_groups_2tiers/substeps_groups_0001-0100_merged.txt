@@ -1,0 +1,148 @@
+1. Authentication and Authorization
+    - "Authentication & Authorization Testing"
+    - "Authentication Bypass & Exploitation"
+    - "Authentication and Authorization"
+    - "Authentication & Authorization Bypass"
+    - "JWT and Authentication"
+
+2. Vulnerability Identification and Exploitation
+    - "Web Vulnerabilities"
+    - "HTTP Request Smuggling Vulnerabilities"
+    - "Discovery of Vulnerabilities"
+    - "Server-Side Vulnerability Identification"
+    - "Vulnerability Identification"
+    - "Vulnerable Parameter Identification"
+    - "Code Analysis & Vulnerability Identification"
+
+3. Coding and Scripting
+    - "User Script & Payload Modification"
+    - "PHP Shell Execution"
+    - "Script Analysis"
+    - "Bash Script Manipulation"
+    - "Bash Scripting"
+    - "Scripting & Code Creation"
+
+4. User and Web Interaction
+    - "User Interaction"
+    - "Page Source Analysis"
+    - "API Interaction & Response"
+    - "Web Navigation & Functionality"
+    - "Web Interaction & Analysis"
+    - "Web Interaction and Testing"
+    - "User Input Analysis"
+
+5. Vulnerability Research
+    - "XSS & SSRF Vulnerability Research"
+    - "Research and Documentation"
+    - "Security Analysis"
+    - "Information Gathering"
+
+6. Web Security Techniques and Constraints
+    - "Web Security Concepts & Techniques"
+    - "Security Techniques"
+    - "Exploiting Security Constraints"
+    - "Secure Communication"
+
+7. Exploitation Execution
+    - "Exploit Execution"
+    - "Payload Execution"
+    - "Exploitation & Payload Manipulation"
+    - "Debugging & Exploitation"
+    - "Server-side Exploitation"
+
+8. File and Data Manipulation
+    - "File Upload/Analysis"
+    - "File & Flag Manipulation"
+    - "File and Directory Manipulation"
+    - "File Manipulation & Creation"
+    - "File System & Resource Discovery"
+    - "Data Manipulation"
+    - "Flag Extraction"
+
+9. Navigation and Interaction
+    - "Button & Element Identification"
+    - "Web Application Scanning"
+    - "Directory Navigation"
+    - "Navigation to Quiz Section"
+    - "Resource Interaction"
+
+10. Request and Response Analysis
+    - "HTTP Request Analysis"
+    - "Server Response & Actions"
+    - "Web Request & Processing"
+
+11. Code and Inject Attacks
+    - "Code Injection & Remote Execution"
+    - "XSS & Code Injection"
+    - "Injection and Bypass Techniques"
+    - "SQL Injection & Database Exploitation"
+
+12. Debugging and Troubleshooting
+    - "Debugging & Exploitation"
+    - "Server Debugging & Behavior Observation"
+    - "Debugging and Troubleshooting"
+
+13. Challenge and Game Understanding
+    - "Challenge Completion"
+    - "Game & Scenario Analysis"
+    - "Game Understanding & Analysis"
+
+14. Interaction with Server and Network
+    - "Server & Application Analysis"
+    - "Network & Server Interactions"
+    - "Network Observation"
+
+15. Cryptography and Encoding
+    - "Base64 Decoding"
+    - "Cryptography and CAPTCHA"
+    - "Decoding & Encoding"
+
+16. Custom Tools Usage and Accessibility
+    - "Accessibility & Tools"
+    - "Command Line Execution and Tools Usage"
+    - "Custom Script Hosting"
+
+17. Document and Message Management
+    - "Message Creation & Sharing"
+    - "Note Submission" 
+
+18. Attack Techniques
+    - "URL Manipulation & Restrictions"
+    - "HTTP Redirect Exploitation"
+    - "Endpoint Manipulation"
+    - "CSS Exfiltration & Code Constraints"
+    - "Header Manipulation"
+    - "XXE Attacks & Token Structure"
+    - "Robustness Testing"
+    - "Parameter Inspection"
+    - "URL Manipulation"
+    - "Parameter Recognition & Restrictions"
+    - "IP Validation"
+    - "Browser Behavior and Exploitation"
+
+19. Image, Video, and File Handling
+    - "File and Directory Manipulation"
+    - "File Manipulation & Creation"
+    - "File System & Resource Discovery"
+    - "Hash Manipulation"
+
+20. Code and Source Examination
+    - "Code Analysis & Source Code Examination"
+    - "JavaScript & Frontend Analysis"
+    - "Application Examination"
+    - "Code Analysis & Vulnerability Identification" 
+
+21. Scenario-based Tasks
+    - "Quiz & Flag Search"
+    - "Endpoint Mapping"
+    - "Local File Inclusion (LFI) Vulnerability"
+    - "Hint Discovery" 
+
+22. Others
+    - "Git"
+    - "DNS Resolution"
+    - "Port Scanning"
+    - "System & Process Interactions"
+    - "Shellcode Assembly & Debugging"
+    - "Password Handling"
+    - "Completion & Success"

@@ -1,0 +1,129 @@
+- Web Application Navigation & Analysis
+   - Web Browsing & Navigation
+   - Web Navigation & Analysis
+   - Website Functionality Study
+   - Web Source Investigation
+
+- Authentication & Access Control
+   - Login & Authentication
+   - Admin Actions
+   - Admin Route & Access
+   - Authentication & Authorization Manipulation
+
+- Key Exploration and Manipulation
+   - Token Analysis
+   - JWT Token Usage
+   - Flag Retrieval & Manipulation
+   - Flag Retrieval
+
+- Action Automation & Repetition
+   - Bot & Automation Identification
+   - Looping & Script Execution
+   - Automation & Scripting
+   - Repetitive Actions 
+
+- Scripting & Code Analysis
+   - String Manipulation
+   - JavaScript Techniques
+   - PHP Scripting & Modification
+   - Script and Code Study
+   - Code & Script Analysis
+   - Code Review
+
+- Security Inspection & Exploitation
+   - Server Vulnerabilities
+   - HTTPS Usage
+   - IP Spoofing
+   - Content-Type Modification
+   - XSS Potential Identification
+   - Security Check Bypass
+   - Cross-Site Request Forgery (CSRF)
+   - PHP Bypass & Exploitation
+   - XSS Vulnerability & JSON Configuration
+   - Evasion Techniques & Exploitation
+   
+- Information Gathering & Data Analysis
+   - Network Intercept & Inspection
+   - Data Analysis & Extraction
+   - Information Retrieval & Malicious Code
+   - Information Gathering & Analysis
+   - Server Information Gathering
+   - Research & Information Gathering
+
+- Execution and Injection
+   - Code Injection
+   - Command Execution & Environment Manipulation
+   - Command Execution & Shell
+   - Code Execution & Command Injection
+   - Command Execution on Website
+   - Command Execution & Data Exfiltration
+
+- File and Directory Operations
+   - File Access
+   - Scan Result Directory Path Follow
+   - File Operations & Downloads
+   - File Enumeration
+   - File Management & Inspection
+   - Server Access & File Handling
+   - File and System Manipulation
+
+- Server and Network Interaction
+   - Network & Server Interaction
+   - Proxy and Server Analysis
+   - DNS Configuration
+   - Web Security & Configuration Analysis
+   - Communication & Networking
+   - System Configuration Analysis
+
+- Payload and Input Manipulation
+   - Regular Expressions
+   - Input Validation & Filtering
+   - Payload and Input Manipulation
+   - Regular Expression (Regex) Analysis 
+
+- User & Credential Enumeration
+   - User Actions & Interactions
+   - Credential & User Enumeration
+
+- Security Tool & Technique Usage
+   - Security Tools & Techniques
+   - HTTP Method Testing
+   - Exploiting Character Restrictions
+   - Exploitation
+
+- Endpoint & API Manipulation
+   - API & Endpoint Manipulation
+   - GET Requests & Manipulation
+
+- Service Functionality 
+   - Service Functionality
+   - Version Control System (VCS) Exploration
+   - Email Interactions
+
+- Miscellaneous
+   - Note Manipulation
+   - Mathematical Calculation
+   - Unsuccessful Results Observation
+   - Web Application Assessment
+   - Key Requirement Understanding
+   - Serialization & Encoding
+   - Looping & Character Manipulation
+   - Data Encoding and Decoding
+   - Request Handling
+   - PHP Configuration & Disabled Functions
+   - Data Manipulation & Exploitation
+   - Authorization Analysis
+   - Password Verification Analysis
+   - Interaction with Hosted Files/Web Pages
+   - String Manipulation & Parsing
+   - Shared Object & Binary Analysis
+   - JavaScript Analysis
+   - Frontend Exploitation
+   - Browser Exploitation
+   - Data Extraction & Parsing
+   - Browser Console Interaction
+   - Server-side Actions
+   - Server-side Scripting
+   - Web Scraping and Data Extraction
+   - Response Text Analysis.
+   

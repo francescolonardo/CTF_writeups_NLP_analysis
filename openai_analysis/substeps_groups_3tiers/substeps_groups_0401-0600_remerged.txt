@@ -1,0 +1,44 @@
+Web Security Exploration & Analysis
+    Information Gathering & Reconnaissance
+        Endpoint & Route Mapping
+        Website Analysis
+        IP & Network Analysis
+        Web Technology & Infrastructure
+        Database Exploration
+    Security Analysis and Testing
+        Behavior Observation & Vulnerability Identification
+        File & Server Interaction
+        Vulnerability Discovery & Testing
+        Code and Source Code Analysis
+    Documentation & Research
+        Exploit Database
+        Research Documentation
+
+Exploitation & Attack Implementation
+    Exploitation & Attack Strategies
+        User Input & Form Manipulation
+        Command & API Manipulation
+        Server-Side Attacks
+        Environmental Variable Pollution
+    Networking & Data Transmission
+        Client Communication & Data Transmission
+        HTTP Requests & Response Manipulation
+    Database Exploration & Manipulation
+        Service Analysis & Manipulation
+        Database Manipulation
+    Web Tool & Library Understanding
+        Web Framework & Library Analysis
+        Gameplay & Strategy
+
+Web Interaction & User Engagement
+    Web Interaction and Manipulation
+        Web Page & JavaScript Interaction
+        File System Access & Manipulation
+        Message Validation & Websocket Manipulation
+    Authentication & Authorization
+        Account & User Identification
+        JSON Web Tokens (JWT)
+    Miscellaneous Actions
+        External Data Handling
+        Browser & Webpage Interaction
+        Website Interaction & Exploration

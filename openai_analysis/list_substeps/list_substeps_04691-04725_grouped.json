@@ -1,0 +1,52 @@
+{
+    "Value Manipulation": [
+        "Ensure the value is {\"hash\": \"T35T\"}"
+    ],
+    "Web Request & Processing": [
+        "Note how ATS processes the LF as the end-of-line.",
+        "Exploit the vulnerability to search for files",
+        "Search for the flag within the script's output.",
+        "Set the origin as the target URL",
+        "Read HTML",
+        "Install and open Dirb tool"
+    ],
+    "Exploitation & Code Execution": [
+        "Confirmed that remote code execution (RCE) was necessary.",
+        "Applied the payload to the live environment",
+        "Identify the version of SQL Alchemy",
+        "Recognized the need to manipulate the PATH variable to execute arbitrary code when 'id' is called",
+        "Create a function `execute_command` in the Python script.",
+        "Deployed the previously developed JavaScript payload.",
+        "Use a wildcard pattern and append the current character to check if the password starts with the current guessed string.",
+        "Control the number of intervals in the aforementioned steps to aid in the narrowing down process.",
+        "Verify if the injected template operation (7*7) triggers the SSTI vulnerability",
+        "Bypass '\\' by constructing a string.",
+        "Understand the possibility of retrieving the flag by crafting and serializing a custom 'access_log' object",
+        "Intercept the data.",
+        "Analyse the HTML code.",
+        "Note the introduced code problem.",
+        "Determine that the webpage is created by executing an eval from a payload query parameter or calling the directory() function.",
+        "Identify if the chosen character is correct based on the response header",
+        "Understood the presence of a blacklist filter for '#' symbol",
+        "Note that the server does not perform security checks on the alg or secretid fields in the JWT"
+    ],
+    "Privilege Escalation": [
+        "Logged back in with escalated privileges."
+    ],
+    "File Manipulation": [
+        "Set up a PHP script on '/pleb.my.ip.nip.io'.",
+        "Add a `run` bash script to the zip file.",
+        "Execute the developed script."
+    ],
+    "Network Analysis": [
+        "Identify packet #261 in the capture"
+    ],
+    "String Manipulation": [
+        "Use a wildcard pattern and append the current character to check if the password starts with the current guessed string.",
+        "Bypass '\\' by constructing a string.",
+        "Enter 'St. Michael's' for First School Attended"
+    ],
+    "Data Extraction": [
+        "Extract the second flag from the decoded field."
+    ]
+}

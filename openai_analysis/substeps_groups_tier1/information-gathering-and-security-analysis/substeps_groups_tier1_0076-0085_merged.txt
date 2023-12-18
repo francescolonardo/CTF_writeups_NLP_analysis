@@ -1,0 +1,17 @@
+1. Preemptive Analysis
+   - Suspicion and Precaution
+   - Site Access and Initial Observation
+   - Identification and Enumeration
+
+2. Code and Data Scrutiny
+   - Code Analysis
+   - Data Extraction and Observation
+   - Data Extraction and Manipulation
+
+3. External Intelligence
+   - External Analysis and Research
+
+4. Authorization and Information Retrieval
+   - Authentication and Authorization
+   - Discovering and Retrieving Flags in CTF
+   - Flag Obtaining

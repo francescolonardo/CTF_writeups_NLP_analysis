@@ -1,0 +1,57 @@
+{
+    "Web Navigation & Interaction": [
+        "Visit the link provided in the challenge",
+        "Append '#' at the end of the 'fqdn' to make the final URL your public IP address.",
+        "Receive a 302 response",
+        "Send the generated webpage URL.",
+        "Visit an online barcode generator website.",
+        "Access the source code of the web app.",
+        "Checked the filter page again to see any changes"
+    ],
+    "Server Interactions & Exploitation": [
+        "Determine that the challenge requires interaction with a Flask application.",
+        "Run the Python script.",
+        "Exploit the SSTI vulnerability using ninjucks.",
+        "Identify vulnerability in '/api/tet/list' endpoint.",
+        "Run the PHP exploit",
+        "Use the previously hardcoded auth cookie value",
+        "Use the modified payload in the exploit.",
+        "Create a crafted payload utilizing XXE.",
+        "Recognize that Werkzeug includes a debugging console at '/console' when debugging is enabled.",
+        "Crafted a token with 'admin' as the user.",
+        "Sent the request 'type=/../super_secret_shell.php'.",
+        "Adjust the value of the secure cookie 'admin' to the desired comparison value 'true'.",
+        "Bypassed input validation"
+    ],
+    "Data Extraction & Manipulation": [
+        "Provide the AES ECB key and hex string as input.",
+        "Extract the flag from the converted text.",
+        "Observed the 'users_data' database structure.",
+        "Form the complete flag: CHTB{1nsp3ction_c4n_r3ve4l_us3full_1nf0rm4tion}",
+        "Note that f-Strings can be used to call methods.",
+        "Observe the output of the \"CONFIG\" log.",
+        "Encounter stability issues",
+        "Understood the strategy of executing multiple times until the index is 0.",
+        "Bypassed input validation"
+    ],
+    "Challenge Analysis & Understanding": [
+        "Identify that the challenge is written using the mermaid library",
+        "Understand that '....//' can be used to bypass the replacement of '../'.",
+        "Identify that the challenge consists of 3 services - Traefik (a HTTP proxy)"
+    ],
+    "Flag Retrieval & Manipulation": [
+        "Retrieved the flag 'CTFSG{All_T00_W3ll_T3n_M1nutes_V3rs1on_Taylors_Version}'.",
+        "Display the flag in the browser instance."
+    ],
+    "Cookie Manipulation": [
+        "Modify the value of 'admin_id' cookie to '1'",
+        "Use the previously hardcoded auth cookie value",
+        "Adjust the value of the secure cookie 'admin' to the desired comparison value 'true'."
+    ],
+    "Code Execution & Scripting": [
+        "Run the Python script.",
+        "Exploit the SSTI vulnerability using ninjucks.",
+        "Run the PHP exploit",
+        "Use the modified payload in the exploit."
+    ]
+}

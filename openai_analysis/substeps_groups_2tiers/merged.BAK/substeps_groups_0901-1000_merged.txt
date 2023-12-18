@@ -1,0 +1,137 @@
+1. Web Application Analysis
+   - Source Code Review
+   - Web Content Analysis
+   - HTTP Analysis
+   - Web Navigation
+   - Web Request
+   - CSS Attribute Selector Exploitation
+   - Web Development & JavaScript
+   - DOM Manipulation
+   - Page Manipulation
+   - Web Actions
+   - User Registration
+   - Username Entry
+
+2. Information Extraction and Verification
+   - Response Extraction & Verification
+   - System & Server Information
+   - Network & Request Handling
+   - Commit Analysis
+   - Initial Text Reading
+   - Text Analysis
+   - Binary Analysis
+   - String Identification & Analysis
+   - Network Analysis
+   - File and Directory Discovery
+
+3. Vulnerability Management
+   - Vulnerability Assessment
+   - Security Vulnerability Identification
+   - Security Vulnerability Exploitation
+   - Vulnerability Analysis
+   - Vulnerability Exploitation
+
+4. Payload and Injection
+   - Payload Injection
+   - Payload Crafting & Submission
+   - XSS Payload Injection
+   - JWT Payload Generation
+   - Union Based Injection
+
+5. Manipulation and Exploitation
+   - Text Decoding & Manipulation
+   - URL & Parameter Manipulation
+   - Redirection & Payloads
+   - Prototype Injection & Exploitation
+   - File Manipulation & Generation
+   - URL & Redirection
+   - Redirection & Flow Control
+   - Prototype & Constructor Manipulation
+   - Context & File Manipulation
+
+6. Authentication and Access Control
+   - Basic Authentication
+   - Balance Validation
+   - Cookie Handling
+   - Password Discovery
+   - Password Verification
+   - Access Control
+
+7. Network and System Operations
+   - File & System Analysis
+   - System & Logic Analysis
+   - SQL Query Analysis
+   - Network Operations
+   - Command Line Operations
+   - Endpoint Parameter Identification
+
+8. Debugging and Troubleshooting
+   - Debugging & Troubleshooting
+   - Logical Operator Analysis
+   - Function & Method Analysis
+   - Endpoint Sensitivity
+
+9. Security Measures
+   - Web Application Security
+   - Image Analysis & Security Questions
+   - Security Vulnerability Exploitation
+   - CAPTCHA & JWT
+   - Web Security
+   - Server Communication
+
+10. Decoding and Analysis
+   - Widget Decoding
+   - Response Parsing
+   - Encryption & Encoding
+   - Bypassing Filters
+   - Cookie Parsing
+   - Cookie and Header Analysis
+   - Data Visualization & Analysis
+   - Data Processing & Analysis
+
+11. Exploitation Techniques and Construction
+   - Exploitation Techniques
+   - Exploitation Techniques & Payload Construction
+   - Web Security & Exploitation
+    
+12. File Operations
+   - File Manipulation & Download
+   - File & Directory Analysis
+  
+13. Network and Server Interaction
+   - Server Interaction & Script Execution
+   - Server Communication
+   - Network Actions
+   - Networking and Requests
+   
+14. Code Analysis and Execution
+   - Script Development & Execution
+   - Code Analysis & Manipulation
+   - Reverse Engineering
+   - Function Execution
+
+15. Cryptography and Key Handling
+   - Character Checking
+   - Cryptography & Key Handling
+   - Token & Signature Analysis
+
+16. Miscellaneous
+   - Environment Discovery
+   - Directory & Path Exploration
+   - Reconnaissance & Enumeration
+   - DNS Manipulation
+   - PDF Manipulation
+   - Proxy & Microservice
+
+17. Flag and Token Management
+   - Flag Acquisition
+   - Flag Reconstruction
+   
+18. Request Handling
+   - Request Manipulation & Intercepting
+   - Network & Request Handling
+   - Signature Extraction & Analysis
+
+19. Puzzle and Task Handling
+   - Rate Limiting & OTP
+   - Puzzle Solving

@@ -1,0 +1,52 @@
+{
+    "Flag Retrieval": [
+        "Retrieve the flag",
+        "Retrieve the flag '35c3_password_saltf1sh_30_seconds_max'",
+        "Discover that the flag is written on the resulting PNG file.",
+        "Successfully extract the flag: OOO{0ld@dm1nbr0wser1sth30nlyw@y}."
+    ],
+    "Website Interaction": [
+        "Visit the company website for the CTF challenge",
+        "Send the URLs to the bot.",
+        "Visit the challenge URL"
+    ],
+    "Redirection & Delay": [
+        "Consider the possibility of redirection during the delay."
+    ],
+    "Request Handling": [
+        "The encoded XMLHttpRequest sends the cookie to a specified server.",
+        "Understand the interpretation of the GET call.",
+        "In the password field of the JSON body, use NoSQL's $gt operator to bypass password check by typing {\"$gt\": \"a\"}.",
+        "Realize that 'eval' can be triggered by entering a payload as the GET query parameter.",
+        "Identify the critical line.",
+        "Discover that the /find endpoint can be used for Response Header Injection.",
+        "Read source code via base64 encoding.",
+        "Realized that rendering unescaped HTML was unsuccessful.",
+        "The author sets a condition to set the parameters based on the specific challenge.",
+        "The identification was based on the mention of XML.",
+        "Include code in 'payload.php' to list all directory files",
+        "Used the appropriate 'X-Cat-Header' in the request",
+        "Attempt to send this information to a remote server."
+    ],
+    "File Manipulation": [
+        "Identified missing file escape for characters on the filename.",
+        "Locate the file 'build_flag_checker.yml'",
+        "Noted that admin reads these HTML files"
+    ],
+    "Cookie and Header Analysis": [
+        "Note the presence of 'username', 'cnonce', and 'hash' parameters.",
+        "Final server returns Server: Apache/2.4.50 (Unix).",
+        "Set the 'Referer' header as 'google.com'.",
+        "Identify a cookie named 'admin_id : 0'",
+        "Perform a basic analysis of the cookies."
+    ],
+    "Payload Execution": [
+        "Identify the problem that requires generating two PDFs.",
+        "Initiate exploitation",
+        "Trigger the XSS alert attack using the final URL.",
+        "Execute a Python script."
+    ],
+    "Server and Network Monitoring": [
+        "The second request was treated as a separate request by HAProxy."
+    ]
+}

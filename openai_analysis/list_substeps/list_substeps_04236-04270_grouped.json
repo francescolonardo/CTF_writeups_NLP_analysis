@@ -1,0 +1,74 @@
+{
+    "Server Interaction": [
+        "Wrote a request to the root directory",
+        "Received a message from the '/vim/quit/' endpoint.",
+        "Send a POST request to the /admin/system/refresh_session/ endpoint.",
+        "Use the tamper script with SQLMap.",
+        "Observed the output on my netcat listener",
+        "Identify the service.",
+        "Dump the database.",
+        "Directly access flag with 'flag_id=3' using HTTP POST /buy request",
+        "Implemented a smart voter script.",
+        "Observed login page.",
+        "Navigate to the '/checkbalance' endpoint with the queried amount.",
+        "Use the modified cookie",
+        "Send the malicious JWT to the server",
+        "Found a successful login attempt among the batched requests.",
+        "Received a 'HTTP 403 Forbidden' error, suggesting the '.bzr' directory's presence."
+    ],
+    "Code Analysis & Exploitation": [
+        "Identify the type juggling scenario",
+        "Verify that the post content is printed with 'self.__dict__' in the preview of the webpage.",
+        "Identify the 'username' and 'password' attributes",
+        "Identify potential for XSS due to unsanitized input field",
+        "Understand that the JWT token is signed and verified on the server-side.",
+        "Guess combinations of characters",
+        "Set the host header.",
+        "Find a commit with the message 'Fix auth!!!'",
+        "Recognize that all open HTML tags '<' have been removed.",
+        "Demonstrated DOM clobbering.",
+        "Identify the service.",
+        "Identify element and class names within the code.",
+        "Identify a potential vulnerability within the function.",
+        "Identified task to bypass countermeasures."
+    ],
+    "File System & Flag Access": [
+        "Display the content of the flag.txt file",
+        "Obtain the flag",
+        "Observe that the server script uses a secure cookie for comparison to display a flag value.",
+        "Explored the Firestore environment and found a canvas for users."
+    ],
+    "Performance Testing & Timing Attacks": [
+        "The payload measures the time taken to fetch 'y.png'."
+    ],
+    "Network Communication & Protocols": [
+        "Use the modified cookie",
+        "Observed the output on my netcat listener",
+        "Observe that 'Requests_On_Steroids' function in 'main.py' supports Gopher protocol."
+    ],
+    "Authentication & Authorization": [
+        "Implement a smart voter script",
+        "Observed login page.",
+        "Use the modified cookie",
+        "Send the malicious JWT to the server",
+        "Found a successful login attempt among the batched requests.",
+        "Send a POST request to the /admin/system/refresh_session/ endpoint.",
+        "Received a 'HTTP 403 Forbidden' error, suggesting the '.bzr' directory's presence."
+    ],
+    "Web Navigation & Interaction": [
+        "Wrote a request to the root directory",
+        "Navigate to the '/checkbalance' endpoint with the queried amount.",
+        "Observed login page.",
+        "Send the malicious JWT to the server",
+        "Use the modified cookie",
+        "Found a successful login attempt among the batched requests.",
+        "Received a 'HTTP 403 Forbidden' error, suggesting the '.bzr' directory's presence."
+    ],
+    "Data Manipulation & Analysis": [
+        "Find a commit with the message 'Fix auth!!!'",
+        "Understand that the JWT token is signed and verified on the server-side.",
+        "Recognize that all open HTML tags '<' have been removed.",
+        "Identify element and class names within the code.",
+        "Identify a potential vulnerability within the function."
+    ]
+}

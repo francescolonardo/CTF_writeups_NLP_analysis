@@ -1,0 +1,47 @@
+{
+    "Decoding & Encoding": [
+        "Continue the decoding process by solving for 'c' in the equation: c = seed, c0 = c + prev_encoded_arr[0] * 256, encoded_arr[0] == c0 % 58."
+    ],
+    "File Manipulation & Recovery": [
+        "Reveal the hidden sheet",
+        "Recover the missing source files using Bazaar's 'revert' command."
+    ],
+    "Exploit Analysis & Observation": [
+        "Observe the result of the exploit leading to '/flag'.",
+        "Recognized that `main.dart.js` is the Flutter app compiled by `dart2js`.",
+        "Analyzed the error message and deduced that a Python Flask backend is used",
+        "Recognize that the username taken from the session is not properly sanitized",
+        "Caused an SQL error.",
+        "Created a UNION SQL operation with 'null'.",
+        "Accessed HTML source to find clues",
+        "Add the appropriate `nonce` from the rest of the script tags.",
+        "Used distinct virtual hosts and shell wildcards for the same result.",
+        "Include the chosen input PDFs in the 'merged.pdf'.",
+        "Contemplated on triggering a custom Cloudflare error.",
+        "No output was returned."
+    ],
+    "Web Application Analysis & Manipulation": [
+        "Examined the code to understand the note saving mechanism.",
+        "Find the details of the desired user under the post search section",
+        "Utilized SQLMap targeting 'login.php' page.",
+        "Submit registration form.",
+        "Used the database name to compose the flag.",
+        "Sent the SQL query to FD 4 (MySQL server).",
+        "Modify the RCE to trigger a reverse shell.",
+        "Identify verifyMFA() within the verify() function.",
+        "Determined the user table and the number of columns that need to be unioned."
+    ],
+    "System Exploration & Navigation": [
+        "Search the entire file system for files named 'flag'",
+        "Download the `openapi.json` file.",
+        "Establish a connection to port 11111",
+        "Intercept the request."
+    ],
+    "Web Security & Exploitation": [
+        "Redeployed the exploit GitHub page.",
+        "Use the SUBSTRING and SLEEP functions for each character."
+    ],
+    "Web Technology & Infrastructure": [
+        "Verified the GitHub pages site at 'asdf.jsapi.tech' can be served."
+    ]
+}

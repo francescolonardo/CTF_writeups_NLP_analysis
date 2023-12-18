@@ -1,0 +1,84 @@
+{
+    "SQL Injection": [
+        "Write an SQLMap tamper script."
+    ],
+    "URL Parameter Analysis": [
+        "Viewed the invoice URL in the format '/legacy_invoice_system/BASE64_ENCODED_STRING'.",
+        "Discovered an interesting comment with the parameter '?source=1'."
+    ],
+    "Endpoint Parameter Identification": [
+        "Identify the request parameters of the /find endpoint: condition, startsWith, endsWith, and debug."
+    ],
+    "User Input Analysis": [
+        "Identified that the user input '$text' from get param 'text' was being used."
+    ],
+    "Form Submission": [
+        "Submit the form"
+    ],
+    "File Download": [
+        "Download the provided PHP files",
+        "Download binary."
+    ],
+    "Server-Side Request Forgery (SSRF)": [
+        "The first response is designed to pass the SSRF check."
+    ],
+    "JavaScript Analysis": [
+        "Recognize that the express.json() allows Object and Array types to be given as req.body.email and req.body.password.",
+        "Used the `onLoaded` event handler."
+    ],
+    "Reverse Shell": [
+        "Failed to get a reverse shell."
+    ],
+    "Cookie Analysis": [
+        "Find the cookie name that matches the signature.",
+        "Locate the 'Cookie' header in the HTTP request."
+    ],
+    "Infinite Loop Breaking": [
+        "Break the infinite loop."
+    ],
+    "Dynamic Rendering": [
+        "Identify that the server uses dynamic rendering."
+    ],
+    "Source Code Examination": [
+        "View the source code of cookie.php",
+        "Analyze the downloaded source code"
+    ],
+    "QR Code Analysis": [
+        "Receive a QR code of the letter 'X'."
+    ],
+    "Payload Testing": [
+        "Use 'phpinfo' page to check if the payload is operational.",
+        "Generated the finalized payload"
+    ],
+    "Command Injection": [
+        "Realized that 'process.env.npm_execpath' can be controlled."
+    ],
+    "Code Analysis": [
+        "Identify the correct matching tripcodes",
+        "Use the 'tryNumber' function.",
+        "Identify the Base64 encoded string.",
+        "Import the 'md5' function from 'hashlib' in Python."
+    ],
+    "HTTP Request Manipulation": [
+        "Send an HTTP POST request via the /cow_designer page."
+    ],
+    "Logical Operator Analysis": [
+        "Identify the '|' operator as potentially useful."
+    ],
+    "Remote Code Execution (RCE)": [
+        "Recognize that the `unserialize` function can lead to Remote Code Execution (RCE)"
+    ],
+    "Frontend Verification": [
+        "Messages and signatures were verified by the frontend."
+    ],
+    "Vulnerable Parameter Identification": [
+        "Determine the vulnerable parameter as 'galleryUrl'."
+    ],
+    "Exploitation Analysis": [
+        "Conclude that an image is necessary to exploit the service.",
+        "Attempted '127.0.0.1;ls .' in the URL."
+    ],
+    "Privilege Escalation": [
+        "Escalate privileges"
+    ]
+}

@@ -1,0 +1,97 @@
+Tier 1: Information Gathering
+- Tier 2: Web Scraping & Automation
+- Tier 2: Network & Server Exploration
+- Tier 2: Backend Investigation
+- Tier 2: Documentation Review
+- Tier 2: Information Gathering & Research
+- Tier 2: Code Analysis & Inspection
+- Tier 2: Code & Structural Analysis
+- Tier 2: IP and Network Analysis
+- Tier 2: JWT Manipulation 
+
+Tier 1: Operation Manipulation & Interaction
+- Tier 2: Server Communication & Exploitation
+- Tier 2: Network Manipulation & Exploitation
+- Tier 2: Web Server & Authentication
+- Tier 2: Authentication & Credential Attacks
+- Tier 2: Network & Security Manipulation
+- Tier 2: Web Navigation & Exploration
+- Tier 2: Website Exploration & Navigation
+- Tier 2: Web Interaction
+- Tier 2: Web Requests & APIs
+- Tier 2: Constructing Requests
+- Tier 2: Scripting & Automation
+- Tier 2: Command & Server Interaction
+- Tier 2: Microservice Communication
+- Tier 2: System Interaction
+- Tier 2: Installation & Environment Setup
+- Tier 2: Token Authentication
+- Tier 2: API Response Analysis
+- Tier 2: Web Directory Scanning
+- Tier 2: Regular Expression Analysis
+
+Tier 1: Exploitation Techniques & Vulnerabilities
+- Tier 2: XSS Exploitation
+- Tier 2: SQL Injection & Payload Crafting
+- Tier 2: File Creation & Manipulation
+- Tier 2: Exploitation & Vulnerabilities
+- Tier 2: Listening Host Setup
+- Tier 2: File Handling & Exploitation
+- Tier 2: Exploitation Attempts
+- Tier 2: Server-Side Exploitation
+- Tier 2: Flutter & Mobile App Exploitation
+- Tier 2: Timing Attacks
+- Tier 2: Remote Code Execution
+
+Tier 1: Data Manipulation
+- Tier 2: XML Entities & Data Manipulation
+- Tier 2: File Retrieval
+- Tier 2: Data Manipulation & Reading
+- Tier 2: Geolocation Operations
+- Tier 2: Data Retrieval & Extraction
+- Tier 2: Data Leakage
+- Tier 2: File & Directory Manipulation
+
+Tier 1: Analysis & Debugging
+- Tier 2: Error Handling & Debugging
+- Tier 2: Server Log Analysis & Manipulation
+- Tier 2: Response Analysis
+- Tier 2: Time-Based Analysis
+
+Tier 1: Injections & Payloads
+- Tier 2: Injection Attacks
+- Tier 2: SQL Injection Payload Injection
+- Tier 2: Buffer Overflow
+- Tier 2: SQL Injection
+- Tier 2: Payload Structure & Formatting
+
+Tier 1: Specialized Techniques
+- Tier 2: Geolocation Operations
+- Tier 2: Length Query Parameter Verification
+- Tier 2: Referrer Header Bypass
+- Tier 2: Regular Expression Analysis
+- Tier 2: Character Range
+- Tier 2: Timing Attacks
+- Tier 2: Directory Traversal
+- Tier 2: Cryptography & Hash Decryption
+- Tier 2: PHP Upload & Token Usage
+- Tier 2: Jwt Manipulation
+
+Tier 1: File & Data Operations
+- Tier 2: File Creation & Manipulation
+- Tier 2: File Retrieval
+- Tier 2: File Handling & Exploitation
+- Tier 2: File Operations
+- Tier 2: File Management
+- Tier 2: File & Directory Manipulation
+- Tier 2: File System Manipulation
+- Tier 2: File and Data Manipulation
+
+Tier 1: Git Operations
+- Tier 2: Git Operations
+- Tier 2: Git & Server Interaction
+
+Tier 1: Web Security & Exploits
+- Tier 2: Web Security Techniques & Exploits
+- Tier 2: Vulnerability Testing & Exploitation
+- Tier 2: Security Vulnerabilities

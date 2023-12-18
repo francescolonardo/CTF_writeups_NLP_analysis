@@ -1,0 +1,50 @@
+{
+    "Error Handling & Validation": [
+        "Confirm that no error occurs.",
+        "Include spaces in the note.",
+        "Examined the HTML source code.",
+        "Observe successful execution of the command.",
+        "Confirm that the selected image can be used to exploit the service.",
+        "Understand how the application works and what needs to be exploited."
+    ],
+    "Command Execution": [
+        "Run a command to convert the base64 string to ASCII.",
+        "Exploit the vulnerability to display file content",
+        "Ran a final UNION query.",
+        "Initiate brute force attack on the token.",
+        "Execute the 'id' command remotely using the identified class",
+        "Payload catches and sends the response, containing the admin's hash, to an exploit server",
+        "Get arbitrary code execution."
+    ],
+    "Request Manipulation & Exploitation": [
+        "Modify the link used in the requests.get operation.",
+        "Identify available endpoints.",
+        "Exploit the web application by performing Remote Code Execution (RCE) due to Prototype Pollution.",
+        "Decide to exploit the type juggling scenario",
+        "Enter the URL 'overly.uniquename.xyz:2095'.",
+        "Injected a command that echoes the FLAG environment variable",
+        "Conducted further research on 'nunjucks'.",
+        "Find the 'flag.txt' file.",
+        "Discover that the site is also vulnerable to Local File Inclusion (LFI)"
+    ],
+    "Web Scraping & Automation": [
+        "Downloaded the required files as outlined by the 'bzr check' error message.",
+        "Write a Python script to automate the extraction of hidden fields from the website's HTML."
+    ],
+    "Data Manipulation & Extraction": [
+        "Decode the base64-encoded string received from the previous step.",
+        "Read the created item from the request smuggling.",
+        "Extract the first character of the password"
+    ],
+    "Web Application Analysis": [
+        "Identify that the website simulates a TODO list application.",
+        "Discover website hosting on Apache Traffic Server 7.1.1."
+    ],
+    "Frontend Exploitation": [
+        "Write a payload using the Template Literal method.",
+        "Attempted to mutate the element in order to bypass the sanitizer."
+    ],
+    "Authentication & Credential Attacks": [
+        "Use the database credentials for authentication."
+    ]
+}

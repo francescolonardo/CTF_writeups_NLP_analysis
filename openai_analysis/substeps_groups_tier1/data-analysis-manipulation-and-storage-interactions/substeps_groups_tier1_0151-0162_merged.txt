@@ -1,0 +1,21 @@
+1. Data Analysis
+   - Request and Response Analysis
+   - Page Inspection and Source Code Analysis
+   - Payload Analysis and Manipulation
+
+2. Data Manipulation
+   - Data Extraction and Manipulation
+   - Cookie Manipulation
+
+3. File Interactions 
+   - File Manipulation and Exploration
+   - File and Data Retrieval
+   - File Discovery and Manipulation
+   - File and Directory Navigation
+   - PDF Manipulation and File Creation
+   
+4. Advanced Data Processing
+   - Image and Media Processing
+
+5. Database Interactions
+   - Data Access and Database Interactions

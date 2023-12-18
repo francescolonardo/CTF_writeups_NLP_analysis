@@ -1,0 +1,52 @@
+{
+    "Web Page Analysis": [
+        "Learned that our submitted HTML was the only content present on the page."
+    ],
+    "Input Manipulation": [
+        "Found a way to bypass the localhost blacklist by using an alternative representation of '127.0.0.1', like '0177.0.0.1'.",
+        "Find that the Unicode character '\u00df' turns into two characters 'SS' when converting to upper case.",
+        "Submit an HTTP request with the modified cookie",
+        "Craft an HTTP request.",
+        "Perform an immutable code inspection of upload.php.",
+        "Using the method 'db.generateToken(0)' to generate the token.",
+        "Use the generated 2FA code for another CSRF attack.",
+        "Use the '|' operator in the created regex."
+    ],
+    "Script and Code Study": [
+        "Study the provided Python script.",
+        "Open 'line 1' of the 'jquery.jscroll2.js' JS file.",
+        "Identify a `navigator.battery.charging call` in the JavaScript.",
+        "Recognize that the decoded text is the true flag.",
+        "Take note of the Nginx configuration",
+        "Identify that the JWT field 'failed' is set to 'true'.",
+        "Take note of the returned JavaScript code"
+    ],
+    "Web Navigation & Interaction": [
+        "Noticed that 'read online' opens a link from an unrelated domain.",
+        "Accessed the '/cornelia' URL.",
+        "Visited the challenge website",
+        "Look at the responses when searching for a note"
+    ],
+    "Server Interaction": [
+        "Observe the server reflecting the productId value in the response",
+        "Used the X-Forwarded-For header in the scan.",
+        "Execute the 'ls' command to list files in the current directory."
+    ],
+    "Flag Extraction": [
+        "Finalized the payload as 'http://IP:PORT/?command=%22curl${IFS}http://localhost:3000/get_flag%22'.",
+        "Take the third part of the flag from step 5",
+        "Obtained knowledge of the 'secret' token."
+    ],
+    "System Exploitation": [
+        "Plan to execute a reverse shell payload."
+    ],
+    "Communication and Collaboration": [
+        "Gain insights from the related pull request.",
+        "Any site can create an iframe of the web application and receive the message",
+        "Add the new JWT to the cookie."
+    ],
+    "Result Observation": [
+        "Identify 'b' as the character that successfully returns the flag",
+        "Observe the result"
+    ]
+}

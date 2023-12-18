@@ -1,0 +1,19 @@
+[
+    "Determine likelihood of hidden flag in /private.php.",
+    "Identify the correct timestamp format.",
+    "Generate a custom wordlist of potential log file names.",
+    "Look for potential flags in each profile",
+    "Display the data in HTML to obtain the flag.",
+    "Identify the exposed methods as 'notes.count', 'notes.add', and 'notes.remove'.",
+    "Test the filter.",
+    "Consider the possibility of redirection during the delay.",
+    "Identify the requirement of different content for the two PDFs.",
+    "Recognize the location of the 'send_sms' function in 'sms.py'",
+    "Go through the provided source code.",
+    "Take into account that JavaScript is a case-sensitive language.",
+    "Understand that our payload is converted to uppercase before being written to the innerHTML.",
+    "Generate payload for rearranging password.",
+    "Discover the article by PortSwigger",
+    "Noted that adding something before the '<link>' tag fixes the behaviour.",
+    "Deployed the GitHub repository to GitHub pages under a '.jsapi.tech' subdomain."
+]

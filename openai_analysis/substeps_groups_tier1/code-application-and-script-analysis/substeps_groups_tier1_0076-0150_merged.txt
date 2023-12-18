@@ -1,0 +1,86 @@
+1. Code and Scripting Inspection
+    - JavaScript Analysis
+    - PHP Code Analysis
+    - Code and Source Inspection
+    - Parsing and Analyzing Code
+    - Analyzing Scripts and Source Code
+    - Code and Script Examination
+    - Code Inspection and Analysis
+    - Code and Technology Familiarization
+    - Code and Script Understanding
+    - HTML and DOM Manipulation
+
+2. Vulnerability Identification and Exploitation
+    - Identifying Vulnerabilities and Exploits
+    - Vulnerability Recognition and Exploitation
+    - Vulnerability Exploitation
+    - Exploitation Techniques and Payloads
+    - Identification of Code Vulnerabilities
+    - Cross-Site Scripting (XSS)
+    - SQL Injection Analysis
+
+3. Application and Web Environment Analysis
+    - Code and Application Inspection
+    - Web Analytics and Tracking
+    - User Interaction Analysis
+    - Application Inspection and Exploration
+    - Web Application Navigation
+    - Web Application Interaction and Testing
+    - Web Technologies and Execution Environment
+
+4. Web Content Interactions and Web Rendering
+    - Webpage Navigation
+    - Form and User Interaction
+    - Content Verification and Validation
+    - Web Interaction and Inputs
+    - Web Content Rendering and Interactions
+    - Web Rendering and Browser Analysis
+    - Web Rendering Analysis
+
+5. File System and Repository Analysis
+    - File and Repository Analysis
+    - File System Analysis
+    - Command Execution and File Manipulation
+    - Endpoint and Configuration Analysis
+
+6. Exploitation Tools and Techniques
+    - Script Execution and Exploitation
+    - Command Execution and Exploitation
+    - Alphanumeric Iteration
+    - Web Exploitation and Payload Crafting
+    - Data Gathering and Manipulation
+    - Payload and Parameter Analysis
+
+7. Webpage and Web Application Examination
+    - Webpage and Code Inspection
+    - Security Analysis
+    - Web Application Testing
+    - Web Application Security Analysis
+    - Data Manipulation and Analysis
+    - Web Application Discovery and Reconnaissance
+
+8. Code and Content Manipulation 
+    - Code Manipulation
+    - Web Content and Source Code Exploration
+    - Manipulating and Interpreting Code and Content
+    - Code Modification and Update
+    - Data Manipulation
+    - Web Application Manipulation
+
+9. Security Analytical Procedures
+    - Server-side Vulnerabilities
+    - Security Analysis and Exploitation
+    - Cryptography Analysis
+    - Web Application Security Analysis
+    - Input Validation and Filtering
+    - Error Handling and Debugging
+
+10. Other Actions
+    - Additional Actions
+    - Miscellaneous
+    - Other Actions
+    - System and Network Analysis
+    - Identification of Code Vulnerabilities
+    - Component Identification
+    - Identifying Functions and Handlers
+    - Client-Side Scripting

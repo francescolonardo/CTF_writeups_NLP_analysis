@@ -1,0 +1,76 @@
+{
+    "Input Constraints & Validation": [
+        "Understood that the input had to satisfy certain constraints, chiefly that 'name' could only contain alphanumeric characters, and 'email' had to pass RFC5322 validation."
+    ],
+    "PHP Bypass & Exploitation": [
+        "Research ways to bypass PHP constraints"
+    ],
+    "JWT Manipulation": [
+        "Open jwt_tool."
+    ],
+    "Template Injection Identification": [
+        "Identify that it was a Jinja2 Template Injection challenge."
+    ],
+    "Access Control & Permissions": [
+        "Noted that the post is only visible to the admin."
+    ],
+    "Server Identification & Exploitation": [
+        "Identify a 'genflag' server."
+    ],
+    "Payload Structure & Formatting": [
+        "Structure the payload in JSON format."
+    ],
+    "Data Visualization & Analysis": [
+        "Received a PNG image with a crossword puzzle from the '/square/' endpoint."
+    ],
+    "Flag Retrieval & Viewing": [
+        "View the page with the flag, 'rtcp{rtcp-*is-s/ort-of-se1fh0st3d}'."
+    ],
+    "CSRF Protection & Token Refresh": [
+        "Refresh the CSRF token."
+    ],
+    "Page Analysis & Examination": [
+        "Analyzed the requested pages",
+        "Took a closer look at `poll.dart`.",
+        "Examine the request route for '/adminNames'.",
+        "Found an interesting comment in the HTML source code: '?sauce'."
+    ],
+    "HTTP Request Manipulation & Exploitation": [
+        "Identify a specific end-point '/ping?id='.",
+        "Create a base64-encoded payload.",
+        "Manually modify the 'Link to profile' field",
+        "Send a request body.",
+        "Open curl in terminal or command line.",
+        "Send GET request to 'https://shiba.yactf.ru/'.",
+        "Upload a file."
+    ],
+    "Prototype Injection & Exploitation": [
+        "Link the potential exploits to the presence of prototype injection vulnerability in the server-side code."
+    ],
+    "HTTP Request Smuggling": [
+        "Identified the usage of 'Content-Length' header with 'Transfer-Encoding' header as a request smuggling vulnerability."
+    ],
+    "PHP Scripting & Modification": [
+        "Construct a custom PHP script"
+    ],
+    "User Registration & Authentication": [
+        "Registration process was completed in the system.",
+        "Authenticate successfully."
+    ],
+    "SQL Injection Analysis": [
+        "Continued to interpret the results from SQLmap."
+    ],
+    "Remote Code Execution & File Inclusion": [
+        "Second part performs 'file_get_contents('flag.php').",
+        "Review the AWS managed rules changelog.",
+        "Found that the 'flask_caching' module can store a python pickle in redis",
+        "Observe the 'notes.count' function.",
+        "Read arbitrary files with @import (inline) \"/etc/passwd\"."
+    ],
+    "Flutter & Mobile App Exploitation": [
+        "Used Remote Flutter Widgets package for decoding."
+    ],
+    "File Manipulation & Content Modification": [
+        "Devise a strategy to manipulate the content of the cowfile."
+    ]
+}

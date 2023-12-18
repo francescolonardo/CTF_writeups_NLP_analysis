@@ -1,0 +1,230 @@
+1. Web Interaction and Navigation
+    1.1 Web Navigation and Interaction
+        - Webpage Visiting and Navigation
+        - General Web Interaction
+        - Web Behavior Tracking and Analysis
+        - Web Challenge Progression
+        - Page Navigation and URL Manipulation
+    1.2 Web Element Analysis and Manipulation
+        - Web Element Identification and Analysis
+        - Form Interactions and Manipulations
+        - Frontend Behavior Analysis
+        - Iframe and Web Component Manipulation
+    1.3 User Interaction and Behavior
+        - User Behavior Tracking and Interaction
+        - Note-Taking and Organization
+        - Repetition and Iteration
+        - Input and Form Manipulation
+    1.4 URL and Browser Analysis and Manipulation
+        - URL and Parameter Analysis
+        - Browser Behavior and Debugging
+    1.5 HTTP and Network Interaction
+        - HTTP Headers, Requests, and Responses
+        - Network Manipulation and Analysis
+    1.6 API and Endpoint Interaction
+        - Web API and Endpoint Analysis
+        - API Manipulation
+    1.7 Configuration, Errors and Feedback
+        - Web Configuration and Redirection
+        - Web Error Handling and Feedback
+    1.8 Miscellaneous Actions and Operations
+        - Miscellaneous Web Actions
+        - Content Identification and Extraction
+
+2. Authentication, Session, and User Management
+    2.1 Authentication and Session Management
+        - Authentication Processes and Techniques
+        - JWT Processing and Analysis
+        - Authentication Bypass Techniques
+    2.2 Credentials, Token, and Cookie Management
+        - Credential and Token Handling
+        - Password Discovery
+        - Cookie Handling and Session Management
+    2.3 User Management, Access Control, and Permissions
+        - User Registration and Access Management
+        - Inappropriate and Unauthorized Access
+
+3. Data Analysis, Manipulation, and Storage Interactions
+    3.1 Data Analysis and Processing
+        - Data Analysis and Interpretation
+        - System Analysis
+        - Payload Analysis and Manipulation
+    3.2 Data Manipulation and Exploitation
+        - Data Manipulation and Injection
+        - User and Input Manipulation
+    3.3 Data Storage and Retrieval
+        - Data Management
+        - File and Data Retrieval and Discovery
+    3.4 File and Data Interaction
+        - File Analysis and Management
+        - Directory and File Access
+    3.5 Database Interaction and Exploitation
+        - Database Analysis and Exploitation
+        - SQL Injection
+    3.6 Advanced Data and File Processing
+        - Media and File Processing
+        - PDF Analysis and Manipulation
+    3.7 Logging and Monitoring
+        - Logging and Tracking
+    3.8 Miscellaneous
+        - Data Exfiltration
+        - Miscellaneous Actions
+
+4. Code, Application, and Script Analysis
+    4.1 Code and Script Analysis
+        - Codebase Exploration
+        - Code and Script Analysis
+        - Reverse Engineering
+        - Technology Familiarization
+    4.2 Web Application and Environment Analysis
+        - Web Application Analysis and Testing
+        - Server and Directory Analysis
+    4.3 Web Content and Structure Analysis
+        - Web Structure Analysis
+        - URL, String, and Character Analysis
+    4.4 Syntax, Pattern, and Content Analysis
+        - Code Patterns and Structures Analysis
+        - Content Verification and Validation
+    4.5 Miscellaneous and General Actions
+        - Documentation and Conceptual Analysis
+        - Functionality Recognition and Actions
+
+5. Exploitation Techniques and Payload Handling
+    5.1 Information Gathering and Analysis
+        - Vulnerability Discovery
+    5.2 Web Requests and Interactions
+        - Web Request Analysis and Manipulation
+    5.3 Payload Handling and Design
+        - Payload Design and Refinement
+        - Payload Execution and Results
+    5.4 Exploit Development and Execution
+        - Exploit Testing and Execution
+        - Tool Utilization
+    5.5 Specific Exploitation Techniques
+        - Injection Attacks and Web Application Exploits
+        - Network Exploitation
+        - Restriction Bypass Techniques
+    5.6 Manipulation and Exploitation Techniques
+        - Data and System Manipulation Techniques
+    5.7 File Inclusion and XML Exploitation
+        - XML and File Inclusion Exploits
+    5.8 Other Actions and Miscellaneous
+        - Investigation and Post-Exploitation Activities
+
+6. Network and System Analysis
+    6.1 Server Analysis
+        - Server Setup, Management, and Identification
+        - Server Configuration and Environment Analysis
+        - Application and Server Vulnerability Exploration
+        - Server Actions and Interactions
+    6.2 Code and Configuration Examination
+        - Source Code, Configuration, and Header Exploration
+        - Deeper Analysis and Reverse Engineering
+    6.3 Network Communication and Identification
+        - Networking, Port, IP, and Server Management
+        - Manage communications between services
+        - Packet, Traffic, HTTP Protocol, and Web Traffic Analysis
+    6.4 Request and Response Management
+        - Request, Response, and Payload Handling and Analysis
+    6.5 Data Management, Retrieval, and Exploitation
+        - Data and System Manipulation and Transfer
+    6.6 IP and DNS Analysis
+        - IP, DNS, Query, and Domain Resolution
+    6.7 Command Execution and Exploitation
+    6.8 HTTP Specific Analysis
+        - HTTP Commands and Parameters
+    6.9 Miscellaneous System Analysis
+
+7. Debugging, Monitoring, and Troubleshooting
+    7.1 Web Interactions and Analysis
+        - Web Development, Testing, and Form Management
+        - Promise Handling and Page Loading Optimization
+    7.2 Data Validation, Verification, and Analysis
+        - Input, Flag, and Action Verification
+    7.3 Monitoring and Observation
+        - System, Process, Response Monitoring, and Analysis
+        - Observations, Logging, and Response Observation
+    7.4 Debugging and Error Handling
+        - Troubleshooting, Debugging, Error Identification, and Analysis
+    7.5 Input, Output, and Navigation
+        - Form, Route, Webpage Observations, and Output Analysis
+    7.6 Information Gathering and Payload Management
+        - Hints, Guidelines, and Payload Testing
+    7.7 Tool and Configuration Analysis
+        - Browser Tools Utilization, Network, and Configuration Analysis
+    7.8 Preventive Measures and Character Handling
+
+8. Cryptography, Encoding, and Decoding Techniques
+    8.1 Cryptographic Techniques
+        - Cryptography Analysis, Algorithms, Hashing, and JWT Handling
+    8.2 Encoding, Decoding, and Data Representation
+        - Base64, Data Compression, Serialization, IP Conversion
+    8.3 CAPTCHA Analysis and Solving
+    8.4 Observational Techniques
+
+9. Tools, Scripting, and System Interactions
+    9.1 Tool Manipulation
+        - Tool Utilization and Configuration
+        - Third-Party Tools
+    9.2 System and Server Interactions
+        - System Interactions and Command Execution
+        - Server Setup and Network Interactions
+        - System Permissions and Roles
+        - Server and Service Management
+    9.3 Scripting and Automation
+        - Script Development, Execution, and Automation
+        - Script Writing and Modification
+    9.4 File and Directory Operations
+        - File and Directory Manipulation and Management
+        - Command Execution and File Interaction
+    9.5 Data and Input Manipulation
+        - Data and Input Manipulation Techniques
+        - Payload Crafting and Execution
+        - Data Observation and Token Manipulation
+    9.6 Web, Network and Service Interactions
+        - Request, Payload, and Response Interactions
+        - API, Service, and Page Interactions
+    9.7 Command Elements and System Interaction
+        - Command and Shell Interactions
+        - System and Application Configuration
+        - Automated Processes
+    9.8 Script Language Interactions
+        - PHP and Python Script Interactions
+
+10. Information Gathering and Security Analysis
+    10.1 Vulnerability Research:
+        - Vulnerability Identification, Analysis, and Exploitation
+        - Knowledge Research and Understanding
+        - Challenge Identification and Observation
+    10.2 Reconnaissance and Server Discovery:
+        - Problem and Goal Understanding
+        - Enumeration, Target Identification, and Information Gathering
+        - System, Site, and Service Insights
+        - Hints, External References, and Precautions
+    10.3 Web Security Concepts and Techniques:
+        - Website and Web Application Analysis and Navigation
+        - URL, Webpage, and Endpoint Discovery
+        - Web Application Behavior, Security, and Functionality
+        - Network and Traffic Analysis
+        - Directory and File Discovery and Security Analysis
+        - Miscellaneous Actions and Targeted Interactions
+
+11. Documentation, Strategy, and Miscellaneous Techniques
+    11.1 Understanding and Analyzing
+        - Understanding, Analyzing, and Categorizing Challenges
+        - Web Application Insights
+    11.2 Strategy Development and Implementation
+        - Strategy Formulation, Planning, and Execution
+        - Game Mechanics and Strategy Insights
+        - Challenge Documentation Review
+    11.3 Documentation and Information Review
+        - Documentation, Code Review, and Information Retrieval
+    11.4 Technique Deployment
+        - Execution of Actions and Interactions
+        - Iteration, Testing, Debugging, and Time-based Techniques
+    11.5 Note-taking and Review
+        - Observations, Research, and Analysis
+    11.6 Version Control Management
+        - Version Control, Repository Management, and Insights
+    11.7 Miscellaneous Techniques
+        - Diverse Techniques, Strategies, and Challenge Completion

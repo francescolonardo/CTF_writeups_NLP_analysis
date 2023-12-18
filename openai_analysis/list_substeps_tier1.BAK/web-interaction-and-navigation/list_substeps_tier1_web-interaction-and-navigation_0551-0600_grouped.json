@@ -1,0 +1,60 @@
+{
+    "HTTP Requests and Responses": [
+        "Send a POST request to the /admin/system/refresh_session/ endpoint.",
+        "Make a GET request to /login/ to trigger the deserialization.",
+        "Open the provided URL.",
+        "Observe a page that accepts another URL and submits it.",
+        "Visit the URL provided on the page.",
+        "Add the JSON payload to the URL after the first '?' character.",
+        "Submit the URL.",
+        "Wrote a request to the root directory",
+        "Send a request to '/pleb.mysub.dnsbin.zhack.ca'.",
+        "Send a request to '/pleb.127.0.0.1.nip.io'.",
+        "Identify that it uses proxy_pass to forward requests.",
+        "Retrieve the X-Accel-Redirect header.",
+        "Realize it is a misdirection towards '/useradmin'.",
+        "Create a request for '/admin../uberadmin/flag.txt'.",
+        "Create the final URL.",
+        "Test the final URL.",
+        "Submit the URL.",
+        "Access the site at :5555",
+        "Access the migrate.php page",
+        "Access the site at :7777",
+        "Constructed the final payload URL",
+        "Sent the request to 'http://18.179.178.246:8003'",
+        "Visit the targeted website."
+    ],
+    "Payload Manipulation": [
+        "Understand that dots, double slashes, or non-ascii dot are not allowed in the iframe value in the URL.",
+        "Inject a double quote to break out of the alt tag.",
+        "Choose to target the '/uberadmin' directory.",
+        "Inject an 'a' tag.",
+        "Added the id=like to the injected 'a' tag.",
+        "Bot clicking our link gave us the flag."
+    ],
+    "Web Application Investigation": [
+        "Visit the website.",
+        "Investigate the behaviour of appending different strings after the '/pleb' directory in the site URL.",
+        "Conclude that '/pleb' and '/pleb.' work like domain Top Level Domains (TLDs).",
+        "Observe that the '/pleb' proxy isn't forwarding non-ASCII characters.",
+        "Access the '/admin' directory."
+    ],
+    "Browser Actions": [
+        "Craft another request and set the remote_addr to the required fake address.",
+        "Open a web browser.",
+        "Enter the provided URL in the address bar.",
+        "Follow the URL redirection (if applicable) to the file location.",
+        "Set the 'view options' setting"
+    ],
+    "Email Manipulation": [
+        "Email only required to start validly",
+        "Any characters allowed after the valid start of email"
+    ],
+    "PDF Rendering and Manipulation": [
+        "HTML rendering by pdfkit/wkhtmltopdf",
+        "Inserted the payload into the target site's URL."
+    ],
+    "API Requests": [
+        "Use /apisix/batch-requests endpoint."
+    ]
+}

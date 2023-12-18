@@ -1,0 +1,103 @@
+1. Data Analysis and Manipulation
+    - Data Identification and Interpretation
+    - Data Analysis and Parsing
+    - Data Analysis/Extraction
+    - Data Analysis and Observation
+    - Data Analysis and Processing
+    - Analysis and Interpretation 
+
+2. Data Retrieval 
+    - Data Extraction and Analysis
+    - File Access and Manipulation
+    - Data Retrieval and Discovery
+    - Retrieving and Manipulating Data
+    - Data Extraction and Retrieval
+
+3. Data Processing and Visualisation 
+    - Data Processing and Manipulation
+    - Data Visualization
+
+4. Website Exploration
+    - Website Navigation and Observation
+    - Page Visits and Navigations
+    - Web Application Exploration
+    - Web Interaction and Navigation
+
+5. Web Application Interaction and Exploitation 
+    - Web Application Interactions
+    - Web Application Interaction and Data Extraction
+    - Web Application Interaction and Input 
+
+6. Web Request Analysis and Exploitation
+    - Network Interactions and Exploitation
+    - Request Filtering and Analysis
+
+7. User Input Processing and Manipulation 
+    - User Input and Processing
+    - User Interaction and Input Processing
+    - Input Analysis and Exploitation
+    - Data Input and Manipulation
+
+8. Payload and Testing
+    - Web Application Fuzzing and Testing
+    - Payload Design and Testing
+
+9. File and System Interactions
+    - File Interactions
+    - System Identification and Configuration
+    - File and Data Management
+    - System Information and Configuration
+
+10. Web Form and Parameter Manipulation
+    - Web Form Interactions and Submissions
+    - Web Form Interactions
+    - Form Interaction 
+    - URL Parameter Manipulation
+
+11. URL and Web API Interactions
+    - URL Encoding and Decoding
+    - URL Generation and Manipulation
+    - Web API and Endpoint Interactions
+    - Web API Interaction
+
+12. File and Directory Exploration
+    - Discovering Files and Directories
+    - File and Directory Manipulation
+
+13. File Upload and Management
+    - File Upload Manipulation
+    - File Management and Access
+    - File System and File Manipulation
+
+14. Database Interactions and Exploitation
+    - Firestore Database Interaction
+    - Database Manipulation and Exploitation
+    - Database Inspection and Manipulation
+    - SQL Injection
+    - Database Interactions
+    - Database Interaction and Exploitation
+   
+15. Session and Authentication Interactions
+    - Session and Cookie Manipulation
+    - Authentication and Authorization Exploitation
+
+16. Interaction Logging and Monitoring
+    - Logging and Tracking
+    - Logging and Monitoring
+
+17. Server, Endpoint, and Network Interactions
+    - Server and Endpoint Interactions
+    - Network Communication and Exfiltration
+    - Network Communication and Data Transfer
+    - API and Service Calls
+
+18. Data Extraction and Storage Interactions
+    - Information Disclosure
+    - Flag Extraction and Identification
+    - Secrets and Credentials Extraction
+
+19. Other Security Exploits
+    - Other
+
+20. System Data Discovery and Configuration
+    - System Data Discovery

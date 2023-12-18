@@ -1,0 +1,120 @@
+Web Browsing and Navigation
+    General Web Application Actions
+    Website Interface and Navigation
+    Website Visits and Navigation
+    Web Navigation and Observation
+    Page Visits and Navigations
+    Website Exploration
+    Scrolling and URL Navigation
+    Website Connection and Navigation
+
+Authentication, Authorization, and Session Handling
+    Authentication and Authorization
+    Authentication and User Interactions
+    Session Manipulation
+    Cookies and Session Handling
+    API Requests and Authentication
+
+Web and API Request Handling
+    API Requests
+    API Interaction and Requests
+    HTTP Requests and API Interactions
+    Constructing Requests
+    Sending Requests
+    HTTP Requests and Interception
+    HTTP Requests and Payload Modification
+    HTTP Request Exploitation
+    HTTP Requests and Responses
+    HTTP Request Manipulation
+    Web Requests
+
+Form and Input Manipulation
+    Form Submissions
+    Form Interactions and Inputs
+    Form Interactions
+    Form Interaction and Manipulation
+    Form Submissions and Interactions
+    Input and Form Interaction
+
+Response and Output Handling
+    Response Analysis
+    HTTP Response Observations
+    Receiving Responses
+    Request and Response Analysis
+
+Code, Endpoint, and Source Analysis
+    Source Code Analysis and Inspections
+    Code and Source Analysis
+    Code Analysis
+    Endpoint Recognition
+    Endpoint Analysis and Vulnerability Identification
+
+Web Application Vulnerabilities and Exploitation
+    Web Application Exploitation
+    Server-side Attacks
+    Server-Side Exploitation
+    Client-side Attacks
+    API Exploitation
+    GraphQL Exploitation
+
+Security Analysis and Vulnerabilities
+    Web Application Vulnerability Identification
+    Front-end Security Analysis
+    Web Application Security
+    Security Vulnerability Detection
+    Security Vulnerability Recognition
+    Security Assessment and Exploitation
+
+Observation, Investigation, and Information Gathering
+    Web Crawling and Information Gathering
+    Observations and Analysis
+    Webpage Discovery and Analysis
+    Observing and Noting Information
+    Information Retrieval
+    Observation and Investigation
+    Information Gathering
+
+Browser, Developer Tools, and Rendering
+    Browser Functionality
+    Browser Rendering and Exploitation
+    Developer Tools
+    Browser Console Interactions
+    Web Browser Actions
+
+Payload, Data, and Parameter Handling
+    Payload Manipulation
+    Data Transmission and Manipulation
+    Parameter Manipulation and Observation
+    Data Manipulation
+    POST Data Manipulation
+    Payload and File Manipulation
+
+Server and System Interactions
+    Server Actions
+    Server Exploitation and Security
+    Server-Side Interaction
+    Server Access and Interaction
+    Server Interaction and Request Manipulation
+    Server Behavior Observations
+
+Specific Technologies and Frameworks
+    Python microservice
+    WebSockets and Same-Origin Policy
+    GraphQL and Schema Exploration
+    Flask Webpage Exploration
+    Web Framework Observations
+
+Specific CTF Challenge Actions
+    CTF Website Access
+    CTF Challenge Exploration
+    Challenge Investigation and Exploitation
+    CTF Challenge Interaction
+    Challenge-specific Actions
+    Flag Identification and Observation
+    Flag Retrieval
+    Flag Identification
+
+Miscellaneous Actions
+    Miscellaneous Actions
+    Miscellaneous Notes
+    

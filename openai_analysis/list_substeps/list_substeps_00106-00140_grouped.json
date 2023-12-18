@@ -1,0 +1,49 @@
+{
+    "SQL Injection": [
+        "Used backticks around the numeric table name.",
+        "Find the API used to modify the status of the services.",
+        "Find a lot of printed information",
+        "Test classic SQL Injection payloads.",
+        "Verify if the count returns 1.",
+        "Review the source code in `database.sql` file again.",
+        "Recognize the presence of an SQL Injection vulnerability",
+        "Identified a second SQL injection endpoint.",
+        "Realize that the crafted payload successfully runs a SQL query",
+        "Create a SQL injection payload."
+    ],
+    "API & URL Manipulation": [
+        "Add GET parameter to final URL",
+        "Prepare a GET request to the URL 'http://35.207.189.79/api/proxyimage?url=http://127.0.0.1:8075/img/paperbots.svg'.",
+        "Recognize the presence of a file named 'flag.jpg'.",
+        "Payload posts a message to trigger the /api/filter POST request in the admin's context"
+    ],
+    "Code Analysis": [
+        "Used `Access-Control-Allow-Origin: *` header.",
+        "Understood the deserialization process.",
+        "Executed 'cat index.php' command.",
+        "Executed 'cat ./system/of/a/down/flag.txt' command.",
+        "Verified the shellcode's functionality and ensured compatibility with the `strlen()` function within 'shellme()' in the `shellme.so` file.",
+        "Analyzed the browser console."
+    ],
+    "Web Navigation & Interaction": [
+        "Browse the 'user' directory.",
+        "Iframe's message is received and processed in /demo",
+        "Identify User Registration section.",
+        "Directory wasn't directly browsable or clonable",
+        "Identify that 'flag.txt' can be read.",
+        "Identified a post made by admin with the flag.",
+        "Recognize that it passes the extension check due to .txt extension.",
+        "No success in submitting the answers."
+    ],
+    "Data Leakage": [
+        "Initiate data leaking process"
+    ],
+    "File System Exploration": [
+        "Recognize the presence of a file named 'flag.jpg'.",
+        "Identified 'disable_functions' configuration."
+    ],
+    "Command Execution": [
+        "Executed 'cat index.php' command.",
+        "Executed 'cat ./system/of/a/down/flag.txt' command."
+    ]
+}

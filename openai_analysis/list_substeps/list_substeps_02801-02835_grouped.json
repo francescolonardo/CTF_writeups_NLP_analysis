@@ -1,0 +1,57 @@
+{
+    "Server-side Attacks": [
+        "Used the discovered mapping to smuggle a request to /admin in flagportal.",
+        "Used automated tools or manual testing to check for error messages indicative of XPath Injection.",
+        "Perform a CSRF to the /find endpoint.",
+        "Perform SQL Injection to read 'username' from 'users'",
+        "Recognize the naive 'script remover'",
+        "Attempt to refactor the code.",
+        "Redefine 'key' through '__defineSetter__' and '__defineGetter__'.",
+        "Recognize that altering the 'admin' value requires the JWT secret.",
+        "Execute commands",
+        "Decode the string."
+    ],
+    "Serialization & Encoding": [
+        "Serialize the created object and encode it in base64 format.",
+        "Encode the payload in base64."
+    ],
+    "Exploits & Payloads": [
+        "Obtain an exploit script for generating the payload.",
+        "Locate an exploit script provided in the GitHub issue"
+    ],
+    "Web Navigation & Interaction": [
+        "Access the website's source code",
+        "Wait for the promise to resolve.",
+        "Face a password prompt.",
+        "Inspect the source code on the feedback form page.",
+        "Logged in as dennisb@uupeye.edu",
+        "Re-login"
+    ],
+    "Web Application Vulnerabilities": [
+        "The form contains an XML part.",
+        "Identify off-by-one error in `background.js` font validation",
+        "Analyze the window's history length to determine if a redirection has occurred.",
+        "The alert in the browser indicates a Cross-Site Scripting (XSS) vulnerability",
+        "Researched what IIFE (Immediately Invoked Function Expression) is",
+        "Identify the use of base64-encoded payloads.",
+        "Realize that although XSS can be performed, it would only affect the currently logged in user and not the admin."
+    ],
+    "User Permissions & Access Control": [
+        "Decide to generate the token from one IP address",
+        "Perform the action with `nobody` user permissions."
+    ],
+    "Information Gathering": [
+        "Found that http://s0pq6slfaunwbtmysg62yzmoddaw7ppj.ctf.sg:18926/data.php lists all HTML files",
+        "Determine the IP address in the URL."
+    ],
+    "Code Analysis & Debugging": [
+        "Analyzing the window's history length to determine if a redirection has occurred.",
+        "Recognize that although XSS can be performed, it would only affect the currently logged in user and not the admin.",
+        "Attempt to find the current working directory.",
+        "Understand many calls to 'window' were made in the CheckPassword function"
+    ],
+    "Miscellaneous": [
+        "Receive an error for missing launch time.",
+        "Receive a gif in response"
+    ]
+}

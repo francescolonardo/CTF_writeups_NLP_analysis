@@ -1,0 +1,49 @@
+{
+    "SQLite & SQL": [
+        "Noticed the feature using SQLite through filters and SQL statements"
+    ],
+    "File Manipulation": [
+        "Recognize that 10 records are created by tar utility by default.",
+        "Import 'io/ioutil'.",
+        "Located 'flag.txt'.",
+        "Use the identified class (subprocess.Popen) to read the content of 'flag.txt'",
+        "Checked the docker files.",
+        "Unlock the flag and source code using the uploaded PDFs.",
+        "Successfully restore the source code files on local machine."
+    ],
+    "Debugging & Exploitation": [
+        "Force the debugging private key in the link.",
+        "Detect open debugging ports.",
+        "Understand that the challenge focuses on exploiting dynamic renderers",
+        "Identified potential vulnerabilities.",
+        "Realized '$text' was passed into 'exec' leading to potential remote code execution.",
+        "Identified vulnerability to log4j 2.14.1.",
+        "Realize that YAML parsing 'NO' as False allows bypassing escapeshellargs.",
+        "Enable running the `readflag` binary using the bind shell."
+    ],
+    "XSS & CSRF": [
+        "Execute an XSS attack.",
+        "Note that mode=filter means any reflected XSS will be filtered and not executed.",
+        "Repeated the Javascript injection to fetch the flag.",
+        "CSRF payload is created",
+        "Prepare a PATCH request for the new user's role."
+    ],
+    "Web Interaction": [
+        "Open the web browser.",
+        "Identify functionalities accessed by authenticated users.",
+        "Set up a local HTTP proxy using cURL to accommodate the complex GET request.",
+        "Execute ffuf to fuzz the challenge site."
+    ],
+    "Code Analysis & Execution": [
+        "Analyze the source code of the page.",
+        "The bash script would only spawn the shell if the caller is root",
+        "Created a Python script that opens a reverse shell"
+    ],
+    "Miscellaneous": [
+        "Noticed that three successful purchases of 'cheap' had the same prefix.",
+        "Concatenate possible characters to the end of the flag.",
+        "Understood how MySQL executes query portions inside comments.",
+        "Understand that HTML files are downloaded with random filenames.",
+        "Base64 encode the private key."
+    ]
+}

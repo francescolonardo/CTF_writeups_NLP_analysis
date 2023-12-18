@@ -1,0 +1,58 @@
+{
+    "Authentication Bypass": [
+        "Create a manipulated cookie for bypassing session-based authentication.",
+        "Change the browser's user agent to IE 6.01 through developer tools in the browser.",
+        "Used the created admin account to register with the username 'm3ssap0' and password 'pwnd:true'.",
+        "Assign the value 'admin' to the cookie."
+    ],
+    "Command Execution": [
+        "Execute ls command on the server using subprocess.Popen",
+        "Use the mutool info -X command to verify collision1.pdf.",
+        "Analyze the entrypoint.sh bash file.",
+        "Upload PHP shell"
+    ],
+    "Information Extraction": [
+        "Observe the flag in the response from the server",
+        "Obtained the flag.",
+        "Discovered a column named 'whatsthis'.",
+        "Reconstruct into 'sRPd45w_0' string.",
+        "Observed User-Agent details.",
+        "Observe the output details",
+        "Explore the HTML encoding process of individual characters",
+        "Found some encoded payload",
+        "Identify the 'add_money_to_login' function added to the template context",
+        "Identify the `/api/toylist` endpoint and its behaviour.",
+        "Realized it might be possible to force the admin bot to perform a search function on the server.",
+        "Notice that the 'magic code' is present",
+        "Observe the packets used for post retrieval",
+        "Note the presence of certain blacklisted words as restriction"
+    ],
+    "Input Validation": [
+        "Recognize that the 'valid_ip' function restricts usage of certain IP addresses.",
+        "Assess that remote code execution is not possible.",
+        "Leverage 'lower' filter to bypass 'class' string.",
+        "Identified a potential SQL Injection vulnerability.",
+        "Realize the alternative method involves using SQL injection"
+    ],
+    "Web Interaction": [
+        "Access the website homepage",
+        "Navigate to the bottom of the results.",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges.",
+        "Redirect the user to the main site.",
+        "Visit the website.",
+        "Perform a post request in the Laravel panel",
+        "Set 'json' as the language attribute for the new HTML script element",
+        "Noticed pictures of devices."
+    ],
+    "Cross-Site Scripting (XSS)": [
+        "Perform an XS leak attack.",
+        "XSS on the challenge server is necessitated",
+        "This is a stored cross-site scripting vulnerability, where we can send a malicious script through the frontend to the database and when a user visits the '/queries' page, the server sends the malicious code to the user."
+    ],
+    "Web Security Analysis": [
+        "Logged in with the new password."
+    ]
+}

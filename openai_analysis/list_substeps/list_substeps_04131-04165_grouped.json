@@ -1,0 +1,42 @@
+{
+    "Source Code Analysis": [
+        "Analyze the AsmBB source's render2.asm file",
+        "Analyze the source code",
+        "Analyze the HTML for possible vulnerabilities."
+    ],
+    "Vulnerability Identification": [
+        "Identify that the vulnerability lies in Express query parsing",
+        "Noted that 'text/xsl' indicated potential for Cross-Site Scripting.",
+        "Identify that the program checks if IP matches certain values to confirm it's a valid non-private IP.",
+        "Recognized that the 'basename()' function is used in the PHP script",
+        "Determine the presence of a vulnerability in the 'new chat' feature"
+    ],
+    "Web Interaction & Exploitation": [
+        "Noticed the user's IP address being attributed to an SQL query.",
+        "Identify that the 'Authorization' header should contain a JWT.",
+        "Obtain the text 'cat index.txt'.",
+        "Understand that the Origin request header cannot be modified by JavaScript.",
+        "Find the URL of /robots.txt.",
+        "Navigate to the user creation interface on the site.",
+        "Add the JSON payload to the URL after the first '?' character.",
+        "Find 'update-dist-tags.js' script.",
+        "Visit 'http://web.zh3r0.ml:7777/?page=flag'",
+        "Exfiltrate all password characters via blind SQL injection",
+        "Read the content of the /etc/flag.txt file",
+        "Viewed the admin's cookie and 'X-Access' headers.",
+        "Identify the '/guest' endpoint.",
+        "Encrypt `file:///var/www/html/flag.txt` using the obtained key.",
+        "Convert your public IP address to octal form using an octal IP address converter.",
+        "Use the discovered security question answer to bypass the security check and log in as the 'admin' user.",
+        "Alter the value of the 'not_admin' cookie",
+        "Leak data byte-by-byte by hashing it and using as password for new account",
+        "Attempt to add the attacker's email to the admin's shared note.",
+        "Share the password.",
+        "Observe the code fetching the flag based on the pin value.",
+        "Collected the flag",
+        "Add the second A record to the DNS entry to resolve to 51.38.138.162."
+    ],
+    "Communication & Encoding": [
+        "Understand that the client-server communication uses an encoding function."
+    ]
+}

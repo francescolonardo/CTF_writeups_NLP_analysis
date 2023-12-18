@@ -1,0 +1,129 @@
+1. Web Interaction and Navigation
+   - Web Form Manipulation
+   - Web Interface & Navigation
+   - Web Navigation and Interaction
+   - User Actions
+   - Web Endpoint Discovery
+   - Frontend Processing
+
+2. Data Interaction and Manipulation
+   - Data Interception & Manipulation
+   - JSON Manipulation
+   - Filter & Input Manipulation
+   - Database Operations
+   - Private Key & Payload Manipulation
+   - Data Manipulation & Command Execution
+   - Character Comparison
+
+3. Server Interaction and Administration
+   - Remote Server Interaction
+   - Server Administration & User Management
+   - Server Interactions
+   - SQLite Version Discovery
+   - Command Execution & Remote Code Execution (RCE)
+
+4. Security and Authentication
+   - User Login & Authentication
+   - CSRF Token & Protection
+   - Authentication
+   - User Registration & Authentication
+   - HTTP Operation & Authentication
+   - Security Checks & Authentication Evasion
+   - Access Control Bypass
+
+5. Exploitation and Vulnerabilities
+   - Web Exploitation
+   - Code Exploitation
+   - CSS Exploitation
+   - Cryptographic Vulnerabilities
+   - Deserialization Vulnerability
+   - Web Vulnerability Identification
+   - Exploitation Analysis
+   - Security Bypass
+   - Exploit Strategy
+
+6. Interface and Request Interaction
+   - Microservice Command Execution
+   - API Interaction
+   - Endpoint Functionality
+   - HTTP Requests & Responses
+   - Form Interaction
+   - HTTP Request Manipulation & Exploitation
+   - File/System Manipulation
+   - POST Request & File Access
+   - HTTP Request Manipulation
+   - Web Request Manipulation
+   - Input Constraints & Validation
+   - Content Analysis
+
+7. File and Code Execution
+   - File Interaction
+   - Scripting & Code Execution
+   - Code and Script Execution
+   - Command Execution & Injection
+   - File System & Flag Access
+   - Shell & Command Execution
+   - Script & File Analysis
+   - Client-Side Prototype Pollution Vulnerability
+   - File Retrieval & Arbitrary File Access
+   - Console Interactions
+
+8. User Management and Enumeration
+   - User Enumeration
+   - User Model Identification
+
+9. Security Tools and Techniques
+   - Web Security Tools & Techniques
+   - cURL Command Usage
+   - Python Scripting
+   - Code & Technology Analysis
+
+10. Authentication Tokens and Credentials
+   - JWT Token
+   - Cookie Manipulation & Analysis
+   - JWT Token Analysis
+   - Credential & Code Examination
+
+11. Analysis and Exploitation Techniques
+   - Test and Debug
+   - Result Observation
+   - Data Analysis & Exploitation
+   - Injection Techniques
+   - Web Security Analysis
+   - API & Data Analysis
+   - Vulnerability Analysis & Exploitation Techniques
+   - Challenge Analysis
+   - Security Bypass
+
+12. Miscellaneous Operations and Techniques
+   - Loyalty Point Manipulation
+   - Message Observations
+   - Repetition & Iteration
+   - Dom Manipulation
+   - Comment & Approval System
+   - Server & Technology Understanding
+   - Redirection
+   - User Actions
+   - Password Length Analysis
+   - Conditional Logic
+   - Shared Object 
+   - Software Development
+   - Miscellaneous
+
+13. Code and File Analysis
+   - Reporting & Documentation
+   - Python Exploitation
+   - Response Extraction
+   - Web Structure & Element Identification
+   - JavaScript Manipulation
+   - Challenge Review & Assessment
+   - Injection & Comparison
+   - Database
+
+14. Flag Management
+   - Flag Retrieval & Viewing
+   - Flag Discovery
+
+15. Authentication and Session Handling
+   - User Login & Authentication
+   - Authentication & Session Handling

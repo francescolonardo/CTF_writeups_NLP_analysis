@@ -1,0 +1,60 @@
+{
+    "PDF Manipulation": [
+        "Exclude the reference to the dummy page from the list of PDF pages.",
+        "Create a separate PDF page list for the first input PDF.",
+        "Create a separate PDF page list for the second input PDF.",
+        "Ensure the template holds identical initial content and MD5 hashes.",
+        "Use the page count and PDFs list to write a manipulated 'hacked.pdf' file.",
+        "Replace a specific string in the cleaned PDF data.",
+        "Read the 'pdf1.bin' file.",
+        "Read the 'pdf2.bin' file.",
+        "Include the cleaned, manipulated PDF data in 'collision1.pdf'.",
+        "Include the cleaned, manipulated PDF data in 'collision2.pdf'.",
+        "Check the MD5 hash of 'collision1.pdf' using the hashlib library.",
+        "Check the MD5 hash of 'collision2.pdf' using the hashlib library.",
+        "Remove the intermediate 'merged.pdf' file.",
+        "Remove the intermediate 'hacked.pdf' file."
+    ],
+    "Database Exploitation": [
+        "Confirmed the use of SQLite version 3.22.0.",
+        "Retrieved table names from the database by manipulating the SQL query using 'moneys=' parameter.",
+        "Used GROUP_CONCAT function to concatenate all retrieved table names into a single string.",
+        "Retrieved column names of 'startup_users' table from the database using the SQL query.",
+        "Used GROUP_CONCAT function to concatenate all retrieved column names into a single string.",
+        "Dumped data from 'startup_users' table by using the SQL query and concatenating usernames using the GROUP_CONCAT function.",
+        "Retrieved the flag by dumping data from 'startup_users' table again, this time concatenating 'wordpass' values using the GROUP_CONCAT function."
+    ],
+    "File Manipulation": [
+        "The '__toString()' function can return the contents of a file",
+        "The log_file of the 'access_log' object is set to '../flag'",
+        "Encode the serialized object with base64",
+        "Noticed the feature using SQLite through filters and SQL statements",
+        "Understood that trim(string, character) will remove `character` from `string`.",
+        "Realized finally that both SQL statements are identical to 'SELECT username, password FROM users WHERE username='admin''"
+    ],
+    "Web Application Exploitation": [
+        "The form contains an XML part.",
+        "Received a list of users as a response.",
+        "Uploaded the final payload to the server.",
+        "Used the same request to read the flag from the '/readflag' binary.",
+        "Included the final payload as part of form data.",
+        "Received the flag as part of HTML response.",
+        "Retrieved the flag at `/flag.txt`.",
+        "Found some encoded payload",
+        "Decoded the base64 encoded payload",
+        "Noted that incoming data was saved into HTML files",
+        "Found that http://s0pq6slfaunwbtmysg62yzmoddaw7ppj.ctf.sg:18926/data.php lists all HTML files",
+        "Observed data containing usernames and card numbers.",
+        "Verified it returns data for user ID 1.",
+        "Initiated a database dump.",
+        "Observed the 'users_data' database structure.",
+        "Identified a column labeled 'R34L_F14G'.",
+        "Noted that queries to this column return blank results.",
+        "Attempted to replace 'card_num' with 'R34L_F14G' in SQLMAP query.",
+        "Retrieved data from 'R34L_F14G' column in 'users_data' table.",
+        "Analyze the form submission structure",
+        "Note that it executes file_get_contents('../flag.txt')",
+        "Discovered that the app uses local storage to save notes.",
+        "Understood that the admin bot stores a flag as a note on the challenge server before visiting the URL."
+    ]
+}

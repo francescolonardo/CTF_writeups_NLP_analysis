@@ -1,0 +1,87 @@
+1. Code and Application Analysis
+    • Source Code Inspection
+    • Code and Content Relationship Analysis
+    • Code Substitution Analysis
+    • Static Analysis
+    • Code and Script Vulnerability Analysis
+
+2. Web Application Analysis and Understanding
+    • Web Application Understanding and Reconnaissance
+    • Application Navigation and UI Interaction
+    • Web Application Inspection
+    • Web Application and Environment Analysis
+
+3. Script Analysis
+    • Script Manipulation and Execution
+    • Script and Code Execution
+    • Programming Language Analysis
+    • Inspecting Code and Scripts
+
+4. Web Content and Structure Analysis
+    • Web Content and Source Code Inspection
+    • Web Rendering Inspection
+    • Dynamic Rendering Analysis
+    • HTTP Response Analysis
+
+5. Vulnerability Identification and Exploitation
+    • Exploitation and Vulnerability Discovery
+    • Vulnerability Identification
+    • Security Vulnerability Identification
+    • Vulnerability Discovery
+
+6. Command Execution and Injection
+    • Command Execution Analysis
+    • Code Execution and Analysis
+    • Code Execution, Code Injection, and Command Injection
+
+7. Payload Crafting and Exploitation
+    • Payload and Exploit Crafting
+    • Payload Creation and Exploitation
+    • Exploitation and Payload Creation
+
+8. Exploitation Techniques and Craft
+    • Exploitation Techniques
+    • Security Bypass Techniques
+    • Input Manipulation and Exploitation Techniques
+    • Exploit Development
+
+9. Server and Network Analysis
+    • Network Analysis and Exploitation
+    • Directory and File Analysis
+    • Server Setup and Configuration
+    • Network and Web Requests
+
+10. File and Data Analysis
+    • Data Extraction
+    • Data Analysis
+    • File Analysis
+    • Database and Data Analysis
+
+11. Response and Feedback Analysis
+    • Response and Feedback Analysis
+    • Revealing Results and Flags
+
+12. Action Documentation
+    • Documentation and Observation
+    • Miscellaneous Analysis Actions
+
+13. Markup and Language Processing
+    • Markdown Processing
+    • Language and Syntax Understanding
+
+14. Vulnerability Manipulation and Exploitation
+    • Code and Application Analysis Techniques
+    • Manipulating Code and Exploiting Vulnerabilities
+    • Code Exploitation and Injection
+
+15. Code and Content Manipulation
+    • Code and Content Manipulation
+    • Character Manipulation and Encoding
+    • Encoding and Serialization
+
+16. Inspection and Understanding of Environment
+    • Inspecting Code and Application Environment
+    • Application Understanding
+
+
+   

@@ -5,7 +5,7 @@ import re
 # Define the path to the JSON file
 guidelines_path = "./guidelines.json"
 
-# Multiline string containing the updated value for "requirements_steps"
+# Multiline string containing the updated value for requirements
 new_requirements = """Generate a comprehensive attack model from the following writeup summarization.
 
 Use this JSON format as a guide:

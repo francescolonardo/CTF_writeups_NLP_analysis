@@ -1,0 +1,56 @@
+{
+    "Website Navigation": [
+        "Access the new URL 'https://freewifi.ctf.umbccd.io/staff.html'",
+        "Access the website at 'http://freewifi.ctf.umbccd.io/'.",
+        "Visit the provided URL",
+        "Visit the given URL",
+        "Access the website.",
+        "Accessed the web application.",
+        "Connect to website",
+        "Visit the home page of the challenge URL",
+        "Access the URL 'http://challs.houseplant.riceteacatpanda.wtf:30003/robots.txt'",
+        "Access the URL 'http://challs.houseplant.riceteacatpanda.wtf:30003/admin'",
+        "Started the CTF Challenge in Houseplant CTF 2020 \u2013 Fire/place.",
+        "Explored the Firestore environment and found a canvas for users."
+    ],
+    "HTTP Requests and Interception": [
+        "Intercept a GET request to /jwtlogin",
+        "Send a GET request to /jwtlogin",
+        "Perform a POST request.",
+        "Perform a POST request",
+        "Executed a GET request.",
+        "Retrieved a POST request.",
+        "Send the crafted POST request to the server",
+        "Receive an HTTP response containing the Flag",
+        "Made a GET request with the payload."
+    ],
+    "HTML Analysis": [
+        "Locate an image tag",
+        "Check the URL parameter of the image tag",
+        "Retrieve the flag from the URL parameter",
+        "Find an image tag",
+        "Find the onclick attribute",
+        "Observe a login form with JavaScript check.",
+        "Discover that the script can be bypassed by disabling JavaScript.",
+        "Discover that the script can be bypassed by using a proxy tool for request interception and repetition.",
+        "Reveal the structure of the site",
+        "Find that content of the note is inserted into the HTML"
+    ],
+    "Form Interactions": [
+        "Observe the presence of a CSRF token.",
+        "Observe allowed actions: upload and comment on dog pictures.",
+        "Find the endpoint '/dogooo/runcmd' enabling remote shell functionality.",
+        "Identify the publicly accessible functionality '/dogooo/deets/<postid>'.",
+        "Observe the submission of comments as a two-step process.",
+        "Observe the redirection upon successful authentication.",
+        "Note that the redirected URL contains the flag.",
+        "Identify the flag in the URL.",
+        "Note that the post ID is sent as a URL fragment"
+    ],
+    "Code Analysis": [
+        "Open the JavaScript console in the web browser",
+        "Read the blog post on the home page",
+        "Read the content of the 'robots.txt' file",
+        "Identify the URL 'http://challs.houseplant.riceteacatpanda.wtf:30003/admin' from the 'robots.txt' file"
+    ]
+}

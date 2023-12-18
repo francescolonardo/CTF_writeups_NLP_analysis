@@ -1,0 +1,112 @@
+File and Directory Interactions
+    File and Directory Enumeration
+    File System Manipulation
+    File Download
+    File Retrieval
+    File Uploads and Downloads
+    File Upload and Content Manipulation
+    File System Interaction
+    File Analysis, Manipulation, and Extraction
+
+Web Application Analysis and Exploitation
+    Webpage Navigation and URLs
+    Web Enumeration
+    Web Application Exploration
+    Web Vulnerabilities and Exploits
+    Web Exploitation Techniques
+    Web Exploitation
+    Web Application Interactions and Manipulation
+
+Data Analysis and Manipulation
+    Hidden Data Analysis
+    Hexadecimal Analysis
+    Data Analysis and Processing
+    Data Manipulation and Extraction
+    Data Retrieval and Analysis
+    String Analysis
+    Text Analysis
+    Value Analysis
+    Data Extraction
+
+Cryptography, Encoding, and Decoding
+    Cryptography and Encoding
+    Hash Analysis
+    Encoding and Decoding
+
+Web Content Analysis
+    HTML Inspection
+    JavaScript Analysis
+    DOM Manipulation
+    Webpage Inspection and HTML Manipulation
+    Website Analysis
+    HTML Sanitization
+
+Backend and Database Interactions
+    Backend Analysis
+    Database Manipulation
+    Database and SQL Interaction
+    Database Exploration
+    SQL Injection and Database Enumeration
+    Database Exploitation
+    SQL Injection
+    Database and SQL Interaction
+
+Injection and Payload Manipulation
+    Input Manipulation
+    Payload Manipulation
+    Injection Attacks
+    Payload and Data Manipulation
+    Payload Composition
+    Payload Design and Execution
+
+Code and Endpoint Analysis
+    Endpoint and Router Analysis
+    Code Analysis
+    API Endpoint Analysis
+    Code Analysis and Manipulation
+
+Authentication and Authorization
+    Authentication and Authorization Bypass
+    Cookie Analysis
+    Authentication
+    Privilege Escalation
+    Token Analysis
+
+Response and Flag Handling
+    Response Analysis
+    Flag Extraction
+    Flag Handling and Extraction
+    Flag Identification and Extraction
+    Flag Retrieval
+    Flag Manipulation
+    Flag Discovery
+    Flag Composition
+
+Command and Code Execution
+    Command Execution and File Manipulation
+    Command Execution
+    Code Execution
+
+API and Endpoint Manipulations
+    API Requests and Endpoints
+    API Manipulation
+
+Server Interactions
+    Server and Database Interaction
+    Server Analysis
+    Web Server Exploitation
+
+Miscellaneous Techniques
+    Rocket Launch Simulation
+    Geolocation and Proximity
+    Observations and Inference
+    User Interface Observation
+    Miscellaneous
+
+Specialized Techniques and Exploits
+    S3 Bucket Manipulation
+    Redis Caching and Pickle Exploitation
+    Serialization Exploitation
+    XML Manipulation
+    GraphQL Operations
+    

@@ -1,0 +1,25 @@
+{
+    "Callback Parameter": [
+        "Provided a callback parameter."
+    ],
+    "Session Hijacking": [
+        "Steal the admin's cookie."
+    ],
+    "Access Control": [
+        "Create a policy that only allows form submissions to a specific domain",
+        "Use the credentials for `http://app/` in the fetch request",
+        "Use 'Host: app@ATTACKER_URL' to bypass the validation",
+        "Use the custom host header to target your own host"
+    ],
+    "Code Execution": [
+        "'smtp_exec' variable is used in sending activation emails",
+        "Ensure the injected `style` element is readable by the attacker",
+        "Use the known hash of an empty string as a token value for authentication.",
+        "The first response is designed to pass the SSRF check."
+    ],
+    "Authorization": [
+        "Upon granting admin privileges",
+        "Provide authentication to view the server logs.",
+        "Identify that if the request token is wrong, then the 'request.accessGranted' attribute would not be set."
+    ]
+}

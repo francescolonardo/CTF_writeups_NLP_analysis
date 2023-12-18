@@ -1,0 +1,75 @@
+Web Interaction and Navigation
+    Web Navigation and Functionality
+    Page Source and Web Element Analysis
+    Webpage Tracking and Performance Testing
+    Web Request and Endpoint Interaction
+    URL and Web Browser Manipulation
+
+Authentication, Session, and User Management
+    Authentication Bypass and Exploitation
+    JWT, Web Token, and Cookie Handling
+    Session and OTP Management
+    Credential and Password Discovery
+    User Registration, Interaction, and Authorization
+
+Data Analysis and Manipulation
+    Data Processing and Visualization
+    User Input and Parameter Analysis
+    Data Leakage, Extraction, and Encoding
+    List and Event Listener Manipulation
+    Data and CSV Exploitation
+
+Code and Application Analysis
+    Code Inspection, Debugging and Manipulation
+    Application, System and Server Analysis
+    Script Analysis and Payload Modification (JavaScript, PHP, Bash, etc.)
+    Dynamic Rendering and Web Development
+    Function, Method and Web Content Analysis
+
+Exploitation Techniques and Payload Handling
+    Injection Attacks (SQL, XSS, etc.)
+    Vulnerability Identification and Exploitation
+    Web Security Techniques and Attack Mechanics
+    HTTP Request Smuggling and Redirect Exploitation
+    Exploit, Payload Development and Execution
+
+System and Network Analysis
+    Networking and Communication Protocols (HTTP, DNS, etc.)
+    Network and Server Interactions and Configurations
+    Proxy and Microservice Communication
+    IP, DNS and Protocol Handling
+
+File, Resource, and Data Interactions
+    File System Access, Upload, and Analysis
+    Data and File Analysis and Retrieval
+    Database Manipulation, Exploration and Injections
+    Resource and Directory Handling and Enumeration
+
+Debugging, Monitoring, and Troubleshooting
+    Troubleshooting and Debugging Techniques
+    Error, Response, and Server Message Analysis
+    Logging, Monitoring and Behavior Observation
+
+Cryptography and Encoding Techniques
+    Base64, JWT, CAPTCHA and Encryption Techniques
+    Cryptographic Analysis and Exploits
+    Hashing, Decoding and Encoding Techniques
+
+Tools, Scripting, and OS Interactions
+    Custom Tools, Script Hosting and Shell Execution
+    Code Creation, Scripting Techniques and Automation
+    Operating System and Terminal Commands
+    Regular Expression and String Manipulation
+
+Information Gathering and Security Analysis
+    Vulnerability Research (XSS, SSRF, LFI, etc.)
+    Information Gathering, Reconnaissance and Server Discovery
+    Web Security Concepts, Techniques, and Analysis
+    Security Checks, Analysis and Protocol Analysis
+
+Documentation and Miscellaneous Techniques
+    Challenge Understanding, Gameplay Strategy and Solution Development
+    Documentation, Hints, and Clues Review
+    Git Operations, Browser Behavior, and Mobile App Exploits
+    Time-Based Analysis and Specific Techniques
+    

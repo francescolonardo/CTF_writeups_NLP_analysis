@@ -1,0 +1,52 @@
+{
+    "Website Access & Navigation": [
+        "Access the challenge website.",
+        "Examined the website's '.git' folder",
+        "Visit the website http://easy-php.darkarmy.xyz/",
+        "Trigger phpinfo() output by visiting 'http://easy-php.darkarmy.xyz/?bruh=phpinfo()&nic3=/DarkCON/e'",
+        "Inject final payload to initiate the XSS",
+        "Append the xss=<script src=\"https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha512.js\"> parameter to the query.",
+        "Encountered an error due to permissions",
+        "Executed the new URL."
+    ],
+    "Exploitation & Vulnerabilities": [
+        "Utilize the developed exploit",
+        "Understand from the description that an XML External Entity (XXE) vulnerability might be involved",
+        "Determine irrelevance of the first 'If' statement",
+        "Checked the equality of generated data from both the hexadecimal values.",
+        "Craft a malicious serialized class",
+        "Identify the '/admin' directive in the Nginx configuration that denies all requests",
+        "Reveal the flag within the decoded value.",
+        "Observe that the flag is: `AOTW{th3_p3rl_c0w_s4ys_M0oO0o0O}`",
+        "Check all npm packages for vulnerability.",
+        "Test CSS injection"
+    ],
+    "API & Server Interactions": [
+        "Sent another curl request",
+        "Start the instance.",
+        "Intercept 'oauth tokens' by stopping the request from 'twitter' to 'yeunote'."
+    ],
+    "Code Analysis & Execution": [
+        "Created the shellcode ensuring it has no NULL bytes.",
+        "Used Python's format function",
+        "Executed the new URL."
+    ],
+    "User Actions & Interactions": [
+        "Enter new user_id and password",
+        "Edit the user's own name",
+        "Perform login.",
+        "Attempt to follow admin."
+    ],
+    "Information Gathering & Research": [
+        "Discovered an interesting comment (?source=1).",
+        "Researched the 'flask_caching' module",
+        "Generate a custom wordlist of potential log file names."
+    ],
+    "File Manipulation & Analysis": [
+        "Result in 'Wrong Password!' message."
+    ],
+    "Data Processing & Analysis": [
+        "Received a shapefile with information about cameras in Singapore",
+        "Use 'window.localStorage.getItem' to check our input password against the split parts"
+    ]
+}

@@ -1,0 +1,51 @@
+{
+    "XML Parsing": [
+        "Understand that 'parse=\"xml\"' raises an error when used with non-XML content."
+    ],
+    "Authentication & Cookies": [
+        "Identify that the server adds a new secret to the secrets array every time a cookie is signed"
+    ],
+    "Code Manipulation & Bypass": [
+        "Implement bitwise XOR operation in PHP to bypass checks.",
+        "Change the 'account[role]' attribute to 'admin'",
+        "Embed the 'id' of the attacker's user in the request body."
+    ],
+    "Error Handling": [
+        "Encounter an error page.",
+        "Note that the server does not have CURL."
+    ],
+    "Network Interactions": [
+        "Used X-Forwarded-For header",
+        "Send the flag to an external server using the '/readflag>/dev/tcp' command",
+        "Use the personal domain for blind exfiltration of files.",
+        "Perform the second DNS resolution to request the resource.",
+        "Receive a response from the server.",
+        "Access the URL 'http://challs.houseplant.riceteacatpanda.wtf:30003/admin'",
+        "Reload the website page with the new user-agent.",
+        "Include the '/gallery?galleryUrl=' query parameter.",
+        "Pull multiple .git files such as `.git/index`, `.git/config`, `.git/HEAD` etc., from the server.",
+        "Perform a simple curl request to '/\\%64ebug/answer'."
+    ],
+    "Security Vulnerabilities": [
+        "Implied a possibility of Cross-site Scripting (XSS)",
+        "Confirm the presence of blind SQL injection."
+    ],
+    "Source Code Analysis & Information Gathering": [
+        "Created a new malicious URL.",
+        "Consider potential .js file candidates for execution.",
+        "Download the source code.",
+        "Identified the specified `apiGet` URL.",
+        "Identify the functionality of the Python script",
+        "Inspect the format of request packets."
+    ],
+    "Data Manipulation": [
+        "Credentials: 'dogooo' for 'db_user' and 'dogZgoneWild' for 'db_pass'.",
+        "Reduce the number of characters in the payload by improving upon the first solution",
+        "Realize that the 'id' parameter can be manipulated.",
+        "Pass the 'username' value as ','\"member\":\"1' to the function in order to change the value of 'member' to 1."
+    ],
+    "Web Navigation": [
+        "Observe the contents of the first page",
+        "Identify 'website' as the same site for the request."
+    ]
+}

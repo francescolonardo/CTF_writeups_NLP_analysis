@@ -1,0 +1,53 @@
+{
+    "Code Analysis & Reverse Engineering": [
+        "Source code runs DOMPurify.",
+        "Realize that the encryption key can be reverse-engineered",
+        "Described the 'words' table using the `1'; DESCRIBE tablename;` command.",
+        "Decompile binary.",
+        "Identify the replacement of blacklisted commands.",
+        "Identify string 'sRPd45w_0' in decompiled code.",
+        "Checked the source code of the 'd4rks0c1ety' page",
+        "Analyze the server code files.",
+        "Fail to restore source code due to missing git objects."
+    ],
+    "Exploitation & Payload Manipulation": [
+        "Pass this hash with the GET parameter 'hash' to the server.",
+        "Add the encoded payload to the URL.",
+        "The exploitative script is run in the background.",
+        "Placed a second dummy 'GET / HTTP/1.1' request.",
+        "Inspect the downloaded file and find a GitHub URL.",
+        "Grab the password.",
+        "Perform local test using a python command.",
+        "Use btoa javascript function.",
+        "Obtained the flag",
+        "Send the payload via POST request.",
+        "Connect to http://ctfchallenges.ritsec.club:3000.",
+        "Submitted the flag.",
+        "Realized the action fails due to the blacklist filter.",
+        "Observe incoming requests.",
+        "Achieved access to the login page.",
+        "Understand that the mechanism can be bypassed using 'username:password@hostname' URL format",
+        "Examined the 'signup.js' file"
+    ],
+    "Network & Traffic Analysis": [
+        "Notice a redirect to a different domain when fetching an image.",
+        "Identified that the input was being reflected.",
+        "Analyze the format of response packets."
+    ],
+    "Web Navigation & Interaction": [
+        "Access the website homepage",
+        "Navigate to the bottom of the results.",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges.",
+        "Performed the action of opening port 80."
+    ],
+    "Credential & User Enumeration": [
+        "Find out that it has only user privileges.",
+        "Grab the password."
+    ],
+    "File Manipulation & Download": [
+        "Download the provided 'flag.png.encrypted' file from the challenge description."
+    ]
+}

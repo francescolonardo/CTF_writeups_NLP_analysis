@@ -1,0 +1,61 @@
+{
+    "File Manipulation": [
+        "Locate the .env file",
+        "Develop a Python script",
+        "Use the script available at https://github.com/lijiejie/ds_store_exp."
+    ],
+    "Script Execution": [
+        "Create a client script based on packet structure knowledge.",
+        "Execute the developed script.",
+        "Use 'dirb' tool",
+        "Use an editor",
+        "Used PHP system() function.",
+        "Executed commands.",
+        "Executed 'id' command.",
+        "Executed 'ls -al' command.",
+        "Listed the directory contents.",
+        "Executed 'cat index.php' command."
+    ],
+    "Python Scripting": [
+        "Wrote a Python script.",
+        "Implemented a condition in the Python script.",
+        "Unquoted and cleaned up the cookie values within the Python script.",
+        "Used the value ':wq' for the 'exit' parameter.",
+        "Used the value ':wq' for the 'exit' parameter.",
+        "Create a Python script",
+        "Design the script to automate the trial and error process",
+        "Use the identified class (subprocess.Popen) to list directory content",
+        "List directory content remotely using the identified class",
+        "Execute the crafted payload",
+        "Use the 'glob' function to find interesting files"
+    ],
+    "Git Commands": [
+        "Use the tool 'git-dumper'.",
+        "Use the 'git diff' command.",
+        "Use the 'git checkout' command.",
+        "Specify the previous commit that contained the flag ('flag.jpg')."
+    ],
+    "Payload Manipulation": [
+        "Upload the modified DOCX file",
+        "Used provided hexadecimal values.",
+        "URL encoded the first binary string.",
+        "URL encoded the second binary string.",
+        "Use jwt.io tool"
+    ],
+    "Network Analysis": [
+        "Download the PCAP file.",
+        "Craft a request",
+        "Used the provided code snippet.",
+        "Launch remote commands using the Python script.",
+        "Check the output of the command \"whoami\"."
+    ],
+    "Web Exploitation": [
+        "List the files.",
+        "Create PHP payload",
+        "Use the output of the script.",
+        "Execute '/bin/ls .'",
+        "Use the curl command",
+        "Use the curl command",
+        "Use 'git clone https://github.com/sa7mon/S3Scanner.git'"
+    ]
+}

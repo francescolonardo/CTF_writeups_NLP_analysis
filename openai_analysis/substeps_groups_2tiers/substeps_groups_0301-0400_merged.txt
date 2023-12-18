@@ -1,0 +1,31 @@
+1. Credential Management: ["IP Whitelisting", "Continuous Authentication", "Account Credential Enumeration", "Session Management"]
+
+2. Exploitation and Vulnerability Assessment: ["Payload Execution & Exploitation", "JWT Exploitation", "Shell Insertion Possibility", "Exploitation & Vulnerability Assessment", "Exploitation & Flag Retrieval", "Exploitation of Vulnerabilities", "Serialization Exploit", "Redirect Exploitation"]
+
+3. Code Analysis and Execution: ["Encoding and Decoding", "Base64 Encoding", "Code Execution & Interactions", "Debugging & Port Discovery", "Command Injection", "Code Analysis and Evaluation", "JavaScript & Browser Debugging", "Debugging Tool Utilization", "Shell and Command Execution", "Code Manipulation & Exploitation"]
+
+4. HTTP and File Manipulation: ["HTTP & File Manipulation", "HTTP Header Observation", "File Identification", "HTTP Request Execution", "CGI Header Manipulation", "Flask Web Server", "File Flag Extraction"]
+
+5. Request and Response Analysis: ["URL Parameter Analysis", "Response Processing", "POST Request Action", "Response Handling", "Request Filtering"]
+
+6. Network Interactions: ["System Interactions", "Server & Connection Handling", "Endpoint Interaction", "Server Interaction & Access", "Gopher Protocol Interaction", "Network & Traffic Analysis", "Network Communication Analysis", "Endpoint & Server Discovery", "Websockets"]
+
+7. Database Interactions: ["Database Access", "Database & SQL", "Database & Firestore"]
+
+8. Data and Parameter Manipulation: ["User-Agent Modification", "Parameter Manipulation", "Cookie Manipulation", "Character Testing", "Payload Creation & Execution", "Web Parameter & Data Manipulation", "Date Manipulation", "Cookie Analysis & Manipulation", "Attribute Observation"]
+
+9. Web and Application Exploration: ["Downloaded Files Observation", "Web Element & Structure Identification", "Website Visits", "Challenge Identification", "Application Exploration", "File Access & Manipulation", "Online Research", "File System Exploration", "CTF Challenges & Events", "Browser & User Interaction", "Web Scraping"]
+
+10. Cryptographic and Encoding Operations: ["Cryptographic Analysis & Manipulation", "Length Extension Attack Hint", "Key Update Analysis"]
+
+11. Security Analysis: ["Permission Control", "Security Vulnerability", "Promise Handling"]
+
+12. Content and Source Analysis: ["Code and Source Analysis", "Source Code Analysis & Information Gathering", "Output Extraction", "Page Analysis & Examination", "Source Code Examination"]
+
+13. File and Content Manipulation: ["File and Content Manipulation", "File System Actions", "File Verification"]
+
+14. Injection and Attack Techniques: ["Template Injection Identification", "Prototype Pollution", "Abuse of Attributes", "Alert Exploitation", "XSS Attacks"]
+
+15. Web Interaction and Analysis: ["Server-side Vulnerabilities", "Resource Discovery", "Frontend Verification", "Bot Interaction", "Web Interaction & Manipulation", "Web Scraping and Analysis", "Web Exploitation & Attacks"]
+
+16. Miscellaneous: ["QR Code Analysis", "Accessibility Testing", "Performance Considerations", "Flag Searching"]

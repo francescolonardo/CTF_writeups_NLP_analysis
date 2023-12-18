@@ -1,0 +1,54 @@
+{
+    "Installation & Environment Setup": [
+        "Received npm install warnings during installation"
+    ],
+    "Command Execution": [
+        "Send the command 'SET <userID>_isAdmin \"yes\"'.",
+        "Use the command: python3 -m flask run",
+        "Write a binary."
+    ],
+    "Security Analysis & Exploitation": [
+        "Identify that cookies are set to prevent XSS for all API endpoints.",
+        "Recognized second flag hidden in express endpoint /api/true-answer accessible only from localhost.",
+        "Identify a potential redis injection flaw in the refresh_session() function.",
+        "Utilize SSRF exploit to write to the created symlink",
+        "Examine the /find endpoint.",
+        "XSS payload is executed.",
+        "Tried a wrong HTTP verb.",
+        "Exploited the discovered vulnerability",
+        "Analyzed the MySQL query builder in the search function.",
+        "Recognize the use of wildcards in tar utility.",
+        "Attempt to guess admin's subdomain.",
+        "Found that we can load any JavaScript file.",
+        "Analysed the `main.dart.js`.",
+        "Identified two actions 'an excerpt' and 'read online' on the website.",
+        "Use a new approach that does not involve factorization to achieve a payload with an even smaller character size",
+        "Iframe posts the response from the /api/filter endpoint to window.parent",
+        "Observe the presence of a login form",
+        "Identify the upload form on the website"
+    ],
+    "Web Navigation & Interaction": [
+        "Connect to the given URL.",
+        "Using the command: python3 -m flask run",
+        "Visit the vulnerability database at https://www.exploit-db.com/exploits/50383",
+        "Deploy this page on a server.",
+        "Realize that logging in as admin is necessary to access the flag.",
+        "Realized that the new window redirects to a unique link for each book.",
+        "Successfully added 1337 coins to the account."
+    ],
+    "Database & Protocol Analysis": [
+        "Referenced the MySQL documentation related to the protocol level.",
+        "Realized the 'email' and 'pass' fields are vulnerable to an SQL injection attack.",
+        "Confirmed the existence of an additional table."
+    ],
+    "File & System Analysis": [
+        "Created the GET request: 'GET ..@alien.somewhere.meepwn.team/..//index.php?alien=%40!%23%24%40!%40%40 HTTP/1.1 Host: 138.68.228.12 Connection: close'.",
+        "Realized that the 'data-last' attribute contains the victim's saved note."
+    ],
+    "Accessibility & Tools": [
+        "Activate accessibility tools in the Tools section"
+    ],
+    "Miscellaneous": [
+        "Identify a potential redis injection flaw in the refresh_session() function."
+    ]
+}

@@ -1,0 +1,58 @@
+{
+    "Command Execution": [
+        "Use the 'cat' command to display the contents of youfoundme-asd897kjm.txt",
+        "Use /apisix/batch-requests endpoint.",
+        "Write a Python script.",
+        "Discover the use of the 'os.system()' method.",
+        "Start the burpsuite tool.",
+        "Execute wget to download all available logs.",
+        "Performed an internal port scan for ports between 5000 and 10000.",
+        "Choose JWT.io or jwt_tool.py as the decoding tool."
+    ],
+    "Flag Retrieval": [
+        "Submitting the generated token to retrieve the flag.",
+        "Read the obtained flag",
+        "Define sections of the path to the flag.",
+        "Pass the final payload '/admin'",
+        "Direct access to the flag was not successful."
+    ],
+    "Web Interaction": [
+        "Preview button posts a message to the iframe",
+        "Received the cookies",
+        "Find the correct value for the cookie 'otadmin' (\"hash\": 389)",
+        "Check if no character in the alphabet is causing a change in content length",
+        "Remove the 'noscript' tag.",
+        "Find default Apache2 installation page",
+        "Examine the application's server code.",
+        "Failed to login with the provided credentials.",
+        "Search for a PHP payload that creates a web shell.",
+        "Suggested that the 'shell_exec' function is running.",
+        "Noticed that the proxy server makes a request to the backend server.",
+        "Locate the 'Referer' header in the HTTP request.",
+        "Noticed that the `name` is written to memory regardless of XSS check.",
+        "Noticed that the 'books' table has two columns: 'id' and 'info'.",
+        "Tested rendering in the browser."
+    ],
+    "File Upload/Analysis": [
+        "Perform the action of uploading the gif.",
+        "Analyze the form provided to upload images."
+    ],
+    "Code Exploitation": [
+        "Recognize that this control can be used to exploit the vulnerability."
+    ],
+    "API Interaction": [
+        "Use /apisix/batch-requests endpoint."
+    ],
+    "Network Analysis": [
+        "Start the burpsuite tool.",
+        "Noticed that the proxy server makes a request to the backend server.",
+        "Tested rendering in the browser.",
+        "Executed a curl command to make a POST request"
+    ],
+    "Data Analysis": [
+        "Find the correct value for the cookie 'otadmin' (\"hash\": 389)",
+        "Check if no character in the alphabet is causing a change in content length",
+        "Noticed that the `name` is written to memory regardless of XSS check.",
+        "Noticed that the 'books' table has two columns: 'id' and 'info'."
+    ]
+}

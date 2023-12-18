@@ -1,0 +1,162 @@
+    Reconnaissance and Analysis
+        Steps that involve gathering initial information, inspecting code, and understanding the system or web application.
+        Examples:
+            "Inspect the source code of wc.php to find potential attack vectors."
+            "Visit the website and check the index.html file."
+            "Perform reconnaissance to gather information about the target."
+
+    Exploitation
+        Steps that involve using a vulnerability to gain unauthorized access or manipulate the system.
+        Examples:
+            "Exploit the code injection vulnerability to execute commands on the server."
+            "Bypass file permission restrictions to access the flag.txt file."
+            "Manipulate the JWT payload to gain admin privileges."
+
+    Post-Exploitation
+        Steps taken after an exploit is successful, such as data exfiltration, privilege escalation, or ensuring persistence.
+        Examples:
+            "Enumerate the file system to find sensitive files or directories."
+            "Obtain user credentials and escalate privileges."
+            "Access the '/admin' route with the new token."
+
+    Payload and Tool Crafting
+        Steps that involve the creation or modification of payloads, tools, or scripts for the purpose of attacking or exploiting vulnerabilities.
+        Examples:
+            "Craft a new JWT token with the modified payload."
+            "Decode the obfuscated JavaScript code."
+            "Craft a CSS injection payload to leak the password character by character."
+
+    Bypass and Evasion
+        Steps that involve circumventing protections, filters, or other defensive mechanisms to achieve the intended malicious objective.
+        Examples:
+            "Bypass filename checks."
+            "Change User-Agent header to Linux Xbox."
+            "Perform SQL injection to bypass authentication."
+
+---
+
+    Reconnaissance:
+        Steps that involve exploring, analyzing, or discovering elements of the web application without actively attempting any exploitation. Examples include examining source code, investigating API endpoints, or scanning for hidden directories.
+
+    Exploitation:
+        Steps where the attacker actively attempts to exploit a vulnerability they've identified. This category involves crafting malicious payloads, SQL injection attempts, template injection, PHP exploits, and more.
+
+    Post-Exploitation:
+        Steps taken after a successful exploit to either further the attacker's access or achieve a specific objective (like retrieving a flag). Examples here include monitoring a compromised server, decoding session cookies, or using obtained credentials.
+
+    External Resource Interaction:
+        Any steps where the attacker interacts with external resources or platforms to achieve their objectives, such as investigating a GitHub repository, examining a linked GitHub Actions file, or analyzing related external data.
+
+    Manipulation & Analysis:
+        Steps involving direct modifications to certain elements like cookies, headers, or tokens without a clear exploitation intent but aiming to study or change application behavior. This also includes analyzing, decoding, or encoding data like JWT tokens, Base64, or others.
+
+---
+
+    Reconnaissance & Analysis
+        Example descriptions:
+            "Connect to /robots.txt to discover additional content."
+            "Analyze the website and its functionality."
+            "Analyzing the HTML code of the page."
+            "Analyze the cookies set by the web server."
+            "Examine the target website and identify the functionality to create custom cowfiles."
+            "Analyze the challenge description."
+            "Analyze the provided URL."
+
+    Crafting & Injection
+        Example descriptions:
+            "Submit the crafted payload to the web application."
+            "Craft a payload using preg_replace to execute arbitrary PHP code."
+            "Craft a SQL injection payload to leak the database name."
+            "Craft a complete request with all the necessary parameters."
+            "Craft a PHP shell and upload it."
+            "Craft a payload that can be injected into the cowfile via the custom_cow parameter."
+            "Craft an XML payload."
+
+    Exploitation & Manipulation
+        Example descriptions:
+            "Attempt to execute system() command to execute arbitrary shell commands."
+            "Exploit file and directory manipulation functions to search for the flag."
+            "Modify the User-Agent header to introduce SQL injection and analyze the response."
+            "Exploit the lack of escaping countermeasures for the ':' character."
+            "Exploit the XSS vulnerability in the website's LaTeX input field."
+            "Exploit the URL manipulation vulnerability"
+            "Exploit the Shellshock vulnerability."
+
+    Data Extraction & Interaction
+        Example descriptions:
+            "Retrieve the PDF file containing the flag."
+            "Read the contents of the discovered file."
+            "Extract the flag from the retrieved image URL."
+            "Extract the flag from the retrieved document."
+            "Data Extraction: Retrieve the flag from the data obtained using SQL injection."
+            "Inspect the dumped content for any relevant information."
+            "Retrieve the response."
+
+    Automation & Scripting
+        Example descriptions:
+            "The attacker creates a Python script to automate the exfiltration of command output."
+            "Serialize an object of class SHITS with the desired attributes."
+            "Write a bash script to interact with the version control system and analyze revisions."
+            "Automate the discovery process using a Python script."
+
+---
+
+    Information Gathering & Analysis
+        Descriptions related to the initial phase of an attack where the attacker is trying to learn as much as they can about the target. This includes actions such as analyzing the HTML source code, viewing PHP source code, or inspecting the webpage source code.
+
+    Exploitation
+        Descriptions that involve actively exploiting a known vulnerability or weakness in the application. This could include steps like "Exploit the SQL injection vulnerability", "Perform SQLite injection", "Exploiting SSRF to NFS filesystem", etc.
+
+    Post-Exploitation & Data Retrieval
+        Descriptions where attackers take actions after gaining some level of unauthorized access or where they attempt to retrieve specific data, flags, or secrets. This would encompass actions like "Retrieve the flag", "Accessing the flag file", "Upload PHP shell and read flag", etc.
+
+    Evasion & Bypass
+        Steps that pertain to bypassing certain security mechanisms or checks in place. Examples from the descriptions include "Bypass CAPTCHA", "Bypass the output content check", "Bypass regex validation", etc.
+        
+    Miscellaneous Techniques
+        This would be a catch-all for other unique or less common techniques that don't neatly fit into the first four categories. For instance, "Race against other attackers to win the race", "Craft the final exploit URL and send it to the bot", "Bruteforce user agent strings in Burp Suite", etc.
+
+---
+
+    Reconnaissance and Information Gathering: This is where the attacker identifies and learns more about the target system. It involves gathering preliminary data or intelligence on the target.
+        "Conduct a quick research on the website to gather additional information about the vulnerabilities and security measures in place."
+        "Find the functionality of the website and identify potential vulnerabilities and attack vectors."
+        "Perform initial reconnaissance and observation of the target system."
+        "Identify target URL and its parameters."
+        "Inspect the website for potential vulnerabilities."
+        "View page source"
+        ... and so on.
+
+    Exploitation: This involves identifying vulnerabilities in the target system and leveraging them. This is where the actual hacking takes place.
+        "Exploit the identified vulnerabilities to gain unauthorized access or privileges."
+        "Craft a CSRF page to steal the admin's CSRF cookie."
+        "Exploit the behavior of the Angular application when making HTTP requests."
+        "Craft a payload to rewrite the document and redirect it to a specific location."
+        "Exploit SSRF by manipulating the background RGB values."
+        ... and many more.
+
+    Post-Exploitation: Activities post a successful exploit. Here, attackers might move laterally, escalate privileges, or work on maintaining their foothold.
+        "Retrieve the desired information or achieve the intended outcome of the attack."
+        "Retrieve the flag from the generated image."
+        "Obtain the password for the private note."
+        "Obtain the admin's OAuth tokens."
+        "Execute the payload to exploit the vulnerability."
+        ... and others.
+
+    Crafting and Optimization: This involves adjusting, refining, or creating payloads, queries, or methods suitable for the attack scenario.
+        "Craft an SQL Injection payload within the constraints of the UUID input validation."
+        "Optimize the payload to reduce its size."
+        "Further refine the payload to minimize its length."
+        "Craft a payload to steal the admin's cookie."
+        "Adapt the payload to work with the specific application."
+        ... and similar tasks.
+
+    Analysis and Enumeration: Analyzing elements, components, or behaviors of the application or system.
+        "Observe subsequent calls and variables"
+        "Analyze the input validation mechanism for the UUID"
+        "Inspect the source code and files"
+        "Analyze the server.py attachment."
+        "Analyze the server response and identify potential vulnerabilities."
+        ... and the like.
+
+---

@@ -1,0 +1,51 @@
+{
+    "Command Execution": [
+        "Verify the formatting of the command.",
+        "Examine the `readflag` binary.",
+        "Replaced the current 'pack-names' file with the downloaded 'pack-names' file.",
+        "Attempted to read the flag using 'cat ./system/of/a/down/flag.txt'.",
+        "Dump all tables and columns"
+    ],
+    "Flag Retrieval": [
+        "Retrieve the flag successfully",
+        "Identify all instances of the 152-digit number.",
+        "Identify the first check.",
+        "Bruteforce the flag character by character.",
+        "Extract all the contents of the Git repository from the website."
+    ],
+    "Vulnerability Exploitation": [
+        "Exploit the template injection vulnerability.",
+        "Realize the challenge of reaching the Python microservice that only accepts the PUT method",
+        "Observe that it's a static site.",
+        "Bypassed filter.",
+        "Observe that it is accessed only by authenticated users.",
+        "Inspect the provided Nginx configuration for any vulnerabilities"
+    ],
+    "File System & Configuration Analysis": [
+        "Find the entire path to an environment file.",
+        "Analyze the `readflag` binary.",
+        "Utilize the custom wordlist to find more logs.",
+        "Note that each user's JWT key is stored in a Redis cache.",
+        "Exclude common words from the search.",
+        "Inspect the source code of the website.",
+        "Inspect the provided Nginx configuration for any vulnerabilities"
+    ],
+    "Web Interaction": [
+        "Ensured the voting process continues until more than 250 votes are cast in the same PHP session.",
+        "Note that Apache blocks '/debug*'.",
+        "Register a delay for the page to load.",
+        "Authenticate on behalf of the admin without success."
+    ],
+    "Network Analysis": [
+        "Capture the requests received by the server logs, thereby obtaining the admin's cookie."
+    ],
+    "HTTP Operation & Authentication": [
+        "Note the allowed HTTP operations: 'GET', 'POST', 'HEAD', 'OPTIONS'",
+        "Log in as admin",
+        "Authenticate on behalf of the admin without success."
+    ],
+    "Payload Manipulation": [
+        "Note that each user's JWT key is stored in a Redis cache.",
+        "Include the Base64 encoded data as part of the request payload."
+    ]
+}

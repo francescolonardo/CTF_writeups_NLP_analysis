@@ -1,0 +1,61 @@
+{
+    "Token Analysis": [
+        "Scour the page source and Javascript files to locate the token.",
+        "Encode the script into base64.",
+        "Examine the cookies in the HTTP request.",
+        "Realize that the input 'language' in the JWT token is used for reading the arbitrary files."
+    ],
+    "Database and SQL Interaction": [
+        "Identified admin credentials and passcode from the accessed user database and passcode files.",
+        "Username and signup date were passed into the SQL query.",
+        "No sanitization was applied."
+    ],
+    "Payload Design and Execution": [
+        "Base64-encoded the entire input.",
+        "Identify the replacement of blacklisted characters.",
+        "Identify the replacement of blacklisted commands.",
+        "Design the payload to read the desired file.",
+        "Sanitized HTML is added to document.body.innerHTML",
+        "The malicious code fetches an exploitative script.",
+        "Identify the hostname as 'redis' and port as 6379.",
+        "Remove '/_' in the URL's path.",
+        "Send the payload 'url=inctf://redis:6379/_SET <userID>_isAdmin \"yes\"'.",
+        "Exploited the directory traversal vulnerability to execute commands and retrieve the contents of the flagged file located at /secret/safe/flag.png",
+        "Identify the input fields for the login function.",
+        "Determine that the input fields for the login function are 'username' and 'password'.",
+        "Decide to attempt SQL injection on the input fields.",
+        "Assign the value 'true' to the cookie.",
+        "Realize that the secret key is selected randomly from an array of cookie names.",
+        "Obtain a new session cookie as output.",
+        "Create and serialize an 'access_log' object",
+        "Set the log_file of the 'access_log' object to '../flag'",
+        "Base64 encoded the output of the PHP 'phpinfo()' function.",
+        "Set the header value to the internal IP address observed from gallery.php.",
+        "Determine that the source code is exposed",
+        "Identify USER_ID.",
+        "Identify FILENAME.",
+        "Payload 3: Obtained readable cookies.",
+        "Polluted 'data' in '__proto__.data' to load the JavaScript file.",
+        "Polluted 'exports' in '__proto__.path' to load the JavaScript file.",
+        "Write the port number used to a file to keep track.",
+        "Identified that a 'secret' token is added to cookies in the request to the backend server.",
+        "Performed zero-click exfiltration.",
+        "Retrieved the flag from the `/api/flag` endpoint.",
+        "Observe that the enumerated IDs correspond to the router's RAM.",
+        "Make the JavaScript payload fetch localStorage.getItem('flag') and send it to the attacker's URL.",
+        "Identify 'cat' command execution in GET request parameter 'f'.",
+        "Craft attack payload using permitted characters.",
+        "The response text contains the new 2FA token.",
+        "Use the 'fetch' function to send the response text to an external URL.",
+        "Utilize 'first' to get the first item of a list.",
+        "Utilize 'last' to get the last item of a list.",
+        "Included a dummy value as the request body.",
+        "Observed reflection of the input into an XSL document.",
+        "Realized the Content-Type was 'text/xsl'.",
+        "Encoded the fetched cookies in base64."
+    ],
+    "Endpoint and Router Analysis": [
+        "Understand the relationship between the endpoints and the user's ID cookie in the Notes map.",
+        "The response text contains the new 2FA token."
+    ]
+}

@@ -1,0 +1,117 @@
+1. Analysis and Understanding
+   - Code Analysis & Understanding
+   - File Analysis & Inspection
+   - File Manipulation & Analysis
+   - Configuration Analysis
+   - Database Analysis
+   - File System Analysis
+   - Source Code Inspection
+   - Documentation Examination
+   - Code Analysis & Exploits
+   - Server & Communication Analysis
+
+2. Network and Server Interactions
+   - Server Interaction & Information Extraction
+   - Server-side Implementation & Setup
+   - Network Security & Tool Configuration
+   - Network Interactions
+   - Communication & Encoding
+   - System Testing
+   - Server Reconnaissance
+
+3. Application Assessments
+   - Website Connection
+   - Web Application Analysis
+   - Web Navigation & Interaction
+   - Web Application Exploitation
+   - File & Endpoint Analysis
+   - Endpoint Analysis
+
+4. Vulnerability Handling
+   - Vulnerability Analysis & Discovery
+   - Exploits and Vulnerabilities
+   - Code Vulnerability and Exploitation
+   - SQL Injection & Database Manipulation
+   - Cross-Site Scripting (XSS) Attack
+   - Web Vulnerability Analysis
+
+5. Authentication & Authorization Methods
+   - Password Cracking & Analysis
+   - Admin Console Access
+   - User Interaction & Authentication
+   - Token & JWT Manipulation
+   - OAuth Interaction
+   - Access Control & Permissions
+
+6. Manipulation and Exploitation Techniques
+   - DOM Manipulation & Analysis
+   - Session & Cookie Manipulation
+   - Web Form & Input Manipulation
+   - User Interaction & Clicking
+   - URL and Redirect Analysis
+   - Endpoint Discovery
+   - API & URL Manipulation
+   - Input Manipulation & Exploitation
+   - Bruteforcing 
+
+7. Communication Protocols
+   - HTTP Requests & Response
+   - HTTP Request Smuggling
+   - HTTP Header Inspection
+   - Communication and Reporting
+
+8. Code Execution
+   - Script Execution and Code Analysis
+   - Command Execution & Server Interactions
+   - Command Execution & Exploits
+   - Exploitation & Code Execution
+   - Shell Access
+   - Code Execution & Manipulation
+
+9. Error and Exception Handling
+   - Error Handling & Detection
+   - Timing Attack
+   - Client-Side Error Detection
+   - Knowledge & Error Handling
+
+10. Environments and Configuration
+    - Environment and Configuration Discovery
+    - Repository Manipulation
+    - Git Repository Analysis
+    - Character Restrictions
+    - Web Security Techniques
+    - Network Security & Tool Configuration
+    - Server-side Implementation & Setup
+
+11. Data Management
+    - Data Analysis & Validation
+    - Data Handling & Processing
+    - Data Retrieval and Exploration
+
+12. Web Interactions
+    - Webpage Access & Navigation
+    - User Interaction & Clicking
+    - Website Interaction
+    - Button Interaction
+
+13. Security Techniques
+    - Session & Cookie Manipulation
+    - Browser and Cookie Inspection
+    - Leaked Contents Investigation
+    - Request Construction
+    - Path Traversal
+
+14. Miscellaneous
+    - Challenge Description & Reading
+    - PDF Page Count Extraction
+    - Flag Verification
+    - Email Variable Analysis
+    - Malformed Input
+    - Zip File Manipulation
+    - Tripcodes
+    - Web URLs
+    - PDF Generation & HTML Rendering
+    - URL Length Limit Testing
+    - HTML Element Location
+    - File Content Printing
+    - Authentication and User Actions.

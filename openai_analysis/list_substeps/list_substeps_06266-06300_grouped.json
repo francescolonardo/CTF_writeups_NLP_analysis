@@ -1,0 +1,56 @@
+{
+    "Exploit Execution": [
+        "Execute the exploit script to generate the payload.",
+        "Send the crafted payload."
+    ],
+    "Web Interactions & Analysis": [
+        "Navigate to the network tab.",
+        "Use LFI to access the code of the 'flag' resource in the 'deleted' folder",
+        "Realized the flag was in the comment within the response.",
+        "Locate the 'flag_is_here' directory in the root directory",
+        "Use the `nonce` to bypass the CSP again.",
+        "Observe that the enumerated IDs correspond to the router's RAM.",
+        "Understand that the script prevents rendering of the body content",
+        "Deduce the possible range of the value of $_[0]",
+        "Notice the name 'We will we will Shock You' as a hint towards Shellshock vulnerability.",
+        "View all previous commits in the repository.",
+        "Recognized from the error that the website is likely reading XML data from a database.",
+        "Identified the CTF flag",
+        "Successfully extract a password from the database",
+        "Login using the found password.",
+        "Observed the need for a server response after each vote.",
+        "Open the 'flaghash.sh' script",
+        "Load the page at `/`.",
+        "Successful bypass of initial server checks",
+        "Set the goal of changing the status to 'premium'",
+        "Identify that the flag was formed by computing the MD5 hash of the username, password and a salt",
+        "Discovered that the 'users' table had 3 columns.",
+        "Tried passing custom callback parameter to `api.php` endpoint",
+        "Understand each book's URL structure on server.",
+        "Sent a GET request to the provided URL: http://35.222.174.178/maria/.",
+        "Modify the HTTP GET parameter",
+        "Inferred the challenge was to exploit the `theme` parameter to inject XSS",
+        "This makes password an object",
+        "Obtain column names from information_schema.columns",
+        "Set up a server to catch the redirected request with admin cookies"
+    ],
+    "File & Flag Manipulation": [
+        "Relocated flag name from 'flag.txt' to 'signal_sleuth_firmware' in root."
+    ],
+    "User Enumeration": [
+        "Utilized two accounts for user enumeration."
+    ],
+    "Code & Structural Analysis": [
+        "Identify when __destruct would be called."
+    ],
+    "System & Database Analysis": [
+        "Discovered that the 'users' table had 3 columns."
+    ],
+    "Command Execution & Shell": [
+        "Identified the CTF flag",
+        "Successfully extract a password from the database"
+    ],
+    "Web Vulnerability Analysis": [
+        "Inferred the challenge was to exploit the `theme` parameter to inject XSS"
+    ]
+}

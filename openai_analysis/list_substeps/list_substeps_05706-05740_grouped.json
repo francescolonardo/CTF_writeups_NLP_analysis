@@ -1,0 +1,66 @@
+{
+    "Cryptographic Vulnerabilities": [
+        "Found that there were no escaping countermeasures for the ':' character.",
+        "Identified that the system might be susceptible to an XXE (XML External Entity) attack.",
+        "Created two PDFs with same SHA1 hash exploiting the SHA1 vunlerability with SHATTERED.",
+        "Focus on the 'decrypt.php' file."
+    ],
+    "Injection Attacks": [
+        "Recognize the vulnerability of the older version to an SQL injection attack",
+        "Inject another cookie.",
+        "Use curl to search for 'sdctf' in the logs.",
+        "Use the LaTeX function \\StrMid to isolate the '/' symbol."
+    ],
+    "Web Application Security": [
+        "Expect that one of the nonces will work",
+        "Submit an integer value as the input in the web application.",
+        "Understand the submitted data during registration",
+        "Discover a Disallowed path /ingen/.",
+        "Identify the target page '/post.php'.",
+        "Accessed URL http://138.68.228.12/?is_debug=1.",
+        "Identify that the program attempts to validate IP addresses.",
+        "Triggered a JSONP response from the YouTube API.",
+        "Realize that the challenge focuses on hacking the JWT cookie"
+    ],
+    "Network Security & Tool Configuration": [
+        "Configure the burpsuite tool.",
+        "Access the webpage.",
+        "Visit the webpage.",
+        "Open the body of the HTTP request."
+    ],
+    "Command Execution & Exploitation": [
+        "Execute ls command on the server using subprocess.Popen",
+        "Use the mutool info -X command to verify collision1.pdf.",
+        "Analyze the entrypoint.sh bash file.",
+        "Use curl to search for 'sdctf' in the logs.",
+        "Identify the index of `<class 'subprocess.Popen'>` as 258",
+        "Craft a valid JWT with '31337' identity",
+        "Executed the verified and assembled shellcode.",
+        "The malicious code fetches an exploitative script.",
+        "Realize that the RAM can be dumped using this technique."
+    ],
+    "Data Manipulation & Extraction": [
+        "Locate and open the JavaScript file",
+        "Extract the admin cookie 'password'",
+        "Received a response",
+        "Select and copy the flag"
+    ],
+    "Code Analysis & Exploitation": [
+        "Use the LaTeX function \\StrMid to isolate the '/' symbol.",
+        "Ruled out mutation XSS attacks on these libraries as 'marked' does not sanitize output HTML.",
+        "Create a payload using functions that, when run, return 1337"
+    ],
+    "System & Process Interactions": [
+        "Assign file descriptors for standard input, output, and error handling."
+    ],
+    "Web Navigation & Interaction": [
+        "Navigate to the bottom of the results.",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges."
+    ],
+    "Documentation & Research": [
+        "Reviewed online documentation."
+    ]
+}

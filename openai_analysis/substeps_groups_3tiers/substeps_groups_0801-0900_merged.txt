@@ -1,0 +1,93 @@
+Tier 1: Understanding and Analysis
+
+  -  Tier 2: Web Application Analysis
+       - Tier 3: Web Interactions & Analysis
+       - Tier 3: Webpage Interaction & Tracking
+       - Tier 3: Web Application Identification
+       - Tier 3: Web Application Security Techniques
+       - Tier 3: Application & System Analysis
+       - Tier 3: Application Usage & Testing
+
+   - Tier 2: Code Evaluation
+       - Tier 3: Client-side Code Inspection
+       - Tier 3: Code Analysis & Identification
+       - Tier 3: HTML Analysis
+       - Tier 3: Code Execution & Scripting
+       - Tier 3: PHP Functions & Code Manipulation
+       - Tier 3: Loop Execution
+      
+   - Tier 2: Data Investigation 
+       - Tier 3: String Manipulation & Analysis
+       - Tier 3: Data Viewing & Manipulation
+       - Tier 3: Variable Analysis
+       - Tier 3: Database & Protocol Analysis
+       - Tier 3: Character Encoding Analysis
+       - Tier 3: Data Retrieval & Manipulation
+       
+   - Tier 2: Problem Isolation
+       - Tier 3: Troubleshooting & Debugging
+       - Tier 3: Error Handling
+       - Tier 3: Information Discovery
+       - Tier 3: Tool Usage
+       
+   - Tier 2: Knowledge Specific to Challenge
+       - Tier 3: Challenge-Specific Knowledge
+       - Tier 3: Challenge Analysis & Understanding
+       - Tier 3: XML Parsing
+       
+Tier 1: Exploitation and Manipulation                                                         
+
+   - Tier 2: Web Exploitation                                                           
+       - Tier 3: Document Object Model (DOM) Manipulation
+       - Tier 3: Cookie Exploitation
+       - Tier 3: Injection Attack
+       - Tier 3: XSS & DOM Manipulation
+       - Tier 3: HTTP Requests & File Manipulation
+       - Tier 3: Request Manipulation
+       
+   - Tier 2: User and Authentication Management
+       - Tier 3: Key Retrieval & Usage
+       - Tier 3: User Interaction & Account Manipulation
+       - Tier 3: Authentication & User Management
+       - Tier 3: Authentication Cookie Modification
+       
+    - Tier 2: Server Interaction
+       - Tier 3: Network Exploitation & Manipulation
+       - Tier 3: Command & Server Interactions
+       - Tier 3: Admin Functionality
+       - Tier 3: Server Process & Execution
+       
+    - Tier 2: Data Manipulation
+       - Tier 3: SQL Injection Analysis
+       - Tier 3: Object Crafting & Parameter Manipulation
+       - Tier 3: Value Manipulation
+       - Tier 3: Payload Generation & SQL Injection
+       
+Tier 1: Mitigation and Bypass Techniques
+
+   - Tier 2: Code Manipulation
+       - Tier 3: Code Execution & Injection
+       - Tier 3: Code Manipulation & Bypass
+       - Tier 3: Payload Encoding
+       - Tier 3: Payload Creation
+       
+   - Tier 2: Security Bypass Techniques
+       - Tier 3: Security Checks & Bypassing
+       - Tier 3: Bypassing Access Denied Error
+       - Tier 3: Application Security Bypass Techniques
+       - Tier 3: XSS Protection
+       
+   - Tier 2: Encryption & Decryption
+     - Tier 3: Encryption & Decryption
+     - Tier 3: Hashing & Encryption
+       
+   - Tier 2: File & Data Manipulation
+       - Tier 3: File & Data Manipulation
+       - Tier 3: File Manipulation & Code Execution
+       - Tier 3: File Execution
+
+   - Tier 2: System & Server Management
+       - Tier 3: System Management
+       - Tier 3: Environment Configuration
+       - Tier 3: Server Permission Enumeration
+       - Tier 3: AWS & Server Permissions

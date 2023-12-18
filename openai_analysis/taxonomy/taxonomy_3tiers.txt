@@ -1,0 +1,62 @@
+1: Web Security Fundamentals
+    1.1: Information Gathering & Analysis
+        1.1.1: Web Scraping & Automation
+        1.1.2: Network & Server Exploration
+        1.1.3: Backend Investigation
+        1.1.4: Documentation Review
+        1.1.5: IP and Network Analysis
+        1.1.6: File & Directory Analysis
+        1.1.7: Exploitation & Vulnerabilities
+        1.1.8: Behavior Observation & Vulnerability Identification
+    1.2: Vulnerability Identification & Assessment
+        1.2.1: Security Vulnerabilities & Exploits Analysis
+        1.2.2: Exploitation & Vulnerabilities
+    1.3: Debugging & Error Analysis
+        1.3.1: Error Handling & Debugging
+        1.3.2: Server Log Analysis & Manipulation
+        1.3.3: Response Analysis
+        1.3.4: Time-Based Analysis
+
+2: Exploitation Techniques & Security Analysis
+    2.1: Exploitation Techniques
+        2.1.1: Web Vulnerabilities: XSS, SSRF, XXE, LFI, etc.
+        2.1.2: Debugging & Exploitation
+        2.1.3: Injection and Bypass Techniques: SQL Injection, Code Injection, etc.
+        2.1.4: Exploiting Security Constraints
+        2.1.5: Server-side Exploitation
+        2.1.6: Authentication & Authorization Bypass
+    2.2: Security Analysis & Testing
+        2.2.1: Web Security Concepts & Techniques
+        2.2.2: Robustness Testing
+        2.2.3: Authentication & Authorization Testing
+        2.2.4: Vulnerability Identification
+        2.2.5: Secure Communication
+        2.2.6: Cryptography and CAPTCHA
+    2.3: Payloads and Scripts
+        2.3.1: Exploitation & Payload Manipulation
+        2.3.2: Shellcode Assembly & Debugging
+        2.3.3: Script Analysis
+        2.3.4: JavaScript & Frontend Analysis
+        2.3.5: Payload Execution
+
+3: Web Interaction & User Engagement
+    3.1: Web Navigation & Functionality
+        3.1.1: Page Source Analysis
+        3.1.2: Button & Element Identification
+        3.1.3: Web Interaction and Testing
+        3.1.4: Game & Scenario Analysis
+        3.1.5: Web Request & Processing
+        3.1.6: User Interaction
+    3.2: User Input and Data Handling
+        3.2.1: User Script & Payload Modification
+        3.2.2: Decoding & Encoding: Base64, JWT
+        3.2.3: Password Handling
+        3.2.4: User Input Analysis
+        3.2.5: Data Manipulation
+        3.2.6: Message Creation & Sharing
+    3.3: URL and HTML Elements Manipulation
+        3.3.1: URL Manipulation & Restrictions
+        3.3.2: Header Manipulation
+        3.3.3: Endpoint Mapping
+        3.3.4: CSS Exfiltration & Code Constraints
+        3.3.5: Authentication and Authorization

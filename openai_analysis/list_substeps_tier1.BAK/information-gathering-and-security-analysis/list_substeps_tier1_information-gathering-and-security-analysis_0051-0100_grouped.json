@@ -1,0 +1,58 @@
+{
+    "Website Access and Exploration": [
+        "Access '/robots.txt' on the website",
+        "Access the link 'http://35.207.189.79/pyserver/server.py'.",
+        "Access 'login.php.bak'",
+        "Find the 'robots.txt' file",
+        "Cite the page http://104.197.168.32:17012/index.html as the challenge target."
+    ],
+    "Reading and Understanding": [
+        "Read the challenge description.",
+        "Reveals the flag '35c3_this_flag_is_the_be5t_fl4g'.",
+        "Found a clue in the same comment to check 'd4rks0c1ety' page for the rest of the flag",
+        "Researched the trivia answer 'Fear the Old Blood'",
+        "Suggested using a query parameter.",
+        "Guessed the first part of the flag referred to in the PDF.",
+        "Analyze the hint",
+        "Researched about PhantomJS/2.1.1",
+        "Conducted a study about PhantomJS/2.1.1.",
+        "Discovered that the PDF contains the flag.",
+        "Interpret 'SSTI' as a hint to 'Server-Side Template Injection' vulnerabilities",
+        "Recognize the possibility of useful information in previous commits.",
+        "Note that the flag obtained was 'darkCON{us1ng_3_y34r_01d_bug_t0_byp4ss_d1s4ble_funct10n}'",
+        "Capture wifi nonces.",
+        "Find a target website.",
+        "Checked the category and points of the challenge. It was a web category and was worth 1783 points.",
+        "Found that the document contained the lyrics of a song and the required flag.",
+        "Conjectured that the 'flagman69' user may not exist in the database given the failed flag output.",
+        "Initialize CTF task.",
+        "Notice the name 'We will we will Shock You' as a hint towards Shellshock vulnerability.",
+        "Confirm text 'infernoCTF{F33l_Th3_Sh0ck}' in the accessed file.",
+        "Observe the form field requesting an IP address."
+    ],
+    "Web Enumeration and Discovery": [
+        "Perform URL enumeration",
+        "Discover 'scriptlet' endpoint",
+        "Perform basic web enumeration."
+    ],
+    "SQL Injection": [
+        "Discover the SQL Injection payload from the URL 'http://challs.houseplant.riceteacatpanda.wtf:30003/#3/**/union/**/select/**/null,username,null,null,null,null/**/from/**/users'",
+        "Discover the SQL Injection payload from the URL 'http://challs.houseplant.riceteacatpanda.wtf:30003/#3/**/union/**/select/**/null,null,null,text,null,null/**/from/**/posts'",
+        "Discover the flag 'rtcp{WebSock3t5_4r3_SQLi_vu1n3r4b1e_t00_bacfe0}'"
+    ],
+    "User Information and Database Analysis": [
+        "Retrieve user information.",
+        "Identify the user 'true.grit@umbccd.io' through PCAP analysis.",
+        "Identify the existing user 'bob' from the authentication response",
+        "Decide to leak the database name."
+    ],
+    "Interaction and Exploitation": [
+        "Found a target website.",
+        "Implement research knowledge.",
+        "Find that the service functions similarly to Pastebin",
+        "Create a secondary note",
+        "Pass the malicious note_id from the previous step",
+        "Indicate the attack has worked.",
+        "Get the flag"
+    ]
+}

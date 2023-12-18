@@ -1,0 +1,49 @@
+{
+    "File Operations": [
+        "Generate a file with random content.",
+        "Discover flag.txt file in the /home directory",
+        "Create an Image object with a controlled filename.",
+        "Run the binary inside the docker container."
+    ],
+    "HTTP Request Analysis": [
+        "Locate the 'User-Agent' header in the HTTP request.",
+        "Notice that the site's PHP code allows for the crafting of 'preg_replace'",
+        "Identify the converted string as a Bitcoin Wallet password.",
+        "Exploited the issue in urllib.parse.urljoin."
+    ],
+    "Session & Authentication": [
+        "Establish session.",
+        "Discover the secret to be 'supersecret'.",
+        "Catch the reverse shell using the public endpoint.",
+        "Used the AWS credentials found in the 'config' schema.",
+        "Alter the JWT's payload to change the user type to admin.",
+        "Notice a 'session_id' stored in a cookie."
+    ],
+    "SQL Injection & Database Manipulation": [
+        "Passed the payload via the SQL injection vulnerability.",
+        "Understood that data is packed in 'username:password:admin' format.",
+        "Infer from the knowledge of SQL Injection that the username and password input can be manipulated.",
+        "Pass a range of data values to test the properties of the number casting in the database."
+    ],
+    "Web Navigation & Interaction": [
+        "Enter the provided URL in the address bar.",
+        "Attempted XSS payloads.",
+        "Enter token value.",
+        "Access the website from the challenge.",
+        "Observe the error indicating the names of the missing files.",
+        "Understand the functionality and workings of the 'forgot password' feature."
+    ],
+    "Network Exploitation & Manipulation": [
+        "Navigate the HTTP request smuggling attack",
+        "Crafted a malicious HTTP request.",
+        "Exploited the issue in urllib.parse.urljoin."
+    ],
+    "Code & Technology Analysis": [
+        "Notice that the site's PHP code allows for the crafting of 'preg_replace'",
+        "Identify that Meteor is being used.",
+        "Reach the 'Put()' handler of the Go microservice"
+    ],
+    "Flag Retrieval": [
+        "Observe the retrieval of the flag"
+    ]
+}

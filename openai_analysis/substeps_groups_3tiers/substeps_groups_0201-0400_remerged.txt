@@ -1,0 +1,53 @@
+Tier 1: Information Gathering & Analysis
+    Tier 2: Web Data Collection
+        Tier 3: Web Scraping & Automation
+        Tier 3: Network & Server Exploration
+        Tier 3: Backend Investigation
+        Tier 3: Documentation Review
+        Tier 3: Code Analysis & Inspection
+        Tier 3: IP and Network Analysis
+    Tier 2: Vulnerability Assessment
+        Tier 3: Security Vulnerabilities & Exploits Analysis
+        Tier 3: File & Directory Analysis
+        Tier 3: Exploitation & Vulnerabilities
+    Tier 2: Debugging & Error Analysis
+        Tier 3: Error Handling & Debugging
+        Tier 3: Server Log Analysis & Manipulation
+        Tier 3: Response Analysis
+        Tier 3: Time-Based Analysis
+
+Tier 1: Operation & Interaction
+    Tier 2: Server & Network Interaction
+        Tier 3: Server Communication & Exploitation
+        Tier 3: Microservice Communication
+        Tier 3: System Interaction
+        Tier 3: Installation & Environment Setup
+    Tier 2: Web Application Interaction
+        Tier 3: Web Navigation & Exploration
+        Tier 3: Constructing Requests
+        Tier 3: Scripting & Automation
+        Tier 3: Web Requests & APIs
+    Tier 2: Authentication & Authorization
+        Tier 3: Authentication & Credential Attacks
+        Tier 3: Token Authentication
+        Tier 3: JWT Manipulation
+        Tier 3: API Response Analysis
+
+Tier 1: Exploitation & Vulnerabilities
+    Tier 2: Exploitation Techniques
+        Tier 3: XSS Exploitation
+        Tier 3: SQL Injection & Payload Crafting
+        Tier 3: File Creation & Manipulation
+        Tier 3: Server-Side Exploitation
+        Tier 3: Remote Code Execution
+    Tier 2: Injection Attacks & Payloads
+        Tier 3: Injection Attacks
+        Tier 3: SQL Injection Payload Injection
+        Tier 3: Buffer Overflow
+        Tier 3: Payload Structure & Formatting
+    Tier 2: Specialized Techniques
+        Tier 3: Geolocation Operations
+        Tier 3: Length Query Parameter Verification
+        Tier 3: Referrer Header Bypass
+        Tier 3: Directory Traversal
+        Tier 3: Cryptography & Hash Decryption

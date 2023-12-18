@@ -1,0 +1,117 @@
+1. "Authentication and Access Control":
+   - "Username and Password Extraction"
+   - "Authentication & Cookies"
+   - "User Account Manipulation"
+   - "Admin Access & Authentication"
+   - "Authentication Bypass"
+   - "Credential Discovery"
+
+2. "Attacker Exploitation":
+   - "Server and Application Exploitation"
+   - "System Exploitation"
+   - "Web Exploitation & Web Application Security"
+   - "Reverse Shell & Exploitation"
+   - "Security Exploitation Techniques"
+   - "Network Exploitation"
+
+3. "Payload, Token and Key Handling":
+   - "Crypto Operations"
+   - "Payload Manipulation & Encoding"
+   - "Payload Manipulation"
+   - "Payload Decoding"
+   - "Payload Generation & Injection"
+   - "Token and Security Analysis"
+   - "Token Usage"
+   - "Secret Key Handling"
+
+4. "HTTP Interactions and Web Requests":
+   - "HTTP Responses"
+   - "Web Requests & API Interactions"
+   - "HTTP Requests & File Operations"
+   - "Network & HTTP Interactions"
+   - "WebSocket Analysis"
+   - "API Endpoint Analysis"
+
+5. "Web Application Security Analysis":
+   - "Source Code Analysis"
+   - "Web Page Analysis & Manipulation"
+   - "Web Application Testing"
+   - "Data Validation & Security Testing"
+   - "Response Vulnerability Analysis"
+   - "Security Analysis & Information Gathering"
+   - "Web Security Vulnerability Analysis"
+   - "Access Control Analysis"
+   - "Security Analysis & Exploitation"
+
+6. "Web Exploits and Techniques":
+   - "Cross-Site Scripting (XSS)"
+   - "HTML Injection & Payloads"
+   - "XPath Injection"
+   - "Shell & Remote Code Execution (RCE)"
+   - "CSRF Protection & Token Refresh"
+   - "XSS Vulnerability"
+   - "Client-Side Vulnerabilities"
+   - "CSRF Payload"
+
+7. "Code and Script Analysis":
+   - "Calendar & PHP Script Analysis"
+   - "Class Method Manipulation"
+   - "Scripting & Payload Creation"
+   - "Code Analysis & Exploitation"
+   - "Looping & Scripting"
+   - "Serialization"
+   - "JavaScript Usage & Meta Tag"
+   
+8. "File and Resource Interactions":
+   - "File System & Configuration Analysis"
+   - "File Download"
+   - "File and Directory Analysis"
+   - "File Manipulation & Retrieval"
+   - "File Upload & Manipulation"
+   - "File Hosting & Resource Insertion"
+
+9. "Network Analysis":
+   - "Network Scanning & Enumeration"
+   - "Network Smuggling Analysis"
+   - "HTTPS & Security Protocols"
+   - "Network and Server Configurations"
+   - "Server Connection"
+
+10. "Logging and Monitoring":
+    - "Response Monitoring"
+    - "Logging & Monitoring"
+    - "Debugging & Logging"
+
+11. "Password Handling and Attacks":
+    - "Password Manipulation & Cracking"
+    - "Brute Force Attacks"
+    - "Password Validation"
+    - "Password & Authentication"
+
+12. "Other Operations":
+    - "Web Rendering"
+    - "Redirection & Delay"
+    - "Working Directory Access"
+    - "Flag Manipulation"
+    - "Application Access"
+    - "Package Research"
+    - "Web Application Discovery"
+    - "Reverse Shell Obtained"
+    - "Server-Side Request Manipulation"
+    - "Server Interaction & Security"
+    - "Information Disclosure"
+    - "Web Form and Parameter Manipulation"
+    - "Configuration & Settings Analysis"
+    - "Scanning and Exploitation Tools"
+    - "Data Manipulation and Payload Creation"
+    - "Serialization Analysis & Identification"
+    - "Page Discovery"
+    - "Data Validation & Manipulation"
+    - "AWS Services"
+    - "Game Mechanics"
+    - "Endpoint Examination"
+    - "Loop Manipulation"
+    - "Reverse Shell Usage"
+    - "Information Extraction"
+    - "Browser Interaction"
+    - "Other"

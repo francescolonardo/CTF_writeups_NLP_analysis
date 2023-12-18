@@ -1,0 +1,49 @@
+{
+    "File Manipulation": [
+        "Alter the file 'app.xml' inside the new DOCX file"
+    ],
+    "Command Execution": [
+        "Read the flag using the '< ../flag.txt' command.",
+        "Use the identified class (subprocess.Popen) to execute the 'id' command"
+    ],
+    "Bypassing Security Measures": [
+        "Found a way to bypass the Angular application.",
+        "Hit a snag due to restrictions of the `trustedTypes` policy of CSP",
+        "Infer that payload modification is necessary to bypass security measures.",
+        "Further reduce the payload character count by poking around and using different functions"
+    ],
+    "Web Interaction & Exploitation": [
+        "Identify the presence of a 'username' attribute in the requests.",
+        "Navigate to /index.phps",
+        "Triggered the XML payload on the application.",
+        "Created a callback that reflected the response into Javascript code.",
+        "Note the Json response upon attempted logins.",
+        "Gained access to the system.",
+        "Used a malicious cookie value for exploitation.",
+        "Realized the issue with urllib.parse.urljoin.",
+        "Read the HTML source code.",
+        "Identify a specific replace function within the source code.",
+        "Spoofed the client IP address"
+    ],
+    "Script Development & Execution": [
+        "Develop a Python script to automate the brute-forcing of characters.",
+        "Run script.",
+        "Analyze the process in the script: making a cURL request, hashing the results with MD5, and setting the 'auth' cookie to the value of 'FLAG_AUTH' from secrets",
+        "Experimented with each method.",
+        "Join the 'class' string with preceding and ending '__' characters using 'join' filter.",
+        "Update the timestamp in the POST request."
+    ],
+    "Source Code Analysis": [
+        "Find the source code file 'flagchecker.c' in the repo",
+        "Reveal source code for index.php"
+    ],
+    "Information Extraction": [
+        "Determined the solution for the crossword puzzle.",
+        "Extract the response text (HTML).",
+        "Identified that process.env.FLAG in db.createNote({ data: process.env.FLAG }) is storing the flag."
+    ],
+    "Security Vulnerability Identification": [
+        "Derive a proof-of-concept (PoC) to brute-force a character of the flag by exploiting the observed behavior",
+        "Identified a potential SQL injection vulnerability."
+    ]
+}

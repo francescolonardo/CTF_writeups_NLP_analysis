@@ -1,0 +1,53 @@
+{
+    "Date Manipulation": [
+        "Assume the posting date as the current date"
+    ],
+    "User Interaction": [
+        "Make the admin visit the modified 'Link to profile'",
+        "Navigate to the 'controllers' directory.",
+        "Receive a note ID.",
+        "Print the hint",
+        "Upload the created file.",
+        "Enter the username and password",
+        "Make the first GET request: 'GET https://yeunote.ctf.yeuchimse.com/note/twitter/3'.",
+        "Attempted to navigate to login.php.",
+        "Accessed the Cowsay as a Service Challenge website"
+    ],
+    "File Manipulation": [
+        "Compress the modified files back into a zip archive named 'modified.odt'.",
+        "Send a request to read the content of the `flag.txt` file."
+    ],
+    "Binary Analysis": [
+        "Identified that the binary calls the 'id' command three times, with privileges"
+    ],
+    "Code Analysis": [
+        "Create a function `http_get` in the Python script.",
+        "Analyzed the code of the website",
+        "Study the commit history"
+    ],
+    "URL Manipulation": [
+        "Generate a URL-encoded string.",
+        "Include the necessary characters in the final URL.",
+        "URL-encoded the payload.",
+        "Try the payload: {\"username\": \"admin\", \"password\": {\"$gt\": \"z\"}}"
+    ],
+    "Web Interaction": [
+        "Located a PHP webpage.",
+        "Wait for the site to load.",
+        "Received a PNG image with a crossword puzzle from '/square/' endpoint.",
+        "Find a commented item in the HTML source of the page.",
+        "Understand that this shuffle is based on seeded random values tied to the 'User-Agent'.",
+        "Receive the flag in the body of the returned page",
+        "Find a message about using an unsupported browser, more specifically Internet Explorer 6.01.",
+        "Discover that the site restricts images to the same origin.",
+        "Confirm the successful staging of the attack.",
+        "User's cookies are sent along with the POST request",
+        "Pass serialized input via 'id' HTTP GET parameter"
+    ],
+    "Object Injection": [
+        "Create the expected solution string using object injection."
+    ],
+    "Flag Retrieval": [
+        "Retrieve the flag."
+    ]
+}

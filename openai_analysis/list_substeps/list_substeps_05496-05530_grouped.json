@@ -1,0 +1,45 @@
+{
+    "Database Exploitation": [
+        "Extracted the content of the 'whatsthis' table.",
+        "Determined the position of the column used to return data, it was found to be the last one.",
+        "Identify the login process in the file bookhub/forms.user.py.",
+        "Examined the different database schemas and tables: accounts, config, env, innodb, sys, users."
+    ],
+    "Server and Application Exploitation": [
+        "Realized that modifying the parameters allows callback to our server.",
+        "Hijack the $whoareyou variable.",
+        "Identify that you need change the 'admin' field to 'true'.",
+        "Used the exploit."
+    ],
+    "Web Application Security": [
+        "Logged into the authentication form successfully, but noticed the flag didn't print.",
+        "Attempted to inject XSS after bypassing",
+        "Included the 'Content-Length' header in the payload.",
+        "Discover the variable name 'application' linked to the tornado.web.Application object.",
+        "Follow the URL redirection (if applicable) to the file location.",
+        "Examined the 'login.js' file",
+        "Consider ways to apply the Template Injection exploit with the 'setter' and 'getter' properties for 'key'."
+    ],
+    "Web Navigation & Interaction": [
+        "Make a GET request to http://ctfchallenges.ritsec.club:3000/auth specifying the name as m3ssap0.",
+        "Remove unwanted characters from the decoded message.",
+        "Extract the flag from the provided string",
+        "Create a local repository.",
+        "Use the payload to extract flag data from the server.",
+        "Noted potential XXE vulnerability because of 'LIBXML_NOENT' flag in 'loadXML()' function.",
+        "Follow the URL redirection (if applicable) to the file location."
+    ],
+    "Code Analysis": [
+        "Identified that the game is operated from 'child_process.spawnSync'",
+        "Identify the code snippet that prints 'self.__dict__' in specific conditions.",
+        "Identify that the 'decrypt.php' file suggests the potential for an SQL injection via the UUID POST data."
+    ],
+    "Exploiting Security Constraints": [
+        "Identify the constraints: the payload must be less than 30 characters and cannot contain 'zer0pts'.",
+        "Set the loop condition to run until the password is fully determined using the SQL Injection."
+    ],
+    "File and System Manipulation": [
+        "Examined the different database schemas and tables: accounts, config, env, innodb, sys, users.",
+        "Used the exploit."
+    ]
+}

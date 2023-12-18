@@ -1,0 +1,79 @@
+{
+    "Server-side Code Injection": [
+        "Send the encoded script as an SSTI payload."
+    ],
+    "File Restrictions": [
+        "Note that only js, ts, cpp, c files are allowed"
+    ],
+    "Repetitive Actions": [
+        "Performed repetitive actions of sending requests"
+    ],
+    "Malformed Input": [
+        "Included a \\n character in a chunk extension in the second part of the challenge."
+    ],
+    "Proxy & Microservice": [
+        "Note that the Traefik service acts as a reverse proxy for the Go microservice"
+    ],
+    "Website Connection": [
+        "Connected to the provided web site."
+    ],
+    "Input Parameter Manipulation": [
+        "Research if PHP manipulates input parameters' names."
+    ],
+    "Timing Attack": [
+        "Discovered that any timing attack with 'performance.now()' would have worked."
+    ],
+    "JSON Manipulation": [
+        "Constructed a JSON body with username and password"
+    ],
+    "File Access": [
+        "Read the content of the 'robots.txt' file",
+        "Recognized this configuration grants access to any file on the filesystem."
+    ],
+    "Authentication Bypass": [
+        "Determine that the 'notes.count' function is unauthenticated.",
+        "Infer that debugging on the production server is unlikely."
+    ],
+    "SQL Injection": [
+        "The author identifies it as a SQL Injection challenge."
+    ],
+    "Serialization": [
+        "Note the usage of the `unserialize` function"
+    ],
+    "CSRF Payload": [
+        "CSRF payload makes a callback to the exploit server with the page contents"
+    ],
+    "Server-side Scripting": [
+        "Understood that this was done server-side.",
+        "Use YAML to analyze the script."
+    ],
+    "Flag Extraction": [
+        "Perform the action of extracting the flag.",
+        "Retrieved the flag at `/flag.txt`."
+    ],
+    "JWT Token": [
+        "Decode the copied JWT token using a website like jwt.io."
+    ],
+    "Bypass Check": [
+        "Find a way to bypass the remaining check."
+    ],
+    "Alternative Solution": [
+        "Different intended solution using 'PerformanceLongTaskTiming API'."
+    ],
+    "Path Traversal": [
+        "Create a payload without dots or double slashes."
+    ],
+    "Payload Manipulation": [
+        "Prepend 'a' characters to the payload."
+    ],
+    "Cookie Exploitation": [
+        "Sent the encoded cookies to a pre-defined URL controlled by the attacker."
+    ],
+    "Source Code Analysis": [
+        "Search for the source code of the web application",
+        "Study the downloaded source code."
+    ],
+    "Character Range": [
+        "Set the range of characters to loop through as '0123456789abcdef' (hexadecimal)."
+    ]
+}

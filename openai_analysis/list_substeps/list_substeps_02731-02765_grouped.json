@@ -1,0 +1,51 @@
+{
+    "Basic Authentication": [
+        "Identify the basic authentication credentials as `admin:admin` for testing locally."
+    ],
+    "File Management": [
+        "Uploaded changes",
+        "Note that it includes the ability to upload photos.",
+        "Read the flag file",
+        "Insert the serialized data into the 'login' cookie.",
+        "Extract the configs.zip file."
+    ],
+    "Server Configuration": [
+        "Started with port 20022",
+        "Configured the server to give two different responses.",
+        "Set the 'view options' setting",
+        "Access the PHP environment file."
+    ],
+    "Web Navigation": [
+        "Connect to the website 'https://web5.ctfsecurinets.com/flags.php'",
+        "Access a users.php page.",
+        "Observe functionalities for login/register, edit profile, and support",
+        "Investigate Angular's source code."
+    ],
+    "Code Analysis": [
+        "Analyze the HTML code of the page",
+        "Use a debugging tool such as regex101.",
+        "Observe that the checkbox generates a random string.",
+        "Check for HTML input acceptance."
+    ],
+    "Command Execution": [
+        "Sent the payload to the server.",
+        "Execute the 'ls -al' command",
+        "Bruteforce password at :7777 to determine the leaked byte",
+        "Pivot from the previously found IP address.",
+        "Checked output of 'List Processes' command and identified 'python3 /root/ups_manager.py'.",
+        "Input the payload '; ls #'."
+    ],
+    "Security Exploitation": [
+        "Leveraged the '<base>' HTML tag to set the base URL for all relative URLs in the document, helping bypass the Content Security Policy.",
+        "Identify manipulation of wildcards in system commands as the attack method.",
+        "Observe the authentication response for an existing user with the wrong password",
+        "Use the obtained JWT to authenticate using the /api/normal endpoint.",
+        "Gather supporting materials for the exploit",
+        "Identify two other POST-based XSS vectors",
+        "The bug is in the unauthenticated index page."
+    ],
+    "Network Analysis": [
+        "Discovered a suspicious 'data' parameter in the URL.",
+        "Notice three endpoints (/status, /rocketLaunch, /fuel) in the response."
+    ]
+}

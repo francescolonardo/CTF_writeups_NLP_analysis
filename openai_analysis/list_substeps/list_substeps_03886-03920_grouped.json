@@ -1,0 +1,65 @@
+{
+    "Lambda Functions": [
+        "Invoked the Lambda function"
+    ],
+    "Token Manipulation": [
+        "Identify how the 'id' in the token is created.",
+        "Realize that the input 'language' in the JWT token is used for reading the arbitrary files."
+    ],
+    "PHP Code Analysis": [
+        "Locate a line of PHP code within error logs."
+    ],
+    "Shellcode Assembly & Debugging": [
+        "Utilized the environment to assemble and debug shellcode."
+    ],
+    "Web Vulnerabilities": [
+        "Recognize a possible chance to test Local File Inclusion (LFI).",
+        "Recognized first flag hidden in angular endpoint /debug/answer restricted by Nginx and application.",
+        "Attempt using various SQL injection payloads on the login page.",
+        "Identified vulnerability in /api/image endpoint",
+        "Remembered that a Cloudflare error was triggered in the instance by SQL injection.",
+        "Fetch various SQL injection payloads from [swisskyrepo/PayloadsAllTheThings GitHub repository.",
+        "Identify the input fields for the login function.",
+        "Recognized that the `/api/token` endpoint is in `LoginPage`."
+    ],
+    "Server Interaction": [
+        "Took note of the different server requests that were sent as a result.",
+        "Execute the command `whoami >> src/static/style.css`.",
+        "Fetch PHP session ID from /out/save.txt.",
+        "Fetch various SQL injection payloads from [swisskyrepo/PayloadsAllTheThings GitHub repository.",
+        "Identify the input fields for the login function.",
+        "Recognized that the `/api/token` endpoint is in `LoginPage`.",
+        "Executed the modified command and obtained the flag output from the server.",
+        "Transmit it safely in an HTTP GET request to the attacker's server.",
+        "Write a Python script to automate the process."
+    ],
+    "Web Navigation & Interaction": [
+        "Incorporated delays between consecutive requests.",
+        "Observe login page with no additional information.",
+        "Determine that the length of the flag is 38 characters.",
+        "Identify that the requests are made to '/captcha'.",
+        "Open web browser.",
+        "Access the given URL",
+        "Examined features of the application.",
+        "Enter the token into the provided form field",
+        "List directory content remotely using the identified class"
+    ],
+    "Content Analysis": [
+        "Recognized first flag hidden in angular endpoint /debug/answer restricted by Nginx and application.",
+        "Identified content lengths as indicators of page existence due to uniform content length of Not Found (404) pages.",
+        "Read the file 'satellite.txt'."
+    ],
+    "Code Analysis": [
+        "Locate the challenge at port 8080.",
+        "Locate the usage of 'eval' in util.py."
+    ],
+    "Promise Handling": [
+        "Wait for the promise to resolve."
+    ],
+    "Hash Manipulation": [
+        "Deduced that two different strings should give the same md5 hash."
+    ],
+    "Buffer Overflow": [
+        "Realize that the buffer length can be less than the number of characters written into it."
+    ]
+}

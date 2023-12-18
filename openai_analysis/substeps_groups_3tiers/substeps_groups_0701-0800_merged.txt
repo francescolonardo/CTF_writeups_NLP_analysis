@@ -1,0 +1,78 @@
+1. Web Interaction & Navigation
+
+    - Website Connection & Server Interaction
+    - Webpage Access & Navigation
+    - User Interaction & Clicking
+    - Web Form & Input Manipulation
+    - URL and Redirect Analysis
+    - Website Interaction
+    - Page Loading & Wait Time
+    - Browser and Cookie Inspection
+    - Button Interaction
+
+2. Security Analysis & Exploitation
+
+    - Password Cracking & Analysis
+    - Vulnerability Analysis & Discovery
+    - HTTP Request Smuggling
+    - Cross-Site Scripting (XSS) Attack
+    - OAuth Interaction
+    - SQL Injection & Database Manipulation
+    - Shell Access
+    - Code Execution & Manipulation
+    - Session & Cookie Manipulation
+    - Timing Attack
+    - SQL & Database Exploitation
+    - Access Control & Permissions
+    - Web Security Techniques
+    - Request Construction
+    - Malformed Input
+    - Exploits and Vulnerabilities
+    - URL Length Limit Testing
+    - Path Traversal
+    - Input Manipulation
+
+3. Analysis & Understanding
+
+    - File Manipulation & Analysis
+    - Code Analysis & Understanding
+    - Origin & Cross-Origin Considerations
+    - File System Analysis
+    - Server & Communication Analysis
+    - Admin Console Access
+    - DOM Manipulation & Analysis
+    - Network Interactions
+    - Configuration Analysis
+    - Error Handling & Detection
+    - Environment and Configuration Discovery
+    - Script Execution and Code Analysis
+    - JWT & Token Manipulation
+    - Web Application Exploitation
+    - Source Code Inspection
+    - File & Endpoint Analysis
+    - Client-Side Error Detection
+    - Data Analysis & Validation
+    - Data Retrieval and Exploration
+    - Leaked Contents Investigation
+    - Server Reconnaissance
+    - System Testing
+    - Header Analysis
+    - Database Analysis
+    - File Analysis & Inspection
+    - API & URL Manipulation
+    - HTML Element Location
+
+4. Document & Resource Manipulation
+
+    - Documentation Examination
+    - Challenge Description & Reading
+    - Network Security & Tool Configuration
+    - PDF Page Count Extraction
+    - Git Repository Analysis
+    - Repository Manipulation
+    - Tripcodes
+    - Email Variable Analysis
+    - Authentication and User Actions
+    - Zip File Manipulation
+    - Web URLs
+    - PDF Generation & HTML Rendering 

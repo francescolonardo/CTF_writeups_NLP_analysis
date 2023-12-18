@@ -1,0 +1,53 @@
+{
+    "Vulnerability Identification": [
+        "Identify 'scriptlet' vulnerability",
+        "Identify the `very_auth` session variable that needs to be set to `admin`.",
+        "Identified 'Server' response header.",
+        "Found a password hash '6f246c872cbf0b7fd7530b7aa235e67e'.",
+        "A Python Flask application, does this in 'xss-cookie-stealer.py'. This script defines one route, '/', which reads the 'c' parameter in the request URL, opens a file called 'cookies.txt', writes the contents of 'c' parameter to that file, and then redirects to 'https://google.com'.",
+        "Execute '/usr/bin/strings /readflag' command.",
+        "Observed the entry in the log file containing the cookies and value of 'X-Access' header.",
+        "Enter a single apostrophe in the password field.",
+        "Understand that MFA token is only 4 digits and take advantage of this limited search space by sending batches of thousands of queries together, thereby reducing the number of required CAPTCHA responses.",
+        "Replace the existing 'with' value, 'discord', with a different value, 'foo'.",
+        "Understood default signature algorithm of openssl_verify is SHA1.",
+        "Design the payload to read the desired file.",
+        "Plan to obtain information from MySQL special tables",
+        "Reveal all the source code.",
+        "Identify the first part of the flag within a comment",
+        "Recognize that WebSockets are not restricted by the Same-Origin Policy.",
+        "No sanitization was applied.",
+        "Identify that the website can't send double opt-in emails",
+        "Discover RCE vulnerability through pre-installed 'pearcmd.php'.",
+        "Realize that the potential path traversal vulnerability can be exploited.",
+        "Understand how to modify user's profile and upload images.",
+        "Use the encoded filenames as parameter values for `getimg.php` to test the LFI vulnerability.",
+        "Checked if the 'enableapi' query parameter was set to 'true'."
+    ],
+    "Data Retrieval & Manipulation": [
+        "Retrieve data from the response."
+    ],
+    "File Manipulation": [
+        "Upload another LaTeX document",
+        "'src' set to local files"
+    ],
+    "Web Navigation & Interaction": [
+        "Send a request to '/pleb.127.0.0.1.nip.io'.",
+        "Find a target website.",
+        "Sent a request to the API endpoint",
+        "Enter the website.",
+        "Explored further based on the directory path."
+    ],
+    "Web Security Concepts & Techniques": [
+        "Tried a wrong HTTP verb.",
+        "Used knowledge of these constraints to aim exploitation efforts at the more forgiving 'email' parameter.",
+        "Notice the keywords 'page' and 'upload' on the webpage"
+    ],
+    "Command & Server Interactions": [
+        "Execute '/usr/bin/strings /readflag' command."
+    ],
+    "Authentication & Session Management": [
+        "Identify the `very_auth` session variable that needs to be set to `admin`.",
+        "Design the payload to read the desired file."
+    ]
+}

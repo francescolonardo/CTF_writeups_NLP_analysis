@@ -1,0 +1,54 @@
+{
+    "Response Analysis": [
+        "Extract the flag from the response.",
+        "Observe the occurrence of an error.",
+        "Determined that the result of the SQL query was used to populate the PHPSESSID cookie by analyzing the HTTP responses.",
+        "Found the flag 'accessdenied{1t_w4s_h1dd3n_h3r3_594a9sd}' in the JavaScript file.",
+        "Retrieve the flag from the displayed differences.",
+        "Managed to bypass the 'parse_url($remote, PHP_URL_HOST)' condition.",
+        "Revealed the flag."
+    ],
+    "Token Manipulation": [
+        "Sign a token with the public key verifyKey.",
+        "Use the retrieved 'magic code' to complete the login"
+    ],
+    "File Operations": [
+        "Downloaded the src.zip file",
+        "Create a `redirect.php` file.",
+        "Observed server side validation for valid user during file retrieval at `/users/<username>/files/<filename>`."
+    ],
+    "Web Navigation": [
+        "Create a request for '/admin../uberadmin/flag.txt'.",
+        "Suggested using a query parameter.",
+        "Visit http://easy-php.darkarmy.xyz/robots.txt",
+        "Visit the website."
+    ],
+    "Code Analysis": [
+        "Hypothesize that the web app could be stored in the same directory.",
+        "Inject a random '<h1>Hello</h1>' tag.",
+        "Evaluate the Python microservice",
+        "Research if 'ereg' instruction can be bypassed.",
+        "Loop through each character.",
+        "Implement '__defineSetter__' on 'converters'.",
+        "Examined the 'index.js' file"
+    ],
+    "Data Exfiltration": [
+        "Exfiltrate data."
+    ],
+    "Git Operations": [
+        "Use 'git clone https://github.com/sa7mon/S3Scanner.git'"
+    ],
+    "Server-side Operations": [
+        "We need an actively running server to receive this request and log the cookie.",
+        "Identify control over 'request.body.converter'.",
+        "Verify that the role was changed to 'admin'",
+        "Observe the response message suggesting the value could range from 1 to 20.",
+        "Used the command 'sqlmap -r invoice.req --tamper tamper.py --threads 10 -T news_article --dump'."
+    ],
+    "Miscellaneous": [
+        "Predict the next 'nonces'",
+        "Confirmed the successful acquisition of the flag",
+        "Read the message displayed: 'Not admin, no flag for you'",
+        "Perform a Server Side Request Forgery (SSRF) with the smuggled request."
+    ]
+}

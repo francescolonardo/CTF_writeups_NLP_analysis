@@ -1,0 +1,56 @@
+{
+    "Attribute Observation": [
+        "Observe that every object now has the `offline` attribute."
+    ],
+    "Function Analysis": [
+        "Identify the utilization within the 'send_sms' function"
+    ],
+    "Password Validation": [
+        "Ensure the user's name and password are equal to the secret"
+    ],
+    "Redirect Exploitation": [
+        "Identified the exploitation of a 302 redirect."
+    ],
+    "Endpoint Interaction": [
+        "Submit a URL to the '/share' endpoint.",
+        "Requested the '/FLAG' endpoint.",
+        "Received a PDF file from '/circle/one/' endpoint."
+    ],
+    "Cookie Manipulation": [
+        "Decode the cookie using base64 decoding",
+        "Used the discovered page URL (`http://0.0.0.0/Secret_admin_cookie_panel`).",
+        "Replace the JWT token with the admin token.",
+        "Send the document cookies to an attacker-controlled server."
+    ],
+    "Code Manipulation & Exploitation": [
+        "Identify that the 'magic code' is present in the payload returned by the server",
+        "Rename duplicated file to indicate shell",
+        "Look into how PHP removes whitespaces from input parameters' names.",
+        "Use the 'fread' and 'fopen' functions to craft a payload to read 'config.php'",
+        "Use a technique to disguise a valid phar file.",
+        "Bypass the regex using the provided loophole.",
+        "Perform XSS attack."
+    ],
+    "Website Interaction & Exploration": [
+        "Receive the flag 'inctfi{IDK_WHY_I_EVEN_USED_REDIS_HERE!!!}'.",
+        "Recalled an instance from a known website (crunchyroll.com).",
+        "Manage to access the admin's note.",
+        "Discover the app at `http://whatever.domain.com/app/`.",
+        "Identify the goal of this CTF problem is to access local resources.",
+        "Identify the need to steal the saved note",
+        "Gained access to the login page.",
+        "Observe the website returning a code"
+    ],
+    "Database Exploitation": [
+        "Test characters against the SQL injection",
+        "Recognized that any values can be used for 'username', 'password', and 'salt' as long as the if condition is met",
+        "Test each column value"
+    ],
+    "File and Directory Manipulation": [
+        "Receive a response text.",
+        "Use the `dirb/wordlists/common.txt` wordlist."
+    ],
+    "OTP Brute Force": [
+        "Brute-forced the OTP character by character."
+    ]
+}

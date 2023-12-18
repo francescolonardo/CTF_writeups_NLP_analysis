@@ -1,0 +1,57 @@
+{
+    "Data Viewing & Manipulation": [
+        "Viewed the stored data",
+        "Verified that the obtained credentials do not provide the flag",
+        "Obtain table names from information_schema.tables",
+        "Observed that the prefix changed in the unsuccessful purchase.",
+        "Return the content of 'satellite.txt'.",
+        "Pull the details of the user with the proper role"
+    ],
+    "Web Application Analysis": [
+        "Locate the 'app.py' file",
+        "Visit the login page.",
+        "Noticed similarity to previous Drobots challenge.",
+        "Consider whether this could present an entry point if a vulnerability, such as Template Injection, can be exploited successfully.",
+        "Identify the route as '/getFile?file=admins'.",
+        "Discover several directories including /app and /flag.txt",
+        "Access the URL 'http://challs.houseplant.riceteacatpanda.wtf:30003/robots.txt'",
+        "Examined the 'package.json' file in the site source.",
+        "Determine that LibreOffice is the specific tool employed for document conversions.",
+        "Identify the app as a page.",
+        "Visited 'https://codeiiest.github.io/d4rks0c1ety.html'"
+    ],
+    "Authentication & Authorization": [
+        "Set up a wildcard DNS listener.",
+        "Locate a valid credential.",
+        "Use '' OR 1=1;#' as password for SQL injection",
+        "Attempted to login which returns 'User not active' error.",
+        "Submit an authentication request with a username.",
+        "Retrieve the flag.",
+        "Observe that this allows the server to pass the security checks and flag the token as true",
+        "Set the cookie to a given string",
+        "The 'Mutation' query allows change of a user password."
+    ],
+    "URL Manipulation": [
+        "Access the URL 'http://challs.houseplant.riceteacatpanda.wtf:30003/robots.txt'",
+        "Identify the route as '/getFile?file=admins'.",
+        "URL-encoded the payload."
+    ],
+    "Command-Line & Script Interaction": [
+        "Open the command line tool."
+    ],
+    "Code Execution & Injection": [
+        "Create final payload using all the methods of bypassing and injecting discovered.",
+        "The server misconstrues the public key as an HMAC private key due to the vulnerability.",
+        "Send JavaScript code to the browser instance."
+    ],
+    "Information Gathering & Analysis": [
+        "Read the challenge description and requirements",
+        "Examined the 'package.json' file in the site source.",
+        "The 'Mutation' query allows change of a user password.",
+        "Identify the id of the newly created user from the received user list.",
+        "Discovered that the 'uri' is appended to the backend URL using Python's urllib.parse.urljoin."
+    ],
+    "Miscellaneous": [
+        "Fame increase is hypothetically possible."
+    ]
+}

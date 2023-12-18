@@ -1,0 +1,56 @@
+{
+    "Context & File Manipulation": [
+        "Identified that 'ctx.state.user' equals to the 'username' cookie",
+        "Note that the PHP code renames the uploaded file with a random name while preserving the file extension",
+        "Inspect the Python file provided in the challenge.",
+        "Note the MongoDB storage of a password with username 'admin'.",
+        "Enumerate the folder content.",
+        "Discorded 'robots.txt' file at '?file=robots.txt'.",
+        "Change the value of the 'admin' field to 'true'.",
+        "Download the 'last-revision' file from the target server.",
+        "Observe the decoded flag.",
+        "Note that the execution of the PHP shell was unsuccessful",
+        "Obtained the payload from the decrypted jwt token",
+        "Use 'scandir' and 'file_get_contents' to browse through files in the '/etc' directory",
+        "Noted the usage of the Python script to generate CSS."
+    ],
+    "Web Interaction & Exploitation": [
+        "Receive a JWT(token).",
+        "Open the function addCaptcha() in the devtools",
+        "Confirm that the repo belongs to a user named Magpie Inc",
+        "Create a HTTP request.",
+        "Replace the existing `login` cookie",
+        "Set up a request with malicious cookie data",
+        "Set 'Content-Length: 0' for the first request.",
+        "Use 'Host: app@ATTACKER_URL' to bypass the validation",
+        "Used python3 payload.py | nc localhost 8000 to see the second flag on the receiving server.",
+        "Access the website of the challenge",
+        "Visit the home page of the challenge URL",
+        "Perform the necessary action to retrieve the flag."
+    ],
+    "Data Processing & Analysis": [
+        "Decode the base64 value.",
+        "Give SUID and SGID permissions to the binary.",
+        "The 'minimag' and 'bbcode' commands are used for parsing content into HTML in the post_view.tpl file",
+        "Discovered the latitude and longitude of the most frequently occurring src_ip",
+        "Note that the page wasn't setting any X-XSS-Protection header."
+    ],
+    "Code Execution & Scripting": [
+        "Write a Python script",
+        "Use 'scandir' and 'file_get_contents' to browse through files in the '/etc' directory",
+        "Used python3 payload.py | nc localhost 8000 to see the second flag on the receiving server.",
+        "Conduct research on vulnerabilities of Apache httpd 2.4.49."
+    ],
+    "Authentication & Authorization": [
+        "Understood the goal to read the 'flag.txt' file that requires root access"
+    ],
+    "Network & Server Interactions": [
+        "Use 'Host: app@ATTACKER_URL' to bypass the validation",
+        "Discovered the latitude and longitude of the most frequently occurring src_ip",
+        "Download the 'last-revision' file from the target server."
+    ],
+    "Data Retrieval & Observation": [
+        "Note the output as the flag",
+        "Observe the decoded flag."
+    ]
+}

@@ -1,0 +1,235 @@
+Analysis
+
+---
+
+    Reconnaissance:
+        Visit and observe website components.
+        Google search challenge or component descriptions.
+        Identify target system or objective.
+        Check for specific files or directories (e.g., robots.txt).
+        Identify accessible systems like Amazon S3, GitHub repositories, etc.
+        Enumerate file system or website structure.
+        Access provided links or URLs.
+        Review application or website functionality.
+        Research specific components (e.g., calendar plugins, cookies).
+        Examine specific configurations (e.g., Apache).
+
+    Source Code Analysis:
+        Inspect source code (HTML, JavaScript, CSS, PHP, etc.).
+        Review code for potential vulnerabilities or specific functions.
+        Decode or translate obfuscated or encoded code.
+        Identify purpose or logic in code.
+        Investigate code's vulnerable components or methods.
+        Investigate session management (e.g., cookies).
+        Identify initialization of specific variables or functions.
+        Analyze specific processes (e.g., CAPTCHA generation, JWT token creation).
+
+    User Interaction and Manipulation:
+        Interact with login forms or authentication mechanisms.
+        Modify or set HTTP headers (e.g., User-Agent, Referer).
+        Change request methods or data.
+        Create accounts or interact with user interfaces.
+        Inspect cookies and tokens.
+        Test functionalities (e.g., file upload, template injection).
+
+    Database Interaction:
+        Investigate database structure and tables.
+        Analyze database interaction and queries.
+        Identify database management systems used.
+
+    Endpoint and Network Interaction:
+        Identify or explore API endpoints.
+        Examine communication between client and server.
+        Explore exposed directories or paths.
+        Send requests to specific endpoints or paths with varied payloads.
+
+    Payload and Data Analysis:
+        Decode data formats (e.g., Base64, MD5).
+        Analyze data parameters or transmission methods.
+        Craft or modify attack payloads.
+        Convert or translate data formats.
+
+    Content Analysis:
+        Investigate presented content on pages.
+        Search for hidden information or patterns.
+        Check for vulnerabilities in specific components or plugins.
+
+    System and Configuration Analysis:
+        Analyze system properties or configurations.
+        Check for vulnerabilities in system components (e.g., Apache Tomcat).
+        Investigate configuration files.
+
+    Vulnerability Identification:
+        Discover specific vulnerabilities (e.g., SQL injection, XXE, SSTI).
+        Identify potential attack vectors or critical code sections.
+        Investigate the feasibility of specific attack types.
+
+    External Resources Interaction:
+        Clone repositories or access external data sources.
+        Interact with third-party platforms (e.g., jwt.io).
+        Examine commit histories or changes in repositories.
+
+---
+
+    Code and Source Inspection
+        Analyze the structure of the cookie.
+        Analyze the code of specific files (e.g., login.php.bak).
+        Analyze the PHP/HTML/JavaScript source code.
+        Inspect the response or the output.
+        Decode or decrypt contents.
+        Inspect specific attributes or functionalities (e.g., onclick).
+
+    Enumeration and Identification
+        Enumerate cookies, functions, or other web elements.
+        Identify vulnerabilities, attack vectors, or functionalities.
+        Identify available endpoints or specific files.
+        Identify the presence of specific components (e.g., login form).
+        Discover the availability of specific functions or files.
+    
+    Reconnaissance
+        Explore the website, pages, or its specific functionalities.
+        Connect to specific URLs or endpoints.
+        Analyze network traffic or specific network requests (e.g., POST requests).
+        Analyze the content of specific files (e.g., PCAP file).
+        Recon activities on the Internet (e.g., gather information).
+        Examine target system, website, or application.
+    
+    Authentication and Session Analysis
+        Analyze authentication mechanisms.
+        Analyze cookies or tokens related to authentication.
+        Check the validity or authenticity of tokens or sessions.
+    
+    Configuration and Setup Examination
+        Identify misconfigurations or potential attack vectors.
+        View server or system configurations.
+    
+    Tool and Technique Utilization
+        Use specific tools to analyze or exploit (e.g., Burp Suite, S3Scanner).
+        Craft specific payloads or queries.
+        Disable or modify specific browser functionalities (e.g., JavaScript).
+    
+    Library and Dependency Research
+        Identify the use of specific libraries (e.g., DOMPurify, mermaid).
+        Investigate known vulnerabilities or exploits related to specific libraries.
+    
+    Miscellaneous Analysis
+        Analyze challenge descriptions.
+        Refresh or revisit pages.
+        Perform specific tasks (e.g., URL encode payloads).
+
+---
+
+    Source Code Inspection
+        Inspecting application source code, CSS, JS files.
+        Analyzing server code, scripts, or attachments.
+        Examining specific functionalities or logic in code.
+
+    Reconnaissance & Identification
+        Identifying interesting components or files (e.g., package.json, login page, admin functionality).
+        Locating key parts of an application (e.g., API endpoints, hidden directories).
+        Initial observation and information gathering about the target.
+
+    Content Exploration
+        Exploring available endpoints, network traffic, or pages.
+        Checking for specific content or flags in various sections (e.g., in logs, directories, or files).
+        Investigating URLs, parameters, and behavior.
+
+    Decoding & Data Retrieval
+        Decoding JWT tokens, cookies, or other encoded data.
+        Retrieving specific values (e.g., pins, passcodes, flags).
+
+    Vulnerability Assessment
+        Identifying potential vulnerabilities, weakness, or unused functionalities.
+        Investigating specific types of vulnerabilities (e.g., SQL injection, XXE injection).
+        Analyzing server responses or headers for vulnerabilities.
+
+    Content & File Discovery
+        Accessing and examining specific files or directories (e.g., robots.txt, .git directory).
+        Directory scanning or busting.
+        Exploring file systems or extracting file content.
+
+    Tool & Technique Utilization
+        Using tools like Burp Suite, GraphQL Voyager, NIKTO, SQLMap.
+        Performing specific scans (e.g., NIKTO scan, open port scan).
+        Exploiting specific techniques like HTTP request smuggling.
+
+    Authentication & Session Analysis
+        Examining cookies, JWTs, or other session-related data.
+        Inspecting authentication methods, source codes, or mechanisms.
+        Bypassing security checks or restrictions.
+
+    Interaction & Behavior Analysis
+        Analyzing the behavior of the application upon certain interactions (e.g., input testing, character usage).
+        Observing redirections, responses, or other outcomes.
+        Investigating specific app behaviors (e.g., uploading grades, query behavior).
+
+    Configuration & System Analysis
+        Inspecting server, app, or system configurations.
+        Analyzing attached or linked files or settings.
+        Checking specific server attributes or settings (e.g., Nginx configuration, CSP settings).
+
+---
+
+Given the categories and sub-categories you've provided, I've attempted to merge and consolidate the topics in a structured and non-redundant manner. Here's the merged version:
+
+Reconnaissance & Identification
+    Visit, observe, and explore website components, functionalities, and structure.
+    Google search challenge or component descriptions.
+    Identify target system, objective, and accessible systems.
+    Enumerate file system, website structure, cookies, functions, or other web elements.
+    Initial observation and information gathering about the target.
+    Analyze network traffic or specific network requests (e.g., POST requests).
+
+Source Code & Content Inspection
+    Inspect and analyze application source code, CSS, JS, server code, scripts, attachments, HTML, JavaScript, PHP, etc.
+    Review code for potential vulnerabilities, logic, or specific functions.
+    Decode, decrypt, or translate obfuscated, encoded content or values (e.g., Base64, MD5).
+    Examine specific attributes, functionalities, or logic in code (e.g., onclick).
+
+User Interaction & Behavior Analysis
+    Interact with login forms, authentication mechanisms, and user interfaces.
+    Analyze the behavior of the application upon certain interactions.
+    Observing redirections, responses, or other outcomes.
+    Test functionalities (e.g., file upload, template injection).
+
+Endpoint, Network & Database Interaction
+    Investigate database structure, tables, interaction, and queries.
+    Identify or explore API endpoints, exposed directories, or paths.
+    Examine communication between client and server.
+    Send requests with varied payloads to specific endpoints or paths.
+
+Vulnerability Identification & Assessment
+    Discover specific vulnerabilities (e.g., SQL injection, XXE, SSTI).
+    Analyze server responses, headers, or website functionalities for vulnerabilities.
+    Identify potential attack vectors, weaknesses, or critical code sections.
+
+Content Exploration & File Discovery
+    Access, examine, and explore files or directories (e.g., robots.txt, .git directory, logs).
+    Directory scanning or busting and exploring file systems.
+    Check for vulnerabilities in specific components or plugins.
+
+Authentication & Session Analysis
+    Analyze authentication mechanisms, methods, and associated data.
+    Examine cookies, JWTs, or other session-related data.
+    Bypass security checks or restrictions.
+    Investigate session management (e.g., cookies, tokens).
+
+Configuration, System & Setup Analysis
+    Inspect server, app, system, and specific configurations (e.g., Apache, Nginx).
+    Analyze system properties, attached or linked files, or settings.
+    Investigate configuration files and potential misconfigurations.
+
+Tool, Technique & Payload Utilization
+    Use specific tools for analysis or exploitation (e.g., Burp Suite, SQLMap, NIKTO).
+    Craft, modify, or analyze attack payloads, queries, and data parameters.
+    Convert, translate or modify data formats and parameters.
+    Disable or modify browser functionalities (e.g., JavaScript).
+
+Library & Dependency Research
+    Identify and investigate specific libraries (e.g., DOMPurify, mermaid).
+    Research known vulnerabilities or exploits related to them.
+
+External Resources & Miscellaneous Analysis
+    Clone repositories, access external data sources, or third-party platforms.
+    Examine commit histories, changes in repositories, or other online activities.
+    Analyze challenge descriptions or specific tasks (e.g., URL encode payloads).

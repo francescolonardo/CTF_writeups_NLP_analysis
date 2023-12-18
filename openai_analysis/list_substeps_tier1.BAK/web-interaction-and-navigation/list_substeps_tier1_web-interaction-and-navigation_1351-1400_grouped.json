@@ -1,0 +1,59 @@
+{
+    "Page Visits and Navigations": [
+        "Found a public key in the /robots.txt file.",
+        "Observe the presence of a login form",
+        "Note that the number of pages is shown",
+        "Find the 'robots.txt' file"
+    ],
+    "Website Interactions and Inputs": [
+        "Set the token as a cookie.",
+        "Include the SQL injection payload in a complete request.",
+        "Use each character as the value for both 'pass' and the User-Agent header",
+        "Identify a cookie named 'admin_id : 0'",
+        "Locate the 'admin_id' cookie",
+        "Extract the flag from the HTML content of the response",
+        "Included the payload in the URL.",
+        "Included the new payload in the URL.",
+        "Ensure the payload visualizes and reads contents of 'flag.php'.",
+        "Discover 'scriptlet' endpoint",
+        "Set the value of the header 'answer' as 'Fear the Old Blood'",
+        "Include a calculation statement in the request",
+        "Tried a wrong HTTP verb.",
+        "Check the cookies being set.",
+        "Attempt authentication with the user created.",
+        "Examined the functionality endpoint '/files/'.",
+        "Crafted a malicious HTTP request.",
+        "Included a special character between 'Transfer-Encoding:' and 'chunked'.",
+        "Bypassed localhost address checks by setting the '$url' attribute to 'file:///var/www/html/config.php'.",
+        "Circumvented file extension checks on '.php' by replacing '.' character with '%252e'.",
+        "Manipulate the HTML structure",
+        "Create an insertion point",
+        "Create a secondary note",
+        "Pass the malicious note_id from the previous step",
+        "Discover the SQL Injection payload from the URL 'http://challs.houseplant.riceteacatpanda.wtf:30003/#3/**/union/**/select/**/null,null,null,text,null,null/**/from/**/posts'"
+    ],
+    "Flag Identification and Observation": [
+        "Retrieve the flag.",
+        "Observe that the submission is accepted.",
+        "Observe the flag after refreshing the page",
+        "Flag found: 'OOO{did you see my dog}'."
+    ],
+    "Code and Source Analysis": [
+        "Observe within the content of the page.",
+        "Identify the 'secret' tag which contains the flag.",
+        "Decode the ASCII representation to readable text using JavaScript console",
+        "Review the presented source code"
+    ],
+    "Security Vulnerability Recognition": [
+        "Attempted to induce an SQL injection by inputting the URL 'https://poems.asisctf.com/books.php?type=excerpt&id=0%27%20or%20id=%271'.",
+        "Recognize the potential CSRF vulnerability based on the CSRF token.",
+        "Ensure the known username 'true.grit@umbccd.io' remains intact in the manipulated request.",
+        "Deduced that two different strings should give the same md5 hash.",
+        "Discover that the guest sign in portal is not implemented",
+        "Craft a valid JWT with '31337' identity",
+        "Include the crafted JWT in the Authorization header"
+    ],
+    "Miscellaneous Actions": [
+        "Step 1: Insert the comment as a preview."
+    ]
+}

@@ -1,0 +1,57 @@
+{
+    "Server & Application Analysis": [
+        "Determine that the website is a Flask application.",
+        "Identify that the random numbers generated are not cryptographically secure.",
+        "Explain the syntax and usage of the SUBSTRING function.",
+        "Observed the server using 'Content-Length' header."
+    ],
+    "File System Access & Manipulation": [
+        "Retrieve the flag from the file \"flag.txt\".",
+        "After this, you should see the flag in your Flask terminal and in the 'cookies.txt' file.",
+        "Examined the index.php.",
+        "Fetch headers from /out/save.txt."
+    ],
+    "Exploitation & Vulnerability Assessment": [
+        "Modified '$mfa_token' to reference '$_correctValue' attribute.",
+        "Identify headers that require a token.",
+        "Decide to exploit the RCE vulnerability.",
+        "Tried to get the flag using the code provided when exploiting the log4j vulnerability.",
+        "Recognize it is intended for Server Side Request Forgery (SSRF)."
+    ],
+    "Web Navigation & Interaction": [
+        "Connect to the website at http://10.255.0.1:8010/",
+        "Connect to the website 'https://138.247.13.115.xip.io/'.",
+        "Figured out that the homepage is loaded as a result of an HTTP GET request to '/books.php?type=list'."
+    ],
+    "Code Analysis & Exploitation": [
+        "Use 'os.StartProcess' instead.",
+        "'req.ip' always pointed to the same IP address of the reverse proxy.",
+        "Use the newly created regex as the replacement."
+    ],
+    "Authentication & User Management": [
+        "Retrieved the link to the admin portal from student communication",
+        "Acquired the flag"
+    ],
+    "Information Gathering & Enumeration": [
+        "List all usable classes.",
+        "Examine the issued redirects",
+        "Tried all HTTP verbs for each endpoint.",
+        "Indicate another possible server."
+    ],
+    "Cryptography & Hash Decryption": [
+        "Note that only 'encoded_arr[0]' is known, and 'seed' is the actual character of 'msg' that we are trying to find.",
+        "Decrypted the MD5 hashes."
+    ],
+    "JWT & Token Manipulation": [
+        "Create a new JWT."
+    ],
+    "Miscellaneous": [
+        "Use the lazy-loaded image.",
+        "Given the /request endpoint from challenge.",
+        "Revisited the original payload."
+    ],
+    "JavaScript & Frontend Analysis": [
+        "Notice that the JavaScript code checks if the outcome equals 1337 to give the flag",
+        "Note that the relative paths now load scripts from the attacker's server."
+    ]
+}

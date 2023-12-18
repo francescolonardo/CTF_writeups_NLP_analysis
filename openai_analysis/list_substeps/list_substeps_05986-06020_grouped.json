@@ -1,0 +1,48 @@
+{
+    "Character Checking": [
+        "Check if the possible character is part of the flag."
+    ],
+    "Web Navigation & Interaction": [
+        "Received a webpage from the '/com/seaerch/' endpoint.",
+        "Remove '/_' in the URL's path.",
+        "Use the PHP /// uri.",
+        "Directed the admin to '/save.php'.",
+        "Discover the admin's subdomain.",
+        "Discover the article by PortSwigger",
+        "Examine the main screen with book selections.",
+        "Noted that the `/api/token` endpoint returns the current authentication token.",
+        "Identify that the service lists all the items in the mentioned directory.",
+        "Noticed the 'sanitize' function removes spaces from input.",
+        "Started testing for potential XPath injection points in the application."
+    ],
+    "Code Analysis": [
+        "Identified the BeautifulSoup module being used to sanitize HTML.",
+        "Identify the server's functioning port and host from the extracted main execution function.",
+        "Identified the dependencies 'md-to-pdf' and 'nunjucks' in the 'package.json' file.",
+        "Identify that '/sakura' allows interaction with the Redis cache.",
+        "Realized application is running Flask with MySQL."
+    ],
+    "Flag Manipulation": [
+        "Retrieve the flag.",
+        "Combine all the collected flag parts."
+    ],
+    "Payload and Injection": [
+        "Injected the crafted record to usurp the 'false' value in admin field.",
+        "Discover an alternative approach to bypass authentication",
+        "Injected payload for basic XSS execution with DOM Clobbering",
+        "Identified an SQL injection vulnerability.",
+        "Discover that using a sufficiently large 'id' can cause an out-of-bound memory read.",
+        "Started testing for potential XPath injection points in the application."
+    ],
+    "File Manipulation & Creation": [
+        "Create 'collision2.pdf' with the predetermined prefix."
+    ],
+    "Networking & Communication": [
+        "Encapsulated the second request within the chunked contents of the first request.",
+        "Sent the payload to the challenge webpage URL using a POST request",
+        "Use burp tool to execute the interception."
+    ],
+    "Cookie Manipulation": [
+        "Identified the 'login' cookie."
+    ]
+}

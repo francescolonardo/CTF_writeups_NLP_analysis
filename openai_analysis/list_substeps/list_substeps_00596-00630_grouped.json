@@ -1,0 +1,102 @@
+{
+    "Challenge Analysis": [
+        "Acknowledge that the challenge involves bypassing origin check",
+        "Observe the name of the challenge.",
+        "Examine the script",
+        "Viewed source code and observed 'shell_exec' usage with 'santa_mon.sh' script.",
+        "Inspect website's code.",
+        "Identify the flag exposed within 'app.py'",
+        "Understand what the code does."
+    ],
+    "Input Manipulation": [
+        "Test the character ']'",
+        "Include the cleaned, manipulated PDF data in 'collision1.pdf'.",
+        "Submit a CSS selector for a potential starting letter of the password",
+        "Replace the RANDOM placeholder in the URL with something random.",
+        "Specify the different IP address in the SQL query",
+        "Send a GET request to the target URL with each possible 'likeCookie' value (from 0 to 19).",
+        "Ran a JavaScript snippet to test different elements for vulnerabilities with the DOMPurify sanitizer."
+    ],
+    "Server Interaction": [
+        "Execute the brute force PHP script",
+        "Trigger the 'add_money_to_login' function through the 'render_template_string' function",
+        "Discover a new path /server-status",
+        "Discover the presence of a 'flag.txt' file",
+        "Download the 'print-flag' file by accessing 'http://lowdeep.insomnihack.ch/print-flag'.",
+        "Only 'index.php' was returned from the directory listing.",
+        "Perform a POST request to the /api.php endpoint with 'id', 'pw', 'c', 'c2', 'pas', and 'db' parameters, using path traversal to access the flag.",
+        "Specify the previous commit that contained the flag ('flag.jpg').",
+        "The execution of '.bashrc' occurs when the user 'manhndd' SSH-es into the server"
+    ],
+    "Web Navigation & Interaction": [
+        "Access the 'user' directory.",
+        "Identify a user profile.",
+        "Specify the different IP address in the SQL query",
+        "Found paths /, /logout, /login, /forgotpassword.html, /admin, and /dashboard.",
+        "Manipulate the file:// protocol",
+        "Recognized that /api is mapped to /.",
+        "Decide to open the Network tab.",
+        "Tried to load an external resource (JavaScript or stylesheet)"
+    ],
+    "File System Analysis": [
+        "Specify the different IP address in the SQL query",
+        "Identify the flag exposed within 'app.py'"
+    ],
+    "Code Analysis": [
+        "Observe the name of the challenge.",
+        "Examine the script",
+        "Viewed source code and observed 'shell_exec' usage with 'santa_mon.sh' script.",
+        "Inspect website's code.",
+        "Recognized that this SQL statement is equivalent to SELECT username, password FROM users WHERE username='adm' || 'in' || ''",
+        "Found paths /, /logout, /login, /forgotpassword.html, /admin, and /dashboard.",
+        "Identify the flag exposed within 'app.py'",
+        "Recognized that /api is mapped to /.",
+        "The execution of '.bashrc' occurs when the user 'manhndd' SSH-es into the server",
+        "Understand what the code does."
+    ],
+    "Data Manipulation": [
+        "Include the cleaned, manipulated PDF data in 'collision1.pdf'.",
+        "Submit a CSS selector for a potential starting letter of the password",
+        "Perform a POST request to the /api.php endpoint with 'id', 'pw', 'c', 'c2', 'pas', and 'db' parameters, using path traversal to access the flag."
+    ],
+    "Network Analysis": [
+        "Discover a new path /server-status",
+        "Download the 'print-flag' file by accessing 'http://lowdeep.insomnihack.ch/print-flag'.",
+        "Tried to load an external resource (JavaScript or stylesheet)"
+    ],
+    "API Interaction": [
+        "Perform a POST request to the /api.php endpoint with 'id', 'pw', 'c', 'c2', 'pas', and 'db' parameters, using path traversal to access the flag."
+    ],
+    "SQL Injection": [
+        "Recognized that this SQL statement is equivalent to SELECT username, password FROM users WHERE username='adm' || 'in' || ''",
+        "Specify the different IP address in the SQL query",
+        "Send a GET request to the target URL with each possible 'likeCookie' value (from 0 to 19)."
+    ],
+    "Code Injection": [
+        "Execute the brute force PHP script",
+        "Trigger the 'add_money_to_login' function through the 'render_template_string' function"
+    ],
+    "File Access": [
+        "Discover the presence of a 'flag.txt' file"
+    ],
+    "Web Scraping": [
+        "Specify the different IP address in the SQL query",
+        "Found paths /, /logout, /login, /forgotpassword.html, /admin, and /dashboard.",
+        "Only 'index.php' was returned from the directory listing."
+    ],
+    "Command Execution": [
+        "Execute the brute force PHP script",
+        "Trigger the 'add_money_to_login' function through the 'render_template_string' function",
+        "Run a JavaScript snippet to test different elements for vulnerabilities with the DOMPurify sanitizer.",
+        "Replace the RANDOM placeholder in the URL with something random.",
+        "Specify the different IP address in the SQL query",
+        "Download the 'print-flag' file by accessing 'http://lowdeep.insomnihack.ch/print-flag'.",
+        "The execution of '.bashrc' occurs when the user 'manhndd' SSH-es into the server"
+    ],
+    "Dom Manipulation": [
+        "Ran a JavaScript snippet to test different elements for vulnerabilities with the DOMPurify sanitizer."
+    ],
+    "API Manipulation": [
+        "Perform a POST request to the /api.php endpoint with 'id', 'pw', 'c', 'c2', 'pas', and 'db' parameters, using path traversal to access the flag."
+    ]
+}

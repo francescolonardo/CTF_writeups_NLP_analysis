@@ -1,0 +1,92 @@
+1. Web Interaction and Navigation
+    1.1 Web Navigation and Interaction: Activities associated with visiting, accessing, and generally interacting with web pages, including the progression through different stages of a web challenge.
+    1.2 Web Element Analysis and Manipulation: This concerns the identification, examination, and modification of web components, such as HTML elements and forms, as well as the analysis of their frontend behaviors.
+    1.3 User Interaction and Behavior: Actions revolving around tracking, analyzing, and manipulating user behaviors on the web. This includes the way users fill out forms, take notes, and iterate over repeated actions.
+    1.4 URL and Browser Analysis and Manipulation: Activities focusing on examining and altering URLs and browser behaviors, including the analysis of parameters and the use of debugging tools.
+    1.5 HTTP and Network Interaction: Actions related to the examination and modification of HTTP elements and network communications, encompassing headers, requests, responses, and broader network behaviors.
+    1.6 API and Endpoint Interaction: Concerns the analysis and modification of web APIs and endpoints, including interactions with, and manipulations of, these components.
+    1.7 Configuration, Errors and Feedback: This category involves examining and manipulating web configurations, handling errors, and analyzing feedback mechanisms on web platforms.
+    1.8 Miscellaneous Actions and Operations: A catch-all for various web-related actions and operations that don't neatly fit into the other sub-categories, such as identifying content types or extracting specific data.
+
+2. Authentication, Session, and User Management
+    2.1 Authentication and Session Management: Activities focusing on understanding and manipulating authentication mechanisms, as well as the management and analysis of user sessions.
+    2.2 Credentials, Token, and Cookie Management: Actions related to the handling, discovery, and management of credentials, tokens, and cookies, including their associated processes and techniques.
+    2.3 User Management, Access Control, and Permissions: Pertains to the management of user access, including the processes of registration, control of inappropriate or unauthorized access, and the general maintenance of user permissions.
+
+3. Data Analysis, Manipulation, and Storage Interactions
+    3.1 Data Analysis and Processing: Activities concerned with interpreting and processing data, analyzing systems, and manipulating specific payloads.
+    3.2 Data Manipulation and Exploitation: Actions related to altering and taking advantage of data, including various forms of injection and user input manipulations.
+    3.3 Data Storage and Retrieval: Pertains to the storage, management, and extraction of data, encompassing both files and structured datasets.
+    3.4 File and Data Interaction: Actions focused on analyzing, managing, and accessing files and directories on a web platform or associated systems.
+    3.5 Database Interaction and Exploitation: This sub-category revolves around database analysis, exploitation techniques, and manipulations, such as SQL injections.
+    3.6 Advanced Data and File Processing: Deals with specialized data and file processing tasks, including the analysis and manipulation of media files and PDFs.
+    3.7 Logging and Monitoring: Activities concerning the logging and tracking of data and user actions on web platforms and systems.
+    3.8 Miscellaneous: A catch-all for various data-related actions and processes that don't neatly fit into the other sub-categories, such as data exfiltration.
+
+4. Code, Application, and Script Analysis
+    4.1 Code and Script Analysis: Pertains to the deep-dive inspection and understanding of codebases, scripts, and the technology stacks behind them, including reverse engineering efforts.
+    4.2 Web Application and Environment Analysis: Actions surrounding the examination and testing of web applications, including their server environments and directory structures.
+    4.3 Web Content and Structure Analysis: Addresses the structural analysis of web content, including the examination of URLs, strings, and characters found on web platforms.
+    4.4 Syntax, Pattern, and Content Analysis: Focuses on identifying, understanding, and validating patterns and structures present in code and other digital content.
+    4.5 Miscellaneous and General Actions: Broadly covers actions related to understanding documentation, concepts, and recognizing functionalities within applications and scripts.
+
+5. Exploitation Techniques and Payload Handling
+    5.1 Information Gathering and Analysis: Activities centered around the discovery and understanding of system vulnerabilities.
+    5.2 Web Requests and Interactions: Addresses the understanding, modification, and handling of web requests and their associated interactions.
+    5.3 Payload Handling and Design: Revolves around designing, refining, and executing specific payloads against systems or applications.
+    5.4 Exploit Development and Execution: Encompasses the process of creating, testing, and utilizing exploits, including leveraging various tools.
+    5.5 Specific Exploitation Techniques: Actions and techniques related to executing targeted attacks, such as injection attacks or bypassing restrictions.
+    5.6 Manipulation and Exploitation Techniques: Techniques associated with altering data or system configurations to gain unauthorized access or privileges.
+    5.7 File Inclusion and XML Exploitation: Techniques targeting vulnerabilities related to XML processing and file inclusion mechanisms.
+    5.8 Other Actions and Miscellaneous: Encompasses supplementary exploitation actions and activities, including post-exploitation investigations.
+
+6. Network and System Analysis
+    6.1 Server Analysis: Activities related to understanding the setup, configuration, vulnerabilities, and interactions of servers.
+    6.2 Code and Configuration Examination: Deep-dive analysis of source codes, server configurations, headers, and advanced techniques such as reverse engineering.
+    6.3 Network Communication and Identification: Pertains to the understanding and management of network components, including traffic and protocol analysis.
+    6.4 Request and Response Management: Activities related to the analysis, handling, and understanding of network requests, responses, and associated payloads.
+    6.5 Data Management, Retrieval, and Exploitation: Actions centered around manipulating, transferring, and exploiting data within systems and networks.
+    6.6 IP and DNS Analysis: Focuses on examining and understanding IP addresses, domain name systems, and their associated resolutions and queries.
+    6.7 Command Execution and Exploitation: Revolves around executing and exploiting system commands to gain unauthorized access or privileges.
+    6.8 HTTP Specific Analysis: In-depth analysis of HTTP-specific components, such as commands and parameters.
+    6.9 Miscellaneous System Analysis: A catch-all for other analysis actions related to systems that don't neatly fit into the aforementioned sub-categories.
+
+7. Debugging, Monitoring, and Troubleshooting
+    7.1 Web Interactions and Analysis: Activities associated with web development, testing, and understanding how different web components function and interact.
+    7.2 Data Validation, Verification, and Analysis: Actions that ensure the accuracy and legitimacy of data, flags, and other actions on a web platform.
+    7.3 Monitoring and Observation: Revolves around tracking and understanding system processes, responses, and other observable metrics.
+    7.4 Debugging and Error Handling: Techniques and actions taken to identify, understand, and resolve errors and issues within applications and systems.
+    7.5 Input, Output, and Navigation: Focuses on understanding, observing, and analyzing various inputs, outputs, and navigational behaviors on web platforms.
+    7.6 Information Gathering and Payload Management: Activities related to gathering hints, understanding guidelines, and testing various payloads.
+    7.7 Tool and Configuration Analysis: Revolves around leveraging browser tools and analyzing various network configurations and behaviors.
+    7.8 Preventive Measures and Character Handling: Actions and techniques related to preventing certain behaviors and understanding character-based inputs and outputs.
+
+8. Cryptography, Encoding, and Decoding Techniques
+    8.1 Cryptographic Techniques: Encompasses the study, analysis, and application of cryptography, including hashing and handling of JWTs.
+    8.2 Encoding, Decoding, and Data Representation: Focuses on actions related to encoding data into formats like Base64, compressing data, serialization, and IP address conversion.
+    8.3 CAPTCHA Analysis and Solving: Techniques and methodologies dedicated to understanding and resolving CAPTCHAs.
+    8.4 Observational Techniques: Methods and strategies used to observe and analyze data patterns and behaviors without direct interaction.
+
+9. Tools, Scripting, and System Interactions
+    9.1 Tool Manipulation: Actions related to using and configuring different tools, including third-party software.
+    9.2 System and Server Interactions: Engages with system-level actions, server setups, managing network interactions, and understanding system permissions.
+    9.3 Scripting and Automation: Techniques centered on creating, running, and automating scripts, as well as modifying existing scripts for unique tasks.
+    9.4 File and Directory Operations: Actions related to managing files and directories, and the execution of commands interacting with these entities.
+    9.5 Data and Input Manipulation: Techniques to manipulate data or input in desired ways, craft payloads, and observe and adjust tokens.
+    9.6 Web, Network and Service Interactions: Engages in interactions with websites, networks, and services, focusing on requests, responses, and various APIs.
+    9.7 Command Elements and System Interaction: Pertains to the handling of command-line interactions, system configurations, and automated processes.
+    9.8 Script Language Interactions: Focuses on actions and challenges specific to interactions with scripting languages, particularly PHP and Python.
+
+10. Information Gathering and Security Analysis
+    10.1 Vulnerability Research: Activities centered around identifying, analyzing, and exploiting vulnerabilities, as well as gaining knowledge about them.
+    10.2 Reconnaissance and Server Discovery: Techniques associated with understanding problems, enumerating targets, gathering information, and gaining insights into systems and services.
+    10.3 Web Security Concepts and Techniques: Encompasses the analysis of web sites/applications, discovery of network components, understanding security postures, and exploring files and directories for vulnerabilities.
+
+11. Documentation, Strategy, and Miscellaneous Techniques
+    11.1 Understanding and Analyzing: Involves activities aimed at understanding and categorizing challenges, and gleaning insights from web applications.
+    11.2 Strategy Development and Implementation: Pertains to formulating and executing strategies, understanding game mechanics, and reviewing challenge documentation.
+    11.3 Documentation and Information Review: Techniques related to reviewing documentation, examining codes, and retrieving pertinent information.
+    11.4 Technique Deployment: Encompasses actions related to deploying and testing different techniques, iterating over methods, and applying time-based strategies.
+    11.5 Note-taking and Review: Activities related to recording observations, conducting research, and analyzing findings.
+    11.6 Version Control Management: Methods for managing, reviewing, and gaining insights from version control systems and repositories.
+    11.7 Miscellaneous Techniques: An umbrella for diverse techniques, strategies, and actions not strictly categorized elsewhere.

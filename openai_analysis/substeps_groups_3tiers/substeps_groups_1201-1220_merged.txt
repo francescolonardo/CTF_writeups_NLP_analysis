@@ -1,0 +1,31 @@
+**I. Web Access and Interaction**
+   1. Website Access & Navigation
+   2. Website Navigation & Interaction
+   3. HTTP Headers
+   4. Web API Exploitation
+
+**II. User Verification & Exploitation**
+   1. Session & Authentication
+   2. Password Exploitation
+   3. Username Scanning
+
+**III. Data Analysis**
+   1. CSV Analysis
+   2. Hashing Requirement Analysis
+
+**IV. Server and Network Manipulation**
+   1. Server Blocking
+   2. Server Debugging
+   3. Network Analysis & Exploitation
+   4. Bind Shell Manipulation
+   5. Command Execution & Network Communication
+
+**V. File and System Exploration**
+   1. System Exploration & Navigation
+   2. File Manipulation & Flag Retrieval
+   3. File Handling
+   4. Directory and File Manipulation
+
+**VI. Database Interactions**
+   1. SQL Payload
+   2. Server & Database Interactions

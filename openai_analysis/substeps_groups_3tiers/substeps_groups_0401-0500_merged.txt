@@ -1,0 +1,108 @@
+Tier 1: Information Gathering & Reconnaissance
+- Tier 2: Directory Enumeration
+- Tier 2: Endpoint & Route Mapping
+- Tier 2: Endpoint Identification
+- Tier 2: Backend Server & Flag Enumeration
+- Tier 2: Web Technology & Infrastructure
+- Tier 2: List Manipulation & Data Extraction
+- Tier 2: Networking & Traffic Analysis
+- Tier 2: Network Traffic & Manipulation
+- Tier 2: Packet Analysis
+- Tier 2: Network Communication & Protocols
+- Tier 2: Information Gathering & System Analysis
+- Tier 2: Website Analysis
+- Tier 2: Code Analysis and Inspection
+- Tier 2: IP Analysis
+- Tier 2: Database Exploration
+- Tier 2: Laravel Panel Exploration
+- Tier 3: AWS Lambda
+
+Tier 1: Exploitation & Attack Strategies
+- Tier 2: User Input & Form Manipulation
+- Tier 2: API Manipulation
+- Tier 2: Server-Side Code Manipulation
+- Tier 2: Environmental Variable Pollution
+- Tier 2: URL Access
+- Tier 2: Command Execution
+- Tier 2: JSON Payload Manipulation
+- Tier 2: Token Validation
+- Tier 2: DOM Manipulation & File Loading 
+- Tier 2: Web Shell Usage
+- Tier 2: Terminal Usage
+- Tier 2: Server-Side Template Injection
+- Tier 2: Input Validation & Sanitization
+- Tier 2: Remote Code Execution & File Inclusion
+- Tier 2: SQL Injection & Database Analysis
+- Tier 2: SQL Injection & String Manipulation
+- Tier 2: Input Parameter Manipulation
+- Tier 2: Web Application Navigation
+- Tier 2: Request Manipulation & Exploitation
+- Tier 2: API Investigation
+- Tier 2: Server-side Attacks
+- Tier 2: Log Manipulation
+- Tier 2: Remote Code Execution (RCE)
+- Tier 3: Vulnerability Testing
+- Tier 3: XSS & CSRF
+
+Tier 1: Web Interaction and Manipulation
+- Tier 2: Looping & Guessing
+- Tier 2: Web Page Interaction
+- Tier 2: JavaScript Bypass & Analysis
+- Tier 2: Window Manipulation 
+- Tier 2: File System Access & Manipulation
+- Tier 2: Message Validation Analysis
+- Tier 2: Websocket Manipulation
+- Tier 2: WASM Module Analysis
+- Tier 2: JavaScript & Scope Analysis
+- Tier 2: External Script Usage
+- Tier 2: User Interaction & Authorization
+
+Tier 1: Security Analysis and Testing
+- Tier 2: Behavior Observation & Vulnerability Identification
+- Tier 2: File System & Server Interaction
+- Tier 2: Password Cracking
+- Tier 2: Vulnerability Recognition
+- Tier 2: Password-related Actions
+- Tier 2: Vulnerability Discovery & Testing
+- Tier 2: File Manipulation & Content Modification
+- Tier 2: Code and Source Code Analysis
+- Tier 2: File Manipulation & Recovery
+- Tier 2: Variable Verification
+- Tier 2: User Permissions & Access Control
+- Tier 3: CAPTCHA Understanding 
+
+Tier 1: Networking and Data Transmission
+- Tier 2: Client Communication & Data Transmission
+- Tier 2: File Inclusion Vulnerability
+- Tier 2: HTTP Requests & Response Manipulation
+- Tier 2: Crafting Web Requests
+- Tier 2: PCAP Analysis
+
+Tier 1: Database Exploration and Manipulation
+- Tier 2: Service Analysis & Manipulation
+- Tier 2: Database Manipulation
+- Tier 2: Credentials Verification
+
+Tier 1: Documentation and Research 
+- Tier 2: Exploit Database
+- Tier 2: Documentation & Research
+
+Tier 1: Web Tool & Library Understanding
+- Tier 2: Web Framework & Library Analysis
+- Tier 2: Game play & Strategy
+
+Tier 1: Authentication & Authorization
+- Tier 2: Account Manipulation
+- Tier 2: User Identification
+- Tier 2: JSON Web Tokens (JWT)
+
+Tier 1: Miscellaneous Actions 
+- Tier 2: External Data Handling
+- Tier 2: Abstract Actions
+- Tier 2: Event Listeners & Data Manipulation 
+- Tier 2: Web Application Features
+- Tier 2: General Actions
+- Tier 2: Conversion and Output Analysis
+- Tier 2: Browser & Webpage Interaction
+- Tier 2: Website Interaction & Exploration
+- Tier 3: PHP Specific Techniques

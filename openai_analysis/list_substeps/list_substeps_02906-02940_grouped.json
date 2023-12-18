@@ -1,0 +1,51 @@
+{
+    "Python Code Analysis": [
+        "Notice the use of Python's eval() function.",
+        "Identify a key called 'likeCookie' with a value of false.",
+        "Consider the file indicative of the flag for the challenge.",
+        "Identified the input.",
+        "Identify that the clause cannot be executed directly on 'p' as it 'is not iterable', and find a way to convert it to a string using concatenation.",
+        "Passed through conditions checking for specific value comparisons.",
+        "Suggested that unsanitized 'shell_exec' function allows for potential shell command exploits."
+    ],
+    "Web Application Vulnerabilities": [
+        "Identified a loophole in the 'search' feature.",
+        "Noticed that '<Directory />' is incorrectly set to refer to the filesystem directory and not the web root.",
+        "Observed that the 'basename()' function ignores invalid characters",
+        "Understand that 'notes.count' returns the count of notes that pass the filter.",
+        "Understand that TODO notes of users can be read by enumerating URLs in a certain format.",
+        "Identify that these keywords are sourced from the author of the CTF challenge",
+        "Suggested that unsanitized 'shell_exec' function allows for potential shell command exploits.",
+        "Discovered that 'export_db' function could be exploited to read file contents if the passcode was correct."
+    ],
+    "Command Execution": [
+        "Revealed that a 'vim' command must be used.",
+        "Execute 'cat index.php' command",
+        "Use print to display the output",
+        "Included the newly edited admin jwt token in the request",
+        "Retrieve content of index.php file",
+        "Listed environment variables."
+    ],
+    "Payload Manipulation": [
+        "Determine the payload to be inserted.",
+        "URL-encoded the new payload.",
+        "Simultaneously wrote a Python script",
+        "Modify the value of the admin cookie.",
+        "Gained a reverse shell by invoking the Lambda function",
+        "Set the '$method' attribute in the serialized object to be 'doit'.",
+        "Modify the location of the flag component in the XML",
+        "Trigger the execution of the flag_dispenser command.",
+        "Identify the flag in the URL."
+    ],
+    "Server Interaction": [
+        "Perform GET request to host https://space.sdc.tf with the endpoint /api/status."
+    ],
+    "Database Exploration": [
+        "Discover the flag 'rwctf{t0-h4ck-$kynet-0r-f1ask_that-Is-th3-questi0n}' in the 'secret_key' column of the database.",
+        "Deduce that it is MySQL.",
+        "Share the generated URL with the admin."
+    ],
+    "Code Analysis": [
+        "Notice the recursive nature of the filtering."
+    ]
+}

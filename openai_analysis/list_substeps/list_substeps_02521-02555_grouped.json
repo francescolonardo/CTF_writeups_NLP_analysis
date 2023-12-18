@@ -1,0 +1,60 @@
+{
+    "Application Exploration": [
+        "Read the footer of the application.",
+        "Read the given challenge.",
+        "View the source code of the program.",
+        "Read the Apache configuration file.",
+        "Analyze the read files page",
+        "Identify two JavaScript files"
+    ],
+    "Code Analysis": [
+        "Identify blacklisted characters mentioned in the code.",
+        "Identify that developers may have used blacklisting to prevent path traversal.",
+        "Identify the code that checks for a 4 digit pin.",
+        "Identify 'mec' as relating to a WordPress Plugin."
+    ],
+    "Server Interaction": [
+        "Make a GET request to /login/ to trigger the deserialization.",
+        "Include '/tmp/pwn.php' using LFI.",
+        "Use path traversal to get the SSH key.",
+        "Receive an error message that the IP address was not in the whitelist.",
+        "Identify the presence of a Git repository in the target URL (http://meme-stash.darkarmy.xyz/).",
+        "Request 'nonces' from 'https://naas.2019.chall.actf.co/nonceify'"
+    ],
+    "Exploitation Techniques": [
+        "Exploit Shellshock vulnerability",
+        "Bypass the login function successfully due to successful SQL injection.",
+        "Further exploited the SSTI vulnerability by crafting a URL that would read the contents of a 'flag.txt' file on the server using built-in Python functions within the Jinja2 template."
+    ],
+    "Web Navigation & Interaction": [
+        "Navigate to the bottom of the results.",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges."
+    ],
+    "File Manipulation": [
+        "Replaced the current 'last-revision' file with the downloaded one.",
+        "Decrypt the 'flag.png.encrypted' file.",
+        "Upload the zip file."
+    ],
+    "Function Execution": [
+        "Execute the function"
+    ],
+    "Data Manipulation": [
+        "Recognized the potential for optimization.",
+        "Identify that '$regex' allows regex patterns for note contents.",
+        "Replace the 'with' value with the word 'flag'.",
+        "Identified that the second column contains usernames.",
+        "Identify that the request was double proxied with Apache.",
+        "Verify that the 'language' parameter is indeed changed to 'flag.txt'."
+    ],
+    "Password Cracking": [
+        "Created a Python script for a brute-force attack on the prefix.",
+        "Continue script until full password is discovered",
+        "Use the new password."
+    ],
+    "Alert Exploitation": [
+        "Recognize that the challenge involves exploiting a page to pop up an alert."
+    ]
+}

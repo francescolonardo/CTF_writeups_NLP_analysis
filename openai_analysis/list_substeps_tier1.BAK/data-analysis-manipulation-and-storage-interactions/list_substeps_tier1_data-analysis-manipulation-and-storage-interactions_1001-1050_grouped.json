@@ -1,0 +1,88 @@
+{
+    "HTML Inspection": [
+        "Inspect the source HTML."
+    ],
+    "URL Manipulation": [
+        "Execute a SQL query via URL manipulation",
+        "Execute a SQL query via URL manipulation",
+        "Execute a SQL query via URL manipulation",
+        "Input the URL 'https://poems.asisctf.com/books.php?type=excerpt&id=0%27%20union%20select%201%20%23' to further test for vulnerabilities.",
+        "Executed the URL."
+    ],
+    "SQL Injection": [
+        "Make the decision to use a UNION SELECT based query",
+        "Discover that the site is also vulnerable to Local File Inclusion (LFI)",
+        "Use LFI to access the code of the 'flag' resource in the 'deleted' folder",
+        "Perform SQL Injection to read all posts from 'posts'",
+        "Use the newly crafted URL for the website response check."
+    ],
+    "Server Analysis": [
+        "Examined the website's '.git' folder",
+        "Identify that the valid signature can be obtained from the .env file",
+        "Identify that the code is reading an HTTP header.",
+        "Download all the contents of the Git repository from the website."
+    ],
+    "Token Analysis": [
+        "Identified the need for a valid jwt token",
+        "Analyze the JWT"
+    ],
+    "Password Analysis": [
+        "Note that the password length is less than 30 characters",
+        "Identify an additional control which blocks SQL injection if password contains the number '1'."
+    ],
+    "Payload Analysis": [
+        "Identify that the 'magic code' is present in the payload returned by the server",
+        "Create a crafted 'id' parameter.",
+        "URL-encoded the payload."
+    ],
+    "Directory Analysis": [
+        "Identify server directories",
+        "Enumerate root directory"
+    ],
+    "Hexadecimal Analysis": [
+        "Determine it is a hexadecimal representation",
+        "Use hexadecimal content"
+    ],
+    "Text Analysis": [
+        "Use an editor",
+        "View PHP source code"
+    ],
+    "Cookie Analysis": [
+        "Analyze the browser cookies",
+        "Analyze the browser cookies.",
+        "Discovered two strange cookies: 'frequency' and 'transmissions'.",
+        "Script retrieves cookies from the target page."
+    ],
+    "Header Analysis": [
+        "Inspect the format of request packets."
+    ],
+    "Response Analysis": [
+        "Analyze the format of response packets.",
+        "Retrieve the flag from the response page."
+    ],
+    "Hash Analysis": [
+        "Checked and confirmed both strings had the same md5 hash."
+    ],
+    "String Analysis": [
+        "Identify the ASCII representation within the encoded string"
+    ],
+    "Value Analysis": [
+        "Find the correct value for the cookie 'otadmin' (\"hash\": 389)"
+    ],
+    "Class Usage": [
+        "Display the content of 'flag.txt' remotely using the identified class"
+    ],
+    "Crafted Record Injection": [
+        "Injected the crafted record to usurp the 'false' value in admin field."
+    ],
+    "Range Header Exfiltration": [
+        "Make a GET request with a 'Range' HTTP header to exfiltrate the original /secret.html page."
+    ],
+    "Hidden Data Analysis": [
+        "Look for any hidden or obscured data."
+    ],
+    "File Download": [
+        "Download the file named configs.zip.",
+        "Download the 'print-flag' file by accessing 'http://lowdeep.insomnihack.ch/print-flag'."
+    ]
+}

@@ -1,0 +1,49 @@
+{
+    "Source Code Analysis": [
+        "Reveal the source code of 'config.php'",
+        "Look at the JavaScript file in the webpage.",
+        "Identified that an error was thrown during rendering.",
+        "Find the 'access_log' class in authentication.php",
+        "Find the 'subprocess.Popen' class.",
+        "Find faulty secret key handling in the Python source code."
+    ],
+    "Information Discovery": [
+        "Start searching each revision.",
+        "Discovered 'Report Vulnerability' message",
+        "Found API endpoint details in the downloaded files",
+        "Search for 'vulnerability' in the GitHub repository's Issues",
+        "Found a known vulnerability (CVE-2019-17221) linked with PhantomJS/2.1.1."
+    ],
+    "Input Manipulation": [
+        "Submit a single comma as input.",
+        "Identified a mutation with the `<table>` element.",
+        "Discover that the app uses curl for certain inputs.",
+        "Interpreted how 'pkg' and 'pkgPath' can be controlled.",
+        "Identify and exploit vulnerabilities present in the Apache server.",
+        "Controlled 'pkg' by polluting '__proto__.data'."
+    ],
+    "File and Data Manipulation": [
+        "Upload enough bytes to exceed 10 records.",
+        "Find upload.php in the source.zip file.",
+        "Inspect the returned results after uploading the barcode.",
+        "Understand this switch allows the execution of custom code within the app",
+        "Receive the Base64 encoded png file on the local machine.",
+        "Automate the full exploit chain in solve.py.",
+        "Get the cookie's value."
+    ],
+    "Web Navigation & Interaction": [
+        "Send a request to '/pleb.mysub.dnsbin.zhack.ca'.",
+        "Connect to the website 138.247.13.115.",
+        "Visit the '/login' route.",
+        "Open the target URL",
+        "Inspect the HTML source code of the admin page"
+    ],
+    "Security Analysis": [
+        "Extract the flag from the response received on the callback URL.",
+        "Identify that the cookie is set with the flag '35C3_LOG_ME_IN_LIKE_ONE_OF_YOUR_FRENCH_GIRLS'",
+        "Determine that the server's response suggests Server Side Template Injection."
+    ],
+    "Code and Script Execution": [
+        "Generate an introspection query for graphql."
+    ]
+}

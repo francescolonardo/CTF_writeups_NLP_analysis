@@ -1,0 +1,70 @@
+{
+    "Message Observations": [
+        "Observe the two types of messages: 'Problems with Profile' and 'Get premium account'"
+    ],
+    "Variable Analysis": [
+        "Note that the 'name' variable refers to 'window.name'."
+    ],
+    "Output Extraction": [
+        "Output the password string and the trimmed section of the server response."
+    ],
+    "Mathematical Calculation": [
+        "Enter '1' for 2 + 2 - 3 = ?"
+    ],
+    "SQL Injection": [
+        "Input the SQL injection payload in the 'username' field as `username=admin&password=' or '1`.",
+        "Retrieved the flag by dumping data from 'startup_users' table again, this time concatenating 'wordpass' values using the GROUP_CONCAT function."
+    ],
+    "Admin Alteration": [
+        "Have the intention to alter the 'admin' value.",
+        "Input the new cookie."
+    ],
+    "Web Navigation": [
+        "Visited the challenge link",
+        "Proceed to send a GET request to the provided URL if the IP is not private.",
+        "Specify the URL http://35.207.120.163.",
+        "Visit the URL with the payload '?icecream={{globals()}}'.",
+        "Attempt to connect to http://ctfchallenges.ritsec.club:4000/api/normal.",
+        "Find that the read endpoint is '/admin'."
+    ],
+    "API Interaction": [
+        "Include request body with 'logging' attribute set to true."
+    ],
+    "File Access": [
+        "Access the flag.txt file.",
+        "Verify that the `database.sql` file contains password hashes for a manager and admin user."
+    ],
+    "Code Analysis": [
+        "Analyze the PHP script."
+    ],
+    "Terminal Usage": [
+        "Launch terminal."
+    ],
+    "Exploit Strategy": [
+        "Realize it's unlikely they want me to find a vulnerability in DOMPurify.",
+        "Implemented the attack using 'Lazy-loading' property.",
+        "Ensure the chosen parameter is non-alphanumeric.",
+        "Identify the vulnerable 'report' admin page"
+    ],
+    "Button Interaction": [
+        "Click on the 'GET FLAG' button"
+    ],
+    "Response Parsing": [
+        "Extract the flag from the HTML content of the response"
+    ],
+    "Function Evaluation": [
+        "Observe the execution of eval function"
+    ],
+    "Base64 Decoding": [
+        "Decoded the base64 encoded result."
+    ],
+    "Variable Verification": [
+        "Set 'window.name' to the long payload",
+        "Decide to control the 'window.name' variable."
+    ],
+    "Miscellaneous": [
+        "Update the prefix",
+        "Retrieve the flag.",
+        "Log in using user credentials"
+    ]
+}

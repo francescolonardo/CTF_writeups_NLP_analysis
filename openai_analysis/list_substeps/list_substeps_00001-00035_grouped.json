@@ -1,0 +1,56 @@
+{
+    "Brute Force Attacks": [
+        "Progressively brute-force characters."
+    ],
+    "Account Manipulation": [
+        "Explore the profile settings.",
+        "Login as admin using SQL injection",
+        "Identified a potential SQL injection vulnerability.",
+        "Craft an XSS payload.",
+        "Crafted an HTML payload for exploiting this vulnerability",
+        "Identify the 'isAdmin' field within the 'User' model.",
+        "Attempt password brute force for each email",
+        "Discovered valid usernames including `admin`, `root`, `builder`, `employee`, and `staff`.",
+        "Attempted to exploit the log4j vulnerability using the 'ProfileServlet.java'.",
+        "Attempt basic payloads for NoSQL injection.",
+        "Insert the payload which is a URL that generates a password change request for the admin account when clicked."
+    ],
+    "Code Analysis and Manipulation": [
+        "Format the code in a more readable format",
+        "Create a JavaScript script within the HTML page.",
+        "Analyze the 'changelog.js' script.",
+        "Analyzed the response"
+    ],
+    "Data Retrieval and Exploration": [
+        "Validate that only one result is returned.",
+        "Retrieved table names from the database by manipulating the SQL query using 'moneys=' parameter.",
+        "Obtained the headers from the log file.",
+        "Verified the contents of the retrieved data.",
+        "Discover the flag 'rtcp{WebSock3t5_4r3_SQLi_vu1n3r4b1e_t00_bacfe0}'",
+        "Revealed a 'flag.txt' file.",
+        "Identify unrelated packets such as 'pings'."
+    ],
+    "File Manipulation": [
+        "Note that spaces or slashes in the filename are not allowed",
+        "Confirm that the file content is displayed.",
+        "Discover that HTML files are uploaded successfully despite checks for images."
+    ],
+    "Web Vulnerabilities": [
+        "Understood that the Request smuggling vulnerabilities were discovered during previous research.",
+        "Fail due to the site removing <script> tags.",
+        "Understand that a shell needs to be spawned as root",
+        "Discover that a JavaScript Immediately Invoked Function Expression (IIFE) can be used for RCE."
+    ],
+    "Web Navigation & Interaction": [
+        "Retrieved the flag from the `/api/flag` endpoint."
+    ],
+    "Python Exploitation": [
+        "Climb the Python MRO hierarchy."
+    ],
+    "Character Restrictions": [
+        "List permitted characters."
+    ],
+    "Timing Attacks": [
+        "Executed the timing attack."
+    ]
+}

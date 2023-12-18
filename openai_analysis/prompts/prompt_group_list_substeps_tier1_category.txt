@@ -1,0 +1,44 @@
+Assume I'm trying to create a taxonomy to categorize a set of actions taken from web application CTF writeups.
+The aim is to develop a hierarchy that allows these actions to be grouped under categories and subcategories, making them easily identifiable and organized.
+
+Please reply with a JSON object with the following structure:
+{
+    "Sub-category of example 1": [ "...", "...", ...],
+    "Sub-category of example 2": [ "...", "...", ...],
+    ...
+}
+
+Return in response just the JSON object, ensuring no additional content or remarks are added.
+
+Generic (not about this category) example of input:
+[
+    "Visited the website.",
+    "Accessed the webpage.",
+    "Navigate to the '/example' route.",
+    "Observe the form to fill.",
+    "Submit the form.",
+    "Find the input box.",
+    "Click the submit button.",
+    ...
+]
+
+Desired corresponding output example:
+{
+    "Page Visits and Navigations" : [
+        "Visited the website.",
+        "Accessed the webpage.",
+        "Navigate to the '/example' route."
+    ],
+    "Website Interactions and Inputs" : [
+        "Observe the form to fill.",
+        "Submit the form.",
+        "Find the input box.",
+        "Click the submit button."
+    ]
+    ...
+}
+
+In this specific case, the goal is to find relevant sub-categories to the "Web Interaction and Navigation" category, whose description is as follows:
+`Engage in activities like browsing, understanding web functions, analyzing underlying web elements, tracking user behavior, making direct interactions with web servers, and manipulating URLs or browser behaviors.`
+
+Given the actions listed below, please segment them all into relevant sub-categories that capture their essence and relationship.

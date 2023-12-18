@@ -1,0 +1,73 @@
+1. Tool Manipulation
+   - Tool Utilization
+   - Tool Configuration and Usage
+   - Tools and Software Utilization
+   - Third-Party Tools
+   - Tools and Libraries
+   - Tool Usage
+   - Utilization of Tools and Scripts
+
+2. System & Server Interactions
+   - System Interactions and Command Execution
+   - Server Setup and Network Interactions
+   - System Permissions and Roles
+   - System and Web Interactions
+   - Website and Server Interactions
+   - Server and Service Management
+   - Web and Network Interactions
+   - System Interactions and Commands
+
+3. Scripting & Automation
+   - Scripting and Exploit Development
+   - Script Creation and Execution
+   - Scripts and Commands Construction
+   - Script Execution and Automation
+   - Automation and Scripting
+   - Scripting and Automation
+   - Script Writing and Modification
+   - Scripting and Programming
+
+4. File & Directory Operations
+   - Command Execution and File Interaction
+   - File and Directory Operations
+   - Interactions with Files and Directories
+   - File and System Interactions
+   - File and Directory Manipulation
+   - File and Data Manipulation
+   - File Operations and Configuration
+   - File and Repository Operations
+   - File and Content Creation and Manipulation
+   - File and Directory Management
+   
+5. Data & Input Manipulation
+   - Data and Input Manipulation
+   - Payload Crafting and Execution
+   - Data Manipulation
+   - Data Manipulation and Observation
+   - Data Creation and Manipulation
+   - Data and Token Manipulation
+   - Payload and Data Manipulations
+   - Data Conversion, Calculation, and Manipulation
+
+6. Web, Network & Service Interactions
+   - Request and Payload Interactions
+   - Server Configuration and Response Interactions
+   - API, Service, and Page Interactions
+   - Attacks and Security Exploration
+   - Payload, URL, and String Manipulation
+   - Web Interactions and Manipulations
+   - Complex Service Interactions and Scripts
+
+7. Command Elements & System Interaction
+   - Command Execution and Interaction
+   - System and Application Configuration
+   - Code Injections and Commands
+   - Automated Processes
+   - Command Line Interactions
+   - Shell and Command-line Interactions
+   - Web and Repository Interactions
+
+8. Script Language Interactions
+   - PHP and Scripting
+   - Python Script Interactions
+   - Insight and Observations

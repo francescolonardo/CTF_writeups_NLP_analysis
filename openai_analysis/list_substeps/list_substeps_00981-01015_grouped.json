@@ -1,0 +1,60 @@
+{
+    "Login & Authentication": [
+        "Recognize that this can be exploited for login.",
+        "Retrieve the flag 'dsc{1_l0v3_sw3d3n}'",
+        "Obtain a token after successful login",
+        "Look for a JWT in the 'token' header of the responses.",
+        "Understand that to obtain the flag, the secretid must match the length of the secrets array and the permissions must be set to 'admin'",
+        "Recognized the `onPressed` event handler `api_post`.",
+        "Assign user value as 'admin'."
+    ],
+    "Exploitation & Vulnerabilities": [
+        "Observation: The system environment flag is displayed when the response contains the specific IP address (119.29.29.29).",
+        "Performed cross-origin request using `jsonp`",
+        "Conditions: Comment text contains a format string like '{rating}'.",
+        "Understand that this vulnerability could lead to Remote Code Execution (RCE).",
+        "Input 'Accept-Language: ....//....//....//....//flag' in the HTTP header.",
+        "Begin to test this theory with 'handlebars', a tool which previously had a known vulnerability in processing templates.",
+        "Considered the possibility of output truncation by SQLmap.",
+        "Manipulated the `statusCode` using the injected buttons.",
+        "Discover a Dockerfile.",
+        "Determine that the error indicates the presence of an unclosed apostrophe.",
+        "Messages were signed using ED25519."
+    ],
+    "Server Interaction": [
+        "Execute ls command on the server using subprocess.Popen",
+        "Use the mutool info -X command to verify collision1.pdf.",
+        "Analyze the entrypoint.sh bash file.",
+        "Searched for the flag using 'ls /'.",
+        "Used shell access to browse the file system.",
+        "Pass `['a', 'b', 'c', 'd', '/../flag.txt', '.', 'js']` as an array via the GET parameter",
+        "Make a request to /flag using the new admin JWT token."
+    ],
+    "Web Navigation & Interaction": [
+        "Access the website homepage",
+        "Navigate to the bottom of the results.",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges.",
+        "Note that the Traefik service only accepts the POST, GET, OPTIONS, DELETE and PATCH methods",
+        "Locate the visited-main-page cookie.",
+        "Identify the specific JavaScript file"
+    ],
+    "Data Handling & Processing": [
+        "Assign the string 'Hello_Rules' to a variable.",
+        "Analyze the browser cookies",
+        "Source code uses a markdown library to convert markdown into HTML.",
+        "Decode the received Base64 string.",
+        "The script loads a template including the query for each possible character.",
+        "Created an 'id' file with the malicious payload",
+        "Print the content of the final page.",
+        "Put together all obtained parts of the flag."
+    ],
+    "API Interaction": [
+        "Send purchase requests to the API."
+    ],
+    "Miscellaneous": [
+        "Recognize the opportunity that 'ping' sends a POST request when the link is clicked."
+    ]
+}

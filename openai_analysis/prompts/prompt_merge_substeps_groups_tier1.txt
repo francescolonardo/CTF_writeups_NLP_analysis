@@ -1,0 +1,6 @@
+Assume I am tasked with creating a taxonomy to categorize a set of actions taken from web application CTF writeups. My aim is to develop a hierarchy that allows these actions to be grouped under themes significant in the realm of web security, making them easily identifiable and organized.
+
+Try to merge all the following subcategories, reducing overlapping and avoiding redundancies.
+Provide me with a taxonomy of subcategories, at one depth level, with the intention of using them later for labeling the actions taken by attackers in the CTF writeups of web applications.
+
+Subcategories:

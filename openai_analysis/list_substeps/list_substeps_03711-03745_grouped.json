@@ -1,0 +1,50 @@
+{
+    "Backend Server & Flag Enumeration": [
+        "Leverage a backend server to eliminate unsuccessful queries and zero in on the correct flag",
+        "Retrieved the CTF flag",
+        "Discovered that the goal was to read the 'app.secret_key' value",
+        "Configured the EC2 instance to trigger a reverse shell on startup",
+        "Submitted a text content to a remote S3 bucket.",
+        "Inspect the functionality of the 'minimag' command"
+    ],
+    "Code Execution & Exploitation": [
+        "Used 'SetEnv LD_PRELOAD' to execute code when running gzip.",
+        "Injected arbitrary Javascript to exfiltrate contents from admin's page.",
+        "Identified that 'redirect()' function did not actually terminate the script, but printed HTML output, allowing further code execution.",
+        "Realize that the 'magic code' needed to login won't be received via email"
+    ],
+    "Website Navigation & Interaction": [
+        "Open the link 'very.uniquename.xyz:2052'",
+        "Conduct experiments with different content.",
+        "Visit the given URL http://35.207.91.38/robots.txt.",
+        "Observed the HTML interface for writing and saving notes.",
+        "Retrieved a POST request.",
+        "Inspect the source code of the webpage",
+        "Access the site at :7777",
+        "Browsed through the blog.",
+        "Visited the URL provided in the problem statement."
+    ],
+    "Script Execution & Conditions": [
+        "Set 'EOF' as the termination condition of the script",
+        "Used wordplay in the answers.",
+        "Identify the second change.",
+        "Experiment with the session_id.",
+        "Create a function 'get_passwords' that generates all possible combinations of YYYYMM from the years 1900 to 2019 and months from 1 to 13."
+    ],
+    "Network Scanning & Enumeration": [
+        "Conducted a scan for the 172.16.2.0/24 subnet."
+    ],
+    "Server Requests & Manipulation": [
+        "Identify a URL for the server to request.",
+        "Set the value of the header 'answer' as 'Fear the Old Blood'",
+        "Name the cookie 'admin'."
+    ],
+    "File & Directory Analysis": [
+        "Noted that the index is randomized.",
+        "Found the index.html file"
+    ],
+    "Information Gathering & System Analysis": [
+        "Identify ATS and Waitress as the systems involved in the smuggling.",
+        "Inspect the returned flag."
+    ]
+}

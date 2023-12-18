@@ -1,0 +1,82 @@
+Web Application Security Taxonomy:
+
+I. Exploitation Techniques
+   A. Server and Application Exploitation
+      i. System Exploitation
+      ii. Network Exploitation
+      iii. Web Exploitation & Web Application Security
+      iv. Security Exploitation Techniques
+      v. Client-Side Vulnerabilities
+   B. Code & Script Analysis
+      i. Source Code Analysis
+      ii. Calendar & PHP Script Analysis
+      iii. Class Method Manipulation
+      iv. Code Analysis & Exploitation
+   C. Data Extraction & Manipulation
+      i. Username and Password Extraction
+      ii. Data Validation & Manipulation
+      iii. User Account Manipulation
+      iv. Data Extraction & Manipulation
+   D. Payload & Injection Techniques
+      i. HTML Injection & Payloads
+      ii. XSS (Cross-Site Scripting)
+      iii. XPath Injection
+      iv. Scripting & Payload Creation
+      v. Payload Generation & Injection
+
+II. Testing & Analysis
+   A. Web Page & Application Analysis
+      i. Web Page Analysis & Manipulation
+      ii. Web Application Testing
+      iii. Web Application Discovery
+      iv. Web Development Techniques
+   B. Network & Communication Analysis
+      i. Network Scanning & Enumeration
+      ii. Network and Server Configurations
+      iii. Network Smuggling Analysis
+      iv. WebSocket Analysis
+   C. Security & Vulnerability Analysis
+      i. Response Vulnerability Analysis
+      ii. Security Analysis & Information Gathering
+      iii. Web Security Vulnerability Analysis
+      iv. Exploit Analysis & Observation
+   D. File & System Analysis
+      i. File System & Configuration Analysis
+      ii. File and Directory Analysis
+      iii. Configuration & Settings Analysis
+      iv. Looping & Scripting
+   E. Debugging & Monitoring
+      i. Logging & Monitoring
+      ii. HTTP Responses
+      iii. Response Monitoring
+      iv. Debugging & Logging
+
+III. Manipulation & Bypass Techniques
+   A. Authentication & Cookies
+      i. Authentication & Cookies
+      ii. Password & Authentication
+      iii. Authentication Bypass
+      iv. Admin Access & Authentication
+   B. File, Directory & Data Handling
+      i. File Upload & Manipulation
+      ii. File Download
+      iii. File Manipulation & Retrieval
+      iv. Working Directory Access
+   C. Network & Protocol Manipulations
+      i. Server-Side Request Manipulation
+      ii. HTTP Requests & File Operations
+      iii. Network & HTTP Interactions
+      iv. HTTPS & Security Protocols
+   D. Web Requests & API Interactions
+      i. Web Requests & API Interactions
+      ii. API Endpoint Analysis
+      iii. Endpoint Examination
+   E. Data & Request Manipulation
+      i. Data Validation & Security Testing
+      ii. Web Form and Parameter Manipulation
+      iii. CSRF Protection & Token Refresh
+   F. Other Techniques
+      i. Encryption & Decryption Techniques
+      ii. Attacker Server Creation
+      iii. XSS Vulnerability
+      iv. Other

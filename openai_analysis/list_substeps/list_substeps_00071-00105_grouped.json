@@ -1,0 +1,71 @@
+{
+    "Packet Analysis": [
+        "Search for HTTP packets within the packet logs."
+    ],
+    "Server Monitoring": [
+        "Confirm that Waitress sees both received requests.",
+        "Monitored the execution flow of function calls",
+        "Reviewed online documentation."
+    ],
+    "JWT Manipulation": [
+        "Recognize that the 'username' has been rot13 encoded in the decoded JWT.",
+        "Use the JWT secret and the altered payload for the new token."
+    ],
+    "Widget Decoding": [
+        "Decoded the `chatmessage` widget."
+    ],
+    "HTML Manipulation": [
+        "Realize that this results in the setting of the innerHTML of the 'result' element.",
+        "Noted that adding something before the '<link>' tag fixes the behaviour.",
+        "Observe that comments under a picture can be inserted.",
+        "Exploit the `ejs` module."
+    ],
+    "XSS Exploitation": [
+        "The attack starts with executing an XSS to grant admin privileged access",
+        "Inject the payload ' or sleep(2) and 1=1#."
+    ],
+    "Class Method Manipulation": [
+        "Noted that the 'doit' method is called in the '__destruct()' function."
+    ],
+    "Cookie Manipulation": [
+        "Change the value of 'likeCookie' to true."
+    ],
+    "Directory Enumeration": [
+        "Retrieve directory listing",
+        "Perform a dirbuster scan"
+    ],
+    "Web Navigation & Interaction": [
+        "Connect to the website",
+        "Use a python script to send requests."
+    ],
+    "Hash Manipulation": [
+        "Recognize that the sha1 hashes of 'hash' and 'target' will not match.",
+        "Checked and confirmed both strings had the same md5 hash."
+    ],
+    "Admin Access": [
+        "Identify the default value of 'false' for the 'isAdmin' field."
+    ],
+    "Command Execution": [
+        "Send the command `echo 'X'`.",
+        "Run Dirb to scan for hidden directories or files"
+    ],
+    "File Manipulation": [
+        "Realize that the file 'flag.jpg' was later removed.",
+        "Upload a LaTeX document"
+    ],
+    "Redirect & Password Manipulation": [
+        "Recognize that the interface allows for creating redirect URLs, changing admin's password, and reporting URLs."
+    ],
+    "WASM Module Analysis": [
+        "Identify that the WASM module uses the 'str.length' to validate the buffer."
+    ],
+    "CSV Analysis": [
+        "Wrote a Python script to extract the most commonly occurring source IP (src_ip) from the CSV files"
+    ],
+    "Flag Retrieval": [
+        "Obtain the flag 'MCA{al3x4_5et_a_r3minder}'."
+    ],
+    "Attack Origin Investigation": [
+        "Instructed to locate the origin point of most attacks"
+    ]
+}

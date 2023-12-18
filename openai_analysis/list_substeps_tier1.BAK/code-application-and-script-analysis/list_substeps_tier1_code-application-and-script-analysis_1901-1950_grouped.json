@@ -1,0 +1,66 @@
+{
+    "SQL Injection": [
+        "Crafted the SQL injection to directly pass 'flagman69' as the value for the username column using the 'UNION' clause.",
+        "Implemented the newly crafted SQL injection on the authentication form.",
+        "Find a way to bypass the remaining check.",
+        "Extract the flag from the server response.",
+        "Identified a possible SQL injection vulnerability.",
+        "Identify the SQL Injection vulnerability",
+        "Generate payloads with the SQL query to extract each character of the token",
+        "Identify code vulnerable to SQL injection in 'index.php'",
+        "Test the SQL injection vulnerability.",
+        "Confirm that the SQL injection vulnerability exists.",
+        "Identified a potential SQL injection vulnerability.",
+        "Due to the previous step, made an attempt to use an SQL injection on the challenge platform."
+    ],
+    "File Inclusion Vulnerability": [
+        "Inject the command '127.0.0.1; ls -al' into the IP address field.",
+        "Include a script for a basic alert in the uploaded LaTeX document",
+        "Confirm vulnerability using the uploaded LaTeX document",
+        "Observe that the flag is: `AOTW{th3_p3rl_c0w_s4ys_M0oO0o0O}`",
+        "Notice lack of content verification or removal of unwanted content",
+        "Opened 'last-revision', revealing the last update to the directory.",
+        "Replace each integer into a URL.",
+        "Call the web page.",
+        "Exploit LFI vulnerability",
+        "Obtain the process ID as the result of executing the PHP command",
+        "Notice the website contains only a login form that might be vulnerable to SQL injection",
+        "Determine that the 'counter' cookie string ends with a changing base64 encoded string",
+        "Send the document cookies to an attacker-controlled server.",
+        "Find commit IDs within the log.",
+        "Using the constructed base, tried to enumerate DB tables."
+    ],
+    "XSS (Cross-Site Scripting)": [
+        "Retrieve the JavaScript file from the webpage.",
+        "Submit the script in the URL",
+        "Understood the requirement for a reflected XSS exploit",
+        "Used DOM Clobbering technique",
+        "Redefine `window.callback` and `trustedTypes` using the DOM Clobbering technique",
+        "The section tests payloads that can cause XSS if used with jQuery's html() method.",
+        "Injected an 'a' tag."
+    ],
+    "Session Manipulation": [
+        "Create a script to modify the sessionID to valid lua.",
+        "Send a POST request to the /admin/system/refresh_session/ endpoint."
+    ],
+    "File Read (XXE Vulnerability)": [
+        "Understand that dots, double slashes, or non-ascii dot are not allowed in the iframe value in the URL.",
+        "Retrieve the X-Accel-Redirect header.",
+        "Figure out the XML External Entity (XXE) vulnerability in upload.php.",
+        "Apply the base64 encoding filter to allow for file reading.",
+        "Use the XML External Entity vulnerability to call the disguised phar file."
+    ],
+    "Tripcode Identification": [
+        "Identify the presence of a tripcode",
+        "Determine that the tripcode is a part of an encrypted string"
+    ],
+    "Initial Exploration": [
+        "Note that the post ID is sent as a URL fragment",
+        "Identified a possible SQL injection vulnerability.",
+        "Understood the layout and elements of the webpage.",
+        "Downloaded website source code"
+    ],
+    "Miscellaneous": [
+        "Note that the debugging private key is '8EE86735658A9CE426EAF4E26BB0450E' and it is the MD5 of the string: 'fuckingdog'."
+    ]
+}

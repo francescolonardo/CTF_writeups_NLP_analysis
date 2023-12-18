@@ -1,0 +1,51 @@
+{
+    "Service Functionality": [
+        "Find that the service functions similarly to Pastebin"
+    ],
+    "Payload Creation": [
+        "Create a payload.",
+        "Write a LaTeX script."
+    ],
+    "Exploitation": [
+        "Exploit the fact that the current site and the iframe's source are both `http://localhost:3000`.",
+        "Perform a command injection.",
+        "Identified the possibility of 'inserting' and overwriting the XSS payload in the `HEAD->name`.",
+        "Scan the pivoted IP address.",
+        "Confirm the second 'if' statement would be passed.",
+        "Attempted to purchase 'flag' but failed.",
+        "Understand that any other sha1 hash starting with the same prefix will match the target.",
+        "Perform a certificate search using crt.sh.",
+        "Use this as a proof-of-concept for XSS vulnerability"
+    ],
+    "URL Navigation & Interaction": [
+        "Open the URL with a browser",
+        "Notice that the login occurs only if the user's IP address is one of the whitelisted IP addresses or when the debug mode is enabled.",
+        "Identified a `/api/token` endpoint.",
+        "Identified a login.php page.",
+        "Note the redirection to Google",
+        "Use nip.io wildcard DNS service.",
+        "Access the new URL 'https://freewifi.ctf.umbccd.io/staff.html'"
+    ],
+    "Code Execution & Interactions": [
+        "Execute 'ls' command on the server using `subprocess.Popen`",
+        "Read the function getBrowserWithTimeout.",
+        "Verify if the flag is displayed on the screen",
+        "Discover PHP form for var1 and var2.",
+        "Pass obtained string as argument to '/readflag'.",
+        "Identify the page as having an Apache2 default index.",
+        "Inspect the functionality of the website.",
+        "Note the message displayed on the front end upon attempted logins.",
+        "Confirmed that the URL specified in the 'background' property is fetched conditionally.",
+        "Sent the POST request"
+    ],
+    "Data Analysis & Manipulation": [
+        "Realized stacked queries were allowed.",
+        "Enable the 'debug' option"
+    ],
+    "Endpoint & API Interaction": [
+        "Send a POST request to the '/localization-language' endpoint."
+    ],
+    "Fuzzing & Exploration": [
+        "Conducted fuzzing"
+    ]
+}

@@ -1,0 +1,49 @@
+{
+    "Server Exploration": [
+        "Locate the private key",
+        "Recognize potential wildcard injection vulnerability.",
+        "Set 'GET /flag HTTP/1.1' as the second request.",
+        "The data content for the request is constructed dynamically with a key-value pair.",
+        "Utilize the requests library in Python for communication.",
+        "Get the value from the cookie",
+        "Run the command 'curl -H \"Accept-Language: sv-SE\" very.uniquename.xyz:8880'",
+        "Checked source code.",
+        "Ran the 'bzr status' command on the 'ctf-bzr' repository.",
+        "Find that any brackets or subsequent quotes are still escaped.",
+        "Include JSON payload in the request body.",
+        "Note that 'Content-Type' is strictly checked in the header-setting function.",
+        "Decode the field flag from the receiving server.",
+        "Used 'php://filter/'",
+        "Intend to use the crafted payload as the filename of the uploaded gif file.",
+        "Create a separate PDF page list for the first input PDF.",
+        "Take the second part of the flag from step 3",
+        "Create a PHP file named 'payload.php'"
+    ],
+    "Code Analysis": [
+        "Ensured the modifications reflected the initial intention.",
+        "Notice that .html files are rendered inline.",
+        "Reviewed the source code.",
+        "Consider using older object manipulation features like '__defineSetter__' and '__defineGetter__'.",
+        "Discover a potential for XSS injection."
+    ],
+    "Web Navigation": [
+        "Identified it's a Web category challenge.",
+        "Access the provided URL",
+        "Visited the website."
+    ],
+    "Information Gathering": [
+        "Identify the presence of the 'src=' parameter in the target website's HTML code.",
+        "Acquire the User-Agent string for Internet Explorer 6.01.",
+        "Tried to bruteforce the admin portal without success"
+    ],
+    "Web Security Techniques": [
+        "Create a policy that only allows form submissions to a specific domain",
+        "Implemented the UNION based SQL Injection"
+    ],
+    "User Interaction": [
+        "Performed zero-click exfiltration."
+    ],
+    "Redirection & Payloads": [
+        "Utilize the specified attributes to redirect."
+    ]
+}

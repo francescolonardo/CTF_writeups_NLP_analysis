@@ -1,0 +1,52 @@
+{
+    "Remote Code Execution (RCE)": [
+        "Confirmed successful RCE exploited to get the flag."
+    ],
+    "Challenge Identification": [
+        "Identify the challenge."
+    ],
+    "Discovery of Vulnerabilities": [
+        "Identified the remote Flutter widget file signature.",
+        "Detect SQL injection vulnerability on INSERT statement",
+        "Confirmed the existence of a directory traversal vulnerability"
+    ],
+    "Cookie Manipulation": [
+        "Assign the value 'true' to the cookie.",
+        "Use the discovered cookie"
+    ],
+    "Payload Creation & Execution": [
+        "Use the factorization of 1337 (7*191) to create the first payload",
+        "Execute the JS script silently when admin opens the page.",
+        "Exploited a difference in how ATS and Waitress process end-of-line symbols.",
+        "Deduced the number of columns based on error return.",
+        "Exploit the SQL injection vulnerability",
+        "Exploit the type juggling loophole",
+        "Smuggle the GET request inside a POST request made to the Go microservice",
+        "Hosted the payload on an external website"
+    ],
+    "Web Navigation": [
+        "Noted that the appended requests are processed as one single request.",
+        "After logging in, retrieve the flag 'TUCTF{H1gh_S0urc3_3qu4ls_L0ng_F4ll}' from the site.",
+        "Click the admin button.",
+        "Connect to the website",
+        "Open the developer tools.",
+        "Find a box inside the admin panel.",
+        "Determine that the certificate seems invalid.",
+        "Send a GET request to the URL",
+        "Connect to the website"
+    ],
+    "Code Analysis": [
+        "URL encoded the first binary string.",
+        "Analyze the entrypoint.sh bash file.",
+        "Recognize the calculator app filters out potential XSS attacks",
+        "Recognized the obfuscation of the JavaScript code",
+        "Ran 'bzr check' command in the command line.",
+        "Received SQL query result and examined the output."
+    ],
+    "String Manipulation": [
+        "Index characters of 'P4s5_w0Rd' string."
+    ],
+    "Looping": [
+        "Repeat the loop until the total size exceeds 10 records."
+    ]
+}

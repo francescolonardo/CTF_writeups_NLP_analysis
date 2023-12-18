@@ -1,0 +1,62 @@
+{
+    "Parameter Manipulation": [
+        "Verify if 'length' query parameter is a string of length 0."
+    ],
+    "DOM Manipulation": [
+        "Fetch the flag using 'innerHTML'."
+    ],
+    "File System Exploration": [
+        "Visited '/?file=/etc/passwd'.",
+        "Used 'php://filter' to view the source of 'checkpass.php'.",
+        "Decoded base64 strings to view the source code of 'wc.php'.",
+        "Observe that it leads to a list of admin usernames.",
+        "Select any one of the identified hashes.",
+        "Notice the website allows HTML input.",
+        "Observe the information revealed about the file structure.",
+        "Craft a payload to return the content of /flag/flag.txt."
+    ],
+    "Cookie Manipulation": [
+        "Identify the cookie related to flavor",
+        "Replace the existing flavor value in the cookie with 'chocolate'",
+        "Replace the original cookie with the new base64 encoded 'chocolate' cookie on the website",
+        "Set the new flag value as the cookie",
+        "Receive and log the cookie transferred as a query parameter."
+    ],
+    "Injection Attacks": [
+        "Intend to inject a 'grep' command to look for the flag in the main.py file.",
+        "Modify the SQL command using the pattern 'SELECT id FROM users WHERE password = '' or 1=1;--' and username set as '123'.",
+        "Execute the query '123' UNION SELECT flag, null, null from more_table;--'.",
+        "Inject a SQL query into the barcode generation process."
+    ],
+    "Security Analysis": [
+        "Analyze the secure portal page source",
+        "Understand that the password was split into various parts",
+        "Extract the first character of the password",
+        "Extract the admin cookie 'password'",
+        "Discovered that the python pickle can be prepended with '!'",
+        "Understand that the interaction with the filename being uploaded is the potential vulnerability for RCE.",
+        "Found a snippet of JavaScript code containing database credentials and a 'JSESSIONID' cookie.",
+        "Understood that the function decodes a user's cookie",
+        "Inspect 'challenge/routes/index.js' file for SSTI vulnerability.",
+        "Inspect 'challenge/helpers/CardHelper.js' file for SSTI vulnerability.",
+        "Review the source code in `database.sql` file again.",
+        "Examine the 'challenge/routes/index.js' file. We find an '/api/submit' endpoint which the frontend sends user data.",
+        "Analyze the process in the script: making a cURL request, hashing the results with MD5, and setting the 'auth' cookie to the value of 'FLAG_AUTH' from secrets"
+    ],
+    "API Manipulation": [
+        "Search for a string formatted as 'flag{...}' in the HTML source code.",
+        "Retrieve the flag from the response received after visiting the '/api/flag' endpoint.",
+        "Verify if all 5 captchas are collected",
+        "Identify the presence of a 'username' attribute in the requests.",
+        "Identify the hidden field 'password'",
+        "The key for the key-value pair is retrieved from the 'key' variable.",
+        "Submitted the payload 'csrf&username=michelle&password[username]=michelle'",
+        "Identify the `/api/toylist` endpoint and its behaviour."
+    ],
+    "Code Analysis": [
+        "Inspect 'challenge/routes/index.js' file for SSTI vulnerability.",
+        "Inspect 'challenge/helpers/CardHelper.js' file for SSTI vulnerability.",
+        "Inspect the returned results after uploading the barcode.",
+        "Analyze the process in the script: making a cURL request, hashing the results with MD5, and setting the 'auth' cookie to the value of 'FLAG_AUTH' from secrets"
+    ]
+}

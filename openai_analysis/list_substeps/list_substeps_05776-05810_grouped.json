@@ -1,0 +1,239 @@
+{
+    "URL Manipulation & Reconnaissance": [
+        "Notice that if the URL limit is hit, the origin of the page remains that of the parent window",
+        "Identify the JS file 'jquery.jscroll2.js'.",
+        "View the code of 'index.php' file.",
+        "Visit the provided URL",
+        "Recall if there are any properties that are not defined initially but used later."
+    ],
+    "Server Interaction & Script Execution": [
+        "Reload the server script.",
+        "Recognized that the second request is not yet completed after the end of the first request.",
+        "Wrote a script to use a cache.",
+        "Wrote the cgi header with 'Content-type: text/html'.",
+        "Retrieved the signature from the first signed PDF.",
+        "Run the server script with a new payload '?icecream={{application.settings[\"cookie_secret\"]}}'.",
+        "Submit a malformed statement",
+        "Provide authentication to view the server logs.",
+        "Examine the service."
+    ],
+    "Code Analysis & Identification": [
+        "Identified a string within the JavaScript scope",
+        "Analyze JwtService.java.",
+        "View code specifics using the debugging tool.",
+        "Analyse the response of the authentication API",
+        "Identify serialization in the __destruct method.",
+        "Identify the 'User' model within the file."
+    ],
+    "Network & Security Manipulation": [
+        "Attempt to open a bind shell on port 4444.",
+        "Attempt to bypass the double-check using the modified DNS entry.",
+        "Payload 3: Obtained readable cookies.",
+        "Discover that there is no limit to the number of attempts made with the same token, as long as correct CAPTCHA code is provided.",
+        "The request smuggling caused the difference in the response.",
+        "Enumerated permissions using 'pacu' tool",
+        "Revealed and identified a string"
+    ],
+    "Authentication & Authorization Manipulation": [
+        "Set the 'isAdmin' field to 'true' in the request body.",
+        "Decide to pollute 'process.argv[2]' with a command injection payload.",
+        "Note that the password length is less than 30 characters",
+        "Provide authentication to view the server logs."
+    ],
+    "Data Manipulation & Reading": [
+        "Payload 3: Obtained readable cookies.",
+        "Analyse the response of the authentication API"
+    ],
+    "File/System Manipulation": [
+        "Analyze the response headers.",
+        "Hidden sheet gets added to the panes",
+        "Identify the 'User' model within the file."
+    ],
+    "Code Execution & Exploitation": [
+        "Attempt to open a bind shell on port 4444.",
+        "Attempt to bypass the double-check using the modified DNS entry.",
+        "Decide to pollute 'process.argv[2]' with a command injection payload.",
+        "Use the method `().__class__.__base__.__subclasses__()`"
+    ],
+    "Web Navigation & Interaction": [
+        "Navigate to the bottom of the results.",
+        "Access the website homepage",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges."
+    ],
+    "Web Parameter & Data Manipulation": [
+        "Recognized that the second request is not yet completed after the end of the first request.",
+        "Wrote a script to use a cache.",
+        "Wrote the cgi header with 'Content-type: text/html'.",
+        "Run the server script with a new payload '?icecream={{application.settings[\"cookie_secret\"]}}'.",
+        "Submit a malformed statement"
+    ],
+    "Web Element & Structure Identification": [
+        "Notice that if the URL limit is hit, the origin of the page remains that of the parent window",
+        "Identify the JS file 'jquery.jscroll2.js'.",
+        "View the code of 'index.php' file."
+    ],
+    "Cryptographic Analysis & Manipulation": [
+        "Retrieved the signature from the first signed PDF."
+    ],
+    "API & Data Analysis": [
+        "Analyse the response of the authentication API"
+    ],
+    "Security Testing Techniques": [
+        "Attempt to bypass the double-check using the modified DNS entry.",
+        "Discover that there is no limit to the number of attempts made with the same token, as long as correct CAPTCHA code is provided.",
+        "The request smuggling caused the difference in the response.",
+        "Enumerated permissions using 'pacu' tool"
+    ],
+    "Scripting & Automation": [
+        "Reload the server script.",
+        "Recognized that the second request is not yet completed after the end of the first request.",
+        "Wrote a script to use a cache.",
+        "Wrote the cgi header with 'Content-type: text/html'.",
+        "Run the server script with a new payload '?icecream={{application.settings[\"cookie_secret\"]}}'."
+    ],
+    "Debugging & Troubleshooting": [
+        "View code specifics using the debugging tool."
+    ],
+    "Server-Side Vulnerability Identification": [
+        "Analyse the response of the authentication API"
+    ],
+    "Command Execution & Injection": [
+        "Decide to pollute 'process.argv[2]' with a command injection payload."
+    ],
+    "File Management & Inspection": [
+        "View the code of 'index.php' file."
+    ],
+    "Serialization & Deserialization Analysis": [
+        "Analyse the response of the authentication API",
+        "Identify serialization in the __destruct method."
+    ],
+    "Continuous Authentication": [
+        "The request smuggling caused the difference in the response.",
+        "Discover that there is no limit to the number of attempts made with the same token, as long as correct CAPTCHA code is provided."
+    ],
+    "Network Traffic & Manipulation": [
+        "Analyze the response headers."
+    ],
+    "User Interaction & Authorization": [
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Perform the action of accessing challenges."
+    ],
+    "Cookie Manipulation & Analysis": [
+        "Payload 3: Obtained readable cookies."
+    ],
+    "Exploitation & Attack Techniques": [
+        "Attempt to open a bind shell on port 4444.",
+        "Attempt to bypass the double-check using the modified DNS entry.",
+        "Decide to pollute 'process.argv[2]' with a command injection payload."
+    ],
+    "Web Browsing & Navigation": [
+        "Navigate to the bottom of the results.",
+        "Access the website homepage",
+        "Open a web browser."
+    ],
+    "Data Validation & Manipulation": [
+        "Recognized that the second request is not yet completed after the end of the first request.",
+        "Submit a malformed statement"
+    ],
+    "JavaScript & Scope Analysis": [
+        "Identified a string within the JavaScript scope"
+    ],
+    "Server-Side Request Manipulation": [
+        "Set the 'isAdmin' field to 'true' in the request body.",
+        "Decide to pollute 'process.argv[2]' with a command injection payload."
+    ],
+    "Server Log Analysis & Manipulation": [
+        "Provide authentication to view the server logs."
+    ],
+    "Service Analysis & Manipulation": [
+        "Examine the service."
+    ],
+    "Code Inspection & Analysis": [
+        "View code specifics using the debugging tool."
+    ],
+    "Response Analysis": [
+        "Analyse the response of the authentication API",
+        "Analyse the response headers."
+    ],
+    "Web Structure & Element Identification": [
+        "Identify the JS file 'jquery.jscroll2.js'.",
+        "View the code of 'index.php' file."
+    ],
+    "Cache Utilization & Scripting": [
+        "Wrote a script to use a cache."
+    ],
+    "CGI Header Manipulation": [
+        "Wrote the cgi header with 'Content-type: text/html'."
+    ],
+    "Bind Shell Manipulation": [
+        "Attempt to open a bind shell on port 4444."
+    ],
+    "DNS Manipulation": [
+        "Attempt to bypass the double-check using the modified DNS entry."
+    ],
+    "Cookie Analysis & Manipulation": [
+        "Payload 3: Obtained readable cookies."
+    ],
+    "API Response Analysis": [
+        "Analyse the response of the authentication API"
+    ],
+    "Server Permission Enumeration": [
+        "Enumerated permissions using 'pacu' tool"
+    ],
+    "String Identification & Analysis": [
+        "Identified a string within the JavaScript scope",
+        "Revealed and identified a string"
+    ],
+    "Command Injection": [
+        "Decide to pollute 'process.argv[2]' with a command injection payload."
+    ],
+    "File Analysis & Inspection": [
+        "View the code of 'index.php' file."
+    ],
+    "JSON Web Token (JWT) Analysis": [
+        "Analyze JwtService.java."
+    ],
+    "Debugging Tool Utilization": [
+        "View code specifics using the debugging tool."
+    ],
+    "Signature Extraction & Analysis": [
+        "Retrieved the signature from the first signed PDF."
+    ],
+    "Network Smuggling Analysis": [
+        "The request smuggling caused the difference in the response."
+    ],
+    "Serialization Analysis & Identification": [
+        "Identify serialization in the __destruct method."
+    ],
+    "Python Script Execution": [
+        "Run the server script with a new payload '?icecream={{application.settings[\"cookie_secret\"]}}'."
+    ],
+    "User Model Identification": [
+        "Identify the 'User' model within the file."
+    ],
+    "Troubleshooting & Debugging": [
+        "View code specifics using the debugging tool."
+    ],
+    "Authentication Analysis": [
+        "Analyse the response of the authentication API"
+    ],
+    "Password Length Analysis": [
+        "Note that the password length is less than 30 characters"
+    ],
+    "Traversal & Search Technique": [
+        "Use iterative deepening"
+    ],
+    "Code Editing & Modification": [
+        "Use an editor"
+    ],
+    "Variable Identification & Utilization": [
+        "Recall if there are any properties that are not defined initially but used later."
+    ],
+    "Method & Invocation Utilization": [
+        "Use the method `().__class__.__base__.__subclasses__()`"
+    ]
+}

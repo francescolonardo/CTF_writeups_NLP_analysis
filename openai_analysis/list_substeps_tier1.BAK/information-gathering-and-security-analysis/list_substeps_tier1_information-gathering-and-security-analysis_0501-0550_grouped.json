@@ -1,0 +1,111 @@
+{
+    "JWT Exploitation": [
+        "Extract the 'id' of the user (attacker) from the decoded JWT token."
+    ],
+    "Vulnerability Identification": [
+        "Identify potential exploits that can be used.",
+        "Identify and exploit vulnerabilities present in the Apache server.",
+        "Executed NIKTO scan."
+    ],
+    "Web Application Discovery": [
+        "Explored further based on the directory path.",
+        "Discover web app.",
+        "Access a website."
+    ],
+    "Code Analysis": [
+        "Identify blacklisted characters mentioned in the code.",
+        "Determine the command length limit of 15 characters from the code.",
+        "Note the behavior of the web application when a blank 'n' parameter is submitted."
+    ],
+    "Directory Enumeration": [
+        "Locate the '.git' directory via robots."
+    ],
+    "Variable Manipulation": [
+        "Assign the string 'Hello_Rules' to a variable."
+    ],
+    "Regular Expression Analysis": [
+        "Use regular expressions to find specific fields."
+    ],
+    "Server Response Observation": [
+        "Observe the server returning the result of the operation.",
+        "Observe the response message suggesting the value could range from 1 to 20.",
+        "Recognize it is intended for Server Side Request Forgery (SSRF)."
+    ],
+    "User-Agent Header Manipulation": [
+        "Identify that the re-writing and forwarding occurs when the `User-Agent` header is of the web crawlers."
+    ],
+    "Flag Decoding": [
+        "Observe the decoded flag."
+    ],
+    "Dependency Analysis": [
+        "Notice the dependency on 'jsonwebtoken' 3.2.2 in the target application."
+    ],
+    "HTTP Request Analysis": [
+        "Send a GET request to '/localisation-file'."
+    ],
+    "File Reading Operations": [
+        "Read the contents of 'flag.txt'."
+    ],
+    "Authentication Bypass": [
+        "Determine that the 'notes.count' function is unauthenticated."
+    ],
+    "Data Validation": [
+        "Validate that only one result is returned.",
+        "Indicate that only one note contains the flag.",
+        "Check if the possible character is part of the flag."
+    ],
+    "File System Operations": [
+        "Recognize that 10 records are created by tar utility by default.",
+        "Generate a file with random content.",
+        "Repeat the loop until the total size exceeds 10 records."
+    ],
+    "Vulnerability Exploitation": [
+        "Fail to exploit the vulnerability."
+    ],
+    "Directory Hierarchy Analysis": [
+        "Hypothesize that the web app could be stored in the same directory."
+    ],
+    "Data Retrieval": [
+        "Retrieve the flag.",
+        "Make a callback to our server with the data.",
+        "Explore the file system to find the flag 'MetaCTF{wh4t??lfi_1s_ev0lv1ng??}'."
+    ],
+    "Database Enumeration": [
+        "Confirmed the existence of an additional table."
+    ],
+    "Server Identification": [
+        "Observed Apache Traffic Server (ATS) 7.1.1 in 'Server' response header."
+    ],
+    "File Ownership Verification": [
+        "Noticed the absence of legitimate ownership verification during file retrieval."
+    ],
+    "Port Scanning": [
+        "Locate the challenge at port 8080."
+    ],
+    "Web Interface Observation": [
+        "Note the challenge has a web interface."
+    ],
+    "IP Address Pivoting": [
+        "Pivot from the previously found IP address."
+    ],
+    "IP Address Scanning": [
+        "Scan the pivoted IP address."
+    ],
+    "Hash Comparison": [
+        "Identify the requirement of same MD5 hash for the two PDFs."
+    ],
+    "Size Considerations": [
+        "Consider size restrictions for choosing two small-sized PDFs."
+    ],
+    "File Analysis": [
+        "Review the robots.txt file",
+        "Acknowledged this version is vulnerable to a recent path traversal zero-day.",
+        "Understand the list of blocked keywords/functions in the source PHP code"
+    ],
+    "Subdomain Control": [
+        "The payload loads an iframe of the notes site with a search query.",
+        "The solution involves controlling a subdomain that matches the site domain.",
+        "Realized that an attacker can set up a GitHub Pages site with a subdomain that matches the site domain.",
+        "The site's subdomain matches the target domain."
+    ]
+}

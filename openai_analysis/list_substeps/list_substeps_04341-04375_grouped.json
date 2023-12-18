@@ -1,0 +1,97 @@
+{
+    "Response Analysis": [
+        "Identified a different flag value in the response"
+    ],
+    "Remote Code Execution (RCE)": [
+        "Initiate Remote Code Execution (RCE) through the crafted request."
+    ],
+    "Website Access": [
+        "Access the provided URL"
+    ],
+    "File Retrieval": [
+        "Identify the conditions for file retrieval"
+    ],
+    "Environmental Configurations": [
+        "Exported '/tmp' to the PATH"
+    ],
+    "Server-Side Template Injection (SSTI)": [
+        "Execute commands using the SSTI vulnerability to read directory contents."
+    ],
+    "Cookie Analysis": [
+        "Identify incoming cookies from the victim's browser."
+    ],
+    "Vulnerability Exploitation": [
+        "Aligned the chain with the identified vulnerability.",
+        "Upload the new PHP exploit",
+        "Inject the snippet (`EOC\n$eyes=`cat flag`;print '$eyes';`) through another HTTP POST request to /cow_designer."
+    ],
+    "File Analysis": [
+        "Analyze the content of the script.js file."
+    ],
+    "Code Injection": [
+        "Insert PHP code into DocumentName"
+    ],
+    "Research and Documentation": [
+        "Learn about the older version of SQLAlchemy"
+    ],
+    "HTTP Request Execution": [
+        "Executed an HTTP request using the constructed base."
+    ],
+    "JavaScript Analysis": [
+        "Checked 'req.files' in check.js."
+    ],
+    "Exploit Execution": [
+        "Identified that the File Descriptor (FD) for MySQL server connection is open before shellcode execution.",
+        "Identified that 'child_process.execFileSync' is being called in 'preinstall.js'."
+    ],
+    "Message Validation Analysis": [
+        "Understand that the script validates the origin and ID of the message"
+    ],
+    "Cookie Leakage": [
+        "Created a payload to leak cookies to the server."
+    ],
+    "System Configuration Analysis": [
+        "LOYALTY_SYSTEM_ACTIVE is set to False."
+    ],
+    "Authorization Analysis": [
+        "Notice a 'login_session_token' is received upon login attempt.",
+        "Receive an error: Forbidden, missing JWT authorization."
+    ],
+    "SQL Injection": [
+        "Manipulated the IP address parameter in the SQL query."
+    ],
+    "Reverse Shell Obtained": [
+        "Successfully obtain a reverse shell."
+    ],
+    "Character Encoding Analysis": [
+        "Understand that ATS processes LF as line endings."
+    ],
+    "File Flag Extraction": [
+        "Discover the flag inside the file, in reversed order."
+    ],
+    "Regular Expression Analysis": [
+        "Noticed that wildcards are allowed at the _end_ of the email due to `'re.match'` behavior."
+    ],
+    "Directory Navigation": [
+        "Use 'cd S3Scanner/'"
+    ],
+    "Shell Insertion Possibility": [
+        "Realize possibility of shell insertion"
+    ],
+    "Flag Assembly": [
+        "Append each character to an initial flag string."
+    ],
+    "Hash Generation": [
+        "Generate a tripcode for each possible IP",
+        "Compare the generated tripcode with the target"
+    ],
+    "Jinja2 Filter Bypass": [
+        "Use `attr()` Jinja2 filter to pass blacklisted characters"
+    ],
+    "IP Analysis": [
+        "Infer that the IP address has prefix 219"
+    ],
+    "Source Code Analysis": [
+        "Notice absence of arguments in 'require()' call."
+    ]
+}

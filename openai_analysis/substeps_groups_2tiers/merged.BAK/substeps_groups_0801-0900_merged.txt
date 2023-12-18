@@ -1,0 +1,137 @@
+1. **CTF Challenge Understanding**
+   - Challenge-Specific Knowledge
+   - Challenge Analysis & Understanding
+
+2. **Web Application Interactions**
+   - Web Requests & Interactions
+   - Webpage Interaction & Tracking
+   - Web Interactions & Analysis
+   - Web Page Navigation
+
+3. **HTTP Communications**
+   - HTTP Requests
+   - Web Requests & Responses
+   - HTTP Requests & File Manipulation
+   
+4. **Data Analysis & Manipulation**
+   - String Manipulation & Analysis
+   - Data Viewing & Manipulation
+   - File & Data Manipulation
+   - Data Retrieval & Manipulation/Value Manipulation
+
+5. **Code Inspection & Execution**
+   - Client-side Code Inspection
+   - Code Analysis & Identification
+   - Code Execution & Scripting/File Execution
+   - Code Execution & Injection
+   - PHP Functions & Code Manipulation
+   - Code Manipulation & Bypass
+
+6. **Object & Form Manipulation**
+   - Object Crafting & Parameter Manipulation
+   - Form Manipulation 
+   - Element Identification & Manipulation
+   
+7. **Application & System Management**
+   - System Management
+   - Environment Configuration
+   - Application & System Analysis
+   - Server Process & Execution 
+   - Server Permission Enumeration
+   
+8. **Exploitation Techniques**
+   - Network Exploitation & Manipulation
+   - Injection Attack & Vector Identification
+   - Exploitation & Payloads
+   - Application Security Bypass Techniques
+   - Command Execution & Exploitation
+
+9. **Injection & Payload Development**
+   - SQL Injection Analysis & Payload Generation
+   - Payload Encoding
+   - Payload Creation
+   - Object Injection
+
+10. **Authentication & User Management**
+    - Key Retrieval & Usage
+    - Authentication Cookie Modification
+    - User Interaction & Account Manipulation
+    - Authentication & User Management
+   
+11. **Error Handling & Troubleshooting**
+    - Troubleshooting & Debugging
+    - Error Handling
+    - Bypassing Access Denied Error
+
+12. **Securing Web Applications**
+    - Security Checks & Bypassing
+    - Web Application Security Techniques
+    - XSS Protection
+
+13. **Networking & Communication**
+    - Network Exploitation & Manipulation
+    - Networking & Communication
+    - SSRF Message Identification
+
+14. **Testing & Debugging**
+    - Performance Testing & Timing Attacks
+    - Tool Usage
+    - Information Gathering & Debugging
+    - Application Usage & Testing
+
+15. **Data Security**
+    - Data Exfiltration
+    - Encryption & Decryption
+    - Cache Utilization & Scripting
+    - AWS & Server Permissions
+
+16. **Web Scripting & Parsing**
+    - JavaScript Function Call
+    - HTML Parsing & Analysis
+    - XML Parsing
+    - JSON Web Token (JWT) Analysis
+
+17. **Database Activities**
+    - MySQL Documentation Study
+    - Database Identification
+    - SQLite & SQL
+    - Database & Protocol Analysis
+
+18. **Exploit Development Process**
+    - Information Discovery
+    - Exploit Development
+    - Server Exploitation
+
+19. **Application-Specific Techniques**
+    - Template Literals Usage
+    - Note Management
+    - Range Identification
+    - HMAC Signature Generation
+
+20. **Client-side Vulnerabilities**
+    - Cookie Exploitation & Leakage
+    - XSS & DOM Manipulation
+    - Cookie Value Modification
+    - Client-side Vulnerabilities    
+
+21. **Application Errors and Responses**
+    - Admin Alteration & Functionality
+    - Command & Server Interactions
+    - Restrictions Identification
+    - Redirects & Flags   
+
+22. **Payload Management**
+    - Flag Finding & Validation
+    - Looping & Iteration
+    - Input Validation
+    - Loop Execution   
+
+23. **Attack & Response Manipulation**
+    - Request Manipulation/Response Manipulation
+    - Third-Party Application Usage
+    - Web Application Identification
+    - Character Encoding Analysis
+
+24. **Hashing & Encryption Techniques**
+    - Hashing & Encryption
+    - Encryption & Decryption

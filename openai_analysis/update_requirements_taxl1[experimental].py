@@ -5,51 +5,59 @@ import re
 # Define the path to the JSON file
 guidelines_path = "./guidelines.json"
 
-# Multiline string containing the updated value for "steps_requirements"
-new_requirements = """Given the following attack model, assign to every substep a 'SubstepType' field choosing between one of these values: [Analysis, Exploitation], according to the following guidelines:
+# Multiline string containing the updated value for requirements
+new_requirements = """Given the following attack model, try to label each of its substeps, assigning to every substep a 'Taxonomy' field choosing between one of these values: [Reconnaissance, Analysis, Exploitation], according to the following guidelines:
 ```
-'Analysis': Information Gathering, Vulnerability Identification, and Analysis {
-    Pre-emptive Reconnaissance and Identification {
-        Observational Analysis: Gleaning insights into a target's components, structure, and functionalities for a comprehensive understanding and preliminary assessment.
-    }
-    Comprehensive Source Code Review {
-        Logic & Functionality Dissection: Probing application source codes for logical structures, underlying functionalities, and potential weak points that might harbor vulnerabilities.
-    }
-    User Interaction and Behavioral Study {
-        Anomaly Detection: Scrutinizing application interactions to detect unconventional patterns or outcomes arising from user interactions.
-    }
-    Network Infrastructure and Database Examination {
-        Structural Investigation: Delving into the relational patterns of databases and the dialogues between clients and servers for vulnerabilities in communications and data storage.
-    }
-    Advanced Data Exploration and Interpretation {
-        Sensitive Information Scrutiny: Interpreting acquired data intricately to unearth sensitive information or potential vulnerability points.
-    }
-    Configuration and Dependency Review {
-        Detailed Assessment: Evaluating system setups, external dependencies, and their configurations to trace potential misconfigurations and weaknesses susceptible to exploitation.
-    }
-}
+- Reconnaissance.
 
-'Exploitation': Active Exploitation and Advanced Attack Implementation {
-    Authentication Manipulation and Session Compromise {
-        Security Bypassing: Manipulating authentication mechanics and session variables to sidestep security validations and gain unauthorized access.
-    }
-    Arbitrary Code Execution and Malicious Payload Deployment {
-        Vulnerability Leveraging: Seizing the discovered vulnerabilities to execute arbitrary commands and insert harmful payloads, compromising the integrity of the target.
-    }
-    Sophisticated Web Attack Execution {
-        Multi-Faceted Application Compromise: Implementing advanced web attacks, such as XSS and CSRF, to breach application security by exploiting identified vulnerabilities.
-    }
-    Client-Side Intervention and Manipulation {
-        Browser and Request Exploitation: Leveraging client-side vulnerabilities and modifying request parameters to compromise client security.
-    }
-    Network Protocol Intrusion and Compromise {
-        Protocol Vulnerability Exploitation: Utilizing weaknesses in various network protocols to breach network security and implement sophisticated attacks.
-    }
-    Implementation of Specialized Exploitation Techniques {
-        Advanced Vulnerability Chaining: Applying intricate methods, innovative techniques, and specialized tools for complex vulnerability chaining and advanced payload crafting to compromise security on multiple levels.
-    }
-}
+In this phase, attackers gather as much information as possible about the target to find ways to infiltrate the system. Activities in this phase usually involve identifying system components, observing behaviors, and discovering available information that can aid in the attack. It's more about scanning and discovering rather than exploiting or analyzing.
+
+Keywords/Indicators:
+    Observing
+    Discovering
+    Identifying (simple identification, no deep analysis)
+    Navigating
+    Visiting
+
+Substep Example:
+    "Visit the website."
+
+- Analysis.
+
+This phase is about in-depth scrutiny of the discovered information and observed behaviors. It involves studying the collected data, understanding system behaviors, identifying vulnerabilities, and planning the attack. It is more focused and detailed compared to the Reconnaissance phase but does not involve actual exploitation.
+
+Keywords/Indicators:
+    Analyzing
+    Understanding
+    Examining
+    Studying
+    Reviewing
+
+Substep Example:
+    "Analyze the source of checkpass.php to identify potential vulnerabilities."
+
+- Exploitation.
+
+This phase involves leveraging the identified vulnerabilities to gain unauthorized access or privileges in the system. It is about manipulating system behaviors, inputs, or functionalities to achieve the attacker's goals. Here, the attacker uses the insights gained from the Analysis phase to perform actual attacks on the system.
+
+Keywords/Indicators:
+    Exploiting
+    Manipulating
+    Leveraging
+    Injecting
+    Executing
+
+Substep Example:
+    "Attempt to get a reverse shell using specific payload and replace with your server IP."
+
+Applying the Taxonomy to Substeps.
+
+When applying this taxonomy to the substeps, consider the primary focus of each substep. If a substep is mainly about observing and discovering, it falls under Reconnaissance. If it involves scrutinizing, studying, and understanding details or behaviors, it belongs to Analysis. And, if the substep involves utilizing vulnerabilities or functionalities to manipulate system behavior or gain unauthorized access, privileges, or information, it is considered Exploitation.
+
+Consider the primary action and goal in each substep for accurate labeling. If a substep seems to contain elements of multiple categories, consider the predominant or final action or goal in that substep. For example, if a substep involves discovering information and then analyzing it, consider whether the discovery or the analysis is the primary focus of that substep.
 ```
+
+Please consider each substep completely untied from the preceding and following one.
 
 Reply just with the JSON between backticks without adding anything else.
 

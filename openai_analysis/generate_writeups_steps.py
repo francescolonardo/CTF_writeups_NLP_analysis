@@ -1,41 +1,53 @@
 import os
 import json
 
+# Start directory
+start_directory = "../dataset_writeups"
 
-def create_steps_json(file_path):
-    # Getting the file name without extension and replacing _summary with _steps
-    base_name = os.path.splitext(file_path)[0].replace("_summary", "_steps")
+for foldername, subfolders, filenames in os.walk(start_directory):
+    for filename in filenames:
+        if filename.endswith("_presteps.json"):
+            presteps_filepath = os.path.join(foldername, filename)
+            steps_filepath = os.path.join(
+                foldername, filename.replace("_presteps", "_steps")
+            )
 
-    with open(file_path, "r") as file:
-        lines = file.readlines()
+            # Check if corresponding _steps.json file already exists
+            if os.path.exists(steps_filepath):
+                print(f"{steps_filepath} already exists. Skipping...")
+                continue
 
-    steps = [
-        {"StepNumber": index + 1, "StepString": line.strip()}
-        for index, line in enumerate(lines)
-    ]
-    attack_model = {"AttackModel": {"Steps": steps}}
+            try:
+                # Load _presteps.json file
+                with open(presteps_filepath, "r") as f:
+                    content = json.load(f)
 
-    # Correcting the output file name to base_name + ".json"
-    json_file_path = f"{base_name}.json"
-    with open(json_file_path, "w") as file:
-        json.dump(attack_model, file, indent=4)
-    print(f"Created: {json_file_path}")
+                # Check if content is a list of strings
+                if not all(isinstance(item, str) for item in content):
+                    print(
+                        f"{presteps_filepath} does not contain a list of strings. Skipping..."
+                    )
+                    continue
 
+                # Prepare the output JSON structure
+                output = {
+                    "AttackModel": {
+                        "Steps": [
+                            {"StepNumber": idx + 1, "StepString": step}
+                            for idx, step in enumerate(content)
+                        ]
+                    }
+                }
 
-def main():
-    directory = "../dataset_writeups"  # Start directory, can replace with the directory of your choice
+                # Write _steps.json file
+                with open(steps_filepath, "w") as f:
+                    json.dump(output, f, indent=4)
 
-    for foldername, subfolders, filenames in os.walk(directory):
-        for filename in filenames:
-            if filename.endswith("_summary.txt"):
-                summary_file_path = os.path.join(foldername, filename)
-                json_file_path = summary_file_path.replace(
-                    "_summary.txt", "_steps.json"
-                )
+                print(f"Successfully created {steps_filepath}")
 
-                if not os.path.exists(json_file_path):
-                    create_steps_json(summary_file_path)
+            except json.JSONDecodeError:
+                print(f"Failed to parse JSON in {presteps_filepath}. Skipping...")
+            except Exception as e:
+                print(f"Error processing {presteps_filepath}: {e}. Skipping...")
 
-
-if __name__ == "__main__":
-    main()
+print("Processing Completed!")

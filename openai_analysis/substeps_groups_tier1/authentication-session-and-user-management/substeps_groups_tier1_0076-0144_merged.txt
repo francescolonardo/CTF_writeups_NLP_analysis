@@ -1,0 +1,82 @@
+1. Authentication Manipulation
+   - Bypassing Authentication
+   - JWT Processing and Analysis
+   - SQL Injection
+   - API and Service Authentication
+   - Logging in and Authentication
+   - Authentication and Session Management
+
+2. Credentials Management
+   - Password and Authentication Manipulation
+   - Password Discovery
+   - Password Reset and Account Activation
+   - Discovering Credentials
+   - Brute Force and Password Cracking
+   - Credentials Identification and Management
+   - Database Authentication and Credentials
+
+3. Token and Session Management
+   - Token and Cookie Manipulation
+   - Managing Web Tokens and Cookies
+   - Cookie and Token Manipulations
+   - Session and Cookie Management
+   - Web Tokens and Authentication Tokens
+   - JWT and Token Manipulation
+   - Session and Token Management
+   - Web Token Manipulation
+
+4. User Management and Permissions
+   - User Privileges and Permissions
+   - Separate User Accounts
+   - Authorization and Permissions
+   - User Authentication and Authorization
+   - User Permissions and Controls
+   - User Management and Permissions
+   - Inappropriate Access Control
+
+5. Request and Input Manipulation
+   - Request Manipulation and Payload Craft
+   - Form Interactions and Inputs
+   - Request and Response Manipulation
+   - Login and Authentication Inputs
+   - Form and Input Manipulation
+   - User Interactions and Behaviors
+
+6. Web Application Security Exploitation
+   - Web Security and Exploitation
+   - Web Application Vulnerabilities and Exploits
+   - CSRF Protection and Payload Analysis
+   - Web Application Security
+   - WAF Bypass and Payload Encoding
+   - Bypassing Application
+   - Code Injection and Exploitation
+   - XSS Prevention
+   - Injection Attacks
+
+7. Content and Data Management
+   - File Upload and Execution
+   - File Retrieval and Validation
+   - Flag Retrieval
+   - Flag and Source Code Access
+
+8. Analysis and Observation
+   - Observation and Analysis
+   - API and Backend Analysis
+   - Logging and Audit Trails
+   - Infrastructure and Configuration Analysis
+
+9. Miscellaneous
+   - Other Actions
+   - Miscellaneous
+   - Other
+   - User Enumeration and Brute Force
+   - Distributed Systems and Caching
+   - Rate Limiting and OTP Restrictions
+   - Actions and Requests
+   - User Actions and Interactions
+   - Command Injection
+   - Credentials and Verification Data Obtention
+   - Data Validation
+   - Managing Web Application Actions
+   - Bypassing Validation
+   - Request Manipulation

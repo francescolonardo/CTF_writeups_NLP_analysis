@@ -1,0 +1,69 @@
+{
+    "Server-side Actions": [
+        "Observe the submission of comments as a two-step process.",
+        "Identify that the server checks if 'text' is not included in 'xml.lower()'.",
+        "Observe the uploaded file triggering a POST to /upload.php.",
+        "Locate the JWT token within the session cookie.",
+        "Find a way of issuing a pseudo PUT request by using a POST request with a '_method' query parameter set to PUT",
+        "Obtain the email of the target: alexo@uupeye.edu",
+        "Increase the number of commas in the input to three.",
+        "Sent the JSON body to the server",
+        "Recognize that the set input reflects in the included PHP code.",
+        "Identify the Hexadecimal string.",
+        "Indicate the successful execution of the attack.",
+        "Set the 'language' parameter to 'key' in the JSON data.",
+        "Discover the config.py file.",
+        "Checked the value of the `token` cookie on jwt.io.",
+        "Use Fetch API on 'mobile-viewer' page.",
+        "Inspect the `challenge/routes/index.js` file.",
+        "Discovered an `AdminPage`.",
+        "Recognize that the Origin request header comprises the webpage URL in the format: ://hostname:port.",
+        "Identify the need to bypass server checks",
+        "Identified the URL of the flag containing post '/post/68a30ae2-a8f3-4d12-9ffa-0564a3a7177b' from the exfiltrated contents.",
+        "Determined the system only responded with the flag if the request came from the loopback network.",
+        "Notice the Linux logo is gone from the page",
+        "Notice the website allows HTML input."
+    ],
+    "Web Navigation & Interaction": [
+        "Select the first option in the 'Support' section",
+        "Append the payload '?payload=directory`flag`' to the URL of the webpage.",
+        "Entered 'view-source:https://no-right-click.hsc.tf/useless-file.css' in the browser's address bar."
+    ],
+    "Code Analysis & Inspection": [
+        "Analyzed the HTML source code.",
+        "Examined the source code of the challenge present in the cloned repository.",
+        "Inspect the `challenge/routes/index.js` file."
+    ],
+    "Request Manipulation": [
+        "Find a way of issuing a pseudo PUT request by using a POST request with a '_method' query parameter set to PUT",
+        "Recognize the usage of GET request arguments",
+        "Test the character '%'"
+    ],
+    "Authentication & Authorization": [
+        "Locate the JWT token within the session cookie.",
+        "Discover the config.py file.",
+        "Checked the value of the `token` cookie on jwt.io.",
+        "Discovered an `AdminPage`."
+    ],
+    "Data Validation & Manipulation": [
+        "Identify that the server checks if 'text' is not included in 'xml.lower()'.",
+        "Increase the number of commas in the input to three.",
+        "Recognize that the set input reflects in the included PHP code.",
+        "Identify the Hexadecimal string.",
+        "Set the 'language' parameter to 'key' in the JSON data."
+    ],
+    "File & Resource Manipulation": [
+        "Observe the uploaded file triggering a POST to /upload.php.",
+        "Append the payload '?payload=directory`flag`' to the URL of the webpage.",
+        "Discover the config.py file.",
+        "Identified the URL of the flag containing post '/post/68a30ae2-a8f3-4d12-9ffa-0564a3a7177b' from the exfiltrated contents.",
+        "Notice the Linux logo is gone from the page",
+        "Notice the website allows HTML input."
+    ],
+    "Communication & Networking": [
+        "Observe the submission of comments as a two-step process.",
+        "Obtain the email of the target: alexo@uupeye.edu",
+        "Recognize that the Origin request header comprises the webpage URL in the format: ://hostname:port.",
+        "Determined the system only responded with the flag if the request came from the loopback network."
+    ]
+}

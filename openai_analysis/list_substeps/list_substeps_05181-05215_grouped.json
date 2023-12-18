@@ -1,0 +1,58 @@
+{
+    "Exploitation Techniques": [
+        "Exploit the vulnerability in the 'query_login_attempt' function.",
+        "Understand the concept of exploiting object injection by inserting custom objects into user data, thus altering protected attributes and evading authentication.",
+        "Apply the base64 encoding filter to allow for file reading.",
+        "Understood how python pickles can be used for Remote Code Execution",
+        "Crafted the SQL injection to directly pass 'flagman69' as the value for the username column using the 'UNION' clause.",
+        "Determine vulnerability to LFI",
+        "Include session ID in the request.",
+        "Identify XSS vulnerability in the feedback feature of the site.",
+        "Incorporated the PHP 'disable_functions' bypass exploit.",
+        "Utilize the group_concat() function",
+        "Utilize hardcoded key.",
+        "Try logging in using `admin:tryharder` credentials.",
+        "Utilize hardcoded key.",
+        "Identify that the formula points to another sheet's labeled 'Source'"
+    ],
+    "Server-Side Exploitation": [
+        "Used a private SSH key retrieved from the database for cloning.",
+        "Identify the octal notation of 127.0.0.1 IP address is 0177.0.0.1.",
+        "Identify the encoded public key in the JWT.",
+        "Identify User Login section.",
+        "Recognize the challenge requires locating a flag in /var/www/html/flag.php on a web server",
+        "Utilize the group_concat() function",
+        "Perform a port scan and identify Apache server version 2.4.49 operating on port 12380"
+    ],
+    "Code Analysis": [
+        "Note that they appear unusual.",
+        "Identified the 'SQL' class within the code.",
+        "Identify the revisions containing the changes.",
+        "Identified 'this.service.getAnswer()' command in the Angular application."
+    ],
+    "Web Navigation & Interaction": [
+        "Explore the public feed.",
+        "Observe that the page uses relative JavaScript paths.",
+        "Identify the revisions containing the changes.",
+        "Notice that users are redirected.",
+        "Start the CTF challenge.",
+        "Start the challenge instance."
+    ],
+    "Data Extraction": [
+        "Extract the flag from the server response.",
+        "Send GET request to 'https://shiba.yactf.ru/' to get the final page after 1500 iterations.",
+        "Receive the flag."
+    ],
+    "Documentation Review": [
+        "Identify that the database logic requires a password token.",
+        "Identify the revisions containing the changes."
+    ],
+    "Vulnerability Analysis & Discovery": [
+        "Identify vulnerability to LFI",
+        "Located the vulnerability in the '/cornelia' URL.",
+        "Identify XSS vulnerability in the feedback feature of the site."
+    ],
+    "Geolocation & Mapping": [
+        "Establish the coordinates of the point of interest"
+    ]
+}

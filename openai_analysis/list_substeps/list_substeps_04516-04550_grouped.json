@@ -1,0 +1,72 @@
+{
+    "JavaScript Techniques": [
+        "Understand that you can convert a string to an array of chars in Javascript using the clause '[...p]'."
+    ],
+    "Vulnerability Analysis": [
+        "Notice 'require()' leads to a Local File Inclusion (LFI) vulnerability.",
+        "Applied the knowledge of the discovered vulnerability to infer certain characteristics of the web application.",
+        "Identify the use of phar:// uri.",
+        "Use the phar:// uri in the XML External Entity vulnerability."
+    ],
+    "Origin & Cross-Origin Considerations": [
+        "Take note that the embedded iframe is within the same origin"
+    ],
+    "Error Handling & Detection": [
+        "Triggered an error."
+    ],
+    "Brute Force Attack": [
+        "Automated a bruteforce attack with a Python script."
+    ],
+    "Flag Verification": [
+        "Verify reception of the flag 'dsc{th15_15_w4y_t00_much_w0rk}'."
+    ],
+    "Exploiting Character Restrictions": [
+        "Crafted a URL that appended an HTML header tag to the domain part of the email parameter, thereby exploiting the lax character restriction."
+    ],
+    "Endpoint & Route Mapping": [
+        "Recognized that /api/flag-plz is mapped to /forbidden.",
+        "Navigate to the '/api/flag' endpoint using the modified token.",
+        "Modify the `services` object by POST-ing JSON to the `/change_status` endpoint.",
+        "Used the 'flag' value on '/com/seaerch/' endpoint.",
+        "Identify the presence of a form to create users."
+    ],
+    "Web Navigation & Interaction": [
+        "Understand the usage of 'localhost:3000/render?url=' feature",
+        "Noted the server requests",
+        "Access the website at 'http://freewifi.ctf.umbccd.io/'.",
+        "Visit the website."
+    ],
+    "Hashing & Encryption": [
+        "Understood that a string needs to be found to match the MD5 hash of the challenge."
+    ],
+    "File Analysis": [
+        "Found a link for an example json file"
+    ],
+    "Server Interaction": [
+        "Send a GET request to the server",
+        "Filter output using '/etc/alternatives/nawk'.",
+        "Used the command: nikto -h http://172.17.15.117:443/",
+        "Find that the Gopher adapter used was modified from a GitHub gist."
+    ],
+    "User Actions": [
+        "Register as a new user."
+    ],
+    "XSS Vulnerability": [
+        "Identify the website's vulnerability to XSS.",
+        "Start looking for a payload to trigger the XSS.",
+        "Ensure the XSS payload fits within the 75 character limit."
+    ],
+    "Server Process & Execution": [
+        "Define 'os.ProcAttr'."
+    ],
+    "Flag Location & Retrieval": [
+        "Verified that the 'index.php' file contains the flag."
+    ],
+    "Response Vulnerability Analysis": [
+        "Observe the vulnerability in the incoming responses at the '/checkbalance' endpoint.",
+        "Examined the authentication process."
+    ],
+    "Key Update Analysis": [
+        "Note what actions trigger the key's update."
+    ]
+}

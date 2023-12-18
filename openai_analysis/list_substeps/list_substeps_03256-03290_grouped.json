@@ -1,0 +1,48 @@
+{
+    "JSON Manipulation": [
+        "Check if the body JSON value 'solution' exists.",
+        "Note the regex format /^{\"hash\": [0-9A-Z\"]+}$/",
+        "Decode the session data from the cookie using Base64 decoding on a site like cyberchef."
+    ],
+    "Payload Generation & Encoding": [
+        "Designed a payload to retrieve cookies and encode them in base64.",
+        "Use a payload to leak the source code of PHP."
+    ],
+    "Configuration & Settings Analysis": [
+        "Determine that a setting called 'Pipe the emails through' uses the 'smtp_exec' variable",
+        "Guess that language setting may be relevant to solve puzzle"
+    ],
+    "Console Interactions": [
+        "Switch to the console.",
+        "Learn about the SQLite code",
+        "Read strings from the binary."
+    ],
+    "Web Application Interaction": [
+        "Proceed with user registration.",
+        "Apply the algorithm to the captured wifi nonces.",
+        "Recognized the presence of admin's 'Cookie' and 'X-Access' headers.",
+        "Upload a different file.",
+        "Triggered the payload through an iframe by entering that into the webpage's input field",
+        "Concluded that the web application may interpret HTML content, thus implying a potential for Cross-site Scripting (XSS).",
+        "Access '/etc/hosts' file.",
+        "Connect to the website 'https://web5.ctfsecurinets.com/flags.php'",
+        "Check if any of the tested characters bypass the template engine",
+        "Extract the contents of 'poc.odt' to access the 'content.xml' file.",
+        "Observe the returned flag."
+    ],
+    "Command Execution & Injection": [
+        "Execute the command 'php -d'phar.readonly=0' ./phpggc --phar phar -o /tmp/exploit.phar --fast-destruct monolog/rce1 system \"cat /flagM1AhS\"'",
+        "Determine it potentially allows command injection.",
+        "Restarted the container."
+    ],
+    "Web Navigation & Analysis": [
+        "Open the file using an appropriate application or viewer.",
+        "Test inputting content in BBCode format"
+    ],
+    "Code Analysis & Exploitation": [
+        "Noted the single-threaded nature of the JavaScript event loop.",
+        "Identify the application.",
+        "The render2.asm file contains a hash table of commands used by the templating engine",
+        "If the character does not match 5, set the LIMIT to 2"
+    ]
+}

@@ -1,0 +1,7 @@
+[
+    "Sent the encoded cookies to a pre-defined URL controlled by the attacker.",
+    "Identify attribute that can be polluted to spawn a new process or execute a command.",
+    "Found API endpoint details in the downloaded files",
+    "Identified the BeautifulSoup module being used to sanitize HTML.",
+    "Identify the presence of 'news' string in the JavaScript code."
+]

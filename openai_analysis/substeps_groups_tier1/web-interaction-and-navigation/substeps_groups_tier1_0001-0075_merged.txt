@@ -1,0 +1,94 @@
+1. Web Navigation and Understanding
+    - Accessing and Navigating Web Pages
+    - Web Navigation and Interaction
+    - Webpage Visiting and Navigating
+    - Page Navigation and URL Manipulation
+    - Navigation and Browsing
+    - General Web Interaction
+    - Web Browsing and Navigation
+
+2. Web Interaction and Manipulation
+    - Web Interactions and Inputs
+    - Web Requests and Interactions
+    - Interacting with Web Servers
+    - Website Interaction and Manipulation
+    - Button and Link Interaction
+    - User Inputs and Interactions
+    - Web Elements and Interactions
+    - Form Interaction and Input
+    - Browser and Client-Side Interactions
+    - Form Interactions
+    - Web Form Interaction
+
+3. Manipulation and Analysis of URLs and Browsers
+    - Website Connection and URL Manipulation
+    - URL Manipulation and Analysis
+    - URL and Browser Manipulation
+    - URL Manipulation and Navigation
+    - Browser and Network Manipulation
+    - Browser Manipulation
+
+4. Network Interactions, Requests, and Responses
+    - Network Manipulation and Analysis
+    - HTTP Requests and Responses
+    - Server Interaction and Requests
+    - Manipulating Requests and Responses
+    - Web Requests
+    - Request and Response Handling
+    - Network Interactions
+    - Request Manipulations 
+
+5. Data, Web Elements, and File Manipulation and Analysis
+    - Data Manipulation and Injection
+    - Data Manipulation and Parameters
+    - Data Manipulation and Retrieval
+    - Web Element Interaction
+    - Web Elements and Design
+    - Web Element Interactions
+    - Web Element Manipulation
+    - Web Element Analysis
+    - File Interaction and Manipulation
+    - File System Exploration
+    - File Download
+    - File and Content Analysis
+
+6. Web Content Analysis and Manipulation
+    - Website Analysis and Exploitation
+    - Webpage Analysis and Detection
+    - Webpage Behavior Analysis
+    - Web Server Behavior Analysis
+    - Vulnerability Identification
+    - Web Application Analysis and Exploitation
+    - Information Gathering and Understanding
+    - Web Application Analysis
+    - Data Analysis and Extraction
+    - Server Analysis and Exploitation
+    - Web Content Manipulation
+    - Web Content and Forms
+    
+7. Server, Session/Cookie, and Authentication Interactions
+    - Server Interactions and Monitoring
+    - Server Interaction and Analysis
+    - Session and Cookie Handling
+    - Authentication and Security Analysis
+    - Cookie Handling
+
+8. Specific User Actions and Interactions
+    - User Interactions
+    - Profile Modification and Image Upload
+    - Note-Taking and Organization
+    - Repetition and Iteration
+    - Input Manipulation
+
+9. Payload and Command Execution
+    - Command Execution
+    - Payload Manipulation
+
+10. Advanced Exploration and Exploitation
+    - Web Exploitation and Manipulation
+    - WebSocket Communication
+    - Response Analysis and Manipulation
+    - API Endpoints and Mapping
+
+11. Unspecified Category
+    - Unknown Category

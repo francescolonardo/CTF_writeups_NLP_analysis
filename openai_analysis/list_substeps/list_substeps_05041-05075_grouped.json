@@ -1,0 +1,63 @@
+{
+    "Cross-Site Request Forgery (CSRF)": [
+        "Perform a GET-based CSRF through a top-level navigation."
+    ],
+    "File Manipulation": [
+        "Create a tar archive with all the uploaded files."
+    ],
+    "Payload Creation": [
+        "Craft a payload.",
+        "Trigger the 'window.open' function with the payload",
+        "Attempt to inject code with an embedded script",
+        "The one-liner creates a malicious 'id' payload",
+        "Include 'payload' as the data"
+    ],
+    "Server-Side Vulnerability Identification": [
+        "Used '__proto__' as the username parameter",
+        "Identified a Server Side Request Forgery (SSRF) vulnerability.",
+        "Or replace 'admins' with '../.env' in the route.",
+        "Identified an admin bot script provided by the challenge.",
+        "Find that the login process is performed via a JavaScript file (scripts/login.js).",
+        "Included a 'uri' parameter with a malformed path, such as //ATTACKER-URL, in the request.",
+        "Find that the Go microservice uses the Beego web framework"
+    ],
+    "Shell & Remote Code Execution (RCE)": [
+        "Reverse shell is obtained on the target system."
+    ],
+    "Flag Retrieval": [
+        "Fetched the flag.",
+        "Extracted the flag."
+    ],
+    "Injection & Exploitation": [
+        "Try SQL Injection on the data passed using fragment values",
+        "Include 'payload' as the data",
+        "Checking if the character's index matches the desired one.",
+        "Recognize that the hash can be cracked."
+    ],
+    "Web Application Analysis": [
+        "Look into the provided source code to understand how the application works.",
+        "Examined source code of 'santa_mon.sh' program.",
+        "Note that the Go microservice uses the Beego web framework"
+    ],
+    "Browser & Webpage Interaction": [
+        "Replace the multiple URL opens with actual browser window opens.",
+        "Understand that it performs an HTTP GET call.",
+        "Open the Browser Devtools",
+        "Access the website."
+    ],
+    "Data Leakage & Information Discovery": [
+        "Find that content of the note is reflected in the source code",
+        "Sensitive, user-specific data could be read if /api/filter endpoint returns based on these cookies",
+        "Find a snippet of JavaScript code containing database credentials and a 'JSESSIONID' cookie."
+    ],
+    "Bot & Automation Identification": [
+        "Wait for the bot to visit the URL.",
+        "Discover the 'mock()' function."
+    ],
+    "Loop Manipulation": [
+        "Break the loop."
+    ],
+    "URL Manipulation": [
+        "Replace each integer into a URL."
+    ]
+}

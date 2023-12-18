@@ -1,0 +1,63 @@
+{
+    "Understanding and Analysis": [
+        "Understood that to trigger curl execution, 'doit' method must be invoked.",
+        "Noted that the 'doit' method is called in the '__destruct()' function.",
+        "Understood the conditions for the 'doit' method being called, specifically if present in the '$method' attribute of the destructed object.",
+        "Planned to craft an object with desired parameters.",
+        "Created a PHP script to serialize an object for the exploit.",
+        "Adjusted the '$method' attribute in the serialized object.",
+        "Set the '$method' attribute in the serialized object to be 'doit'.",
+        "Recognized a known strange PHP behavior could be exploited to circumvent file extension checks.",
+        "Accounted for the replace operation which changed the string length.",
+        "Received flag 'F#{wtf_5trp0s_}' in response."
+    ],
+    "XSS Exploitation": [
+        "Analyze HTML",
+        "Connect to source code link",
+        "Understand that exploitation involves creation of a Stored XSS",
+        "Find that content of the note is reflected in the source code",
+        "Note that the const 'note' can be altered",
+        "Close the string and insert arbitrary JavaScript",
+        "Manipulate the HTML structure",
+        "Create an insertion point"
+    ],
+    "Client-side Analysis": [
+        "Inspect the HTML source code of the admin page",
+        "Determine that the second part of the packet represents the post ID",
+        "Inspect the client-side code",
+        "Analyzed the client source code."
+    ],
+    "PHP Code Analysis": [
+        "Inspected the HTML source code.",
+        "Inspected the source code of the newly accessed webpage.",
+        "Recognized that the source code is written in PHP.",
+        "Analyzed the PHP code in the source.",
+        "Identified that the PHP code output the flag when a specific username 'flagman69' is used.",
+        "Evaluated the PHP code to understand how user input is processed.",
+        "Identified that the user input is directly concatenated to the SQL query ",
+        "Observed the source code closely for additional checks or controls.",
+        "Prepared an SQL injection using 'UNION' clause to search for 'flagman69' user.",
+        "Used the gained information about the 'users' table structure to craft a new SQL injection."
+    ],
+    "Remote Code Execution": [
+        "Analyze the HTML source code.",
+        "Identify that the QR Code produced only contains the first character inserted.",
+        "Use backticks to confirm remote code execution (RCE).",
+        "Send the command `echo 'X'`.",
+        "Write a Python script.",
+        "Create a function `execute_command` in the Python script.",
+        "Run commands and increase the command output slice index until the result was empty.",
+        "Create a function `http_get` in the Python script.",
+        "Get the response.",
+        "Check if PNG was found in the response."
+    ],
+    "Manipulating HTTP Requests": [
+        "Review the source code of the homepage.",
+        "Recognize that the 'with' HTTP GET parameter can be manipulated.",
+        "Replace the existing 'with' value, 'discord', with a different value, 'foo'.",
+        "Replace the 'with' value with the word 'flag'.",
+        "Review the presented source code",
+        "Pass serialized input via 'id' HTTP GET parameter",
+        "Pass through certain PHP code"
+    ]
+}

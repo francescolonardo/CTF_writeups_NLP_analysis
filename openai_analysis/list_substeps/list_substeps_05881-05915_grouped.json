@@ -1,0 +1,53 @@
+{
+    "HTTP Request Manipulation": [
+        "Find out that the second obstacle is HTTP request smuggling.",
+        "Craft a malicious payload in a POST request.",
+        "Include the correct 'Authorization' header.",
+        "Exploited the query to bypass the authentication check.",
+        "Construct a curl command to send the payload to the server.",
+        "Use the Promise to try and load a URL.",
+        "Realize the need to request 'http://genflag/flag'.",
+        "Use the tool 'git-dumper'.",
+        "Included the new payload in the URL."
+    ],
+    "Web Application Analysis": [
+        "Identified the potential for a JWT key confusion attack.",
+        "Take note of the 'username' from the form inputs.",
+        "Saw the criteria for getting the flag printed.",
+        "Consult the official Python documentation.",
+        "Realize that the secret key is selected randomly from an array of cookie names.",
+        "Identify the involved keys - 'key' and 'key2'.",
+        "Identify that the JWT success counter is reset to 0 if the old token is invalid.",
+        "Find that the content is retrieved from the URL in base64 format."
+    ],
+    "File and Directory Discovery": [
+        "Identified notable shell script 'findaas' inside '/ctf'.",
+        "Locate the file named '(wtf.mp4)'.",
+        "Discover potential directories or files",
+        "Navigate to the '.github/workflows' directory"
+    ],
+    "Web Navigation & Interaction": [
+        "Obtain the complete flag.",
+        "Select any one of the identified hashes.",
+        "Payload loads /demo in an iframe",
+        "Enter an apostrophe in the username field.",
+        "Observe that the page says `Hello Mars!`.",
+        "Acquire the flag upon login.",
+        "Perform a login using the web application",
+        "Experienced multiple redirections from one page to another"
+    ],
+    "Code and Source Code Analysis": [
+        "Noticing the main class, Database, which creates, retrieves and generates tokens for notes.",
+        "Examine the source code of the main web page."
+    ],
+    "Command Line Execution and Tools Usage": [
+        "Initialize CTF task."
+    ],
+    "Data Manipulation and Payload Creation": [
+        "Create a 8 byte file equivalent to the data in `cipher + 0xd34db33f`.",
+        "Found the last piece of the flag: 1nsp3ction_"
+    ],
+    "Communication and Reporting": [
+        "Send the code to the site administrator"
+    ]
+}

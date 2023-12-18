@@ -1,0 +1,47 @@
+1. Web Interaction and Navigation
+    Description: Engage in activities like browsing, understanding web functions, analyzing underlying web elements, and tracking user behavior.
+    Example actions: URL manipulation, browser behavior analysis.
+
+2. Authentication and Session Management
+    Description: Engage in activities related to user authentication, session management, and user permissions.
+    Example actions: Bypassing authentication processes, managing web tokens and cookies, handling OTPs.
+
+3. Data Analysis and Storage Interactions
+    Description: Process and visualize data, interact with databases for exploitation or alteration, and access or manage files.
+    Example actions: Analyzing user input, extracting unintended system data, managing files and databases.
+
+4. Code and Application Analysis
+    Description: Inspect code and understand the application environment to identify vulnerabilities or malicious behavior.
+    Example actions: Analyzing scripts, dissecting specific code or web content, comprehending dynamic web rendering.
+
+5. Exploitation Techniques and Payload Handling
+    Description: Employ various techniques to exploit vulnerabilities and handle malicious payloads.
+    Example actions: Injection attacks, developing exploit tools or scripts, identifying system vulnerabilities.
+
+6. Network and System Analysis
+    Description: Investigate networking protocols and analyze system configurations to understand their interactions and identify vulnerabilities.
+    Example actions: Analyzing IPs and DNS systems, understanding server configurations.
+
+7. Debugging and Monitoring
+    Description: Employ debugging techniques and monitor system activities to identify and address anomalies.
+    Example actions: Troubleshooting, analyzing system messages, monitoring recorded activities.
+
+8. Cryptography and Encoding Techniques
+    Description: Engage in methods related to data encryption, cryptographic analysis, and data representation through encoding or decoding.
+    Example actions: Analyzing cryptographic protocols, encoding or decoding data.
+
+9. Tools and Automation
+    Description: Utilize custom tools and automate processes to interact with system interfaces and manipulate data.
+    Example actions: Employing custom tools, automating attack processes, manipulating text or data sequences.
+
+10. Information Gathering and Security Analysis
+    Description: Conduct research to gather information about vulnerabilities and understand broader security principles.
+    Example actions: Vulnerability research, system exploration, security principle analysis.
+
+11. Documentation
+    Description: Engage in activities related to creating, reviewing, and organizing documentation about vulnerabilities, exploits, defense mechanisms, and processes.
+    Example actions: Reviewing previous writeups or reports, writing or updating documentation about a vulnerability or exploit, maintaining a knowledge base of vulnerabilities and defense strategies.
+    
+12. Miscellaneous
+    Description: A catch-all category for actions that do not neatly fit into the other categories.
+    Example actions: Any action that doesn't fit into the categories above.

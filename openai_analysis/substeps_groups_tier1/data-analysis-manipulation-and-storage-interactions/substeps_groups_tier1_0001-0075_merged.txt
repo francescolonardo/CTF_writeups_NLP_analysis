@@ -1,0 +1,94 @@
+1. Data Analysis and Processing
+   - Data Visualization and Analysis
+   - Data Analysis and Extraction
+   - Data Analysis and Decoding
+   - Data Extraction and Parsing
+   - Data Analysis
+   - Data Sorting and Manipulation
+   - System Analysis and Investigation
+   - System Memory Analysis
+   - Data Manipulation and Processing
+
+2. Data Manipulation and Exploitation
+   - Data Manipulation and Injection
+   - Data Manipulation and Visualization
+   - Data Manipulation and Conversion
+   - Data Exploitation and Manipulation
+   - Data Manipulation and Extraction
+   - User Input Manipulation
+   - Input Manipulation
+   - Command Execution
+   - Command-Line Tool Usage
+   - HTTP Request and Parameter Manipulation
+
+3. Data Storage and Management
+    - Data Storage and Management
+    - File Upload and Processing
+    - File Manipulation and Access
+    - File Interactions and Manipulations
+    - Accessing and Managing Notes
+    - Handling Note IDs
+    - File Downloading
+    - File Interaction and Management
+    - File and Directory Access
+    - File and Folder Manipulation
+
+4. Interaction with Web Elements and Systems
+    - Webpage Navigation and Interaction
+    - Web Navigation and Exploration
+    - Website Interactions and Inputs
+    - Webpage Navigation
+    - JavaScript Payload and Injection
+    - JavaScript Object Manipulation
+    - Networking and HTTP Requests
+    - HTTP Interaction Analysis
+    - URL Crafting and Response Checking
+    - URL Enumeration and Manipulation
+
+5. File and Data Manipulation
+    - File Analysis and Manipulation
+    - File and Data Manipulation
+    - File Manipulation
+    - Flag Redirection and File Manipulation
+    - PDF File Retrieval
+    - PDF Manipulation and Analysis
+    - File Downloading
+    - Searching and Analyzing Files
+
+6. Exploitation and Vulnerability Identification
+   - Error and Vulnerability Identification
+   - Exploitation and Vulnerability Identification
+   - System Exploitation
+   - Web Application Exploitation
+   - Web/Application Exploitation
+   - Unauthorized Access and Actions
+
+7. Database Interactions and Extraction
+   - Database Interactions and Exploitation
+   - Database Exploitation and flag Retrieval
+   - Database Interaction and Extraction
+   - Data Retrieval and Extracting
+
+8. Information Gathering and Analysis
+   - Response Analysis
+   - Information Gathering
+   - User Input Analysis
+   - User Input Analysis and Exploitation
+   - System Data Extraction
+   - Data Read and Extraction
+
+9. Data Encoding and Cryptography
+   - Data Encoding
+   - Cryptography  
+
+10. Miscellaneous Actions
+    - Input Manipulation and Exploitation
+    - Form Analysis and Image Upload
+    - Code Execution and File Creation
+    - Information Extraction and Exploitation
+    - Data Exfiltration
+    - Captcha Collection
+    - Data Retrieval and Reading
+    - Miscellaneous
+    - Data Analysis, Manipulation, and Storage Interactions
+    - Miscellaneous Actions

@@ -1,0 +1,73 @@
+Tier 1: Information Analysis
+- Tier 2: Web Application Analysis
+    - Tier 3: Source Code Review
+    - Tier 3: Web Content Analysis
+    - Tier 3: HTTP Analysis
+    - Tier 3: DOM Manipulation
+    - Tier 3: Web Navigation
+    - Tier 3: Dynamic Rendering
+    - Tier 3: Response Extraction & Verification
+    - Tier 3: Text Decoding & Manipulation
+- Tier 2: Network and Request Handling
+    - Tier 3: System & Server Information
+    - Tier 3: Network Analysis
+    - Tier 3: Network Operations
+    - Tier 3: URL & Parameter Manipulation
+    - Tier 3: DNS Manipulation
+- Tier 2: File, Directory, and System Analysis
+    - Tier 3: File & System Analysis
+    - Tier 3: Binary Analysis
+    - Tier 3: File Manipulation & Download
+    - Tier 3: File and Directory Discovery
+    - Tier 3: File & Directory Analysis
+    - Tier 3: Directory & Path Exploration
+
+Tier 1: Web Security and Vulnerabilities
+- Tier 2: Vulnerability Analysis and Assessment
+    - Tier 3: Vulnerability Assessment
+    - Tier 3: Security Vulnerability Identification
+    - Tier 3: Vulnerability Analysis
+    - Tier 3: Rate Limiting & OTP
+    - Tier 3: Endpoint Sensitivity
+    - Tier 3: Reconnaissance & Enumeration
+- Tier 2: Authorization and Authentication
+    - Tier 3: Basic Authentication
+    - Tier 3: Cookie Handling
+    - Tier 3: User Registration
+    - Tier 3: Password Discovery
+    - Tier 3: Password Verification
+    - Tier 3: CAPTCHA & JWT
+    - Tier 3: Token & Signature Analysis
+    - Tier 3: Access Control
+- Tier 2: Data Handling and Manipulation
+    - Tier 3: Encryption & Encoding
+    - Tier 3: Prototype Injection & Exploitation
+    - Tier 3: Bypassing Filters
+    - Tier 3: Cookie and Header Analysis
+    - Tier 3: Cryptography & Key Handling
+    - Tier 3: Data Processing & Analysis
+
+Tier 1: Attack and Exploitation Techniques
+- Tier 2: Payload and Injection Techniques
+    - Tier 3: Payload Injection
+    - Tier 3: Redirection & Payloads
+    - Tier 3: XSS Payload Injection
+    - Tier 3: Union Based Injection
+    - Tier 3: Payload Crafting & Submission
+    - Tier 3: JWT Payload Generation
+    - Tier 3: Payload Optimization
+- Tier 2: Exploitation Techniques
+    - Tier 3: Security Vulnerability Exploitation
+    - Tier 3: Vulnerability Exploitation
+    - Tier 3: Redirection & Flow Control
+    - Tier 3: Exploitation Techniques
+    - Tier 3: Prototype & Constructor Manipulation
+    - Tier 3: Exploitation Techniques & Payload Construction
+- Tier 2: Auxiliary Techniques and Tasks
+    - Tier 3: Debugging & Troubleshooting
+    - Tier 3: Script Development & Execution
+    - Tier 3: Server Interaction & Script Execution
+    - Tier 3: Web Development & JavaScript
+    - Tier 3: Character Checking
+    - Tier 3: Function Execution
+    - Tier 3: Command Line Operations

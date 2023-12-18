@@ -1,0 +1,51 @@
+{
+    "User Script & Payload Modification": [
+        "Ensured the user script run by application was active.",
+        "Modified the payload script.",
+        "Generate the admin 2FA codes with the authenticator application."
+    ],
+    "Vulnerability Identification & Testing": [
+        "Notice vulnerability occurs when merging request data.",
+        "Tested the method.",
+        "Identified the challenge."
+    ],
+    "Password Cracking & Analysis": [
+        "Check if guessed character is in password",
+        "Analyzed the response",
+        "Learn that if a string starts with '0e...' in PHP, it is treated as a float with the value 0.0"
+    ],
+    "Flag Finding & Validation": [
+        "Find a potential flag in the search results.",
+        "Notice that to match the value of 'hash' and 'target', the 'hash' param cannot equal '10932435112'.",
+        "Noted the purpose of the oracle in determining flag correctness."
+    ],
+    "Script & File Analysis": [
+        "Examined the Python script used for the attack.",
+        "Tracked the function `shellme()` inside the `shellme.so` shared object file.",
+        "Identify suspicious JavaScript named 'mec-frontend'."
+    ],
+    "Exploitation Techniques & Payload Construction": [
+        "Implemented an error-based approach.",
+        "Use the new session cookie to log into the site.",
+        "Constructed command '/santa_mon.sh \"curl http://localhost:3000/get_flag\"'.",
+        "Use data URI in the form 'data:text/html;base64,<base64 data>' for the payload.",
+        "Saved the generated CSS in 'exploit.css'.",
+        "Script was launched causing the browser to start the voting process."
+    ],
+    "Application & System Analysis": [
+        "Recognize that there's a well-known deserialization vulnerability in node.js.",
+        "The suspicion is related to either the GET path handling or the POST filename",
+        "Access and examine the source code of the website.",
+        "Open cURL."
+    ],
+    "Data Manipulation & Command Execution": [
+        "Accumulate a significant amount of money",
+        "Identify the database containing 'md5' hashes.",
+        "Observe user input being passed to 'require()'.",
+        "Construct the URL 'http://10.8.201.87:5000/checkbalance?amount=${num}' using the queried amount.",
+        "Use 'pip install -r requirements.txt'",
+        "Observe the returned data",
+        "Encode a new JWT token with the modified 'role'.",
+        "Create an account on the website."
+    ]
+}

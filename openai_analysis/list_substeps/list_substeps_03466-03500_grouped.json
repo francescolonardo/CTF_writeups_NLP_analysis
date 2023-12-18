@@ -1,0 +1,53 @@
+{
+    "Scripting & Code Execution": [
+        "Include a script for a basic alert in the uploaded LaTeX document",
+        "Test the SQL payload by iteratively substituting different lengths for '$LENGTH$'.",
+        "Leverage the SSRF vulnerability to communicate with the Redis instance.",
+        "Flag is output after successful execution of the attack.",
+        "Gained shell remote code execution.",
+        "Passed an arbitrary character(',') into the X-FORWARDED-FOR HTTP header.",
+        "Examine the `decrypter` function",
+        "Attempt to upload a file.",
+        "Realised that the generated PDF had the flag inside",
+        "Identified the challenge as a NoSQL Injection task",
+        "Identified the challenge as a Cross-Site Scripting (XSS) task",
+        "Used directory traversal (../) to access the flag",
+        "Understand that script tags can be bypassed using 'onload' event handlers",
+        "Figure out the XML External Entity (XXE) vulnerability in upload.php.",
+        "Perform SSRF to localhost.",
+        "Perform the 'cat' command on '/home/user/flag.txt'.",
+        "Create a new script element.",
+        "Uploaded .htaccess file.",
+        "Identified from the source code that a POST request with 'shell' as a parameter echoes the input."
+    ],
+    "Web Application Assessment": [
+        "Inspect the provided instance of the website.",
+        "Recognize that pop-ups from a sandboxed page inherit sandbox attributes",
+        "Recognized a restrictive CSP.",
+        "Inspected the proxy server.",
+        "Connect to the website.",
+        "Explore other files in the repo",
+        "Read the challenge hint",
+        "Observed line in the scan result.",
+        "Checked npm audit for vulnerabilities"
+    ],
+    "Information Gathering & Reconnaissance": [
+        "Waited and read the response as it came in.",
+        "The URL is fetched for the second time once it's deemed legitimate.",
+        "Observe the received Base64 encoded string."
+    ],
+    "User Interaction & Authentication": [
+        "Visit the URL submitted to the '/share' endpoint by an admin bot.",
+        "Got authenticated as 'flagman69'."
+    ],
+    "Data Extraction & Manipulation": [
+        "Noted that each character of the flag has a background URL corresponding to it."
+    ],
+    "File System & Server Interaction": [
+        "Uploaded the final payload to the server."
+    ],
+    "Web Navigation & Interaction": [
+        "Identified the challenge as a Cross-Site Request Forgery (CSRF) task",
+        "Create a new script element."
+    ]
+}

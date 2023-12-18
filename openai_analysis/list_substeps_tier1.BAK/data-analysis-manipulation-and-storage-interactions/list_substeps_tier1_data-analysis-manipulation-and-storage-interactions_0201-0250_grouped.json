@@ -1,0 +1,70 @@
+{
+    "SQL Injection": [
+        "Continued to interpret the results from SQLmap.",
+        "Discovered in the SQLmap results that the 'ASISCTF' database has one table termed 'books'.",
+        "Evaluated the structure of the 'books' table.",
+        "Noticed that the 'books' table has two columns: 'id' and 'info'.",
+        "Discovered that a '<flag>' XML element is hidden in the 'books' table but not in the entry with 'id = 1'."
+    ],
+    "Remote File Read": [
+        "Conducted a remote file read operation.",
+        "URL-encoded the payload.",
+        "Successfully read the remote files.",
+        "Read source code via base64 encoding.",
+        "URL-encoded the new payload."
+    ],
+    "Flag Retrieval": [
+        "Set a 'flag' variable based on the response of the previous POST request.",
+        "Retrieve the flag from the response of the previous POST request.",
+        "Find 'flag.file'",
+        "Print contents of 'flag.file'",
+        "Identify 'flag.file' contents",
+        "Recognize it as a GZip archive",
+        "Recreate GZip archive",
+        "Extract 'flag.txt' from the GZip archive"
+    ],
+    "Web Application Exploitation": [
+        "Set the value of the header 'answer' as 'Fear the Old Blood'",
+        "Retrieved the flag in the response",
+        "Included a calculation statement in the request.",
+        "Submitted a malformed statement.",
+        "Determine that the website is an online calculator",
+        "Include a calculation statement in the request",
+        "Retrieve user information",
+        "Retrieve directory listing"
+    ],
+    "Flag Composition": [
+        "Identified that 'transmissions' had a fixed part at the beginning and end.",
+        "Identified that 'transmissions' had a variable part in the middle.",
+        "Script retrieves all characters.",
+        "Script composes the flag.",
+        "Appended unique transmission values to a list.",
+        "Script composes the flag using the loop."
+    ],
+    "File Retrieval": [
+        "Received a PDF file from the '/circle/one/' endpoint.",
+        "Received a PNG image from the 'CONNECT /two/' request.",
+        "Another part of the flag provided.",
+        "Found that 'POST' and 'PUT' returned a different result.",
+        "Received a PDF file from '/circle/one/' endpoint.",
+        "Received a PNG image from 'CONNECT /two/' request.",
+        "Received a PNG image with a crossword puzzle from '/square/' endpoint."
+    ],
+    "File Analysis": [
+        "Identify 'login.php' and 'login.php.bak' files",
+        "Make an educated guess on the numbers at the beginning of the MD5 string",
+        "Realised that the generated PDF had the flag inside",
+        "Included a reference to the /etc/flag.txt directory in the request.",
+        "Analyzed the generated PDF."
+    ],
+    "Code Execution": [
+        "Collect the list of subclasses returned as a result",
+        "Use the identified class (subprocess.Popen) to read the content of 'flag.txt'"
+    ],
+    "File and Directory Enumeration": [
+        "Discover '?lmao' in the robots.txt file",
+        "Discover a file named 'flag210d9f88fd1db71b947fbdce22871b57.php'",
+        "Read the file 'flag210d9f88fd1db71b947fbdce22871b57.php' using the same technique applied during reading of 'config.php'",
+        "Find the flag file 'flag.jpg'."
+    ]
+}

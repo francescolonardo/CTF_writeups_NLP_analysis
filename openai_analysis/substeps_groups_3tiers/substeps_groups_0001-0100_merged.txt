@@ -1,0 +1,106 @@
+Tier 1: Web Application Interaction
+- Tier 2: Web Navigation & Functionality
+    - Tier 3: Page Source Analysis
+    - Tier 3: Button & Element Identification
+    - Tier 3: Web Interaction and Testing
+    - Tier 3: Game & Scenario Analysis
+    - Tier 3: Navigation to Quiz Section
+    - Tier 3: Web Request & Processing
+    - Tier 3: User Interaction
+- Tier 2: User Input and Data Handling
+    - Tier 3: User Script & Payload Modification
+    - Tier 3: Decoding & Encoding: Base64, JWT
+    - Tier 3: Password Handling
+    - Tier 3: User Input Analysis
+    - Tier 3: Data Manipulation
+    - Tier 3: Resource Interaction
+    - Tier 3: Message Creation & Sharing
+    - Tier 3: Note Submission
+- Tier 2: Web Interaction & Analysis
+    - Tier 3: API Interaction & Response
+    - Tier 3: Quiz & Flag Search
+    - Tier 3: Directory Navigation
+    - Tier 3: Parameter Inspection
+    - Tier 3: Information Gathering
+    - Tier 3: Parameter Recognition & Restrictions
+    
+Tier 1: Exploitation & Security Techniques
+- Tier 2: Exploitation Techniques
+    - Tier 3: Web Vulnerabilities: HTTP Request Smuggling Vulnerabilities, XSS & SSRF Vulnerability Research, XXE Attacks & Token Structure, Local File Inclusion (LFI) Vulnerability
+    - Tier 3: Debugging & Exploitation
+    - Tier 3: Injection and Bypass Techniques: SQL Injection & Database Exploitation, Code Injection & Remote Execution
+    - Tier 3: Exploiting Security Constraints
+    - Tier 3: Exploit Execution
+    - Tier 3: Server-side Exploitation
+    - Tier 3: Authentication & Authorization Bypass
+- Tier 2: Security Analysis
+    - Tier 3: Web Security Concepts & Techniques
+    - Tier 3: Robustness Testing
+    - Tier 3: Authentication & Authorization Testing
+    - Tier 3: Discovery of Vulnerabilities
+    - Tier 3: Vulnerability Identification
+    - Tier 3: Security Techniques
+    - Tier 3: Network Observation
+    - Tier 3: Security Analysis
+    - Tier 3: Server-Side Vulnerability Identification
+    - Tier 3: Vulnerable Parameter Identification
+    - Tier 3: Code Analysis & Vulnerability Identification
+    - Tier 3: Cryptography and CAPTCHA
+    - Tier 3: Secure Communication
+- Tier 2: Payloads and Scripts
+    - Tier 3: Exploitation & Payload Manipulation
+    - Tier 3: PHP Shell Execution
+    - Tier 3: Shellcode Assembly & Debugging
+    - Tier 3: Bash Script Manipulation
+    - Tier 3: Bash Scripting
+    - Tier 3: Script Analysis
+    - Tier 3: JavaScript & Frontend Analysis
+    - Tier 3: Scripting & Code Creation
+    - Tier 3: Payload Execution
+
+Tier 1: Web Application Administration
+- Tier 2: File and System Interaction
+    - Tier 3: File and Directory Manipulation
+    - Tier 3: File Upload/Analysis
+    - Tier 3: File System & Resource Discovery
+    - Tier 3: File Manipulation & Creation
+    - Tier 3: Flag Extraction
+    - Tier 3: Command Line Execution and Tools Usage
+- Tier 2: Network & Server Interaction
+    - Tier 3: IP Validation
+    - Tier 3: HTTP Redirect Exploitation
+    - Tier 3: DNS Resolution
+    - Tier 3: Network & Server Interactions
+    - Tier 3: Port Scanning
+    - Tier 3: Server & Application Analysis
+    - Tier 3: Server Response & Actions
+    - Tier 3: Server Debugging & Behavior Observation
+- Tier 2: URL and HTML Elements Manipulation
+    - Tier 3: URL Manipulation & Restrictions
+    - Tier 3: Header Manipulation
+    - Tier 3: Endpoint Manipulation
+    - Tier 3: URL Manipulation
+    - Tier 3: Endpoint Mapping
+    - Tier 3: CSS Exfiltration & Code Constraints
+    - Tier 3: Authentication and Authorization
+- Tier 2: Code & Documentation Analysis
+    - Tier 3: Application Examination
+    - Tier 3: Code Analysis & Source Code Examination
+    - Tier 3: Debugging and Troubleshooting
+    - Tier 3: Web Application Scanning
+    - Tier 3: Custom Script Hosting
+    - Tier 3: Research and Documentation
+    - Tier 3: Hint Discovery
+    - Tier 3: Git
+- Tier 2: Accessibility & Tools
+    - Tier 3: System & Process Interactions
+    - Tier 3: JWT and Authentication
+    - Tier 3: Browser Behavior and Exploitation
+    - Tier 3: Game Understanding & Analysis
+    - Tier 3: Challenge Completion
+    - Tier 3: File & Flag Manipulation
+    - Tier 3: Authentication Bypass & Exploitation
+    - Tier 3: Completion & Success
+    - Tier 3: HTTP Request Analysis
+    - Tier 3: XSS & Code Injection
+    - Tier 3: Hash Manipulation

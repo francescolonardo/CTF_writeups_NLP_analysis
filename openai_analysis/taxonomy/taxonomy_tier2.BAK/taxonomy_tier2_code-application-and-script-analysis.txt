@@ -1,0 +1,128 @@
+Code and Source Analysis
+    Code Inspection and Analysis
+    Source Code Examination
+    Server Code Analysis and Investigation
+    Code Debugging
+    Software Analysis and Reverse Engineering
+    Configuration and Source Code Analysis
+    Code Review and Exploitation
+    Code-level Manipulation and Bypass
+    Script Analysis
+
+Injection and Exploitation
+    SQL Injection and Query Manipulation
+    SQL Exploitation
+    XSS (Cross-Site Scripting) and DOMValidator
+    DOM Clobbering
+    Payload Development and Manipulation
+    File and Directory Investigation
+    Command Execution and Payload Submission
+    File Inclusion Vulnerability
+    Remote Code Execution (RCE)
+    Command Injection
+    Code Injection Challenges
+    Prototype Pollution
+
+Application and Framework Analysis
+    Web Application Analysis and Reconnaissance
+    Web Framework and Microservices
+    Flask Web Server Analysis
+    Web Application Inspection
+    Web Application Testing
+    Analyzing and Exploiting Website Backend
+
+Template and Serialization Exploits
+    Template Injection Analysis
+    Jinja2 SSTI Bypass
+    Jinja2 Template Injection
+    Serialization and Phishing
+    Deserialization Vulnerability and RCE
+    Template Injection
+    Server-side Template Injection Analysis
+
+JavaScript and Client-Side Interactions
+    Client-side Execution of Malicious JavaScript
+    JavaScript Analysis and Manipulation
+    JavaScript Vulnerabilities
+    Client-Side Code Manipulation
+    JavaScript Source Examination
+    JavaScript Modifications and String Manipulation
+    Front-end JavaScript Analysis
+
+Data and Database Interactions
+    Data Extraction and Analysis
+    Database Exploration and Exploitation
+    Memory Allocation and Pointers
+    Memory and Code Execution
+    MySQL-Related Exploitation
+
+Reconnaissance and Exploration
+    Website Interactions and Inputs
+    Server Interaction and Analysis
+    Server Reconnaissance
+    Initial Exploration
+    Endpoint and API Exploitation
+    System Exploration and Analysis
+
+Payloads and Attack Techniques
+    OTP Brute-forcing
+    Hexadecimal Buffer Manipulation
+    File Read (XXE Vulnerability)
+    XSS Attack
+    Stored Cross-Site Scripting (XSS)
+    Cross-Site Scripting (XSS)
+    Server-Side Request Forgery (SSRF)
+    XML External Entity (XXE) Attack
+
+Scripting and Automation
+    Python Scripting
+    Scripting and Execution
+    Script Execution and Observation
+    Automated Attacks
+    Python and SQL Analysis
+
+Manipulation and Bypass Techniques
+    Bypass and Exploit
+    Payload Crafting and Insertion
+    Exploiting Protocol and Input Vulnerabilities
+    Exploiting Object Property Equivalence in JavaScript
+    Character Escaping and Injection
+    URL and Path Manipulation
+    Cookie and Response Manipulation
+    Exploiting security headers
+
+Miscellaneous Techniques and Identification
+    IP Address Hacking
+    Flag Obtaining
+    Token Verification
+    User Agent Identification
+    Vulnerability Identification
+    Flag and Authentication Analysis
+    DNS Manipulation
+
+File and Data Handling
+    File Manipulation and Exploitation
+    File and Data Retrieval
+    File and Change Management
+    File Validation and Content Parsing
+    File Upload Vulnerability
+
+Specialized Exploits and Vulnerabilities
+    Wordpress Manipulation
+    PHP Bug Exploitation
+    Loophole Identification
+    Admin Access
+    PHP Shell Actions
+    XML Analysis
+    Log4j Vulnerability Exploitation
+    MD5 Hash Collision
+    Network Communication
+    WASM Module Analysis
+    Payment System and SQL Injection
+
+Other Actions
+    Miscellaneous
+    Other Actions
+    Domain-Specific Actions
+    Constructing strings
+    

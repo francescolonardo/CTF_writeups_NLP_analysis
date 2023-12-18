@@ -1,0 +1,51 @@
+{
+    "Commit Analysis": [
+        "Use commit IDs to determine when the flag was removed from the source."
+    ],
+    "Code Manipulation": [
+        "fromCharCode() is utilized to avoid escaping quotes",
+        "Replace parentheses with backticks in the script",
+        "Compose PHP code to generate the custom objects (`Login`, `User`, `SQL`). The custom `Login` object encompasses the custom `User` object and the `$_correctValue` reference. The custom `User` object encompasses a customized `SQL` object with the custom `$query`."
+    ],
+    "Server Configuration": [
+        "Set up a netcat listener on my server",
+        "Observe the configuration file of the Traefik service",
+        "Host a file at `/static/page.js` on the attacker server.",
+        "Set the 'X-Forwarded-For' header to '192.168.3.16'.",
+        "Identify the predictable storage location of PHP sessions as '/tmp/sess_<PHPSESSID>'.",
+        "Assign the value 'true' to the cookie.",
+        "Recognize that this is usually not possible due to the CSP."
+    ],
+    "Code Vulnerability and Exploitation": [
+        "Recognize that the npm package `node-serialize` is vulnerable to node-deserialization RCE attack",
+        "Recognize that if the IP is from Norway, YAML parses 'NO' as False."
+    ],
+    "Web Interaction and Navigation": [
+        "Select and observe the local storage.",
+        "Observe the website redirection to '/flag'",
+        "Open the URL in a browser",
+        "Observe the sending of an SMS",
+        "Observed reflection of the input into an XSL document.",
+        "Examine the URLs associated with different users and photos.",
+        "Change the location of the pop-up back to the exploit server.",
+        "Observe a normal interaction"
+    ],
+    "Code Analysis and Inspection": [
+        "Analyze the Python code.",
+        "Inspect the source code.",
+        "Reviewed the PHP code closely."
+    ],
+    "HTTP Request Manipulation": [
+        "The payload is sent to the target URL via POST request.",
+        "Include the parameter `/getFile?file[]=a&file[]=b&file[]=c&file[]=d&file[]=/../flag.txt&file[]=.&file[]=js` in the request",
+        "Search for a Werkzeug console."
+    ],
+    "Miscellaneous": [
+        "Recognize the necessity.",
+        "Identify that the task is similar to the previous one.",
+        "The message hinted that the flag was already visible.",
+        "Pause the script for a random interval between 1 to 4 seconds.",
+        "Test the code with 'flag{randomString}'.",
+        "Get files from the dump."
+    ]
+}

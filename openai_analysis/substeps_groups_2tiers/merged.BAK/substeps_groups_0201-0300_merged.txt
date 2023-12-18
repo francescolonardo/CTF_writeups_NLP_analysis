@@ -1,0 +1,125 @@
+- Data/File Manipulation & Extraction
+    - File Creation and Manipulation
+    - File Retrieval
+    - Data Manipulation and Reading
+    - File & Directory Manipulation
+    - File Handling & Exploitation
+    - File System Manipulation
+    - File and Data Manipulation
+    - File Operations
+    - File Management
+
+- Information Gathering & Analysis
+    - Information Gathering & Research
+    - Code & Structural Analysis
+    - IP and Network Analysis
+    - Backend Investigation
+    - Response Analysis
+    - Documentation Review
+    - Regular Expressions & String Matching
+    - Server Discovery
+    - Code Analysis & Inspection
+
+- Web Interactions & Exploitation
+    - Web Navigation & Exploration
+    - Website Exploration & Navigation
+    - Web Interaction
+    - Web Requests & APIs
+    - Web Application Security Testing & Analysis
+    - Flutter & Mobile App Exploitation
+    - Web Security Techniques & Exploits
+    - Web Directory Scanning
+    - Web Server & Authentication
+    - Browser Manipulation
+
+- Scripting & Automation
+    - Scripting & Automation
+    - Exploit Scripting
+    - Script Execution & Conditions
+    - Scripting & Command Line Interactions
+
+- Exploitation & Security Techniques
+    - Exploitation Techniques & Payloads
+    - Exploitation & Vulnerabilities
+    - Server-Side Exploitation
+    - Vulnerability Testing & Exploitation
+    - SQL Injection & Payload Crafting
+    - Exploitation Attempts
+    - Injection Attacks
+    - Security Vulnerabilities
+    - SSH Attacks
+
+- Server & Network Manipulation
+    - Network Manipulation & Exploitation
+    - Server Communication & Exploitation
+    - Networking & Listener Setup
+    - Network & Server Exploration
+    - Command & Server Interaction
+    - Listening Host Setup
+    - Network Interaction
+
+- Authentication & Credentialing
+    - Authentication & Credential Attacks
+    - Token Authentication
+    - JWT Manipulation
+
+- Error & Debug Handling
+    - HTTP Error Handling
+    - Error Handling & Debugging
+
+- Request & Payload Formation
+    - Combination & Concatenation
+    - Constructing Requests
+    - Attribute Identification
+    - Payload Structure & Formatting
+
+- Specific Exploitation Techniques
+    - XSS Exploitation
+    - SQL Injection
+    - Buffer Overflow
+    - Oracle Padding
+
+- Advanced & Specific Techniques
+    - Git Operations
+    - Web Scraping & Automation
+    - Chat & Session 
+    - XML Entities & Data Manipulation 
+    - Jinja2 Filter Bypass
+    - Timing Attacks 
+    - Regular Expression Analysis 
+    - OTP Brute Force 
+    - Time-Based Analysis 
+    - Server-Side Detection & Exploitation
+    - Directory Traversal 
+    - Server Log Analysis & Manipulation 
+    - Referrer Header Bypass 
+    - Client-Side JavaScript Exploration 
+    - Microservice Communication 
+    - Bypass Technique 
+    - Cryptography & Hash Decryption 
+    - PHP Upload & Token Usage 
+    - Geolocation Operations 
+    - Database Exploitation 
+    - Git & Server Interaction 
+
+- Environment & Setup 
+    - Installation & Environment Setup
+    - URL Navigation
+    - Network & Security Manipulation
+    - Length Query Parameter Verification 
+
+- Others
+    - Fuzzing & Exploration
+    - Character Range
+    - System Interaction
+    - CTF Challenge Interaction
+    - Server Identification & Exploitation
+    - Flag Location & Retrieval
+    - Image Manipulation
+    - Data Leakage
+    - Function Evaluation
+    - Remote Code Execution
+    - Data Retrieval & Extraction
+    - Server-Side Manipulation
+    - Regular Expression Analysis
+    

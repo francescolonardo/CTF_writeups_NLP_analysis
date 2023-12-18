@@ -1,0 +1,11 @@
+[
+    "Created a Python script that opens a reverse shell",
+    "Initialize for loop.",
+    "Set 'user.code' to a random 4-digit number.",
+    "Experiment with creating a URL that just hits the length limit",
+    "Retrieve source files for AsmBB and FreshLib using wget",
+    "Unpack the tar archives",
+    "Build the asmbb engine source code using the Fresh IDE with Linux as the target OS",
+    "Write PHP payload to '/tmp/pwn.php'.",
+    "Noticed that `$var8` is set immediately after `call $dlmalloc`."
+]

@@ -1,0 +1,53 @@
+{
+    "Account Manipulation": [
+        "Understand that the script would theoretically make any user follow the attacker account.",
+        "Modify 'X-Forwarded-For' header value.",
+        "Ensure that the renderer visits our attacker-controlled site.",
+        "Create a new user as the default user role is immutable."
+    ],
+    "Data Manipulation & Extraction": [
+        "Observe that due to request length limits around 3000 queries are batched at a time.",
+        "Conduct experiments with uploading images.",
+        "Retrieved user information.",
+        "Read the file 'flag210d9f88fd1db71b947fbdce22871b57.php' using the same technique applied during reading of 'config.php'",
+        "Read the 'flag.txt' file using the root shell",
+        "The response text contains the secrets.",
+        "Insert the phar file into the exploit",
+        "Use CrackStation to decrypt the hashed passwords.",
+        "Decide to use the rot13-encoded version of a listed admin username.",
+        "Craft and insert the payload '{{range.constructor(\"return global.process.mainModule.require('child_process').execSync('cat /flag*')\")()}}' into the exploit.",
+        "Determined that it allows only read, write, and exit syscalls before executing the input.",
+        "Deduce the purpose of the '$ne' filter.",
+        "Realized that the 'data-last' attribute should start with the correct string for it to be fetched.",
+        "GET query parameters were added to the messages before verification.",
+        "Find a base64 encoded value."
+    ],
+    "Remote Server Interaction": [
+        "Use 'python3 ./s3scanner.py --dump bucketsoffun-ctf.s3-website-us-east-1.amazonaws.com'",
+        "Used '127.0.0.1;env' in URL.",
+        "Downloaded the contents of an Amazon S3 bucket.",
+        "Guess that the server was using FastAPI.",
+        "Perform a directory scan."
+    ],
+    "Form Manipulation": [
+        "Test the observation by creating a URL for a successful and unsuccessful query respectively",
+        "Craft a request to set the theme to the PHP payload.",
+        "Include a '_method=PUT' query parameter in the request"
+    ],
+    "Web Navigation & Interaction": [
+        "Implement the series of steps",
+        "Create a crafted 'id' parameter.",
+        "Try various inputs.",
+        "Understand that 'notes.count' applies a filter.",
+        "Notice that clicking on 'Facebook', 'Google' or 'Twitter' buttons attaches the note id and password to the shared URL."
+    ],
+    "Header Manipulation": [
+        "Modified 'X-Forwarded-For' header value.",
+        "Add the header X-Forwarded-For to the request."
+    ],
+    "Encryption & Decryption": [
+        "Use the obtained encryption key",
+        "Insert the phar file into the exploit",
+        "Use CrackStation to decrypt the hashed passwords."
+    ]
+}

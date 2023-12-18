@@ -1,0 +1,63 @@
+{
+    "Code Execution & Command Injection": [
+        "Trigger command execution in the create_thumb function.",
+        "Analyze the 'entrypoint.sh' bash file.",
+        "The `run` bash script gives a reverse shell.",
+        "Identify the vulnerability lies in the use of tar utility."
+    ],
+    "Web Exploitation & Web Application Security": [
+        "Page contains some HTML and JavaScript.",
+        "'database.js' lets you add and read items from the database. The query variable control is possible via the website, but SQL injection is unsuccessful.",
+        "Created a new GitHub Pages site.",
+        "Recognize that the page allows you to upload a custom HTML page.",
+        "Realize that the critical line could potentially lead to Remote Command Execution (RCE).",
+        "Use the same value for 'pass' URL parameter and User-Agent",
+        "Find the endpoint '/dogooo/user/create' for creating new users.",
+        "Identified the 'user_id' column as requiring a foreign key from the user table.",
+        "Retrieved the 'id' of Maria from the user table.",
+        "Identify the vulnerability lies in the use of tar utility.",
+        "Noted the use of DOMPurify for HTML sanitization.",
+        "Discovered the flag within the content of the index.php file.",
+        "Realized the page contained some secret potentially usable code."
+    ],
+    "Vulnerability Analysis & Exploitation Techniques": [
+        "'database.js' lets you add and read items from the database. The query variable control is possible via the website, but SQL injection is unsuccessful.",
+        "Recognize that the page allows you to upload a custom HTML page.",
+        "Use the technique to bruteforce every character of the flag.",
+        "Discover the requirement of the 'otadmin' cookie",
+        "Identify a packet (#6) in the PCAP file",
+        "Noticed that the HEAD never updates if the first index is removed.",
+        "The introspection query returns all the content of a graphql schema.",
+        "Used dumper from GitTools to inspect the git repo"
+    ],
+    "Server Interaction & Web Requests": [
+        "Send a post request with the payload for every possible character in the flag.",
+        "Access the index 258",
+        "Set the auth token by making the bot visit 'http://localhost:7070/auth'.",
+        "Find the endpoint '/dogooo/user/create' for creating new users.",
+        "Search for `flag.txt` in the root directory."
+    ],
+    "File Analysis & Manipulation": [
+        "Analyze the 'entrypoint.sh' bash file.",
+        "Recognize that the page allows you to upload a custom HTML page.",
+        "Discover the requirement of the 'otadmin' cookie",
+        "Search for `flag.txt` in the root directory.",
+        "Crafted a payload using 'GET / HTTP/1.1'.",
+        "Used dumper from GitTools to inspect the git repo."
+    ],
+    "Data Analysis & Extraction": [
+        "Understand its format.",
+        "Realized the mutation could be simplified to create the exploit.",
+        "Retrieve the discovered full token",
+        "Retrieved the 'id' of Maria from the user table."
+    ],
+    "Network Traffic Analysis": [
+        "Identify a packet (#6) in the PCAP file"
+    ],
+    "Automation & Scripting": [
+        "Find the endpoint '/dogooo/user/create' for creating new users.",
+        "Noted the use of DOMPurify for HTML sanitization.",
+        "Created another loop in the Python script.",
+        "Code the script to play the game repeatedly."
+    ]
+}

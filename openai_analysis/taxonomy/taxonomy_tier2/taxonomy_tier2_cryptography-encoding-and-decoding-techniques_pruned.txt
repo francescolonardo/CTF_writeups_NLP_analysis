@@ -1,0 +1,27 @@
+8.1 Cryptographic Techniques and Analysis
+   - Cryptographic Analysis
+   - Cryptography Algorithms and Methods
+   - Cryptography and Key Management
+   - Cryptography Techniques
+   - Hashing Techniques
+   - Hashing and Cryptographic Techniques
+   - JWT Manipulation
+   - Token Generation Techniques
+
+8.2 Encoding and Decoding
+   - Base64 Encoding and Decoding
+   - Data Compression and Serialization
+   - Encoding and Decoding Techniques
+   - IP Address Conversion
+
+8.3 Data Representation and Analysis
+   - Data Representation Techniques 
+   - Data Representation and Analysis
+
+8.4 CAPTCHA Challenges
+   - CAPTCHA Analysis
+   - CAPTCHA Solving
+
+8.5 Observational Techniques
+   - Observation and Recognition
+   

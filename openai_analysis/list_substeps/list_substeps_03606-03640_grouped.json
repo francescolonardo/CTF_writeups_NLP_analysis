@@ -1,0 +1,46 @@
+{
+    "URL & Redirection": [
+        "Note that the redirected URL contains the flag.",
+        "Note that the post ID is sent as a URL fragment"
+    ],
+    "Code Exploitation": [
+        "Leveraged the prototype pollution to run 'require('./usage')'.",
+        "Intend to inject a 'grep' command to look for the flag in the main.py file.",
+        "Modified the JSON body by removing the 'name' key value pair",
+        "Extracted the contents of the zip file",
+        "Created a payload using python pickle containing a command execution statement",
+        "Find the desired location in the JavaScript file"
+    ],
+    "JavaScript & Browser Manipulation": [
+        "Discover that the script can be bypassed by disabling JavaScript.",
+        "Bypass 'getitem' by constructing a string.",
+        "Identified a Use After Free (UAF) vulnerability.",
+        "Convert the Base64 string into hexadecimal format."
+    ],
+    "Web Page Interaction": [
+        "Navigate to registration page.",
+        "Notice a flaw in the check condition.",
+        "Discover a comment in the HTML source code referencing a potential vulnerability using TOTP",
+        "Confirm the existence of the 'upload' page",
+        "Connect to the challenge website",
+        "While holding the 'Ctrl' key, press the 'U' key on the keyboard."
+    ],
+    "Authentication & Authorization": [
+        "Successfully log into the admin panel.",
+        "Change the cookie values: userID to 768 and username to 'admin'.",
+        "Discover that the Flask session secret key is hardcoded into the source code.",
+        "Verify if a substring exists in the flag."
+    ],
+    "Payload Manipulation": [
+        "Generate payload for rearranging password.",
+        "Enter blank input enclosed in two apostrophes in both the username and password fields.",
+        "Set the 'lion-token' cookie to the generated token.",
+        "Stored the '__proto__' key as ['__proto__'].",
+        "Pass payload as parameter",
+        "Iterate over every character in the domain"
+    ],
+    "Game Understanding & Analysis": [
+        "Recognize the objective and rules of the game.",
+        "Test a trivial payload."
+    ]
+}

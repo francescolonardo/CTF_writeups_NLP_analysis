@@ -1,0 +1,63 @@
+{
+    "Hexadecimal Buffer Manipulation": [
+        "Leverage the behavior of 'Buffer' stopping at the first non-hexadecimal character."
+    ],
+    "Source Code Analysis": [
+        "Look into the provided source code to understand how the application works.",
+        "Read the function getBrowserWithTimeout.",
+        "Consider that the debugging port is generated from the getRandomPort function.",
+        "Analyzed the provided source code.",
+        "Examined the search function.",
+        "Analyzed the MySQL query builder in the search function.",
+        "Locate the PHP script that compares the md5 hashes of 'i1' and 'i2'",
+        "Comprehend the loose comparison ('==') operator used in PHP to compare two md5 hashes",
+        "Learn that if a string starts with '0e...' in PHP, it is treated as a float with the value 0.0",
+        "Execute PHP commands to confirm the behavior of '0e...' strings being treated as 0.0 in PHP",
+        "Acknowledge the existence of 'magic hashes' that PHP considers equal",
+        "Consult a list of strings that generate these 'magic hashes' in PHP"
+    ],
+    "Web Application Design and Behavior": [
+        "Code a web page that uses a Promise.",
+        "If the URL loads, log that the port is open.",
+        "Use the Runtime.evaluate method for sending the code.",
+        "Observed restrictions on certain characters and strings.",
+        "Noted restrictions on space, 'AND', 'OR', etc.",
+        "Constructed a PHP redirect to access 'localhost:8081/flag'.",
+        "View the source code of the PHP page",
+        "Receive a server response containing the flag value: 'CTFSG{you_see_me_in_h1nds1ght_tangled_up_with_you_all_night}'",
+        "Analysed the `main.dart.js`.",
+        "Examined features of the application.",
+        "Recognized that the app is rendered on a `<canvas>`.",
+        "Manipulated the `widget` parameter.",
+        "Caused a traceback.",
+        "Identified the remote Flutter widget file signature.",
+        "Decoded the `chatmessage` widget.",
+        "Tried to manipulate the `clipboard_getData` function.",
+        "Found the `clipboard_getData` function in `main.dart.js`.",
+        "Took a closer look at `poll.dart`.",
+        "Recognized the Mechanism `ApiMapper` in `poll.dart`.",
+        "Recognized the `onPressed` event handler `api_post`.",
+        "Modified the `ApiMapper`.",
+        "Modified the GET request.",
+        "Used the `onLoaded` event handler.",
+        "Realize that the RAM can be dumped using this technique.",
+        "Execute a Python script.",
+        "Review the site's JavaScript.",
+        "Understand that the 'demo()' function is called on the 'demo' GET request parameter.",
+        "Discover the 'mock()' function.",
+        "Understand that it is a wrapper function."
+    ],
+    "SQL Injection Analysis": [
+        "Observe the page indicating SQL Injection attacks are blocked.",
+        "Write an SQLMap tamper script."
+    ],
+    "URL and Path Manipulation": [
+        "Discovered that the 'uri' is appended to the backend URL using Python's urllib.parse.urljoin.",
+        "Realized the issue with urllib.parse.urljoin.",
+        "Identified that urllib.parse.urljoin can return the appended path as the base URL when handling malformed paths.",
+        "Identify the endpoint /rin that uses SSRF code."
+    ],
+    "OTP Brute-forcing": [
+        "Brute-forced the OTP character by character."
+    ]
+}

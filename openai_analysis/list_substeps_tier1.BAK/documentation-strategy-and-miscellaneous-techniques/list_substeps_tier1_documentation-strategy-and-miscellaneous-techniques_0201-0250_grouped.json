@@ -1,0 +1,67 @@
+{
+    "Phrase Analysis and Flag Identification": [
+        "Noticed that the decrypted string could form a meaningful phrase",
+        "Concluded the phrase to be a flag after concatenating the chunks",
+        "Put together all obtained parts of the flag."
+    ],
+    "Webpage Source Code Analysis": [
+        "Open source code of the webpage",
+        "Explore other files in the repo",
+        "Investigate the GitHub Actions workflow runs",
+        "Investigate changes made in the 'Fix auth!!!' commit"
+    ],
+    "Vulnerability Identification and Exploitation": [
+        "Discovered another flag and a GitHub repository.",
+        "Discovered a Dockerfile.",
+        "Identify that the app is written in TypeScript and Deno.",
+        "Identify that the solution involves predicting the random numbers generated.",
+        "Recognize that the npm package `node-serialize` is vulnerable to node-deserialization RCE attack",
+        "Noted the server requests",
+        "Check differences between the suspicious commit and its preceding commit.",
+        "Use the 'git checkout' command.",
+        "Specify the previous commit that contained the flag ('flag.jpg').",
+        "Use the Proof of Concept script",
+        "Retrieve the flag.",
+        "Determine that the 'uuid' parameter is vulnerable to injections (XSS/CSS)",
+        "Understand that this value can be fetched from HTTP headers.",
+        "Injected '\\debug\\answer' as the host in a curl request.",
+        "Understood how MySQL executes query portions inside comments.",
+        "Review the provided Python code.",
+        "Understood that the desired flag is located within the 'flag' table in MySQL.",
+        "Look for elements in the '/home' directory."
+    ],
+    "Website Functionality and Interaction": [
+        "Understand the 'vsCAPTCHA' app.",
+        "Identify the page as having an Apache2 default index.",
+        "Understand that it allows the creation and sharing of messages",
+        "Identify the text input for HTML notes",
+        "Submit the input."
+    ],
+    "Git Repository Operations": [
+        "Create a local repository.",
+        "Initialise a local Bazaar repository.",
+        "Remove the first file created.",
+        "Fail to restore source code due to missing git objects.",
+        "Successfully display the differences between the two git commits."
+    ],
+    "Game Analysis and Solution": [
+        "Study the game",
+        "Continue running the script until the flag (password) is fully discovered."
+    ],
+    "Data Observation and Analysis": [
+        "Make a note of any hints about versioning control systems, specifically git.",
+        "Noted the blacklisted characters.",
+        "Noticed a note that stated 'under protection', indicating the presence of security measures on the platform.",
+        "Understand the rules of the site."
+    ],
+    "Network Analysis and Exploitation": [
+        "Ngrok will display a URL in the form 'http://<subdomain>.ngrok.io'.",
+        "Wait for a few seconds for the puppeteer instance to start and load the page."
+    ],
+    "Miscellaneous": [
+        "Notice a strange message of INSTRUO team's love for cookies.",
+        "Retrieved user information.",
+        "Understood how MySQL executes query portions inside comments.",
+        "Determined inaccessibility of /private.php."
+    ]
+}

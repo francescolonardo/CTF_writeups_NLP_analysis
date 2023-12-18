@@ -1,0 +1,50 @@
+{
+    "String Manipulation": [
+        "Apply rot13 decoding on the 'admin' value."
+    ],
+    "Code Injection & Payload Crafting": [
+        "Injected the crafted payload into a request in either the top text",
+        "Execute the payload to return all the subclasses",
+        "Ensure that visiting `redirect.php` redirects the renderer's browser to the second exploit page.",
+        "Construct the backend endpoint as '$BACKEND/get/5779715767432985082/../../admin'.",
+        "Discover clickable links that reveal 2 blog posts.",
+        "Cause the pop-up to inherit the sandboxed attributes",
+        "Visit 'https://web0.ctfsecurinets.com/_profiler/open?file=/secret_ctf_location/env'.",
+        "Check if 'length' query parameter exists.",
+        "Attempt to execute the 'cat ../flag.txt' command.",
+        "Find database information within the file.",
+        "Find flag in the database dump.",
+        "Use the credentials for `http://app/` in the fetch request",
+        "If a correct character is found (indicated by a read timeout), append the character to the flag and move to the next character.",
+        "Notice that the public key used for the JWT token handling is stored in the '__dirname' directory.",
+        "Use the 'md5' function to hash the bytes."
+    ],
+    "Website Analysis": [
+        "Analyze the website's HTML.",
+        "Observe the discovery of over 1900 logs.",
+        "Access the link 'http://35.207.189.79/pyserver/server.py'.",
+        "Read the presented flag",
+        "Added debug prints to the file for the POST filename",
+        "Noted the sequence of function calls",
+        "Understand this custom JavaScript code will leak the cookie",
+        "Found an alternative method to solve the challenge for the second flag."
+    ],
+    "Web Navigation": [
+        "Visit 'https://web0.ctfsecurinets.com/_profiler/open?file=/secret_ctf_location/env'.",
+        "Visit the target website."
+    ],
+    "Authentication & Authorization": [
+        "Log in with the found user 'root'",
+        "Gain admin access."
+    ],
+    "File Operations": [
+        "Download the source code."
+    ],
+    "Network Intercept & Inspection": [
+        "Intercept data between the server and the client."
+    ],
+    "Encoding & Hashing": [
+        "Encode the solution string using base64 to generate the 'userdata' parameter.",
+        "Use the 'md5' function to hash the bytes."
+    ]
+}

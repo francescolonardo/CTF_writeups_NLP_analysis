@@ -1,0 +1,49 @@
+{
+    "Source Code Analysis": [
+        "Analyze the secure portal page source",
+        "Notice the presence of a PHP eval function.",
+        "Analyze the functionality of the converted code snippet.",
+        "Discover a hardcoded password within the JavaScript file.",
+        "Analyze the source code of 'flagchecker.c'"
+    ],
+    "Command Execution": [
+        "Execute PHP commands to confirm the behavior of '0e...' strings being treated as 0.0 in PHP",
+        "Execute 'cat cmd.php' command.",
+        "Craft a reverse shell payload using 'nodejsshell.py'.",
+        "Set up a listening server using 'netcat'."
+    ],
+    "Authentication Bypass": [
+        "Gained access by passing the OTP check."
+    ],
+    "Web Security": [
+        "Injected the crafted payload into a request in either the bottom text",
+        "Visit a non-existent route starting with '/admin/'.",
+        "Access Symfony profiler interface.",
+        "Received a SQL error.",
+        "Access the source URL",
+        "Identify that a cookie is set after login"
+    ],
+    "Code Execution & Exploitation": [
+        "Return false and the queried amount.",
+        "The value for the key-value pair is the payload.",
+        "Discovered a hidden endpoint '/admin/key' from the server code",
+        "Transformed relative JMPs into PLT type trampolines.",
+        "Overwrite document.domain using Object.defineProperty(document, 'domain', {value: 'yeunote.ctf.yeuchimse.com'});",
+        "Para meters and values such as 'domain', 'check', 'key', and 'column' are initialized."
+    ],
+    "Data Analysis & Manipulation": [
+        "Analyze the converted code snippet functionality.",
+        "Analyze the source code of 'flagchecker.c'",
+        "Read the 'pdf2.bin' file.",
+        "Locate the loop() function within addCaptcha()",
+        "Infer that the flag is inside a `flag.txt`",
+        "Identify the provided file is a packet capture (.pcap) file."
+    ],
+    "Web Navigation & Interaction": [
+        "Capture the flag.",
+        "Received different responses from the '/two/' endpoint with 'PUT' HTTP verb.",
+        "Understand that the JWT key is used to sign the token during login.",
+        "Verify if all 5 captchas are collected",
+        "Examine the interface of the website."
+    ]
+}

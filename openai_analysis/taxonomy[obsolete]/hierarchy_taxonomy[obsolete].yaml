@@ -1,0 +1,88 @@
+# The top-level categories of a web application attack process.
+
+# Reconnaissance involves gathering information about the target system.
+Reconnaissance:
+  # Navigation and Interaction refer to direct interactions with the target, like browsing their web pages.
+  Navigation and Interaction: {}
+  # Online Research refers to searching the internet for documentation, vulnerability explanations, etc.
+  Online Research: {}
+
+# Analysis involves examining and understanding the target system.
+Analysis:
+  # Static Analysis involves examining non-executing aspects of the target, such as code or configurations.
+  Static Analysis: {}
+  # Dynamic Analysis refers to examining the system during its execution.
+  Dynamic Analysis: {}
+  # Vulnerability Assessment is about identifying potential weaknesses in the system.
+  Vulnerability Assessment: {}
+  # Information Extraction involves gathering useful data from the target.
+  Information Extraction: {}
+  # Deductive Reasoning involves making educated conclusions or assumptions about the target based on gathered data.
+  Deductive Reasoning: {}
+
+# Exploitation involves taking advantage of identified vulnerabilities.
+Exploitation:
+  # Exploit Development involves creating the necessary tools or scripts to exploit a vulnerability.
+  Exploit Development:
+    # Payload Crafting refers to designing data or sequences that can exploit the vulnerability.
+    Payload Crafting: {}
+  # Exploit Implementation is the process of using the developed exploits against the target.
+  Exploit Implementation:
+    # Payload Delivery involves introducing the exploit data into the target system.
+    Payload Delivery: {}
+    # Exploit Execution refers to running the exploit to achieve the desired malicious outcome.
+    Exploit Execution: {}
+  # Exploit Assessment involves determining the success or failure of the exploitation attempt.
+  Exploit Assessment:
+    # Success Evaluation determines if the exploit achieved its desired outcome.
+    Success Evaluation: {}
+    # Failure Analysis involves understanding why an exploitation attempt did not succeed.
+    Failure Analysis: {}
+  # Data Manipulation involves tweaking certain data to aid in exploitation.
+  Data Manipulation:
+    # URL Manipulation involves changing parts of URLs to achieve a certain effect.
+    URL Manipulation: {}
+    # Cookie Manipulation refers to tweaking browser cookies.
+    Cookie Manipulation: {}
+    # JWT Manipulation involves modifying JSON Web Tokens.
+    JWT Manipulation: {}
+    # Header Manipulation refers to altering HTTP headers.
+    Header Manipulation: {}
+  # Objective Achievement refers to completing the intended malicious goal, like data theft or system compromise.
+  Objective Achievement: {}
+
+# Implementation and Utilization refer to how the attacker uses tools and techniques.
+Implementation and Utilization:
+  # Tool Utilization involves using specific software or hardware tools.
+  Tool Utilization:
+    # Networking Tools are used to interact with networks.
+    Networking Tools:
+      # Proxy Tools allow intercepting and modifying network traffic.
+      Proxy Tools: {}
+      # Port Scanning Tools help identify open ports on target systems.
+      Port Scanning Tools: {}
+    # Cryptography Tools assist in encrypting, decrypting, hashing, etc.
+    Cryptography Tools:
+      # Encryption Tools convert data into a coded form.
+      Encryption Tools: {}
+      # Hashing Tools generate a fixed-size string of bytes from input data.
+      Hashing Tools: {}
+  # Manual Procedures involve direct interactions without relying on automated scripts or tools.
+  Manual Procedures:
+    # Command-Line Usage involves using terminals or command prompts.
+    Command-Line Usage:
+      # Shell Commands are specific commands entered in the shell.
+      Shell Commands: {}
+  # Automated Procedures rely on scripts or automated tools.
+  Automated Procedures:
+    # Script Management involves writing, maintaining, and executing scripts.
+    Script Management:
+      # Python Scripting refers to scripts written in the Python language.
+      Python Scripting: {}
+      # JavaScript Scripting refers to scripts written in the Python language.
+      JavaScript Scripting: {}
+      # Bash Scripting refers to scripts written for the Bash shell.
+      Bash Scripting: {}
+
+# Miscellaneous Actions capture any other relevant actions not covered above.
+Miscellaneous Actions: {}

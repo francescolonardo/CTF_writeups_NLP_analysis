@@ -1,0 +1,51 @@
+{
+    "Vulnerability Analysis": [
+        "Perform extended analysis of the vulnerability",
+        "Observe the vulnerability's location after the ORDER BY clause",
+        "Recognize the usage of Flask's 'render_template_string' function",
+        "Learn about using the CASE clause to determine the column of the result being sorted",
+        "Understood that 'password' = 'username' evaluates to 0",
+        "Realized the IP address couldn't be overridden as a result.",
+        "Blacklist works based on 'localhost' and '127'."
+    ],
+    "Server Interactions": [
+        "Send POST request to upload the generated file.",
+        "Server code for /api/filter endpoint returns the hash of the user's token in the response",
+        "Access the template files on the server.",
+        "Set permissions of the 'id' file to 777",
+        "Redirected the flag to a file in the invoices directory.",
+        "Reveal the '/admin' directory's contents.",
+        "Look for additional information in the file."
+    ],
+    "Web Navigation & Interaction": [
+        "Bot clicking our link gave us the flag.",
+        "Receive 403 Forbidden.",
+        "Open the provided challenge link",
+        "Navigate to /flag",
+        "Access the list functionality",
+        "Access the '/admin' page"
+    ],
+    "Cookie Manipulation": [
+        "Generate more base64 cookies.",
+        "Use the newly generated token as a cookie"
+    ],
+    "API Interaction": [
+        "Receive API documentation including the endpoints: /api/admin and /api/normal.",
+        "Try out all remaining expected values."
+    ],
+    "Password & Authentication": [
+        "Attempt to log in the admin to a dummy Twitter account.",
+        "Upon granting admin privileges"
+    ],
+    "Flag Retrieval": [
+        "Retrieve the flag from the refreshed webpage"
+    ],
+    "Performance Considerations": [
+        "Caused problems.",
+        "Consider the downside of the above PoC - the potential strain on the server due to very long URLs"
+    ],
+    "HTML Parsing": [
+        "Used the knowledge of the vulnerability to conclude that the web application potentially parses the HTML content and interpret it",
+        "Observe that global scope is the window object in HTML."
+    ]
+}

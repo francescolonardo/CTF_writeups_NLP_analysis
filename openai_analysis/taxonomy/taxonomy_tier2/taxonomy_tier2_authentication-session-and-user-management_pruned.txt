@@ -1,0 +1,23 @@
+2.1 Authentication and Session Management
+    - Authentication Methods and Techniques
+    - Login and Authentication Processes
+    - JWT Processing and Analysis
+    - Authentication Bypass Techniques
+    - Authentication and Session Interactions
+    - API and Service Authentication
+    - SQL Injection in Authentication
+
+2.2 Credentials, Token, and Cookie Management
+    - Discovering and Handling Credentials
+    - Password Discovery and Manipulation
+    - Web Token Handling and Manipulation
+    - JWT and Token Specifics
+    - Cookie Handling and Manipulation
+    - Session and Cookie Management Techniques
+
+2.3 User Management, Access Control, and Permissions
+    - User Registration and Management Processes
+    - Access Control, Authorization, and Restrictions
+    - User Privileges, Permissions, and Controls
+    - Inappropriate and Unauthorized Access
+    - Overseeing User Registrations and Permissions

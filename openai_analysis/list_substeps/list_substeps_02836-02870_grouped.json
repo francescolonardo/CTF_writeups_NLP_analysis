@@ -1,0 +1,51 @@
+{
+    "Server Reconnaissance": [
+        "Checked server responses to identify Apache server version (2.4.49).",
+        "Examined the DIG records.",
+        "Find commit IDs within the log."
+    ],
+    "Command Execution": [
+        "Execute new command.",
+        "Run command line script using curl"
+    ],
+    "Exploitation & Payloads": [
+        "Used a recent exploit.",
+        "Designed the shellcode.",
+        "Replace the string 'alert(1)' with the converted string of our JavaScript payload.",
+        "Crafted an XSS payload to get the cookies of the admins",
+        "Demonstrate successful Remote Code Execution (RCE)"
+    ],
+    "Web Application Analysis": [
+        "Search for 'eval' syntax.",
+        "Recognize that they are defined before the 'eval()' statement",
+        "Attempt to inject an attribute into the 'img' element of the response.",
+        "Generate URLs that set cookies with parts of manipulated JavaScript code.",
+        "Observe two <link> tags.",
+        "Find a way around the restrictive regex check.",
+        "Observe the site providing a link to the running instance.",
+        "Crafted an XSS payload to get the cookies of the admins",
+        "Understand that the JWT token is essentially encoded JSON data.",
+        "Observed that clicking on the excerpt button makes an HTTP GET request to '/books.php?type=excerpt&id=1'.",
+        "Use the site\u2019s JavaScript to generate the 'key_id'"
+    ],
+    "Authentication & Authorization": [
+        "Use the functions 'get_hidden' and 'get_passwords' in a brute-force attack to find the correct password for the username 'jack'.",
+        "Brute-force user-agent strings in burp suite.",
+        "The assignment to $perm triggers the catch block",
+        "Note that the password for the portal is being checked by the script",
+        "Replace the username with 'admin'.",
+        "'check' is a predefined string expected in the response of a successful login.",
+        "Understood the voting system of the webpage.",
+        "Injected '<base href=\"http://HOST:PORT\">' into the profile via 'user['title']' or 'user['lab']'."
+    ],
+    "Web Navigation & Interaction": [
+        "Compose an SMS message",
+        "Print the reversed string",
+        "Attempted the third web Gauntlet where the length requirement is reduced",
+        "Explore the followers functionality.",
+        "Search in the source code for the flag's presence"
+    ],
+    "File Analysis": [
+        "Understand that DOCX files are actually a collection of XML files"
+    ]
+}

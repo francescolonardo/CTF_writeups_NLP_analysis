@@ -1,0 +1,54 @@
+{
+    "Payload Manipulation": [
+        "Build up the 'payload'",
+        "Create 'payload' in the format of a SQL statement",
+        "The process is repeated until the end of the flag is found.",
+        "Open 'line 1' of the 'jquery.jscroll2.js' JS file.",
+        "Analyze JwtService.java.",
+        "Analyze SecretGenerator.Java.",
+        "Conclude that the challenge involves XML External Entity (XXE) from the use of the `XXE` tag and the 'xmlDetailsCheckPayload.js' file.",
+        "Conduct experiments with different content.",
+        "Use a payload to leak the source code of PHP.",
+        "Discover the flag within the source code.",
+        "Found a snippet of JavaScript code containing database credentials and a 'JSESSIONID' cookie.",
+        "Examined the source code of the challenge present in the cloned repository.",
+        "Examined the contents of the downloaded code",
+        "Attempted to start the app locally with 'npm run start'",
+        "Examined server code",
+        "Discovered the line 'const port = process.env.PORT || 80'"
+    ],
+    "Cookie Manipulation": [
+        "Implemented a logic that changes the cookie flag each time a request is made",
+        "Set 'EOF' as the termination condition of the script",
+        "The author sets a condition to set the parameters based on the specific challenge.",
+        "The condition to receive the CTF password (flag) is checked.",
+        "Climb the Python MRO hierarchy.",
+        "List all usable classes.",
+        "Find the 'subprocess.Popen' class.",
+        "Identify the JS file 'jquery.jscroll2.js'.",
+        "Analyze the functionality of the converted code snippet.",
+        "Recognize that the function for generating a token is using string interpolation to inject variables directly into the token string.",
+        "Look at the JavaScript file in the webpage.",
+        "Observe that the JavaScript code prevents 'script' tags.",
+        "Observe that only certain attributes are allowed for an element in the JavaScript code."
+    ],
+    "Script Execution and Observation": [
+        "Analyzed the source code of the web application",
+        "Noticed that the output in the /login POST route has not been stringified",
+        "Understood how objects are handled",
+        "This makes password an object",
+        "Open source code of the webpage",
+        "Navigate to the 'controllers' directory.",
+        "Examine the file UserController.java to identify any useful endpoints.",
+        "Noticed the tag `XXE` indicating `XML external entity`.",
+        "Noticed two javascript files: 'detailsCheck.js' and 'xmlDetailsCheckPayload.js'.",
+        "Examined the request format in the 'Network' tab of the developer tools.",
+        "Discover the smarty-4.0.1 PHP library.",
+        "Discover the templates_c folder."
+    ],
+    "File and Directory Investigation": [
+        "Include code in 'payload.php' to list all directory files",
+        "Use the uploaded PHP file for the request",
+        "Found a snippet of JavaScript code containing database credentials and a 'JSESSIONID' cookie."
+    ]
+}

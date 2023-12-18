@@ -1,0 +1,90 @@
+{
+    "File Restrictions & Bypass": [
+        "Note that filename restrictions need to be bypassed to get the flag"
+    ],
+    "Endpoint Manipulation": [
+        "Passed a random value on the endpoint."
+    ],
+    "Vulnerability Identification": [
+        "Determine that the code has a vulnerable functionality."
+    ],
+    "Debugging & Port Discovery": [
+        "Note that a remote debugging port is exposed."
+    ],
+    "Flag Discovery": [
+        "Discover the flag.",
+        "Verify the flag on the website.",
+        "Read the flag.",
+        "Obtain the flag."
+    ],
+    "Security Checks & Authentication Evasion": [
+        "Recognize the security checks in place.",
+        "Recognize that modifying the `$query` permits performing an SQL injection and intend to adjust it accordingly to evade authentication."
+    ],
+    "Attribute Identification": [
+        "Identified attributes: 'username', 'admin', and 'profile_img'."
+    ],
+    "Reverse Shell Usage": [
+        "Use the gained reverse shell."
+    ],
+    "Online Research": [
+        "Search the challenge description online"
+    ],
+    "HTTP Request Manipulation": [
+        "Executed HTTP POST request to the target server.",
+        "Include the payload in the request."
+    ],
+    "Tool Usage": [
+        "Launch BurpSuite."
+    ],
+    "SQL Injection & Payload Crafting": [
+        "Craft a payload with a special SQL statement"
+    ],
+    "Response Handling": [
+        "Receive a response"
+    ],
+    "User Login & Authentication": [
+        "Login with the registered user once",
+        "Set the authentication cookie for the victim using JavaScript."
+    ],
+    "Client-side Code Inspection": [
+        "Inspect the client-side code"
+    ],
+    "Configuration Analysis": [
+        "Analyze the contents of 'build_flag_checker.yml'"
+    ],
+    "Websocket Manipulation": [
+        "Separate WebSocket packets into ones that are related to sent messages (particularly user input)."
+    ],
+    "Cookie Analysis": [
+        "Inspect the cookies."
+    ],
+    "Error Handling": [
+        "Error is raised later in the assignment step."
+    ],
+    "Session Manipulation": [
+        "Ensured the crafted session cookie matches the expected format used by the application"
+    ],
+    "CAPTCHA Understanding": [
+        "Understand the CAPTCHA generating code."
+    ],
+    "API Modification": [
+        "Modified the `ApiMapper`."
+    ],
+    "Response Extraction": [
+        "Extract the system flag from the response."
+    ],
+    "DOM Manipulation": [
+        "Inject the output into the exploit page's `style` element"
+    ],
+    "Mitigation Strategies": [
+        "Review corresponding documentation for mitigation strategies."
+    ],
+    "Program Analysis": [
+        "Check if characters are converted to underscores in the program.",
+        "Found no useful information."
+    ],
+    "Authentication Cookie Modification": [
+        "Change the hashed value to correspond to different usernames."
+    ]
+}

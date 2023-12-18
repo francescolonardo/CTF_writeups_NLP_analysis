@@ -1,0 +1,120 @@
+- Web Application Analysis
+    - Page Source Analysis
+    - Accessibility & Tools
+    - Web Navigation & Functionality
+    -  JavaScript & Frontend Analysis
+    - Web Interaction & Analysis
+    - Server & Application Analysis
+    - Application Examination
+    - User Input Analysis
+    - User Interaction
+    - Web Application Scanning
+    - Quiz & Flag Search
+
+- Vulnerability Discovery and Exploitation
+    - Discovery of Vulnerabilities
+    - XSS & SSRF Vulnerability Research
+    - Server-Side Vulnerability Identification
+    - Vulnerability Identification
+    - Vulnerable Parameter Identification
+    - Exploiting Security Constraints
+    - Secure Communication
+    - HTTP Redirect Exploitation
+    - Exploit Execution
+    - Shellcode Assembly & Debugging
+    - XXE Attacks & Token Structure
+    - URL Manipulation & Restrictions
+    - IP Validation
+    - Local File Inclusion (LFI) Vulnerability
+
+- Authentication and Authorization
+    - Authentication & Authorization Bypass
+    - Authentication & Authorization Testing
+    - Password Handling
+    - JWT and Authentication
+
+- Code and Script Analysis/Manipulation
+    - Code Injection & Remote Execution
+    - Script Analysis
+    - XSS & Code Injection
+    - Bash Script Manipulation
+    - Bash Scripting
+    - User Script & Payload Modification
+    - Code Analysis & Source Code Examination
+    - Code Analysis & Vulnerability Identification
+    - PHP Shell Execution
+    - CSS Exfiltration & Code Constraints
+
+- Debugging and Testing
+    - Debugging & Exploitation
+    - HTTP Request Analysis
+    - Server Debugging & Behavior Observation
+    - Debugging and Troubleshooting
+    - Robustness Testing
+    - Parameter Recognition & Restrictions
+
+- Web Interaction & Response
+    - API Interaction & Response
+    - Server Response & Actions
+    - Network & Server Interactions
+    - Game Understanding & Analysis
+
+- File and Data Manipulation
+    - File Upload/Analysis
+    - Resource Interaction
+    - File System & Resource Discovery
+    - File & Flag Manipulation
+    - File and Directory Manipulation
+    - File Manipulation & Creation
+    - Flag Extraction
+    - Data Manipulation
+
+- Cryptography and Encoding
+    - Base64 Decoding
+    - Cryptography and CAPTCHA
+    - Decoding & Encoding
+    - Hash Manipulation
+
+- Networking
+    - DNS Resolution
+    - Network Observation
+    - Port Scanning
+    - Web Request & Processing
+
+- Research and Documentation
+    - Web Security Concepts & Techniques
+    - Security Techniques
+    - Research and Documentation
+    - Security Analysis
+    - Information Gathering
+
+- System & Process Interactions
+    - System & Process Interactions
+    - Command Line Execution and Tools Usage
+    - Endpoint Manipulation
+    - Endpoint Mapping
+
+- Exploits & Payloads
+    - Exploitation & Payload Manipulation
+    - Payload Execution
+    - Injection and Bypass Techniques
+    - Server-side Exploitation
+    - SQL Injection & Database Exploitation
+
+- Completion & Success Mechanics
+    - Challenge Completion
+    - Completion & Success
+    - Note Submission
+    - Button & Element Identification
+    - Game & Scenario Analysis
+    - Hint Discovery
+
+- Miscellaneous
+    - Header Manipulation
+    - Directory Navigation
+    - Custom Script Hosting
+    - Parameter Inspection
+    - HTTP Request Smuggling Vulnerabilities
+    - Message Creation & Sharing
+    - Git
+    

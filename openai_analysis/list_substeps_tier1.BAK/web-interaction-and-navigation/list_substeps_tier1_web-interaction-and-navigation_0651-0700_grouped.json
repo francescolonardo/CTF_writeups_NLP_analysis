@@ -1,0 +1,60 @@
+{
+    "Manipulating Fields and Inputs": [
+        "Manually changed the 'Link to profile' field to 'http://ourwebsite' in the first option of 'Support' section",
+        "Manually modify the 'Link to profile' field",
+        "Select the first option in the 'Support' section",
+        "Make the admin visit the modified 'Link to profile'"
+    ],
+    "Website Access and Navigation": [
+        "Made the admin visit it",
+        "Access the website",
+        "Access the 'Support' section",
+        "Access the 'Edit profile' section",
+        "Accessed URL http://138.68.228.12/?is_debug=1.",
+        "Visit the website."
+    ],
+    "HTTP Response Observations": [
+        "Observed the HTTP response header, it indicated various constraints including inability to include external scripts and styles, embedding the site in iframe on an external site",
+        "Note the various constraints mentioned in the header"
+    ],
+    "POST Data Manipulation": [
+        "Attempt to send 'POST' data to the 'profile.php' or 'manage.php'",
+        "Attempt to send 'POST' data to 'profile.php' with a different 'Referrer'",
+        "Attempt to send 'POST' data to 'manage.php' with a different 'Referrer'"
+    ],
+    "Security Assessment and Exploitation": [
+        "Perform a dirbuster scan",
+        "Discover the 'manage.php' page",
+        "Observe the 'Permission Denied!' message",
+        "Send the admin to the webpage",
+        "Locate the POST requests to '/login.php'.",
+        "Identify needed parameters: username, nonce, and cnonce.",
+        "Understand that this shuffle is based on seeded random values tied to the 'User-Agent'.",
+        "Separate WebSocket packets into ones that are related to sent messages (particularly user input).",
+        "Repeat the process for characters in each WebSocket packet.",
+        "Located an input field on the provided webpage",
+        "Assess the functionality of the web page.",
+        "Check the site's 'Bug Bounty' form.",
+        "Submit suspicious URLs to be visited by a headless Chrome agent.",
+        "Create a CSRF page.",
+        "Use <meta name='referrer' content='no-referrer'>.",
+        "Overwrite document.domain using Object.defineProperty(document, 'domain', {value: 'yeunote.ctf.yeuchimse.com'});",
+        "Construct a post form.",
+        "Notice an undeleted Tweet.",
+        "Share the generated URL with the admin.",
+        "Make the first GET request: 'GET https://yeunote.ctf.yeuchimse.com/note/twitter/3'.",
+        "Make the second GET request: 'GET https://yeunote.ctf.yeuchimse.com/note/twitter?oauth_token=<oauth token>&oauth_verifier=<oauth verifier>'.",
+        "Created the GET request: 'GET ..@alien.somewhere.meepwn.team/..//index.php?alien=%40!%23%24%40!%40%40 HTTP/1.1 Host: 138.68.228.12 Connection: close'.",
+        "Directory switching.",
+        "Used format of '..://alien.somewhere.meepwn.team/../..//index.php' request.",
+        "Passed through conditions checking for specific value comparisons.",
+        "Received form on alien_sector.php.",
+        "Sent the request 'type=/../super_secret_shell.php'.",
+        "Note that Nginx blocks '/debug*'.",
+        "Note that Apache blocks '/debug*'.",
+        "Use the primary segment to create a URL.",
+        "Create a URL that would circumvent the '/debug*' restriction.",
+        "Visit the manipulated URL.",
+        "The Angular application was set up behind an Nginx reverse proxy."
+    ]
+}

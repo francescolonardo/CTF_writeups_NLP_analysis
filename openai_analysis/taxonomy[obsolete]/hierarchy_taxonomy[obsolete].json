@@ -1,0 +1,57 @@
+{
+    "Reconnaissance": {
+        "Navigation and Interaction": {},
+        "Online Research/Learning": {}
+    },
+    "Analysis": {
+        "Static Analysis": {},
+        "Dynamic Analysis": {},
+        "Vulnerability Assessment": {},
+        "Information Extraction": {},
+        "Attacker Reasoning": {}
+    },
+    "Exploitation": {
+        "Exploit Development": {
+            "Payload Crafting": {}
+        },
+        "Exploit Implementation": {
+            "Payload Delivery": {},
+            "Exploit Execution": {}
+        },
+        "Exploit Assessment": {
+            "Success Evaluation": {},
+            "Failure Analysis": {}
+        },
+        "Data Manipulation": {
+            "URL Manipulation": {},
+            "Cookie Manipulation": {},
+            "JWT Manipulation": {},
+            "Header Manipulation": {}
+        }
+    },
+    "Implementation and Utilization": {
+        "Tool Utilization": {
+            "Networking Tools": {
+                "Proxy Tools": {},
+                "Port Scanning Tools": {}
+            },
+            "Cryptography Tools": {
+                "Encryption Tools": {},
+                "Hashing Tools": {}
+            }
+        },
+        "Manual Procedures": {
+            "Command-Line Usage": {
+                "Shell Commands": {}
+            }
+        },
+        "Automated Procedures": {
+            "Script Management": {
+                "Python Scripting": {},
+                "JavaScript Scripting": {},
+                "Bash Scripting": {}
+            }
+        }
+    },
+    "Miscellaneous Actions": {}
+}

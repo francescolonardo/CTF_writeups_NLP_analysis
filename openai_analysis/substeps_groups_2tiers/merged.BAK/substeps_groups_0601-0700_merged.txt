@@ -1,0 +1,123 @@
+1. Web Application Analysis
+   - Web Application Interaction
+   - Web Application Behavior
+   - Web Application Source Code Review
+   - Web Application Vulnerabilities
+   - Web Application Security Testing
+   - Web Application Analysis & Manipulation
+   - Web Application Testing & Analysis
+
+2. Code Analysis & Manipulation
+   - Code Execution
+   - Code Execution & Serialization
+   - Code Exploitation & Manipulation
+   - Code Analysis & Reverse Engineering
+   - Code Analysis & Execution
+   - Code Vulnerabilities & Exploits
+   - Python Code Analysis
+   - PHP Code Analysis
+   - Code Editing & Modification
+
+3. Authentication & Session Management
+   - Session & Cookie Exploitation
+   - Authentication Analysis
+   - Session Management & Hashing
+   - Authentication & Authorization
+   - OAuth2 & Identity Provider
+   - Admin Access
+   - User Management
+   - Authentication Form
+
+4. Security Bypass & Exploitation
+   - Bypassing Restrictions
+   - Bypassing Security Measures
+   - Injection & Exploitation
+   - Server Interactions & Exploitation
+   - Bypass Techniques
+   - CSRF Prevention Bypass
+   - Privilege Escalation
+
+5. Communication & Interaction
+   - Server-Client Communication & Response Handling
+   - HTTP Header Manipulation
+   - Endpoint & API Interaction
+   - API & Server Interactions
+   - Endpoint Connection
+
+6. Database & Server Analysis
+   - Redis Database Check
+   - Redis Store & Rate Limiting
+   - Server and Network Monitoring
+   - Server Exploration
+   - System & Database Analysis
+   - Server Information & Configuration
+   - Server Configuration
+
+7. Data & Information Extraction
+   - Data Extraction & Analysis
+   - Data Retrieval & Observation
+   - Flag Assembly
+   - UUID & Format Identification
+   - Data Leakage & Information Discovery
+   - Data Analysis
+
+8. Web Exploitation Techniques
+   - Brute Force Attack
+   - Brute Forcing
+   - Shell Command Execution
+   - Exploits & Payloads
+   - Web Exploitation Techniques
+
+9. Input & Payload Manipulation
+   - Environmental Configurations
+   - CSS & Style Manipulation
+   - JavaScript Payload Manipulation
+   - Encoding & Hashing
+   - Character Conversion & Manipulation
+   - JavaScript & Browser Manipulation
+   - Deserialization & Code Execution
+
+10. File & Access Management
+   - File Restrictions & Bypass
+   - Form Submission
+   - User Access Analysis
+   - XML External Entity (XXE) Vulnerability
+   - Web Form Exploration
+
+11. Error & Response Analysis
+   - Error Handling & Validation
+   - Error Analysis
+   - Server Response Analysis
+   - Method Failure Detection
+
+12. Other Actions
+   - CTF Participation
+   - Field Decoding
+   - End Goal & Flag Acquisition
+   - Hints & Clues
+   - Function Analysis
+   - Code Editing & Modification
+   - Variable Identification & Utilization
+   - System Configuration
+   - Website Exploration
+   - Profile Exploration
+   - Keyword Filtering
+   - Repository Check
+   - Advertisement & HAProxy
+   - HTTP Method Analysis
+   - OpenSSL & Flag Retrieval
+   - Server Requests & SQL Queries
+   - Memory & Debugging Analysis
+   - Technology Identification
+   - Serialization & Input Manipulation
+   - Application Logic & Programming Techniques
+   - Website Alerts & Messages
+   - CTF Management
+   - Others
+   - Looping
+   - Database Interactions
+   - Batch and CAPTCHA
+   - Traversal & Search Technique
+   - HTML Manipulation
+   - Server Requests & SQL Queries
+   - Serialization Analysis

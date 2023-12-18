@@ -1,0 +1,64 @@
+1. Interactions and Execution
+    - Web Development and Testing
+    - Form Submission and Inputs
+    - Web Application Interactions
+    - Promise Handling
+
+2. Data Validation, Analysis, and Verification
+    - Verify and Validate
+    - Data Validation and Verification
+    - Data Analysis
+    - Input Validation
+    - Action Verification
+    - Flag Verification and Extraction
+
+3. Monitoring, Observation, and Analysis
+    - Logging and Monitoring
+    - Response Monitoring and Analysis
+    - Observations and Analysis
+    - System Monitoring and Analysis
+    - Process Monitoring
+    - Monitoring and Observations
+    - Response Observation
+
+4. Debugging and Troubleshooting
+    - Troubleshooting and Workarounds
+    - Code Debugging
+    - Debugging and Troubleshooting
+    - Error Identification and Analysis
+    - Code Analysis and Troubleshooting
+
+5. Input and Output
+    - Form Input Observation
+    - Input and Output
+    - Output Analysis
+
+6. Navigation and Exploration
+    - Route Manipulation
+    - Webpage Observations
+    - Page Loading Optimization
+
+7. Network and Configuration Analysis
+    - Network Analysis
+    - Configuration Analysis
+
+8. Exploitation Attempts
+    - Remote Code Execution (RCE)
+    - Exploitation Attempts 
+
+9. Information Gathering and Verification
+    - Information Gathering
+    - Hints and Guidelines
+    - Testing and Payload Management
+    - Payload Testing and Verification
+
+10. Permissions and Access Factors
+    - Permissions and Access
+    - External Factors and Considerations
+
+11. Utilization and Review
+    - Browser Tools Utilization
+    - Analyze and Review
+
+12. Dealing with Preventive Measures
+    - Character Blacklisting

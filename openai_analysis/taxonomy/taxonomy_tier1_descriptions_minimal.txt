@@ -1,0 +1,32 @@
+1. Web Interaction and Navigation
+Description: Engage in activities like browsing, understanding web functions, analyzing underlying web elements, tracking user behavior, making direct interactions with web servers, and manipulating URLs or browser behaviors.
+
+2. Authentication, Session, and User Management
+Description: Act on user authentication through methods like bypassing processes, managing web tokens and cookies, handling sessions and OTPs, discovering credentials, and overseeing user registrations and permissions.
+
+3. Data Analysis, Manipulation, and Storage Interactions
+Description: Deal with processing and visualizing data, analyzing user input, extracting unintended system data, interacting with databases for exploitation or alteration, and accessing or managing files.
+
+4. Code, Application, and Script Analysis
+Description: Dive deep into code inspection, understand the broader application environment, analyze scripts, comprehend dynamic web rendering, and dissect specific code or web content.
+
+5. Exploitation Techniques and Payload Handling
+Description: Use techniques like injection attacks, identifying system vulnerabilities, employing general web security tactics, manipulating web requests, and developing exploit tools or scripts.
+
+6. Network and System Analysis
+Description: Investigate networking protocols, manage communications between services, analyze IPs and DNS systems, and understand server configurations and their interactions.
+
+7. Debugging, Monitoring, and Troubleshooting
+Description: Employ troubleshooting techniques, analyze system messages, and monitor recorded activities to understand and address anomalies.
+
+8. Cryptography, Encoding, and Decoding Techniques
+Description: Engage in methods related to data encryption, cryptographic analysis, and techniques for data representation through encoding or decoding.
+
+9. Tools, Scripting, and System Interactions
+Description: Utilize custom tools, automate attack processes, interact directly with system interfaces, and manipulate text or data sequences.
+
+10. Information Gathering and Security Analysis
+Description: Undertake vulnerability research, initial system exploration, and understand broader security principles and their application.
+
+11. Documentation, Strategy, and Miscellaneous Techniques
+Description: Serving as a catch-all category, this covers general strategies, reviewing related documents, understanding challenges in their broader context, leveraging diverse tactics such as version control insights, and employing time-based or other specific techniques.

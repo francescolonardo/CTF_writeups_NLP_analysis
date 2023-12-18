@@ -1,0 +1,33 @@
+1. Cryptographic Techniques and Analysis
+   - Cryptographic Analysis
+   - Cryptography Algorithms and Methods
+   - Cryptography and Key Management
+   - Cryptography Techniques
+   - Hashing Techniques
+   - Hashing and Cryptographic Techniques
+   - JWT Manipulation
+   - Token Generation Techniques
+   - File Extraction and Manipulation
+
+2. Encoding and Decoding
+   - Base64 Encoding and Decoding
+   - Data Compression and Serialization
+   - Encoding and Decoding Techniques
+   - IP Address Conversion
+
+3. Data Representation and Analysis
+   - Data Representation Techniques 
+   - Data Representation and Analysis
+
+4. Web Application Exploitation and Manipulation Techniques
+   - Form and Input Analysis
+   - Header and Response Manipulation
+   - Web Application Exploitation and Manipulation
+   - Command Execution and Tools
+
+5. CAPTCHA Challenges
+   - CAPTCHA Analysis
+   - CAPTCHA Solving
+
+6. Observational Techniques
+   - Observation and Recognition

@@ -1,0 +1,57 @@
+{
+    "Authentication & Authorization": [
+        "Recognize that the `Login` object contains an MFA token and a reference to a `User` object.",
+        "Note that a JWT key is created for each new user during registration.",
+        "Locate the route '/login' in the website source."
+    ],
+    "Code Execution & Exploitation": [
+        "Executed the payload using the 'unserialize()' function",
+        "Inserted the payload into the target site's URL.",
+        "Craft attack payload using permitted characters.",
+        "Inject the command '127.0.0.1; ls -al' into the IP address field.",
+        "Send the crafted request to confirm the presence of the vulnerability.",
+        "Add the RS256-to-HS256 exploit to the JWT.",
+        "Identify the need to perform an XSS attack.",
+        "Put all components of the attack together",
+        "Located the flag.",
+        "Set up a redis server.",
+        "Observe possibility of XSS attack from bot's lens.",
+        "Decide to create a new HTML script element",
+        "Send the admin to the page with the payload",
+        "Retrieve the flag from the decoded base64 response.",
+        "Use the 'UpdatePassword' mutation.",
+        "Identify HTTP request smuggling as the first obstacle."
+    ],
+    "Information Gathering": [
+        "Noted the specific flag value: HarekazeCTF{j4v4scr1pt-0bfusc4t0r_1s_tsur41}",
+        "Conduct research on prototype pollution vulnerability.",
+        "Discover valid endpoints at 10.0.42.2 and 10.0.42.200.",
+        "Analyze the challenge description for hints.",
+        "Visit lukas-app.de.",
+        "Access the front-end JavaScript source code.",
+        "Retrieve the flag from the decoded base64 response."
+    ],
+    "Web Application Testing & Analysis": [
+        "Note that the cached secret is only available for 2 seconds after logging in.",
+        "Submit the payload through the form.",
+        "Noted filter size limitation",
+        "Observe the cookie 'not_admin' after form submission",
+        "Specify the 'RS256' algorithm for signing"
+    ],
+    "Web Navigation & Interaction": [
+        "Navigate to the bottom of the results.",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges.",
+        "Access the front-end JavaScript source code.",
+        "Enter a color."
+    ],
+    "Data Manipulation & Exploitation": [
+        "Identify LFI vulnerability."
+    ],
+    "System Management": [
+        "Set up a redis server.",
+        "Take a break."
+    ]
+}

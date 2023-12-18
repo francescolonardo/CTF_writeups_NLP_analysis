@@ -1,0 +1,50 @@
+{
+    "JavaScript Bypass & Analysis": [
+        "Realize that this allows us to bypass the JavaScript's check.",
+        "Study server.js",
+        "Realize the issue in the comparison",
+        "Notice a strange message of INSTRUO team's love for cookies."
+    ],
+    "HTTP Requests & Responses": [
+        "Identify the GET form with 'search' parameter in 10.0.42.200.",
+        "Observe the HTTP 401 UNAUTHORIZED status in the response",
+        "Observe the flag in the response after placing the cookie.",
+        "Check the response of the POST request for a session cookie.",
+        "Notice the 'Server' header in HTTP response.",
+        "Identify packet #263 in the capture",
+        "Identify the 'admin' field and its value."
+    ],
+    "Web Security Exploitation": [
+        "Assume a Local File Inclusion (LFI) exploitation is required",
+        "Set malicious cookies.",
+        "Identify the unnecessary parts of the query that need to be wrapped in [] for it to become a valid query.",
+        "Increase the privileges.",
+        "Find a quote from Mr. Robot",
+        "Learned about python pickles",
+        "Created a custom SQLMap tamper script.",
+        "Follow the retrieved link",
+        "Understand the need to avoid the same-origin policy for reading the flag",
+        "Inject a final cookie.",
+        "Input {{ state }}",
+        "Append the new HMAC signature to the header and payload.",
+        "Created an XPATH injection payload.",
+        "Used Burp's repeater to spam 'Go'",
+        "Leverage the behavior of 'Buffer' stopping at the first non-hexadecimal character.",
+        "Determine that there's not much to exploit.",
+        "Test various SQL queries to deduce the type of database in use."
+    ],
+    "Web Application Analysis & Manipulation": [
+        "Open Python.",
+        "Open a browser.",
+        "Open the file index.html."
+    ],
+    "Regular Expressions": [
+        "Determine suitable regular expressions based on the test."
+    ],
+    "HTTPS & Security Protocols": [
+        "Identify that the website is under HTTPS."
+    ],
+    "JWT & Token Manipulation": [
+        "Edited the existing jwt token"
+    ]
+}

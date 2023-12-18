@@ -1,0 +1,76 @@
+{
+    "User-Agent Manipulation": [
+        "Use version 43.0 for the user-agent string."
+    ],
+    "Response Handling and Output": [
+        "Wrote the received response to stdout.",
+        "Verified the shellcode's functionality and ensured compatibility with the `strlen()` function within 'shellme()' in the `shellme.so` file.",
+        "Use the Proof of Concept script",
+        "Executed the Python script"
+    ],
+    "Environment Setup": [
+        "Set up a Python-based environment."
+    ],
+    "Web Application Framework": [
+        "Led to the Flask.app object",
+        "Using the command: python3 -m flask run"
+    ],
+    "Automated Tools and Utilities": [
+        "Use Python-random-module-cracker tool",
+        "Open curl in terminal or command line.",
+        "Begin to test this theory with 'handlebars', a tool which previously had a known vulnerability in processing templates.",
+        "Automate the process through script.",
+        "Use burp tool to execute the interception.",
+        "Used a bash script to extract the PHPSESSID with auth set.",
+        "Used distinct virtual hosts and shell wildcards for the same result.",
+        "Use the ipaddress library in Python to check the IP address.",
+        "Consider using a tool like singularity to set up a DNS server.",
+        "Configure the burpsuite tool.",
+        "Start the burpsuite tool.",
+        "Launch BurpSuite.",
+        "Used the command: nikto -h http://172.17.15.117:443/",
+        "Use Burp Suite to pass the password despite the character limit",
+        "Used Burpsuite"
+    ],
+    "Command Line Operations": [
+        "Caused Apache2 to crash due to ':' in directory name.",
+        "Switch to the console.",
+        "Perform the 'cat' command on '/home/user/flag.txt'.",
+        "Open the command line tool.",
+        "Open Python.",
+        "Open Python.",
+        "Execute the 'ls ../' command to check the parent directory."
+    ],
+    "Web Application Security Analysis": [
+        "Saved the request.",
+        "Checked the docker files.",
+        "Locate the '.git' directory via robots.",
+        "Use the internetwache GitTools.",
+        "Generate a custom wordlist of potential log file names.",
+        "Execute wget to download all available logs.",
+        "Uploaded changes"
+    ],
+    "Data Extraction and Manipulation": [
+        "Send the content of flag.txt to a webhook.",
+        "Able to run shell commands.",
+        "Output the password string and the trimmed section of the server response.",
+        "Take a URL as an argument.",
+        "Encode the solution string using base64 to generate the 'userdata' parameter.",
+        "Loop through a list of characters.",
+        "Note that the server does not have CURL."
+    ],
+    "Form Submission and Interaction": [
+        "Observe the form to fill.",
+        "Submit the form.",
+        "Find the input box.",
+        "Click the submit button.",
+        "Submit the input."
+    ],
+    "Network Analysis and Testing": [
+        "Add a random timestamp to the POST request body to understand the format.",
+        "Update the timestamp in the POST request."
+    ],
+    "Miscellaneous": [
+        "Using Accessibility Tool"
+    ]
+}

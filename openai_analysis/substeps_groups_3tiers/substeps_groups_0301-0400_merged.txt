@@ -1,0 +1,76 @@
+Tier 1: Data Collection and Analysis
+- Tier 2: Web Interactions
+    - Tier 3: Website Visits
+    - Tier 3: Web Element & Structure Identification
+    - Tier 3: Web Scraping and Analysis
+- Tier 2: File Analysis
+    - Tier 3: Downloaded Files Observation
+    - Tier 3: File Verification
+    - Tier 3: File Identification
+    - Tier 3: File Access & Manipulation
+- Tier 2: Request Observation
+    - Tier 3: HTTP & File Manipulation
+    - Tier 3: HTTP Header Observation
+    - Tier 3: HTTP Request Execution
+    - Tier 3: POST Request Action
+    - Tier 3: Websockets
+- Tier 2: Network Activity Analysis
+    - Tier 3: Network & Traffic Analysis
+    - Tier 3: Network Communication Analysis
+- Tier 2: Endpoint Examination
+    - Tier 3: Endpoint Interaction
+    - Tier 3: Endpoint & Server Discovery
+
+Tier 1: Web Exploits and Vulnerabilities
+- Tier 2: Exploitation Techniques
+    - Tier 3: Payload Execution & Exploitation
+    - Tier 3: Shell Insertion Possibility
+    - Tier 3: Command Injection
+    - Tier 3: Exploitation & Flag Retrieval
+    - Tier 3: Payload Creation & Execution
+    - Tier 3: XSS Attacks
+- Tier 2: Vulnerability Analysis
+    - Tier 3: Cryptographic Analysis & Manipulation
+    - Tier 3: JWT Exploitation
+    - Tier 3: CSRF Vulnerability
+    - Tier 3: Prototype Pollution
+    - Tier 3: Serialization Exploit
+- Tier 2: Web Application Attacks
+    - Tier 3: IP Whitelisting
+    - Tier 3: User-Agent Modification
+    - Tier 3: Parameter Manipulation
+    - Tier 3: Cookie Manipulation
+    - Tier 3: CGI Header Manipulation
+
+Tier 1: Code and File Manipulation
+- Tier 2: Encoding and Decoding
+    - Tier 3: Base64 Encoding
+- Tier 2: Code Execution and Interactions
+    - Tier 3: JavaScript & Browser Debugging
+    - Tier 3: Debugging Tool Utilization
+    - Tier 3: Shell and Command Execution
+- Tier 2: Code Analysis
+    - Tier 3: Code Analysis and Evaluation
+    - Tier 3: Source Code Analysis & Information Gathering
+    - Tier 3: Source Code Examination
+- Tier 2: File Actions
+    - Tier 3: File System Actions
+    - Tier 3: File System Exploration
+    - Tier 3: File Flag Extraction
+
+Tier 1: Web Application Security
+- Tier 2: Authentication and Authorization
+    - Tier 3: Continuous Authentication
+    - Tier 3: Permission Control
+    - Tier 3: Session Management
+- Tier 2: Server and Database Interaction
+    - Tier 3: Server & Connection Handling
+    - Tier 3: Server Interaction & Access
+    - Tier 3: Server Interaction
+    - Tier 3: Database Access
+    - Tier 3: Database & SQL 
+- Tier 2: Web Security Testing
+    - Tier 3: Accessibility Testing
+    - Tier 3: Performance Considerations
+    - Tier 3: Frontend Verification
+    - Tier 3: Response Processing

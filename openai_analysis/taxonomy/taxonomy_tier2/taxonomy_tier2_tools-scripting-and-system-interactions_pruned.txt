@@ -1,0 +1,49 @@
+9.1 Tool Manipulation
+    - Tool Utilization
+    - Tool Configuration and Usage
+    - Third-Party Tools
+    - Tool Usage
+    
+9.2 System & Server Interactions
+    - System Interactions and Command Execution
+    - Server Setup and Network Interactions
+    - System Permissions and Roles
+    - Server and Service Management
+    
+9.3 Scripting & Automation
+    - Scripting and Exploit Development
+    - Script Creation and Execution
+    - Script Execution and Automation
+    - Automation and Scripting
+    - Script Writing and Modification
+    
+9.4 File & Directory Operations
+    - Command Execution and File Interaction
+    - File and Directory Operations
+    - File and Directory Manipulation
+    - File and System Interactions
+    - File and Directory Management
+    
+9.5 Data & Input Manipulation
+    - Data and Input Manipulation
+    - Payload Crafting and Execution
+    - Data Manipulation
+    - Data Manipulation and Observation
+    - Data and Token Manipulation
+    
+9.6 Web, Network & Service Interactions
+    - Request and Payload Interactions
+    - Server Configuration and Response Interactions
+    - API, Service, and Page Interactions
+    - Web Interactions and Manipulations
+    
+9.7 Command Elements & System Interaction
+    - Command Execution and Interaction
+    - System and Application Configuration
+    - Automated Processes
+    - Command Line Interactions
+    - Shell and Command-line Interactions
+    
+9.8 Script Language Interactions
+    - PHP and Scripting
+    - Python Script Interactions

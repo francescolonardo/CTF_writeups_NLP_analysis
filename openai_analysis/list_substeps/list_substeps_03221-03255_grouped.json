@@ -1,0 +1,63 @@
+{
+    "String Manipulation & Analysis": [
+        "Identify the components of the encrypted string: remote IP address, a seed (IDSEED), and current date",
+        "Identify the third part of the flag within the file contents"
+    ],
+    "AWS & Server Permissions": [
+        "Identified privileged permissions to create AWS Lambda functions"
+    ],
+    "XML External Entity (XXE) Vulnerability": [
+        "Use the XML External Entity vulnerability to call the disguised phar file."
+    ],
+    "PDF Manipulation": [
+        "Create 'first.pdf' using the chosen input PDF."
+    ],
+    "CAPTCHA Handling": [
+        "Note that every 3000 attempts, the CAPTCHA code needs to be updated manually in the script."
+    ],
+    "File Manipulation & Flag Retrieval": [
+        "Retrieve the flag from file content",
+        "Successfully read the flag.txt file using the manipulated RGB value.",
+        "Include /var/www/html/flag.php in the POST request",
+        "Acknowledge the replacement of flags by Nginx",
+        "Observe the PHP code of the website",
+        "Circumvented file extension checks on '.php' by replacing '.' character with '%252e'.",
+        "Utilized REST to discard png header from uploaded file"
+    ],
+    "Web Navigation & Interaction": [
+        "Discover that the feedback is sent via XML composed by JavaScript.",
+        "Craft a request",
+        "Open the link provided in the CTF challenge - http://138.247.13.111",
+        "Constructed a request to /admin.",
+        "Recognize that you can report suspicious URLs to the admin.",
+        "Found that 'POST' and 'PUT' returned a different result.",
+        "Execute a SQL query via URL manipulation",
+        "Translate the hex-encoded list, var _0x575c, into a more readable format",
+        "Set up a netcat listener on a local server.",
+        "Modify the User-Agent",
+        "Accessed the website provided in the challenge",
+        "Consider another solution."
+    ],
+    "Code Analysis & Exploitation": [
+        "Analyze the PHP code for potential vulnerabilities"
+    ],
+    "Data Retrieval & Manipulation": [
+        "Use the mutool info -X command to verify collision1.pdf.",
+        "Read the window variable using JavaScript",
+        "Reveals the flag '35c3_this_flag_is_the_be5t_fl4g'.",
+        "Retrieve the key file.",
+        "Retrieve subclasses of the base class",
+        "Identify the functionality of storing the request body object into a database."
+    ],
+    "Server Interaction & Security": [
+        "Avoided CORS issues.",
+        "Recognize that a Redis database was being utilized.",
+        "Found that 'POST' and 'PUT' returned a different result.",
+        "Send GET request to 'https://shiba.yactf.ru/api/boop' 1500 times within the loop."
+    ],
+    "Code Execution & Manipulation": [
+        "Execute ls command on the server using subprocess.Popen",
+        "Analyze the entrypoint.sh bash file.",
+        "Break the script if no character is causing a change in content length"
+    ]
+}

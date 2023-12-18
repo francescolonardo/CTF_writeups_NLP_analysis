@@ -1,0 +1,51 @@
+Observation and Analysis
+    Observations and Readings
+    Observations and Feedback
+    Server and Configuration Observation
+    Observation and Analysis
+    Output Observation
+    Observations
+
+Web Application Testing and Behavior
+    Web Application Behavior and Response
+    Web Application Testing
+    Page Navigation and Refresh
+    Request and Response Handling
+    Payload Testing and Verification
+
+Debugging and Developer Tools
+    Debugging and Console Access
+    Browser Console and Developer Tools
+    Local Setup and Execution
+
+Bug Discovery and Resolution
+    Bug Discovery and Workarounds
+    Error Handling
+    Trials and Failures
+
+Request and Response Analysis
+    Request Analysis
+    Method Testing and Evaluation
+
+Code, File, and Input Analysis
+    Code and File Analysis
+    Input Validation and Testing
+
+Monitoring and Network Analysis
+    Network Monitoring and Analysis
+
+Cookie and Data Manipulation
+    Cookie Analysis and Manipulation
+    Actions and Manipulations
+
+Command and Script Execution
+    Command Execution and Exploitation
+    Script Execution and Control
+
+Findings and Outcomes
+    Analysis and Findings
+    Flag Retrieval
+
+Security and Performance
+    Security and Optimization
+    

@@ -1,0 +1,82 @@
+{
+    "Repository Manipulation": [
+        "Restore the repository to the previous commit."
+    ],
+    "File Interaction": [
+        "Read index.html."
+    ],
+    "Endpoint Connection": [
+        "Connect to 'scriptlet' endpoint"
+    ],
+    "Data Manipulation": [
+        "Combined portions of failed and successful purchase data strings."
+    ],
+    "User Interaction": [
+        "Press the enter key."
+    ],
+    "IP Validation": [
+        "Note that the process only permits requests from a client URL validated to be 127.0.0.1."
+    ],
+    "Payload Encoding": [
+        "Send the encoded payload through the cookie header."
+    ],
+    "Command Execution": [
+        "Revealed the requirement of a 'vim' command.",
+        "Clone S3Scanner from GitHub repository",
+        "Identify SQL injection vulnerability",
+        "Execute the first successful exploit.",
+        "Use the 'mutool' command to manipulate the PDF files.",
+        "Conduct local testing for potential RCE.",
+        "Executed the URL."
+    ],
+    "Web Page Analysis": [
+        "Assess the functionality of the web page."
+    ],
+    "Cookie Parsing": [
+        "Find a 'token' key in the cookies"
+    ],
+    "Username Entry": [
+        "Enter the username 'admin'"
+    ],
+    "Log Manipulation": [
+        "Set the log_file of the 'access_log' object to '../flag'",
+        "Discover the login credentials in the logs"
+    ],
+    "CTF Challenge Interaction": [
+        "Opened the CTF challenge."
+    ],
+    "Flag Reconstruction": [
+        "Combine all three parts of the flag together"
+    ],
+    "Network Observation": [
+        "Observe the returned DNS query for example.com."
+    ],
+    "Client-Side Error Detection": [
+        "Explore the possibility of detecting a client-side error when exceeding Chrome's maximum URL length (2MB)"
+    ],
+    "CSS Attribute Selector Exploitation": [
+        "Discovered that CSS attribute selectors can be used for exfiltration."
+    ],
+    "Photo Upload Analysis": [
+        "Note the showcasing of uploaded photos."
+    ],
+    "Serialization Exploit": [
+        "Decided to exploit 'unserialize' method."
+    ],
+    "Database Access": [
+        "Access the 'target_credentials' database.",
+        "Identified a flag table in the database."
+    ],
+    "HMAC Signature Generation": [
+        "Use the signing certificate to generate a new HMAC signature."
+    ],
+    "Information Search": [
+        "Found no relevant information"
+    ],
+    "Token Authentication": [
+        "Use the known hash of an empty string as a token value for authentication."
+    ],
+    "Remote Code Execution Testing": [
+        "Payload 1: Obtained the full URL of the browsing context."
+    ]
+}

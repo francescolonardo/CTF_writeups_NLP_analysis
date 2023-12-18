@@ -1,0 +1,51 @@
+{
+    "Scripting & Code Creation": [
+        "Create a Python script",
+        "Crafted a malicious payload.",
+        "Construct a page hosted on a domain starting with 'localhost'.",
+        "Created a PHP script to serialize an object for the exploit.",
+        "Modified the given example json file",
+        "Create a SQL Injection payload."
+    ],
+    "Server & Technology Understanding": [
+        "Understood that the server is running php-cgi.",
+        "Recognized that 'text/xsl' can potentially allow Cross-Site Scripting.",
+        "Research methods of bypassing strict checks.",
+        "Understand regex filter on 'f' parameter.",
+        "Learned of an existing bypass in Chrome for the version of DOMPurify the application was using.",
+        "Decide to use Import Maps",
+        "Review the jQuery documentation."
+    ],
+    "Data Manipulation & Analysis": [
+        "Encoded the fetched cookies in base64.",
+        "Realize the split parts were stored against assigned keys",
+        "Discover files in the directory, including the 'flag' file, amongst others.",
+        "Examined the 'logout.js' file",
+        "Examined the HTML source code of the page.",
+        "View the contents of the directory",
+        "Analyzed the Tomcat log found in the S3 bucket."
+    ],
+    "Web Navigation & Interaction": [
+        "Inspect the source code of the website",
+        "Observe the site fetching resources.",
+        "Visited the website.",
+        "Access the site and find the flag."
+    ],
+    "Network & Request Handling": [
+        "Downloaded the 'dirstate' file from 'checkout' folder on the target server.",
+        "Use the 'requests' library to send HTTP GET requests.",
+        "Send the POST request to '/profile/request' with the 'id' of the attacker's user to gain admin's acceptance as a follower.",
+        "Follow the redirection link after replacing the 'with' value with 'flag'."
+    ],
+    "Shell & Command Execution": [
+        "Attempted to escape the 'shell_exec' function.",
+        "Submit the crafted request to the server.",
+        "Use the mutool info -X command to verify collision1.pdf.",
+        "Execute ls command on the server using subprocess.Popen"
+    ],
+    "Gameplay & Strategy": [
+        "Realize the random placement of squares in each round.",
+        "Repeat the attempts until the flag is obtained.",
+        "Limit the try range."
+    ]
+}

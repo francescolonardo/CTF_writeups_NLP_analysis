@@ -1,0 +1,95 @@
+{
+    "HTML Injection & Payloads": [
+        "Introduced three separate payloads in the HTML."
+    ],
+    "CSS & Style Manipulation": [
+        "Flag is inside the hidden sheet"
+    ],
+    "SQL Injection": [
+        "Identify SQL injection is possible.",
+        "Notice the website contains only a login form that might be vulnerable to SQL injection"
+    ],
+    "Admin Access & Authentication": [
+        "Access '/admin'.",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system."
+    ],
+    "UUID & Format Identification": [
+        "Understand the correct UUID format and the known prefix."
+    ],
+    "Looping & Iteration": [
+        "Create a for loop to iterate through the numbers from 1 to 20."
+    ],
+    "Source Code Analysis": [
+        "Inspect the given source code."
+    ],
+    "Union Based Injection": [
+        "Scheduled to perform a UNION based injection"
+    ],
+    "Key Requirement Understanding": [
+        "Read and understand the requirement for three keys."
+    ],
+    "API Interaction & Response": [
+        "Received the /api/flag contents"
+    ],
+    "Script Development": [
+        "Develop a Python script"
+    ],
+    "Directory & Path Exploration": [
+        "Revealed current directory as '/var/www/html'.",
+        "Open the final.txt file in the path",
+        "Search for 'child_process' in all files of '/usr/local/lib/node_modules'."
+    ],
+    "Template Injection": [
+        "Continue the investigation by exploring the scope of the Template Injection vulnerability."
+    ],
+    "Endpoint Identification": [
+        "Identified a `/flag` endpoint."
+    ],
+    "Challenge Review & Assessment": [
+        "Reviewed the challenge."
+    ],
+    "JavaScript Payload Manipulation": [
+        "Meet the condition in the JavaScript code by running a payload such that it equals 1337"
+    ],
+    "Code Analysis & Understanding": [
+        "Realized the asserts in 'index.php' were in strings"
+    ],
+    "Session & Cookie Manipulation": [
+        "Used the session cookie to visit /flag"
+    ],
+    "Command Execution": [
+        "Specify 'rockyou.txt' as the dictionary file.",
+        "Note that the Python microservice allows the running of arbitrary commands when the GET method is used"
+    ],
+    "Comment & Approval System": [
+        "Notice that comments need to be approved."
+    ],
+    "HTTP Requests": [
+        "Perform a POST request."
+    ],
+    "cURL Command Usage": [
+        "Use the curl command"
+    ],
+    "URL Manipulation & Restrictions": [
+        "Understand that dots, double slashes, or non-ascii dot are not allowed in the iframe value in the URL."
+    ],
+    "Game & Scenario Analysis": [
+        "Study the game"
+    ],
+    "Memory & Debugging Analysis": [
+        "Identified a suitable breakpoint after the `malloc` call and before the `strcpy` call."
+    ],
+    "Server-Side Template Injection": [
+        "Tested the SSTI vulnerability by crafting a URL that performed simple arithmetic in the email parameter using Jinja2 template syntax."
+    ],
+    "Prototype & Constructor Manipulation": [
+        "POST data that includes `constructor/prototype/outputFunctionName`."
+    ],
+    "Microservice Command Execution": [
+        "Run a script with the site's 'secret key' included."
+    ],
+    "Initial Text Reading": [
+        "Read the initial text."
+    ]
+}

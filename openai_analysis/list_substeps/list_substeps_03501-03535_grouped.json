@@ -1,0 +1,59 @@
+{
+    "Cookie Manipulation": [
+        "Name the cookie 'made-an-account'.",
+        "Added a special character (') to the end of the username.",
+        "Encode the cookie-characters as response headers.",
+        "Locate the admin cookie."
+    ],
+    "File and Directory Manipulation": [
+        "Find a flag.txt file in the '/admin' directory.",
+        "Find the 'robots.txt' file",
+        "Set the file extension as .tpl."
+    ],
+    "Injection and Bypass Techniques": [
+        "Tried to insert '%' wildcard to bypass check.",
+        "The statement indicates that using the sanitized HTML with jQuery's insecure elm.html() method without the SAFE_FOR_JQUERY flag could lead to XSS.",
+        "Use this behaviour when constructing SQL queries to bypass the login.",
+        "Locate the admin cookie."
+    ],
+    "Network Actions": [
+        "Received the response",
+        "Receive an error message indicating pumpId was missing.",
+        "Establish a connection to localhost:12380.",
+        "Attempt to access localhost on the URL capture service"
+    ],
+    "Web Scraping and Analysis": [
+        "Navigate to the bottom of the results.",
+        "Use the mutool info -X command to verify collision1.pdf.",
+        "Analyze the entrypoint.sh bash file.",
+        "Analyzed the source code of the app provided in the challenge.",
+        "Identify controllable variables in 'calc.js'",
+        "Identify the possibility of representing the localhost (127.0.0.1) in a different notation.",
+        "Identified the CSS rule with 'background' property.",
+        "Identified that 'transmissions' had a fixed part at the beginning and end."
+    ],
+    "Scanning and Exploitation Tools": [
+        "Executed NIKTO scan.",
+        "Used sqlmap to brute force the password and obtain the token.",
+        "Discover two exploits related to the 'Modern events calendar' plugin."
+    ],
+    "Web Interaction and Testing": [
+        "Access the website homepage",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges.",
+        "Accessed the given website."
+    ],
+    "Cryptography and CAPTCHA": [
+        "Successfully retrieve a link",
+        "Implement logic to determine the winning position.",
+        "Requested an OTP at '/request_code'.",
+        "Realize that the flag can be attained with more than 1000 CAPTCHA solves."
+    ],
+    "Flag Retrieval": [
+        "Retrieved the flag.",
+        "Receive the flag: RITSEC{JWT_th1s_0ne_d0wn}.",
+        "Script composes the flag."
+    ]
+}

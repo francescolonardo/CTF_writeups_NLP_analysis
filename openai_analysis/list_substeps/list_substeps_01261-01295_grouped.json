@@ -1,0 +1,47 @@
+{
+    "File Analysis": [
+        "Specify that files with the name 'flag' are of particular interest",
+        "Dump the '.git' directory.",
+        "Review the presented source code",
+        "Explore the file /static/js/main.",
+        "Decode the base64 data."
+    ],
+    "Web Navigation": [
+        "Connect to the website link (http://3.112.91.135/)",
+        "Access the website homepage",
+        "Navigate to the bottom of the results.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges.",
+        "Explored the website functionality",
+        "Navigate to the sources tab in the inspection tools"
+    ],
+    "Command Execution": [
+        "Execute the command cat /flag.txt.",
+        "Use a length of '32 bytes' for the payload",
+        "Use Burp Suite to pass the password despite the character limit",
+        "Introduce additional PHP code"
+    ],
+    "Code Analysis": [
+        "TranslateBBCode routine processes BBCode tags",
+        "Identify PHP as the server technology.",
+        "Plan to import the 'changelog.js' file after the pollution.",
+        "Found out that 'pkg' is an object containing the 'package.json' fields."
+    ],
+    "Vulnerability Testing": [
+        "Tested different elements for vulnerabilities with the `<math>` element bypass.",
+        "Notice that the user's sessionID is used in a redis eval() call with a lua script.",
+        "Recognized a potential SSRF vulnerability associated with `wkhtmltoimage`"
+    ],
+    "Authentication and User Actions": [
+        "The website is a simple login page.",
+        "Analyze the form submission structure",
+        "Change the admin account's password.",
+        "Set one of the usernames as '{{ add_money_to_login(USERNAME, AMOUNT_OF_MONEY) }}'",
+        "Discover the requirement to login as an 'admin' user.",
+        "Successfully retrieved the Flag"
+    ],
+    "Data Manipulation": [
+        "This function adds our user provided query to the database and then calls 'bot.readQueries(db)'.",
+        "Use brute force to solve for a set of possible solutions for 'c' and 'prev_encoded_arr[0]'."
+    ]
+}

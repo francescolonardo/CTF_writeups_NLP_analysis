@@ -1,0 +1,50 @@
+{
+    "Element Identification & Manipulation": [
+        "Identified the 'data-last' attribute of the '#note-text-area' element.",
+        "Identified the addition of note contents to the 'data-last' attribute of the '#note-text-area' element.",
+        "Identified that 'X-Forwarded-For: 172.16.2.24' allows access to 'login.php'."
+    ],
+    "Website Navigation": [
+        "Visited '/?file=/etc/passwd'.",
+        "Navigate to /authentication.php",
+        "Return to the website.",
+        "Succeed in accessing /server-status"
+    ],
+    "Data Extraction": [
+        "Observe that the extracted flag is 'cybrics{imagesaresocoolicandrawonthem}'.",
+        "Found password 'csictf'.",
+        "Retrieve the flag stored in the intercepted cookie.",
+        "Retrieve the flag as confirmation of successful authentication.",
+        "Wrote the received response to the intended output."
+    ],
+    "Source Code Analysis": [
+        "Examine the source code of the page",
+        "Check the Nginx configuration.",
+        "Understand the purpose of 'notes.count'.",
+        "The application connects to a sqlite database ('const db = new Database('toy_workshop.db');'), so inspect 'database.js'.",
+        "Observe that only certain attributes are allowed for an element in the JavaScript code.",
+        "Recognized a known strange PHP behavior could be exploited to circumvent file extension checks.",
+        "Identified the required user-agent according to the code.",
+        "Understand that the interaction with the filename being uploaded is the potential vulnerability for RCE.",
+        "Examine the render function",
+        "Observed that the HTML file establishes a connection to a Firestore environment.",
+        "Override the prototype using a payload to set a context to the prototype of [object]."
+    ],
+    "Server Interaction": [
+        "Attempt to access the URL `http://3.91.17.218/.git/`.",
+        "Set 'shell=true' for all objects",
+        "Scanned the entire subnet from 172.16.2.0 to 172.16.2.255 using Burp Suite Intruder.",
+        "Utilized MySQL comments to act as spaces.",
+        "CSRF to /api/flag is needed",
+        "Enter the crafted payload",
+        "Write a script to bruteforce each of the hardcoded cookie names.",
+        "Uploaded the first created PDF file to the website."
+    ],
+    "Networking & Request Handling": [
+        "Received the final flag in the response.",
+        "Received another response"
+    ],
+    "Web Browsing": [
+        "Open a web browser."
+    ]
+}

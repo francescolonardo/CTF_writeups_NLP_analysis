@@ -1,0 +1,60 @@
+{
+    "File Exploration": [
+        "Explored files that could be overwritten",
+        "Cannot modify anything in '/home/manhndd/.ssh/'"
+    ],
+    "Flag Manipulation": [
+        "Read the flag from '/var/secret'",
+        "Write the flag to '/opt/mydank'",
+        "The script reads from '/mydank'",
+        "Return the real flag in the 'uberadmin' directory."
+    ],
+    "Website Analysis": [
+        "Analyse the given hyperlinks.",
+        "Access the 'user' directory.",
+        "Download the nginx.conf file successfully.",
+        "Find a flag.txt file in the '/admin' directory.",
+        "Ensure that a valid graph can be created using a specific format",
+        "Analyze the form provided to upload images.",
+        "Examine the source.zip file.",
+        "Host a document type definition (DTD)."
+    ],
+    "Data Extraction": [
+        "Retrieve the flag.",
+        "Capture the response from the server.",
+        "Extract the system flag from the response.",
+        "Open the file using an appropriate application or viewer.",
+        "Read and retrieve the flag from the displayed contents."
+    ],
+    "Exploitation Techniques": [
+        "Injected email queue in rabbitmq",
+        "Triggered an email with the flag as content",
+        "Initiate data leaking process",
+        "Dump all tables and columns",
+        "Use sessionID as the first parameter.",
+        "Identify the list of banned words and special characters that the injection string must not contain.",
+        "Discover the possibility of using a \"CREATE TABLE ... SELECT\" SQL statement.",
+        "Identify the components of the encrypted string: remote IP address, a seed (IDSEED), and current date",
+        "Set IDSEED with 'id\u306e\u7a2e'",
+        "Retrieve the corresponding IP address",
+        "Overwrite the index.html file",
+        "Read the file 'satellite.txt'.",
+        "Return the content of 'satellite.txt'.",
+        "Observe that the system environment flag is displayed when the response contains the specific IP address (119.29.29.29).",
+        "Inputted negative 'rate' value",
+        "'src' set to local files",
+        "Leaked secret key '19eb794c831f30f099a31b1c095a17d6' from 'config.py'",
+        "Provide an empty array for 'variables'",
+        "Fetch data using the manipulated query.",
+        "Access the 'target_credentials' database.",
+        "Identify the 'secret_key' column within the database.",
+        "Discover the flag 'rwctf{t0-h4ck-$kynet-0r-f1ask_that-Is-th3-questi0n}' in the 'secret_key' column of the database.",
+        "Uploaded a larage number of valid files.",
+        "Uploaded .htaccess file.",
+        "Read the file '/etc/passwd'.",
+        "Read the file 'apache.conf'.",
+        "Uploaded the first created PDF file to the website.",
+        "Retrieved the signature from the first signed PDF.",
+        "Identified that the input is copied to a mmap-ed memory region within the function."
+    ]
+}

@@ -1,0 +1,82 @@
+{
+    "Server-side Attacks": [
+        "Constructed a CL-TE request smuggling attack.",
+        "Identify the source code of the application.",
+        "Identified the need to change the Asymmetric Cipher Algorithm to Symmetric Cipher Algorithm.",
+        "Recognize that the function for generating a token is using string interpolation to inject variables directly into the token string.",
+        "Identify the flag in the 'X-Localhost-Token' header of the received server response.",
+        "Observed redirection to '/?file=wc.php'.",
+        "Understand that we can generate our own HS256 token since we know the public key.",
+        "Bypass the bracket-based sanitization by adding an extra '>' at the start.",
+        "Discover the templates_c folder.",
+        "Understand that the password was split into various parts",
+        "Web page performs a password reset function using security questions",
+        "Identify `/getflag` endpoint",
+        "Observe Admin button on the website"
+    ],
+    "Web Security Testing": [
+        "Considered using the presence of 'y.png' or 'n.png' in the cache as an indicator of search success.",
+        "Add a random timestamp to the POST request body to understand the format.",
+        "Notice the particular cookie",
+        "Inspected the HTML source code.",
+        "Observe the URL http://asuna.nullsession.pw.",
+        "Format the output of the Python code to look like a JavaScript script.",
+        "Observe the rewriting and forwarding of the request to the pre-renderer at `http://renderer:3000`.",
+        "Test different file extensions.",
+        "Adjusted the '$method' attribute in the serialized object.",
+        "Inject a double quote to break out of the alt tag.",
+        "Bypass the bracket-based sanitization by adding an extra '>' at the start.",
+        "Specify the port number.",
+        "Identify a feature in the documentation."
+    ],
+    "File/System Manipulation": [
+        "Found a JSON response.",
+        "Created a bash script",
+        "Print the contents of 'flag.file'",
+        "Uploaded a large number of valid files."
+    ],
+    "Command Execution": [
+        "Execute the 'ls' command on the server using subprocess.Popen",
+        "Use the 'mutool info -X' command to verify collision1.pdf.",
+        "Performed the 'git checkout' command."
+    ],
+    "Web Navigation & Interaction": [
+        "Access the website homepage",
+        "Navigate to the bottom of the results.",
+        "Successfully log into the admin panel.",
+        "Successfully log in to the system.",
+        "Open a web browser.",
+        "Performed the action of accessing challenges.",
+        "Receive a page showing successful entry and the flag"
+    ],
+    "Web Exploitation Techniques": [
+        "Constructed a CL-TE request smuggling attack.",
+        "Use wildcard '?' to match any single character.",
+        "Adjusted the '$method' attribute in the serialized object.",
+        "Inject a double quote to break out of the alt tag.",
+        "Bypass the bracket-based sanitization by adding an extra '>' at the start.",
+        "Observe the rewriting and forwarding of the request to the pre-renderer at `http://renderer:3000`.",
+        "Specify the port number."
+    ],
+    "Information Gathering & Analysis": [
+        "Considered using the presence of 'y.png' or 'n.png' in the cache as an indicator of search success.",
+        "Add a random timestamp to the POST request body to understand the format.",
+        "Identify the source code of the application.",
+        "Identify the flag in the 'X-Localhost-Token' header of the received server response.",
+        "Notice the particular cookie",
+        "Inspected the HTML source code.",
+        "Observe the URL http://asuna.nullsession.pw.",
+        "Format the output of the Python code to look like a JavaScript script.",
+        "Observed redirection to '/?file=wc.php'.",
+        "Discover the templates_c folder.",
+        "Identified the need for a valid jwt token",
+        "Identify a feature in the documentation.",
+        "Identify `/getflag` endpoint",
+        "Observe Admin button on the website"
+    ],
+    "Miscellaneous": [
+        "This solution works for the 'Gate Keeper' challenge as well.",
+        "Use the 'git checkout' command.",
+        "Constructed a CL-TE request smuggling attack."
+    ]
+}

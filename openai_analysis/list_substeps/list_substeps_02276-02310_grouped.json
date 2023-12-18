@@ -1,0 +1,66 @@
+{
+    "SQL Injection": [
+        "Send POST requests with a payload that uses the SQL LIKE clause for each possible character.",
+        "Attempted to bypass password check using SQL injection."
+    ],
+    "JavaScript Analysis": [
+        "Detect that the JavaScript file 'bundle.js' is used to calculate the hash value.",
+        "Analyzed the initial JavaScript code.",
+        "Realize that the JS file compares the calculated hash with the original hash.",
+        "Observe that the JavaScript code prevents 'script' tags.",
+        "Notice that the 'name' variable is not declared in this case.",
+        "Observe the encoded string returned by the event"
+    ],
+    "Endpoint Functionality": [
+        "Understand the functionality of the `/new` endpoint.",
+        "Request the /fuel endpoint.",
+        "Received a message from '/vim/quit/' endpoint."
+    ],
+    "HTTP Requests & Response": [
+        "Executed another HTTP request to extract the content of the 'whatsthis' table.",
+        "Send the prepared GET request, making the server believe that the request is coming from the same host."
+    ],
+    "DOM Manipulation": [
+        "Used DOM Clobbering technique",
+        "Load only the 'img' element."
+    ],
+    "Serialization & Encoding": [
+        "Perform serialization, encoding, and URL-encoding of the custom `Login` object."
+    ],
+    "JWT Exploitation": [
+        "Understand that the SSRF request must be made immediately after login.",
+        "Extract the 'id' of the user (attacker) from the decoded JWT token.",
+        "Recognize the potential JWT exploit (CVE-2016-5431/CVE-2016-10555).",
+        "Built an HMAC(HS256) token."
+    ],
+    "File & Directory Manipulation": [
+        "Make the first commit to the repository.",
+        "Read the flag from '/var/secret'"
+    ],
+    "Server Vulnerabilities": [
+        "Identify normal SSRF vulnerability in curl",
+        "Exploit Shellshock vulnerability"
+    ],
+    "Conditional Logic": [
+        "Confirm the first 'if' statement would be passed."
+    ],
+    "Data Extraction & Manipulation": [
+        "Determined a correct guess for the search.",
+        "Register a user with the malicious username input",
+        "Examine the URLs of existing logs.",
+        "Realized 'echo exec(...)' only returns the last line of the output."
+    ],
+    "Numeric Cast & SQL Operations": [
+        "Manipulate the query using the union operation.",
+        "Understand that PHP only considers the integer part of 'id' for the cast."
+    ],
+    "Challenge Completion": [
+        "Reveal the challenge flag"
+    ],
+    "Application Access": [
+        "Access the site at :5555"
+    ],
+    "General Actions": [
+        "Understand that brute forcing is not a viable option."
+    ]
+}

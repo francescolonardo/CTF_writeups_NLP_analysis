@@ -1,0 +1,46 @@
+{
+    "File and Content Manipulation": [
+        "Identify a file 'flag_for_this_INFERNO.txt' in the listed contents."
+    ],
+    "Request Manipulation": [
+        "Used format of '..://alien.somewhere.meepwn.team/../..//index.php' request.",
+        "Made a request to the file.",
+        "Sent a GET request to access the cache data",
+        "Craft a POST request to target this vulnerability",
+        "Sent a curl request",
+        "The payload was included in the request"
+    ],
+    "Server Connection": [
+        "Connect to http://ctfchallenges.ritsec.club:4000."
+    ],
+    "Condition Checking and Validation": [
+        "If the history length is not three, the balance is exceeded.",
+        "Note the time limit and required number of clicks."
+    ],
+    "Web Scraping and Data Extraction": [
+        "Fetch the URL using the 'Requests_On_Steroids' function."
+    ],
+    "Cookie Manipulation": [
+        "Assign the value 'true' to the cookie.",
+        "Implemented a logic that changes the cookie flag each time a request is made",
+        "Print the session cookies."
+    ],
+    "Browser Behavior and Exploitation": [
+        "Discover a JavaScript script in the HTML.",
+        "Observe that the flag is revealed on the browser",
+        "Discovered a workaround to fix the loading behaviour.",
+        "Take note of the embedded iframe",
+        "Notice the use of 'ElementInclude.include(root)' in the code.",
+        "Understand the purpose of this file: pollute the arguments for tar command."
+    ],
+    "Script Execution and Code Analysis": [
+        "Run the Python script.",
+        "Observe that the payload returns 'false'.",
+        "Contact the discovered endpoint based on the decoded strings."
+    ],
+    "Security Vulnerability Exploitation": [
+        "Exploited SHA1 vulnerability using SHATTERED.",
+        "Identify the potential for serious exploits.",
+        "Note that the flag obtained was 'darkCON{us1ng_3_y34r_01d_bug_t0_byp4ss_d1s4ble_funct10n}'"
+    ]
+}

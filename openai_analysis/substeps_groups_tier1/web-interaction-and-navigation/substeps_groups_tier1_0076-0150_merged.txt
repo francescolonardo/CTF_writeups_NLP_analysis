@@ -1,0 +1,110 @@
+1. Web Interaction and Behavior:
+    - User Interaction
+    - User Behavior Tracking and Analysis
+    - Understanding Web Behavior and Functions
+    - Web Behavior Tracking and Manipulation
+    - Web Behavior Analysis
+    - Web Application Functionality
+
+2. Web Element Analysis and Manipulation:
+    - Analyzing Web Elements and Source Code
+    - Web Element Identification and Analysis
+    - Web Page Manipulation and Bypasses
+    - Element Identification and Observation
+    - Web Element Analysis and Manipulation
+
+3. Web Navigation and Routing:
+    - Web Navigation
+    - Website Navigation
+    - Web Navigation and Routing
+    - Access and Navigation
+    - Web Navigation and Access
+    - Page Visits and Navigations
+    - Page Visit and Navigation
+
+4. HTTP Interaction and Manipulation:
+    - HTTP Headers and Requests
+    - HTTP Request and Response Manipulations
+    - HTTP Request and Response Manipulation
+    - HTTP Headers and Behavior
+
+5. URL and Parameter Manipulation:
+    - URL and Parameter Manipulation
+    - URL Manipulation and Payload Injection
+    - URL Manipulation and Redirection
+    - URL Manipulation and Requests
+    - URL Parameter Manipulation
+
+6. Interaction with Forms and Inputs:
+    - Form and Input Interactions
+    - Form Interactions and Manipulations
+    - Web Form Interactions
+    - Form Interaction
+    - Form Submission
+
+7. Server and Network Interaction:
+    - Server Interactions
+    - Network and Server Interactions
+    - Network Requests and Responses
+    - Web Server Communication
+    - Browser and Network Behavior
+
+8. Web Monitoring and Analysis:
+    - Information Gathering and Analysis
+    - Analysis and Examination
+    - Webpage Analysis and Understanding
+    - Webpage Analysis and Inspection
+    - Web Monitoring and Analysis
+    - Webpage Analysis and Exploitation
+    - Observation and Analysis
+    - Website Navigation and Behavioral Analysis
+
+9. Data Extraction and Manipulation:
+    - Data Manipulation and Extraction
+    - File Manipulation
+    - Data Extraction and Detection
+    - Web Data Extraction and Analysis
+
+10. Security and Exploitation:
+    - Security Exploits
+    - SQL Injection Analysis
+    - Web Service Exploitation
+    - Webpage Analysis and Exploitation
+    - Web Application Security
+
+11. Web Communication:
+    - Cross-Origin Communication
+    - Web Requests and Responses
+    - Web Server and URL Manipulation
+    - Web Interaction with APIs
+    - API Interaction
+    - API Analysis
+
+12. File and Data Operations:
+    - File Operations
+    - File and Data Handling
+    - Path Traversal and File Access
+    - Image Loading and Manipulation
+
+13. User Interface and User Experience:
+    - User Interface and User Experience
+
+14. Application Setup and Configuration:
+    - Application Setup and Configuration
+
+15. Web Discovery:
+    - Web Application Discovery
+    - Web Enumeration and Discovery
+
+16. Miscellaneous Web Actions:
+    - Miscellaneous Actions
+    - Miscellaneous
+
+17. Cookie Management:
+    - Cookie Management
+
+18. Endpoint Usage and Manipulation:
+    - Endpoint Usage and Manipulations
+
+19. Browser Devtools and Console:
+    - Browser Devtools and Console.

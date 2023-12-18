@@ -1,0 +1,55 @@
+{
+    "DNS Configuration": [
+        "Consider setting up a personal DNS server for a more reliable solution."
+    ],
+    "JavaScript Analysis": [
+        "Identify the specific JavaScript file",
+        "Access the obfuscated code at http://challenges.auctf.com:30022/authentication.js.",
+        "Inspect 'challenge/helpers/CardHelper.js' file for SSTI vulnerability."
+    ],
+    "Database Identification": [
+        "Determine that the website is running on a MySQL database."
+    ],
+    "Command Execution": [
+        "Executed the cURL command",
+        "Use curl command",
+        "Run commands and increase the command output slice index until the result was empty."
+    ],
+    "String Manipulation": [
+        "Created a base64 encoded string.",
+        "Pass the malicious note_id from the previous step",
+        "Learn about special characters usable in regex from the documentation.",
+        "Identify the need to overwrite the <userID>_isAdmin value.",
+        "Set the <userID>_isAdmin value to 'yes'.",
+        "Modify the previous code"
+    ],
+    "Web Application Analysis": [
+        "Study the registration and login process.",
+        "Signed up on the website.",
+        "Saw that the Markdown was parsed using 'marked' and 'DOMPurify'.",
+        "Narrow down the solutions by progressing through succeeding elements of 'prev_encoded_arr[]'.",
+        "Find the blog post page '?p=1'.",
+        "Determine the required fake address.",
+        "Add comments to comment out the rest of the query",
+        "Observe availability of admin button.",
+        "Create another Perl code snippet.",
+        "Recognize the existence of a `$query` attribute in the `SQL` class utilized for creating a prepared statement.",
+        "Identify the hardcoded username.",
+        "Discover that the guest sign in portal is not implemented",
+        "Formulated a strategy to provide a custom host.",
+        "Hypothesized that the login page might be filtering requests by the user's IP address.",
+        "Configure the SQL injection to return all rows in the database.",
+        "Use the Python script to discover the token",
+        "Accessed '/q' endpoint.",
+        "Extracted the flag from the identified table."
+    ],
+    "Network Analysis": [
+        "Analyze the provided PCAP file"
+    ],
+    "Data Interception & Manipulation": [
+        "Manipulate the intercepted data using burpsuite."
+    ],
+    "File Handling & Exploitation": [
+        "Unserialize the phar file."
+    ]
+}

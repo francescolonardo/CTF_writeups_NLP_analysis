@@ -5,32 +5,67 @@ import re
 # Define the path to the JSON file
 guidelines_path = "./guidelines.json"
 
-# Multiline string containing the updated value for "requirements_substeps"
-new_requirements = """Precisely refine the provided attack model, disaggregating each step into the single actions taken in the step wherever applicable. If disaggregating a step into separate actions is not viable, abstain from adding a Substeps list for that particular step, and instead include a singular Substep with the original "StepString" value as the value of "SubstepString". I want that each step is divided in substeps.
+# Multiline string containing the updated requirements
+new_requirements = """Refine the given attack model by breaking down each step into individual actions, when applicable. For every main step, create a "Substeps" list. If a step cannot be further broken down, use the original "StepString" as the single "SubstepString" within the "Substeps" list.
+It's imperative that the "StepString" values remain unchanged.
 
-Please strictly conform to the specified JSON format to structure the OUTPUT:
+Example INPUT:
+```
 {
     "AttackModel": {
         "Steps": [
             {
                 "StepNumber": 1,
-                "StepString": "Concise synopsis of the primary action within the attack.",
-                "Substeps": [
-                    {
-                        "SubstepNumber": 1.1,
-                        "SubstepString": "Terse description of the individual action undertaken in this step.",
-                    }
-                    // Incorporate more single action-specific substeps as required
-                ]
-            }
+                "StepString": "Visited the website and got redirected to '/?file=wc.php'"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Realized 'echo exec(...)' only returns the last line of the output"
+            },
             ...
         ]
     }
 }
+```
 
-Return only the refined JSON surrounded by backticks, and assure no supplementary content or commentary is integrated.
+Corresponding example OUTPUT:
+```
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Visited the website and got redirected to '/?file=wc.php'",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 1.1,
+                        "SubstepString": "Visited the website."
+                    },
+                    {
+                        "SubstepNumber": 1.2,
+                        "SubstepString": "Observed redirection to '/?file=wc.php'."
+                    }
+                ]
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Realized 'echo exec(...)' only returns the last line of the output",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 2.1,
+                        "SubstepString": "Realized 'echo exec(...)' only returns the last line of the output."
+                    }
+                ]
+            },
+            ...
+        ]
+    }
+}
+```
 
-Below is the INPUT attack model to be refined, and it is imperative that the values of "StepString" are retained:
+Return in response just the refined JSON, ensuring no additional content or remarks are added.
+
+Below is the INPUT attack model to be refined:
 """
 
 # Remove '\t', replace '\n' with ' ', and replace consecutive spaces with a single space
