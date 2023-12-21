@@ -1,0 +1,10 @@
+[
+    "Create a user and log in to the homepage.",
+    "Attempt to inject a ' into the todo field, resulting in an internal server error.",
+    "Inject a ' OR '1'='1 statement to the todo field, with successful execution of the query.",
+    "Construct a malicious statement into the todo field using the syntax 'a' || (some_query) || 'b.",
+    "Attempt toSELECT information_schema to identify the dbms being used.",
+    "Attempt to SELECT sqlite_master to confirm the dbms being used.",
+    "Print some information from the database.",
+    "Print the secret column of each user selected by id to find the flag."
+]

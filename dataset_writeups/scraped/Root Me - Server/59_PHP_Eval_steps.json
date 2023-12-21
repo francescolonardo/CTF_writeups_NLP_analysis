@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Gather information about the target."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Examine the web-app's source code."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Determine that a command injection attack is possible."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Generate a PHP legacy command to call the system() function."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Create a program to convert a string into XOR-ed symbols."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Construct system('cat .passwd') command from the combination of XOR symbols."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Execute attack and read content of .passwd file."
+            }
+        ]
+    }
+}

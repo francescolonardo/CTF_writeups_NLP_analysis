@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Logged in to the application with a regular user account"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Navigated to a file accessible to that user"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Tried incrementing and decrementing the numeric ID in the URL"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Modified the numeric ID to access files that belonged to other users"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Accessed a file containing the flag for the Web Exploitation challenge"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Gained unauthorized access to restricted files and found the flag needed to complete the challenge"
+            }
+        ]
+    }
+}

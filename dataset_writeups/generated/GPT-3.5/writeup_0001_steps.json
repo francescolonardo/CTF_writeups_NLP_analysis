@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Inspected the login form's source code to detect a potential SQL injection vulnerability"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted an input containing malicious SQL code, such as ' or 1=1 --, and submitted it to the login form to test for the vulnerability"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "The application executed the SQL code and granted me access, confirming the presence of the SQL injection vulnerability"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted a suitable payload to obtain the flag for the Web Exploitation challenge, and submitted it to the login form"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "The application executed the SQL code and returned the sensitive data, including the flag for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Identified a web application that allowed users to perform server-side actions through a form"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Tested for command injection vulnerability by appending additional commands to the input field using common command separators such as ;, &&, or ||"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Confirmed the presence of a command injection vulnerability by executing both the ping command and displaying the content of the /etc/passwd file"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted a payload to search for the flag within the server's file system"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Submitted the payload which executed the commands and displayed the content of the flag file, allowing to obtain the flag needed to complete the challenge"
+            }
+        ]
+    }
+}

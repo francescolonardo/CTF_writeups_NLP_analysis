@@ -1,0 +1,6 @@
+[
+    "Analyzed WAF behavior to determine what it was blocking and identified specific patterns and keywords",
+    "Crafted an SQL Injection payload composed of encoding, obfuscation, and alternative syntax to evade WAF detection",
+    "Submitted payload through login form and bypassed WAF",
+    "Exploited SQL Injection vulnerability to locate flag required for Web Exploitation challenge"
+]

@@ -1,0 +1,8 @@
+[
+    "Crafted a URL pointing to the local server's internal IP address and a port suspected to host an internal service",
+    "Navigated to the modified URL",
+    "Application returned a web page displaying the content of an internal service running on the local server",
+    "Confirmed the presence of an SSRF vulnerability",
+    "Exploited the SSRF vulnerability and accessed different internal services or restricted content on the server",
+    "Located the flag required for the Web Exploitation challenge"
+]

@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Used a tool like Dirbuster to perform directory enumeration on the web application"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Discovered a hidden directory with a non-descriptive name, such as /a8f9c/"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Navigated to the discovered directory and found a file named config.php"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Extracted database credentials from config.php"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Accessed the database and searched for the flag"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Queried the database and found a table containing the flag"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Submitted the flag to complete the challenge"
+            }
+        ]
+    }
+}

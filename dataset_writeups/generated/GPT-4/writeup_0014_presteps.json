@@ -1,0 +1,6 @@
+[
+    "Downloaded images from the web application's gallery",
+    "Inspected images' metadata using command-line utility ExifTool",
+    "Discovered suspicious-looking comment in metadata of one of the images",
+    "The comment contained a string of text formatted like a flag"
+]

@@ -1,0 +1,42 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Identify the website with a search functionality, allowing input for an ID."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Determine that the challenge likely involves SQL injection (SQLi) based on its description."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Test the ID input field for SQLi vulnerability using a simple payload '1'', observing that it returns no results."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Attempt a more complex SQLi payload '1 OR 1=1' to check if it can manipulate the query, confirming the presence of SQLi."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Conclude that the flag is not directly accessible through simple SQLi, suspecting character filtering in place."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Initiate a process to determine the number of columns required for a successful SQL query, preparing for a UNION attack."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Utilize SQLMap, an automated tool, to further enumerate the database structure."
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Use SQLMap to extract the names of all existing databases in the target system."
+            },
+            {
+                "StepNumber": 9,
+                "StepString": "Proceed to extract detailed information about the database, including table names, column structures, and the location of the flag."
+            }
+        ]
+    }
+}

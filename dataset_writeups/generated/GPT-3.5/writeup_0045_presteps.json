@@ -1,0 +1,8 @@
+[
+    "Discovered a Cross-Site Request Forgery (CSRF) vulnerability in a contact form of a web application",
+    "Crafted a malicious web page that included a hidden form that submitted a message to the contact form on behalf of the victim user",
+    "Tricked the victim user into visiting my malicious web page",
+    "Submitted a message to the website owner with the victim user's credentials",
+    "Recommended that the application implement proper CSRF protections such as adding a random token to each form submission and validating the token on the server side",
+    "Recommended additional user authentication measures such as requiring users to enter their password to submit sensitive information"
+]

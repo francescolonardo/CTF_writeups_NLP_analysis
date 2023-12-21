@@ -1,0 +1,10 @@
+[
+    "Investigated web application which allowed users to share links to external websites via a redirect mechanism",
+    "Found application was vulnerable to an open redirect attack using the redirect URL parameter",
+    "Crafted malicious URL with redirect parameter set to a phishing site",
+    "Created phishing site that mimicked the application's login page",
+    "Unsuspecting users clicked on malicious link which redirected them to phishing site",
+    "Prompted users to enter login credentials which were collected",
+    "Gained unauthorized access to user accounts through submitted credentials",
+    "Located flag stored in restricted area and completed challenge"
+]

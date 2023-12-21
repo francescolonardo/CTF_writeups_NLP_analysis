@@ -1,0 +1,14 @@
+[
+    "Accessed the robot file and noticed that the `admin.phps` file is disallowed, which indicates the php configuration has phps enabled",
+    "Accessed the `index.phps` code, which pointed us in the direction of `authentication.php`",
+    "Looked at the code and the `cookie.php` file was included in every page",
+    "Noticed in the `cookie.php` file there is a code segment that will deserialize our cookie and print the object when an error occurs",
+    "Realized we are in the context of a deserialization vulnerability",
+    "Stored any object in the cookie to be unserialized",
+    "Exploited the `__construct` function present in the `access_log` class in `authentication.php`",
+    "Realized the `__toString()` method is called when the object is converted to a string, so we can get the `$perm` variable to be our custom `access_log` object",
+    "Serialized our custom `access_log` object, where we set `log_file` to `../flag`",
+    "Encoded the serialized object to base64 and url encoded it using CyberChef",
+    "Added it as the `login` cookie on our browser and went to `authentication.php`",
+    "The custom `access_log('../flag')` object was deserialized which invoked the `__toString()` method resulting in arbitrary file read on the target system"
+]

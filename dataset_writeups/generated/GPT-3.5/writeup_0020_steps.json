@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a malicious payload containing a PHP script that would execute the Linux command ls -la and save the output to a file"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Uploaded the file to the application's server and waited for it to execute"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Checked the application's upload directory and found that the output.txt file had been created and contained the expected output of the ls -la command"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Researched the application's system and network configuration"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Crafted a suitable payload containing a reverse shell script that would allow me to connect to the server and gain remote access"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Executed the payload to gain a remote shell on the server"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Completed the Web Exploitation challenge"
+            }
+        ]
+    }
+}

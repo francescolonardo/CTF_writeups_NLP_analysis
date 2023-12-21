@@ -1,0 +1,22 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Observe text field that accepts IP addresses and pings them, returning output of unix shell-like commands"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Attempt to use commands like 'ls', although aware of sanitization measures"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Recognize description of challenge contains flag in the 'index.php' file, however, the source code of the page is absent of the flag"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Inject command to 'cat' the file and 'grep' for the flag: '127.0.0.1 & cat index.php | grep flag'"
+            }
+        ]
+    }
+}

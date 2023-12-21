@@ -1,0 +1,7 @@
+[
+    "Crafted a malicious payload containing a SQL Injection attack string, such as ' OR 1=1 --, and submitted it to the application's login form",
+    "Application executed and bypassed authentication process, confirming the vulnerability",
+    "Researched application's database structure and available resources",
+    "Crafted payload containing SQL Injection attack string to extract flag from the database, such as ' UNION SELECT flag FROM flags --",
+    "Server successfully recognized payload and responded with the flag for the Web Exploitation challenge"
+]

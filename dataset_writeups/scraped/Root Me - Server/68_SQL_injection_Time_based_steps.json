@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Load URL in SQLMap"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Find current db"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Find tables from DB public"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Get columns from users table"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Dump it"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Gain flag"
+            }
+        ]
+    }
+}

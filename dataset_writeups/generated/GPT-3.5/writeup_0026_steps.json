@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Attempted to include malicious payload with path traversal attack into the file inclusion parameter, such as ../../../../../../etc/passwd"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submitted malicious payload"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Included '/etc/passwd' file in response, confirming the presence of a file inclusion vulnerability"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Researched application's system and network configuration to craft a payload containing a script to execute arbitrary code on the server and send output to an attacker-controlled server"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Submitted payload containing a script to execute arbitrary code on the server and send output to an attacker-controlled server"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Executed arbitrary code on the server, obtained sensitive information, and established a persistent backdoor to the server"
+            }
+        ]
+    }
+}

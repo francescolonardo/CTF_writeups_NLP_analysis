@@ -1,0 +1,6 @@
+[
+    "Crafted a malicious file containing executable code, such as a PHP web shell, and uploaded it to the server.",
+    "Submitted the malicious file to the application.",
+    "Application executed the code and granted remote access to the server, confirming the vulnerability.",
+    "Executed commands on the server and obtained sensitive data, including the flag for the Web Exploitation challenge."
+]

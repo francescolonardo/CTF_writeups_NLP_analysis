@@ -1,0 +1,7 @@
+[
+    "Crafted a malicious XML file with an external entity pointing to a sensitive file on the server, such as /etc/passwd",
+    "Uploaded the crafted XML file using the import feature provided by the web application",
+    "Application returned an error message that included the contents of the /etc/passwd file, confirming the presence of an XXE vulnerability",
+    "Exploited the XXE vulnerability and accessed other sensitive files on the server",
+    "Located the flag required for the Web Exploitation challenge"
+]

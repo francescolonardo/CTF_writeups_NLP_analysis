@@ -1,0 +1,18 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Navigate to /index.php~"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Download the file"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Retrive the password from the file"
+            }
+        ]
+    }
+}

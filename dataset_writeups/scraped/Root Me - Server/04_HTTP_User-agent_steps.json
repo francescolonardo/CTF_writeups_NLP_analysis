@@ -1,0 +1,10 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Tamper with the user-agent data to change it from its original value to 'admin'"
+            }
+        ]
+    }
+}

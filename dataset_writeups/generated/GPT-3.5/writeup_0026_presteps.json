@@ -1,0 +1,8 @@
+[
+    "Attempted to include malicious payload with path traversal attack into the file inclusion parameter, such as ../../../../../../etc/passwd",
+    "Submitted malicious payload",
+    "Included '/etc/passwd' file in response, confirming the presence of a file inclusion vulnerability",
+    "Researched application's system and network configuration to craft a payload containing a script to execute arbitrary code on the server and send output to an attacker-controlled server",
+    "Submitted payload containing a script to execute arbitrary code on the server and send output to an attacker-controlled server",
+    "Executed arbitrary code on the server, obtained sensitive information, and established a persistent backdoor to the server"
+]

@@ -1,0 +1,18 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Visit web page"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Append current command with a semicolon"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Execute command injection to inject unauthorized commands"
+            }
+        ]
+    }
+}

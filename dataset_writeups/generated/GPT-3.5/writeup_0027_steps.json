@@ -1,0 +1,46 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Encountered web application with user login feature"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Suspected SQL injection vulnerability"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Entered malicious payload containing SQL injection attack into login parameter"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Payload caused application to execute valid SQL query, bypassing authentication mechanism"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Application logged me in as administrator, confirming presence of SQL injection vulnerability"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Researched application's database schema and structure"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Crafted payload containing script to extract sensitive information from DB"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Payload allowed to extract sensitive information from DB such as flag for Web Exploitation challenge"
+            },
+            {
+                "StepNumber": 9,
+                "StepString": "Exploited the vulnerability to extract sensitive information from database and complete the Web Exploitation challenge"
+            },
+            {
+                "StepNumber": 10,
+                "StepString": "Demonstrated the potential risks associated with SQL injection"
+            }
+        ]
+    }
+}

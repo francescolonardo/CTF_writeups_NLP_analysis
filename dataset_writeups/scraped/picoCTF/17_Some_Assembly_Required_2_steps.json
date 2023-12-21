@@ -1,0 +1,42 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Visited the website which appeared to have a form with a text-box"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Inspecting the website revealed a JavaScript file"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Inspected the JavaScript file and a path in the const declaration caught my attention"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Visited the path mentioned in the const declaration and got a WebAssembly file"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Used a Python script to convert the string to an actual wasm file"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Translated the wasm file to wat file and then to pseudo code"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Compared the decompiled code to the previous challenge and found slight changes at the end of the copy function"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Observed that the flag was getting XORed with 8 before being saved and the comparison string was not in clear"
+            },
+            {
+                "StepNumber": 9,
+                "StepString": "Copied the variable content from the decoded base64 text into CyberChef and used the magic block to search for `picoCTF` and found the flag"
+            }
+        ]
+    }
+}

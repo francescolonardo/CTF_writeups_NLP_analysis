@@ -1,0 +1,8 @@
+[
+    "Click on \u2018saved email addresses\u2019",
+    "Checking the url: http://challenge01.root-me.org/web-serveur/ch7/?c=visiteur",
+    "Install the firefox plugin \u2018Live HTTP Headers\u2019 and click the \u2018Saved email addresses\u2019 link again",
+    "In Live HTTP Headers, you can see the cookie: ch7=visiteur",
+    "Click \u2018replay\u2019 and change \u2018visiteur\u2019 to \u2018admin\u2019, then replay again",
+    "In the browser click the link once more to find the validation password"
+]

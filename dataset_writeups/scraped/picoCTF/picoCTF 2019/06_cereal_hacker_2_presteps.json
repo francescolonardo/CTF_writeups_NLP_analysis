@@ -1,0 +1,10 @@
+[
+    "Exploit vulnerability by appending .php to file parameter on the url",
+    "Encode admin.php and cookie.php with a php wrapper called filter",
+    "Store useful information in a serialized cookie",
+    "Examine source code of cookie.php and find a legacy object that is exploitable with a blind sql injection",
+    "Construct SQL query to login as admin - 'SELECT admin FROM pico_ch2.users WHERE admin = 1 AND username = 'this.username' AND password = 'this.password'",
+    "Form string 'password= a' or SUBSTRING(password, 1, 60) LIKE 'p%'' to trigger true or false response depending on the first character of the password being equal to the input character",
+    "Write a python exploit with requests library to get the flag",
+    "Run exploit and receive flag"
+]

@@ -1,0 +1,38 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Check website for given challenge"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Examine the website for saved cookies"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Click 'continue as guest' button"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Use Developer Tools to observe cookie with the name 'admin' and value 0"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Change cookie's value to 1"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Refresh website"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Website treats user as the admin"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Retrieve flag"
+            }
+        ]
+    }
+}

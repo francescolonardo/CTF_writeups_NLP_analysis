@@ -1,0 +1,18 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Identified the authentication mechanism for the Login page was using a simple SQL query"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Used SQL injection techniques to modify the SQL query to bypass authentication"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Gained access to the administrator account with SQLMap"
+            }
+        ]
+    }
+}

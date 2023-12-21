@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "We visited a website with the possibility to upload two PDF files."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "We noted the challenge description which stated that the two invitations sent had the same MD5 hash but were slightly different."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "We used a Python script to generate two PDF with the same MD5 hash."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "We uploaded the two biological PDFs."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "The website redirected to the source code."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "We located the flag in a comment at the end of the code, at line 37."
+            }
+        ]
+    }
+}

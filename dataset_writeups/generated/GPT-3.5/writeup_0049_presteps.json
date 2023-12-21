@@ -1,0 +1,10 @@
+[
+    "Browsed web for a site advertising a high-value item auction.",
+    "Started to look into the site and noticed a search feature.",
+    "Tested the site for vulnerabilities with random queries into the search bar.",
+    "Set up Burp Suite and intercepted the request sent by the search feature.",
+    "Noticed that the query parameter was susceptible to SQL injection.",
+    "Crafted payloads to exploit the SQL injection vulnerability.",
+    "Used SQLMap to automate the exploitation and retrieve sensitive data.",
+    "Bypassed authentication and logged in as admin."
+]

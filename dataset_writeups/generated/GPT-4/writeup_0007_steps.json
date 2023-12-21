@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a malicious XML file with an external entity pointing to a sensitive file on the server, such as /etc/passwd"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Uploaded the crafted XML file using the import feature provided by the web application"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Application returned an error message that included the contents of the /etc/passwd file, confirming the presence of an XXE vulnerability"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Exploited the XXE vulnerability and accessed other sensitive files on the server"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Located the flag required for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

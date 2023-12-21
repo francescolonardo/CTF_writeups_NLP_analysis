@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Piqued interest from web application that took custom messages, and processed with server-side templating engine"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Test for Template Injection vulnerability by submitting crafted input containing simple expression to be evaluated"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Web application displayed result of expression, confirming presence of Template Injection vulnerability"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted payload that would execute code on the server and reveal sensitive information, such as the flag"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Submitted payload, web application displayed content of flag.txt file, allowing retrieval of flag"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Exploited Template Injection vulnerability to execute arbitrary code on server and retrieve flag needed to complete challenge"
+            }
+        ]
+    }
+}

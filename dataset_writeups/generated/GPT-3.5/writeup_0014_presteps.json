@@ -1,0 +1,9 @@
+[
+    "Identified that the application used cookies for user authentication and session management, making it potentially vulnerable to Broken Authentication and Session Management",
+    "Crafted a malicious request containing a manipulated cookie with an arbitrary user ID",
+    "Submitted the malicious request to the application's login page",
+    "Confirmed a Broken Authentication and Session Management vulnerability when the request bypassed authentication and logged in as the arbitrary user",
+    "Researched the application's structure and available resources to craft a suitable cookie with the session ID of the desired user",
+    "Submitted the crafted cookie with the session ID of the desired user",
+    "Server successfully recognized the hijacked session and responded with the flag for the Web Exploitation challenge"
+]

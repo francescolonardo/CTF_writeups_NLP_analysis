@@ -1,0 +1,62 @@
+{
+    "SubstepsModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a malicious file containing executable code, such as a PHP web shell, and uploaded it to the server.",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 1.1,
+                        "SubstepString": "Created a malicious file."
+                    },
+                    {
+                        "SubstepNumber": 1.2,
+                        "SubstepString": "Injected executable code (e.g. a PHP web shell) into the malicious file."
+                    },
+                    {
+                        "SubstepNumber": 1.3,
+                        "SubstepString": "Uploaded the malicious file to server."
+                    }
+                ]
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submitted the malicious file to the application.",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 2.1,
+                        "SubstepString": "Submitted the malicious file to the application."
+                    }
+                ]
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Application executed the code and granted remote access to the server, confirming the vulnerability.",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 3.1,
+                        "SubstepString": "Visited the URL where the file was uploaded."
+                    },
+                    {
+                        "SubstepNumber": 3.2,
+                        "SubstepString": "Observed that the code in the file was executed, granting remote access to the server."
+                    }
+                ]
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Executed commands on the server and obtained sensitive data, including the flag for the Web Exploitation challenge.",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 4.1,
+                        "SubstepString": "Sent commands to the server via the provided remote access."
+                    },
+                    {
+                        "SubstepNumber": 4.2,
+                        "SubstepString": "The executed commands returned sensitive data, including the flag for the Web Exploitation challenge."
+                    }
+                ]
+            }
+        ]
+    }
+}

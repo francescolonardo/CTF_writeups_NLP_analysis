@@ -1,0 +1,8 @@
+[
+    "Suspected the application was vulnerable to XXE injection due to XML parsing and processing",
+    "Crafted an XML input containing a reference to an external entity",
+    "Submitted crafted input to test application for XXE injection vulnerability",
+    "Application displayed contents of the passwd file, confirming the presence of an XXE injection vulnerability",
+    "Crafted suitable payload and chose target file for extracting the flag",
+    "Submitted input with XXE injection payload, which executed the injection and displayed the contents of the file and the flag for the Web Exploitation challenge"
+]

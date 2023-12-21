@@ -1,0 +1,5 @@
+[
+    "Guess helpful php files, such as config.php",
+    "Use php://filter/convert.base64-encode/resource with the guessed file name as parameter",
+    "Send the constructed request URL"
+]

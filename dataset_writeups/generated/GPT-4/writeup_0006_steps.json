@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a payload that included a semicolon to separate the original conversion command from my injected command, which in this case was to list the contents of the server's directory."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submitted the payload through the image conversion form."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Observed that the application returned the output of the ls command, revealing the contents of the server's directory."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Explored the server's directory structure and executed additional commands."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Discovered the flag needed to complete the challenge."
+            }
+        ]
+    }
+}

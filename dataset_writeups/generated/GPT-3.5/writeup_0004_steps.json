@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a benign script, such as <script>alert('XSS')</script> and submitted it to the application"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Upon submission, application displayed script and executed it in the context of another user, confirming the vulnerability"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Crafted suitable payload for the XSS attack to steal session cookie of another user"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Submitted payload to the application, which executed XSS attack and stole session cookie"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Used the stolen session cookie to access user account and obtain the flag for Web Exploitation challenge"
+            }
+        ]
+    }
+}

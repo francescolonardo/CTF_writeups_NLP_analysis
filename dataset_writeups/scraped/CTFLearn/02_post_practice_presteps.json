@@ -1,0 +1,10 @@
+[
+    "Understand the challenge's requirement to make a POST request with login information.",
+    "Inspect the web page's source code to find the necessary credentials for login.",
+    "Identify the commented credentials in the source code: username as 'admin' and password as '71urlkufpsdnlkadsf'.",
+    "Determine that the key parameters for the POST request are the username and password.",
+    "Use Burp Suite to intercept the HTTP request, which is initially a GET request.",
+    "Modify the intercepted request, changing the method from GET to POST and including the identified credentials.",
+    "Observe the server's response to the POST request, expecting successful authentication using the provided credentials.",
+    "Consider alternative tools like curl for sending HTTP requests, acknowledging the importance of familiarity with different tools."
+]

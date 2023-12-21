@@ -1,0 +1,9 @@
+[
+    "Enter SQL Injection ' or 1=1-- to get back server side HTTP error 500",
+    "Inspect element of page to notice hidden input set to 0",
+    "Set hidden input to 1 to see encrypted query",
+    "Injected ' or 1=1-- and notice that 'o' and 'r' substituted for 'b' and 'e'",
+    "Put every letter in the alphabet after comment to confirm Caesar cipher is used",
+    "Try query again following encryption ' be 1=1--",
+    "Portal lets through to see flag"
+]

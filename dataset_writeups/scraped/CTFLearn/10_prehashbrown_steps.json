@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Identify a search bar on the website that is vulnerable to SQL Injection."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Use Burp Suite to intercept the network request made by the search bar."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Save the intercepted request header as 'header.txt' for further analysis."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Begin database enumeration using SQLMap with the captured request data."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Focus SQLMap's efforts on enumerating a specific table within the database."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Extract all information from the identified table using SQLMap."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Successfully retrieve the flag from the dumped table data."
+            }
+        ]
+    }
+}

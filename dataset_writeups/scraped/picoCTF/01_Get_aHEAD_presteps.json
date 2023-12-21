@@ -1,0 +1,7 @@
+[
+    "Looking at the HTML of the website, we can see that both red and blue buttons make a request to the same URL, however with different HTTP request methods.",
+    "Guessing that the flag will be accessible by using a different HTTP request method.",
+    "Trying HTTP requests with different request methods using Burp Suite.",
+    "Examining the MDN Web Docs to see the 9 different HTTP request methods, including 'HEAD'.",
+    "Making the assumption to use the 'HEAD' method to get the flag based on the challenge name."
+]

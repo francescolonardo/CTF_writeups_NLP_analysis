@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a malicious input containing a script, such as <script>alert('XSS');</script>, and submitted it to the application's form."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Application allowed the script to execute and display the alert message, confirming the presence of an XSS vulnerability."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Crafted a suitable payload containing a script to steal the user's session cookie."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Submitted the payload to the application's form."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "The script successfully executed and sent the user's session cookie to a remote server controlled by me."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Used the XSS vulnerability to impersonate the user and obtain the flag for the Web Exploitation challenge."
+            }
+        ]
+    }
+}

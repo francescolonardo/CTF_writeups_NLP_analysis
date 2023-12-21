@@ -1,0 +1,8 @@
+[
+    "Identified the web application allowed users to load specific pages by passing a parameter through the URL.",
+    "Tested the URL parameter for Local File Inclusion (LFI) vulnerability by manipulating the URL to include system files, such as /etc/passwd.",
+    "Confirmed the presence of an LFI vulnerability when web application displayed the content of the /etc/passwd file.",
+    "Crafted a URL to include the flag file from server's file system.",
+    "Submitted the crafted URL, allowing to obtain the flag needed to complete the challenge.",
+    "Exploited the LFI vulnerability to access sensitive files on the server."
+]

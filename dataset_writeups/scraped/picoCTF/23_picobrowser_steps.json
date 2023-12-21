@@ -1,0 +1,22 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Identified challenge as 'picobrowser'"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Pressed button, received error saying 'You're not picobrowser!' and listed browser/OS combination"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Recognized browser/OS combination as User-Agent HTTP header"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Used cURL to modify User-Agent HTTP header to 'picobrowser'"
+            }
+        ]
+    }
+}

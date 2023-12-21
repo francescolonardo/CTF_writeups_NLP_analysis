@@ -1,0 +1,5 @@
+[
+    "Submitted crafted input string that included template syntax to evaluate a simple expression in order to test for SSTI",
+    "Crafted a payload which leveraged the template engine's built-in functionality to execute the cat command on the server, reading the contents of the flag.txt file",
+    "Submitted the crafted payload and obtained the contents of the flag.txt file, allowing me to complete the Web Exploitation challenge"
+]

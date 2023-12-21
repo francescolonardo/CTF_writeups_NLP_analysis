@@ -1,0 +1,7 @@
+[
+    "We start the challenge with a login portal that says we\u2019re not authenticated and can\u2019t view this page (take note of the URI)",
+    "Change the URI to contain index.php and capture the request using Burp Suite, ZAP Proxy, or curl",
+    "In Burp Suite, go to the Proxy tab and enable Intercept Server Responses",
+    "Request the same webpage we did in the curl command and Forward the responses until you get an HTTP 302 Found reponse",
+    "Change the code to 200 OK and Forward the response to your browser, you should get a web page with the flag"
+]

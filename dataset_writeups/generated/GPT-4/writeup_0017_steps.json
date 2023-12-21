@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Craft a URL with a relative file path to a sensitive file on the server, such as /etc/passwd"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Navigate to the modified URL"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Web page was returned with the contents of the /etc/passwd file"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Confirmed presence of a Directory Traversal vulnerability"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Exploit Directory Traversal vulnerability"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Access other sensitive files on the server"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Obtain flag needed to complete the challenge"
+            }
+        ]
+    }
+}

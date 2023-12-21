@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Navigate to website and observe login page"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Analyse page source code for hints"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Identify credentials validation is taking place on client side"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Discover flag is split into parts"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Compose a Bash script to join the parts and get the flag"
+            }
+        ]
+    }
+}

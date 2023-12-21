@@ -1,0 +1,7 @@
+[
+    "Intercepted the HTTP request using a proxy tool like Burp Suite and modified the file type to an unsupported one, such as a PHP file",
+    "Crafted a PHP file that contained code to read the content of the flag file",
+    "Uploaded the crafted PHP file",
+    "Navigated to the location where the uploaded files were stored",
+    "Web application executed the PHP code, displaying the content of the flag file"
+]

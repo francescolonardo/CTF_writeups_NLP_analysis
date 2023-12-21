@@ -1,0 +1,9 @@
+[
+    "Used a tool like Dirbuster to perform directory enumeration on the web application",
+    "Discovered a hidden directory with a non-descriptive name, such as /a8f9c/",
+    "Navigated to the discovered directory and found a file named config.php",
+    "Extracted database credentials from config.php",
+    "Accessed the database and searched for the flag",
+    "Queried the database and found a table containing the flag",
+    "Submitted the flag to complete the challenge"
+]

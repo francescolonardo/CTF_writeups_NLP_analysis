@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Inspected the source code of the web page to find JavaScript code responsible for validating the user credentials before sending the request to the server"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Discovered a suspiciously weak authentication mechanism based on a hardcoded set of credentials in the JavaScript code"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Intercepted the login request using a proxy tool like Burp Suite"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Modified the username and password parameters of the intercepted request to the hardcoded credentials discovered in the JavaScript code"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Forwarded the modified request to the server"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Web application authenticated the modified credentials and granted access to a restricted area"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Found the flag for the Web Exploitation challenge inside the restricted area"
+            }
+        ]
+    }
+}

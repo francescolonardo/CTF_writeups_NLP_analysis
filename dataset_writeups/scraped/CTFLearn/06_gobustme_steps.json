@@ -1,0 +1,38 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Recognize the challenge's objective to brute-force directories and files on a website."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Visit the website and note the altered Ghostbuster theme song hinting at the use of 'Gobuster'."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Explore the site and find a link explaining the Gobuster tool, a CLI for directory brute-forcing."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Consider the alternative of using DirBuster, a GUI alternative to Gobuster, for a more user-friendly experience."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Locate and download the 'common.txt' wordlist provided at the bottom of the website for brute-forcing."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Configure DirBuster with the website's URL and set 'common.txt' as the wordlist, opting for 'Go Faster' if the computer's performance allows."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Run DirBuster and wait for it to complete the brute-forcing process, generating a list of potential directories."
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Visit the discovered '/hide' directory and find the message along with the flag, indicating successful completion of the challenge."
+            }
+        ]
+    }
+}

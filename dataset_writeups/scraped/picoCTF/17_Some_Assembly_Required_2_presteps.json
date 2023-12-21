@@ -1,0 +1,11 @@
+[
+    "Visited the website which appeared to have a form with a text-box",
+    "Inspecting the website revealed a JavaScript file",
+    "Inspected the JavaScript file and a path in the const declaration caught my attention",
+    "Visited the path mentioned in the const declaration and got a WebAssembly file",
+    "Used a Python script to convert the string to an actual wasm file",
+    "Translated the wasm file to wat file and then to pseudo code",
+    "Compared the decompiled code to the previous challenge and found slight changes at the end of the copy function",
+    "Observed that the flag was getting XORed with 8 before being saved and the comparison string was not in clear",
+    "Copied the variable content from the decoded base64 text into CyberChef and used the magic block to search for `picoCTF` and found the flag"
+]

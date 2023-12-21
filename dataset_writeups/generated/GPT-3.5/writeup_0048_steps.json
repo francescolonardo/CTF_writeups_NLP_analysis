@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Created a malicious XML file containing an external entity reference pointing to a file on my local system"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Sent the malicious XML file to the web application"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Web application processed the XML data, including the content of the external file in its response"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Exploited the vulnerability to read files, execute commands, or launch Denial-of-Service (DoS) attacks"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Recommended proper input validation and sanitization when processing XML data"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Recommended restricting access to sensitive files on the server to prevent attackers from reading them"
+            }
+        ]
+    }
+}

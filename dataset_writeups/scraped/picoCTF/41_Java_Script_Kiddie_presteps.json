@@ -1,0 +1,10 @@
+[
+    "Get a look at the webpage source code.",
+    "Run: $.get(\"bytes\", function(resp) {bytes = Array.from(resp.split(\" \"), x => Number(x));}); from the source code in developer console to get a list of bytes.",
+    "The website takes the above list of bytes and shifts them based on the key the user enters. For each character in the key, the script shifts every 16th byte starting with byte i, where i is the index of the character in the key.",
+    "A PNG image consists of a PNG signature followed by a series of chunks. The first eight bytes are fixed. Each chunk header has a well-known structure: 4 bytes of length and 4 bytes of chunk type.",
+    "The first chunk is called IHDR (Image Header). It is a critical chunk and must appear first in any valid PNG image file. The IHDR chunk contains essential information about the image, such as its width, height, bit depth, color type, compression method, filter method, and interlace method. It has a fixed structure.",
+    "Used a script that, for each character of the key, will try all digits until one is found that places the expected value in the current location.",
+    "Enter key into website and save the QRCode PNG image.",
+    "Use zbar on the image to get the flag."
+]

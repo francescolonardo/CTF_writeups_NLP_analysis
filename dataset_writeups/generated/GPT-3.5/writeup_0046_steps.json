@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Discovered RCE vulnerability in web application caused by lack of input validation and sanitization on file upload functionality"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted malicious PHP file containing reverse shell payload"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Uploaded malicious file to server, triggering RCE"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Gained remote access to server with shell payload"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Exploitation allowed attacker to steal sensitive information, manipulate data, and launch further attacks"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Recommended that application implements proper input validation and sanitization on file upload functionality, such as verifying file type and size, scanning for malicious code before execution"
+            }
+        ]
+    }
+}

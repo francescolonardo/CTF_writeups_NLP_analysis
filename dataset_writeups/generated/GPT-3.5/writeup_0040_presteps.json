@@ -1,0 +1,9 @@
+[
+    "Identified a user authentication feature of a web application with a SQL injection vulnerability allowing unescaped user input",
+    "Crafted a malicious SQL query to check if a user with a specific username and password existed in the database using the vulnerable input field",
+    "Determined if the query was successful by the time it took for the application to respond without returning visible results or error messages",
+    "Bypassed the user authentication and gained access to the system",
+    "Performed various actions such as accessing sensitive data and modifying the website content",
+    "Recommended that the application implement proper input validation and sanitation techniques to prevent SQL injection attacks",
+    "Recommended that the application implement proper error handling techniques to prevent blind SQL injection attacks"
+]

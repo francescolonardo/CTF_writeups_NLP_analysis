@@ -1,0 +1,9 @@
+[
+    "Inspect the page source to find a hidden input field named 'flag' with the value '0'",
+    "Change the value of the 'flag' field to '1' and submit the form",
+    "Receive an error message that the password is incorrect",
+    "Try a SQL injection attack by entering a username of \"' OR 1=1 --\" and leaving the password field blank",
+    "Receive a successful login",
+    "A welcome page is displayed with a flag",
+    "Submit the flag to complete the challenge"
+]

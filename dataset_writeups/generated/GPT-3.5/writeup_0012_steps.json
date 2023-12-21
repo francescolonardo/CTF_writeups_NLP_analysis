@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a malicious input containing a script tag and submitted it to the application's form input"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submitted crafted input to the application and confirmed XSS vulnerability"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Researched application's structure and available resources"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted a payload containing a script to extract the desired information and submitted it to the application's form input"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Client successfully executed the script and displayed the flag for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Browsed web for a site advertising a high-value item auction."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Started to look into the site and noticed a search feature."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Tested the site for vulnerabilities with random queries into the search bar."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Set up Burp Suite and intercepted the request sent by the search feature."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Noticed that the query parameter was susceptible to SQL injection."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Crafted payloads to exploit the SQL injection vulnerability."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Used SQLMap to automate the exploitation and retrieve sensitive data."
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Bypassed authentication and logged in as admin."
+            }
+        ]
+    }
+}

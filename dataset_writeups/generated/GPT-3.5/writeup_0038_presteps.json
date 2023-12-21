@@ -1,0 +1,7 @@
+[
+    "Crafted a script to steal the user's cookies and send them to an external server",
+    "Injected malicious script into the contact form and submitted it",
+    "When application displayed the message containing the malicious script, it executed it in the user's browser, allowing me to steal their cookies",
+    "With the user's session, I was able to perform various actions on their behalf",
+    "Recommended that the application implement proper input validation and sanitization techniques to prevent XSS attacks"
+]

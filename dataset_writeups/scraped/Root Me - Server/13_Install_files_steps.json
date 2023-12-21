@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Visit target URL to view blank HTML page."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Analyze page for hints about the underlying software."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Determine the software is phpBB."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Locate phpBB install file in phpbb/install/install.php."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Visit the install file to view the password."
+            }
+        ]
+    }
+}

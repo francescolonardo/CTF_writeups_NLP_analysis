@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Identified a user authentication feature of a web application with a SQL injection vulnerability allowing unescaped user input"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted a malicious SQL query to check if a user with a specific username and password existed in the database using the vulnerable input field"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Determined if the query was successful by the time it took for the application to respond without returning visible results or error messages"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Bypassed the user authentication and gained access to the system"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Performed various actions such as accessing sensitive data and modifying the website content"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Recommended that the application implement proper input validation and sanitation techniques to prevent SQL injection attacks"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Recommended that the application implement proper error handling techniques to prevent blind SQL injection attacks"
+            }
+        ]
+    }
+}

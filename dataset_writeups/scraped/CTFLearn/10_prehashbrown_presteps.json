@@ -1,0 +1,9 @@
+[
+    "Identify a search bar on the website that is vulnerable to SQL Injection.",
+    "Use Burp Suite to intercept the network request made by the search bar.",
+    "Save the intercepted request header as 'header.txt' for further analysis.",
+    "Begin database enumeration using SQLMap with the captured request data.",
+    "Focus SQLMap's efforts on enumerating a specific table within the database.",
+    "Extract all information from the identified table using SQLMap.",
+    "Successfully retrieve the flag from the dumped table data."
+]

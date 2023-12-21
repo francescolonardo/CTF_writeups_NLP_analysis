@@ -1,0 +1,8 @@
+[
+    "Let the user register and login",
+    "Create a todo with {{config}}",
+    "Observe list of todos to see information about the flask server",
+    "Retrieve secret key to sign cookies",
+    "Get flask session cookie encoded",
+    "Decode it with flask-session-cookie-manager to retrieve the flag"
+]

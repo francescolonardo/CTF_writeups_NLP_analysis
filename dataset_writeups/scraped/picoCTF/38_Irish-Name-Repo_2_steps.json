@@ -1,0 +1,22 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Attempting a SQL Injection of ' OR 1=1--, resulting in a page that says SQLi detected."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Realizing that the filter is detecting several keywords, including UNION."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Performing blind SQLi by setting the username to admin'-- and the password to whatever."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Guessing that the username here should be admin and then commenting out the rest so that the password is not checked."
+            }
+        ]
+    }
+}

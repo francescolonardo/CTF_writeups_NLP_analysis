@@ -1,0 +1,5 @@
+[
+    "Used a directory brute-forcing tool like DirBuster to discover hidden directories and files on the web server",
+    "Discovered a hidden directory not directly accessible from the web application's interface",
+    "Navigated to the hidden directory and found a file containing sensitive information including the flag for the challenge"
+]

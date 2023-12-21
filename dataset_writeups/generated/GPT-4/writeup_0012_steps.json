@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a URL with a relative file path to a sensitive file on the server, such as /etc/passwd"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted a modified URL with the file path to the local server file"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Navigated to the modified URL"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Confirmed an LFI vulnerability when the application returned a web page displaying the contents of a local server file"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Exploited the LFI vulnerability to access other sensitive files on the server"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Found the flag required for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

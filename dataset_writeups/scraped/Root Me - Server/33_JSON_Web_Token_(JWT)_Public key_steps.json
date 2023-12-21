@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Retrieve public key from '/key' endpoint with a GET request"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Bring the public key to a human-readable format"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Retrieve JWT token from '/auth' endpoint with a POST request"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Realize the /admin endpoint requires a different signature algorithm to authenticate than the one used for the /auth endpoint"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Change signature algorithm to HS256/HS512 and use public key as secret key for authentication"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Create and sign a token in python"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Send the signed token to the '/admin' endpoint with a POST request"
+            }
+        ]
+    }
+}

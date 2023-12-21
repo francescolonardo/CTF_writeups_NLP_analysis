@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Write a quick php script"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Save the script as php_shell.php.jpg"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Upload the file to the web server"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Navigate to the file"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Inject command into the URL"
+            }
+        ]
+    }
+}

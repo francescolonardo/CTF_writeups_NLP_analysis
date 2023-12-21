@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Identified web application with unrestricted file upload functionality"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Uploaded PHP shell script disguised as harmless image file"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Shell script saved to server's file system"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Executed arbitrary commands on server"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Accessed sensitive data, modified application's code, and launched further attacks against other systems"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Recommended application implement strict file upload restriction and proper input validation and sanitization techniques"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Demonstrated potential risks associated with unrestricted file upload feature"
+            }
+        ]
+    }
+}

@@ -1,0 +1,7 @@
+[
+    "Discovered command injection vulnerability in web application file upload feature",
+    "Crafted malicious file with specially-crafted filename containing command injection payload",
+    "Uploaded malicious file to the server in order to execute arbitrary commands with web application privileges",
+    "Recommended that proper input validation and sanitation techniques be implemented to prevent command injection attacks",
+    "Recommended restricting types of files that can be uploaded and implementing file content scanning to prevent malicious file uploads"
+]

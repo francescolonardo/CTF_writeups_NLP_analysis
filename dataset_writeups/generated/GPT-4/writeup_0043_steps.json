@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Noticed user profile IDs were included in the URL as plain integers (e.g. http://example.com/profile?id=123)"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Modified the user profile ID in the URL to a different integer value (e.g. http://example.com/profile?id=124)"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Incremented the user profile IDs and explored different profiles"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Discovered a user with a higher level of privileges, such as an administrator"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Found sensitive information within the administrator's profile, including the flag for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

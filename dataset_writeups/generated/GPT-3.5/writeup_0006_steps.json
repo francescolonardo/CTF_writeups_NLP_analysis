@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Browsed the application's pages and observed the data displayed for each user."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Noticed a pattern in the data's structure and IDs."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Crafted a URL containing the ID of another user, e.g. http://example.com/user?id=2, and submitted it to the application."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Verified the presence of an IDOR vulnerability by submitting the crafted URL to the application."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Identified a privileged user with the required sensitive data."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Crafted a suitable URL containing the ID of the privileged user and submitted it to the application."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Obtained the flag for the Web Exploitation challenge from the displayed sensitive data of the privileged user."
+            }
+        ]
+    }
+}

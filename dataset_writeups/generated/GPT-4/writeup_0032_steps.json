@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Identified the web application allowed users to load specific pages by passing a parameter through the URL."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Tested the URL parameter for Local File Inclusion (LFI) vulnerability by manipulating the URL to include system files, such as /etc/passwd."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Confirmed the presence of an LFI vulnerability when web application displayed the content of the /etc/passwd file."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted a URL to include the flag file from server's file system."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Submitted the crafted URL, allowing to obtain the flag needed to complete the challenge."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Exploited the LFI vulnerability to access sensitive files on the server."
+            }
+        ]
+    }
+}

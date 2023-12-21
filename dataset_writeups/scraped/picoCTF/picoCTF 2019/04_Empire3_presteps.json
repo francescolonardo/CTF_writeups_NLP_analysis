@@ -1,0 +1,11 @@
+[
+    "Register and login as usual",
+    "Try to add a todo {{config}}",
+    "Check if there is any cookie saved by the website",
+    "Decrypt the cookie using flask-session-cookie-manager",
+    "Check if the cookie contains a user_id field",
+    "Change the user_id field to 1",
+    "Encode the cookie and send the modified cookie",
+    "Check if user_id = 2 is present",
+    "Find the flag"
+]

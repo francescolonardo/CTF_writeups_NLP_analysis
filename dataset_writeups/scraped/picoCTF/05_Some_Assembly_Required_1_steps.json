@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Upon visiting the website, it appears to just be a textbox with a form."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "After inspecting the website, I can see there's a JavaScript file. I inspect that file."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "In the const declaration one of the elements caught my attention. There is a path."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "I visited that path and it gave a WebAssembly file."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "At the bottom of the file, there was the flag."
+            }
+        ]
+    }
+}

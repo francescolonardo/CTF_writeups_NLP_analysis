@@ -1,0 +1,8 @@
+[
+    "Crafted a malicious request containing a direct object reference to another user's profile",
+    "Submitted malicious request to application's user profile page",
+    "Application accessed and displayed other user's sensitive information, confirming the vulnerability",
+    "Researched application's structure and available resources",
+    "Crafted request containing a direct object reference to desired user's profile and submitted to application's user profile page",
+    "Server successfully responded with desired user's sensitive information, displaying flag"
+]

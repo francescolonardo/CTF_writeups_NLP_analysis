@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a malicious payload containing a script that would steal the victim's session cookie"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submitted the crafted payload to the application's contact form"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Application allowed the payload to execute and steal the victim's session cookie, confirming the vulnerability"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Researched the application's structure and available resources"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Crafted a payload containing a script that would display the flag"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Submitted the payload to the application's contact form"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Server recognized the payload and responded with the flag for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

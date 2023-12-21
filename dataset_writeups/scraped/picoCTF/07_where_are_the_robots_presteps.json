@@ -1,0 +1,6 @@
+[
+    "Go to the website provided in the challenge",
+    "Look for a robots.txt file",
+    "Determine the existence of a directory that is excluded in the robots.txt file",
+    "Navigate to the excluded directory and find the flag"
+]

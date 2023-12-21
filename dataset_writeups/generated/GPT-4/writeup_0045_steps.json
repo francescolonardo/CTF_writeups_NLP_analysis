@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Attempted to include a local file from the server by modifying the URL parameter, such as http://example.com/page?file=../../../../etc/passwd"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submitted the modified URL and the application displayed the contents of the /etc/passwd file, confirming the LFI vulnerability"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Attempted to access other sensitive files on the server, such as configuration files or log files, that might contain valuable information"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Explored various files and identified a sensitive file that contained the flag needed to complete the Web Exploitation challenge"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Exploited the LFI vulnerability to access the sensitive file and obtain the flag needed to complete the challenge"
+            }
+        ]
+    }
+}

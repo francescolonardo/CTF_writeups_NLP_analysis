@@ -1,0 +1,22 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Found HTML source code of page"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Found comment in HTML source code"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "UN: password"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "PW: xxx"
+            }
+        ]
+    }
+}

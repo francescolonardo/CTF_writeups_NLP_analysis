@@ -1,0 +1,22 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Go to the website provided in the challenge"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Look for a robots.txt file"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Determine the existence of a directory that is excluded in the robots.txt file"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Navigate to the excluded directory and find the flag"
+            }
+        ]
+    }
+}

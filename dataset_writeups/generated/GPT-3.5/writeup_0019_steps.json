@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a malicious payload containing a tampered session ID and submitted it to the application's login form"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Application allowed the payload to execute and bypassed the authentication process, confirming the presence of a Broken Authentication and Session Management vulnerability"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Researched the application's session management and cookie handling"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted a suitable payload containing a tampered session ID that would hijack the session of a logged-in user"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Server successfully recognized the payload and responded with the session of the logged-in user"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Used the Broken Authentication and Session Management vulnerability to hijack the session of a logged-in user"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "By exploiting the vulnerability, bypassed authentication, hijacked user sessions, and completed the Web Exploitation challenge"
+            }
+        ]
+    }
+}

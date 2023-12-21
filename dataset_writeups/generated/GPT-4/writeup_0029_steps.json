@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Discovered a web application with a heavily obfuscated JavaScript file"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Used JavaScript Beautifier and other deobfuscation techniques and tools to make the code more readable"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Identified functions and variables seemed to be related to the flag"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Discovered the flag was split into multiple parts and obfuscated or encoded in different ways"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Decoded and extracted each part of the flag from the JavaScript code"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Combined the parts to obtain the full flag required to complete the Web Exploitation challenge"
+            }
+        ]
+    }
+}

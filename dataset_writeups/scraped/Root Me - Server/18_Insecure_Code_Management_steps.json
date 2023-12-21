@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Initial request to the web-app which yields /.git directory"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Uses wget or HTTrack to download the files and sub-directories from /.git"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Checks the git log to review history of changes"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Checks the change status using command `git status`"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Runs command `git restore config.php` to access deleted file"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Decrypts MD5 hash to gain relevant string"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Uses automated tool `gittyleaks` to search for sensitive information in the .git directory"
+            }
+        ]
+    }
+}

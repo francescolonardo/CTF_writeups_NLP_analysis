@@ -1,0 +1,38 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Register regular user account"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Notice user_role cookie with value of 'user' upon logging in"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Manipulate the user_role cookie value to 'admin' using browser developer tools"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Refresh the page"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Gain access to application as an admin user"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "View sensitive information restricted to regular users"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Find the flag hidden in the restricted admin area"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Conclude the importance of server-side validation for cookies and user input"
+            }
+        ]
+    }
+}

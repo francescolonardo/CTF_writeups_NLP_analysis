@@ -1,0 +1,7 @@
+[
+    "Manipulated the URL parameter used for fetching external content to include internal IP addresses and services, e.g. http://example.com/fetch?url=http://127.0.0.1",
+    "Confirmed presence of an SSRF vulnerability when web application fetched content from an internal IP address",
+    "Crafted a URL that would access an internal service containing the flag, e.g. http://example.com/fetch?url=http://internal-ip/path/to/flag",
+    "Submitted crafted URL, allowing web application to fetch content of the flag file from internal service",
+    "Obtained flag needed to complete challenge"
+]

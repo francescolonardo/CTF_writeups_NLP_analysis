@@ -1,0 +1,50 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "CTF challenge provided a simple form that, when submitted, showed an 'order status'."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "By inspecting the source code, the endpoint that was used for creating an order was determined."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Understanding that the 'order_id' was based on the base64-encoded value of 'article+quantity+username+address', and that this value was used in future URI paths corresponding to the order, was an important step."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Identified the possibility of applying DOM clobbering due to non-declared global variables in an inspect_order.html template, given if an HTML elements have ID set to 'order', the global variable 'order' would refer to that element."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Set up a test case to confirm the hypothesis of DOM clobbering by adding a 'throw' statement before the 'order' variable changed."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Found that it is necessary to trigger an exception before the 'order' variable is changed into the 'try' block of the program."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Identified that, to cause an exception, it was necessary to make the '/order/<order_id>/get_user_infos' endpoint return something that wasn't JSON."
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Understood that user can create arbitrary-length order IDs, which could potentially cause a failure in 'get_user_infos' endpoint due to URL length limits enforced by the web server."
+            },
+            {
+                "StepNumber": 9,
+                "StepString": "Applied a binary search to find out the longest URL before the error occurs, providing an approximate length for the 'order_id' to trigger the exploit."
+            },
+            {
+                "StepNumber": 10,
+                "StepString": "Padded any of the fields (except for 'article') with enough bytes to get the corresponding 'order_id' length to trigger the exploit."
+            },
+            {
+                "StepNumber": 11,
+                "StepString": "Waited for an admin to visit the preview page to get the flag, thus completing the challenge."
+            }
+        ]
+    }
+}

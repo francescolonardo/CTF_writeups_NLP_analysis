@@ -1,0 +1,10 @@
+[
+    "Identify the search parameter in the application",
+    "Discover that the search parameter is vulnerable to SQL injection attacks",
+    "Create a script to send specially crafted SQL queries to the application and monitor the response time",
+    "If the query returns true, the response time is longer than if the query returns false.",
+    "Use the difference in response time to determine whether the query was successful or not",
+    "Extract sensitive information from the database, including usernames and passwords",
+    "Use the information to log in to the application and gain access to additional resources",
+    "Prevent the vulnerability by using parameterized queries, or by properly validating user input"
+]

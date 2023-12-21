@@ -1,0 +1,22 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Search admin page/directory via Local File Inclusion (LFI) as indicated in the Analysis section"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Navigate to the webpage specified where directory listing reveals an admin directory"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "View the content of the file index.php in the admin directory via the webpage File viewer"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Search for the indicated string '$users = array('admin' => 'OpbNJ60xYpvAQU8');' in the viewed index.php file"
+            }
+        ]
+    }
+}

@@ -1,0 +1,9 @@
+[
+    "Attempted to log in with a non-existent username and password",
+    "Log in was successful, indicating the application is vulnerable to authentication bypass",
+    "Crafted a payload to access protected resources without valid username and password credentials",
+    "Payload included a request to the resource with a crafted cookie containing a valid user's username and password",
+    "Was able to bypass authentication and access the protected resources",
+    "Demonstrated potential risks associated with authentication bypass attacks",
+    "Recommended proper countermeasures to prevent such attacks"
+]

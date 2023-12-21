@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Identify the challenge as CTF Web Gauntlet 3"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Investigate limit in username and password input fields"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Check out writeup for CTF Web Gauntlet 2"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Input values for login provided in CTF Web Gauntlet 2 writeup"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Reload filter.php file to view source code and flag"
+            }
+        ]
+    }
+}

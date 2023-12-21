@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Entered malicious payload containing SQL code into search box, such as ' or 1=1;--, which would cause the application to return all results"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Results confirmed the presence of an SQL Injection vulnerability"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Researched the application's database structure and table names"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted a payload containing SQL code to extract sensitive information from the database, such as UNION SELECT column_name FROM information_schema.columns WHERE table_name = 'users';"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Identified names of columns in the 'users' table, such as 'username' and 'password'"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Crafted a payload containing SQL code to extract the usernames and passwords of all users in the 'users' table, such as UNION SELECT username, password FROM users;"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Obtained sensitive information to complete the Web Exploitation challenge"
+            }
+        ]
+    }
+}

@@ -1,0 +1,12 @@
+[
+    "Upon arriving to the website, observe the login screen",
+    "Inspect the source code of the webpage",
+    "Examine the CSS, JavaScript, and PHP files",
+    "Discover a function call to 'filter()' in the 'login.php' file",
+    "This filter function is checking if the entered field only contains allowed letters",
+    "Uncover additional JavaScript code following the filter function definition, which is passing the entered values to a function called 'checkPassword()'",
+    "Locate the definition of the 'checkPassword()' in the 'secure.js' file",
+    "Copy the password from the 'secure.js' source code",
+    "Go back to the login screen and enter the username and the discovered password",
+    "Retrieve the flag after successful login"
+]

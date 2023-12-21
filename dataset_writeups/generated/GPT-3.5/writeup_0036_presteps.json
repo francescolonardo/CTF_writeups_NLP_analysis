@@ -1,0 +1,9 @@
+[
+    "Identified web application with unrestricted file upload functionality",
+    "Uploaded PHP shell script disguised as harmless image file",
+    "Shell script saved to server's file system",
+    "Executed arbitrary commands on server",
+    "Accessed sensitive data, modified application's code, and launched further attacks against other systems",
+    "Recommended application implement strict file upload restriction and proper input validation and sanitization techniques",
+    "Demonstrated potential risks associated with unrestricted file upload feature"
+]

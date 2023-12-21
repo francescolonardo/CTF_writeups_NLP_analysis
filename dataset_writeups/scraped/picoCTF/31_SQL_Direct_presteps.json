@@ -1,0 +1,6 @@
+[
+    "Connect to PostgreSQL",
+    "List tables of the public schema using '/dt'",
+    "Run a SELECT command from the flags table on the public schema",
+    "Retrieve the flag"
+]

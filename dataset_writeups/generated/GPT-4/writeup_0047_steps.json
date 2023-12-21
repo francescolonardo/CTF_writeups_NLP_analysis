@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Examined web application's JavaScript code to identify a potential DOM-based XSS vulnerability caused by using the innerHTML property to update DOM elements based on user input"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted an input containing malicious JavaScript code <img src=x onerror=alert(1)> to test for a XSS vulnerability"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Submitted crafted input, which the application executed and displayed an alert box, confirming the XSS vulnerability"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Created a payload for exploiting the vulnerability that could exfiltrate sensitive data or execute other malicious actions"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Submitted the payload, which the application executed and allowed access to sensitive data, including the flag for the challenge"
+            }
+        ]
+    }
+}

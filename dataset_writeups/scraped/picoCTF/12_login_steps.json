@@ -1,0 +1,38 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Navigate to the website source"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Pretty print the source code of the .js file"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Inspect the code for the pertinent details"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Notice that the username and password have been encoded with the `btoa()` method"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Use the `atob()` method to reverse the conversion and obtain the plaintext password"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Open Chrome console"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Undo the encoding within the console to discover the flag"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Confirm the flag with a login attempt"
+            }
+        ]
+    }
+}

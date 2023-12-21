@@ -1,0 +1,9 @@
+[
+    "Inspected user session cookies to identify the user_role cookie with a value of user",
+    "Installed browser extension or used a proxy tool such as Burp Suite to modify the value of the user_role cookie from user to admin",
+    "Refreshed the page after modifying the cookie in order to test for vulnerability",
+    "Gained access to admin panel after refreshing page with modified cookie value confirming the vulnerability",
+    "Discovered a page in the admin panel containing the flag for the Web Exploitation challenge",
+    "Tampered with user_role cookie to elevate privileges and gain unauthorized access to admin panel",
+    "Obtained flag from admin panel page to complete the challenge"
+]

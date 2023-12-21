@@ -1,0 +1,9 @@
+[
+    "Looking at the website, deduce this is a continuation of the \"Cookies\" challenge",
+    "Check the cookie we get from the server and noticed it's encoded",
+    "Decode it, but it's still gibberish, so it's encrypted",
+    "Check Hint 1 which links to a Wikipedia page for a homomorphic encryption method",
+    "Read articles about homomorphic encryption and look at other writeups to understand that it allows you to perform operations on encrypted text",
+    "Notice that the letters \"CBC\" are capitalized in the challenge description indicating it's a CBC bitflip",
+    "Brute-force the encrypted text using a python script to determine if it's admin or not"
+]

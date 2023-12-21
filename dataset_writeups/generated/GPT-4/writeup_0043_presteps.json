@@ -1,0 +1,7 @@
+[
+    "Noticed user profile IDs were included in the URL as plain integers (e.g. http://example.com/profile?id=123)",
+    "Modified the user profile ID in the URL to a different integer value (e.g. http://example.com/profile?id=124)",
+    "Incremented the user profile IDs and explored different profiles",
+    "Discovered a user with a higher level of privileges, such as an administrator",
+    "Found sensitive information within the administrator's profile, including the flag for the Web Exploitation challenge"
+]

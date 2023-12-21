@@ -1,0 +1,22 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Analyzed WAF behavior to determine what it was blocking and identified specific patterns and keywords"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted an SQL Injection payload composed of encoding, obfuscation, and alternative syntax to evade WAF detection"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Submitted payload through login form and bypassed WAF"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Exploited SQL Injection vulnerability to locate flag required for Web Exploitation challenge"
+            }
+        ]
+    }
+}

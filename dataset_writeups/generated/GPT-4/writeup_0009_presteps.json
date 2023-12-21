@@ -1,0 +1,9 @@
+[
+    "Logged in to the application with a regular user account and inspected the cookies stored in my browser",
+    "Noticed a cookie named 'user_role' with the value 'user'",
+    "Suspected that the application might be using this cookie to determine the user's access level",
+    "Edited the 'user_role' cookie's value and changed it from 'user' to 'admin'",
+    "Refreshed the web page to see if the application would grant me administrative privileges",
+    "Application recognized me as an admin user and granted me access to the restricted admin panel",
+    "Found the flag for the Web Exploitation challenge inside the admin panel"
+]

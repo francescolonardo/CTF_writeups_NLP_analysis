@@ -1,0 +1,18 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Guess helpful php files, such as config.php"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Use php://filter/convert.base64-encode/resource with the guessed file name as parameter"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Send the constructed request URL"
+            }
+        ]
+    }
+}

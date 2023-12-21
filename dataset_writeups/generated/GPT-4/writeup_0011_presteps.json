@@ -1,0 +1,7 @@
+[
+    "Inspected the source code of the web page and located the relevant JavaScript file",
+    "Used a JavaScript beautifier tool to reformat the code",
+    "Analyzed the code's structure and identified key functions and variables",
+    "Discovered a function that seemed to perform a series of transformations on a string of characters",
+    "Executed the function in the browser's developer console and provided the necessary input to reveal the decrypted flag"
+]

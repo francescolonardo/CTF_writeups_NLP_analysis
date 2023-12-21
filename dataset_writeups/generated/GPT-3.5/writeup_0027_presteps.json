@@ -1,0 +1,12 @@
+[
+    "Encountered web application with user login feature",
+    "Suspected SQL injection vulnerability",
+    "Entered malicious payload containing SQL injection attack into login parameter",
+    "Payload caused application to execute valid SQL query, bypassing authentication mechanism",
+    "Application logged me in as administrator, confirming presence of SQL injection vulnerability",
+    "Researched application's database schema and structure",
+    "Crafted payload containing script to extract sensitive information from DB",
+    "Payload allowed to extract sensitive information from DB such as flag for Web Exploitation challenge",
+    "Exploited the vulnerability to extract sensitive information from database and complete the Web Exploitation challenge",
+    "Demonstrated the potential risks associated with SQL injection"
+]

@@ -1,0 +1,11 @@
+[
+    "Wrote a php file",
+    "Compressed the php file to a .zip file",
+    "Uploaded the .zip file",
+    "Received a 403 code in response to the upload",
+    "Created a soft link in Kali to a .txt file",
+    "Used the zip command compression to compress the symbol link file",
+    "Uploaded the compressed .txt file",
+    "Found that the .txt file was larger in size upon uploading",
+    "Clicked on the .txt file to retrieve the index.php code"
+]

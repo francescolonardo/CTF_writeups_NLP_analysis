@@ -1,0 +1,9 @@
+[
+    "Login as any user",
+    "Get the jwt token from the jwt cookie",
+    "Paste the jwt token into a file called token.txt",
+    "Use hashcat to crack the token and get the password used",
+    "Change 'user' in the JWT payload to 'admin' and sign it again using the password found",
+    "Copy and paste the new token into the jwt cookie",
+    "Refresh the page to get the flag"
+]

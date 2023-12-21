@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Discovered a Cross-Site Request Forgery (CSRF) vulnerability in a contact form of a web application"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted a malicious web page that included a hidden form that submitted a message to the contact form on behalf of the victim user"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Tricked the victim user into visiting my malicious web page"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Submitted a message to the website owner with the victim user's credentials"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Recommended that the application implement proper CSRF protections such as adding a random token to each form submission and validating the token on the server side"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Recommended additional user authentication measures such as requiring users to enter their password to submit sensitive information"
+            }
+        ]
+    }
+}

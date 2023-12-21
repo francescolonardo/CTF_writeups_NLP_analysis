@@ -1,0 +1,7 @@
+[
+    "Attempted to access the web application's root directory using DirBuster, a commonly used directory traversal tool which leverages a brute-force search with a large dictionary of common directory and file names",
+    "Configured DirBuster to target the web application's root directory and start the enumeration process",
+    "DirBuster discovered a hidden directory named 'secret_files' that was not accessible through the application's user interface",
+    "Navigated to the 'secret_files' directory",
+    "Found a text file containing the flag for the Web Exploitation challenge within the directory"
+]

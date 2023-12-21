@@ -1,0 +1,7 @@
+[
+    "Inspected the source code of the web page and identified the JavaScript functions responsible for the client-side validation",
+    "Used the browser's developer tools to disable the JavaScript functions responsible for the client-side validation",
+    "Submitted the registration form with non-compliant input values",
+    "Received a response that included a hidden message with the flag for the Web Exploitation challenge",
+    "Uncovered the hidden flag, completing the challenge"
+]

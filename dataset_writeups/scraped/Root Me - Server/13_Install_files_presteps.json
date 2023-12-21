@@ -1,0 +1,7 @@
+[
+    "Visit target URL to view blank HTML page.",
+    "Analyze page for hints about the underlying software.",
+    "Determine the software is phpBB.",
+    "Locate phpBB install file in phpbb/install/install.php.",
+    "Visit the install file to view the password."
+]

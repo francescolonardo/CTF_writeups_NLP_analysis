@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Encountered a web application with a search feature, suspected potential security risks associated with Cross-Site Scripting (XSS),"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Entered a payload containing a <script> tag into the search field, e.g. <script>alert('XSS')</script>,"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Submitted the form and observed that the application accepted the payload and displayed the results, indicating vulnerability to XSS attacks,"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted a payload that would allow execution of arbitrary JavaScript code on the victim's browser, including a script that would steal the user's cookies,"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Executed the payload, allowing theft of the user's cookies and demonstration of the potential risks of XSS attacks,"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Recommended proper countermeasures such as proper input validation and output encoding controls, implementation of Content Security Policy (CSP), and validation of user input to properly secure web applications against XSS vulnerabilities."
+            }
+        ]
+    }
+}

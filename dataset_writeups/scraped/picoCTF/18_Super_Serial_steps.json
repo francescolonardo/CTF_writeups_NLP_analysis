@@ -1,0 +1,54 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Accessed the robot file and noticed that the `admin.phps` file is disallowed, which indicates the php configuration has phps enabled"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Accessed the `index.phps` code, which pointed us in the direction of `authentication.php`"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Looked at the code and the `cookie.php` file was included in every page"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Noticed in the `cookie.php` file there is a code segment that will deserialize our cookie and print the object when an error occurs"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Realized we are in the context of a deserialization vulnerability"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Stored any object in the cookie to be unserialized"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Exploited the `__construct` function present in the `access_log` class in `authentication.php`"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Realized the `__toString()` method is called when the object is converted to a string, so we can get the `$perm` variable to be our custom `access_log` object"
+            },
+            {
+                "StepNumber": 9,
+                "StepString": "Serialized our custom `access_log` object, where we set `log_file` to `../flag`"
+            },
+            {
+                "StepNumber": 10,
+                "StepString": "Encoded the serialized object to base64 and url encoded it using CyberChef"
+            },
+            {
+                "StepNumber": 11,
+                "StepString": "Added it as the `login` cookie on our browser and went to `authentication.php`"
+            },
+            {
+                "StepNumber": 12,
+                "StepString": "The custom `access_log('../flag')` object was deserialized which invoked the `__toString()` method resulting in arbitrary file read on the target system"
+            }
+        ]
+    }
+}

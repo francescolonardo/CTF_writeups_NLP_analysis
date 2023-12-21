@@ -1,0 +1,4 @@
+[
+    "Analyze the file paths for current directory (./) and enclosing directory (../) references",
+    "Access the website and enter the path ../../../../flag.txt to read the flag"
+]

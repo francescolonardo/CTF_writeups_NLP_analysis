@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Enter in the flag and copy each character into memory using the copy_char() function"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Call check_flag() to receive boolean value based on validity of flag"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Use Google Chrome's debugger to disassemble and add breakpoints"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Perform side-channel attack by adding code snippets to increment counter whenever character is correct, reset counter whenever function is called"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Brute force flag two characters at a time, starting with the first two"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Compile C to WASM and copy code snippets to patch original binary using WasmFiddle"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Write quick Node.js script to brute force the characters"
+            }
+        ]
+    }
+}

@@ -1,0 +1,9 @@
+[
+    "Logged in to the application with a regular user account",
+    "Examined the cookies using a browser's developer tools",
+    "Noticed a cookie named 'role' with a value of 'user'",
+    "Manipulated the 'role' cookie's value from 'user' to 'admin'",
+    "Refreshed the web page",
+    "Gained access to an administrative panel",
+    "Found the flag for the Web Exploitation challenge inside the administrative panel"
+]

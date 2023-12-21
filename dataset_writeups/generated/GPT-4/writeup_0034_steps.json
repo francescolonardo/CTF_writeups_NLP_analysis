@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Manipulated the URL parameter used for fetching external content to include internal IP addresses and services, e.g. http://example.com/fetch?url=http://127.0.0.1"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Confirmed presence of an SSRF vulnerability when web application fetched content from an internal IP address"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Crafted a URL that would access an internal service containing the flag, e.g. http://example.com/fetch?url=http://internal-ip/path/to/flag"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Submitted crafted URL, allowing web application to fetch content of the flag file from internal service"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Obtained flag needed to complete challenge"
+            }
+        ]
+    }
+}

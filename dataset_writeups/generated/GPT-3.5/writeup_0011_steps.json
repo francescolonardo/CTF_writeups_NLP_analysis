@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a malicious URL containing a reference to an external file, such as http://malicious-server.com/malicious.php, and submitted it to the application's URL parameter"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Confirmed the presence of RFI vulnerability when the application allowed the file to be included and executed on the server"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Researched the server's configuration and available files"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted a suitable URL containing the desired file and submitted it to the application's URL parameter"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Server included and executed the file, displaying the flag for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

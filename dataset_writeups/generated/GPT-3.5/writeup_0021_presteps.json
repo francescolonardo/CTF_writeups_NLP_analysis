@@ -1,0 +1,9 @@
+[
+    "Entered malicious payload containing SQL code into search box, such as ' or 1=1;--, which would cause the application to return all results",
+    "Results confirmed the presence of an SQL Injection vulnerability",
+    "Researched the application's database structure and table names",
+    "Crafted a payload containing SQL code to extract sensitive information from the database, such as UNION SELECT column_name FROM information_schema.columns WHERE table_name = 'users';",
+    "Identified names of columns in the 'users' table, such as 'username' and 'password'",
+    "Crafted a payload containing SQL code to extract the usernames and passwords of all users in the 'users' table, such as UNION SELECT username, password FROM users;",
+    "Obtained sensitive information to complete the Web Exploitation challenge"
+]

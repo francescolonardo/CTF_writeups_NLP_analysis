@@ -1,0 +1,7 @@
+[
+    "Used a proxy tool like Burp Suite to intercept and analyze the login request",
+    "Noticed the login request contained a parameter named isAdmin with a value of false",
+    "Modified the value of the isAdmin parameter to true in the intercepted request and forwarded it to the server",
+    "Submitted the modified request and gained access to the admin interface",
+    "Discovered a page in the admin interface that contained the flag for the Web Exploitation challenge"
+]

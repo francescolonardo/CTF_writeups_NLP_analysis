@@ -1,0 +1,6 @@
+[
+    "Use Burp to capture the post request sent to the server when attempting to upload a php shell script",
+    "Change the \u2018content-type\u2019 in the post request from \u2018application/x-php\u2019 to \u2018image/jpeg\u2019",
+    "Click on the file icon",
+    "Inject a command into the URL: http://challenge01.root-me.org/web-serveur/ch21/galerie/upload/gsejso5erm5ahvm8i561a9tdh7//shell.php?command=cat%20../../../.passwd"
+]

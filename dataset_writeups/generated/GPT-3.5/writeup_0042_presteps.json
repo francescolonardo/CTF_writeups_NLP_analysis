@@ -1,0 +1,8 @@
+[
+    "Discovered a Local File Inclusion (LFI) vulnerability in a file upload feature on a web application",
+    "Uploaded a PHP file with a crafted name containing the relative path to sensitive system files",
+    "Accessed download link for the uploaded file and the application included contents of the sensitive file in the server response",
+    "Used LFI attack to gain access to sensitive information and potentially compromise the security of the web application and the underlying system",
+    "Recommended application implements proper input validation and sanitation techniques to prevent LFI attacks",
+    "Recommended application enforces strict file type and size limits and stores files outside of the web root directory to prevent access to sensitive system files"
+]

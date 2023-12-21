@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Discovered command injection vulnerability in web application file upload feature"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted malicious file with specially-crafted filename containing command injection payload"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Uploaded malicious file to the server in order to execute arbitrary commands with web application privileges"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Recommended that proper input validation and sanitation techniques be implemented to prevent command injection attacks"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Recommended restricting types of files that can be uploaded and implementing file content scanning to prevent malicious file uploads"
+            }
+        ]
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Visit the website and interact with the note-taking application to post a note. Ensure the note contains the first 128 characters controlling the path to which the note is written, followed by a hyphen and then a random string"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Review the code for the note-taking application, allowing for the understanding of the program and how it works. Pay special attention to the way in which the address is constructed - namely the werkzeug.urls.url_fix function"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Notice that the werkzeug.urls.url_fix function converts backslashes (which are invalid in URLs) to slashes, thus allowing for the bypassing of the slash check and enabling the writing of a file to a different directory. Choose a valid directory and file type extension, such as 'templates/errors.html'"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Manually craft a note containing the path and a payload, such as 'This is a test', and post it. Take note of the URL to which it is redirected, which should confirm the successful writing of the file"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Write a script to automate the manual note-crafting steps and post it. Execute the script to confirm that the file is successfully written"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Use the script to inject a template payload to execute the Python Sandbox escape to achieve RCE, such as '{{request[request.args.p1][request.args.p2][11][request.args.p3]()[183]()[request.args.p4][request.args.p5]['open']('flag-c8f5526c-4122-4578-96de-d7dd27193798.txt').read()}}'."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Send the RCE payload to gain access to the flag."
+            }
+        ]
+    }
+}

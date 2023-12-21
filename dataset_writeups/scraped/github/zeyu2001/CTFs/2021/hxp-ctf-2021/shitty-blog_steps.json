@@ -1,0 +1,42 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Analyzed the provided code and discovered that user_id is not validated and directly inserted into SQL query, allowing for SQL injection"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Observed that 'get_user' uses '$db->query', while 'delete_entry' uses '$db->exec', allowing for stacked queries and potential execution of RCE payload"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Found function for validating user_id for inserting entries and noticed that binary=false is not set for crypt() function, making it non binary safe"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Identified the use of cookies to manage session state and keep track of the user_id"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Formulated the hypothesis that manipulating the id used in the session cookie, it might be possible to exploit the fact that crypt() is non-binary safe to bypass the session's validation"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Created a function 'find_collision' in Python to try and find two id numbers that produce the same mac by brute forcing until finding a hash_hmac() output that starts with \\x00"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Used the '$mac' value that corresponds to the case where hash_hmac() returns a result starting with \\x00 to bypass session cookie validation"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Developed function 'find_exploit_collision' in Python to try different id values until the hmac() output begins with \\x00. The id will produce a crypt() result corresponding to the previously found $mac"
+            },
+            {
+                "StepNumber": 9,
+                "StepString": "Executed the full script to generate the exploit in python using the functions 'find_collision' and 'find_exploit_collision'"
+            }
+        ]
+    }
+}

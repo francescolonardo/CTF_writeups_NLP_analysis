@@ -1,0 +1,9 @@
+[
+    "Enter in the flag and copy each character into memory using the copy_char() function",
+    "Call check_flag() to receive boolean value based on validity of flag",
+    "Use Google Chrome's debugger to disassemble and add breakpoints",
+    "Perform side-channel attack by adding code snippets to increment counter whenever character is correct, reset counter whenever function is called",
+    "Brute force flag two characters at a time, starting with the first two",
+    "Compile C to WASM and copy code snippets to patch original binary using WasmFiddle",
+    "Write quick Node.js script to brute force the characters"
+]

@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a URL pointing to the local server's internal IP address and a port suspected to host an internal service"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Navigated to the modified URL"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Application returned a web page displaying the content of an internal service running on the local server"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Confirmed the presence of an SSRF vulnerability"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Exploited the SSRF vulnerability and accessed different internal services or restricted content on the server"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Located the flag required for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

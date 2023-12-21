@@ -1,0 +1,38 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Investigated web application which allowed users to share links to external websites via a redirect mechanism"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Found application was vulnerable to an open redirect attack using the redirect URL parameter"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Crafted malicious URL with redirect parameter set to a phishing site"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Created phishing site that mimicked the application's login page"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Unsuspecting users clicked on malicious link which redirected them to phishing site"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Prompted users to enter login credentials which were collected"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Gained unauthorized access to user accounts through submitted credentials"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Located flag stored in restricted area and completed challenge"
+            }
+        ]
+    }
+}

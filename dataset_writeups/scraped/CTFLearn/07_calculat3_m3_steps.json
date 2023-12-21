@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Understand that the challenge involves a web-based calculator capable of evaluating mathematical expressions."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Interact with the calculator by inputting a random expression (e.g., '5 * 6') to observe its functionality."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Use Burp Suite to intercept the request made by the calculator, focusing on the parameter handling the expression."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Identify the 'expression' parameter in the intercepted request, which in this case is '5 * 6'."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Test for command injection vulnerability by modifying the 'expression' parameter to a system command, such as ';ls'."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Submit the modified request to execute the system command and retrieve a list of files in the server's directory."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Inspect the output for filenames, identifying the flag file which starts with 'ctf'."
+            }
+        ]
+    }
+}

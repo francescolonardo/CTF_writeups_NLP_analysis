@@ -1,0 +1,6 @@
+[
+    "Suspected application vulnerability to XXE injection attack",
+    "Uploaded malicious XML file containing XXE payload to server",
+    "Entered payload containing file upload URL and XML document reference to trigger XXE payload",
+    "Able to read sensitive information, such as system configuration files, database credentials, from server"
+]

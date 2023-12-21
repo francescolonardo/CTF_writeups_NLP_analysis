@@ -1,0 +1,6 @@
+[
+    "Used browser developer tools to modify HTML and JavaScript code or intercepted and modified HTTP requests with a tool like Burp Suite to bypass client-side validation",
+    "Submitted unexpected input to the web application to test server's handling of data",
+    "Discovered server-side logic was insecure and failed to properly validate and sanitize user input",
+    "Exploited the insecure server-side logic with malicious payloads to access sensitive information, such as flag for the Web Exploitation challenge"
+]

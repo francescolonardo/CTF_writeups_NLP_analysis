@@ -1,0 +1,42 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "The challenge involves being given an assembly source file."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "There are a number of filters that are applied to the user's input."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "After passing through the filters, the input will be written to a binary file and then assembled and linked to the main function."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "A secondary function 'win' is also written and compiled."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "There are restrictions on the usage of certain characters, XOR operation, and ADD operation. The filters disallow printable shellcodes, shell spawning shenanigans, XOR operation, and ADD operation."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "The goal is to export a function 'win' in the shared library that runs the main."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Workaround is found to create the required label using '.set' directive which allows using a quoted value that abides by the filters."
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Additional trick is used to reformulate the MOV operands with mathematical expressions that do not utilize banned digits."
+            },
+            {
+                "StepNumber": 9,
+                "StepString": "Another approach is found where instead of writing assembly code, a linker script is written that directly links to the libflag.so."
+            }
+        ]
+    }
+}

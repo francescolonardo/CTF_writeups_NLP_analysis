@@ -1,0 +1,7 @@
+[
+    "Crafted a malicious URL containing a reference to an external file, such as http://malicious-server.com/malicious.php, and submitted it to the application's URL parameter",
+    "Confirmed the presence of RFI vulnerability when the application allowed the file to be included and executed on the server",
+    "Researched the server's configuration and available files",
+    "Crafted a suitable URL containing the desired file and submitted it to the application's URL parameter",
+    "Server included and executed the file, displaying the flag for the Web Exploitation challenge"
+]

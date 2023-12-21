@@ -1,0 +1,11 @@
+[
+    "Identified website provides a standard login form",
+    "Discovered SQL injection vulnerability from SQL query found in response",
+    "Checked filter.php to understand what must be avoided when crafting SQL injection",
+    "Noted that `or`, `and`, `true`, `false`, `union`, `like`, `=`, `>`, `<`, `;`, `--`, `/*`, `*/`, `admin` are filtered",
+    "Crafted username field of `ad'||'min` to bypass the `admin` filter",
+    "Crafted password field of `a' IS NOT 'b` as a true statement",
+    "Entered crafted username and password in login form",
+    "Received 'Congrats! You won! Check out filter.php' upon successful credentials entry",
+    "Reloaded page to see its source code with the flag"
+]

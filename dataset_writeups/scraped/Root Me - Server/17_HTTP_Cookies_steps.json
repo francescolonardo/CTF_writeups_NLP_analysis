@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Click on \u2018saved email addresses\u2019"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Checking the url: http://challenge01.root-me.org/web-serveur/ch7/?c=visiteur"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Install the firefox plugin \u2018Live HTTP Headers\u2019 and click the \u2018Saved email addresses\u2019 link again"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "In Live HTTP Headers, you can see the cookie: ch7=visiteur"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Click \u2018replay\u2019 and change \u2018visiteur\u2019 to \u2018admin\u2019, then replay again"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "In the browser click the link once more to find the validation password"
+            }
+        ]
+    }
+}

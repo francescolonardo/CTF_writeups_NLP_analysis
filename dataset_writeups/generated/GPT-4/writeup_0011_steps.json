@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Inspected the source code of the web page and located the relevant JavaScript file"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Used a JavaScript beautifier tool to reformat the code"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Analyzed the code's structure and identified key functions and variables"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Discovered a function that seemed to perform a series of transformations on a string of characters"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Executed the function in the browser's developer console and provided the necessary input to reveal the decrypted flag"
+            }
+        ]
+    }
+}

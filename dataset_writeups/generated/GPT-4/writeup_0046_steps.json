@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Inspected user session cookies to identify the user_role cookie with a value of user"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Installed browser extension or used a proxy tool such as Burp Suite to modify the value of the user_role cookie from user to admin"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Refreshed the page after modifying the cookie in order to test for vulnerability"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Gained access to admin panel after refreshing page with modified cookie value confirming the vulnerability"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Discovered a page in the admin panel containing the flag for the Web Exploitation challenge"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Tampered with user_role cookie to elevate privileges and gain unauthorized access to admin panel"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Obtained flag from admin panel page to complete the challenge"
+            }
+        ]
+    }
+}

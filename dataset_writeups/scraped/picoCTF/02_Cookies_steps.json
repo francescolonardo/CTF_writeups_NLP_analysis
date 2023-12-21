@@ -1,0 +1,22 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Visit website and analyze page content"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Retrieve existing cookie from server"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Modify cookie with browser extension"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Perform brute-force search of cookie to find special cookie"
+            }
+        ]
+    }
+}

@@ -1,0 +1,7 @@
+[
+    "Crafted a benign script, such as <script>alert('XSS')</script> and submitted it to the application",
+    "Upon submission, application displayed script and executed it in the context of another user, confirming the vulnerability",
+    "Crafted suitable payload for the XSS attack to steal session cookie of another user",
+    "Submitted payload to the application, which executed XSS attack and stole session cookie",
+    "Used the stolen session cookie to access user account and obtain the flag for Web Exploitation challenge"
+]

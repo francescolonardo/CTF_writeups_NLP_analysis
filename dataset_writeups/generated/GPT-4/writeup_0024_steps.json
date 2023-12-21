@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a URL pointing to an internal IP address (e.g., http://127.0.0.1) to test for SSRF vulnerability"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Explored internal network further by scanning for open ports and identifying potentially sensitive services"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Discovered an internal service running on a non-standard port"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted a URL pointing to the internal service"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Fetched the sensitive information, including the flag, using the SSRF vulnerability"
+            }
+        ]
+    }
+}

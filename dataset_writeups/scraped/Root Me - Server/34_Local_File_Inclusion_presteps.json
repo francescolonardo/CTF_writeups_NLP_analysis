@@ -1,0 +1,6 @@
+[
+    "Search admin page/directory via Local File Inclusion (LFI) as indicated in the Analysis section",
+    "Navigate to the webpage specified where directory listing reveals an admin directory",
+    "View the content of the file index.php in the admin directory via the webpage File viewer",
+    "Search for the indicated string '$users = array('admin' => 'OpbNJ60xYpvAQU8');' in the viewed index.php file"
+]

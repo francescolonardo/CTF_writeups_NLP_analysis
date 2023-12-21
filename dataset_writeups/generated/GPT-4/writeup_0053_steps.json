@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Inspect the page source to find a hidden input field named 'flag' with the value '0'"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Change the value of the 'flag' field to '1' and submit the form"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Receive an error message that the password is incorrect"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Try a SQL injection attack by entering a username of \"' OR 1=1 --\" and leaving the password field blank"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Receive a successful login"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "A welcome page is displayed with a flag"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Submit the flag to complete the challenge"
+            }
+        ]
+    }
+}

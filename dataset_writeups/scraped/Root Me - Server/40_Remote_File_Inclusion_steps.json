@@ -1,0 +1,38 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Gathered information regarding the challenge: source code is dynamically loaded from a web address specified in a GET parameter called 'lang'"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Uncovered the developer does not set an absolute path when including remote content"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Used free hosting provided by a web host to set up a web server that can be publicly accessed"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Created a file on the webserver called myexploit_lang.php which contains malicious PHP code within a string stored in a variable which is then echoed"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Made a request to the challenge URL passing a link to the webserver along with the file"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Bypassed the requirement for the '_lang.php' suffix by creating the file with that suffix"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Used the echo variables to print the source code"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Retrieved the flag"
+            }
+        ]
+    }
+}

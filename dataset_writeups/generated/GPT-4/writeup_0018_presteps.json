@@ -1,0 +1,7 @@
+[
+    "Inspected the source code of the web page and located the JavaScript file responsible for validating the user input",
+    "Examined the validation function to understand its logic and identify any weaknesses",
+    "Discovered the validation function checked if the user input matched a hardcoded value",
+    "Input the correct code into the form directly without having to reverse-engineer the validation function further",
+    "Gained access to the restricted area where I found the flag"
+]

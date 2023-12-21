@@ -1,0 +1,86 @@
+{
+    "SubstepsModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Suspected the application was vulnerable to XXE injection due to XML parsing and processing",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 1.1,
+                        "SubstepString": "Investigated the application for XML parsing and processing capabilities."
+                    },
+                    {
+                        "SubstepNumber": 1.2,
+                        "SubstepString": "Suspected the application was vulnerable to XXE injection due to XML parsing and processing."
+                    }
+                ]
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted an XML input containing a reference to an external entity",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 2.1,
+                        "SubstepString": "Crafted an XML input containing a reference to an external entity."
+                    }
+                ]
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Submitted crafted input to test application for XXE injection vulnerability",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 3.1,
+                        "SubstepString": "Submitted crafted input to the application."
+                    },
+                    {
+                        "SubstepNumber": 3.2,
+                        "SubstepString": "Tested the application for XXE injection vulnerability."
+                    }
+                ]
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Application displayed contents of the passwd file, confirming the presence of an XXE injection vulnerability",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 4.1,
+                        "SubstepString": "Application displayed contents of the passwd file."
+                    },
+                    {
+                        "SubstepNumber": 4.2,
+                        "SubstepString": "Confirmed the presence of an XXE injection vulnerability."
+                    }
+                ]
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Crafted suitable payload and chose target file for extracting the flag",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 5.1,
+                        "SubstepString": "Crafted suitable payload."
+                    },
+                    {
+                        "SubstepNumber": 5.2,
+                        "SubstepString": "Chose target file for extracting the flag."
+                    }
+                ]
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Submitted input with XXE injection payload, which executed the injection and displayed the contents of the file and the flag for the Web Exploitation challenge",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 6.1,
+                        "SubstepString": "Submitted input with XXE injection payload."
+                    },
+                    {
+                        "SubstepNumber": 6.2,
+                        "SubstepString": "Observed injection executed and the contents of the file and the flag displayed for the Web Exploitation challenge."
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Looking at the HTML of the website, we can see that both red and blue buttons make a request to the same URL, however with different HTTP request methods."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Guessing that the flag will be accessible by using a different HTTP request method."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Trying HTTP requests with different request methods using Burp Suite."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Examining the MDN Web Docs to see the 9 different HTTP request methods, including 'HEAD'."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Making the assumption to use the 'HEAD' method to get the flag based on the challenge name."
+            }
+        ]
+    }
+}

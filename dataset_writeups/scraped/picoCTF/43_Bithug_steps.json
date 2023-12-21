@@ -1,0 +1,58 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Look for a destination, hinting at a server-side resource forgery (SSRF) exploit"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Note that requests from loopback IP will grant access to any repository"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "identify git-receive-pack endpoint as used by Git to perform remote operations on a repository"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Observe functionality to specify POST webhooks to be triggered when changes are made to a repository"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Understand content is put through a simple templating engine allowing injection of certain attributes of the commit into webhook"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Hint at needing to modify access.conf file of repository to gain access"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Confirm the server sanitizes webhooks and only allows requests to port 80"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Find exploiting the simple templating engine allows entering a URL with ref that can point to 127.0.0.1:1823/_/admin.git/git-receive-pack?a"
+            },
+            {
+                "StepNumber": 9,
+                "StepString": "Extract exploit is to POST a git-receive-pack that adds user to the access.conf"
+            },
+            {
+                "StepNumber": 10,
+                "StepString": "Modify source code of the app to log out the hex of the request body and use that to substitute ref with the payload"
+            },
+            {
+                "StepNumber": 11,
+                "StepString": "Create a webhook with URL http://{{ref}}.com and Content-Type of application/x-git-receive-pack-request, with content of git-receive-pack adding user to access.conf and script to automate exploit"
+            },
+            {
+                "StepNumber": 12,
+                "StepString": "Trigger the webhook with a commit ref of 127.0.0.1:1823/_/_admin.git/git-receive-pack?a"
+            },
+            {
+                "StepNumber": 13,
+                "StepString": "Visit _/admin on the web interface to read the flag"
+            }
+        ]
+    }
+}

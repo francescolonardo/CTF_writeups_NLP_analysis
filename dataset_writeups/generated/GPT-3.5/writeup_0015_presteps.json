@@ -1,0 +1,9 @@
+[
+    "Crafted a malicious payload containing a script that would steal the victim's session cookie",
+    "Submitted the crafted payload to the application's contact form",
+    "Application allowed the payload to execute and steal the victim's session cookie, confirming the vulnerability",
+    "Researched the application's structure and available resources",
+    "Crafted a payload containing a script that would display the flag",
+    "Submitted the payload to the application's contact form",
+    "Server recognized the payload and responded with the flag for the Web Exploitation challenge"
+]

@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Inspected the source code of the web page and located the JavaScript file responsible for validating the user input"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Examined the validation function to understand its logic and identify any weaknesses"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Discovered the validation function checked if the user input matched a hardcoded value"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Input the correct code into the form directly without having to reverse-engineer the validation function further"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Gained access to the restricted area where I found the flag"
+            }
+        ]
+    }
+}

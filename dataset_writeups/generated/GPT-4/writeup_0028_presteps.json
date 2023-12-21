@@ -1,0 +1,7 @@
+[
+    "Identified a web application that allowed users to perform server-side actions through a form",
+    "Tested for command injection vulnerability by appending additional commands to the input field using common command separators such as ;, &&, or ||",
+    "Confirmed the presence of a command injection vulnerability by executing both the ping command and displaying the content of the /etc/passwd file",
+    "Crafted a payload to search for the flag within the server's file system",
+    "Submitted the payload which executed the commands and displayed the content of the flag file, allowing to obtain the flag needed to complete the challenge"
+]

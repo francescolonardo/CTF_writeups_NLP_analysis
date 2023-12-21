@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Carefully read the text on the blog site to look for hints or clues."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Identify the hint 'you may find a good application for your memory' as a key to solving the challenge."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Understand that 'memory' in the context of web development likely refers to data storage in the browser."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Open the Developer Tools in Firefox to access and inspect the browser's storage features."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Examine the storage section in Developer Tools to search for any stored data or flags."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Find the flag within the browser's storage, successfully completing the challenge."
+            }
+        ]
+    }
+}

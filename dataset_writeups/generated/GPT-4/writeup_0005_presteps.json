@@ -1,0 +1,7 @@
+[
+    "Crafted a malicious image file with embedded PHP code",
+    "Uploaded the malicious image file to the web application using the profile image upload feature",
+    "Navigated to the server's directory where the uploaded images were stored",
+    "Accessed the uploaded image file directly through its URL to trigger execution of the embedded PHP code",
+    "Revealed sensitive information, including the location of the flag for the Web Exploitation challenge"
+]

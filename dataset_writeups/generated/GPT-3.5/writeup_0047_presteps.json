@@ -1,0 +1,6 @@
+[
+    "Intercepted and modified HTTP requests using a tool like Burp Suite",
+    "Modified cookies that contained session tokens to bypass authentication process and gain access to user accounts",
+    "Exploited the vulnerability to steal sensitive information, manipulate data, or perform unauthorized actions on behalf of valid users",
+    "Recommended implementation of secure session tokens, enforcing strong password policies, and limiting the number of failed login attempts to mitigate the vulnerability"
+]

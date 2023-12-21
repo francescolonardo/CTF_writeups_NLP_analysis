@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Login as any user"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Get the jwt token from the jwt cookie"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Paste the jwt token into a file called token.txt"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Use hashcat to crack the token and get the password used"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Change 'user' in the JWT payload to 'admin' and sign it again using the password found"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Copy and paste the new token into the jwt cookie"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Refresh the page to get the flag"
+            }
+        ]
+    }
+}

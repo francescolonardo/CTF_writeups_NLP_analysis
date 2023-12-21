@@ -1,0 +1,7 @@
+[
+    "Attempted to include a local file from the server by modifying the URL parameter, such as http://example.com/page?file=../../../../etc/passwd",
+    "Submitted the modified URL and the application displayed the contents of the /etc/passwd file, confirming the LFI vulnerability",
+    "Attempted to access other sensitive files on the server, such as configuration files or log files, that might contain valuable information",
+    "Explored various files and identified a sensitive file that contained the flag needed to complete the Web Exploitation challenge",
+    "Exploited the LFI vulnerability to access the sensitive file and obtain the flag needed to complete the challenge"
+]

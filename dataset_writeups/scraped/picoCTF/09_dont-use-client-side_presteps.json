@@ -1,0 +1,7 @@
+[
+    "Navigate to website and observe login page",
+    "Analyse page source code for hints",
+    "Identify credentials validation is taking place on client side",
+    "Discover flag is split into parts",
+    "Compose a Bash script to join the parts and get the flag"
+]

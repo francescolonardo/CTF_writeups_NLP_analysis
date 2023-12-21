@@ -1,0 +1,8 @@
+[
+    "Visit the website and inspect the HTML code to find clues about required headers.",
+    "Identify a clue in the HTML indicating a specific User-Agent ('Sup3rS3cr3tAg3nt') is required to access the site.",
+    "Use Postman to send a GET request to '/header.php' with the User-Agent header set to 'Sup3rS3cr3tAg3nt'.",
+    "Receive a response indicating a new requirement: the request must appear to come from 'awesomesauce.com'.",
+    "Modify the GET request by adding a 'Referer' header set to 'awesomesauce.com' and resend to '/header.php'.",
+    "Receive the final response containing the flag, indicating successful completion of the challenge."
+]

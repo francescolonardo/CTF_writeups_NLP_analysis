@@ -1,0 +1,9 @@
+[
+    "Retrieve public key from '/key' endpoint with a GET request",
+    "Bring the public key to a human-readable format",
+    "Retrieve JWT token from '/auth' endpoint with a POST request",
+    "Realize the /admin endpoint requires a different signature algorithm to authenticate than the one used for the /auth endpoint",
+    "Change signature algorithm to HS256/HS512 and use public key as secret key for authentication",
+    "Create and sign a token in python",
+    "Send the signed token to the '/admin' endpoint with a POST request"
+]

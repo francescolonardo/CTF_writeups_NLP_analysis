@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Discovered a Local File Inclusion (LFI) vulnerability in a file upload feature on a web application"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Uploaded a PHP file with a crafted name containing the relative path to sensitive system files"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Accessed download link for the uploaded file and the application included contents of the sensitive file in the server response"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Used LFI attack to gain access to sensitive information and potentially compromise the security of the web application and the underlying system"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Recommended application implements proper input validation and sanitation techniques to prevent LFI attacks"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Recommended application enforces strict file type and size limits and stores files outside of the web root directory to prevent access to sensitive system files"
+            }
+        ]
+    }
+}

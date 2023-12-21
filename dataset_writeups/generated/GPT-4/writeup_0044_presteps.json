@@ -1,0 +1,9 @@
+[
+    "Inspected the source code of the web page to find JavaScript code responsible for validating the user credentials before sending the request to the server",
+    "Discovered a suspiciously weak authentication mechanism based on a hardcoded set of credentials in the JavaScript code",
+    "Intercepted the login request using a proxy tool like Burp Suite",
+    "Modified the username and password parameters of the intercepted request to the hardcoded credentials discovered in the JavaScript code",
+    "Forwarded the modified request to the server",
+    "Web application authenticated the modified credentials and granted access to a restricted area",
+    "Found the flag for the Web Exploitation challenge inside the restricted area"
+]

@@ -1,0 +1,38 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Understand the challenge's requirement to make a POST request with login information."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Inspect the web page's source code to find the necessary credentials for login."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Identify the commented credentials in the source code: username as 'admin' and password as '71urlkufpsdnlkadsf'."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Determine that the key parameters for the POST request are the username and password."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Use Burp Suite to intercept the HTTP request, which is initially a GET request."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Modify the intercepted request, changing the method from GET to POST and including the identified credentials."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Observe the server's response to the POST request, expecting successful authentication using the provided credentials."
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Consider alternative tools like curl for sending HTTP requests, acknowledging the importance of familiarity with different tools."
+            }
+        ]
+    }
+}

@@ -1,0 +1,8 @@
+[
+    "Logged in to the application with a regular user account",
+    "Navigated to a file accessible to that user",
+    "Tried incrementing and decrementing the numeric ID in the URL",
+    "Modified the numeric ID to access files that belonged to other users",
+    "Accessed a file containing the flag for the Web Exploitation challenge",
+    "Gained unauthorized access to restricted files and found the flag needed to complete the challenge"
+]

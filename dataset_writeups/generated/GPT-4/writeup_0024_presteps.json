@@ -1,0 +1,7 @@
+[
+    "Crafted a URL pointing to an internal IP address (e.g., http://127.0.0.1) to test for SSRF vulnerability",
+    "Explored internal network further by scanning for open ports and identifying potentially sensitive services",
+    "Discovered an internal service running on a non-standard port",
+    "Crafted a URL pointing to the internal service",
+    "Fetched the sensitive information, including the flag, using the SSRF vulnerability"
+]

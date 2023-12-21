@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a malicious request containing a direct object reference to another user's profile"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submitted malicious request to application's user profile page"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Application accessed and displayed other user's sensitive information, confirming the vulnerability"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Researched application's structure and available resources"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Crafted request containing a direct object reference to desired user's profile and submitted to application's user profile page"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Server successfully responded with desired user's sensitive information, displaying flag"
+            }
+        ]
+    }
+}

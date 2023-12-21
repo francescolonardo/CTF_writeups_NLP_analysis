@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Used a proxy tool like Burp Suite to intercept and analyze the login request"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Noticed the login request contained a parameter named isAdmin with a value of false"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Modified the value of the isAdmin parameter to true in the intercepted request and forwarded it to the server"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Submitted the modified request and gained access to the admin interface"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Discovered a page in the admin interface that contained the flag for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

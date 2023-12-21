@@ -1,0 +1,10 @@
+[
+    "Gathered information regarding the challenge: source code is dynamically loaded from a web address specified in a GET parameter called 'lang'",
+    "Uncovered the developer does not set an absolute path when including remote content",
+    "Used free hosting provided by a web host to set up a web server that can be publicly accessed",
+    "Created a file on the webserver called myexploit_lang.php which contains malicious PHP code within a string stored in a variable which is then echoed",
+    "Made a request to the challenge URL passing a link to the webserver along with the file",
+    "Bypassed the requirement for the '_lang.php' suffix by creating the file with that suffix",
+    "Used the echo variables to print the source code",
+    "Retrieved the flag"
+]

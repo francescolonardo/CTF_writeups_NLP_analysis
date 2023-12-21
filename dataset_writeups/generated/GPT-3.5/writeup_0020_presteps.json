@@ -1,0 +1,9 @@
+[
+    "Crafted a malicious payload containing a PHP script that would execute the Linux command ls -la and save the output to a file",
+    "Uploaded the file to the application's server and waited for it to execute",
+    "Checked the application's upload directory and found that the output.txt file had been created and contained the expected output of the ls -la command",
+    "Researched the application's system and network configuration",
+    "Crafted a suitable payload containing a reverse shell script that would allow me to connect to the server and gain remote access",
+    "Executed the payload to gain a remote shell on the server",
+    "Completed the Web Exploitation challenge"
+]

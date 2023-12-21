@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a URL that included a redirection to an attacker-controlled website to test for an Open Redirect vulnerability"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Navigated to modified URL, which redirected to attacker-controlled website, confirming the presence of Open Redirect vulnerability"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Created a phishing page mimicking the appearance of the original web application and hosted on attacker-controlled website"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted malicious URL that redirected users to phishing page and distributed the URL to unsuspecting users"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Captured user login credentials with phishing attacks and gained unauthorized access to their accounts"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Found flag for Web Exploitation challenge in one of the compromised accounts"
+            }
+        ]
+    }
+}

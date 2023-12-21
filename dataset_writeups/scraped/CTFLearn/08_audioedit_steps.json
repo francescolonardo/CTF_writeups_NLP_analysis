@@ -1,0 +1,42 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Visit the site described as 'AudioEdit' which allows uploading of .mp3 audio files."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Observe the structure of the SQL insertion statement used by the website when an audio file is uploaded."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Determine that SQL injection can be performed through the audio file's metadata fields, specifically 'author' and 'title'."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Use a metadata editing tool like easyTAG to modify the mp3 file's metadata for SQL injection."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Craft SQL injection payload in the 'author' field: a', (SELECT @@version))-- -b, keeping 'title' irrelevant."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Upload the modified mp3 to generate a manipulated SQL query that leaks the database version."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Refine the SQL injection technique to extract the names of tables in the database by adjusting the metadata payload."
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Further modify the payload to retrieve the names of columns within the tables."
+            },
+            {
+                "StepNumber": 9,
+                "StepString": "Finalize the SQL injection process to extract the flag from the database."
+            }
+        ]
+    }
+}

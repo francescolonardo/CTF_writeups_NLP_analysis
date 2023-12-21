@@ -1,0 +1,6 @@
+[
+    "Try logging in with any credentials",
+    "Open cookie and observe admin variable set to False",
+    "Change admin variable to True",
+    "Refresh page and see flag"
+]

@@ -1,0 +1,7 @@
+[
+    "Navigate to the challenge URL and extract the parameter 'galerie' from the URL query string.",
+    "Navigate to the challenge URL followed by the parameter of 'galerie' to view a folder beginning with '86hv'.",
+    "Inspect the element to view the full folder name.",
+    "Navigate to the challenge URL followed by the full folder name to view a file 'password.txt'.",
+    "Right click to view the source code, then click the 'password.txt' hyperlink to obtain the password."
+]

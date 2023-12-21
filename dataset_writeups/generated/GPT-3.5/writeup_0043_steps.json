@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Discovered XXE vulnerability in web service that allows submission of XML data"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submitted crafted XML document that included reference to external entity"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Read sensitive system files, including configuration files and password hashes, by exploiting the XXE vulnerability"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Gained unauthorized access to the system"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Recommended application implement proper input validation and sanitation techniques to prevent XXE attacks"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Recommended application disable external entity references or use secure XML parser library to prevent XXE attacks"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Demonstrated potential risks associated with XXE vulnerability and recommended proper countermeasures to prevent attacks"
+            }
+        ]
+    }
+}

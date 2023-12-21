@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Found a web application that allowed users to view specific files on the server through a URL parameter"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Tested for an LFI vulnerability by manipulating the URL parameter to view system files that shouldn't be accessible to a regular user"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Navigated to the modified URL which displayed the content of the /etc/passwd file, confirming the presence of an LFI vulnerability"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Exploited the LFI vulnerability by manipulating the URL parameter to retrieve sensitive configuration files from the server"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Found a file containing the flag through exploiting the LFI vulnerability"
+            }
+        ]
+    }
+}

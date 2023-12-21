@@ -1,0 +1,9 @@
+[
+    "Aimed to exploit a potential Insecure Direct Object Reference (IDOR) vulnerability in a web application",
+    "Manipulated the file identifier parameter in the URL to reflect other file identifiers, including those that should not have been accessible",
+    "Submitted the modified URL in the web application to test for an IDOR vulnerability",
+    "Upon successful retrieval of a restricted file, the presence of an IDOR vulnerability was confirmed",
+    "Enumerated various file identifiers within the web application in an attempt to find the one associated with the flag file",
+    "Submitted a URL crafted to include the file identifier associated with the flag file",
+    "Retrieved the content of the flag file through the web application, yielding the flag needed to complete the challenge"
+]

@@ -1,0 +1,9 @@
+[
+    "Gather information about the target.",
+    "Examine the web-app's source code.",
+    "Determine that a command injection attack is possible.",
+    "Generate a PHP legacy command to call the system() function.",
+    "Create a program to convert a string into XOR-ed symbols.",
+    "Construct system('cat .passwd') command from the combination of XOR symbols.",
+    "Execute attack and read content of .passwd file."
+]

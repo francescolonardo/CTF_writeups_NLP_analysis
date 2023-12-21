@@ -1,0 +1,46 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Upon visiting the website, it appears to just be a text-box with a form."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "After inspecting the website, I can see there's a JavaScript file. I inspect that file. The first time I looked at it I gave up in 5 seconds. Anyways, in the const declaration one of the elements caught my attention. There is a path. I visited that path and it gave a WebAssembly file."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Like the last challenge, a bas64 wasm string is downloaded. Using a Python script I converted the string to an actual wasm file."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "I translate the wasm file to wat file, then I translate it to pseudo code and analyze the result. Note that this is not C code, it is C-like code."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "We use diff to compare the new wasm with the wasm from the previous challenge. We can see that this new version includes some extra logic."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "We see the addition of a new variable, named `key`, and some changes at the end of the `copy_char`."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "We discover that the flag is XORed with the reverse of the key. I'm not sure why the key needs to be reversed, but it could have something to do with big endian and little endian since wasm is close to machine code."
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "An alternative way to find the key is as follows. We know (from step 6) that the key is 5 bytes. We also know that the flag starts with `picoCTF{`. Thus, we can XOR the start of the flag (`picoC`) with the encrypted flag `0x9d, 0x6e, 0x93, 0xc8, 0xb2` to find that they key is: `0xed 0x07 0xf0 0xa7 0xf1`."
+            },
+            {
+                "StepNumber": 9,
+                "StepString": "The latter logic comes from the XOR cipher: if `ciphertext = plaintext XOR key` then `ciphertext XOR plaintext = key`."
+            },
+            {
+                "StepNumber": 10,
+                "StepString": "Translating this logic to a Python script we get the flag."
+            }
+        ]
+    }
+}

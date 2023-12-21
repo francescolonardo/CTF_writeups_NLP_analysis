@@ -1,0 +1,38 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Create a user and log in to the homepage."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Attempt to inject a ' into the todo field, resulting in an internal server error."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Inject a ' OR '1'='1 statement to the todo field, with successful execution of the query."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Construct a malicious statement into the todo field using the syntax 'a' || (some_query) || 'b."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Attempt toSELECT information_schema to identify the dbms being used."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Attempt to SELECT sqlite_master to confirm the dbms being used."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Print some information from the database."
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Print the secret column of each user selected by id to find the flag."
+            }
+        ]
+    }
+}

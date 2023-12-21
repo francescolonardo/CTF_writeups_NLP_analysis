@@ -1,0 +1,9 @@
+[
+    "Browsed the application's pages and observed the data displayed for each user.",
+    "Noticed a pattern in the data's structure and IDs.",
+    "Crafted a URL containing the ID of another user, e.g. http://example.com/user?id=2, and submitted it to the application.",
+    "Verified the presence of an IDOR vulnerability by submitting the crafted URL to the application.",
+    "Identified a privileged user with the required sensitive data.",
+    "Crafted a suitable URL containing the ID of the privileged user and submitted it to the application.",
+    "Obtained the flag for the Web Exploitation challenge from the displayed sensitive data of the privileged user."
+]

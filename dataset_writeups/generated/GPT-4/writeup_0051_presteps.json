@@ -1,0 +1,7 @@
+[
+    "Identified vulnerable pages by intercepting the application's HTTP traffic with Burp Suite",
+    "Used a standard user account to log in and access the user menu",
+    "Changed the request's parameters so the user ID corresponded to an administrator's ID",
+    "Submitted the modified request and accessed the administrator's menu",
+    "Revealed sensitive functions and data"
+]

@@ -1,0 +1,8 @@
+[
+    "Visiting the website",
+    "Right clicking and inspecting the source code",
+    "Locating the first third of the flag in a html comment",
+    "Locating the second part of the flag in the referenced CSS file 'mycss.css'",
+    "Locating the final part of the flag in the referenced Javascript script 'myjs.js'",
+    "Combining the three parts to get the flag"
+]

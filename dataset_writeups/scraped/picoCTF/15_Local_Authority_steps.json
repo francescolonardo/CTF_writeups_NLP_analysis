@@ -1,0 +1,46 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Upon arriving to the website, observe the login screen"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Inspect the source code of the webpage"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Examine the CSS, JavaScript, and PHP files"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Discover a function call to 'filter()' in the 'login.php' file"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "This filter function is checking if the entered field only contains allowed letters"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Uncover additional JavaScript code following the filter function definition, which is passing the entered values to a function called 'checkPassword()'"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Locate the definition of the 'checkPassword()' in the 'secure.js' file"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Copy the password from the 'secure.js' source code"
+            },
+            {
+                "StepNumber": 9,
+                "StepString": "Go back to the login screen and enter the username and the discovered password"
+            },
+            {
+                "StepNumber": 10,
+                "StepString": "Retrieve the flag after successful login"
+            }
+        ]
+    }
+}

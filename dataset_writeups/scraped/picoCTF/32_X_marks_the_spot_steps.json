@@ -1,0 +1,38 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Visiting the website, we are presented with a login form (and a Robert Frost poem)"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "The hint says 'XPATH', and using some common XPATH injection techniques we can leak some information about the underlying DB"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "The idea is similar to SQL injection. We have a vulnerable query for authenticating the username and password"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Experimenting with the query we can check if the password of the first username is longer than 1 character"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Submit this as the username, we get back a response from the server telling us that 'You're on the right path', so we can deduce that password is longer than 1"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "In the same way we can check that the password is shorter than 30 characters"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Use XPATH substring to iterate some users and check if someone's password starts with 'a', 'b', 'c', etc"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Write a script that uses XPATH substring to brute force the password character by character"
+            }
+        ]
+    }
+}

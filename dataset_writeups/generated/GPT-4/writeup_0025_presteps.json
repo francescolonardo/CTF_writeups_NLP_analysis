@@ -1,0 +1,7 @@
+[
+    "Found a web application that allowed users to view specific files on the server through a URL parameter",
+    "Tested for an LFI vulnerability by manipulating the URL parameter to view system files that shouldn't be accessible to a regular user",
+    "Navigated to the modified URL which displayed the content of the /etc/passwd file, confirming the presence of an LFI vulnerability",
+    "Exploited the LFI vulnerability by manipulating the URL parameter to retrieve sensitive configuration files from the server",
+    "Found a file containing the flag through exploiting the LFI vulnerability"
+]

@@ -1,0 +1,5 @@
+[
+    "Bypass with PHP register globals ?_SESSION[logged]=1",
+    "Send a request to the server with the URL http://challenge01.root-me.org/web-serveur/ch17?_SESSION[logged]=1",
+    "Examine the response from the server for success and a password"
+]

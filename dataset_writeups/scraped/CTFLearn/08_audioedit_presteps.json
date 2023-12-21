@@ -1,0 +1,11 @@
+[
+    "Visit the site described as 'AudioEdit' which allows uploading of .mp3 audio files.",
+    "Observe the structure of the SQL insertion statement used by the website when an audio file is uploaded.",
+    "Determine that SQL injection can be performed through the audio file's metadata fields, specifically 'author' and 'title'.",
+    "Use a metadata editing tool like easyTAG to modify the mp3 file's metadata for SQL injection.",
+    "Craft SQL injection payload in the 'author' field: a', (SELECT @@version))-- -b, keeping 'title' irrelevant.",
+    "Upload the modified mp3 to generate a manipulated SQL query that leaks the database version.",
+    "Refine the SQL injection technique to extract the names of tables in the database by adjusting the metadata payload.",
+    "Further modify the payload to retrieve the names of columns within the tables.",
+    "Finalize the SQL injection process to extract the flag from the database."
+]

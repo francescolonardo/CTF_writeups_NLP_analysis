@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Intercepted the HTTP request using a proxy tool like Burp Suite and modified the file type to an unsupported one, such as a PHP file"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted a PHP file that contained code to read the content of the flag file"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Uploaded the crafted PHP file"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Navigated to the location where the uploaded files were stored"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Web application executed the PHP code, displaying the content of the flag file"
+            }
+        ]
+    }
+}

@@ -1,0 +1,7 @@
+[
+    "Examined web application's JavaScript code to identify a potential DOM-based XSS vulnerability caused by using the innerHTML property to update DOM elements based on user input",
+    "Crafted an input containing malicious JavaScript code <img src=x onerror=alert(1)> to test for a XSS vulnerability",
+    "Submitted crafted input, which the application executed and displayed an alert box, confirming the XSS vulnerability",
+    "Created a payload for exploiting the vulnerability that could exfiltrate sensitive data or execute other malicious actions",
+    "Submitted the payload, which the application executed and allowed access to sensitive data, including the flag for the challenge"
+]

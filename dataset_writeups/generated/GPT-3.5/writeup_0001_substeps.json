@@ -1,0 +1,76 @@
+{
+    "SubstepsModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Inspected the login form's source code to detect a potential SQL injection vulnerability",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 1.1,
+                        "SubstepString": "Inspected the login form's source code."
+                    },
+                    {
+                        "SubstepNumber": 1.2,
+                        "SubstepString": "Searched for signs of potential SQL injection vulnerability."
+                    }
+                ]
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted an input containing malicious SQL code, such as ' or 1=1 --, and submitted it to the login form to test for the vulnerability",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 2.1,
+                        "SubstepString": "Crafted an input containing malicious SQL code."
+                    },
+                    {
+                        "SubstepNumber": 2.2,
+                        "SubstepString": "Submitted the malicious SQL code to the login form."
+                    }
+                ]
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "The application executed the SQL code and granted me access, confirming the presence of the SQL injection vulnerability",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 3.1,
+                        "SubstepString": "Observed the application executed the malicious SQL code."
+                    },
+                    {
+                        "SubstepNumber": 3.2,
+                        "SubstepString": "Confirmed the presence of the SQL injection vulnerability when the application granted me access."
+                    }
+                ]
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted a suitable payload to obtain the flag for the Web Exploitation challenge, and submitted it to the login form",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 4.1,
+                        "SubstepString": "Crafted a suitable payload to obtain the flag for the Web Exploitation challenge."
+                    },
+                    {
+                        "SubstepNumber": 4.2,
+                        "SubstepString": "Submitted the payload to the login form."
+                    }
+                ]
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "The application executed the SQL code and returned the sensitive data, including the flag for the Web Exploitation challenge",
+                "Substeps": [
+                    {
+                        "SubstepNumber": 5.1,
+                        "SubstepString": "Observed the application executed the payload."
+                    },
+                    {
+                        "SubstepNumber": 5.2,
+                        "SubstepString": "Obtained the sensitive data, including the flag for the Web Exploitation challenge."
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a malicious input containing SQL code, such as ' OR 1=1;--, and submitted it to the application's login form"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Confirmed the presence of an SQL Injection vulnerability when the application bypassed authentication and granted access to restricted content"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Crafted a suitable payload and chose the target data to extract from the database"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Submitted input to the application, which executed the SQL Injection and displayed the sensitive data, including the flag for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

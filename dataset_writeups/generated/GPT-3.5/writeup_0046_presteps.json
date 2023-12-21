@@ -1,0 +1,8 @@
+[
+    "Discovered RCE vulnerability in web application caused by lack of input validation and sanitization on file upload functionality",
+    "Crafted malicious PHP file containing reverse shell payload",
+    "Uploaded malicious file to server, triggering RCE",
+    "Gained remote access to server with shell payload",
+    "Exploitation allowed attacker to steal sensitive information, manipulate data, and launch further attacks",
+    "Recommended that application implements proper input validation and sanitization on file upload functionality, such as verifying file type and size, scanning for malicious code before execution"
+]

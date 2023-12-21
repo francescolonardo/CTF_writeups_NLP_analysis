@@ -1,0 +1,9 @@
+[
+    "Craft a URL with a relative file path to a sensitive file on the server, such as /etc/passwd",
+    "Navigate to the modified URL",
+    "Web page was returned with the contents of the /etc/passwd file",
+    "Confirmed presence of a Directory Traversal vulnerability",
+    "Exploit Directory Traversal vulnerability",
+    "Access other sensitive files on the server",
+    "Obtain flag needed to complete the challenge"
+]

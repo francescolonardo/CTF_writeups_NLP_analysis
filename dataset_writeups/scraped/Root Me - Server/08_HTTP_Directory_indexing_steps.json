@@ -1,0 +1,22 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Navigate to the given directory"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Check the root directory for other files"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Visit the /admin directory"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Locate the /admin/backup/admin.txt file"
+            }
+        ]
+    }
+}

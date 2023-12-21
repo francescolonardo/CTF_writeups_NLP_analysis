@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Let the user register and login"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Create a todo with {{config}}"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Observe list of todos to see information about the flask server"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Retrieve secret key to sign cookies"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Get flask session cookie encoded"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Decode it with flask-session-cookie-manager to retrieve the flag"
+            }
+        ]
+    }
+}

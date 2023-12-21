@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Logged in to the application with a regular user account and inspected the cookies stored in my browser"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Noticed a cookie named 'user_role' with the value 'user'"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Suspected that the application might be using this cookie to determine the user's access level"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Edited the 'user_role' cookie's value and changed it from 'user' to 'admin'"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Refreshed the web page to see if the application would grant me administrative privileges"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Application recognized me as an admin user and granted me access to the restricted admin panel"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Found the flag for the Web Exploitation challenge inside the admin panel"
+            }
+        ]
+    }
+}

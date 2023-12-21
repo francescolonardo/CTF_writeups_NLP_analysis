@@ -1,0 +1,5 @@
+[
+    "Identified the authentication mechanism for the Login page was using a simple SQL query",
+    "Used SQL injection techniques to modify the SQL query to bypass authentication",
+    "Gained access to the administrator account with SQLMap"
+]

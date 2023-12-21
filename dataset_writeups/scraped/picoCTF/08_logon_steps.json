@@ -1,0 +1,22 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Try logging in with any credentials"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Open cookie and observe admin variable set to False"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Change admin variable to True"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Refresh page and see flag"
+            }
+        ]
+    }
+}

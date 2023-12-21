@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Discovered a web application with a form that requires user input, which seemed to restrict access to users with a valid invite code"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Inspected the source code and found that the form validation was only client-side JavaScript"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Used the browser's JavaScript console to manipulate the validation directly in order to bypass it"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Form submitted successfully without valid invite code, and granted access to the restricted area of the website"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Discovered the flag for the Web Exploitation challenge in the restricted area"
+            }
+        ]
+    }
+}

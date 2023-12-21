@@ -1,0 +1,7 @@
+[
+    "Crafted a malicious input containing a script tag and submitted it to the application's form input",
+    "Submitted crafted input to the application and confirmed XSS vulnerability",
+    "Researched application's structure and available resources",
+    "Crafted a payload containing a script to extract the desired information and submitted it to the application's form input",
+    "Client successfully executed the script and displayed the flag for the Web Exploitation challenge"
+]

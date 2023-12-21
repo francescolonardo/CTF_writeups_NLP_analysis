@@ -1,0 +1,6 @@
+[
+    "Identified challenge as 'picobrowser'",
+    "Pressed button, received error saying 'You're not picobrowser!' and listed browser/OS combination",
+    "Recognized browser/OS combination as User-Agent HTTP header",
+    "Used cURL to modify User-Agent HTTP header to 'picobrowser'"
+]

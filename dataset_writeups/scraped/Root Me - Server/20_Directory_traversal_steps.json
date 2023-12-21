@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Navigate to the challenge URL and extract the parameter 'galerie' from the URL query string."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Navigate to the challenge URL followed by the parameter of 'galerie' to view a folder beginning with '86hv'."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Inspect the element to view the full folder name."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Navigate to the challenge URL followed by the full folder name to view a file 'password.txt'."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Right click to view the source code, then click the 'password.txt' hyperlink to obtain the password."
+            }
+        ]
+    }
+}

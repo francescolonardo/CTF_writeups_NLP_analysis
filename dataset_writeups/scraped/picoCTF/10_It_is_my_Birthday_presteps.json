@@ -1,0 +1,8 @@
+[
+    "We visited a website with the possibility to upload two PDF files.",
+    "We noted the challenge description which stated that the two invitations sent had the same MD5 hash but were slightly different.",
+    "We used a Python script to generate two PDF with the same MD5 hash.",
+    "We uploaded the two biological PDFs.",
+    "The website redirected to the source code.",
+    "We located the flag in a comment at the end of the code, at line 37."
+]

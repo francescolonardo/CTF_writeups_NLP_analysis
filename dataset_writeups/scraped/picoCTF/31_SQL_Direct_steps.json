@@ -1,0 +1,22 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Connect to PostgreSQL"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "List tables of the public schema using '/dt'"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Run a SELECT command from the flags table on the public schema"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Retrieve the flag"
+            }
+        ]
+    }
+}

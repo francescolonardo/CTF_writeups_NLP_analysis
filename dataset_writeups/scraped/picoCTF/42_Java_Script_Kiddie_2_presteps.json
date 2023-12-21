@@ -1,0 +1,8 @@
+[
+    "Get a look at the webpage source code.",
+    "Run $.get(\"bytes\", function(resp) {bytes = Array.from(resp.split(\" \"), x => Number(x));}); from the source code in developer console to get a list of bytes.",
+    "Since var LEN = 16 is the same, the script for the previous challenge can be used again but with a random value (I chose 0) added after each character.",
+    "So, the script used, for each character of the key, will try all digits until one is found that places the expected value in the current location. It also adds padding (0) after each digit found.",
+    "Enter key into website and save the QRCode PNG image.",
+    "Use zbar on the image to get the flag."
+]

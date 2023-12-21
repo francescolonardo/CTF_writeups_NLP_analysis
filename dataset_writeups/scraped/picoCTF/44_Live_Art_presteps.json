@@ -1,0 +1,16 @@
+[
+    "Examined the website to identify the /link-submission page, which is intended for submitting a link that will be clicked-on by a victim (a headless browser)",
+    "Identified that the flag is stored in the browser's local storage under the key <code>username<code>",
+    "Discovered that the <code>/error</code> route, backed by an ErrorPage component, contains a function that can influence an <code>h3<code> block and a link",
+    "Determined that the <code>useHashParams<code> function stores the state of an object constructed by iterating through the hash parameters and storing the key/value pairs",
+    "Searched for sinks - places where javascript variables might end up affecting the dom - particularly for injecting html elements, or possibly some element attributes",
+    "Analyzed the source code, creating a Dockerfile and running it on a development server on port 3000 to enable source maps and debugging using breakpoints",
+    "Explored the Drawing component, referencing both an ErrorPage component and a Viewer component, which is used when navigating to a valid <code>/drawing</code> route",
+    "Noticed an error message in the javascript console when the window is made too small, indicating a potential vulnerability",
+    "Recognized that the state being used by ErrorPage is being re-used in the incorrect context, permitting the injection of attributes on the <img> tag",
+    "Researched React XSS vulnerabilities and discovered the secret that if an object has an <code>is</code> property, React will treat it as a WebComponent and pass the attributes straight through",
+    "Weaponized the XSS payload by creating an iframe with the XSS payload in the hash parameters, then resizing the iframe to trigger the vulnerability",
+    "Hosted the XSS payload using python http server, making it publicly accessible using ngrok http 8000",
+    "Submitted the http/https server ngrok URL to the link-submission form",
+    "Received the flag in response to the request for the XSS payload"
+]

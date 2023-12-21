@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Visit the web page for this challenge."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Analyze the challenge to determine the intended solution."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Check other HTTP methods (verb tampering) to find the password."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Use curl commands to request the web page with each verb."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Use the curl command 'curl --request PUT http://challenge01.root-me.org/web-serveur/ch8/' to request the web page and find the password."
+            }
+        ]
+    }
+}

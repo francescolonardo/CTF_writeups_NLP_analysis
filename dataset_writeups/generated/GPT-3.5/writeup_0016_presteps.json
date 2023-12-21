@@ -1,0 +1,7 @@
+[
+    "Crafted malicious payload containing path traversal sequence, such as '../', and appended it to filename of file to be uploaded, such as '../../../etc/passwd'",
+    "Submitted payload to application, payload executed and uploaded file outside of intended upload directory",
+    "Researched server's file structure",
+    "Crafted payload containing path to desired file, such as '../../../flag.txt'",
+    "Submitted file upload payload, server responded with flag for Web Exploitation challenge"
+]

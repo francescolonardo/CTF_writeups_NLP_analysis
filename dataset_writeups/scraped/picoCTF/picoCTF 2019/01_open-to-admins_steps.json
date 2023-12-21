@@ -1,0 +1,14 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Modify the cookies using a Firefox extension (e.g. Cookie Manager)"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Add two fields: `admin` and `time` to the modified cookies"
+            }
+        ]
+    }
+}

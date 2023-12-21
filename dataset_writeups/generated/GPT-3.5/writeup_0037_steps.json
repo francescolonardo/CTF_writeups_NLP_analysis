@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Identified the vulnerable input field"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted a malicious SQL query"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Injected the query into the input field and submitted the form"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Application executed the injected code, granting access to the authenticated area"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Viewed sensitive data, modified user accounts, and launched further attacks against other systems"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Recommended application implement proper input validation and sanitization techniques, and use prepared statements or stored procedures to execute SQL queries"
+            }
+        ]
+    }
+}

@@ -1,0 +1,11 @@
+[
+    "Identify the website with a search functionality, allowing input for an ID.",
+    "Determine that the challenge likely involves SQL injection (SQLi) based on its description.",
+    "Test the ID input field for SQLi vulnerability using a simple payload '1'', observing that it returns no results.",
+    "Attempt a more complex SQLi payload '1 OR 1=1' to check if it can manipulate the query, confirming the presence of SQLi.",
+    "Conclude that the flag is not directly accessible through simple SQLi, suspecting character filtering in place.",
+    "Initiate a process to determine the number of columns required for a successful SQL query, preparing for a UNION attack.",
+    "Utilize SQLMap, an automated tool, to further enumerate the database structure.",
+    "Use SQLMap to extract the names of all existing databases in the target system.",
+    "Proceed to extract detailed information about the database, including table names, column structures, and the location of the flag."
+]

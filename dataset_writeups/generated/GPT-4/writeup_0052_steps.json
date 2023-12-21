@@ -1,0 +1,38 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Identify the search parameter in the application"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Discover that the search parameter is vulnerable to SQL injection attacks"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Create a script to send specially crafted SQL queries to the application and monitor the response time"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "If the query returns true, the response time is longer than if the query returns false."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Use the difference in response time to determine whether the query was successful or not"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Extract sensitive information from the database, including usernames and passwords"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Use the information to log in to the application and gain access to additional resources"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Prevent the vulnerability by using parameterized queries, or by properly validating user input"
+            }
+        ]
+    }
+}

@@ -1,0 +1,9 @@
+[
+    "Connect to the website and observe login form appears",
+    "Test username and password set to 'admin'",
+    "Login fails",
+    "Infer the input entered can be used in an SQL command",
+    "Submit payload 'admin' or 1=1-- to bypass SQL condition",
+    "Login successful, but flag not found",
+    "Check source code of page to find flag"
+]

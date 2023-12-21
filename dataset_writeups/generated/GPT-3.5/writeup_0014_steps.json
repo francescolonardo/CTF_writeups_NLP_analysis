@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Identified that the application used cookies for user authentication and session management, making it potentially vulnerable to Broken Authentication and Session Management"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted a malicious request containing a manipulated cookie with an arbitrary user ID"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Submitted the malicious request to the application's login page"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Confirmed a Broken Authentication and Session Management vulnerability when the request bypassed authentication and logged in as the arbitrary user"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Researched the application's structure and available resources to craft a suitable cookie with the session ID of the desired user"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Submitted the crafted cookie with the session ID of the desired user"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Server successfully recognized the hijacked session and responded with the flag for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

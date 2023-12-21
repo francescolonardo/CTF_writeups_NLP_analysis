@@ -1,0 +1,10 @@
+[
+    "Visit the website and inspect the source code.",
+    "Call a JavaScript beautifier to make the JavaScript code more readable.",
+    "Evaluate the obfuscated function using the browser's Developer Tools console in order to read its values.",
+    "Replace the function calls with hardcoded values to improve readability.",
+    "Determine that authentication is done using substrings.",
+    "Identify the substrings composing the flag, taking note of the overlaps.",
+    "Turn the JavaScript code into a Python array assignment script and execute it to obtain the flag.",
+    "Allow exec to slip into the code to obtain the flag."
+]

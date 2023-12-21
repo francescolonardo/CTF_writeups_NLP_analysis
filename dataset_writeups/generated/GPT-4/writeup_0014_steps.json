@@ -1,0 +1,22 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Downloaded images from the web application's gallery"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Inspected images' metadata using command-line utility ExifTool"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Discovered suspicious-looking comment in metadata of one of the images"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "The comment contained a string of text formatted like a flag"
+            }
+        ]
+    }
+}

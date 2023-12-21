@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Identified vulnerable pages by intercepting the application's HTTP traffic with Burp Suite"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Used a standard user account to log in and access the user menu"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Changed the request's parameters so the user ID corresponded to an administrator's ID"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Submitted the modified request and accessed the administrator's menu"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Revealed sensitive functions and data"
+            }
+        ]
+    }
+}

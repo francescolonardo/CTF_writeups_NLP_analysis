@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Analyze the source code of the webpage containing the button"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Send a POST request with two values: 'generate' and 'score'"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Use CURL to send a POST request with a score over 999999"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Include 'generate' value in the POST request"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Send the POST request with CURL, using the command: curl --request POST --form 'generate=Give+a+try%21' --form 'score=1000000' http://challenge01.root-me.org/web-serveur/ch56/"
+            }
+        ]
+    }
+}

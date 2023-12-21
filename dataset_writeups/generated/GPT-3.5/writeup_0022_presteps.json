@@ -1,0 +1,9 @@
+[
+    "Suspected the application might be vulnerable to Cross-Site Scripting (XSS)",
+    "Entered a malicious payload containing JavaScript code into the search box",
+    "Submitted the payload, which caused the application to execute the JavaScript code and display an alert box",
+    "Researched the application's system and network configuration",
+    "Crafted a payload containing JavaScript code that would steal the session cookie of a logged-in user and send it to an attacker-controlled server",
+    "Used the payload to obtain the session cookie of a logged-in user",
+    "Used the session cookie to impersonate the user and complete the Web Exploitation challenge"
+]

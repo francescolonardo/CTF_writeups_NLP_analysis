@@ -1,0 +1,10 @@
+[
+    "Entered a payload containing a script tag and an alert message, such as <script>alert('XSS');</script>, into the login form field",
+    "Submitted the form",
+    "Application accepted the payload and displayed the alert message, indicating that the application was vulnerable to XSS attacks",
+    "Crafted a payload that would steal the user's login credentials and send them to an attacker-controlled server",
+    "Payload included a script tag containing a function to extract the user's login credentials and an AJAX request to send the data to the attacker's server",
+    "Stole the user's login credentials",
+    "Demonstrated the potential risks associated with XSS attacks",
+    "Recommended countermeasures to prevent these types of attacks"
+]

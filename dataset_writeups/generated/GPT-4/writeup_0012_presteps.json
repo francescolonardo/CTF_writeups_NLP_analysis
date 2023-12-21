@@ -1,0 +1,8 @@
+[
+    "Crafted a URL with a relative file path to a sensitive file on the server, such as /etc/passwd",
+    "Crafted a modified URL with the file path to the local server file",
+    "Navigated to the modified URL",
+    "Confirmed an LFI vulnerability when the application returned a web page displaying the contents of a local server file",
+    "Exploited the LFI vulnerability to access other sensitive files on the server",
+    "Found the flag required for the Web Exploitation challenge"
+]

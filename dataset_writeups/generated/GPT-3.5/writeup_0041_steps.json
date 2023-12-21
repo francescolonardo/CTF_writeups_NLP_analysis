@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Discovered Cross-Site Scripting (XSS) vulnerability in a web application whereby user input was not properly sanitized and allowed injection of malicious JavaScript code into the feedback field"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted malicious script that would steal the user's session cookies when they visited the website"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Injected malicious code into the page, sending the user's session cookies to my own server and gaining access to their account"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Able to access sensitive information, such as user credentials and payment information"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Recommended proper input validation and sanitation techniques to prevent XSS attacks"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Recommended proper output encoding techniques to prevent injection of malicious code"
+            }
+        ]
+    }
+}

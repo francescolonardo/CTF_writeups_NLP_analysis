@@ -1,0 +1,38 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Entered a payload containing a script tag and an alert message, such as <script>alert('XSS');</script>, into the login form field"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submitted the form"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Application accepted the payload and displayed the alert message, indicating that the application was vulnerable to XSS attacks"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted a payload that would steal the user's login credentials and send them to an attacker-controlled server"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Payload included a script tag containing a function to extract the user's login credentials and an AJAX request to send the data to the attacker's server"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Stole the user's login credentials"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Demonstrated the potential risks associated with XSS attacks"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Recommended countermeasures to prevent these types of attacks"
+            }
+        ]
+    }
+}

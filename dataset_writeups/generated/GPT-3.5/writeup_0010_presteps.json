@@ -1,0 +1,8 @@
+[
+    "Crafted a malicious input containing SQL commands and submitted it to the application's login form",
+    "Confirmed the presence of an SQL Injection vulnerability upon application allowing the input to execute and bypassing the authentication",
+    "Researched the database's structure and available data",
+    "Crafted a suitable payload containing SQL commands to extract desired information",
+    "Submitted payload to application's login form",
+    "Server executed commands and displayed flag for Web Exploitation challenge"
+]

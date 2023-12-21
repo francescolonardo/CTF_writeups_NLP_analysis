@@ -1,0 +1,9 @@
+[
+    "Uploaded a malicious PHP file to the web application's server",
+    "Navigated to the uploaded file's URL and appended ?file=shell.php",
+    "Triggered the File Inclusion vulnerability",
+    "Executed the code contained within the malicious PHP file",
+    "Crafted a payload to access a sensitive file containing confidential data",
+    "Executed the payload to access the sensitive file and demonstrate the potential risks associated with File Inclusion attacks",
+    "Recommended security countermeasures to prevent these types of attacks"
+]

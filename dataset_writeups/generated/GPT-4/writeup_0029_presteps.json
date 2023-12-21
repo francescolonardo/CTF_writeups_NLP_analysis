@@ -1,0 +1,8 @@
+[
+    "Discovered a web application with a heavily obfuscated JavaScript file",
+    "Used JavaScript Beautifier and other deobfuscation techniques and tools to make the code more readable",
+    "Identified functions and variables seemed to be related to the flag",
+    "Discovered the flag was split into multiple parts and obfuscated or encoded in different ways",
+    "Decoded and extracted each part of the flag from the JavaScript code",
+    "Combined the parts to obtain the full flag required to complete the Web Exploitation challenge"
+]

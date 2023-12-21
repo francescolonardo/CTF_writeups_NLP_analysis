@@ -1,0 +1,42 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Wrote a php file"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Compressed the php file to a .zip file"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Uploaded the .zip file"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Received a 403 code in response to the upload"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Created a soft link in Kali to a .txt file"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Used the zip command compression to compress the symbol link file"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Uploaded the compressed .txt file"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Found that the .txt file was larger in size upon uploading"
+            },
+            {
+                "StepNumber": 9,
+                "StepString": "Clicked on the .txt file to retrieve the index.php code"
+            }
+        ]
+    }
+}

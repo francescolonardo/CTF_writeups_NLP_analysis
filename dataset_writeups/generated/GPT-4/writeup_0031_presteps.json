@@ -1,0 +1,8 @@
+[
+    "Logged in to the web application with a low-privileged user account and inspected the cookies using browser developer tools",
+    "Noticed the user's role was stored in a cookie named \"role\" with a value of \"user\"",
+    "Attempted to modify the \"role\" cookie value to \"admin\" using the browser's developer tools or a cookie editing extension",
+    "Changed the cookie value, refreshed the web page and observed that the application granted administrative privileges",
+    "Navigated to the administrative panel and found the flag for the Web Exploitation challenge",
+    "Submitted the flag to complete the challenge"
+]

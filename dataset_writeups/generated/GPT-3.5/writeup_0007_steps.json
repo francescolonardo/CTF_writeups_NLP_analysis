@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a malicious file containing PHP code, such as a web shell, and uploaded it to the application"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Executed the PHP code and obtained remote access to the server, confirming the RCE vulnerability"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Researched the server's configuration and available commands"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted a suitable payload containing the desired command and uploaded it to the application"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Executed the command and displayed the flag for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

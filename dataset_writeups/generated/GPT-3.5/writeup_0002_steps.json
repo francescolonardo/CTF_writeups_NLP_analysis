@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Suspected the application was vulnerable to XXE injection due to XML parsing and processing"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted an XML input containing a reference to an external entity"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Submitted crafted input to test application for XXE injection vulnerability"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Application displayed contents of the passwd file, confirming the presence of an XXE injection vulnerability"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Crafted suitable payload and chose target file for extracting the flag"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Submitted input with XXE injection payload, which executed the injection and displayed the contents of the file and the flag for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

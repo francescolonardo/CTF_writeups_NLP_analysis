@@ -1,0 +1,6 @@
+[
+    "Submitted various XPath expressions through the search box to test for XPath Injection vulnerability",
+    "Submitted crafted input containing expression ' or '1'='1 to return all data from XML documents",
+    "Crafted a more specific XPath expression to search for the flag within the XML documents, such as \u2019//flag[contains(text(), 'FLAG')]",
+    "Submitted payload, which displayed content of flag element, allowing retrieval of the flag needed to complete the challenge"
+]

@@ -1,0 +1,10 @@
+[
+    "Navigate to the website source",
+    "Pretty print the source code of the .js file",
+    "Inspect the code for the pertinent details",
+    "Notice that the username and password have been encoded with the `btoa()` method",
+    "Use the `atob()` method to reverse the conversion and obtain the plaintext password",
+    "Open Chrome console",
+    "Undo the encoding within the console to discover the flag",
+    "Confirm the flag with a login attempt"
+]

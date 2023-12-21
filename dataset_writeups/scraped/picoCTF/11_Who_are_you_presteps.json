@@ -1,0 +1,8 @@
+[
+    "Override the default User-Agent request with a PicoBrowser agent",
+    "Use the Referer header to show it's from the same site",
+    "Use the Date header with any value from 2018",
+    "Use the DNT header which means 'do not track' to 1 (true)",
+    "Use the X-Forwarded-For header to change the originating IP address with a random IP address from Sweden",
+    "Use the Accept-Language header to specify which languages are ok with Sweden's subtag `sv`"
+]

@@ -1,0 +1,8 @@
+[
+    "Crafted a malicious input containing a script, such as <script>alert('XSS');</script>, and submitted it to the application's form.",
+    "Application allowed the script to execute and display the alert message, confirming the presence of an XSS vulnerability.",
+    "Crafted a suitable payload containing a script to steal the user's session cookie.",
+    "Submitted the payload to the application's form.",
+    "The script successfully executed and sent the user's session cookie to a remote server controlled by me.",
+    "Used the XSS vulnerability to impersonate the user and obtain the flag for the Web Exploitation challenge."
+]

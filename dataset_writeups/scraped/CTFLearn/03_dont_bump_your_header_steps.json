@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Visit the website and inspect the HTML code to find clues about required headers."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Identify a clue in the HTML indicating a specific User-Agent ('Sup3rS3cr3tAg3nt') is required to access the site."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Use Postman to send a GET request to '/header.php' with the User-Agent header set to 'Sup3rS3cr3tAg3nt'."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Receive a response indicating a new requirement: the request must appear to come from 'awesomesauce.com'."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Modify the GET request by adding a 'Referer' header set to 'awesomesauce.com' and resend to '/header.php'."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Receive the final response containing the flag, indicating successful completion of the challenge."
+            }
+        ]
+    }
+}

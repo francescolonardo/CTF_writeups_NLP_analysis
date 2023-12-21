@@ -1,0 +1,18 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Used a directory brute-forcing tool like DirBuster to discover hidden directories and files on the web server"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Discovered a hidden directory not directly accessible from the web application's interface"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Navigated to the hidden directory and found a file containing sensitive information including the flag for the challenge"
+            }
+        ]
+    }
+}

@@ -1,0 +1,7 @@
+[
+    "Visit the web page for this challenge.",
+    "Analyze the challenge to determine the intended solution.",
+    "Check other HTTP methods (verb tampering) to find the password.",
+    "Use curl commands to request the web page with each verb.",
+    "Use the curl command 'curl --request PUT http://challenge01.root-me.org/web-serveur/ch8/' to request the web page and find the password."
+]

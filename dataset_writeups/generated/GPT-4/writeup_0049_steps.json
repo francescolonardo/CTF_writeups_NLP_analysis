@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a benign template expression, such as {{ 7 * 7 }}, and submitted it to the application"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submitted crafted input to the web application"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Created a malicious template expression to execute arbitrary commands on the server"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Submitted malicious template expression to the web application, which executed the commands"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Accessed sensitive data, including the flag for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

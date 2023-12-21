@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted a malicious URL containing a request to a vulnerable server, such as http://vulnerable-server.com/admin, and submitted it to the application's URL parameter"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submitted the crafted URL to the application"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Application sent the request to the vulnerable server and displayed its response, confirming the vulnerability"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Researched the server's configuration and available resources"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Crafted a suitable URL containing the desired resource and submitted it to the application's URL parameter"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Server successfully executed the request and displayed the flag for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

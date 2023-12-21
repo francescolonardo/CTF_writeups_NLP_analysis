@@ -1,0 +1,8 @@
+[
+    "Piqued interest from web application that took custom messages, and processed with server-side templating engine",
+    "Test for Template Injection vulnerability by submitting crafted input containing simple expression to be evaluated",
+    "Web application displayed result of expression, confirming presence of Template Injection vulnerability",
+    "Crafted payload that would execute code on the server and reveal sensitive information, such as the flag",
+    "Submitted payload, web application displayed content of flag.txt file, allowing retrieval of flag",
+    "Exploited Template Injection vulnerability to execute arbitrary code on server and retrieve flag needed to complete challenge"
+]

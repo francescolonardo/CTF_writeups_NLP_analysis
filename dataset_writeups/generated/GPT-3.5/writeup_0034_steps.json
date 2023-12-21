@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Uploaded a malicious PHP file to the web application's server"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Navigated to the uploaded file's URL and appended ?file=shell.php"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Triggered the File Inclusion vulnerability"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Executed the code contained within the malicious PHP file"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Crafted a payload to access a sensitive file containing confidential data"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Executed the payload to access the sensitive file and demonstrate the potential risks associated with File Inclusion attacks"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Recommended security countermeasures to prevent these types of attacks"
+            }
+        ]
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Logged in to the application with a regular user account"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Examined the cookies using a browser's developer tools"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Noticed a cookie named 'role' with a value of 'user'"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Manipulated the 'role' cookie's value from 'user' to 'admin'"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Refreshed the web page"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Gained access to an administrative panel"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Found the flag for the Web Exploitation challenge inside the administrative panel"
+            }
+        ]
+    }
+}

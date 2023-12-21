@@ -1,0 +1,8 @@
+[
+    "Look at the /robots.txt file of the challenge page.",
+    "Observe that the disallow text includes a double equal sign and spans across three lines.",
+    "Surmise that the base 64 text is actually three separate strings.",
+    "Decode each line of the base 64 strings separately.",
+    "Navigate to the path indicated in the second line of the decoded strings, js/myfile.txt.",
+    "Retrieve the flag from the myfile.txt page."
+]

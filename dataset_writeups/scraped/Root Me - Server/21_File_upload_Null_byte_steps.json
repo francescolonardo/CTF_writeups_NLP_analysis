@@ -1,0 +1,18 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Rename the file from shell.php to shell.php%00.jpg"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submit the new file"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Click the file once it has been uploaded"
+            }
+        ]
+    }
+}

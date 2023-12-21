@@ -1,0 +1,10 @@
+[
+    "Research and study the basics of SQL injection (SQLi) to understand how to manipulate SQL queries through user input.",
+    "Identify that the goal of SQL injection in this challenge is to create a query condition that is always true, such as using '1=1'.",
+    "Observe that the challenge provides feedback on the resulting SQL query, using this information to inform the injection strategy.",
+    "Craft an SQL injection payload that ensures the query remains valid. In this case, the payload is '' or 'a'='a.",
+    "Understand that the missing closing quote in the payload ('a'='a) will be automatically added by the server, completing the SQL query.",
+    "Recognize that the server's lack of input sanitization allows the injection to manipulate the search functionality.",
+    "Use the payload to exploit the vulnerability, which causes the server to return all the data from the database due to the always-true condition.",
+    "Acknowledge that this vulnerability could allow a hacker to access sensitive data from the database."
+]

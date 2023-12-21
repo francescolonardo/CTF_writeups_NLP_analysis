@@ -1,0 +1,14 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Analyze the file paths for current directory (./) and enclosing directory (../) references"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Access the website and enter the path ../../../../flag.txt to read the flag"
+            }
+        ]
+    }
+}

@@ -1,0 +1,10 @@
+[
+    "Register regular user account",
+    "Notice user_role cookie with value of 'user' upon logging in",
+    "Manipulate the user_role cookie value to 'admin' using browser developer tools",
+    "Refresh the page",
+    "Gain access to application as an admin user",
+    "View sensitive information restricted to regular users",
+    "Find the flag hidden in the restricted admin area",
+    "Conclude the importance of server-side validation for cookies and user input"
+]

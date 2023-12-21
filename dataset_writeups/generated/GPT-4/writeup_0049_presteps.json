@@ -1,0 +1,7 @@
+[
+    "Crafted a benign template expression, such as {{ 7 * 7 }}, and submitted it to the application",
+    "Submitted crafted input to the web application",
+    "Created a malicious template expression to execute arbitrary commands on the server",
+    "Submitted malicious template expression to the web application, which executed the commands",
+    "Accessed sensitive data, including the flag for the Web Exploitation challenge"
+]

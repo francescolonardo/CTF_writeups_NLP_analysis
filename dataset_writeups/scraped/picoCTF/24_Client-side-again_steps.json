@@ -1,0 +1,38 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Visit the website and inspect the source code."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Call a JavaScript beautifier to make the JavaScript code more readable."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Evaluate the obfuscated function using the browser's Developer Tools console in order to read its values."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Replace the function calls with hardcoded values to improve readability."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Determine that authentication is done using substrings."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Identify the substrings composing the flag, taking note of the overlaps."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Turn the JavaScript code into a Python array assignment script and execute it to obtain the flag."
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Allow exec to slip into the code to obtain the flag."
+            }
+        ]
+    }
+}

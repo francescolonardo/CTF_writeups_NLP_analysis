@@ -1,0 +1,38 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Exploit vulnerability by appending .php to file parameter on the url"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Encode admin.php and cookie.php with a php wrapper called filter"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Store useful information in a serialized cookie"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Examine source code of cookie.php and find a legacy object that is exploitable with a blind sql injection"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Construct SQL query to login as admin - 'SELECT admin FROM pico_ch2.users WHERE admin = 1 AND username = 'this.username' AND password = 'this.password'"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Form string 'password= a' or SUBSTRING(password, 1, 60) LIKE 'p%'' to trigger true or false response depending on the first character of the password being equal to the input character"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Write a python exploit with requests library to get the flag"
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Run exploit and receive flag"
+            }
+        ]
+    }
+}

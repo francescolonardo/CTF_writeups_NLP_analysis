@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Discovered a web application that executed system commands based on user input"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Manipulated the user input field by appending a command separator (; or &&) followed by an arbitrary command"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Web application executed the appended command and displayed the output, confirming the presence of a Command Injection vulnerability"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Crafted an input to execute a command to read the content of the flag file (e.g. ping example.com; cat /path/to/flag.txt)"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Submitted the crafted input, the web application executed the command and displayed the content of the flag file, obtaining the flag needed to complete the challenge"
+            }
+        ]
+    }
+}

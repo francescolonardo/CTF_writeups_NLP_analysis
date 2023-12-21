@@ -1,0 +1,7 @@
+[
+    "Bypassing CAPTCHA through analyzing the algorithm, exploiting weaknesses in implementation, or using OCR tools",
+    "Identifying other vulnerabilities in the application using manual testing and automated tools like Burp Suite",
+    "Discovering a Cross-Site Scripting (XSS) vulnerability in one of the input fields",
+    "Crafting a payload that would execute JavaScript code to retrieve the flag from the application's DOM or make a request to a sensitive endpoint",
+    "Submitting the payload which will execute the malicious script and send the flag to the attacker's server"
+]

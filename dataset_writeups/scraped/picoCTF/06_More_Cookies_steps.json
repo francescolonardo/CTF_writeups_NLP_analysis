@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Looking at the website, deduce this is a continuation of the \"Cookies\" challenge"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Check the cookie we get from the server and noticed it's encoded"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Decode it, but it's still gibberish, so it's encrypted"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Check Hint 1 which links to a Wikipedia page for a homomorphic encryption method"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Read articles about homomorphic encryption and look at other writeups to understand that it allows you to perform operations on encrypted text"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Notice that the letters \"CBC\" are capitalized in the challenge description indicating it's a CBC bitflip"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Brute-force the encrypted text using a python script to determine if it's admin or not"
+            }
+        ]
+    }
+}

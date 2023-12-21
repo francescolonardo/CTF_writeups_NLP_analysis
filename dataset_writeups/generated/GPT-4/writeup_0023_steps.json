@@ -1,0 +1,30 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Examined the serialized data in the cookie and identified the serialization format being used (Python's pickle module)"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted a malicious serialized object that contained arbitrary code to be executed upon deserialization by the application"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Created a Python class with a __reduce__() method that would execute the desired code upon deserialization"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Base64-encoded the malicious serialized object and replaced the original serialized data in the cookie with the payload"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Refreshed the web page, causing the application to deserialize my malicious payload and execute the code contained within the Exploit class"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Exploiting the insecure deserialization vulnerability allowed me to execute arbitrary code on the server and obtain the flag for the Web Exploitation challenge"
+            }
+        ]
+    }
+}

@@ -1,0 +1,8 @@
+[
+    "Identified the vulnerable input field",
+    "Crafted a malicious SQL query",
+    "Injected the query into the input field and submitted the form",
+    "Application executed the injected code, granting access to the authenticated area",
+    "Viewed sensitive data, modified user accounts, and launched further attacks against other systems",
+    "Recommended application implement proper input validation and sanitization techniques, and use prepared statements or stored procedures to execute SQL queries"
+]

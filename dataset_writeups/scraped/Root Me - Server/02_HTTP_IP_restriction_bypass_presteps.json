@@ -1,0 +1,4 @@
+[
+    "Inject an X-Forwarded-For HTTP header with a private IP address into a GET request to the challenge URL using CURL",
+    "Receive response from server that contains the flag"
+]

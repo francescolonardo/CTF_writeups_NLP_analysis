@@ -1,0 +1,8 @@
+[
+    "Crafted a malicious URL containing a request to a vulnerable server, such as http://vulnerable-server.com/admin, and submitted it to the application's URL parameter",
+    "Submitted the crafted URL to the application",
+    "Application sent the request to the vulnerable server and displayed its response, confirming the vulnerability",
+    "Researched the server's configuration and available resources",
+    "Crafted a suitable URL containing the desired resource and submitted it to the application's URL parameter",
+    "Server successfully executed the request and displayed the flag for the Web Exploitation challenge"
+]

@@ -1,0 +1,8 @@
+[
+    "Carefully read the text on the blog site to look for hints or clues.",
+    "Identify the hint 'you may find a good application for your memory' as a key to solving the challenge.",
+    "Understand that 'memory' in the context of web development likely refers to data storage in the browser.",
+    "Open the Developer Tools in Firefox to access and inspect the browser's storage features.",
+    "Examine the storage section in Developer Tools to search for any stored data or flags.",
+    "Find the flag within the browser's storage, successfully completing the challenge."
+]

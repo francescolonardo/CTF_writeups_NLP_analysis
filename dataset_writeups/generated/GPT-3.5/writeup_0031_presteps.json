@@ -1,0 +1,7 @@
+[
+    "Suspected a Command Injection vulnerability and tested with a ;ls -la; payload",
+    "Crafted a payload to download and execute a reverse shell script from an attacker-controlled server",
+    "Executed arbitrary commands on the server with the crafted payload",
+    "Demonstrated potential risks associated with Command Injection attacks",
+    "Recommended proper input validation and output encoding controls, parameterized queries, and validation of user input to secure web applications against Command Injection attacks"
+]

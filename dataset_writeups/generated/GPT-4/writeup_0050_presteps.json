@@ -1,0 +1,7 @@
+[
+    "Reconnoiter the website to identify the operating system and the strength of the password",
+    "Use Hydra to brute force the password using a known username and a list of common passwords",
+    "Download the password hash from the website",
+    "Use John the Ripper to try to crack the password hash",
+    "Log in as the specific user using the recovered password to complete the challenge"
+]

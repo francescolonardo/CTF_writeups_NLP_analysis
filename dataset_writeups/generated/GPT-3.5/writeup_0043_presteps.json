@@ -1,0 +1,9 @@
+[
+    "Discovered XXE vulnerability in web service that allows submission of XML data",
+    "Submitted crafted XML document that included reference to external entity",
+    "Read sensitive system files, including configuration files and password hashes, by exploiting the XXE vulnerability",
+    "Gained unauthorized access to the system",
+    "Recommended application implement proper input validation and sanitation techniques to prevent XXE attacks",
+    "Recommended application disable external entity references or use secure XML parser library to prevent XXE attacks",
+    "Demonstrated potential risks associated with XXE vulnerability and recommended proper countermeasures to prevent attacks"
+]

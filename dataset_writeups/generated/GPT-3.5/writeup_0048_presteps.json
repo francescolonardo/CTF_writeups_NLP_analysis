@@ -1,0 +1,8 @@
+[
+    "Created a malicious XML file containing an external entity reference pointing to a file on my local system",
+    "Sent the malicious XML file to the web application",
+    "Web application processed the XML data, including the content of the external file in its response",
+    "Exploited the vulnerability to read files, execute commands, or launch Denial-of-Service (DoS) attacks",
+    "Recommended proper input validation and sanitization when processing XML data",
+    "Recommended restricting access to sensitive files on the server to prevent attackers from reading them"
+]

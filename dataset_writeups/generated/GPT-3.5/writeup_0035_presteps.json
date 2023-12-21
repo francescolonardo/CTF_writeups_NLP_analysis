@@ -1,0 +1,7 @@
+[
+    "Analyzed code and conducted testing to determine that tokens were being generated using a PRNG, making it possible to predict the next token in the sequence",
+    "Wrote script to predict the next valid token based on the current token",
+    "Used script to create a new valid token which was used to access protected application resources",
+    "Performed malicious activities such as uploading malicious code, accessing confidential data, and modifying user accounts",
+    "Recommended application implement a more secure token generation mechanism (CS-RNG) and proper token validation on server-side to prevent attempting to predict or tamper with tokens"
+]

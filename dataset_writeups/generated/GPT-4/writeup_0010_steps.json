@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Inspected the source code of the web page and identified the JavaScript functions responsible for the client-side validation"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Used the browser's developer tools to disable the JavaScript functions responsible for the client-side validation"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Submitted the registration form with non-compliant input values"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Received a response that included a hidden message with the flag for the Web Exploitation challenge"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Uncovered the hidden flag, completing the challenge"
+            }
+        ]
+    }
+}

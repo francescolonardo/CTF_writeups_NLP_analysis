@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Suspected a Command Injection vulnerability and tested with a ;ls -la; payload"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Crafted a payload to download and execute a reverse shell script from an attacker-controlled server"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Executed arbitrary commands on the server with the crafted payload"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Demonstrated potential risks associated with Command Injection attacks"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Recommended proper input validation and output encoding controls, parameterized queries, and validation of user input to secure web applications against Command Injection attacks"
+            }
+        ]
+    }
+}

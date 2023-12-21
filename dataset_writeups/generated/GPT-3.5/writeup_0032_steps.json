@@ -1,0 +1,34 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Attempted to log in with a non-existent username and password"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Log in was successful, indicating the application is vulnerable to authentication bypass"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Crafted a payload to access protected resources without valid username and password credentials"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Payload included a request to the resource with a crafted cookie containing a valid user's username and password"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Was able to bypass authentication and access the protected resources"
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Demonstrated potential risks associated with authentication bypass attacks"
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Recommended proper countermeasures to prevent such attacks"
+            }
+        ]
+    }
+}

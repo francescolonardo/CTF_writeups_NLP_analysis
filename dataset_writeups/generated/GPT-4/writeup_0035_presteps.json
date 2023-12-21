@@ -1,0 +1,9 @@
+[
+    "Found a web application that contained functionality allowing users to be redirected to external websites by passing a URL parameter",
+    "Manipulated the URL parameter to include external websites and observe whether the application would redirect me",
+    "Confirmed the presence of an Open Redirect vulnerability when the web application redirected to the malicious site",
+    "Crafted a URL that would redirect users to a phishing site mimicking the target application, which logged user credentials",
+    "Created the phishing site and shared the crafted URL",
+    "Collected user credentials and used them to log in to the target application",
+    "Navigated to a restricted area containing the flag needed to complete the challenge"
+]

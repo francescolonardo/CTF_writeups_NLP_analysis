@@ -1,0 +1,9 @@
+[
+    "Initial request to the web-app which yields /.git directory",
+    "Uses wget or HTTrack to download the files and sub-directories from /.git",
+    "Checks the git log to review history of changes",
+    "Checks the change status using command `git status`",
+    "Runs command `git restore config.php` to access deleted file",
+    "Decrypts MD5 hash to gain relevant string",
+    "Uses automated tool `gittyleaks` to search for sensitive information in the .git directory"
+]

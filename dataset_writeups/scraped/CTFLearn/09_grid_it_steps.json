@@ -1,0 +1,54 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Access a web application with a register/login panel, and log in to view a 2D plane for adding or removing points."
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Notice that requests are handled by 'controller.php?action=' and observe a PHP serialized object during point deletion."
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Attempt SQL Injection by modifying the serialized object, leading to the deletion of all points."
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Identify the use of PHP Object Injection through the delete() function in the serialized object, but find no useful classes for exploitation."
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Shift focus to Blind SQL Injection due to the lack of output from the application."
+            },
+            {
+                "StepNumber": 6,
+                "StepString": "Devise queries for Blind SQL Injection to ascertain table and column names by comparing ASCII values of characters."
+            },
+            {
+                "StepNumber": 7,
+                "StepString": "Utilize a binary search approach in the SQL queries to efficiently determine the correct characters of the database structure."
+            },
+            {
+                "StepNumber": 8,
+                "StepString": "Discover two tables and six columns in the database through the Blind SQL Injection technique."
+            },
+            {
+                "StepNumber": 9,
+                "StepString": "Construct a Blind SQL Injection query to retrieve the admin's password as an MD5 hash."
+            },
+            {
+                "StepNumber": 10,
+                "StepString": "Crack the MD5 hash to obtain the plaintext password: 'grapevine'."
+            },
+            {
+                "StepNumber": 11,
+                "StepString": "Log in as the admin using the retrieved password to gain access to the flag."
+            },
+            {
+                "StepNumber": 12,
+                "StepString": "Conclude that the challenge was misnamed, involving object modification rather than true object injection."
+            }
+        ]
+    }
+}

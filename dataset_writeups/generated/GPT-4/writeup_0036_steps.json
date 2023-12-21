@@ -1,0 +1,26 @@
+{
+    "AttackModel": {
+        "Steps": [
+            {
+                "StepNumber": 1,
+                "StepString": "Crafted an XML payload containing an external entity that would reference a local file on the server, such as /etc/passwd"
+            },
+            {
+                "StepNumber": 2,
+                "StepString": "Submitted the payload to the web application and observed the response"
+            },
+            {
+                "StepNumber": 3,
+                "StepString": "Modified the payload to reference the server's file system location containing the flag"
+            },
+            {
+                "StepNumber": 4,
+                "StepString": "Submitted the modified payload"
+            },
+            {
+                "StepNumber": 5,
+                "StepString": "Web application returned the content of the flag file, allowing me to obtain the flag needed to complete the challenge"
+            }
+        ]
+    }
+}
