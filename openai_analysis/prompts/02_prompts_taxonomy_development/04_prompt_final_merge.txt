@@ -1,0 +1,21 @@
+Given the various taxonomies provided related to tasks and techniques in CTF writeups, your task is to combine and restructure them to produce a comprehensive and coherent three-tiered taxonomy. This taxonomy will serve as the backbone for labeling actions extracted from a dataset of CTF writeups.
+
+Prior to merging the taxonomies, you should:
+1. Undertake an in-depth reorganization and restructuring of the given taxonomies to facilitate easier integration.
+2. Reflect on each category and sub-category to determine its relevance, and consider discarding categories that are exceedingly specific, uncommon, or redundant.
+3. Actively identify and expunge any repetitiveness, overlap, and redundancy present within and between the taxonomies.
+
+The primary goals during this synthesis are:
+- To achieve a clear demarcation between categories, ensuring zero overlaps.
+- To methodically eliminate all forms of redundancies, repetitiveness, and inconsistencies.
+- To design a taxonomy where each level distinctly showcases a cascading hierarchical relationship, with every subsequent tier offering a refined and narrower categorization.
+
+Your resulting taxonomy should be formatted as follows:
+- The initial/top-tier should comprise broad overarching categories.
+- Associated with each of these primary categories should be a secondary JSON object, encapsulating the intermediate categories of the second tier.
+- Each of these intermediate categories, in turn, should encompass another JSON object detailing the third tier's granular sub-categories.
+- The most detailed, third-tier categories will have empty JSON objects, anticipating potential additions or refinements in subsequent updates.
+
+Your objective is to meticulously examine and compare the provided taxonomies, locate shared themes and unique elements, and integrate them to form a unified, streamlined classification framework. This consolidated taxonomy should act as the primary reference for capturing the diverse range of actions articulated in the CTF writeups under consideration.
+
+Note: Your end product should be a pure JSON representation, devoid of any supplementary explanations, comments, or external elements.

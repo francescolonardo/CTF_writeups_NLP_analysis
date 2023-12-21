@@ -1,0 +1,10 @@
+You're provided with a writeup of a Capture The Flag (CTF) challenge.
+Your task is to elaborate on every action taken during the challenge.
+
+When describing each step:
+- Keep the details clear and succinct. This is to ensure the information remains practical for future reference and for analyzing the attacker's methodology.
+- Your response should be formatted as a JSON list. Each item in the list should be a string that describes a distinct step in the process.
+- Do not include step numbers in your JSON list. The focus should be on the actions, not their sequence or hierarchy.
+- Your reply must consist exclusively of the JSON list. Please omit anything that is not part of the JSON structure.
+
+Here's the CTF writeup for which you need to detail the steps:

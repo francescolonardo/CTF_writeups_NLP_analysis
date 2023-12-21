@@ -1,0 +1,58 @@
+Refine the attack model by breaking down each step into more detailed actions. This is only required when it's possible to do so. For every primary step, you should create a list titled "Substeps." In cases where a step cannot be further divided, simply use the original description from "StepString" as the only entry in the "Substeps" list, now labeled "SubstepString." It's crucial to keep the "StepString" values the same as they were initially provided.
+
+Here's an example to illustrate this process:
+
+Input:
+{
+  "StepsModel": {
+    "Steps": [
+      {
+        "StepNumber": 1,
+        "StepString": "Visited the website and got redirected to '/?file=wc.php'"
+      },
+      {
+        "StepNumber": 2,
+        "StepString": "Realized 'echo exec(...)' only returns the last line of the output"
+      }
+      // ... more steps ...
+    ]
+  }
+}
+
+Output:
+{
+  "SubstepsModel": {
+    "Steps": [
+      {
+        "StepNumber": 1,
+        "StepString": "Visited the website and got redirected to '/?file=wc.php'",
+        "Substeps": [
+          {
+            "SubstepNumber": 1.1,
+            "SubstepString": "Visited the website."
+          },
+          {
+            "SubstepNumber": 1.2,
+            "SubstepString": "Observed redirection to '/?file=wc.php'."
+          }
+        ]
+      },
+      {
+        "StepNumber": 2,
+        "StepString": "Realized 'echo exec(...)' only returns the last line of the output",
+        "Substeps": [
+          {
+            "SubstepNumber": 2.1,
+            "SubstepString": "Realized 'echo exec(...)' only returns the last line of the output."
+          }
+        ]
+      }
+      // ... more steps ...
+    ]
+  }
+}
+
+When you return the refined JSON, make sure it includes only the updated model, without any additional comments or content.
+
+Below is the input for the model that you need to refine:
+

@@ -1,0 +1,6 @@
+Given the following actions from web application CTF writeups, please group them based on their common themes in web security. Group names should be meaningful but not overly specific, and convey a clear idea of the related web security aspects. Prefer an action, such as "JWT Manipulation", over a noun like "JWT". The grouping must maintain a level of information useful for creating a taxonomy.
+
+For actions that are complex or ambiguous, and do not fit well into established themes, place them in a 'Miscellaneous' group. However, use the 'Miscellaneous' group sparingly and only when necessary, to avoid diluting the usefulness of the taxonomy.
+
+Please reply with a single JSON object. In this object, every key should be the name of the group, and its corresponding value should be a list of strings representing the actions in that group.
+

@@ -1,0 +1,21 @@
+Given these existing hierarchies related to themes in web security, re-organize and integrate them to produce an optimized three-tiered taxonomy. This revamped taxonomy will serve as a reference for labeling dataset of actions derived from CTF writeups of web applications.
+
+Before diving into the merging process, you should:
+- Re-organize and restructure the provided taxonomies as a preliminary step.
+- Consider the elimination of any unnecessary, too specific, or uncommon categories present in the input taxonomies.
+- Remove any redundancies to avoid repetitions and overlap between categories.
+
+Key objectives during this integration are:
+1. Minimize overlap between categories.
+2. Eliminate redundancies and avoid repetitions.
+3. Ensure each level in the taxonomy showcases a clear hierarchical distinction, with every subsequent level refining and specifying the category further.
+
+The resulting taxonomy should adhere to the following structure:
+- Each top-level key signifies a broad category from the first tier.
+- The value associated with each of these first-tier keys should be another JSON object, symbolizing the second tier of the taxonomy.
+- Each second-tier key should represent a more granular sub-category, with its value being another JSON object, indicating the third tier.
+- Third-tier keys will contain empty JSON objects as their values, providing flexibility for further refinements in the future.
+
+Your mission is to critically analyze the given hierarchies, pinpoint commonalities and discrepancies, and weave them into a unified and thorough classification system. This system should function as a definitive guide for themes rooted in the actions documented in the case studies from the specified domain.
+
+Note: Your output should consist solely of the JSON structure, without any additional commentary, explanations, or external content.

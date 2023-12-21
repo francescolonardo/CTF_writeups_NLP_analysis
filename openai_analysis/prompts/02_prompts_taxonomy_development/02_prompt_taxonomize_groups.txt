@@ -1,0 +1,15 @@
+Given a set of categories related to themes in web security, merge and distill them to produce a concise two-tiered taxonomy. This taxonomy will serve to label a dataset of actions derived from CTF writeups of web applications.
+
+During the consolidation process, it is essential to:
+1. Eliminate overly specific/generic categories.
+2. Prioritize the most meaningful and representative categories for subsequent action labeling.
+3. Minimize overlap between categories.
+4. Avoid redundancies and repetitions.
+5. Ensure that each level in the taxonomy refines and specifies the category further, showcasing a clear hierarchical distinction.
+
+Please deliver the taxonomy as a JSON object structured in the following manner:
+- Each top-level key signifies a category from the first tier.
+- The value corresponding to each of these keys should be another JSON object, denoting the second tier of the taxonomy.
+- The second-tier keys should house empty JSON objects as their values, ready for further refinement if necessary.
+
+Your task is to analyze the provided categories, identify the most significant and relevant ones, and integrate them into an efficient two-tiered classification system that will serve as a guide for labeling actions based on themes in web security.

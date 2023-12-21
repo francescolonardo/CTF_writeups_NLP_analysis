@@ -1,8 +1,0 @@
-{
-    "Action Verification": [
-        "Verify if 'length' query parameter is a string of length 0."
-    ],
-    "Data Extraction": [
-        "Fetch the flag using 'innerHTML'."
-    ]
-}
