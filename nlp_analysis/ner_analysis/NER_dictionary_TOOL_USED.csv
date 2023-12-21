@@ -1,0 +1,87 @@
+Burp Suite,TOOL_USED
+cURL,TOOL_USED
+Postman,TOOL_USED
+Wireshark,TOOL_USED
+Nmap,TOOL_USED
+Metasploit,TOOL_USED
+OWASP Zed Attack Proxy,TOOL_USED
+ZAP,TOOL_USED
+Nikto,TOOL_USED
+sqlmap,TOOL_USED
+Fiddler,TOOL_USED
+Tamper Data,TOOL_USED
+XSSer,TOOL_USED
+Commix,TOOL_USED
+Browser Exploitation Framework,TOOL_USED
+BeEF,TOOL_USED
+Wfuzz,TOOL_USED
+Recon-ng,TOOL_USED
+Arachni,TOOL_USED
+Web Application Attack and Audit Framework,TOOL_USED
+w3af,TOOL_USED
+John the Ripper,TOOL_USED
+Hydra,TOOL_USED
+Hashcat,TOOL_USED
+Dirbuster,TOOL_USED
+DIRB,TOOL_USED
+Gobuster,TOOL_USED
+Skipfish,TOOL_USED
+Nessus,TOOL_USED
+OpenVAS,TOOL_USED
+Acunetix,TOOL_USED
+WebScarab,TOOL_USED
+Paros Proxy,TOOL_USED
+Lighthouse,TOOL_USED
+Jupyter Notebook,TOOL_USED
+Developer Tools,TOOL_USED
+Browser Developer Tools,TOOL_USED
+Browser's Developer Tools,TOOL_USED
+Chrome DevTools,TOOL_USED
+Firefox Developer Tools,TOOL_USED
+Browser extensions,TOOL_USED
+NoScript,TOOL_USED
+Cookie Editor,TOOL_USED
+User-Agent Switcher,TOOL_USED
+CyberChef,TOOL_USED
+mitmproxy,TOOL_USED
+Netcat,TOOL_USED
+Ngrok,TOOL_USED
+HTTPie,TOOL_USED
+WebGoat,TOOL_USED
+Damn Vulnerable Web Application (DVWA),TOOL_USED
+sqlninja,TOOL_USED
+Hackbar,TOOL_USED
+Charles Proxy,TOOL_USED
+Insomnia,TOOL_USED
+jadx,TOOL_USED
+jadx-gui,TOOL_USED
+apktool,TOOL_USED
+script,TOOL_USED
+Python,TOOL_USED
+Python script,TOOL_USED
+Javascript script,TOOL_USED
+Bash script,TOOL_USED
+Packet sniffer,TOOL_USED
+Port scanner,TOOL_USED
+Web vulnerability scanner,TOOL_USED
+Brute force tool,TOOL_USED
+Fuzzer,TOOL_USED
+Exploit framework,TOOL_USED
+lxml,TOOL_USED
+urllib3,TOOL_USED
+mechanize,TOOL_USED
+payload,TOOL_USED
+grep,TOOL_USED
+Subprocess.Popen,TOOL_USED
+Shell,TOOL_USED
+Jinja,TOOL_USED
+Jinja2,TOOL_USED
+OpenSSL,TOOL_USED
+Graphql-voyager,TOOL_USED
+Git-dumper,TOOL_USED
+SQLite,TOOL_USED
+PCAP,TOOL_USED
+JWT.io,TOOL_USED
+S3Scanner,TOOL_USED
+Ajp Shooter,TOOL_USED
+Ping,TOOL_USED
