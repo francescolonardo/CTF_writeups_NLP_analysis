@@ -1,3 +1,0 @@
-{
-    "Action": "The attacker modifies the payload to '; <command> | tr '\\n' '' #', replacing newlines with spaces in the output."
-}

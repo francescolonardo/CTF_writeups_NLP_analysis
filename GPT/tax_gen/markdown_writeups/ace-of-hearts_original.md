@@ -1,3 +1,0 @@
-### Port 20011 \[Web]
-
-This is an SSRF in the `galleryUrl` parameter. By requesting the `/admin` internally, we gain access to the admin console: `/gallery?galleryUrl=http://localhost:20011/admin`

@@ -1,8 +1,0 @@
-{
-    "SubStep": {
-        "Subject": "The attacker",
-        "ActionTarget": "The 'text' input field",
-        "TypeOfAction": "Command injection",
-        "GainedResources": "A reverse shell on their server"
-    }
-}

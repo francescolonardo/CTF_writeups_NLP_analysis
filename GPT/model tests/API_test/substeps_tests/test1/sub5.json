@@ -1,8 +1,0 @@
-{
-    "SubStep": {
-        "Subject": "Attacker",
-        "ActionTarget": "'flag.txt'",
-        "TypeOfAction": "Attempted to read",
-        "GainedResources": "Permission to read 'flag.txt'"
-    }
-}

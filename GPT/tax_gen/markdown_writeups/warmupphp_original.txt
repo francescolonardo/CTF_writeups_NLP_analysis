@@ -1,7 +1,0 @@
-<h1>WarmupPHP</h1>
-
-<ul>
-<li>Simple php script, using YAML</li>
-<li>If IP from norway, YAML parses "NO" as False, thus letting us bypass escapeshellargs</li>
-<li>Command inject and exploit</li>
-</ul>

@@ -1,3 +1,0 @@
-<h3>Port 20011 [Web]</h3>
-
-<p>This is an SSRF in the <code>galleryUrl</code> parameter. By requesting the <code>/admin</code> internally, we gain access to the admin console: <code>/gallery?galleryUrl=http://localhost:20011/admin</code></p>

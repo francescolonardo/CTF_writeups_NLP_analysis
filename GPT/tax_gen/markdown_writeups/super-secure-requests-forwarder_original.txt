@@ -1,9 +1,0 @@
-<h1>Super Secure Requests Forwarder - Solution</h1>
-
-<p><strong>Author</strong>: zeyu2001</p>
-
-<p><strong>Category</strong>: Web</p>
-
-<p>The validation mechanism is flawed - the URL is fetched once to check whether an SSRF is attempted, and then fetched a second time once it is determined to be legitimate.</p>
-
-<p>We can run a server that gives two different responses, passing the check the first time and redirecting to <code>http://localhost/flag</code> the second time.</p>

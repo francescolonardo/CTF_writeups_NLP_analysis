@@ -1,8 +1,0 @@
-# NaaS
-It was a basic task for cracking the Python's `random` generator. The solution was to request enough `nonces` from `https://naas.2019.chall.actf.co/nonceify` to predict the upcoming ones. To crack the `random` generator I used the tool: https://github.com/tna0y/Python-random-module-cracker. 
-
-After successful prediction of the nonces you only had to create a paste with `<script nonce=Nonce1></script><script nonce=Nonce2></script><script nonce=Nonce3></script>...` so you can be sure that when the admin visits the page one of them will work.
-
-After getting the admin's cookie we get the flag: **actf{lots_and_lots_of_nonces}**
-
-Solving script: [./NaaS/solve.py](./NaaS/solve.py)

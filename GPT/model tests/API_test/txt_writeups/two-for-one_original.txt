@@ -1,6 +1,0 @@
-Two For One
-In this challenge, we had to authenticate as the admin user in a 2FA-enabled environment.
-The feedback feature of the site had an XSS vulnerability, allowing us to perform a CSRF on the admin to reset their 2FA code.
-```markup
-
-
