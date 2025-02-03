@@ -24,8 +24,8 @@ This project is based on a **Master’s Thesis at Politecnico di Torino**:
 > *Tassonomia dei comportamenti degli attaccanti nelle sfide di Capture The Flag (CTF): un approccio di categorizzazione attraverso l'analisi dei writeups*  
 > *Francesco Lonardo, Academic Year 2022/2023*  
 
-📄 **[Download the full thesis (PDF) - ITA](./s291039_francescolonardo_thesis.pdf)**  
-📄 **[Download the thesis summary (PDF) - ITA](./s291039_francescolonardo_summary.pdf)**  
+📄 **[Download the full thesis (PDF) - ITA](./s291039_francescolonardo_tesi.pdf)**  
+📄 **[Download the thesis summary (PDF) - ITA](./s291039_francescolonardo_riassunto.pdf)**  
 
 The research focuses on **analyzing attacker behaviors in CTF competitions** using AI-driven NLP models. Writeups from various sources were collected and processed using GPT-based techniques, with the ultimate goal of developing a **taxonomy** to classify and understand common attack patterns.  
 
